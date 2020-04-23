@@ -5,7 +5,7 @@
   이소영이 만든 시스템(Lee Maker System)
 https://bit.ly/2wV7HC2 이거왜안뜸?
 비번 1234<br>
-제작 참고자료 http://naver.me/5ykyBqcs
+제작 참고자료 http://naver.me/5ykyBqcs [naver] <br> https://drive.google.com/file/d/1fXHY5bVUV8GywTpPKrp77Vukq9fdRFNH/view?usp=sharing[google driver]<br>
 <br>
 #git명령어
 git add 파일명<br>
