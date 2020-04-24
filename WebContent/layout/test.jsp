@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>LMS</h1>
- 한글테스트
+ <h1>LM11S</h1>
+ 한글테스트1
 </body>
 </html>
