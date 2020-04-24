@@ -16,13 +16,14 @@ git status 현재위치에 있는 파일중 add 된것과 안된것 <br>
 git pull 주소 브런치이름 ->파일을 내려받음<br>
 추가사항은 나중에 입력해드릴게요<br>
 혹시 이클립스로 하고싶으시면 이야기해주세요~<br>
-https://seomal.org/  3D로드맵 <br> 
+
 
 <ul>
   <li>학생
     <ul>
       <li>http://www.nise.go.kr/main.do?s=nise 특수 학교</li>
       <li>https://slidesplayer.org/slide/15935003/ 스스로 </li>
+      <li>https://seomal.org/ 3D로드맵 </li>
     </ul>
   </li>
   <li>강사</li>
