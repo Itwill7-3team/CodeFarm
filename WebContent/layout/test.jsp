@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header></header>
 	<article>000</article>
+	<footer></footer>
 </body>
 </html>
