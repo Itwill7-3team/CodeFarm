@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+Lee의 test commit 입니다.
 </body>
 </html>
