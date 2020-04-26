@@ -22,6 +22,8 @@ git pull 주소 브런치이름 ->파일을 내려받음<br>
       <li>http://www.nise.go.kr/main.do?s=nise 특수 학교(기본)</li>
       <li>https://slidesplayer.org/slide/15935003/ 스스로 학습사이트 </li>
       <li>https://seomal.org/ 3D로드맵 </li>
+      <li>https://onoffmix.com/ 온오프믹스</li>
+      <li>https://www.edwith.org/ edwith</li>
     </ul>
   </li>
   <li>강사</li>
