@@ -1,4 +1,10 @@
 @CHARSET "UTF-8";
+body{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
 header
 {
 	display:block;
@@ -24,6 +30,12 @@ header .navbar-menu{
     flex: 1 1 auto;
 }
 header .navbar-left{
+	float:left;
+	display: flex;
+    height: 100%;
+}
+header .navbar-right{
+	float:right;
 	display: flex;
     height: 100%;
 }
@@ -31,18 +43,26 @@ header .navbar-link{
 	color: #4a4a4a;
     display: block;
     line-height: 1.5;
-    padding: .5rem .75rem;
+    padding: 20px 12px;
     position: relative;
 }
 header .navbar-item{
-	
-}
-header .navbar-item, .navbar-link {
-    color: #4a4a4a;
+	color: #4a4a4a;
     display: block;
     line-height: 1.5;
-    padding: .5rem .75rem;
     position: relative;
+}
+
+header .navbar-dropdown{
+	left:0;
+	top:48px;
+	position:absolute;
+	display:none;
+	padding:0;
+	width: 180px;
+    height: 410px; /*사이즈 지정   */ 
+    border-radius: 0;
+    box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
 }
 header .step2,header .step3{
 	position:absolute;
@@ -50,16 +70,58 @@ header .step2,header .step3{
 	left: 180px;
 }
 
-header .navbar-dropdown{
-	position:absolute;
-	display:none;
-	padding:0;
-	width: 180px;
-    height: 410px;
-    border-radius: 0;
-    box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
-}
-.navbar-item:HOVER>ul{
+
+header .navbar-item:HOVER>ul{/* 1차 hover 시 보이게  */
 	display: block;
 }
+header li:HOVER>ul{/*2차 3차  보이게  */
+	display: block;
+}
+header .content{
+	width: 60%;
+	margin:0 auto;
+}
+header .navbar{
+	box-shadow: 0 2px 4px 0 hsla(0,0%,80.8%,.5);
+    min-height: unset;
+    height: 64px;
+}
+header .navbar-item:HOVER {
+	background-color: #e7e7e7;
+}
+header .navbar-item:HOVER>a,header .navbar-item:HOVER{
+	color:hotpink;
+}
+header .button{
+	color: white;
+    background-color: crimson !important;
+    border-radius: 10px;
+    font-weight: bold;
+    padding:10px;
+}
+header .bold{font-weight: bold;}
 
+body {
+  font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+   header .below:after{
+    position: absolute;
+    top: 35%;
+    border: 3px solid transparent;
+    border-color: black;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    width: .625em;
+    border-radius: 2px;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: .625em;
+    right: 15px;
+    box-sizing: inherit;
+    
+    }
+header .below{
+	padding-right:40px; 
+}
