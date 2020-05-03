@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <link href="header.css" rel="stylesheet">
+ <link href="./../css/header.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2441771e3f.js" crossorigin="anonymous"></script>
 <header>
 <script>
 
@@ -8,7 +9,8 @@
 
 </script>
 <nav class="navbar">
-<div class="content">
+<!-- 데스크탑 -->
+<div class="descktop_content">
 <!-- 로고 -->
 	<div class="banner">
 	<a href="#" class="logo"><span>로고</span></a>
@@ -19,9 +21,9 @@
 		<div class="navbar-left">
 			<!-- 강의들  -->
 			<div class="navbar-item h-back">
-				<a href="#" class="navbar-link bold below">
+				<a href="#" class="navbar-link bold">
 				<span>강의들</span>
-	
+				<i class="fas fa-angle-down"></i>
 				<!-- <img alt="강의들" src="./../img/include-img/below.png"> -->
 				</a>
 				<ul class="navbar-dropdown step1">
@@ -78,8 +80,9 @@
 			</div>
 			<!--커뮤니티  -->
 			<div class="navbar-item">
-				<a href="#" class="navbar-link bold below">
+				<a href="#" class="navbar-link bold">
 				<span>커뮤니티</span>
+				<i class="fas fa-angle-down"></i>
 				<!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 				</a>
 				<ul class="navbar-dropdown">
@@ -102,6 +105,7 @@
 		<div class="navbar-right">
 		<!--검색 메뉴  -->
 		<div class="search_bar">
+		<input type="text" class=""><i class="fas fa-search"></i>
 		</div>
 		<!--지식공유 참여  -->
 		<div class="navbar-item">
@@ -109,16 +113,16 @@
 		</div>
 		<!-- 대시보드 -->
 		<div class="navbar-item">
-		<a href="#" class="navbar-link bold">
+		<a href="#" class="navbar-item bold">
 		<span class="button">대시보드</span></a>
 		</div>
 		<!-- 위시리스트  -->
 		<div class="navbar-item">
-		<a href="#" ><img alt="위시리스트"  class="navbar-link basket" src="./../img/include-img/basket.png"></a>
+		<a href="#" ><i class="fas fa-shopping-cart"></i></a>
 		</div>
 		<!-- 알림 -->
 		<div class="navbar-item">
-		<a href="#" ><img class="navbar-link" src="./../img/include-img/ntc.png"> </a>
+		<a href="#" ><i class="fas fa-bell"></i> </a>
 		</div>
 		<!-- 사용자 정보 -->
 		<div class="navbar-item"></div>
@@ -126,6 +130,28 @@
 		<!--우측메뉴 끝 -->
 	</div>
 </div>
+<!--데스크탑 끝  -->
+<!-- 모바일 -->
+<div class="mobile_content">
+	<!--왼쪽  -->
+	<div class="mobile_left">
+	
+	<div class="mobile_Search">
+	<a href="#"><i class="fas fa-search"></i></a>
+	</div>
+	<!-- 가운데 -->
+	</div>
+	<div class="logo">
+	logo
+	</div>
+	<!-- 오른쪽 -->
+	<div class="mobile_right">
+	<div class="basket">
+	</div>
+	<div class="status"></div>
+	</div>
+</div>
+<!--모바일끝  -->
 </nav>
 
 </header>
