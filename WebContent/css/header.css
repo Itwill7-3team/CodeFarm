@@ -1,4 +1,24 @@
 @CHARSET "UTF-8";
+
+@media screen and (min-width: 1025px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+   header .descktop_content{
+   display: flex !important;
+   }
+   header .mobile_content{
+   	display: none !important;
+   }
+}
+
+@media screen and (max-width: 1024px) {
+
+	/* 모바일   */
+	header .descktop_content{
+	display:none !important;
+	} 
+	header .mobile_content
+	{display: flex !important;}
+}
 body{
 	margin: 0;
 }
@@ -14,7 +34,7 @@ header
     right: 0;
     z-index: 72;}
 ul,li{list-style: none;}
-header .content{
+header .descktop_content,header .mobile_content{
 	display: flex;
     height: 100%;
 }
@@ -41,21 +61,26 @@ header .navbar-right{
 }
 header .navbar-link{
 	color: #4a4a4a;
-    display: block;
-    line-height: 1.5;
-    padding: 20px 12px;
-    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    padding:10px;
 }
 header .navbar-item{
 	color: #4a4a4a;
-    display: block;
+    display: flex;
     line-height: 1.5;
     position: relative;
+    align-items: center;
+    height: 100%;
+    margin-left:5px;
 }
 
 header .navbar-dropdown{
 	left:0;
 	top:48px;
+	background-color:white;
 	position:absolute;
 	display:none;
 	padding:0;
@@ -77,8 +102,8 @@ header .navbar-item:HOVER>ul{/* 1차 hover 시 보이게  */
 header li:HOVER>ul{/*2차 3차  보이게  */
 	display: block;
 }
-header .content{
-	width: 60%;
+header .descktop_content{
+	max-width: 1180px;
 	margin:0 auto;
 }
 header .navbar{
@@ -86,7 +111,7 @@ header .navbar{
     min-height: unset;
     height: 64px;
 }
-header .navbar-item:HOVER {
+header .navbar-link:HOVER {
 	background-color: #e7e7e7;
 }
 header .navbar-item:HOVER>a,header .navbar-item:HOVER{
@@ -104,24 +129,48 @@ header .bold{font-weight: bold;}
 body {
   font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
 }
-   header .below:after{
-    position: absolute;
-    top: 35%;
-    border: 3px solid transparent;
-    border-color: black;
-    transform: rotate(-45deg);
-    transform-origin: center;
-    width: .625em;
-    border-radius: 2px;
-    border-right: 0;
-    border-top: 0;
-    content: " ";
-    display: block;
-    height: .625em;
-    right: 15px;
-    box-sizing: inherit;
-    
-    }
-header .below{
-	padding-right:40px; 
+
+
+header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	line-height:64px;
+	font-size:32px;
+	color:black
 }
+header .fas:HOVER {
+	color:pink;
+}
+header .descktop_content .fa-angle-down{
+	margin-left:10px; 	
+}
+header .search_bar>input{
+	height: 36px;
+    margin: 5px;
+    padding: 5px;
+    border: 0;
+    background-color: #b5b5b5;
+    border-radius: 3px;
+    box-sizing: border-box;
+    opacity: 0.3;
+}
+header .descktop_content .fa-search{
+	right: 20px;
+    align-items: center;
+    height: 80%;
+    font-size: 20px;
+    display: flex;
+}
+header .search_bar{
+	position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+header .mobile_left ,header .mobile_right,header .logo{
+	flex:1;
+	height: 100%;
+}
+
