@@ -1,6 +1,7 @@
 # LMSProject
 프로젝트 참가자:<br>
 1.변재정<br>
+2.김홍준<br>
 # 학습 관리 시스템(learning management system)
 https://bit.ly/2wV7HC2 1234<br>
 제작 참고자료 http://naver.me/5ykyBqcs [naver] <br> https://drive.google.com/file/d/1fXHY5bVUV8GywTpPKrp77Vukq9fdRFNH/view?usp=sharing[google driver]<br>
