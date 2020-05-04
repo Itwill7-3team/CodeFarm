@@ -162,6 +162,8 @@ header .descktop_content .fa-search{
     height: 80%;
     font-size: 20px;
     display: flex;
+    position: absolute;
+    top: 6px;
 }
 header .search_bar{
 	position: relative;
