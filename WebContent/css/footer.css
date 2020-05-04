@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+footer{
+	width: 100%;
+    background-color: #333b3d;
+    min-height: 300px;
+    color: white;
+}
+footer .container{
+	width:1180px;
+	margin: 0 auto;
+}

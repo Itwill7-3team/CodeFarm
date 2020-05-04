@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+
+@media screen and (min-width: 1025px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+   header .descktop_content{
+   display: flex !important;
+   }
+   header .mobile_content{
+   	display: none !important;
+   }
+}
+
+@media screen and (max-width: 1024px) {
+
+	/* 모바일   */
+	header .descktop_content{
+	display:none !important;
+	} 
+	header .mobile_content
+	{display: flex !important;}
+}
+body{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+header
+{
+	display:block;
+	height: 64px;
+	top: 0;
+    left: 0;
+    right: 0;
+    z-index: 72;}
+ul,li{list-style: none;}
+header .descktop_content,header .mobile_content{
+	display: flex;
+    height: 100%;
+}
+header .banner{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .navbar-menu{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto;
+}
+header .navbar-left{
+	float:left;
+	display: flex;
+    height: 100%;
+}
+header .navbar-right{
+	float:right;
+	display: flex;
+    height: 100%;
+}
+header .navbar-link{
+	color: #4a4a4a;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    padding:10px;
+}
+header .navbar-item{
+	color: #4a4a4a;
+    display: flex;
+    line-height: 1.5;
+    position: relative;
+    align-items: center;
+    height: 100%;
+    margin-left:5px;
+}
+
+header .navbar-dropdown{
+	left:0;
+	top:48px;
+	background-color:white;
+	position:absolute;
+	display:none;
+	padding:0;
+	width: 180px;
+    height: 410px; /*사이즈 지정   */ 
+    border-radius: 0;
+    box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
+}
+header .step2,header .step3{
+	position:absolute;
+	top:0;
+	left: 180px;
+}
+
+
+header .navbar-item:HOVER>ul{/* 1차 hover 시 보이게  */
+	display: block;
+}
+header li:HOVER>ul{/*2차 3차  보이게  */
+	display: block;
+}
+header .descktop_content{
+	max-width: 1180px;
+	margin:0 auto;
+}
+header .navbar{
+	box-shadow: 0 2px 4px 0 hsla(0,0%,80.8%,.5);
+    min-height: unset;
+    height: 64px;
+}
+header .navbar-link:HOVER {
+	background-color: #e7e7e7;
+}
+header .navbar-item:HOVER>a,header .navbar-item:HOVER{
+	color:hotpink;
+}
+header .button{
+	color: white;
+    background-color: crimson !important;
+    border-radius: 10px;
+    font-weight: bold;
+    padding:10px;
+}
+header .bold{font-weight: bold;}
+
+body {
+  font-family: Helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+
+
+header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	line-height:64px;
+	font-size:32px;
+	color:black
+}
+header .fas:HOVER {
+	color:pink;
+}
+header .descktop_content .fa-angle-down{
+	margin-left:10px; 	
+}
+header .search_bar>input{
+	height: 36px;
+    margin: 5px;
+    padding: 5px;
+    border: 0;
+    background-color: #b5b5b5;
+    border-radius: 3px;
+    box-sizing: border-box;
+    opacity: 0.3;
+}
+header .descktop_content .fa-search{
+	right: 20px;
+    align-items: center;
+    height: 80%;
+    font-size: 20px;
+    display: flex;
+}
+header .search_bar{
+	position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+header .mobile_left ,header .mobile_right,header .logo{
+	flex:1;
+	height: 100%;
+}
+
