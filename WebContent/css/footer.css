@@ -5,6 +5,7 @@ footer{
     background-color: #333b3d;
     min-height: 300px;
     color: white;
+    float: left;
 }
 footer .container{
 	width:1180px;
