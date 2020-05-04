@@ -52,7 +52,7 @@
 <jsp:include page="../include/main-content.jsp"/>
 
 
-
+<jsp:include page="../include/footer.jsp"/>
 
 
 
