@@ -52,16 +52,16 @@ DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
-  `b_num` int(11) NOT NULL AUTO_INCREMENT,
-  `b_type` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `b_title` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `b_content` text COLLATE utf8_unicode_ci NOT NULL,
-  `b_writer` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `num` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `writer` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `re_lev` int(11) DEFAULT '0',
   `re_ref` int(11) DEFAULT '0',
   `re_seq` int(11) DEFAULT '0',
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`b_num`)
+  PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,7 +83,7 @@ DROP TABLE IF EXISTS `comment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comment` (
   `c_num` int(11) NOT NULL AUTO_INCREMENT,
-  `b_num` int(11) NOT NULL,
+  `c_b_num` int(11) NOT NULL,
   `c_content` text COLLATE utf8_unicode_ci,
   `c_writer` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `c_reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -175,7 +175,7 @@ DROP TABLE IF EXISTS `star`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `star` (
   `s_number` int(11) NOT NULL,
-  `l_number` int(11) DEFAULT NULL,
+  `s_l_number` int(11) DEFAULT NULL,
   `s_point` int(11) DEFAULT NULL,
   `s_content` text COLLATE utf8_unicode_ci,
   `s_writer` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -232,7 +232,7 @@ CREATE TABLE `user` (
   `u_regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `u_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `u_addr` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rank` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '일반',
+  `u_rank` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '일반',
   `u_intro` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`u_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -285,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-04 22:51:20
+-- Dump completed on 2020-05-04 22:59:14
