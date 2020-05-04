@@ -10,17 +10,19 @@ margin: 0 auto;
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100%; /* 1077*320 */ /*1287*192*/
+  width: 100%; /* 1077*320 */ /*1287*192*/
   height: 320px;
   position: relative;
   overflow: hidden;
 }
 
-.slideshow-container>img {
+.slideshow-container .sld {
 /* position: absolute; */
 /* vertical-align: middle; */
 width: 1077px;
 height: 320px;
+/* width: 100%; */
+/* height: 100%; */
 }
 
 
@@ -46,6 +48,10 @@ height: 320px;
   border-radius: 3px 0 0 3px;
 }
 
+.dots{
+ left: 5%;
+ top: 90%;
+}
 
 /* Caption text */
 /* .text { */
@@ -58,12 +64,6 @@ height: 320px;
 /*   width: 50%; */
 /*   text-align: left; */
 /* } */
-
-
-.dots{
- left: 5%;
- top: 90%;
-}
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
@@ -107,6 +107,17 @@ height: 320px;
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+
+}
+
+@media screen and (max-width: 1024px) {
+
+	/* 모바일   */
+  .slideshow-container>img{height: 100%;} 
+  .slideshow-container{	width: 100%;	height: 100%;}
+  .slideshow-container .sld {	width: 100%;	height: 100%;}
+  
+  
 }
 
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 프로덕트 */
@@ -137,7 +148,7 @@ font-weight: normal;
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 250px;			/*베스트 강의는 카드크기가 더 크네? 285 186*/
+  max-width: 250px;			
   height:340px;
   margin: 5px;
   text-align: center;
@@ -165,17 +176,6 @@ margin-left: 0.8rem;
   margin: 0 0.8rem;
 }
 
-/* .card button {  /* 버튼으로 할때 */
-/*   border: none; */
-/*   outline: 0; */
-/*   padding: 12px; */
-/*   color: white; */
-/*   background-color: #FD8E6A; /* #000; */
-/*   text-align: center; */
-/*   cursor: pointer; */
-/*   width: 100%; */
-/*   font-size: 18px; */
-/* } */
 
 .card i {
 color: #FD8E6A;
@@ -191,9 +191,7 @@ padding: 1rem 0.8rem;
 text-align: left;
 }
 
-/* .card button:hover { /* 버튼으로 할때 */
-/*   opacity: 0.7; */
-/* } */
+
 
 /*STAR=ck*/
 .checked {  color: orange;}
@@ -228,7 +226,7 @@ color: 3B3B38;
 
 .card-c {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
-  max-width: 280px;			/*베스트 강의는 카드크기가 더 크네? 285 186*/
+  max-width: 280px;			
   height:300px;
   margin: 0.5rem;
   text-align: center;
