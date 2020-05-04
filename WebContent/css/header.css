@@ -110,6 +110,7 @@ header .navbar{
 	box-shadow: 0 2px 4px 0 hsla(0,0%,80.8%,.5);
     min-height: unset;
     height: 64px;
+    background: white;
 }
 header .navbar-link:HOVER {
 	background-color: #e7e7e7;
@@ -161,6 +162,8 @@ header .descktop_content .fa-search{
     height: 80%;
     font-size: 20px;
     display: flex;
+    position: absolute;
+    top: 6px;
 }
 header .search_bar{
 	position: relative;
@@ -173,4 +176,25 @@ header .mobile_left ,header .mobile_right,header .logo{
 	flex:1;
 	height: 100%;
 }
-
+header .mobile_Search{
+	height: 100%;
+}
+header .fa-align-justify{
+    font-size: 53px;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    color: black;
+    padding-left: 10px;
+}
+header .noLogin{
+	align-items: center;
+    height: 100%;
+    display: flex;
+    display:none;
+}
+.sticky{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
