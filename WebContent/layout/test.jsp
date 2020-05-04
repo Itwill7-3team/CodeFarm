@@ -7,9 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
+	<header></header>
+	<article>000</article>
+	<footer></footer>
+=======
 Lee의 test commit 입니다.
 수정했어욥!!!1111
 Lee의 test commit 2 집에서 수정했어요~
+>>>>>>> branch 'BJJ' of https://github.com/Itwill7-3team/LMSProject.git
 </body>
 </html>
 
