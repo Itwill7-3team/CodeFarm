@@ -85,6 +85,13 @@ CREATE TABLE `lecture` (
   `l_reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `l_content` text COLLATE utf8_unicode_ci NOT NULL,
   `l_type` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `l_price` int(11) NOT NULL,
+  `l_pct` int(11) NOT NULL DEFAULT '0',
+  `l_img` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `l_tag` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `l_goods` int(11) NOT NULL DEFAULT '0',
+  `pct_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `paynum` int(11) DEFAULT NULL,
   PRIMARY KEY (`l_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -170,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-04 17:01:18
+-- Dump completed on 2020-05-04 17:44:32
