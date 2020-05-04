@@ -69,7 +69,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 function carousel() {
-	sleep(2000);
+	
 	  var i;
 	  var x = document.getElementsByClassName("mySlides");
 	  var dots = document.getElementsByClassName("dot");
