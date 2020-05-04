@@ -116,7 +116,7 @@
 			<div class="mobile_left">
 
 				<div class="mobile_Search">
-					<a href="#"><i class="fas fa-align-justify"></i></a>
+					<a href="#"><i class="fas fa-bars"></i></a>
 				</div>
 				<!-- 가운데 -->
 			</div>

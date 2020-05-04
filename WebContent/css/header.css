@@ -141,7 +141,8 @@ header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
 	color:black
 }
 header .fas:HOVER {
-	color:pink;
+/* 	color:pink; */
+opacity: 0.6;
 }
 header .descktop_content .fa-angle-down{
 	margin-left:10px; 	
@@ -179,14 +180,17 @@ header .mobile_left ,header .mobile_right,header .logo{
 header .mobile_Search{
 	height: 100%;
 }
-header .fa-align-justify{
-    font-size: 53px;
+
+header .mobile_Search i{
+	font-size: 53px;
     align-items: center;
     height: 100%;
     display: flex;
-    color: black;
+    color: #FD8E6A;
     padding-left: 10px;
+	
 }
+
 header .noLogin{
 	align-items: center;
     height: 100%;
