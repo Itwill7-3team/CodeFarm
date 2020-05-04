@@ -1,0 +1,271 @@
+@CHARSET "UTF-8";
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img{
+display: block;
+margin: 0 auto;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%; /* 1077*320 */ /*1287*192*/
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideshow-container>img {
+/* position: absolute; */
+/* vertical-align: middle; */
+width: 1077px;
+height: 320px;
+}
+
+
+/* Next & previous buttons */
+.prev, .next, .dots {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+/* Caption text */
+/* .text { */
+/*   color: #f2f2f2; */
+/*   font-size: 15px; */
+/*   padding: 8px 12px; */
+/*   position: absolute; */
+/*   left: 5%; */
+/*   top: 10%; */
+/*   width: 50%; */
+/*   text-align: left; */
+/* } */
+
+
+.dots{
+ left: 5%;
+ top: 90%;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 프로덕트 */
+
+body{margin: 0;}
+
+#lec{
+margin: 60px auto;
+text-align: center;
+}
+
+.title {
+	color: #1E1E1E;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    font-weight: 600;
+    flex: none;
+    width: 38%; /* 여백조절 */
+}
+
+.title a {
+text-decoration: none;
+font-size:1rem;
+color: #6E6F69;
+margin-left: 0.5rem;
+font-weight: normal;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;			/*베스트 강의는 카드크기가 더 크네? 285 186*/
+  height:340px;
+  margin: 5px;
+  text-align: center;
+  vertical-align: top;
+  font-family: arial;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.card img{
+width:250px;
+height: 165px;
+}
+
+.card h2{
+color:#454545;
+font-size: 1.2rem;
+text-align: left;
+margin-left: 0.8rem;
+}
+
+.price {
+  color: grey;
+  font-size: 16px;
+  margin: 0 0.8rem;
+}
+
+/* .card button {  /* 버튼으로 할때 */
+/*   border: none; */
+/*   outline: 0; */
+/*   padding: 12px; */
+/*   color: white; */
+/*   background-color: #FD8E6A; /* #000; */
+/*   text-align: center; */
+/*   cursor: pointer; */
+/*   width: 100%; */
+/*   font-size: 18px; */
+/* } */
+
+.card i {
+color: #FD8E6A;
+font-size: 20px;
+text-decoration: none;
+}
+.card i:hover {
+  opacity: 0.7;
+}
+
+.card-in{
+padding: 1rem 0.8rem;
+text-align: left;
+}
+
+/* .card button:hover { /* 버튼으로 할때 */
+/*   opacity: 0.7; */
+/* } */
+
+/*STAR=ck*/
+.checked {  color: orange;}
+
+
+/*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 컨텐츠 */
+
+
+body{
+margin: 0;
+}
+
+#more,#blg,#rdm {
+margin: 3rem auto;
+text-align: center;
+}
+
+.title {
+	color: #1E1E1E;
+    line-height: 1.5;
+    font-size: 1.8rem;
+    font-weight: 600;
+    flex: none;
+    width: 38%; /* 여백조절 */
+}
+
+.title>a{
+text-decoration: none;
+font-size:1rem;
+color: 3B3B38;
+}
+
+.card-c {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  max-width: 280px;			/*베스트 강의는 카드크기가 더 크네? 285 186*/
+  height:300px;
+  margin: 0.5rem;
+  text-align: center;
+  vertical-align: top;
+  font-family: arial;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.card-c img{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+width:280px;
+height: 180px;
+}
+
+.card-c h2{
+color:#454545;
+font-size: 1.2rem;
+text-align: left;
+margin-left: 0.8rem;
+}
+
+
+.text-in{
+/* padding: 1rem 0.8rem; */
+text-align: left;
+}
+
+.interest img{
+width:150px;
+height: 100px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+margin: 5px;
+text-align: center;
+vertical-align: top;
+font-family: arial;
+display: inline-block;
+border-radius: 15px;
+}
+
