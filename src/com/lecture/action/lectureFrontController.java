@@ -13,22 +13,17 @@ public class lectureFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("doGet호출");
 		doProcess(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("doPost호출");
 		doProcess(req, resp);
 	}
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		System.out.println("-----------[AdminGoodsFrontController]doProcess호출---------");
+	
+		System.out.println("-----------[lectureFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
 		
@@ -44,7 +39,7 @@ public class lectureFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("/GoodsAdd.ag")){
+		if(command.equals("주소")){
 			
 			
 			

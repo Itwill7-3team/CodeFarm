@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+  <Resource 
+   name="jdbc/codefarmDB"
+   auth="Container"
+   type="javax.sql.DataSource"
+   driverClassName="com.mysql.jdbc.Driver"
+   url="jdbc:mysql://localhost:3306/codefarm"
+   username="codefarm"
+   password="codefarmfarm"
+   maxActive="500"
+   maxIdle="100"  
+  />
+
+</Context>
+
+
+

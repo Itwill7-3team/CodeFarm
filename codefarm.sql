@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `basket`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `basket` (
   `b_num` int(11) NOT NULL AUTO_INCREMENT,
-  `b_u_id` varchar(45) NOT NULL,
+  `b_m_id` varchar(45) NOT NULL,
   `b_l_num` int(11) NOT NULL,
   `b_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `b_l_price` int(11) NOT NULL DEFAULT '0',
@@ -101,6 +101,35 @@ LOCK TABLES `comment` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dmember`
+--
+
+DROP TABLE IF EXISTS `dmember`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dmember` (
+  `m_email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `m_pw` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `m_regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `m_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `m_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `m_addr` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `m_rank` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '비회원',
+  `m_intro` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`m_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dmember`
+--
+
+LOCK TABLES `dmember` WRITE;
+/*!40000 ALTER TABLE `dmember` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dmember` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lecture`
 --
 
@@ -143,11 +172,11 @@ DROP TABLE IF EXISTS `orderlist`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orderlist` (
   `o_num` int(11) NOT NULL AUTO_INCREMENT,
-  `o_b_num` int(11) NOT NULL,
+  `o_b_num` varchar(45) DEFAULT NULL,
   `o_l_price` int(11) NOT NULL,
   `o_l_num` int(11) NOT NULL,
   `o_l_name` varchar(45) NOT NULL,
-  `o_u_id` varchar(45) NOT NULL,
+  `o_m_id` varchar(45) NOT NULL,
   `o_t_type` varchar(45) NOT NULL,
   `o_t_bank` varchar(45) NOT NULL,
   `o_t_payer` varchar(45) NOT NULL,
@@ -194,60 +223,6 @@ LOCK TABLES `star` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `u_orderlist`
---
-
-DROP TABLE IF EXISTS `u_orderlist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `u_orderlist` (
-  `u_o_num` int(11) NOT NULL,
-  `u_u_num` int(11) DEFAULT NULL,
-  `u_l_num` int(11) DEFAULT NULL,
-  `u_l_name` varchar(45) DEFAULT NULL,
-  `u_l_img` text,
-  PRIMARY KEY (`u_o_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `u_orderlist`
---
-
-LOCK TABLES `u_orderlist` WRITE;
-/*!40000 ALTER TABLE `u_orderlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `u_orderlist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `u_email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `u_pw` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `u_regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `u_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `u_addr` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `u_rank` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '일반',
-  `u_intro` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`u_email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `wishlist`
 --
 
@@ -256,9 +231,9 @@ DROP TABLE IF EXISTS `wishlist`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wishlist` (
   `w_num` int(11) NOT NULL AUTO_INCREMENT,
-  `w_u_id` varchar(45) NOT NULL,
+  `w_m_id` varchar(45) NOT NULL,
   `w_l_num` int(11) NOT NULL,
-  `w_date` varchar(45) NOT NULL,
+  `w_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`w_num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -285,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-04 22:59:14
+-- Dump completed on 2020-05-05  1:09:07

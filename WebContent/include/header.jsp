@@ -12,7 +12,7 @@
 		<div class="descktop_content">
 			<!-- 로고 -->
 			<div class="banner">
-				<a href="#" class="logo"><span>로고</span></a>
+				<a href="../main/main.jsp" class="logo"><span><img alt="logo" src="../img/logo.png"></span></a>
 			</div>
 			<!--메뉴  -->
 			<div class="navbar-menu">
@@ -116,11 +116,11 @@
 			<div class="mobile_left">
 
 				<div class="mobile_Search">
-					<a href="#"><i class="fas fa-align-justify"></i></a>
+					<a href="#"><i class="fas fa-bars"></i></a>
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo">logo</div>
+			<div class="logo"><img alt="logo" src="../img/logo.png"></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">

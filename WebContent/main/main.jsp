@@ -14,24 +14,24 @@
 <div class="slideshow-container">
 
 <div class="mySlides fade" style="background-color:#D5E5BB">
-  <img src="../img/b1.png" >
+  <img src="../img/b1.png" class="sld">
 <!--     <div class="text">Caption Text</div> -->
 </div>
 
 <div class="mySlides fade" style="background-color:#FEEBB6">
-  <img src="../img/b2.png">
+  <img src="../img/b2.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#4FCAF4">
-  <img src="../img/b3.png">
+  <img src="../img/b3.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#283C49">
-  <img src="../img/b4.png">
+  <img src="../img/b4.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#EEEEEE">
-  <img src="../img/b5.png">
+  <img src="../img/b5.png" class="sld">
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -69,7 +69,11 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 function carousel() {
+<<<<<<< HEAD
 	
+=======
+	/* sleep(2000); */
+>>>>>>> refs/remotes/origin/Lee
 	  var i;
 	  var x = document.getElementsByClassName("mySlides");
 	  var dots = document.getElementsByClassName("dot");
