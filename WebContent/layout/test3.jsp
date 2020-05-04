@@ -1656,34 +1656,7 @@
 	
 	<script src="../js/jquery-3.4.1.min.js"></script> 
 	<script type="text/javascript">
-	$(document).ready(function(){
-/* url 변경 */
-	function changeUrl(title, url, state) {
-
-	    if (typeof (history.pushState) != "undefined") { //브라우저가 지원하는 경우
-	        history.pushState(state, title, url);
-	    }
-	    else {
-	        location.href = url; //브라우저가 지원하지 않는 경우 페이지 이동처리
-	    }
-	}
 	
-	
-	
-	$(document).ready(function(){
-		$('.tabs_li a').click(function(event){
-			history.pushState(null, null, event.target.href);
-			$('.tab_li a').load(event.target.href ,function(){
-				console.log("ok");
-			});
-			event.preventDefault();
-			$(window).on('popstate', function(event){
-				$('.tab_li a').load(location.href);
-			})
-		});
-	}); 
-
-/* url 변경 */
 	
 /* 스크롤 변경시 sticky 고정 */
 	var didScroll;
@@ -1722,18 +1695,18 @@
 	
 	
 /* 강의 목록 opne */
-
+$(document).ready(function(){
     $(".section_cover").on('click', function () {
     	var $this = $(this);
     	var checkElement = $this.children();
-    	
-        alert(checkElement.next().css('max-height: 0px;'));
         
-    	if(checkElement.is(".section_header") && checkElement.next().is(':visible')){
+    	if(checkElement.is(".section_header") && (checkElement.next().css('max-height') != '0px')){
     		checkElement.removeClass('open');
+    		checkElement.next().css('max-height', '0');
     	}
-    	else if((checkElement.is('.section_header')) && (!$(".lecture_cover").is(':visible'))){
+    	else if(checkElement.is(".section_header") && (checkElement.next().css('max-height') == '0px')){
     		checkElement.addClass('open');
+    		checkElement.next().css('max-height', 'max-content');
     	}
     });
     
