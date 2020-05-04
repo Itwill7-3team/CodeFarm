@@ -118,7 +118,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/koala.jpg" alt="">
+													<img src="../course-img/koala.jpg" alt="">
 													<div class="course_card_ribbon">
 														<i class="fas fa-cut"></i>
 														25% 할인중
@@ -195,7 +195,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/mlik-cow.jpg" alt="">
+													<img src="../course-img/mlik-cow.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -263,7 +263,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/tractor.jpg" alt="">
+													<img src="../course-img/tractor.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -331,7 +331,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/chicken.jpg" alt="">
+													<img src="../course-img/chicken.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -399,7 +399,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/shpvels.jpg" alt="">
+													<img src="../course-img/shpvels.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -467,7 +467,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/sheep.jpg" alt="">
+													<img src="../course-img/sheep.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -535,7 +535,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/green-grass-field.jpg" alt="">
+													<img src="../course-img/green-grass-field.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -603,7 +603,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/green-grass-field-near-houses.jpg" alt="">
+													<img src="../course-img/green-grass-field-near-houses.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -671,7 +671,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/corn-fields.jpg" alt="">
+													<img src="../course-img/corn-fields.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -739,7 +739,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/animals-near-fence.jpg" alt="">
+													<img src="../course-img/animals-near-fence.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
@@ -807,7 +807,7 @@
 										<a class="flip-card-front" href="#">
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="../img/corn.jpg" alt="">
+													<img src="../course-img/corn.jpg" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
