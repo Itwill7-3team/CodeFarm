@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -45,4 +46,38 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}//자원 해제
+	
+	public ArrayList<BoardDTO> getBoardList(String type){
+		ArrayList<BoardDTO> boardList= new ArrayList<BoardDTO>();
+		try{
+			sql="select * from board where type=?";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, type);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				BoardDTO bdto=new BoardDTO();
+				bdto.setNum(rs.getInt("num"));
+				bdto.setTitle(rs.getString("title"));
+				bdto.setContent(rs.getString("content"));
+				bdto.setType(rs.getString("type"));
+				bdto.setWriter(rs.getString("writer"));
+				bdto.setRe_lev(rs.getInt("re_lev"));
+				bdto.setRe_seq(rs.getInt("re_seq"));
+				bdto.setRe_ref(rs.getInt("re_ref"));
+				bdto.setL_name(rs.getString("l_name"));
+				bdto.setReg_date(rs.getTimestamp("reg_date"));
+				boardList.add(bdto);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		
+		return boardList;
+	}
+	
 }
