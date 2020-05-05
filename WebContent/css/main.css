@@ -199,28 +199,10 @@ text-align: left;
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 컨텐츠 */
 
 
-body{
-margin: 0;
-}
 
 #more,#blg,#rdm {
 margin: 3rem auto;
 text-align: center;
-}
-
-.title {
-	color: #1E1E1E;
-    line-height: 1.5;
-    font-size: 1.8rem;
-    font-weight: 600;
-    flex: none;
-    width: 38%; /* 여백조절 */
-}
-
-.title>a{
-text-decoration: none;
-font-size:1rem;
-color: 3B3B38;
 }
 
 .card-c {

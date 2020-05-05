@@ -124,7 +124,7 @@ String Path = request.getContextPath();
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo"><img alt="logo" src="../img/logo.png"></div>
+			<div class="logo"><img alt="logo" src="<%=Path %>/img/logo.png"></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">
