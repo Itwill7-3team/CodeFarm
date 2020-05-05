@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>course</title>
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜</title>
 <link href="./css/course1.css" rel="stylesheet">
 
 </head>

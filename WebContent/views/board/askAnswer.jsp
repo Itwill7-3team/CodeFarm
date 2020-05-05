@@ -5,7 +5,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
