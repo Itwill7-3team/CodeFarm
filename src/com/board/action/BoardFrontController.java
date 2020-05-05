@@ -45,7 +45,7 @@ public class BoardFrontController extends HttpServlet{
 			forward.setPath("./views/board/askAnswer.jsp");
 			forward.setRedirect(false);
 		}else if(command.equals("/star.bo")){
-			System.out.println("test");
+			System.out.println("test!!");
 		}else if(command.equals("/notice.bo")){
 			
 		}else if(command.equals("/request.bo")){
