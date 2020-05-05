@@ -1,4 +1,4 @@
-package com.orderlist.db;
+package com.board.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class orderlistDAO {
+public class BoardDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  orderlistDAO() {//기본 생성자
+	public  BoardDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

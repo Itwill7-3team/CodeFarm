@@ -1,4 +1,4 @@
-package com.basket.action;
+package com.member.action;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class basketFrontController extends HttpServlet{
+public class MemberFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class basketFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("-----------[basketFrontController]doProcess호출---------");
+		System.out.println("-----------[memberFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
 		

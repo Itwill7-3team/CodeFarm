@@ -2,7 +2,7 @@ package com.star.db;
 
 import java.sql.Timestamp;
 
-public class starDTO {
+public class StarDTO {
 
 	private int s_number;			//별점글번호
 	private int s_l_number;			//강의 번호

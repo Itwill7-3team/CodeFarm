@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div id="root">
-		<jsp:include page="../include/header.jsp"/>	
+		<jsp:include page="/../include/header.jsp"/>	
 		<main id="main">
 			<div class="container">
 	
@@ -914,7 +914,5 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
-<!-- fontawesome -->
-<script src="https://kit.fontawesome.com/77cf191301.js" crossorigin="anonymous"></script>
 </body>
 </html>

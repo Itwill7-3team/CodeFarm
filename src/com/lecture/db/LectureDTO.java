@@ -2,7 +2,7 @@ package com.lecture.db;
 
 import java.sql.Timestamp;
 
-public class lectureDTO {
+public class LectureDTO {
 
 	private int l_number;			//강의번호
 	private String l_m_name;			//강사이름

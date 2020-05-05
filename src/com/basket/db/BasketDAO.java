@@ -1,4 +1,4 @@
-package com.comment.db;
+package com.basket.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class commentDAO {
+public class BasketDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  commentDAO() {//기본 생성자
+	public  BasketDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

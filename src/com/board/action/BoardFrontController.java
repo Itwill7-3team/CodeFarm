@@ -1,4 +1,4 @@
-package com.lecture.action;
+package com.board.action;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class lectureFrontController extends HttpServlet{
+public class BoardFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class lectureFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("-----------[lectureFrontController]doProcess호출---------");
+		System.out.println("-----------[boardFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
 		

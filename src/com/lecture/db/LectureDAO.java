@@ -1,4 +1,4 @@
-package com.basket.db;
+package com.lecture.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class basketDAO {
+public class LectureDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  basketDAO() {//기본 생성자
+	public  LectureDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

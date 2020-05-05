@@ -2,7 +2,7 @@ package com.wishlist.db;
 
 import java.sql.Timestamp;
 
-public class wishlistDTO {
+public class WishlistDTO {
 
 	private int w_num;			//위시리스트 번호
 	private String w_m_id;		//위시리스트 회원 아이디

@@ -2,7 +2,7 @@ package com.board.db;
 
 import java.sql.Timestamp;
 
-public class boardDTO {
+public class BoardDTO {
 
 	private int num;			//게시글 번호
 	private String type;		//게시글 타입

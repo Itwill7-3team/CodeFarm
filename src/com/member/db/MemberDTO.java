@@ -2,7 +2,7 @@ package com.member.db;
 
 import java.sql.Timestamp;
 
-public class memberDTO {
+public class MemberDTO {
 
 	private String m_email;		//회원이메일
 	private String m_pw;		//회원 비밀번호

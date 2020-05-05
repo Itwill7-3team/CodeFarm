@@ -4,120 +4,45 @@
   <welcome-file-list>
     <welcome-file>MemberLogin.me</welcome-file>
     <welcome-file>MemberLogin.me</welcome-file>
-   
   </welcome-file-list>
-  
   <servlet>
-    <servlet-name>testServlet</servlet-name>
-    <servlet-class>test.TestServlet</servlet-class>
+    <servlet-name>LectureFrontController</servlet-name>
+    <servlet-class>com.lecture.action.LectureFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-    <servlet-name>testServlet</servlet-name>
-    <url-pattern>/testServlet1</url-pattern>
+    <servlet-name>LectureFrontController</servlet-name>
+    <url-pattern>*.le</url-pattern>
   </servlet-mapping>
-  
-  
-  <!--  Model2 주소 매핑  -->
-  <!-- 한가지 명사형태(동작)로 구분 -->
-  <!-- 
-    servlet : 서블릿 객체의 정보를 저장하는 태그
-    servlet-name : 해당서블릿의 이름
-    servlet-class : 해당서블릿의 위치(패키명+클래스명)
-    
-    servlet-mapping : 서블릿과 URL을 매핑(연결) 태그
-    servlet-name : 해당서블릿의 이름
-    url-pattern : 해당 주소URL 접근
-    http://loacalhost:8080/프로젝트명/주소URL
-   -->
-  
-  
-  
-  <!-- 회원관리 -->
   <servlet>
-     <servlet-name>MemberFrontController</servlet-name>
-     <servlet-class>net.member.action.MemberFrontController</servlet-class>
-  </servlet> 
-  
-  <servlet-mapping>
-     <servlet-name>MemberFrontController</servlet-name>
-     <url-pattern>*.me</url-pattern>
-  </servlet-mapping>  
-  <!-- 회원관리 -->
-  
-  
-  <!-- 게시판 관리 -->
-  <servlet>
-    <servlet-name>BoardFrontController</servlet-name>
-    <servlet-class>net.board.action.BoardFrontController</servlet-class>
+    <servlet-name>MemberFrontController</servlet-name>
+    <servlet-class>com.member.action.MemberFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-     <servlet-name>BoardFrontController</servlet-name>
-     <url-pattern>*.bo</url-pattern>
-  </servlet-mapping>  
-  <!-- 게시판 관리 -->
-  
-  <!-- 관리자 상품등록 -->
-  <servlet>
-  	<servlet-name>AdminGoodsFrontController</servlet-name>
-  	<servlet-class>net.admin.goods.action.AdminGoodsFrontController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>AdminGoodsFrontController</servlet-name>
-  <url-pattern>*.ag</url-pattern>
+    <servlet-name>MemberFrontController</servlet-name>
+    <url-pattern>*.me</url-pattern>
   </servlet-mapping>
-  <!--  관리자 상품등록 -->
-  
-  <!-- 사용자 상품 처리 -->
   <servlet>
-  	<servlet-name>GoodsFrontController</servlet-name>
-  	<servlet-class>net.goods.action.GoodsFrontController</servlet-class>
+    <servlet-name>BasketFrontController</servlet-name>
+    <servlet-class>com.basket.action.BasketFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-  <servlet-name>GoodsFrontController</servlet-name>
-  <url-pattern>*.go</url-pattern>
+    <servlet-name>BasketFrontController</servlet-name>
+    <url-pattern>*.ba</url-pattern>
   </servlet-mapping>
-  <!-- 사용자 상품 처리 -->
-  
-  <!-- 장바구니 -->
   <servlet>
-  	<servlet-name>BasketFrontController</servlet-name>
-  	<servlet-class>net.basket.action.BasketFrontController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>BasketFrontController</servlet-name>
-  <url-pattern>*.ba</url-pattern>
-  </servlet-mapping>
-  <!-- 장바구니 -->
-  
-	<!-- 구매하기 -->
-	 <servlet>
     <servlet-name>OrderFrontController</servlet-name>
-    <servlet-class>net.order.action.OrderFrontController</servlet-class>
+    <servlet-class>com.order.action.OrderFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>OrderFrontController</servlet-name>
     <url-pattern>*.or</url-pattern>
   </servlet-mapping>
-	
-	<!--구매하기--> 
-	<!-- 구매후 처리하기(관리자) -->
-	 <servlet>
-    <servlet-name>AdminOrderFrontController</servlet-name>
-    <servlet-class>net.admin.order.action.AdminOrderFrontController</servlet-class>
+  <servlet>
+    <servlet-name>WishlistFrontController</servlet-name>
+    <servlet-class>com.wishlist.action.WishlistFrontController</servlet-class>
   </servlet>
-  
   <servlet-mapping>
-    <servlet-name>AdminOrderFrontController</servlet-name>
-    <url-pattern>*.ao</url-pattern>
+    <servlet-name>WishlistFrontController</servlet-name>
+    <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
-	
-	<!--구매후 처리하기(관리자)-->   
-  
-  
 </web-app>

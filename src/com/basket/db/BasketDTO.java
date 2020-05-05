@@ -2,7 +2,7 @@ package com.basket.db;
 
 import java.sql.Timestamp;
 
-public class basketDTO {
+public class BasketDTO {
 
 	private int b_num;			//장바구니번호
 	private String b_m_id;		//장바구니 회원 아이디

@@ -1,4 +1,4 @@
-package com.member.db;
+package com.orderlist.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class memberDAO {
+public class OrderlistDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  memberDAO() {//기본 생성자
+	public  OrderlistDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

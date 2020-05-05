@@ -1,4 +1,4 @@
-package com.lecture.db;
+package com.comment.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class lectureDAO {
+public class CommentDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  lectureDAO() {//기본 생성자
+	public  CommentDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

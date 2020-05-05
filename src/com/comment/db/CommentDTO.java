@@ -2,7 +2,7 @@ package com.comment.db;
 
 import java.sql.Timestamp;
 
-public class commentDTO {
+public class CommentDTO {
 
 	private int c_num;				//덧글 번호
 	private int c_b_num;			//덧글 게시글 번호

@@ -1,4 +1,4 @@
-package com.board.db;
+package com.star.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class boardDAO {
+public class StarDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  boardDAO() {//기본 생성자
+	public  StarDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.wishlist.db;
+package com.member.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class wishlistDAO {
+public class MemberDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  wishlistDAO() {//기본 생성자
+	public  MemberDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {
