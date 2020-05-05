@@ -7,6 +7,8 @@
 	<script>
 		
 	</script>
+	
+	<jsp:include page="./nav-sideBar.jsp"/>
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
@@ -116,7 +118,7 @@
 			<div class="mobile_left">
 
 				<div class="mobile_Search">
-					<a href="#"><i class="fas fa-bars"></i></a>
+					<a href="#" onclick="on()"><i class="fas fa-bars"></i></a>
 				</div>
 				<!-- 가운데 -->
 			</div>
@@ -136,5 +138,7 @@
 		</div>
 		<!--모바일끝  -->
 	</nav>
+
+
 
 </header>
