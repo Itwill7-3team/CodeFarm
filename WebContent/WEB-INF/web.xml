@@ -64,4 +64,18 @@
     <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
   <!-- 위시리스트 -->
+  
+  <!-- 강사 강의 등록 -->
+	<servlet>
+     <servlet-name>InstructorFrontController</servlet-name>
+     <servlet-class>com.instructor.action.InstructorFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+     <servlet-name>InstructorFrontController</servlet-name>
+     <url-pattern>*.in</url-pattern>
+  </servlet-mapping>  
+  <!-- 강사 강의 등록 -->
+  
+  
 </web-app>
