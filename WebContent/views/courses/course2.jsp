@@ -11,6 +11,7 @@
 
 </head>
 <body>
+
 	<div id="root">
 		<jsp:include page="../../include/header.jsp"/>	
 		<main id="main">

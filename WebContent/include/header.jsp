@@ -5,10 +5,12 @@
 	crossorigin="anonymous"></script>
 <header class="sticky">
 	<script>
+
+	</script>
+	
 <%
 String Path = request.getContextPath();
 %>		
-	</script>
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
