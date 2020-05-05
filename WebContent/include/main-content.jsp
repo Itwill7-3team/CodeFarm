@@ -19,12 +19,12 @@
 <section id="more">
 <h1 class="title">관심사<a href="#">&#10095;</a></h1> 
 <div class="interest">
-  <img src="../img/lect_6.png" alt="" >
-  <img src="../img/lect_7.png" alt="" >
-  <img src="../img/lect_8.png" alt="" >
-  <img src="../img/lect_9.png" alt="" >
-  <img src="../img/lect_10.png" alt="" >
-  <img src="../img/lect_1.png" alt="" >
+<a href="#">  <img src="../img/lect_6.png" alt="" > </a>
+<a href="#">  <img src="../img/lect_7.png" alt="" > </a>
+<a href="#">  <img src="../img/lect_8.png" alt="" > </a>
+<a href="#">  <img src="../img/lect_9.png" alt="" > </a>
+<a href="#">  <img src="../img/lect_10.png" alt="" > </a>
+<a href="#">  <img src="../img/lect_1.png" alt="" > </a>
 </div>
 
 
@@ -34,9 +34,12 @@
 <section id="blg">
 <h1 class="title">블로그<a href="#">&#10095;</a></h1> 
 
+
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_1.png" alt="" style="width:100%">
     <h2>Blog</h2>
+</a>
 	<div class="text-in">
 		<p>
 		Some text about the .
@@ -48,9 +51,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_2.png" alt="" style="width:100%">
     <h2>Blog</h2>
-
+</a>
   	<div class="text-in">
 		<p>
 		Some text about the .
@@ -62,8 +66,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_3.png" alt="" style="width:100%">
     <h2>Blog</h2>
+</a>
 		<div class="text-in">
 		<p>
 		Some text about the .
@@ -75,8 +81,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_4.png" alt="" style="width:100%">
     <h2>Blog</h2>
+</a>
 		<div class="text-in">
 		<p>
 		Some text about the .
@@ -93,8 +101,10 @@
 <section id="rdm">
 <h1 class="title">로드맵<a href="#">&#10095;</a></h1>
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_6.png" alt="" style="width:100%">
     <h2>Spring</h2>
+</a>    
 		<div class="text-in">
 
 			<p>Some text about the .</p> 
@@ -102,8 +112,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_7.png" alt="" style="width:100%">
     <h2>Node.js</h2>
+</a>
 		<div class="text-in">
 
 			<p>Some text about the .</p> 
@@ -111,8 +123,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_8.png" alt="" style="width:100%">
     <h2>Python</h2>
+</a>
 		<div class="text-in">
 
 			<p>Some text about the .</p> 
@@ -121,8 +135,10 @@
 
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_9.png" alt="" style="width:100%">
     <h2>Vew.js</h2>
+</a>
 		<div class="text-in">
 
 			<p>Some text about the .</p> 
@@ -130,8 +146,10 @@
 </div>
 
 <div class="card-c">
+<a href="#">
   <img src="../img/lect_10.png" alt="" style="width:100%">
     <h2>React</h2>
+</a>
 		<div class="text-in">
 
 			<p>Some text about the .</p> 
