@@ -143,7 +143,7 @@
 </div>
 
 <div class="card">
-  <img src="./img/lect_7.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_7.png" alt="lecture" style="width:100%">
     <h2>Node.js</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
