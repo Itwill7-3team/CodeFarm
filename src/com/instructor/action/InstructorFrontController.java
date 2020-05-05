@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.instructor.action.InstructorAddAction;
 
-public class LectureFrontController extends HttpServlet{
+public class InstructorFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,17 +42,43 @@ public class LectureFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("/Main.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/main/main.jsp");
-			forward.setRedirect(false);
+		
+		if(command.equals("/InstructorAdd.in")){
+			//관리자가 상품등록 페이지 (view)
+			// ./admingoods/admin_goods_write.jsp
+			System.out.println("/Instructor.ag 처리완료 (view 이동)");
 			
-			
-		}else if(command.equals("/Search.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/lecture/course2.jsp");
-			forward.setRedirect(false);
-		}		
+			forward = new ActionForward();
+			forward.setPath("./views/instructor/admin_goods_write.jsp");
+			forward.setRedirect(false);			
+		}else if(command.equals("/InstructorAddAction.ag")){
+			// 관리자가 상품등록한 페이지 처리 (model)
+			System.out.println("/InstructorAddAction.ag 처리완료 (model 이동)");
+			// GoodsAddAction() 객체 생성
+			action = new InstructorAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
@@ -68,7 +95,5 @@ public class LectureFrontController extends HttpServlet{
 				dis.forward(request, response);
 			}
 		}
-
-	
 	}
 }

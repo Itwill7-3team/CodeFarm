@@ -1,4 +1,4 @@
-package com.lecture.db;
+package com.instructor.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,12 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class LectureDAO {
+public class InstructorDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  LectureDAO() {//기본 생성자
+	public  InstructorDAO() {//기본 생성자
 		try{
 			con=getConnection();
 		}catch (Exception e) {
@@ -22,19 +22,13 @@ public class LectureDAO {
 		}
 	}
 	
-	
 	private Connection getConnection() throws Exception{
-		
 		Context init=new InitialContext();
-		
 		DataSource ds=
 				(DataSource) init.lookup("java:comp/env/jdbc/codefarmDB"); 
 		con = ds.getConnection();
-		
 		return con;
-
 	}//DB연결
-	
 	
 	public void closeDB(){
 		try {

@@ -1,4 +1,4 @@
-package com.lecture.db;
+package com.instructor.db;
 
 import java.sql.Timestamp;
 
