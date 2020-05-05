@@ -195,7 +195,7 @@ main {
 .container{
 	display: block;
 	flex-grow: 1;
-    margin: 0 auto;
+    margin: 0 auto; 
     position: relative;
     width: auto;
 }
@@ -376,6 +376,12 @@ p {
     flex: none;
     width: 16.66667%;
 }}
+@media screen and (max-width: 1024px) {
+
+	/* 모바일   */
+	.sidebar_left{
+	display:none !important;
+}}	
 .container .column.courses_body {
     padding: 0;
 }

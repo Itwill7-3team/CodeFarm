@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE DATABASE  IF NOT EXISTS `codefarm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `codefarm`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
@@ -262,7 +261,6 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-05  1:09:07
-=======
 CREATE DATABASE  IF NOT EXISTS `codefarm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `codefarm`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
@@ -551,4 +549,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-05  0:01:47
->>>>>>> refs/remotes/origin/Team
