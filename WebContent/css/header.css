@@ -141,7 +141,6 @@ header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
 	color:black
 }
 header .fas:HOVER {
-/* 	color:pink; */
 opacity: 0.6;
 }
 header .descktop_content .fa-angle-down{
