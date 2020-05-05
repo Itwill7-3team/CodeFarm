@@ -69,11 +69,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 function carousel() {
-<<<<<<< HEAD
-	
-=======
-	/* sleep(2000); */
->>>>>>> refs/remotes/origin/Lee
+
 	  var i;
 	  var x = document.getElementsByClassName("mySlides");
 	  var dots = document.getElementsByClassName("dot");
