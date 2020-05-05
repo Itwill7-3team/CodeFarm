@@ -6,12 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>course</title>
-<link href="../css/course1.css" rel="stylesheet">
+<link href="../../css/course1.css" rel="stylesheet">
+<link href="../../css/header.css" rel="stylesheet">
 
 </head>
 <body>
 	<div id="root">
-		<jsp:include page="/../include/header.jsp"/>	
+		<jsp:include page="../../include/header.jsp"/>	
 		<main id="main">
 			<div class="container">
 	

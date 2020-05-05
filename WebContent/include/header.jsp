@@ -5,14 +5,16 @@
 	crossorigin="anonymous"></script>
 <header class="sticky">
 	<script>
-		
+<%
+String Path = request.getContextPath();
+%>		
 	</script>
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
 			<!-- 로고 -->
 			<div class="banner">
-				<a href="../main/main.jsp" class="logo"><span><img alt="logo" src="../img/logo.png"></span></a>
+				<a href="<%=Path %>/main/main.jsp" class="logo"><span><img alt="logo" src="<%=Path %>/img/logo.png"></span></a>
 			</div>
 			<!--메뉴  -->
 			<div class="navbar-menu">
@@ -24,7 +26,7 @@
 							class="fas fa-angle-down"></i> <!-- <img alt="강의들" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">
-							<li class="h-back"><a href="#" class="navbar-item">IT
+							<li class="h-back"><a href="<%=Path %>/views/courses/course2.jsp" class="navbar-item">IT
 									프로그래밍</a>
 								<ul class="navbar-dropdown step2">
 									<li><a href="#" class="navbar-item">웹개발</a>
