@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="./../css/header.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 <header class="sticky">
@@ -12,7 +12,7 @@
 		<div class="descktop_content">
 			<!-- 로고 -->
 			<div class="banner">
-				<a href="../main/main.jsp" class="logo"><span><img alt="logo" src="../img/logo.png"></span></a>
+				<a href="Main.le" class="logo"><span><img alt="logo" src="./img/logo.png"></span></a>
 			</div>
 			<!--메뉴  -->
 			<div class="navbar-menu">
@@ -120,7 +120,7 @@
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo"><img alt="logo" src="../img/logo.png"></div>
+			<div class="logo"><img alt="logo" src="./img/logo.png"></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">

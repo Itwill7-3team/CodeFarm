@@ -4,34 +4,34 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="./css/main.css">
 <style>
 
 </style>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="/include/header.jsp"/>
 <div class="slideshow-container">
 
 <div class="mySlides fade" style="background-color:#D5E5BB">
-  <img src="../img/b1.png" class="sld">
+  <img src="./img/main-img/b1.png" class="sld">
 <!--     <div class="text">Caption Text</div> -->
 </div>
 
 <div class="mySlides fade" style="background-color:#FEEBB6">
-  <img src="../img/b2.png" class="sld">
+  <img src="./img/main-img/b2.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#4FCAF4">
-  <img src="../img/b3.png" class="sld">
+  <img src="./img/main-img/b3.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#283C49">
-  <img src="../img/b4.png" class="sld">
+  <img src="./img/main-img/b4.png" class="sld">
 </div>
 
 <div class="mySlides fade" style="background-color:#EEEEEE">
-  <img src="../img/b5.png" class="sld">
+  <img src="./img/main-img/b5.png" class="sld">
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -48,11 +48,11 @@
 </div>
 <br>
 
-<jsp:include page="../include/main-product.jsp"/>
-<jsp:include page="../include/main-content.jsp"/>
+<jsp:include page="/include/main-product.jsp"/>
+<jsp:include page="/include/main-content.jsp"/>
 
 
-<jsp:include page="../include/footer.jsp"/>
+<jsp:include page="/include/footer.jsp"/>
 
 
 
@@ -69,11 +69,9 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 function carousel() {
-<<<<<<< HEAD
-	
-=======
+
 	/* sleep(2000); */
->>>>>>> refs/remotes/origin/Lee
+
 	  var i;
 	  var x = document.getElementsByClassName("mySlides");
 	  var dots = document.getElementsByClassName("dot");

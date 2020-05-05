@@ -23,7 +23,7 @@
 <!-- 별점도 가능하면 반복문으로 해결하도록 -->
 
 <div class="card">
-  <img src="../img/lect_1.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_1.png" alt="lecture" style="width:100%">
     <h2>Java</h2>
 	<div class="card-in">
 		<span class="fa fa-star checked"></span>
@@ -40,7 +40,7 @@
 	</div>
 </div>
 <div class="card">
-  <img src="../img/lect_2.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_2.png" alt="lecture" style="width:100%">
     <h2>lecture</h2>
 
 <!-- <span class="fa fa-star checked"></span>
@@ -68,7 +68,7 @@
 </div>
 
 <div class="card">
-  <img src="../img/lect_3.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_3.png" alt="lecture" style="width:100%">
     <h2>lecture</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -86,7 +86,7 @@
 
 
 <div class="card">
-  <img src="../img/lect_4.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_4.png" alt="lecture" style="width:100%">
     <h2>HTML&CSS3</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -103,7 +103,7 @@
 </div>
 
 <div class="card">
-  <img src="../img/lect_5.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_5.png" alt="lecture" style="width:100%">
     <h2>lecture</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -126,7 +126,7 @@
 <section id="lec">
 <h1 class="title">인기 강의 <a href="#">&#10095;</a></h1>
 <div class="card">
-  <img src="../img/lect_6.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_6.png" alt="lecture" style="width:100%">
     <h2>Spring</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -143,7 +143,7 @@
 </div>
 
 <div class="card">
-  <img src="../img/lect_7.png" alt="lecture" style="width:100%">
+  <img src="./img/lect_7.png" alt="lecture" style="width:100%">
     <h2>Node.js</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -160,7 +160,7 @@
 </div>
 
 <div class="card">
-  <img src="../img/lect_8.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_8.png" alt="lecture" style="width:100%">
     <h2>Python</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -178,7 +178,7 @@
 
 
 <div class="card">
-  <img src="../img/lect_9.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_9.png" alt="lecture" style="width:100%">
     <h2>Vew.js</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
@@ -195,7 +195,7 @@
 </div>
 
 <div class="card">
-  <img src="../img/lect_10.png" alt="lecture" style="width:100%">
+  <img src="./img/main-img/lect_10.png" alt="lecture" style="width:100%">
     <h2>React</h2>
 		<div class="card-in">
 			<span class="fa fa-star checked"></span>
