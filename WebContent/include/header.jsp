@@ -111,12 +111,13 @@
 		</div>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
+		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">
 
 				<div class="mobile_Search">
-					<a href="#"><i class="fas fa-bars"></i></a>
+					<a href="#" onclick="on()"><i class="fas fa-bars"></i></a>
 				</div>
 				<!-- 가운데 -->
 			</div>
