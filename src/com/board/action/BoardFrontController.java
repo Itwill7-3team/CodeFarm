@@ -41,9 +41,13 @@ public class BoardFrontController extends HttpServlet{
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 		if(command.equals("/askAnswer.bo")){
 			System.out.println("실행");
-			forward=new ActionForward();
-			forward.setPath("./views/board/askAnswer.jsp");
-			forward.setRedirect(false);
+			action = new AskAnswerAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(command.equals("/star.bo")){
 			
 		}else if(command.equals("/notice.bo")){

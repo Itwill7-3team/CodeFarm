@@ -1,3 +1,5 @@
+<%@page import="com.board.db.BoardDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -58,16 +60,20 @@
 			</div>
 			<!--  -->
 			<div class="content">
+			<%
+				ArrayList<BoardDTO> boardList=(ArrayList<BoardDTO>)request.getAttribute("boardList");
+				for(BoardDTO bdto: boardList){
+			%>
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
 						<i class="fab fa-quora">.</i>
-						<span>질문입니다.</span>
+						<span><%=bdto.getTitle() %></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">andrewlee</span>
-						<span class="post_time">1시간전</span>
-						<span class="post_locuter">강의명:따라하며 배우는 노드, 리액트 시리즈 - 쇼핑몰 사이트 만들기</span>
+						<span class="post_writer"><%=bdto.getWriter() %></span>
+						<span class="post_time"><%=bdto.getReg_date() %></span>
+						<span class="post_locuter"><%=bdto.getL_name() %></span>
 					</p>
 					</div>
 					<div class="item_right">
@@ -77,6 +83,7 @@
 					<div class="comment_link right_item"><input type="button" value="질문으로 가기"></div>
 					</div>
 				</div>
+			<%} %>>
 			</div>
 		</div>
 		<div class="content_side">

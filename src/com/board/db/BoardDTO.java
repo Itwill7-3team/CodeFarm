@@ -13,7 +13,7 @@ public class BoardDTO {
 	private int re_ref;
 	private int re_seq;
 	private Timestamp reg_date;	//작성시간
-	
+	private String l_name;		//강의 이름
 	// setter getter
 	public int getNum() {
 		return num;
@@ -87,13 +87,23 @@ public class BoardDTO {
 		this.reg_date = reg_date;
 	}
 	
+	public String getL_name() {
+		return l_name;
+	}
+
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
+	}
+
 	//toString
 	@Override
 	public String toString() {
-		return "boardDTO [num=" + num + ", type=" + type + ", title=" + title + ", content=" + content + ", writer="
+		return "BoardDTO [num=" + num + ", type=" + type + ", title=" + title + ", content=" + content + ", writer="
 				+ writer + ", re_lev=" + re_lev + ", re_ref=" + re_ref + ", re_seq=" + re_seq + ", reg_date=" + reg_date
-				+ "]";
+				+ ", l_name=" + l_name + "]";
 	}
+
+
 	
 	
 }
