@@ -6,7 +6,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="./../css/review.css" rel="stylesheet">
+<link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>

@@ -68,10 +68,10 @@
 							class="fas fa-angle-down"></i> <!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown">
-							<li><a href="#" class="navbar-item">묻고 답하기</a></li>
-							<li><a href="#" class="navbar-item">수강평 모아보기</a></li>
-							<li><a href="#" class="navbar-item">공지사항</a></li>
-							<li><a href="#" class="navbar-item">강의 기능 요청</a></li>
+							<li><a href="askAnswer.bo" class="navbar-item">묻고 답하기</a></li>
+							<li><a href="star.bo" class="navbar-item">수강평 모아보기</a></li>
+							<li><a href="notice.bo" class="navbar-item">공지사항</a></li>
+							<li><a href="request.bo" class="navbar-item">강의 기능 요청</a></li>
 						</ul>
 					</div>
 					<!-- 로드맵  -->
