@@ -5,9 +5,10 @@
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	display: flex;
+	
 	background-color: white;
 	z-index: 1;
+	display: none;
 }
  .nav_btn{
 	flex: 1;
