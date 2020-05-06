@@ -51,7 +51,17 @@ public class LectureFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("./views/lecture/course2.jsp");
 			forward.setRedirect(false);
-		}		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

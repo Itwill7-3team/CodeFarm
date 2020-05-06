@@ -9,7 +9,7 @@
 <body>
 	<h1>WebContent/admingoods/admin_goods_write.jsp</h1>
 
-    <h1>관리자 상품등록 페이지</h1>
+    <h1>강의 등록 페이지</h1>
     
     <form action="./InstructorAddAction.in" method="post" 
           enctype="multipart/form-data">
@@ -54,11 +54,11 @@
         </tr>
         <tr>
           <td>강의 가격</td>
-          <td><input type="text" name="l_price"></td>
+          <td><input type="number" name="l_price"></td>
         </tr>
         <tr>
           <td>할인율</td>
-          <td><input type="text" name="l_pct"></td>
+          <td><input type="number" name="l_pct"></td>
         </tr>
         <tr>
           <td>강의 태그</td>
@@ -66,11 +66,11 @@
         </tr>
         <tr>
           <td>강의 좋아요</td>
-          <td><input type="text" name="l_goods"></td>
+          <td><input type="number" name="l_goods"></td>
         </tr>
 		<tr>
           <td>결제횟수</td>
-          <td><input type="text" name="paynum"></td>
+          <td><input type="number" name="paynum"></td>
         </tr>
 
 <!-- 이미지 -->    

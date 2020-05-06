@@ -46,14 +46,14 @@ public class InstructorFrontController extends HttpServlet{
 		if(command.equals("/InstructorAdd.in")){
 			//관리자가 상품등록 페이지 (view)
 			// ./admingoods/admin_goods_write.jsp
-			System.out.println("/Instructor.ag 처리완료 (view 이동)");
+			System.out.println("/Instructor.in 처리완료 (view 이동)");
 			
 			forward = new ActionForward();
 			forward.setPath("./views/instructor/admin_goods_write.jsp");
 			forward.setRedirect(false);			
-		}else if(command.equals("/InstructorAddAction.ag")){
+		}else if(command.equals("/InstructorAddAction.in")){
 			// 관리자가 상품등록한 페이지 처리 (model)
-			System.out.println("/InstructorAddAction.ag 처리완료 (model 이동)");
+			System.out.println("/InstructorAddAction.in 처리완료 (model 이동)");
 			// GoodsAddAction() 객체 생성
 			action = new InstructorAddAction();
 			try {
@@ -61,6 +61,18 @@ public class InstructorFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+		}else if(command.equals("/InstructorLecturelist.in")){
+			System.out.println("/InstrucotrLectureList.in 페이지처리(Model->view)");
+			
+			action = new InstructorLectureListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		

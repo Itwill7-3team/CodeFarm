@@ -3,12 +3,12 @@
 <link href="./css/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
+<meta name="viewport"
+content="width=device-width, user-scalable=yes,
+initial-scale=1.0, maximum-scale=3.0"/>
+<jsp:include page="nav-footer.jsp" />
 <header class="sticky">
-	<script>
-		
-	</script>
-	
-	<jsp:include page="./nav-sideBar.jsp"/>
+
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
@@ -113,6 +113,7 @@
 		</div>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
+		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">
