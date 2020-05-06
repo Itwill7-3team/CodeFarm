@@ -12,7 +12,7 @@
 
 /* 아코디언시작 */
 
-.accordion_header {
+header .accordion_header {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -25,20 +25,20 @@
   transition: 0.4s;
   
 }
-.active, .accordion_header:hover {
+header .active, .accordion_header:hover {
   background-color: #ccc;
 }
-.accordion_header:after {
+header .accordion_header:after {
   content: '\002B';
   color: #777;
   font-weight: bold;
   float: right;
   margin-left: 5px;
 }
-.active:after {
+header .active:after {
   content: "\2212";
 }
-.panel {
+header .panel {
   background-color: white;
   max-height: 0;
   overflow: hidden;
@@ -47,7 +47,7 @@
 }
 /* 아코디언 끝  */
 
-.container{
+header .container{
 	display: block;
 	flex-grow: 1;
     margin: 0 auto	0 0;
@@ -56,16 +56,16 @@
 
 
 /* sidebar_left */
-.accordions .accordion:not(:last-child) {
+header .accordions .accordion:not(:last-child) {
     margin-bottom: 0;
 }
-.accordions .accordion .accordion_header { 
+header .accordions .accordion .accordion_header { 
     cursor: pointer;
     align-items: center;
     line-height: 1.25;
     position: relative;
 }
-.container .accordions .accordion_header {
+header .container .accordions .accordion_header {
     border-bottom: 1px solid #e4e4e4;
     border-right: 1px solid #e4e4e4;
     border-left: 1px solid #e4e4e4;
@@ -78,10 +78,10 @@
     font-weight: 700;
 
 }
-.container .accordions .accordion:first-of-type .accordion_header {
+header .container .accordions .accordion:first-of-type .accordion_header {
     border-top: 1px solid #e4e4e4;
 }
-.accordions .accordion .accordion_header+.panel {
+header .accordions .accordion .accordion_header+.panel {
     overflow-y: hidden;
     max-height: 0;
     border-radius: 4px;
@@ -89,20 +89,20 @@
     border-top-right-radius: 0;
     transition: max-height .2s ease;
 }
-.container .accordions .panel {
+header .container .accordions .panel {
     color: #595959;
     background: #fff;
     border: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.accordions .accordion:not(:last-child) .accordion_content {
+header .accordions .accordion:not(:last-child) .accordion_content {
     border-radius: 0;
 }
-.accordions .accordion a:not(.button):not(.tag) {
+header .accordions .accordion a:not(.button):not(.tag) {
     color: currentColor;
 }
-.container .accordions .accordion_content {
+header .container .accordions .accordion_content {
     display: inline-flex;
     text-decoration: none;
     width: 100%;/*  */
