@@ -47,13 +47,38 @@ public class LectureDAO {
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		
 		StringBuffer SQL = new StringBuffer();
+
+		try {
 		
-		SQL.append("select * from lecture");
-		if(item.equals("all")){
-		}else if(item.equals("")){
-			SQL.append(" where = ");
-		}else{
-			SQL
+		/*SQL.append("select * from lecture");
+		if(item.equals("")){
+		}
+			
+		pstmt = con.prepareStatement(SQL.toString());
+		
+		if(item.equals(""))*/
+			
+		sql = "select * from lecture";	
+			
+		
+		rs = pstmt.executeQuery();
+			
+		while(rs.next()){
+		
+			LectureDTO ldto = new LectureDTO();
+			
+			ldto.setL_content(rs.getString("l_content"));
+			ldto.setL_goods(l_goods);
+			
+			
+		}	
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		

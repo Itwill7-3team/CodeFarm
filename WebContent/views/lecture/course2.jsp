@@ -103,9 +103,9 @@
 							</div>
 							<div class="select courses_order_selector">
 								<select id="courses_order_select" name="order_select">
-									<option value="seq" selected>추천순</option>
+									<option value="seq">추천순</option>
 									<option value="popular">인기순</option>
-									<option value="recent">최신순</option>
+									<option value="recent" selected>최신순</option>
 									<option value="rating">평점순</option>
 									<option value="famous">학생수순</option>
 								</select>
@@ -308,5 +308,9 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<script>
+
+</script>
+
 </body>
 </html>
