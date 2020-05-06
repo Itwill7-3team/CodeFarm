@@ -45,7 +45,11 @@ public class InstructorAddAction implements Action {
 		
 		// 2. GoodsDTO 객체 생성 (전달받은 정보를 저장)
 		LectureDTO ldto = new LectureDTO();
-		gdto.setAmount(Integer.parseInt(multi.getParameter("amount")));
+		
+		
+		
+		
+		ldto.setAmount(Integer.parseInt(multi.getParameter("amount")));
 		gdto.setBest(0); // 인기상품 정보 - 0
 		gdto.setCategory(multi.getParameter("category"));
 		gdto.setColor(multi.getParameter("color"));

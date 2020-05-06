@@ -61,17 +61,10 @@
 			</div>
 			<!--  -->
 			<div class="content">
-<<<<<<< HEAD
 			<%
 				ArrayList<BoardDTO> boardList=(ArrayList<BoardDTO>)request.getAttribute("boardList");
 				for(BoardDTO bdto: boardList){
 			%>
-=======
-				<%
-					ArrayList<BoardDTO> boardList=(ArrayList<BoardDTO>)request.getAttribute("boardList");
-					for(BoardDTO bdto: boardList){
-				%>
->>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
@@ -91,11 +84,7 @@
 					<div class="comment_link right_item"><input type="button" value="질문으로 가기"></div>
 					</div>
 				</div>
-<<<<<<< HEAD
 			<%} %>>
-=======
-				<%} %>
->>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 			</div>
 		</div>
 		<div class="content_side">
