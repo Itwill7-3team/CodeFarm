@@ -24,6 +24,7 @@ public class BasketFrontController extends HttpServlet{
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		System.out.println("-----------[basketFrontController]doProcess호출---------");
+		
 		Action action = null;
 		ActionForward forward = null;
 		
@@ -39,12 +40,37 @@ public class BasketFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("주소")){
-			
-			
-			
-		}
 		
+		
+		
+		if(command.equals("./BasketAdd.ba")){
+			action = new BasketAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("./BasketList.ba")){
+			System.out.println("/BasketList.ba 처리 (model->view)");
+			action = new BasketListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/BasketDelete.ba")) {
+			// /BasketDelete.ba -> 삭제처리(model)
+			System.out.println("/BasketDelete.ba 주소 처리(model)");
+			// BasketDeleteAction 객체
+			action = new BasketDeleteAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

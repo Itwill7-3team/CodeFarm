@@ -97,7 +97,7 @@
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item">
-						<a href="#"><i class="fas fa-shopping-cart"></i></a>
+						<a href="BasketList.ba"><i class="fas fa-shopping-cart"></i></a>
 					</div>
 					<!-- 알림 -->
 					<div class="navbar-item">
