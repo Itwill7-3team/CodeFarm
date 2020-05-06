@@ -20,6 +20,7 @@
     position: relative;
     padding: 8px;
     color: #495057;
+    box-sizing: border-box;
 }
 .active2>div{
 	color: #FD8E6A;
@@ -28,9 +29,13 @@
 	margin: 0  auto;
 }
 
-.icon{
+ .icon{
 	font-size: 1.5rem;
+	height: 36px;
 }
 .name{
 	font-size: 0.75rem;
+}
+.nav_content .fas,.nav_content .fab,.nav_content .far{
+	font-size:36px;
 }
