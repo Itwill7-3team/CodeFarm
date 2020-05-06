@@ -88,6 +88,7 @@ header .navbar-dropdown{
 	width: 180px;
     height: 410px; /*사이즈 지정   */ 
     border-radius: 0;
+    z-index:999;
     box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
 }
 header .step2,header .step3{
