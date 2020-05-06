@@ -79,5 +79,33 @@ public class BoardDAO {
 		
 		return boardList;
 	}
+	public BoardDTO getBoard(int num){
+		BoardDTO bdto= new BoardDTO();
+		try{
+			sql="select * from where num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bdto.setNum(rs.getInt("num"));
+				bdto.setTitle(rs.getString("title"));
+				bdto.setContent(rs.getString("content"));
+				bdto.setType(rs.getString("type"));
+				bdto.setWriter(rs.getString("writer"));
+				bdto.setRe_lev(rs.getInt("re_lev"));
+				bdto.setRe_seq(rs.getInt("re_seq"));
+				bdto.setRe_ref(rs.getInt("re_ref"));
+				bdto.setL_name(rs.getString("l_name"));
+				bdto.setReg_date(rs.getTimestamp("reg_date"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+		return bdto;
+	}
 	
 }

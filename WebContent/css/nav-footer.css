@@ -21,6 +21,9 @@
     padding: 8px;
     color: #495057;
 }
+.active2>div{
+	color: #FD8E6A;
+}
 .nav_btn>span, .mg_auto{
 	margin: 0  auto;
 }
