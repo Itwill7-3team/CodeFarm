@@ -10,7 +10,10 @@ public class lectureListAction implements Action {
 		
 		System.out.println("GoodsListAction-execute()");
 		
-		return forward;
+		
+		
+		
+		return null;
 	}
 
 }
