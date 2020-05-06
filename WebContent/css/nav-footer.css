@@ -25,3 +25,10 @@
 .nav_btn>span{
 	margin: 0  auto;
 }
+
+.icon{
+	font-size: 1.5rem;
+}
+.name{
+	font-size: 0.75rem;
+}
