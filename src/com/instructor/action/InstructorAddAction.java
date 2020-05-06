@@ -46,9 +46,25 @@ public class InstructorAddAction implements Action {
 		// 2. GoodsDTO 객체 생성 (전달받은 정보를 저장)
 		LectureDTO ldto = new LectureDTO();
 		
+		ldto.setPaynum(Integer.parseInt(multi.getParameter("paynum")));
+		ldto.setL_content(multi.getParameter("l_content"));
+		ldto.setL_goods(Integer.parseInt(multi.getParameter("l_goods")));
+		ldto.setL_m_id(multi.getParameter("l_m_id"));
+		ldto.setL_m_name(multi.getParameter("l_m_name"));
+		ldto.setL_pct(Integer.parseInt(multi.getParameter("l_pct")));
+		ldto.setL_price(Integer.parseInt(multi.getParameter("l_price")));
+		/*ldto.setL_reg_date(l_reg_date);*/
+		ldto.setL_title(multi.getParameter("l_title"));
+		ldto.setL_tag(multi.getParameter("l_tag"));
+		ldto.setL_type(multi.getParameter("l_type"));
+		/*ldto.setPct_date(pct_date);*/
+		String image = multi.getFilesystemName("file1")+","
+				+multi.getFilesystemName("file2")+","
+				+multi.getFilesystemName("file3")+","
+				+multi.getFilesystemName("file4");
+		ldto.setL_img(image);
 		
-		
-		
+		/*
 		ldto.setAmount(Integer.parseInt(multi.getParameter("amount")));
 		gdto.setBest(0); // 인기상품 정보 - 0
 		gdto.setCategory(multi.getParameter("category"));
@@ -65,36 +81,23 @@ public class InstructorAddAction implements Action {
 				+multi.getFilesystemName("file2")+","
 				+multi.getFilesystemName("file3")+","
 				+multi.getFilesystemName("file4");
-		gdto.setImage(image);
+		gdto.setImage(image);*/
 		
 		System.out.println("이미지 파일 정보 : "+image);
-		System.out.println("GoodsDTO 저장완료 : "+gdto.toString());
+		System.out.println("GoodsDTO 저장완료 : "+ldto.toString());
 		
 		// 3. AdminGoodsDAO 객체를 생성해서 처리 
 		//  -> insertGoods(dto)
-		AdminGoodsDAO agDao = new AdminGoodsDAO();
-		agDao.insertGoods(gdto);
+		InstructorDAO inDao = new InstructorDAO();
+		inDao.insertlectures(ldto);
 		
 		
 		// 4. 페이지 이동 (List페이지)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./GoodsList.ag");
+		forward.setPath("./lectureList.in");
 		forward.setRedirect(true);	
 		return forward;
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
 	}
 }
