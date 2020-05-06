@@ -198,7 +198,7 @@ header .noLogin{
     display: flex;
     display:none;
 }
-header .sticky{
+.sticky{
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;

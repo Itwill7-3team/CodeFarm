@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+.nav_content{
+	height: 66px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	background-color: white;
+	z-index: 1;
+}
+ .nav_btn{
+	flex: 1;
+   display: flex;
+    width: 72px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 8px;
+    color: #495057;
+}
+.nav_btn>span{
+	margin: 0  auto;
+}

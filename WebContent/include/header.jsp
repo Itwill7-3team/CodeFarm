@@ -4,11 +4,9 @@
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 
+<jsp:include page="nav-footer.jsp" />
 <header class="sticky">
 
-	<script>
-		
-	</script>
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
