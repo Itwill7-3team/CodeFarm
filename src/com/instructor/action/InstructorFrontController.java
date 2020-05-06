@@ -61,10 +61,10 @@ public class InstructorFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
-		}else if(command.equals("/lecturelist.in")){
-			System.out.println("/lectureList.in 페이지처리(Model->view)");
+		}else if(command.equals("/InstructorLecturelist.in")){
+			System.out.println("/InstrucotrLectureList.in 페이지처리(Model->view)");
 			
-			action = new lectureListAction();
+			action = new InstructorLectureListAction();
 			
 			try {
 				forward = action.execute(request, response);
