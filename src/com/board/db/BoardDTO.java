@@ -95,6 +95,10 @@ public class BoardDTO {
 		this.l_name = l_name;
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 	//toString
 	@Override
 	public String toString() {
@@ -103,7 +107,10 @@ public class BoardDTO {
 				+ ", l_name=" + l_name + "]";
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 	
 	
 }

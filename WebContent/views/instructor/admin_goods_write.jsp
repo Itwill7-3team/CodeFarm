@@ -9,7 +9,7 @@
 <body>
 	<h1>WebContent/admingoods/admin_goods_write.jsp</h1>
 
-    <h1>관리자 상품등록 페이지</h1>
+    <h1>강의 등록 페이지</h1>
     
     <form action="./InstructorAddAction.in" method="post" 
           enctype="multipart/form-data">

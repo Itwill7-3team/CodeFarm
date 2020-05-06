@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1075px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
    header .descktop_content{
    display: flex !important;
@@ -10,7 +10,8 @@
    }
 }
 
-@media screen and (max-width: 1024px) {
+
+@media screen and (max-width: 1074px) {
 
 	/* 모바일   */
 	header .descktop_content{
@@ -87,6 +88,7 @@ header .navbar-dropdown{
 	width: 180px;
     height: 410px; /*사이즈 지정   */ 
     border-radius: 0;
+    z-index:999;
     box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
 }
 header .step2,header .step3{
@@ -141,7 +143,6 @@ header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
 	color:black
 }
 header .fas:HOVER {
-/* 	color:pink; */
 opacity: 0.6;
 }
 header .descktop_content .fa-angle-down{
@@ -197,7 +198,7 @@ header .noLogin{
     display: flex;
     display:none;
 }
-.sticky{
+header .sticky{
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;

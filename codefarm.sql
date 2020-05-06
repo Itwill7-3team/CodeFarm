@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: codefarm
@@ -171,11 +172,13 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-04 17:01:18
+=======
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 CREATE DATABASE  IF NOT EXISTS `codefarm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `codefarm`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: codefarm
+-- Host: 127.0.0.1    Database: codefarm
 -- ------------------------------------------------------
 -- Server version	5.7.28-log
 
@@ -234,8 +237,9 @@ CREATE TABLE `board` (
   `re_ref` int(11) DEFAULT '0',
   `re_seq` int(11) DEFAULT '0',
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `l_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,6 +248,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` VALUES (1,'askAnswer','제목1','내용1','작성자1',0,0,0,'2020-05-05 06:54:59','Vue.js 완벽 가이드 - 실습과 리팩토링으로 배우는 실전 개념'),(2,'askAnswer','제목2','내용2','작성자2',0,0,0,'2020-05-05 06:54:59','프로그래밍 시작하기 : 파이썬 입문 (Inflearn Original)'),(3,'askss','제목3','내용3','작성자3',0,0,0,'2020-05-05 06:55:27','따라하며 배우는 노드, 리액트 시리즈 - 기본 강의');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,8 +426,9 @@ LOCK TABLES `wishlist` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'codefarm'
+-- Dumping events for database 'codefarm'
 --
+<<<<<<< HEAD
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -707,6 +713,8 @@ LOCK TABLES `wishlist` WRITE;
 /*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
 /*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
+=======
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 
 --
 -- Dumping routines for database 'codefarm'
@@ -721,5 +729,9 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2020-05-05  0:01:47
 
+=======
+-- Dump completed on 2020-05-05 20:53:02
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git

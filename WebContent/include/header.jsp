@@ -3,7 +3,9 @@
 <link href="./css/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
+
 <header class="sticky">
+
 	<script>
 		
 	</script>
@@ -113,6 +115,7 @@
 		</div>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
+		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">

@@ -12,6 +12,7 @@
 
 /* 아코디언시작 */
 
+<<<<<<< HEAD
 .accordion_header {
   background-color: #eee;
   color: #444;
@@ -143,6 +144,140 @@
   color: white;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
+=======
+header .accordion_header {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;/*  */
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  
+}
+header .active, .accordion_header:hover {
+  background-color: #ccc;
+}
+header .accordion_header:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+header .active:after {
+  content: "\2212";
+}
+header .panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  /* padding: 0 18px; */
+}
+/* 아코디언 끝  */
+
+header .container{
+	display: block;
+	flex-grow: 1;
+    margin: 0 auto	0 0;
+    position: relative;
+}
+
+
+/* sidebar_left */
+header .accordions .accordion:not(:last-child) {
+    margin-bottom: 0;
+}
+header .accordions .accordion .accordion_header { 
+    cursor: pointer;
+    align-items: center;
+    line-height: 1.25;
+    position: relative;
+}
+header .container .accordions .accordion_header {
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    color: #fff;
+    background: #FD8E6A;
+    justify-content: center;
+    height: 50px;
+    border-radius: 0;
+    white-space: nowrap;
+    font-weight: 700;
+
+}
+header .container .accordions .accordion:first-of-type .accordion_header {
+    border-top: 1px solid #e4e4e4;
+}
+header .accordions .accordion .accordion_header+.panel {
+    overflow-y: hidden;
+    max-height: 0;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transition: max-height .2s ease;
+}
+header .container .accordions .panel {
+    color: #595959;
+    background: #fff;
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+header .accordions .accordion:not(:last-child) .accordion_content {
+    border-radius: 0;
+}
+header .accordions .accordion a:not(.button):not(.tag) {
+    color: currentColor;
+}
+header .container .accordions .accordion_content {
+    display: inline-flex;
+    text-decoration: none;
+    width: 100%;/*  */
+    white-space: nowrap;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    height: 50px;
+    padding: 0;
+}
+
+/* 오버레이 */
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#m-side-menu{ /* 사이드메뉴들어감 */
+  position: absolute;
+  background-color:white;
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  overflow: auto;
+  height: 100%;
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 }
 
 #exit{ /* 반투명 회색 여백 클릭하면 나가게 */

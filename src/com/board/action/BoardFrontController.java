@@ -40,8 +40,12 @@ public class BoardFrontController extends HttpServlet{
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 		if(command.equals("/askAnswer.bo")){
+<<<<<<< HEAD
 			System.out.println("실행");
 			action = new AskAnswerAction();
+=======
+			action=new askAnswerAction();
+>>>>>>> branch 'Team' of https://github.com/Itwill7-3team/LMSProject.git
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
