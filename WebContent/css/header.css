@@ -1,11 +1,15 @@
 @CHARSET "UTF-8";
 
+
 @media screen and (min-width: 1075px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
    header .descktop_content{
    display: flex !important;
    }
    header .mobile_content{
+   	display: none !important;
+   }
+   .nav_content{
    	display: none !important;
    }
 }
@@ -19,6 +23,9 @@
 	} 
 	header .mobile_content
 	{display: flex !important;}
+	.nav_content{
+	display: flex !important;
+	}
 }
 body{
 	margin: 0;
@@ -54,11 +61,13 @@ header .navbar-left{
 	float:left;
 	display: flex;
     height: 100%;
+    background-color: white;
 }
 header .navbar-right{
 	float:right;
 	display: flex;
     height: 100%;
+     background-color: white;
 }
 header .navbar-link{
 	color: #4a4a4a;
@@ -198,7 +207,7 @@ header .noLogin{
     display: flex;
     display:none;
 }
-header .sticky{
+.sticky{
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
