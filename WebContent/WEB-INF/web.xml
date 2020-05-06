@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>CodeFarm</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <!-- 강의 -->
+  <servlet>
+    <servlet-name>LectureFrontController</servlet-name>
+    <servlet-class>com.lecture.action.LectureFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LectureFrontController</servlet-name>
+    <url-pattern>*.le</url-pattern>
+  </servlet-mapping>
+  <!-- 강의 -->
+  <!-- 게시판 -->
+  <servlet>
+    <servlet-name>BoardFrontController</servlet-name>
+    <servlet-class>com.board.action.BoardFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardFrontController</servlet-name>
+    <url-pattern>*.bo</url-pattern>
+  </servlet-mapping>
+  <!-- 게시판 -->
+  <!-- 멤버 -->
+  <servlet>
+    <servlet-name>MemberFrontController</servlet-name>
+    <servlet-class>com.member.action.MemberFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberFrontController</servlet-name>
+    <url-pattern>*.me</url-pattern>
+  </servlet-mapping>
+  <!-- 멤버 -->
+  <!-- 장바구니 -->
+  <servlet>
+    <servlet-name>BasketFrontController</servlet-name>
+    <servlet-class>com.basket.action.BasketFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BasketFrontController</servlet-name>
+    <url-pattern>*.ba</url-pattern>
+  </servlet-mapping>
+  <!-- 장바구니 -->
+  <!-- 주문 -->
+  <servlet>
+    <servlet-name>OrderFrontController</servlet-name>
+    <servlet-class>com.order.action.OrderFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderFrontController</servlet-name>
+    <url-pattern>*.or</url-pattern>
+  </servlet-mapping>
+  <!-- 주문 -->
+  <!-- 위시리스트 -->
+  <servlet>
+    <servlet-name>WishlistFrontController</servlet-name>
+    <servlet-class>com.wishlist.action.WishlistFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WishlistFrontController</servlet-name>
+    <url-pattern>*.wi</url-pattern>
+  </servlet-mapping>
+  <!-- 위시리스트 -->
+  
+  <!-- 강사 강의 등록 -->
+	<servlet>
+     <servlet-name>InstructorFrontController</servlet-name>
+     <servlet-class>com.instructor.action.InstructorFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+     <servlet-name>InstructorFrontController</servlet-name>
+     <url-pattern>*.in</url-pattern>
+  </servlet-mapping>  
+  <!-- 강사 강의 등록 -->
+  
+  
+</web-app>

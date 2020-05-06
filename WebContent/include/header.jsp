@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="./../css/header.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 <header class="sticky">
 	<script>
 		
 	</script>
+	
+	<jsp:include page="./nav-sideBar.jsp"/>
 	<nav class="navbar">
 		<!-- 데스크탑 -->
 		<div class="descktop_content">
 			<!-- 로고 -->
 			<div class="banner">
-				<a href="#" class="logo"><span>로고</span></a>
+				<a href="Main.le" class="logo"><span><img alt="logo" src="./img/logo.png"></span></a>
 			</div>
 			<!--메뉴  -->
 			<div class="navbar-menu">
@@ -24,40 +26,40 @@
 							class="fas fa-angle-down"></i> <!-- <img alt="강의들" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">
-							<li class="h-back"><a href="#" class="navbar-item">IT
+							<li class="h-back"><a href="Search.le" class="navbar-item">IT
 									프로그래밍</a>
 								<ul class="navbar-dropdown step2">
-									<li><a href="#" class="navbar-item">웹개발</a>
+									<li><a href="Search.le" class="navbar-item">웹개발</a>
 										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="#">HTML/CSS</a></li>
-											<li><a class="navbar-item" href="#">JavaScript</a></li>
-											<li><a class="navbar-item" href="#">웹 개발</a></li>
-											<li><a class="navbar-item" href="#">Java</a></li>
-											<li><a class="navbar-item" href="#">FrontEnd</a></li>
-											<li><a class="navbar-item" href="#"></a></li>
+											<li><a class="navbar-item" href="Search.le">HTML/CSS</a></li>
+											<li><a class="navbar-item" href="Search.le">JavaScript</a></li>
+											<li><a class="navbar-item" href="Search.le">웹 개발</a></li>
+											<li><a class="navbar-item" href="Search.le">Java</a></li>
+											<li><a class="navbar-item" href="Search.le">FrontEnd</a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
 										</ul></li>
-									<li><a href="#" class="navbar-item">모바일앱</a>
+									<li><a href="Search.le" class="navbar-item">모바일앱</a>
 										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="#"></a></li>
-											<li><a class="navbar-item" href="#"></a></li>
-											<li><a class="navbar-item" href="#"></a></li>
-											<li><a class="navbar-item" href="#"></a></li>
-											<li><a class="navbar-item" href="#"></a></li>
-											<li><a class="navbar-item" href="#"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
 										</ul></li>
 								</ul></li>
-							<li><a href="#" class="navbar-item">크리에이티브</a>
+							<li><a href="Search.le" class="navbar-item">크리에이티브</a>
 								<ul class="navbar-dropdown step2">
-									<li><a href="#" class="navbar-item"></a>
+									<li><a href="Search.le" class="navbar-item"></a>
 										<ul class="navbar- dropdown step3">
-											<li><a class="navbar-item" href="#"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
 										</ul></li>
 								</ul></li>
-							<li><a href="#" class="navbar-item">업무 스킬</a>
+							<li><a href="Search.le" class="navbar-item">업무 스킬</a>
 								<ul class="navbar-dropdown step2">
-									<li><a href="#" class="navbar-item"></a>
+									<li><a href="Search.le" class="navbar-item"></a>
 										<ul class="navbar- dropdown step3">
-											<li><a class="navbar-item" href="#"></a></li>
+											<li><a class="navbar-item" href="Search.le"></a></li>
 										</ul></li>
 								</ul></li>
 						</ul>
@@ -68,10 +70,10 @@
 							class="fas fa-angle-down"></i> <!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown">
-							<li><a href="#" class="navbar-item">묻고 답하기</a></li>
-							<li><a href="#" class="navbar-item">수강평 모아보기</a></li>
-							<li><a href="#" class="navbar-item">공지사항</a></li>
-							<li><a href="#" class="navbar-item">강의 기능 요청</a></li>
+							<li><a href="askAnswer.bo" class="navbar-item">묻고 답하기</a></li>
+							<li><a href="star.bo" class="navbar-item">수강평 모아보기</a></li>
+							<li><a href="notice.bo" class="navbar-item">공지사항</a></li>
+							<li><a href="request.bo" class="navbar-item">강의 기능 요청</a></li>
 						</ul>
 					</div>
 					<!-- 로드맵  -->
@@ -116,11 +118,11 @@
 			<div class="mobile_left">
 
 				<div class="mobile_Search">
-					<a href="#"><i class="fas fa-align-justify"></i></a>
+					<a href="#" onclick="on()"><i class="fas fa-bars"></i></a>
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo">logo</div>
+			<div class="logo"><img alt="logo" src="./img/logo.png"></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">
@@ -136,5 +138,7 @@
 		</div>
 		<!--모바일끝  -->
 	</nav>
+
+
 
 </header>
