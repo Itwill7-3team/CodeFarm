@@ -5,14 +5,13 @@
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	
 	background-color: white;
 	z-index: 1;
 	display: none;
 }
  .nav_btn{
 	flex: 1;
-   display: flex;
+    display: flex;
     width: 72px;
     height: 100%;
     flex-direction: column;
@@ -22,7 +21,7 @@
     padding: 8px;
     color: #495057;
 }
-.nav_btn>span{
+.nav_btn>span, .mg_auto{
 	margin: 0  auto;
 }
 
