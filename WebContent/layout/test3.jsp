@@ -8,7 +8,7 @@
 
 
 <link rel="stylesheet" href="../css/main.css" />
-
+<link rel="stylesheet" href="../css/bulma.css" />
 
 </head>
 <body id="inflearn" class="course_detail is_logged_out ">
@@ -61,37 +61,20 @@
 <!-- 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
 											<div class='rating_star'>
 												<div class='star_solid' style="width: 97.16981132075472%">
+												<% for(int i=1; i<6; i++){ %>
 													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-														<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
+														<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
+																					l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
 													</svg>
-													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-														<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-														<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-														<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-														<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-													</svg>
+												<%} %>
 												</div>
+												<% for(int i=5; i>0; i--){ %>
 												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-													<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
+													<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7
+																				L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7 l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 z
+																				M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7 -23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z"/>
 												</svg>
-												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-													<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-												</svg>
-												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-													<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-												</svg>
-												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-													<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-												</svg>
-												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-													<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-												</svg>
+												<%} %>
 											</div>
 <!-- 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
 
@@ -101,7 +84,9 @@
 <!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->											
 											<small>(212개의 수강평)</small>
 										</span>
-										<small class="student_cnt">10943명의 수강생</small><br>
+										<br class="is-hidden-mobile">
+										<small class="student_cnt">10943명의 수강생</small>
+										<br>
 										<small class="course_skills">
 											<a href="/tag-curation/skill/57" target="_blank">Python</a>
 										</small>
@@ -161,10 +146,10 @@
 										<i class="far fa-clock"></i><span class="has-text-weight-bold">평생</span> 무제한 시청
 									</div>
 									<div class="course_info_row">
-										<i class="far fa-file-certificate"></i><span class="has-text-weight-bold">수료증 미발급</span> 강의
+										<i class="fas fa-certificate"></i><span class="has-text-weight-bold">수료증 미발급</span> 강의
 									</div>
 									<div class="course_info_row">
-										<i class="far fa-signal-alt"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
+										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
 									</div>
 <!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->		
 
@@ -262,7 +247,7 @@
 								<article class="description" id="description">
 									<div class="course_summary description_sub">
 										<h3 class="sub_heading has-icon">
-											이 강의는 <i class="far fa-lightbulb-on"></i>
+											이 강의는 <i class="far fa-lightbulb"></i>
 										</h3>
 										
 										
@@ -284,8 +269,12 @@
 									</div>
 									<div class="body" itemprop="articleBody">
 										<div>
-											<iframe src="https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?rel=0&amp;modestbranding=1&amp;vq=hd720"
-												width="854" height="480" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+											<div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
+												<iframe src="https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?rel=0&amp;modestbranding=1&amp;vq=hd720"
+													frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"
+													style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="669956749">
+												</iframe>
+											</div>
 										</div>
 										<div>
 											<h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>
@@ -294,14 +283,17 @@
 												[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의
 											</a>
 												에서 확인하실 수	있습니다.=====&nbsp;
-											<iframe src="https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;modestbranding=1&amp;vq=hd720"
-												width="1280" height="720" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-											*?인스타그램 김왼손(<a href="https://www.instagram.com/lefty_khim/">@lefty_khim</a>)을 팔로우하세요!* 미운코딩새끼 전자책 ▶
+												<div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
+													<iframe width="100%" height="100%" src="https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;modestbranding=1&amp;vq=hd720" frameborder="0" allowfullscreen="allowfullscreen"
+														style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="830993609">
+													</iframe>
+												</div>
+											* 인스타그램 김왼손(<a href="https://www.instagram.com/lefty_khim/">@lefty_khim</a>)을 팔로우하세요!* 미운코딩새끼 전자책 ▶
 											<a href="https://wikidocs.net/book/1421" target="_blank" rel="noopener">https://wikidocs.net/book/1421</a>
-											* 더 많은 무료 강의?▶?<a href="https://goo.gl/AwAwUT" target="_blank" rel="noopener">https://goo.gl/AwAwUT</a>
+											* 더 많은 무료 강의 ▶ <a href="https://goo.gl/AwAwUT" target="_blank" rel="noopener">https://goo.gl/AwAwUT</a>
 											<h3>
 												<strong>
-													<span style="color: #ff0000;">1.</span>?강좌 소개
+													<span style="color: #ff0000;">1.</span> 강좌 소개
 												</strong>
 											</h3>
 											<ul>
@@ -1370,37 +1362,20 @@
 <!-- (위쪽과 동일) 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
 											<span class="average_star"><div class='rating_star'>
 													<div class='star_solid' style="width: 98%">
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-															<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
+													<% for(int i=1; i<6; i++){ %>
+														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+															<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
+																						l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
 														</svg>
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-															<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-														</svg>
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-															<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-														</svg>
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-															<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-														</svg>
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-															<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-														</svg>
+													<%} %>
 													</div>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-														<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
+													<% for(int i=5; i>0; i--){ %>
+													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+														<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7
+																					L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4-33.7 l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 z
+																					M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7 -23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z"/>
 													</svg>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" 	class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-														<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-														<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-														<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-													</svg>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-														<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-													</svg>
+													<%} %>
 												</div>
 											</span>
 <!-- (위쪽과 동일) 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->		
@@ -1461,9 +1436,9 @@
 
 <!-- 회원별 리뷰 평점 & 리뷰 내용 & 작성일로부터의 기간 받아오기(DB) -->									
 										<div class="article_container">
-											<article class="media review_item" fxd-data='{"id":12978,"star":5,"type":"review"}'>
+											<article class="media review_item">
 												<figure class="media-left image is-64x64">
-													<img loading="lazy" src="https://cdn.inflearn.com/public/main/profile/default_profile.png" data-src="https://cdn.inflearn.com/public/main/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
+													<img src="../public/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
 													<div class="onload_placeholder"></div>
 													<div class="swiper-lazy-preloader"></div>
 												</figure>
@@ -1471,58 +1446,34 @@
 													<div class="content">
 														<span>
 															<div class='rating_star'>
-																<div class='star_solid' style="width: 100%">
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-																		<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
+																<div class='star_solid'>
+																<% for(int i=1; i<6; i++){ %>
+																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+																		<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
+																									l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z" />
 																	</svg>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-																		<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-																	</svg>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-																		<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-																	</svg>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-																		<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-																	</svg>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-																		<path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/>
-																	</svg>
+																<%} %>
 																</div>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-																	<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
+																<% for(int i=5; i>0; i--){ %>
+																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+																	<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6, -45.6 -23.9, -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8, -36.7 36.1, -17.7 54.6 l 105.7 103-25 145.5 c -4.5 26.3, 23.2 46, 46.4 33.7
+																								L 288 439.6 l 130.7 68.7 c 23.2 12.2, 50.9 -7.4, 46.4 -33.7, l -25 -145.5 105.7 -103 c 19 -18.5, 8.5 -50.8, -17.7 -54.6 z
+																								M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7-23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z" />
 																</svg>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="4">
-																	<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-																</svg>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="3">
-																	<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-																</svg>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="2">
-																	<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-																</svg>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-																	<path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"/>
-																</svg>
+																<%} %>
 															</div>
 														</span>
 														<strong>조수연</strong>
 														<small class="review updated_at">
-															<span>8달 전</span> <span class="option"> </span>
-														</small><br>
+															<span>8달 전</span>
+															<span class="option"></span>
+														</small>
+														<br>
 														<div class="review_body">
 															너무 훌륭한 강의였어요. 정말 하나도 모르고 들어왔거든요. 다른 사람이 만들어둔 모듈을 보는데, 어머 알겠는거예요. 우와, 감동입니다.
 															김왼손님, 진짜 감사합니다. 이제 시작이라서 한참은 더 헤메겠지만, 너무 재미있는 강의 였어요. 강추 백만개 날리고 싶어요~
 														</div>
-														<div class="reactions">
-															<button class="like " fxd-data='{"post_id":12978,"count":3}'>
-																<svg id="icon_heart" width="16" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-																	<path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"/>
-																</svg>
-																<span class="number">3</span>
-															</button>
-														</div>
 													</div>
-													<div class="review_comments"></div>
 												</div>
 											</article>
 										</div>
@@ -1535,103 +1486,37 @@
 												</figure>
 												<div class="media-content">
 													<div class="content">
-														<span><div class='rating_star'>
-																<div class='star_solid' style="width: 100%">
-																	<svg aria-hidden="true" data-prefix="fas"
-																		data-icon="star"
-																		class="svg-inline--fa fa-star fa-w-18" role="img"
-																		xmlns="http://www.w3.org/2000/svg"
-																		viewBox="0 0 576 512" width="16" height="16"
-																		data-value="1">
-																		<path fill="currentColor"
-																			d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
-																	<svg aria-hidden="true" data-prefix="fas"
-																		data-icon="star"
-																		class="svg-inline--fa fa-star fa-w-18" role="img"
-																		xmlns="http://www.w3.org/2000/svg"
-																		viewBox="0 0 576 512" width="16" height="16"
-																		data-value="2">
-																		<path fill="currentColor"
-																			d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
-																	<svg aria-hidden="true" data-prefix="fas"
-																		data-icon="star"
-																		class="svg-inline--fa fa-star fa-w-18" role="img"
-																		xmlns="http://www.w3.org/2000/svg"
-																		viewBox="0 0 576 512" width="16" height="16"
-																		data-value="3">
-																		<path fill="currentColor"
-																			d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
-																	<svg aria-hidden="true" data-prefix="fas"
-																		data-icon="star"
-																		class="svg-inline--fa fa-star fa-w-18" role="img"
-																		xmlns="http://www.w3.org/2000/svg"
-																		viewBox="0 0 576 512" width="16" height="16"
-																		data-value="4">
-																		<path fill="currentColor"
-																			d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
-																	<svg aria-hidden="true" data-prefix="fas"
-																		data-icon="star"
-																		class="svg-inline--fa fa-star fa-w-18" role="img"
-																		xmlns="http://www.w3.org/2000/svg"
-																		viewBox="0 0 576 512" width="16" height="16"
-																		data-value="5">
-																		<path fill="currentColor"
-																			d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+														<span>
+														<div class='rating_star'>
+															<div class='star_solid'>
+																<% for(int i=1; i<6; i++){ %>
+																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+																		<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
+																									l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z" />
+																	</svg>
+																<%} %>
 																</div>
-																<svg aria-hidden="true" data-prefix="fal"
-																	data-icon="star" class="svg-inline--fa fa-star fa-w-18"
-																	role="img" xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 576 512" width="16" height="16"
-																	data-value="5">
-																	<path fill="currentColor"
-																		d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"></path></svg>
-																<svg aria-hidden="true" data-prefix="fal"
-																	data-icon="star" class="svg-inline--fa fa-star fa-w-18"
-																	role="img" xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 576 512" width="16" height="16"
-																	data-value="4">
-																	<path fill="currentColor"
-																		d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"></path></svg>
-																<svg aria-hidden="true" data-prefix="fal"
-																	data-icon="star" class="svg-inline--fa fa-star fa-w-18"
-																	role="img" xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 576 512" width="16" height="16"
-																	data-value="3">
-																	<path fill="currentColor"
-																		d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"></path></svg>
-																<svg aria-hidden="true" data-prefix="fal"
-																	data-icon="star" class="svg-inline--fa fa-star fa-w-18"
-																	role="img" xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 576 512" width="16" height="16"
-																	data-value="2">
-																	<path fill="currentColor"
-																		d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z"></path></svg>
-																<svg aria-hidden="true" data-prefix="fal"
-																	data-icon="star" class="svg-inline--fa fa-star fa-w-18"
-																	role="img" xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 576 512" width="16" height="16"
-																	data-value="1">
-																	<path fill="currentColor"
-																		d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM405.8 317.9l27.8 162L288 403.5 142.5 480l27.8-162L52.5 203.1l162.7-23.6L288 32l72.8 147.5 162.7 23.6-117.7 114.8z">
-																	</pathg>
-															</div></span> <strong>박찬영</strong> <small class="review updated_at">
-															<span>7달 전</span> <span class="option"> </span>
-														</small><br>
+																<% for(int i=5; i>0; i--){ %>
+																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
+																	<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6, -45.6 -23.9, -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8, -36.7 36.1, -17.7 54.6 l 105.7 103-25 145.5 c -4.5 26.3, 23.2 46, 46.4 33.7
+																								L 288 439.6 l 130.7 68.7 c 23.2 12.2, 50.9 -7.4, 46.4 -33.7, l -25 -145.5 105.7 -103 c 19 -18.5, 8.5 -50.8, -17.7 -54.6 z
+																								M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7-23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z" />
+																</svg>
+																<%} %>
+														</div>
+														</span>
+														<strong>박찬영</strong>
+														<small class="review updated_at">
+														<span>7달 전</span>
+															<span class="option"> </span>
+														</small>
+														<br>
 														<div class="review_body">
 															아무것도 모르고 의지만 있었던 저를 프로그램을 만들 수 있게 해 준 강의입니다. 무엇보다 재미있게 설명을 해 주십니다. 좋은 강의를 그것도 무료로
 															들을 수 있어 추천합니다!
 											
 														</div>
-														<div class="reactions">
-															<button class="like " fxd-data='{"post_id":13600,"count":2}'>
-																<svg id="icon_heart" width="16" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-																	<path fill="currentColor" d="M462.3 62.7c-54.5-46.4-136-38.7-186.6 13.5L256 96.6l-19.7-20.3C195.5 34.1 113.2 8.7 49.7 62.7c-62.8 53.6-66.1 149.8-9.9 207.8l193.5 199.8c6.2 6.4 14.4 9.7 22.6 9.7 8.2 0 16.4-3.2 22.6-9.7L472 270.5c56.4-58 53.1-154.2-9.7-207.8zm-13.1 185.6L256.4 448.1 62.8 248.3c-38.4-39.6-46.4-115.1 7.7-161.2 54.8-46.8 119.2-12.9 142.8 11.5l42.7 44.1 42.7-44.1c23.2-24 88.2-58 142.8-11.5 54 46 46.1 121.5 7.7 161.2z"/>
-																</svg>
-																<span class="number">2</span>
-															</button>
-														</div>
 													</div>
-													<div class="review_comments"></div>
 												</div>
 											</article>
 										</div>
