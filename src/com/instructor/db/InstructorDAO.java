@@ -60,8 +60,8 @@ public class InstructorDAO {
 			System.out.println("lecture num");
 			
 			sql = "insert into lecture"
-					+ "(l_number,l_name,l_id,l_reg_date,l_content,l_type,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum) "
-					+ "value(?,?,?,now(),?,?,?,?,?,?,?,now(),?)";
+					+ "(l_number,l_name,l_id,l_reg_date,l_content,l_type,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum,l_title) "
+					+ "value(?,?,?,now(),?,?,?,?,?,?,?,now(),?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, ldto.getL_m_name());
@@ -76,6 +76,7 @@ public class InstructorDAO {
 			pstmt.setInt(10, ldto.getL_goods());
 			/*pct_date*/
 			pstmt.setInt(11, ldto.getPaynum());
+			pstmt.setString(12, ldto.getL_title());
 			
 			pstmt.executeUpdate();
 			System.out.println("강의 등록 성공");

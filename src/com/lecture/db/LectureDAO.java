@@ -79,6 +79,7 @@ public class LectureDAO {
 			ldto.setPaynum(rs.getInt("paynum"));
 			ldto.setPct_date(rs.getTimestamp("pct_date"));
 			ldto.setL_img(rs.getString("l_img"));
+			ldto.setL_title(rs.getString("l_title"));
 			
 			lectureList.add(ldto);
 		}	

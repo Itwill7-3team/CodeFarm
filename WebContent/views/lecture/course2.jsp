@@ -220,7 +220,7 @@ for(int i=0;i<lectureList.size();i++){
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class="course_title"><%=ldto.getL_m_name() %></div>
+												<div class="course_title"><%=ldto.getL_title() %></div>
 												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">

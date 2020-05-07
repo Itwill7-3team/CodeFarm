@@ -95,6 +95,7 @@ public class InstructorAddAction implements Action {
 		// 4. 페이지 이동 (List페이지)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./InstructorLectureList.in");
+		forward.setPath("./Search.le");
 		forward.setRedirect(true);	
 		return forward;
 		
