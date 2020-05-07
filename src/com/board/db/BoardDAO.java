@@ -82,7 +82,7 @@ public class BoardDAO {
 	public BoardDTO getBoard(int num){
 		BoardDTO bdto= new BoardDTO();
 		try{
-			sql="select * from where num=?";
+			sql="select * from board where num = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			

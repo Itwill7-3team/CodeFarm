@@ -9,16 +9,13 @@
 </head>
 <body>
 <jsp:include page="/include/header.jsp"></jsp:include>
-<div class="container">
-<div class="desktop-content">
-	
-</div>
-</div>
-<form action="askCommentWriteAction.bo">
-	<div class="writer">
-	
+<section class="community_header">
+	<div class="container">
+		<h1>${bdto.title}</h1>
+		<a href="#" class="a_btn">미해결질문</a>
 	</div>
-</form>
+	</section>
+	
 <jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>
