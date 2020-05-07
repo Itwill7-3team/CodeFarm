@@ -15,6 +15,7 @@
 }
 
 
+
 @media screen and (max-width: 1074px) {
 
 	/* 모바일   */
@@ -85,17 +86,32 @@ header .navbar-item{
     align-items: center;
     margin-left:5px;
 }
+header .step1:BEFORE{
+	border-top:0 solid transparent;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	border-bottom:10px solid #fff;
+	content:"";
+	position: absolute;
+	top:-10px;
+	left:30px;
+}
+header .navbar-left .fas,header .navbar-left .far{
+	margin-right: 8px;
+}
 
+header .h-back .navbar-dropdown{
+	height: 410px;
+}
 header .navbar-dropdown{
 	left:0;
 	top:48px;
 	background-color:white;
 	position:absolute;
 	display:none;
-	padding:0;
+	padding:5px;
 	width: 180px;
-    height: 410px; /*사이즈 지정   */ 
-    border-radius: 0;
+    border-radius: 2px;
     z-index:999;
     box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
 }
@@ -233,6 +249,9 @@ header .noLogin{
 .active, .nav-accordion:hover {
   background-color: #ccc;
 }
+.navbar-left li{
+	padding: 5px;
+}
 .nav-accordion:after {
   content: '\002B';
   color: #777;
@@ -240,9 +259,7 @@ header .noLogin{
   float: right;
   margin-left: 5px;
 }
-.active:after {
-  content: "\2212";
-}
+
 .panel {
   background-color: white;
   max-height: 0;
