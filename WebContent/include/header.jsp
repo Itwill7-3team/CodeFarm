@@ -25,7 +25,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<a href="Search.le" class="navbar-link bold"> <span>강의들</span> <i
 							class="fas fa-angle-down"></i> <!-- <img alt="강의들" src="./../img/include-img/below.png"> -->
 						</a>
-						<ul class="navbar-dropdown step1">
+						<ul class="navbar-dropdown step1 ">
 							<li><a href="Search.le" class="navbar-item">IT프로그래밍</a>
 								<ul class="navbar-dropdown step2">
 									<li><a href="Search.le" class="navbar-item">웹개발</a>
@@ -239,10 +239,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							class="fas fa-angle-down"></i> <!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">
-							<li><a href="askAnswer.bo" class="navbar-item">묻고 답하기</a></li>
-							<li><a href="star.bo" class="navbar-item">수강평 모아보기</a></li>
-							<li><a href="notice.bo" class="navbar-item">공지사항</a></li>
-							<li><a href="request.bo" class="navbar-item">강의 기능 요청</a></li>
+							<li><a href="askAnswer.bo" class="navbar-item"><i class="fas fa-edit"></i> 묻고 답하기</a></li>
+							<li><a href="star.bo" class="navbar-item"><i class="fas fa-star"></i> 수강평 모아보기</a></li>
+							<li><a href="notice.bo" class="navbar-item"><i class="fas fa-bullhorn"></i> 공지사항</a></li>
+							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>
 					</div>
 					<!-- 로드맵  -->
