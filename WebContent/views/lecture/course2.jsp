@@ -1,3 +1,5 @@
+<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,9 +10,21 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜</title>
 <link href="./css/course1.css" rel="stylesheet">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
+<%
+List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
+
+/* String pageNum = (String)request.getAttribute("pageNum");
+int count = (int)request.getAttribute("count");
+int pageCount = ((Integer)(request.getAttribute("pageCount"))).intValue();
+int pageBlock = (Integer)(request.getAttribute("pageBlock"));
+int startPage = (Integer)(request.getAttribute("startPage"));
+int endPage = (Integer)(request.getAttribute("endPage")); */
+%>
 	<div id="root">
 		<jsp:include page="/include/header.jsp"/>	
 		<main id="main">
@@ -103,9 +117,9 @@
 							</div>
 							<div class="select courses_order_selector">
 								<select id="courses_order_select" name="order_select">
-									<option value="seq" selected>추천순</option>
+									<option value="seq">추천순</option>
 									<option value="popular">인기순</option>
-									<option value="recent">최신순</option>
+									<option value="recent" selected>최신순</option>
 									<option value="rating">평점순</option>
 									<option value="famous">학생수순</option>
 								</select>
@@ -191,17 +205,23 @@
 										</div>
 									</div>
 								</div>
+								
+<%
+for(int i=0;i<lectureList.size();i++){ 
+	LectureDTO ldto = lectureList.get(i);
+%>
+								
 								<div class="column flip-card is-4-tablet is-desktop">
 									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
+										<a class="flip-card-front" href='./lectureDetail.le?num=<%=ldto.getL_number()%>'>
 											<div class="card_image">
 												<figure class="image is_tumbnail">
-													<img src="./img/course-img/mlik-cow.jpg" alt="">
+													<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class="course_title">진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
+												<div class="course_title"><%=ldto.getL_title() %></div>
+												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="rating_star">
@@ -214,17 +234,17 @@
 														</div><!-- rating star -->
 														<span class="review_cnt">(0)</span> 
 													</div>
-													<div class="course_price">￦16.500</div>
+													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
+													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
 													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
+														<span class="tag" style="background-color:hsl(155,40%,87%)"><%=ldto.getL_tag() %></span>
 													</div>
 												<!-- </div> --><!-- course_data -->
 											</div>
 										</a>
 										<div class="flip-card-back course_card_back">
 											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
+												<p class="course_decription"><%=ldto.getL_content() %></p>
 												<div class="back_course_data">
 													<div class="course_level">
 														<span>
@@ -235,7 +255,7 @@
 													<div class="course_category">
 														<span>
 															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
+															<%=ldto.getL_type() %>
 														</span>
 													</div>
 													<div class="course_skills">
@@ -259,618 +279,11 @@
 										</div>
 									</div>
 								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/tractor.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/chicken.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/shpvels.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/sheep.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/green-grass-field.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/green-grass-field-near-houses.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/corn-fields.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/animals-near-fence.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/corn.jpg" alt="">
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">￦16.500</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+<%} %>								
+								
+								
+								
+								
 							</div><!-- course-card-item -->
 						</div><!-- courses_ container-->
 					</main><!-- course_main -->
@@ -915,5 +328,17 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<script>
+$(function(){
+	$("#courses_order_select").change(function(){
+		var orderSelect = $("#courses_order_select option:selected").val();
+		alert(orderSelect);
+		if(oderSelect == seq){
+			/* {$total_count-$no+1} */
+		}
+	});
+});
+</script>
+
 </body>
 </html>

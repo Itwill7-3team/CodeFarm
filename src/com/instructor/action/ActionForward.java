@@ -1,4 +1,4 @@
-package com.board.action;
+package com.instructor.action;
 
 public class ActionForward {
 	// 페이지 이동시마다 이동정보를 저장 객체 

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lecture.action.LectureListAction;
+
 
 public class LectureFrontController extends HttpServlet{
 
@@ -46,12 +48,34 @@ public class LectureFrontController extends HttpServlet{
 			forward.setPath("./views/main/main.jsp");
 			forward.setRedirect(false);
 			
+		/* 삭제 예정 */	
+			/*
+			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
+			 * forward.setPath("./views/lecture/course2.jsp"); forward.setRedirect(false);
+			 */
+		/* 삭제 예정 */	
 			
 		}else if(command.equals("/Search.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/lecture/course2.jsp");
-			forward.setRedirect(false);
-		}		
+			System.out.println("/Search.le 처리 model->view");
+			
+			action = new LectureListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

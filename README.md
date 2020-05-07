@@ -1,4 +1,4 @@
-# LMSProject
+# CodeFarm Project
 프로젝트 참가자:<br>
 1.변재정<br>
 # 학습 관리 시스템(learning management system)

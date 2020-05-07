@@ -22,7 +22,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<div class="navbar-left">
 					<!-- 강의들  -->
 					<div class="navbar-item h-back">
-						<a href="#" class="navbar-link bold"> <span>강의들</span> <i
+						<a href="Search.le" class="navbar-link bold"> <span>강의들</span> <i
 							class="fas fa-angle-down"></i> <!-- <img alt="강의들" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">
@@ -99,7 +99,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item">
-						<a href="#"><i class="fas fa-shopping-cart"></i></a>
+						<a href="BasketList.ba"><i class="fas fa-shopping-cart"></i></a>
 					</div>
 					<!-- 알림 -->
 					<div class="navbar-item">
@@ -139,5 +139,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		</div>
 		<!--모바일끝  -->
 	</nav>
+
+
 
 </header>
