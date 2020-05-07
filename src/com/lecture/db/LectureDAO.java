@@ -87,6 +87,8 @@ public class LectureDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			closeDB();
 		}
 		
 		

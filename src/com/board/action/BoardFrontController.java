@@ -47,7 +47,7 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("askView.bo")){
+		}else if(command.equals("/askView.bo")){
 				action=new AskViewAction();
 			try{
 				forward=action.execute(request, response);
