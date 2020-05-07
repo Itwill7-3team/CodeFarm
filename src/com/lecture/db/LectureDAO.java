@@ -95,6 +95,77 @@ public class LectureDAO {
 	}
 	// getLectureList()
 	
+	//getGoodsList()
+			public List<LectureDTO> getLectureSelectList(String item){
+				
+				List<LectureDTO> lectureList= new ArrayList<LectureDTO>();
+					
+				StringBuffer SQL= new StringBuffer();
+				
+				try {
+					//sql
+					//상품 전체 목록 => 조건절 없이
+					//상품 인기상품 목록 => 조건절 best=?
+					//상품 카테고리별 목록(6개) => 조건절 카테고리=? 으로 처리가능
+					SQL.append("SELECT * FROM lecture");
+					if(item.equals("all")){					
+					}
+					else if(item.equals("best")){
+						SQL.append(" WHERE l_tag=?"); //띄어쓰기 유의할것!!!!!! 안띄우면오류난다~
+					}
+					else if(item.equals("new")){
+						SQL.append(" WHERE l_tag=?"); //띄어쓰기 유의할것!!!!!! 안띄우면오류난다~
+					}
+					else{
+						SQL.append(" WHERE l_type=?");
+					}
+					//단점:실행할떄마다 다르게 실행해야한다..
+//					pstmt=con.prepareStatement(SQL.""); //까먹지말기~ 빼먹으면 널포인트에러뜸~~~
+					pstmt=con.prepareStatement(SQL.toString()); //까먹지말기~ 빼먹으면 널포인트에러뜸~~~
+					
+					if(item.equals("all")){					
+					}
+					else if(item.equals("best")){
+						pstmt.setString(1, "best");
+					}
+					else if(item.equals("new")){
+						pstmt.setString(1, "new");
+					}
+					else{ //카테고리정보
+						pstmt.setString(1, item);
+					}
+					
+					rs=pstmt.executeQuery();
+					while(rs.next()){
+						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
+						ldto.setL_content(rs.getString("l_content"));
+						ldto.setL_goods(rs.getInt("l_goods"));
+						ldto.setL_m_id(rs.getString("l_id"));
+						ldto.setL_m_name(rs.getString("l_name"));
+						ldto.setL_number(rs.getInt("l_number"));
+						ldto.setL_pct(rs.getInt("l_pct"));
+						ldto.setL_price(rs.getInt("l_price"));
+						ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
+						ldto.setL_tag(rs.getString("l_tag"));
+						ldto.setL_type(rs.getString("l_type"));
+						ldto.setPaynum(rs.getInt("paynum"));
+						ldto.setPct_date(rs.getTimestamp("pct_date"));
+						ldto.setL_img(rs.getString("l_img"));
+						ldto.setL_title(rs.getString("l_title"));
+						
+						lectureList.add(ldto);
+					}
+					System.out.println("상품목록 저장완료:"+lectureList.size());
+					
+				} catch (Exception e) {
+					System.out.println("상품정보조회 실패");
+					e.printStackTrace();
+				} finally {
+					closeDB();
+				}
+				return lectureList;
+			}
+			//getGoodsList()
 	
 	
 	

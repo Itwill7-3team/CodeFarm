@@ -16,20 +16,21 @@ public class LectureMainListAction implements Action{
 		
 		LectureDAO ldao = new LectureDAO();
 		
+		String item = "best";
 		
-		/* 분류를 위한 방법 --보류 */
-		String item = request.getParameter("item");
-		if(item == null) {
-			item = "all";
-		}
-		/* 분류를 위한 방법 --보류 */
+		List<LectureDTO> bestList = ldao.getLectureSelectList(item);
 		
+		request.setAttribute("bestList", bestList);
 		
-		List<LectureDTO> lectureList = ldao.getLecutreList(item);
+		LectureDAO ldao2 = new LectureDAO();
 		
-		request.setAttribute("lectureList", lectureList);
+		item = "new";
+		List<LectureDTO> newList = ldao2.getLectureSelectList(item);
+				
+		request.setAttribute("newList", newList);
 		
-		System.out.println("@@@@@@@@@@@ lectureList:"+lectureList);
+		System.out.println("@@@@@@@@@@@ lectureList:"+bestList);
+		System.out.println("@@@@@@@@@@@ lectureList:"+newList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/main/main.jsp");
 		forward.setRedirect(false);		

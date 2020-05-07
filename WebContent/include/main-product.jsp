@@ -13,9 +13,11 @@
 </head>
 <body>
 <%
-List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
+List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
+List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
 
-System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+lectureList);
+System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+bestList);
+System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+newList);
 
 %>
 
@@ -24,10 +26,10 @@ System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+lectureList);
 
 
 <section id="lec">
-<h1 class="title">추천 강의</h1> 
+<h1 class="title">베스트 강의</h1> 
 <%
-for(int i=0;i<lectureList.size();i++){ 
-	LectureDTO ldto = lectureList.get(i);
+for(int i=0;i<bestList.size();i++){ 
+	LectureDTO ldto = bestList.get(i);
 %>
 			
 <div class="card">
@@ -64,10 +66,10 @@ for(int i=0;i<lectureList.size();i++){
 
 <!-- 프로덕트 카드 2번째줄 -->
 <section id="lec">
-<h1 class="title">인기 강의</h1> 
+<h1 class="title">새로운 강의</h1> 
 <%
-for(int i=0;i<lectureList.size();i++){ 
-	LectureDTO ldto = lectureList.get(i);
+for(int i=0;i<newList.size();i++){ 
+	LectureDTO ldto = newList.get(i);
 %>
 			
 <div class="card">
