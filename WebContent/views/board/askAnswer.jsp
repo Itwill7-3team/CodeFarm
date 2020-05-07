@@ -21,7 +21,7 @@
 		</p>
 	</div>
 	</section>
-	<article> <aside>
+	<article class="community_content"> <aside>
 	<div class="side_container">
 		<p class="small_tag">함께 공부해요</p>
 		<ul>

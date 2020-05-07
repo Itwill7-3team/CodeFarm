@@ -6,12 +6,11 @@
 	display: none;
 	}
 }
-@media print,screen and (max-width: 800px) {
+@media print,screen and (max-width: 1000px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
-	.community_header aside{
+	.community_content aside{
 	display: none !important;}
 }
-
 
 .container{
 	width:100%;
@@ -25,14 +24,14 @@
 }
 
 
-.community_header article{
+.community_content{
 	width:100%;
 	max-width:1180px;
 	margin: 0 auto;
 	min-height: 500px;
 	display: flex;
 }
-.community_header aside{
+.community_content aside{
 	float: left;
     width: 17%;
     min-height: 700px;

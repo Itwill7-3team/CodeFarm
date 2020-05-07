@@ -15,6 +15,7 @@
 }
 
 
+
 @media screen and (max-width: 1074px) {
 
 	/* 모바일   */
@@ -85,7 +86,18 @@ header .navbar-item{
     align-items: center;
     margin-left:5px;
 }
-
+header .step1:BEFORE{
+	border-top:0 solid transparent;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	border-bottom:10px solid #fff;
+	content:"";
+	position: absolute;
+	top:-10px;
+	left:30px;
+	
+	
+}
 header .navbar-dropdown{
 	left:0;
 	top:48px;
@@ -233,6 +245,9 @@ header .noLogin{
 .active, .nav-accordion:hover {
   background-color: #ccc;
 }
+.navbar-left li{
+	padding: 5px;
+}
 .nav-accordion:after {
   content: '\002B';
   color: #777;
@@ -240,9 +255,7 @@ header .noLogin{
   float: right;
   margin-left: 5px;
 }
-.active:after {
-  content: "\2212";
-}
+
 .panel {
   background-color: white;
   max-height: 0;
