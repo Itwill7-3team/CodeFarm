@@ -12,7 +12,7 @@
 <link href="./css/course1.css" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <%
@@ -329,7 +329,15 @@ for (i = 0; i < acc.length; i++) {
 }
 </script>
 <script>
-
+$(function(){
+	$("#courses_order_select").change(function(){
+		var orderSelect = $("#courses_order_select option:selected").val();
+		alert(orderSelect);
+		if(oderSelect == seq){
+			/* {$total_count-$no+1} */
+		}
+	});
+});
 </script>
 
 </body>
