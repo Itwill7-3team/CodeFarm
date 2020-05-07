@@ -176,7 +176,7 @@ margin-left: 0.8rem;
   font-weight: 700;
   color: #175cbe;
   font-size: 16px;
-  margin-left: 150px;
+  margin-left: 47%;
 }
 
 
@@ -194,13 +194,31 @@ padding: 0.5rem 0.8rem;
 text-align: left;
 }
 
-.mg50{
+.mg-l50{
 margin-left: 50px;
+}
+.mg-t10{
+margin-top: 10px;
 }
 
 /*STAR=ck*/
 .checked {  color: orange;}
 
+.tag:not(body) {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #454545;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: .75em;
+    padding-right: .75em;
+    white-space: nowrap;
+    background-color:hsl(155,40%,87%);
+}
 
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 컨텐츠 */
 

@@ -41,25 +41,11 @@
 <section id="blg">
 <h1 class="title">블로그<a href="#">&#10095;</a></h1> 
 
-<div class="card-c">
-<a href="#">
-  <img src="./img/main-img/lect_1.png" alt="" style="width:100%">
-    <h2>Blog</h2>
-</a>    
-	<div class="text-in">
-		<p>
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		</p> 
-	</div>
-</div>
 
 <div class="card-c">
 <a href="#">
   <img src="./img/main-img/lect_2.png" alt="" style="width:100%">
-    <h2>Blog</h2>
+    <h2>Blog1</h2>
 </a>
   	<div class="text-in">
 		<p>
@@ -74,7 +60,7 @@
 <div class="card-c">
 <a href="#">
   <img src="./img/main-img/lect_3.png" alt="" style="width:100%">
-    <h2>Blog</h2>
+    <h2>Blog2</h2>
 </a>    
 		<div class="text-in">
 		<p>
@@ -89,7 +75,7 @@
 <div class="card-c">
 <a href="#">
   <img src="./img/main-img/lect_4.png" alt="" style="width:100%">
-    <h2>Blog</h2>
+    <h2>Blog3</h2>
 </a>    
 		<div class="text-in">
 		<p>
@@ -100,7 +86,7 @@
 		</p> 
 		</div>
 </div>
-
+</section>
 
 <!--  카드 2번째줄 -->
 

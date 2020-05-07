@@ -17,9 +17,9 @@ List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
 List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
 List<LectureDTO> freeList = (List<LectureDTO>) request.getAttribute("freeList");
 
-System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+bestList);
-System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+newList);
-System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+freeList);
+System.out.println("@@@@@@@@@@@@@@lectureList:"+bestList);
+System.out.println("@@@@@@@@@@@@@@lectureList:"+newList);
+System.out.println("@@@@@@@@@@@@@@lectureList:"+freeList);
 
 %>
 
@@ -48,16 +48,18 @@ for(int i=0;i<bestList.size();i++){
 		<span class="far fa-star checked"></span><!--빈하트  -->
 		<span class="review_cnt">(0)</span> 
 		
-		<span class="mg50">
+		<span class="mg-l50">
 		<a href="#"><i class="fa fa-heart-o"></i></a>
 		<a href="#"><i class="fa fa-cart-plus"></i></a>
 		</span>
-<%-- 		<span class="price"><%=ldto.getL_price() %></span> --%>
-</div>
-<c:set var="price" value="<%=ldto.getL_price() %>"/>
-<div class="price">
-<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
-		
+	
+	<div class="mg-t10">
+		<span class="tags tag"><%=ldto.getL_tag() %></span>
+	
+		<c:set var="price" value="<%=ldto.getL_price() %>"/>
+		<span class="price">
+		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+	</div>		
 
 	</div>
 </div>
@@ -88,15 +90,18 @@ for(int i=0;i<newList.size();i++){
 		<span class="fa fa-star checked"></span>
 		<span class="review_cnt">(0)</span> 
 		
+		<span class="mg-l50">
 		<a href="#"><i class="fa fa-heart-o"></i></a>
 		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		</span>
 		
-<%-- 		<span class="price"><%=ldto.getL_price() %></span> --%>
-</div>
-<c:set var="price" value="<%=ldto.getL_price() %>"/>
-<div class="price">
-<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
-		
+	<div class="mg-t10">
+		<span class="tags tag"><%=ldto.getL_tag() %></span>
+	
+		<c:set var="price" value="<%=ldto.getL_price() %>"/>
+		<span class="price">
+		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+	</div>		
 
 	</div>
 </div>
@@ -126,15 +131,18 @@ for(int i=0;i<freeList.size();i++){
 		<span class="fa fa-star checked"></span>
 		<span class="review_cnt">(0)</span> 
 		
+		<span class="mg-l50">
 		<a href="#"><i class="fa fa-heart-o"></i></a>
 		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		</span>
 		
-<%-- 		<span class="price"><%=ldto.getL_price() %></span> --%>
-</div>
-<c:set var="price" value="<%=ldto.getL_price() %>"/>
-<div class="price">
-<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
-		
+	<div class="mg-t10">
+		<span class="tags tag"><%=ldto.getL_tag() %></span>
+	
+		<c:set var="price" value="<%=ldto.getL_price() %>"/>
+		<span class="price">
+		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+	</div>		
 
 	</div>
 </div>
