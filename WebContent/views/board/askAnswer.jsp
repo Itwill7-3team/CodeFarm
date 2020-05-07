@@ -81,7 +81,7 @@
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" href=""></div>
 					</div>
 				</div>
 				<%} %>
