@@ -29,8 +29,18 @@ public class LectureMainListAction implements Action{
 				
 		request.setAttribute("newList", newList);
 		
+		
+		LectureDAO ldao3 = new LectureDAO();
+		
+		item = "free";
+		List<LectureDTO> freeList = ldao3.getLectureSelectList(item);
+		
+		request.setAttribute("freeList", freeList);
+		
+		
 		System.out.println("@@@@@@@@@@@ lectureList:"+bestList);
 		System.out.println("@@@@@@@@@@@ lectureList:"+newList);
+		System.out.println("@@@@@@@@@@@ lectureList:"+freeList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/main/main.jsp");
 		forward.setRedirect(false);		

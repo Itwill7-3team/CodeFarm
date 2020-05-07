@@ -111,17 +111,19 @@ public class LectureDAO {
 					if(item.equals("all")){					
 					}
 					else if(item.equals("best")){
-						SQL.append(" WHERE l_tag=?"); //띄어쓰기 유의할것!!!!!! 안띄우면오류난다~
+						SQL.append(" WHERE l_tag=?");
 					}
 					else if(item.equals("new")){
-						SQL.append(" WHERE l_tag=?"); //띄어쓰기 유의할것!!!!!! 안띄우면오류난다~
+						SQL.append(" WHERE l_tag=?");
+					}
+					else if(item.equals("free")){
+						SQL.append(" WHERE l_tag=?");
 					}
 					else{
 						SQL.append(" WHERE l_type=?");
 					}
-					//단점:실행할떄마다 다르게 실행해야한다..
-//					pstmt=con.prepareStatement(SQL.""); //까먹지말기~ 빼먹으면 널포인트에러뜸~~~
-					pstmt=con.prepareStatement(SQL.toString()); //까먹지말기~ 빼먹으면 널포인트에러뜸~~~
+					
+					pstmt=con.prepareStatement(SQL.toString()); 
 					
 					if(item.equals("all")){					
 					}
@@ -130,6 +132,9 @@ public class LectureDAO {
 					}
 					else if(item.equals("new")){
 						pstmt.setString(1, "new");
+					}
+					else if(item.equals("free")){
+						pstmt.setString(1, "free");
 					}
 					else{ //카테고리정보
 						pstmt.setString(1, item);
