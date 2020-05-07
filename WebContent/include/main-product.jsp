@@ -33,9 +33,9 @@ for(int i=0;i<lectureList.size();i++){
 <div class="card">
 <a href="#">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
-    <h2><%=ldto.getL_m_name() %></h2>
+    <h2><%=ldto.getL_title() %></h2>
 </a>
-	<p><%=ldto.getL_content() %></p> 
+	<p><%=ldto.getL_m_name() %></p> 
 	<div class="card-in">
 		<span class="fa fa-star checked"></span><!-- 찬하트 -->
 		<span class="fa fa-star checked"></span>
@@ -75,7 +75,7 @@ for(int i=0;i<lectureList.size();i++){
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
-	<p><%=ldto.getL_content() %></p> 
+	<p><%=ldto.getL_m_name() %></p> 
 	<div class="card-in">
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
