@@ -3,7 +3,9 @@
 <link href="./css/header.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
-
+<meta name="viewport"
+content="width=device-width, user-scalable=yes,
+initial-scale=1.0, maximum-scale=3.0"/>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
 

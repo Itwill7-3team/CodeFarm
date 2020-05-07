@@ -5,13 +5,13 @@
 	width: 100%;
 	position: fixed;
 	bottom: 0;
-	display: flex;
 	background-color: white;
 	z-index: 1;
+	display: none;
 }
  .nav_btn{
 	flex: 1;
-   display: flex;
+    display: flex;
     width: 72px;
     height: 100%;
     flex-direction: column;
@@ -20,7 +20,22 @@
     position: relative;
     padding: 8px;
     color: #495057;
+    box-sizing: border-box;
 }
-.nav_btn>span{
+.active2>div{
+	color: #FD8E6A;
+}
+.nav_btn>span, .mg_auto{
 	margin: 0  auto;
+}
+
+ .icon{
+	font-size: 1.5rem;
+	height: 36px;
+}
+.name{
+	font-size: 0.75rem;
+}
+.nav_content .fas,.nav_content .fab,.nav_content .far{
+	font-size:36px;
 }

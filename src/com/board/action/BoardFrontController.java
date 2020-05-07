@@ -46,7 +46,25 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/askWrite.bo")){
+			forward=new ActionForward();
+			forward.setPath("./views/board/askWrite.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/answerWriteAction.bo")){
+			action=new AskWriteAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 			
+		}else if(command.equals("/askView.bo")){
+			action=new AskViewAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/star.bo")){
 			
 		}else if(command.equals("/notice.bo")){
