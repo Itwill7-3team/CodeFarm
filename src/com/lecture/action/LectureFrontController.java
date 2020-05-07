@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class LectureFrontController extends HttpServlet{
 
 	@Override
@@ -51,7 +50,14 @@ public class LectureFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("./views/lecture/course2.jsp");
 			forward.setRedirect(false);
-		}		
+		}else if(command.equals("/Detail.le")){
+			action = new LectureDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
