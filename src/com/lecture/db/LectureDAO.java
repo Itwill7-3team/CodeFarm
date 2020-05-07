@@ -45,10 +45,9 @@ public class LectureDAO {
 	// getLectureList()
 	public List<LectureDTO> getLecutreList(String item){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
-		StringBuffer SQL = new StringBuffer();
-
+		
 		try {
-		con = getConnection();
+		
 		/*SQL.append("select * from lecture");
 		if(item.equals("")){
 		}

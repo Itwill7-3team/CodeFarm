@@ -8,7 +8,7 @@
 }
 @media print,screen and (max-width: 800px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
-	aside{
+	.community_header aside{
 	display: none !important;}
 }
 
@@ -25,14 +25,14 @@
 }
 
 
-article{
+.community_header article{
 	width:100%;
 	max-width:1180px;
 	margin: 0 auto;
 	min-height: 500px;
 	display: flex;
 }
-aside{
+.community_header aside{
 	float: left;
     width: 17%;
     min-height: 700px;
