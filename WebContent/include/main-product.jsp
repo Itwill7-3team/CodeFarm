@@ -15,9 +15,11 @@
 <%
 List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
 List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
+List<LectureDTO> freeList = (List<LectureDTO>) request.getAttribute("freeList");
 
 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+bestList);
 System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+newList);
+System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@lectureList:"+freeList);
 
 %>
 
@@ -101,6 +103,46 @@ for(int i=0;i<newList.size();i++){
 <%} %>	
 
 </section>
+
+<!-- 프로덕트 카드 3번째줄 -->
+<section id="lec">
+<h1 class="title">무료 강의</h1> 
+<%
+for(int i=0;i<freeList.size();i++){ 
+	LectureDTO ldto = freeList.get(i);
+%>
+			
+<div class="card">
+<a href="#">
+  <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+    <h2><%=ldto.getL_title() %></h2>
+</a>
+	<p><%=ldto.getL_m_name() %></p> 
+	<div class="card-in">
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="review_cnt">(0)</span> 
+		
+		<a href="#"><i class="fa fa-heart-o"></i></a>
+		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		
+<%-- 		<span class="price"><%=ldto.getL_price() %></span> --%>
+</div>
+<c:set var="price" value="<%=ldto.getL_price() %>"/>
+<div class="price">
+<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
+		
+
+	</div>
+</div>
+<%} %>	
+
+</section>
+
+
 </article>
 
 </body>

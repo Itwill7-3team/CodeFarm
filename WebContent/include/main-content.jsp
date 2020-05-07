@@ -19,12 +19,19 @@
 <section id="more">
 <h1 class="title">관심사<a href="#">&#10095;</a></h1> 
 <div class="interest">
-<a href="#">  <img src="./img/main-img/lect_6.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/lect_7.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/lect_8.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/lect_9.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/lect_10.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/lect_1.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic1.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic2.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic3.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic4.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic5.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic6.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic7.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic8.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic9.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic10.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic11.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic12.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic13.png" alt="" > </a>
 </div>
 
 
