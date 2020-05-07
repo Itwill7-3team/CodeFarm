@@ -44,10 +44,17 @@ public class LectureFrontController extends HttpServlet{
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 		if(command.equals("/Main.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/main/main.jsp");
-			forward.setRedirect(false);
 			
+			System.out.println("/model->view");
+						
+						action = new LectureMainListAction();
+						
+						try {
+							forward = action.execute(request, response);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
 		/* 삭제 예정 */	
 			/*
 			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
