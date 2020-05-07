@@ -9,16 +9,34 @@
 </head>
 <body>
 <jsp:include page="/include/header.jsp"></jsp:include>
-<div class="container">
-<div class="desktop-content">
-	
-</div>
-</div>
-<form action="askCommentWriteAction.bo">
-	<div class="writer">
-	
+<section class="community_header">
+	<div class="container">
+		<h1>${bdto.title}</h1>
+		<a href="#" class="a_btn">미해결질문</a>
 	</div>
-</form>
+	</section>
+	<article>
+		<section class="main_content">
+			<div class="ask">
+				<div class="post_metas">
+					<span class="writer">${bdto.writer}</span>
+					<span class="reg_date"></span>
+				</div>
+				<div class="content">${bdto.content}</div>
+			</div>
+			<div class="answer">
+				<div class="post_metas">
+					<span class="writer">${bdto.writer}</span>
+					<span class="reg_date"></span>
+				</div>
+				<div class="content">${bdto.content}</div>
+			</div>
+		</section>
+		<section class="right_content">
+		
+		</section>
+	</article>
+	
 <jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,5 +1,56 @@
 @CHARSET "UTF-8";
+@media print,screen and (max-width: 1250px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+	.content_side{
+	display: none;
+	}
+}
+@media print,screen and (max-width: 800px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+	aside{
+	display: none !important;}
+}
+
 .container{
-	width: 100%;
-	min-height:700px; 
+	width:100%;
+	max-width: 1180px;
+	margin: 0 auto;
+	position: relative;
+}
+.community_header{
+	background-color: white;
+    color: black;
+    padding: 3px;
+    border-bottom: 1px solid #cac1c1;
+}
+
+.main_content{
+	box-sizing: border-box;
+    padding: 20px 40px;
+}
+.ask,.answer{
+	width:70%;
+	padding: 20px 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+    margin: 15px 0px;
+}
+
+.a_btn{
+	float: right;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    right: 0;
+    box-sizing: border-box;
+    padding: 8px;
+    text-align: center;
+    width: 180px;
+    border: 1px solid;
+    color: black;
+    border-radius: 5px;
+
+}
+.a_btn:HOVER {
+	opacity: 0.6;
 }
