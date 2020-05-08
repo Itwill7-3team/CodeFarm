@@ -242,7 +242,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!--커뮤니티  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold"> <span>커뮤니티</span> <i
+						<a href="askAnswer.bo" class="navbar-link bold"> <span>커뮤니티</span> <i
 							class="fas fa-angle-down"></i> <!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">

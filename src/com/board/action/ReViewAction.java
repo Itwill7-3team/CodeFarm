@@ -3,20 +3,21 @@ package com.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lecture.db.LectureDAO;
 import com.question.db.QuestionDAO;
-import com.question.db.QuestionDTO;
 
-public class AskViewAction implements Action {
+public class ReViewAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		int num=Integer.parseInt(request.getParameter("num"));
 		ActionForward forward= new ActionForward();
-		QuestionDAO bdao =new QuestionDAO();
+		QuestionDAO qdao= new QuestionDAO();
+		LectureDAO ldao =new LectureDAO();
 		
-		QuestionDTO bdto=bdao.getBoard(num);
-		request.setAttribute("bdto", bdto);
-		forward.setPath("./views/board/askView.jsp");
+	
+		
+		
+		forward.setPath("./views/board/reView.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
