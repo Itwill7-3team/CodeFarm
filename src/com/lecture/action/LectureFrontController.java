@@ -47,17 +47,6 @@ public class LectureFrontController extends HttpServlet{
 			
 			
 		}else if(command.equals("/Search.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/lecture/course2.jsp");
-			forward.setRedirect(false);
-		}else if(command.equals("/Detail.le")){
-			action = new LectureDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}	
 			System.out.println("/Search.le 처리 model->view");
 			
 			action = new LectureListAction();
@@ -67,6 +56,16 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/Detail.le")){
+			action = new LectureDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
+		
 		
 		
 		
@@ -80,7 +79,6 @@ public class LectureFrontController extends HttpServlet{
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
-		
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				// true
