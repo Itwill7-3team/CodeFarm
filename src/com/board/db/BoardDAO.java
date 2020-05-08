@@ -15,13 +15,7 @@ public class BoardDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  BoardDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 	private Connection getConnection() throws Exception{
@@ -50,6 +44,7 @@ public class BoardDAO {
 	public ArrayList<BoardDTO> getBoardList(String type){
 		ArrayList<BoardDTO> boardList= new ArrayList<BoardDTO>();
 		try{
+			con=getConnection();
 			sql="select * from board where type=?";
 			pstmt=con.prepareStatement(sql);
 			
@@ -82,6 +77,7 @@ public class BoardDAO {
 	public BoardDTO getBoard(int num){
 		BoardDTO bdto= new BoardDTO();
 		try{
+			con=getConnection();
 			sql="select * from board where num = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);

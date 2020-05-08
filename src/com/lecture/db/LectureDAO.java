@@ -17,13 +17,7 @@ public class LectureDAO {
 	ResultSet rs=null;
 	String sql="";
 	
-	public  LectureDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	private Connection getConnection() throws Exception{
 		Context init=new InitialContext();
 		DataSource ds=
@@ -47,7 +41,7 @@ public class LectureDAO {
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		
 		try {
-		
+		con=getConnection();
 		/*SQL.append("select * from lecture");
 		if(item.equals("")){
 		}
@@ -103,6 +97,7 @@ public class LectureDAO {
 				StringBuffer SQL= new StringBuffer();
 				
 				try {
+					con=getConnection();
 					//sql
 					//상품 전체 목록 => 조건절 없이
 					//상품 인기상품 목록 => 조건절 best=?

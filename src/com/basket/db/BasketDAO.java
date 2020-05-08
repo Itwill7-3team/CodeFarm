@@ -18,13 +18,7 @@ public class BasketDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  BasketDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 	private Connection getConnection() throws Exception{
