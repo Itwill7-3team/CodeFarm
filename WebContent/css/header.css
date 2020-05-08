@@ -355,7 +355,21 @@ header .noLogin{
   z-index: 2;
   cursor: pointer;
 }
-
+.btn{
+	border: 2px solid #4CAF50;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.btn:HOVER{
+	opacity: 0.6;
+	color: hotpink;
+}
 #m-side-menu{ /* 사이드메뉴들어감 */
   position: absolute;
   background-color:white;

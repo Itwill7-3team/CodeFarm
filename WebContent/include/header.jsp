@@ -6,6 +6,13 @@
 <meta name="viewport"
 content="width=device-width, user-scalable=yes,
 initial-scale=1.0, maximum-scale=3.0"/>
+<%
+	String loginEmail="";
+	if(session.getAttribute("loginEmail")!=null){
+	 loginEmail=(String)session.getAttribute("loginEmail");
+	}
+	
+%>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
 
@@ -262,9 +269,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<div class="navbar-item">
 						<a href="#" class="navbar-link bold">지식공유참여</a>
 					</div>
+					<!-- 로그인 했을때 -->
+					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-item bold"> <span class="button">대시보드</span></a>
+						<a href="#" class="navbar-item"> <button class="btn bold">대시보드</button></a>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item">
@@ -276,6 +285,17 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item"></div>
+					<%}else{ %>
+					<!-- 로그인 했을때  -->
+					<!-- 로그인 안했을때  -->
+						<div class="navbar-item">
+							<a href="#" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+						</div>
+						<div class="navbar-item">
+							<a href="#" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
+						</div>
+					<!--로그인 안했을때  -->
+					<%} %>
 				</div>
 				<!--우측메뉴 끝 -->
 			</div>
