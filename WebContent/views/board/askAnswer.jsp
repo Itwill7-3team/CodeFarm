@@ -2,55 +2,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script>
-var item=0;
-function timeBefore(time,i){	//현재시간과  글쓴시간을 비교해서 지난 시간을 출력하는 메서드
-	//사용하려면 class 에 sub 를 붙이면 가능
-	//현재시간을 가져옴 var
-	console.log(i);
-	now = new Date();
-	console.log(now); //글쓴 시간 
-	var timestr="";
-	var writeDay = new Date(time); //또는 파라미터로 시간을 넘겨받아서 계산할 수도 있음.. 
-	var minus; //현재 년도랑 글쓴시간의 년도 비교 
-	if(now.getFullYear() > writeDay.getFullYear()){
-		minus= now.getFullYear()-writeDay.getFullYear(); //두개의 차이를 구해서 표시 
-		document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+ minus+"년 전"; 
-		console.log(minus+"년 전"); 
-	}else if(now.getMonth() > writeDay.getMonth()){//년도가 같을 경우 달을 비교해서 출력 
-		minus= now.getMonth()-writeDay.getMonth();
-		document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+minus+"달 전"; 
-		console.log(minus+"달 전"); 
-	}else if(now.getDate() > writeDay.getDate()){ //같은 달일 경우 일을 계산 
-		minus= now.getDate()-writeDay.getDate();
-		document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+ minus+"일 전"; 
-		console.log(minus+"일 전"); 
-	}else if(now.getDate() == writeDay.getDate()){
-		//당일인 경우에는 var nowTime = now.getTime(); 
-		var writeTime = writeDay.getTime(); if(nowTime>writeTime){//시간을 비교 
-			sec =parseInt(nowTime - writeTime) / 1000; day = parseInt(sec/60/60/24); 
-			sec = (sec - (day * 60 * 60 * 24)); hour = parseInt(sec/60/60); 
-			sec = (sec - (hour*60*60)); 
-			min = parseInt(sec/60); 
-			sec = parseInt(sec-(min*60)); 
-			if(hour>0){ //몇시간전인지 
-				document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+ hour+"시간 전"; 
-			console.log(hour+"시간 전"); }else if(min>0){ //몇분전인지 
-				document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+ min+"분 전"; 
-			console.log(min+"분 전"); }else if(sec>0){ //몇초전인지 계산 
-				document.getElementsByClassName("sub")[i].innerHTML ="시간 : "+ sec+"초 전"; 
-			console.log(sec+"초 전"); 
-			} 
-		} 
-	}
-	return timestr;
-}
 
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜</title>
@@ -66,7 +21,7 @@ function timeBefore(time,i){	//현재시간과  글쓴시간을 비교해서 지
 		</p>
 	</div>
 	</section>
-	<article> <aside>
+	<article class="community_content"> <aside>
 	<div class="side_container">
 		<p class="small_tag">함께 공부해요</p>
 		<ul>
@@ -107,7 +62,6 @@ function timeBefore(time,i){	//현재시간과  글쓴시간을 비교해서 지
 			<!--  -->
 			<div class="content">
 				<%
-					int i=0;
 					ArrayList<BoardDTO> boardList=(ArrayList<BoardDTO>)request.getAttribute("boardList");
 					for(BoardDTO bdto: boardList){
 				%>
@@ -118,25 +72,19 @@ function timeBefore(time,i){	//현재시간과  글쓴시간을 비교해서 지
 						<span><%=bdto.getTitle() %></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">글쓴이: <%=bdto.getWriter() %></span>
-						<span class="post_time sub">
-						<script>
-						
-						timeBefore("<%=bdto.getReg_date()%>", <%=i%>);
-						
-						</script>
-						<%-- <%=bdto.getReg_date() %> --%></span>
-						<span class="post_lectuer">강의명 : <%=bdto.getL_name() %></span>
+						<span class="post_writer"><%=bdto.getWriter() %></span>
+						<span class="post_time"><%=bdto.getReg_date() %></span>
+						<span class="post_locuter"><%=bdto.getL_name() %></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='askView.bo?num=<%=bdto.getNum()%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>'"></div>
 					</div>
 				</div>
-				<%i++;} %>
+				<%} %>
 			</div>
 		</div>
 		<div class="content_side">
@@ -159,12 +107,5 @@ function timeBefore(time,i){	//현재시간과  글쓴시간을 비교해서 지
 
 	</article>
 	<jsp:include page="/include/footer.jsp"></jsp:include>
-	<script>
-	
-	
-				
-
-	</script>
-	
 </body>
 </html>

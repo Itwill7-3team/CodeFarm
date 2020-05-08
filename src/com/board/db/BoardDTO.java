@@ -14,6 +14,7 @@ public class BoardDTO {
 	private int re_seq;
 	private Timestamp reg_date;	//작성시간
 	private String l_name;		//강의 이름
+
 	// setter getter
 	public int getNum() {
 		return num;

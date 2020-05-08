@@ -58,6 +58,25 @@ public class LectureFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}	
+			System.out.println("/Search.le 처리 model->view");
+			
+			action = new LectureListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
@@ -76,5 +95,5 @@ public class LectureFrontController extends HttpServlet{
 		}
 
 	
-	}
+}
 }
