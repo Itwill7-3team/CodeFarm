@@ -39,4 +39,12 @@ public class OrderlistDAO {
 			e.printStackTrace();
 		}
 	}//자원 해제
+	
+	
+	
+	
+	
+	
+	
+	
 }
