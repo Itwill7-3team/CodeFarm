@@ -40,6 +40,7 @@ public class LectureDAO {
 		public LectureDTO getLectureDetail(int l_number){
 			LectureDTO ldto = null;
 			try {
+				getConnection();
 				System.out.print("getLectureDetail() : ");
 				sql = "select "
 					+ "  l_name,    l_id,   l_reg_date,  l_content,  l_type, "

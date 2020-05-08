@@ -23,6 +23,7 @@ public class LectureFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+
 		System.out.println("-----------[lectureFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
@@ -41,10 +42,23 @@ public class LectureFrontController extends HttpServlet{
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 		if(command.equals("/Main.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/main/main.jsp");
-			forward.setRedirect(false);
 			
+			System.out.println("/model->view");
+						
+						action = new LectureMainListAction();
+						
+						try {
+							forward = action.execute(request, response);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+		/* 삭제 예정 */	
+			/*
+			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
+			 * forward.setPath("./views/lecture/course2.jsp"); forward.setRedirect(false);
+			 */
+		/* 삭제 예정 */	
 			
 		}else if(command.equals("/Search.le")){
 			System.out.println("/Search.le 처리 model->view");
@@ -56,7 +70,6 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		}else if(command.equals("/Detail.le")){
 			action = new LectureDetailAction();
 			try {

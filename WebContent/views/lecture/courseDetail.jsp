@@ -61,6 +61,7 @@
 												<div class='star_solid' style="width: 97.16981132075472%">
 												<%-- <% for(int i=1; i<6; i++){ %> --%>
 													<i class="fa fa-star" aria-hidden="true"></i>
+													<i class="fa fa-star" aria-hidden="true"></i>
 													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
 														<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
 																					l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
@@ -123,7 +124,7 @@
 									</div>
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
-											<button class="btn is_fullwidth course_btn learn_btn is_primary" fxd-data='{"course_id":77623,"course_slug":"파이썬-기초-강좌"}'>
+											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">
 												바로 학습하기
 											</button>
 										</div>
