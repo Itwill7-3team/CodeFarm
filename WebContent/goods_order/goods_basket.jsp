@@ -235,7 +235,7 @@ word-wrap: break-word;}
 .myCheckli {font-size: 10px;}
 
 /* Set a style for all buttons */
-.btn {
+.Vbtn {
   border: none;
   background-color: inherit;
   padding:0;
@@ -244,7 +244,7 @@ word-wrap: break-word;}
   display: inline-block;
 }
 
-.btn:hover {color: red;}
+.Vbtn:hover {color: red;}
 
 
 .default {color: black;}
@@ -315,6 +315,16 @@ hr {
   .cancelbtn, .deletebtn {
      width: 100%;
   }
+}
+
+/* input 스타일 */
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid pink;
 }
 </style>
 <body>
@@ -393,7 +403,7 @@ hr {
 
     <li>합계&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=total %> 원</li>
     <li class="myCheckli"><input type="checkbox" id="myCheck" onclick="myFunction()" checked> (필수) 구매조건 및 개인정보취급방침 동의 
-    <button class="btn"onclick="document.getElementById('id01').style.display='block'">[보기]</button>
+    <button class="Vbtn"onclick="document.getElementById('id01').style.display='block'">[보기]</button>
     <div id="id01" class="Vmodal">
   <span onclick="document.getElementById('id01').style.display='none'" class="Vclose" title="VClose Modal">×</span>
   <form class="Vmodal-content" action="/action_page.php">
@@ -629,22 +639,35 @@ hr {
 				<form action="./OrderAdd.or" name="frmJoin" onSubmit="return CheckForm(this)">
 				    <div class="modal-content2">
 						<span class="close2">&times;</span>
-						은행 선택  <!-- 은행별 DB 테이블 생성 -->
-						<select id="bankch">
-							<option value="bk_ch" selected>은행을 선택해 주세요</option> 
-						  <option value="hana">하나은행</option>
-						  <option value="kakao">카카오뱅크</option>
-						  <option value="shinhan">신한은행</option>
-						  <option value="sc" >sc제일은행</option>
-						</select><br>
-						입금자명 <input type="text" placeholder="코딩팜"> <br>
-						현금영수증 <input type="radio" name="creceipt" value="so"> 소득공제용
-									 <input type="radio" name="creceipt" value="ji"> 지출증빙용
-									 <input type="radio" name="creceipt" value="no"> 미발행
-						<br> <input type="text" placeholder="휴대 전화 번호(-없이 숫자만)"><br>
-						<%-- <input type="text"><%=MemberDTO.getEmail() %> --%>  <!-- db에서 가져오기 넘겨줄값 수정하기 -->
-						<input type="checkbox" name="U_checkAgreement1" id="U_checkAgreement1"> 상기 결제 내용을 확인하였습니다.
-						<br><input type="submit" value="결제 완료">
+						<div class="b_cho" >
+							<h4>무통장 입금</h4><hr>
+							<table style="border-collapse: collapse;">
+							<tr>
+							<td>은행 선택 </td>
+							<td>
+							<select id="bankch">
+								<option value="bk_ch" selected>은행을 선택해 주세요</option> 
+							  <option value="hana">하나은행</option>
+							  <option value="kakao">카카오뱅크</option>
+							  <option value="shinhan">신한은행</option>
+							  <option value="sc" >sc제일은행</option>
+							</select></td>
+							</tr>
+							<tr>
+							<td>
+							입금자명 </td><td><input type="text" placeholder="코딩팜"> <br><br></td></tr>
+							<tr><td rowspan="2">현금영수증</td> <td> <input type="radio" name="creceipt" value="so"> 소득공제용
+										 <input type="radio" name="creceipt" value="ji"> 지출증빙용
+										 <input type="radio" name="creceipt" value="no"> 미발행<br>
+										 <!-- <input type="text" readonly value="휴대 전화 번호" style="width:35%"> -->
+						<input type="text" placeholder="휴대 전화 번호(-없이 숫자만)"></td></tr>
+					<%-- <tr><td>이메일<input type="text"><%=MemberDTO.getM_email() %></td></tr> --%>
+						</table><hr style="padding-bottom: 0px;">
+						
+							<input type="checkbox" name="U_checkAgreement1" id="U_checkAgreement1"  > 상기 결제 내용을 확인하였습니다.
+							
+							<br><input type="submit" value="결제">
+						</div>
 						</div>
 						</form>
 
