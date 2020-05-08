@@ -11,7 +11,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	if(session.getAttribute("loginEmail")!=null){
 	 loginEmail=(String)session.getAttribute("loginEmail");
 	}
-	
+	loginEmail="qsz78547@naver.com";
 %>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
