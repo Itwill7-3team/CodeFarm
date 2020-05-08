@@ -119,7 +119,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 								<select id="courses_order_select" name="order_select">
 									<option value="seq">추천순</option>
 									<option value="popular">인기순</option>
-									<option value="recent" selected>최신순</option>
+									<option value="recent" >최신순</option>
 									<option value="rating">평점순</option>
 									<option value="famous">학생수순</option>
 								</select>
@@ -333,9 +333,21 @@ $(function(){
 	$("#courses_order_select").change(function(){
 		var orderSelect = $("#courses_order_select option:selected").val();
 		alert(orderSelect);
-		if(oderSelect == seq){
-			/* {$total_count-$no+1} */
+		if(orderSelect == "seq"){
+			// alert(orderSelect);
+			location.href="./Search.le?item=seq";
+		}else if(orderSelect =="popular"){
+			location.href="./Search.le?item=popular";
+		}else if(orderSelect =="recent"){
+			location.href="./Search.le?item=recent";
+		}else if(orderSelect =="rating"){
+			location.href="./Search.le?item=rating";
+		}else if(orderSelect == "famous"){
+			location.href="./Search.le?item=famous";
 		}
+		
+		orderSelect 
+		
 	});
 });
 </script>

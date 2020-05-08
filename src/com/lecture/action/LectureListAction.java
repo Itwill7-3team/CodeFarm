@@ -23,6 +23,7 @@ public class LectureListAction implements Action{
 			item = "all";
 		}
 		/* 분류를 위한 방법 --보류 */
+		System.out.println("LectureListAction_execute() 11 호출");
 		
 		
 		List<LectureDTO> lectureList = ldao.getLecutreList(item);
