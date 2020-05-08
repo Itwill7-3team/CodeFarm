@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lecture.action.LectureListAction;
-
-
 public class LectureFrontController extends HttpServlet{
 
 	@Override
@@ -48,14 +45,19 @@ public class LectureFrontController extends HttpServlet{
 			forward.setPath("./views/main/main.jsp");
 			forward.setRedirect(false);
 			
-		/* 삭제 예정 */	
-			/*
-			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
-			 * forward.setPath("./views/lecture/course2.jsp"); forward.setRedirect(false);
-			 */
-		/* 삭제 예정 */	
 			
 		}else if(command.equals("/Search.le")){
+			forward=new ActionForward();
+			forward.setPath("./views/lecture/course2.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/Detail.le")){
+			action = new LectureDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}	
 			System.out.println("/Search.le 처리 model->view");
 			
 			action = new LectureListAction();
@@ -65,7 +67,6 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 		
 		
 		
@@ -94,5 +95,5 @@ public class LectureFrontController extends HttpServlet{
 		}
 
 	
-	}
+}
 }

@@ -15,13 +15,7 @@ public class InstructorDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  InstructorDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	private Connection getConnection() throws Exception{
 		Context init=new InitialContext();
@@ -48,8 +42,8 @@ public class InstructorDAO {
 		System.out.println("insertlectures(ldto)");
 		
 		int num = 0;
-		
 		try {
+			con=getConnection();
 			sql = "select max(l_number) from lecture";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -81,7 +75,7 @@ public class InstructorDAO {
 			pstmt.executeUpdate();
 			System.out.println("강의 등록 성공");
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("강의 등록 실패");
