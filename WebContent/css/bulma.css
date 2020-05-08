@@ -296,7 +296,7 @@ article, aside, figure, footer, header, hgroup, section {
   display: block;
 }
 
-body, input, select, textarea, .lecbtn {
+body, select, textarea, .lecbtn {
   font-family: Noto Sans KR, "system-ui", "Apple SD Gothic Neo", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
