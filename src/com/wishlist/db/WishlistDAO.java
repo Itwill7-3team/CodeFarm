@@ -45,6 +45,40 @@ public class WishlistDAO {
 		}
 	}//자원 해제
 	
+	//checkGoods()
+		public int checkGoods(WishlistDTO wdto){
+			
+			int check=0;
+			//기존의 장바구니에 해당 상품이 있는지 없는지 판별
+			try {
+				//1,2
+				getConnection();
+				
+				//3
+				sql="SELECT * FROM wishlist WHERE w_l_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, wdto.getW_l_num());
+				rs=pstmt.executeQuery();
+
+				if(rs.next()){ //상품이 있다. => 상품추가안함.
+					check=1;
+					
+					System.out.println("@@ 위시리스트 기존상품!");
+					return check;
+				}else{ //상품이없다 => check 0 
+					check=0;
+					System.out.println("@@ 위시리스트 상품확인(신규) 완료!");
+				}
+				System.out.println("@@ 장바구니 체크 완료!(0:신규, 1:기존) :"+check);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			return check;
+		}
+		//checkGoods()
+	
+	
 	public void wishlistAdd (WishlistDTO wdto) {
 		int w_num = 0;
 		try {

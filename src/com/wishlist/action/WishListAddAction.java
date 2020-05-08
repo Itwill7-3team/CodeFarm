@@ -37,15 +37,14 @@ public class WishListAddAction implements Action {
 		
 		// WishlistDAO 저장
 		WishlistDAO wdao = new WishlistDAO();
-		// 기존의 위시리스트에 상품이 있는지 체크
-/*		int check = wdao.checkGoods(wdto);
+		// 기존의 위시리스트에 상품이 있는지 체크 => 상품이 있으면 토스트로 이미 존재하는상품 안내
+		int check = wdao.checkGoods(wdto);
 		
 		// 없을경우 위시리스트에 추가
 		if(check != 1){
-			wdao.WishlistAdd(wdto);
+			wdao.wishlistAdd(wdto);
 		}
-		*/
-		wdao.wishlistAdd(wdto);
+		
 		// 페이지 이동 (장바구니 목록 페이지)
 		forward.setPath("./WishList.wi");
 		forward.setRedirect(true);	
