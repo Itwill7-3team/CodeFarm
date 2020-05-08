@@ -334,7 +334,7 @@ hr {
   %>
    
   <section id="alll" >			<!-- 위시 수정 -->
-   <h3 class="boxh3"> 바구니 > <a href="goods_order/goods_wishlist.jsp" style="font-size: 16px;">위시리스트</a></h3>
+   <h3 class="boxh3">위시리스트><a href="BasketList.ba" style="font-size: 16px;">장바구니</a></h3>
   <%
   int total=0;
   for(int i=0;i<wishList.size();i++){
@@ -349,7 +349,7 @@ hr {
 		         </div>
 		 <div class="column content"> 
 		  <a href="#" ><%=ldto.getL_title() %></a>
-		  <p style="font-size: 12px;"> <%=ldto.getL_m_name()%></p> <!-- basketDAO 추가 설정 -->
+		  <p style="font-size: 12px;"> <%=ldto.getL_m_name()%></p>
 		  </div>
 		  </div>
 		  
@@ -366,8 +366,6 @@ hr {
 	</div>
 		
 		  
-	
-
 <% 
   }  
   %>

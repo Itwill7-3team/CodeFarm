@@ -91,7 +91,7 @@ for(int i=0;i<newList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="#"><i class="fa fa-heart-o"></i></a>
+		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
 		<a href="#"><i class="fa fa-cart-plus"></i></a>
 		</span>
 		
@@ -132,7 +132,7 @@ for(int i=0;i<freeList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="#"><i class="fa fa-heart-o"></i></a>
+		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
 		<a href="#"><i class="fa fa-cart-plus"></i></a>
 		</span>
 		
