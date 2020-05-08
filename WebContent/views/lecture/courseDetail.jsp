@@ -1,84 +1,86 @@
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE>
 <html lang="ko-KR">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>@@@@@@@@@사이트명 - 강의명@@@@@@@@@@@2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<title>코딩팜 - ${ ldto.l_m_id }</title>
 
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="./css/courseDetail.css">
 <link rel="stylesheet" href="./css/bulma.css">
 
 </head>
+
+<script type="text/javascript">
+	function numberFormat(inputNumber) {
+		return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+</script>
+
 <body class="course_detail">
 	<%
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto");
 	%>
 	<div id="root">
 	
-<!-- 상단 header include -->	
-
+<!-- include header -->	
 	<jsp:include page="/include/header.jsp"/>
-
-<!-- 상단 header include -->	
+<!-- include header -->	
 		
 		<main id="main">
 		<section class="course_header_container">
 			<div class="container">
 				<div class="columns">
+				
+				<!-- title_bar -->
 					<div class="column is-8">
 						<div class="columns">
+						
+						<!-- lecture thumbnail -->
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-								
-			
-								
-									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)">
-<!-- 썸네일 주소 확인 -->				
-
-
-							
+									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title()%>">
 								</div>
 							</div>
+						<!-- lecture thumbnail -->
+						
+						<!-- lecture title -->
 							<div class="column course_title">
 								<div>
-								
-								
-<!-- 강의 명 가져오기(DB)  -->								
-									<h1>김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)</h1>
-<!-- 강의 명 가져오기(DB)  -->								
-
-
-		
+									<h1><%= ldto.getL_title()%></h1>
 									<div class="course_meta">
 										<span>
-
-
-<!-- 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
+										
+<!-- 해당 강의 전체 평점 확인 후 style 수정(DB review TABLE select avg(rating) 가져오기(dao)) -->
+										<!-- review 별점 전체 평균  -->
 											<div class='rating_star'>
 												<div class='star_solid' style="width: 97.16981132075472%">
-												<% for(int i=1; i<6; i++){ %>
+												<%-- <% for(int i=1; i<6; i++){ %> --%>
+													<i class="fa fa-star" aria-hidden="true"></i>
 													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
 														<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
 																					l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
 													</svg>
-												<%} %>
+												<%-- <% } %> --%>
 												</div>
 												<% for(int i=5; i>0; i--){ %>
-												<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
+											<!-- 		<i class="far fa-star"></i> -->
+												<!-- <svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
 													<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7
 																				L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7 l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 z
 																				M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7 -23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z"/>
-												</svg>
-												<%} %>
+												</svg> -->
+												<% } %>
+												
 											</div>
-<!-- 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
+										<!-- review 별점 전체 평균  -->
+<!-- 해당 강의 전체 평점 확인 후 style 수정(DB review TABLE select avg(rating) 가져오기(dao)) -->
 
-
-
-
-<!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->											
+<!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->	
 											<small>(212개의 수강평)</small>
 										</span>
 										<br class="is-hidden-mobile">
@@ -89,15 +91,16 @@
 										</small>
 <!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->											
 										
-										
-
-
-										
 									</div>
 								</div>
 							</div>
+						<!-- lecture title -->
+						
 						</div>
 					</div>
+				<!-- title_bar -->
+				
+				<!-- SideMenu -->
 					<div class="column is-4 enroll_btn_container">
 						<div class="course_floating_btn">
 							<div class="course_floating_top">
@@ -109,7 +112,13 @@
 									
 <!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->									
 										<div class="course_price">
-											무료
+											<% if (ldto.getL_price() == 0) { %>
+												무료
+											<% } else { %>
+											<script type="text/javascript">
+												document.write(numberFormat(${ ldto.l_price }));					
+											</script>원
+											<% } %>
 										</div>
 									</div>
 									<div class="course_btn_section">
@@ -121,16 +130,8 @@
 									</div>
 <!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->									
 
-
-
-
-
 								</div>
 								<div class="course_info_cover">
-								
-								
-								
-								
 								
 <!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->								
 									<div class="course_info_row">
@@ -178,7 +179,7 @@
 													<div class="el_title">김왼손의 파이썬 예제 뽀개기</div>
 													<div class="el_subinfo">
 														<div class="el_subtitle">
-															<span>￦0</span>
+															<span>￦</span>
 														</div>
 														<div class="el_metas">
 															<i class="fas fa-user"></i> 1270 <i class="fas fa-star"></i> 4.9
@@ -219,10 +220,14 @@
 							</div>
 						</div>
 					</div>
+				<!-- SideMenu -->
+					
 				</div>
 			</div>
 		</section>
 		<section class="course_description_container">
+		
+		<!-- 강의 상세 Navbar -->
 			<div class="tabs">
 				<ul class="container">
 					<li class="tabs_li description is-active">
@@ -236,6 +241,8 @@
 					</li>
 				</ul>
 			</div>
+		<!-- 강의 상세 Navbar -->
+		
 			<div class="container">
 				<div class="course_description">
 					<div class="columns">
@@ -1431,7 +1438,8 @@
 									
 									
 
-<!-- 회원별 리뷰 평점 & 리뷰 내용 & 작성일로부터의 기간 받아오기(DB) -->									
+<!-- 회원별 리뷰 평점 & 리뷰 내용 & 작성일로부터의 기간 받아오기(DB) -->		
+<!-- 리뷰 1 -->							
 										<div class="article_container">
 											<article class="media review_item">
 												<figure class="media-left image is-64x64">
@@ -1460,8 +1468,11 @@
 																<%} %>
 															</div>
 														</span>
+										<!-- 회원 닉네임 -->				
 														<strong>조수연</strong>
+										<!-- 회원 닉네임 -->				
 														<small class="review updated_at">
+										<!--  -->				
 															<span>8달 전</span>
 															<span class="option"></span>
 														</small>
@@ -1471,9 +1482,42 @@
 															김왼손님, 진짜 감사합니다. 이제 시작이라서 한참은 더 헤메겠지만, 너무 재미있는 강의 였어요. 강추 백만개 날리고 싶어요~
 														</div>
 													</div>
+													
+												
+												<!-- review_comment -->
+													<div class="review_comments">
+														<div class="article_container">
+															<article class="media comment" fxd-data="{&quot;id&quot;:48107}">
+																<figure class="media-left image is-32x32">
+																	<img loading="lazy" src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" data-src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" class="swiper-lazy" alt="장기효(캡틴판교)">
+																	<div class="onload_placeholder"></div>
+																	<div class="swiper-lazy-preloader"></div>
+																</figure>
+																<div class="media-content">
+																	<div class="content">
+																		<p>
+																			<small>
+																				<span class="author">
+																					<strong>장기효(캡틴판교)</strong>
+																				</span>
+																				<span class="updated_at">2달 전</span>
+																			</small>
+																			<br>
+																			<span class="article_body">
+																				안녕하세요 세훈님, 도움이 되었던 부분에 대해 자세히 적어주셔서 감사합니다 :) 개인 프로젝트 하실 때 수업 내용들을 많이 참고하셔서 재밌게 개발하실 수 있으면 좋겠네요. 후속 강의들도 많은 관심 부탁드립니다 감사합니다 :)
+																			</span>
+																		</p>
+																	</div>
+																</div>
+															</article>
+														</div>
+													</div>
+												<!-- review_comment -->
+													
 												</div>
 											</article>
 										</div>
+<!-- 리뷰 1 -->	
 										<div class="article_container">
 											<article class="media review_item" fxd-data='{"id":13600,"star":5,"type":"review"}'>
 												<figure class="media-left image is-64x64">
@@ -1640,6 +1684,7 @@
 	    });
 /* 강의 목록 opne */
     
+		
 	});
 	
 	</script>
