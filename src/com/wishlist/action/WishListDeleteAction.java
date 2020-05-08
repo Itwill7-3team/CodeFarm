@@ -16,13 +16,13 @@ public class WishListDeleteAction implements Action{
 		// 세션값 처리
 		HttpSession session = request.getSession();
 		String id =(String) session.getAttribute("id");
-		
+		id="test";
 		ActionForward forward = new ActionForward();
-		if(id == null){
+	/*	if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
-		}
+		}*/
 		
 		// 삭제할 위시리스트 번호 저장
 		int w_num = Integer.parseInt(request.getParameter("w_num"));

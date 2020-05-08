@@ -21,7 +21,7 @@ public class WishListAction implements Action{
 		HttpSession session = request.getSession();
 		
 		String id = (String) session.getAttribute("id");
-		
+		id="test";//////////아이디 임의지정
 		ActionForward forward = new ActionForward();
 /*		if(id == null){
 			forward.setPath("./MemberLogin.me");
@@ -31,7 +31,7 @@ public class WishListAction implements Action{
 		
 		// BasketDAO 객체 생성
 		WishlistDAO wdao = new WishlistDAO();
-		// 장바구 리스트 가져와서 저장 
+		// 위시 리스트 가져와서 저장 
 		Vector vec = wdao.getWishList(id);
 
 		// 해당정보 request 저장
@@ -44,7 +44,7 @@ public class WishListAction implements Action{
 		
 		//request.setAttribute("basketList", vec.get(0));
 		
-		forward.setPath("./goods_order/goods_basket.jsp");
+		forward.setPath("./goods_order/goods_wishlist.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

@@ -43,7 +43,7 @@ public class WishlistFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("/WishList.wi")){
+		if(command.equals("/WishListAdd.wi")){
 			action = new WishListAddAction();
 			try {
 				forward = action.execute(request, response);

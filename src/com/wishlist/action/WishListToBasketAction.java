@@ -7,12 +7,12 @@ import javax.servlet.http.HttpSession;
 import com.wishlist.db.WishlistDAO;
 import com.wishlist.db.WishlistDTO;
 
-public class WishListAddAction implements Action {
-
+public class WishListToBasketAction implements Action {
+//위시리스트에서 삭제+장바구니에 추가
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("WishListAddAction_execute() 호출");
+		System.out.println("WishListToBasketAction_execute() 호출");
 		
 		// 세션값을 사용해서 장바구니 사용 가능 
 		// 세션값이 없을경우 장바구니 사용 불가능 (로그인 페이지 이동)

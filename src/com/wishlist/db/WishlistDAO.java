@@ -45,7 +45,7 @@ public class WishlistDAO {
 		}
 	}//자원 해제
 	
-	public void wishlistAdd (WishlistDTO bkdto) {
+	public void wishlistAdd (WishlistDTO wdto) {
 		int w_num = 0;
 		try {
 			con = getConnection();
@@ -62,9 +62,9 @@ public class WishlistDAO {
 			sql = "INSERT INTO wishlist VALUES(?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, w_num);
-			pstmt.setString(2, bkdto.getW_m_id());
-			pstmt.setInt(3, bkdto.getW_l_num());
-			pstmt.setTimestamp(4, bkdto.getW_date());
+			pstmt.setString(2, wdto.getW_m_id());
+			pstmt.setInt(3, wdto.getW_l_num());
+			pstmt.setTimestamp(4, wdto.getW_date());
 	
 			pstmt.executeUpdate();
 			System.out.println("~*~*~*~*~* 위시리스트 저장 완료");
@@ -94,14 +94,14 @@ public class WishlistDAO {
 			
 			while (rs.next()) {
 				WishlistDTO wdto = new WishlistDTO();
-				wdto.setW_date(rs.getTimestamp("b_date"));
-				wdto.setW_l_num(rs.getInt("b_l_num"));
-				wdto.setW_m_id(rs.getString("b_m_id"));
+				wdto.setW_date(rs.getTimestamp("w_date"));
+				wdto.setW_l_num(rs.getInt("w_l_num"));
+				wdto.setW_m_id(rs.getString("w_m_id"));
 				wdto.setW_num(rs.getInt("w_num"));
 				
 				wishList.add(wdto);
 				
-				sql = "SELECT * FROM lecture WHERE num=?";
+				sql = "SELECT * FROM lecture WHERE l_number=?";
 				pstmt2 = con.prepareStatement(sql);
 				
 				pstmt2.setInt(1, wdto.getW_l_num());
