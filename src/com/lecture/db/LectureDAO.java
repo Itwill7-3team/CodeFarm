@@ -82,19 +82,31 @@ public class LectureDAO {
 	// getLectureList()
 	public List<LectureDTO> getLecutreList(String item){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
-		
+		StringBuffer SQL = new StringBuffer();
+
 		try {
-		con=getConnection();
-		/*SQL.append("select * from lecture");
-		if(item.equals("")){
+		con = getConnection();
+		SQL.append("select * from lecture");
+		if(item.equals("all")){
+		}else if(item.equals("seq")){
+			SQL.append(" order by l_number desc");
+		}else if(item.equals("popular")){
+			SQL.append(" where best=?");
 		}
-			
+		/*else if(item.equals("recent")){
+			SQL.append(" where best=?");
+		}*/
+		else if(item.equals("famous")){
+			SQL.append(" where best=?");
+		}
+		
 		pstmt = con.prepareStatement(SQL.toString());
 		
-		if(item.equals(""))*/
-			
-		sql = "select * from lecture";	
-		pstmt = con.prepareStatement(sql);	
+		if(item.equals("all")){
+		}
+		/*else{
+			pstmt.setString(1, item);
+		}*/
 		
 		rs = pstmt.executeQuery();
 			
@@ -123,7 +135,7 @@ public class LectureDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		}finally{
 			closeDB();
 		}
 		
