@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 public class OrderlistDTO {
 
 	private int o_num;			//결제 번호
-	private int o_b_num;		//결제 장바구니 번호
+	private String o_b_num;		//결제 장바구니 번호
 	private int o_l_price;		//결제 강의 가격
 	private int o_l_num;		//결제 강의 번호
 	private String o_l_name;	//결제 강의 이름
-	private int o_m_id;			//결제 회원 아이디
+	private String o_m_id;			//결제 회원 아이디
 	private String o_t_type;	//결제 방식
 	private String o_t_bank;	//온라인 결제
 	private String o_t_payer;	//입금자명
@@ -24,10 +24,10 @@ public class OrderlistDTO {
 	public void setO_num(int o_num) {
 		this.o_num = o_num;
 	}
-	public int getO_b_num() {
+	public String getO_b_num() {
 		return o_b_num;
 	}
-	public void setO_b_num(int o_b_num) {
+	public void setO_b_num(String o_b_num) {
 		this.o_b_num = o_b_num;
 	}
 	public int getO_l_price() {
@@ -48,10 +48,10 @@ public class OrderlistDTO {
 	public void setO_l_name(String o_l_name) {
 		this.o_l_name = o_l_name;
 	}
-	public int getO_m_id() {
+	public String getO_m_id() {
 		return o_m_id;
 	}
-	public void setO_m_id(int o_m_id) {
+	public void setO_m_id(String o_m_id) {
 		this.o_m_id = o_m_id;
 	}
 	public String getO_t_type() {

@@ -39,7 +39,7 @@ public class OrderFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("주소")){
+		if(command.equals("/OrderAdd.or")){
 			
 			
 			

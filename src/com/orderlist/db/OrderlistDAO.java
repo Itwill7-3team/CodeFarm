@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -39,6 +42,28 @@ public class OrderlistDAO {
 			e.printStackTrace();
 		}
 	}//자원 해제
+
+
+	public void addOrder(OrderlistDTO oldto, List basketList, List lectureList) {
+		// TODO Auto-generated method stub
+		
+		int o_num = 0;
+		int o_b_num = 0;
+		
+		// 주문번호 변경을 하기위한 객체
+		Calendar cal = Calendar.getInstance();
+		// -> 시스템의 시간정보를 가져다 사용(싱글턴패턴)
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
