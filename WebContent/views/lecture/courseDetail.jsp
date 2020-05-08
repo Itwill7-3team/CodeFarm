@@ -160,11 +160,11 @@
 							</div>
 							<div class="course_relation_cover course_floating_bottom is-hidden-mobile">
 								<div class="course_relation_tabs">
-									<div class="course_relation_tab active" id="course_another_tab" fxd-data='{"type": "another"}'>
+									<div class="course_relation_tab divactive" id="course_another_tab" fxd-data='{"type": "another"}'>
 										다른 강의
 									</div>
 								</div>
-								<div class="course_another_cover course_relation_list_cover active">
+								<div class="course_another_cover course_relation_list_cover divactive">
 								
 								
 								

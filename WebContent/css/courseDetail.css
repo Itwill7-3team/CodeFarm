@@ -1252,7 +1252,7 @@ article.media span.option span {
 	}
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_tabs .course_relation_tab.active
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_tabs .course_relation_tab.divactive
 	{
 	font-weight: 700
 }
@@ -1267,7 +1267,7 @@ article.media span.option span {
 	display: none
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover.active
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover.divactive
 	{
 	display: block
 }
