@@ -64,4 +64,5 @@
     <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
   <!-- 위시리스트 -->
+  
 </web-app>

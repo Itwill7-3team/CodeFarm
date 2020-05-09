@@ -74,7 +74,6 @@
         </tr>
 
 <!-- 이미지 -->    
-        
         <tr>
           <td>메인 강의이미지</td>
           <td><input type="file" name="file1"></td>
