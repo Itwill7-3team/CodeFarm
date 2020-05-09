@@ -41,7 +41,7 @@
 		  </td>
         </tr>
         <tr>
-          <td>강사 제목</td>
+          <td>강의 제목</td>
           <td><input type="text" name="l_title"></td>
         </tr>
         <tr>
@@ -51,6 +51,14 @@
         <tr>
           <td>강의 분류</td>
           <td><input type="text" name="l_type"></td>
+        </tr>
+        <tr>
+          <td>강의 분류2</td>
+          <td><input type="text" name="l_type2"></td>
+        </tr>
+        <tr>
+          <td>강의 분류3</td>
+          <td><input type="text" name="l_type3"></td>
         </tr>
         <tr>
           <td>강의 가격</td>
