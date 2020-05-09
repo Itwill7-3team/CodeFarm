@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.lecture.db.LectureDTO;
+import com.wishlist.db.WishlistDTO;
 
 public class BasketDAO {
 	Connection con= null;
@@ -44,6 +45,39 @@ public class BasketDAO {
 		}
 	}//자원 해제
 	
+	//checkGoods()
+			public int checkGoods(BasketDTO wdto){
+				
+				int check=0;
+				//기존의 장바구니에 해당 상품이 있는지 없는지 판별
+				try {
+					//1,2
+					getConnection();
+					
+					//3
+					sql="SELECT * FROM basket WHERE b_l_num=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setInt(1, wdto.getB_l_num());
+					rs=pstmt.executeQuery();
+
+					if(rs.next()){ //상품이 있다. => 상품추가안함.
+						check=1;
+						
+						System.out.println("@@ 장바구니 기존상품!");
+						return check;
+					}else{ //상품이없다 => check 0 
+						check=0;
+						System.out.println("@@ 장바구니 상품확인(신규) 완료!");
+					}
+					System.out.println("@@ 장바구니 체크 완료!(0:신규, 1:기존) :"+check);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+				return check;
+			}
+			//checkGoods()
+		
 
 	public void basketAdd (BasketDTO bkdto) {
 		int b_num = 0;
@@ -59,14 +93,15 @@ public class BasketDAO {
 			}
 			System.out.println("장바구니 번호: "+b_num);
 			
-			sql = "INSERT INTO basket VALUES(?,?,?,?,?)";
+			sql = "INSERT INTO basket VALUES(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, b_num);
 			pstmt.setString(2, bkdto.getB_m_id());
 			pstmt.setInt(3, bkdto.getB_l_num());
-			pstmt.setString(4, bkdto.getB_l_name());
+			pstmt.setTimestamp(4, bkdto.getB_date());
 			pstmt.setInt(5, bkdto.getB_l_price());
-			pstmt.setTimestamp(6, bkdto.getB_date());
+			pstmt.setString(6, bkdto.getB_l_name());
+					
 	
 			pstmt.executeUpdate();
 			System.out.println("~*~*~*~*~* 장바구니 저장 완료");
@@ -105,7 +140,7 @@ public class BasketDAO {
 				
 				basketList.add(bkdto);
 				
-				sql = "SELECT * FROM lecture WHERE num=?";
+				sql = "SELECT * FROM lecture WHERE l_number=?";
 				pstmt2 = con.prepareStatement(sql);
 				
 				pstmt2.setInt(1, bkdto.getB_l_num());
@@ -114,8 +149,11 @@ public class BasketDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_m_id(rs2.getString("l_m_id"));
+					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
+					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
 					

@@ -43,7 +43,7 @@ public class LectureDAO {
 				getConnection();
 				System.out.print("getLectureDetail() : ");
 				sql = "select "
-					+ "  l_m_name,    l_m_id,   l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+					+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
 					+ "  l_price,   l_pct,  l_img,       l_tag,      l_goods, "
 					+ "  pct_date,  paynum "
 					+ "from lecture "
@@ -54,8 +54,8 @@ public class LectureDAO {
 				if(rs.next()){
 					ldto = new LectureDTO();
 					ldto.setL_number(l_number);
-					ldto.setL_m_name(rs.getString("l_name"));
-					ldto.setL_m_id(rs.getString("l_id"));
+					ldto.setL_m_name(rs.getString("l_m_name"));
+					ldto.setL_m_id(rs.getString("l_m_id"));
 					ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 					ldto.setL_content(rs.getString("l_content"));
 					ldto.setL_type(rs.getString("l_type"));
@@ -68,6 +68,7 @@ public class LectureDAO {
 					ldto.setL_goods(rs.getInt("l_goods"));
 					ldto.setPct_date(rs.getTimestamp("pct_date"));
 					ldto.setPaynum(rs.getInt("paynum"));
+					ldto.setL_title(rs.getString("l_title"));
 				}
 				System.out.println("강의 상세정보 저장 완료");
 			} catch (Exception e) {

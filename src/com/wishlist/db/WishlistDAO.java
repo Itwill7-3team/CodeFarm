@@ -49,7 +49,7 @@ public class WishlistDAO {
 		public int checkGoods(WishlistDTO wdto){
 			
 			int check=0;
-			//기존의 장바구니에 해당 상품이 있는지 없는지 판별
+			//기존의 위시리스트에 해당 상품이 있는지 없는지 판별
 			try {
 				//1,2
 				getConnection();
@@ -69,7 +69,7 @@ public class WishlistDAO {
 					check=0;
 					System.out.println("@@ 위시리스트 상품확인(신규) 완료!");
 				}
-				System.out.println("@@ 장바구니 체크 완료!(0:신규, 1:기존) :"+check);
+				System.out.println("@@ 위시리스트 체크 완료!(0:신규, 1:기존) :"+check);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -144,8 +144,11 @@ public class WishlistDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_m_id(rs2.getString("l_m_id"));
+					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
+					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
 					
