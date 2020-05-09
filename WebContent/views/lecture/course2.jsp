@@ -12,7 +12,7 @@
 <link href="./css/course1.css" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <%
@@ -119,7 +119,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 								<select id="courses_order_select" name="order_select">
 									<option value="seq">추천순</option>
 									<option value="popular">인기순</option>
-									<option value="recent" selected>최신순</option>
+									<option value="recent" >최신순</option>
 									<option value="rating">평점순</option>
 									<option value="famous">학생수순</option>
 								</select>
@@ -220,7 +220,7 @@ for(int i=0;i<lectureList.size();i++){
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class="course_title"><%=ldto.getL_m_name() %></div>
+												<div class="course_title"><%=ldto.getL_title() %></div>
 												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
@@ -328,8 +328,29 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<!--  -->
 <script>
-
+$(function(){
+	$("#courses_order_select").change(function(){
+		var orderSelect = $("#courses_order_select option:selected").val();
+		alert(orderSelect);
+		if(orderSelect == "seq"){
+			// alert(orderSelect);
+			location.href="./Search.le?item=seq";
+		}else if(orderSelect =="popular"){
+			location.href="./Search.le?item=popular";
+		}else if(orderSelect =="recent"){
+			location.href="./Search.le?item=recent";
+		}else if(orderSelect =="rating"){
+			location.href="./Search.le?item=rating";
+		}else if(orderSelect == "famous"){
+			location.href="./Search.le?item=famous";
+		}
+		
+		orderSelect 
+		
+	});
+});
 </script>
 
 </body>
