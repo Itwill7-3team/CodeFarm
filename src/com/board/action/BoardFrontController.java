@@ -63,6 +63,14 @@ public class BoardFrontController extends HttpServlet{
 		}else if(command.equals("/request.bo")){
 			
 		}
+	else if(command.equals("/dashboard.bo")){
+		action=new dashboardAction();
+		try{
+			forward=action.execute(request, response);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
