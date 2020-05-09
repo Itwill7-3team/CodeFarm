@@ -50,7 +50,7 @@ for(int i=0;i<bestList.size();i++){
 		
 		<span class="mg-l50">
 		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
 		</span>
 	
 	<div class="mg-t10">

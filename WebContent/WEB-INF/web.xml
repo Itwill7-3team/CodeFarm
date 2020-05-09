@@ -14,6 +14,16 @@
     <url-pattern>*.le</url-pattern>
   </servlet-mapping>
   <!-- 강의 -->
+  <!-- 강의등록 -->
+  <servlet>
+    <servlet-name>InstructorFrontController</servlet-name>
+    <servlet-class>com.instructor.action.InstructorFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InstructorFrontController</servlet-name>
+    <url-pattern>*.in</url-pattern>
+  </servlet-mapping>
+  <!-- 강의등록 -->
   <!-- 게시판 -->
   <servlet>
     <servlet-name>BoardFrontController</servlet-name>
@@ -64,4 +74,5 @@
     <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
   <!-- 위시리스트 -->
+  
 </web-app>

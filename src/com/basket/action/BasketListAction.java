@@ -24,6 +24,8 @@ public class BasketListAction implements Action {
 		
 		String id = (String) session.getAttribute("id");
 		
+		id="test";
+		
 		ActionForward forward = new ActionForward();
 /*		if(id == null){
 			forward.setPath("./MemberLogin.me");
