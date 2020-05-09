@@ -10,7 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.star.db.StarDTO;
+import com.review.db.ReviewDTO;
 
 public class QuestionDAO {
 	Connection con= null;
