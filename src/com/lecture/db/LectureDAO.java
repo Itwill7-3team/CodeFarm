@@ -199,14 +199,16 @@ public class LectureDAO {
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
 						ldto.setL_content(rs.getString("l_content"));
 						ldto.setL_goods(rs.getInt("l_goods"));
-						ldto.setL_m_id(rs.getString("l_id"));
-						ldto.setL_m_name(rs.getString("l_name"));
+						ldto.setL_m_id(rs.getString("l_m_id"));
+						ldto.setL_m_name(rs.getString("l_m_name"));
 						ldto.setL_number(rs.getInt("l_number"));
 						ldto.setL_pct(rs.getInt("l_pct"));
 						ldto.setL_price(rs.getInt("l_price"));
 						ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 						ldto.setL_tag(rs.getString("l_tag"));
 						ldto.setL_type(rs.getString("l_type"));
+						ldto.setL_type2(rs.getString("l_type2"));
+						ldto.setL_type3(rs.getString("l_type3"));
 						ldto.setPaynum(rs.getInt("paynum"));
 						ldto.setPct_date(rs.getTimestamp("pct_date"));
 						ldto.setL_img(rs.getString("l_img"));
