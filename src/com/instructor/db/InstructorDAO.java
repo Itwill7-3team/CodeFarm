@@ -54,8 +54,8 @@ public class InstructorDAO {
 			System.out.println("lecture num");
 			
 			sql = "insert into lecture"
-					+ "(l_number,l_name,l_id,l_reg_date,l_content,l_type,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum,l_title) "
-					+ "value(?,?,?,now(),?,?,?,?,?,?,?,now(),?,?)";
+					+ "(l_number,l_m_name,l_m_id,l_reg_date,l_content,l_type,l_type2,l_type3,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum,l_title) "
+					+ "value(?,?,?,now(),?,?,?,?,?,?,?,?,?,now(),?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, ldto.getL_m_name());
@@ -63,14 +63,16 @@ public class InstructorDAO {
 			/*reg_date*/
 			pstmt.setString(4, ldto.getL_content());
 			pstmt.setString(5, ldto.getL_type());
-			pstmt.setInt(6, ldto.getL_price());
-			pstmt.setInt(7, ldto.getL_pct());
-			pstmt.setString(8, ldto.getL_img());
-			pstmt.setString(9, ldto.getL_tag());
-			pstmt.setInt(10, ldto.getL_goods());
+			pstmt.setString(6, ldto.getL_type());
+			pstmt.setString(7, ldto.getL_type());
+			pstmt.setInt(8, ldto.getL_price());
+			pstmt.setInt(9, ldto.getL_pct());
+			pstmt.setString(10, ldto.getL_img());
+			pstmt.setString(11, ldto.getL_tag());
+			pstmt.setInt(12, ldto.getL_goods());
 			/*pct_date*/
-			pstmt.setInt(11, ldto.getPaynum());
-			pstmt.setString(12, ldto.getL_title());
+			pstmt.setInt(13, ldto.getPaynum());
+			pstmt.setString(14, ldto.getL_title());
 			
 			pstmt.executeUpdate();
 			System.out.println("강의 등록 성공");
