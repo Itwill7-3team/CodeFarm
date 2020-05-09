@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `codefarm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `codefarm`;
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: codefarm
 -- ------------------------------------------------------
--- Server version	5.7.28-log
+-- Server version	5.6.45-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `basket` (
   `b_l_price` int(11) NOT NULL DEFAULT '0',
   `b_l_name` varchar(45) NOT NULL,
   PRIMARY KEY (`b_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
+INSERT INTO `basket` VALUES (1,'test',2,'2020-05-09 12:10:13',50000,'Nodejs'),(2,'test',3,'2020-05-09 12:17:05',50000,'Phython'),(3,'test',4,'2020-05-09 12:17:09',50000,'vue.js'),(4,'test',5,'2020-05-09 12:32:06',50000,'react');
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +157,7 @@ CREATE TABLE `lecture` (
   `pct_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `paynum` int(11) DEFAULT NULL,
   PRIMARY KEY (`l_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,6 +166,7 @@ CREATE TABLE `lecture` (
 
 LOCK TABLES `lecture` WRITE;
 /*!40000 ALTER TABLE `lecture` DISABLE KEYS */;
+INSERT INTO `lecture` VALUES (00000000001,'변재정','lee','SpringFrameWork','SpringFrameWork','웹개발','웹개발','웹개발',50000,0,'lect_64.png,null,null,null','best',0,'2020-05-09 09:32:04','2020-05-09 09:32:04',0),(00000000002,'김홍준','lee','Nodejs','Nodejs','웹개발','웹개발','웹개발',50000,0,'lect_71.png,null,null,null','best',0,'2020-05-09 09:36:49','2020-05-09 09:36:49',0),(00000000003,'최우영','lee','Phython','Phython','웹개발','웹개발','웹개발',50000,0,'lect_81.png,null,null,null','best',0,'2020-05-09 09:42:57','2020-05-09 09:42:57',0),(00000000004,'이소영','lee','vue.js','vue.js','웹개발','웹개발','웹개발',50000,0,'lect_91.png,null,null,null','best',0,'2020-05-09 09:43:13','2020-05-09 09:43:13',0),(00000000005,'박유준','lee','react','react','웹개발','웹개발','웹개발',50000,0,'lect_101.png,null,null,null','best',0,'2020-05-09 09:43:29','2020-05-09 09:43:29',0),(00000000006,'조수아','lee','Java','Java','웹개발','웹개발','웹개발',50000,0,'lect_11.png,null,null,null','new',0,'2020-05-09 09:45:03','2020-05-09 09:45:03',0),(00000000007,'정민수','lee','lecture','lecture','웹개발','웹개발','웹개발',50000,0,'lect_21.png,null,null,null','new',0,'2020-05-09 09:45:23','2020-05-09 09:45:23',0),(00000000008,'변재정','lee','lecture','lecture','웹개발','웹개발','웹개발',50000,0,'lect_31.png,null,null,null','new',0,'2020-05-09 09:45:33','2020-05-09 09:45:33',0),(00000000009,'김홍준','lee','html&css3','html&css3','웹개발','웹개발','웹개발',50000,0,'lect_41.png,null,null,null','new',0,'2020-05-09 09:45:54','2020-05-09 09:45:54',0),(00000000010,'최우영','lee','lecture','lecture','웹개발','웹개발','웹개발',50000,0,'lect_51.png,null,null,null','new',0,'2020-05-09 09:46:14','2020-05-09 09:46:14',0),(00000000011,'이소영','lee','알고리즘','알고리즘','알고리즘','알고리즘','알고리즘',50000,0,'inf_11.png,null,null,null','free',0,'2020-05-09 09:46:57','2020-05-09 09:46:57',0),(00000000012,'박유준','lee','머신러닝','머신러닝','머신러닝','머신러닝','머신러닝',50000,0,'inf_21.png,null,null,null','free',0,'2020-05-09 09:47:24','2020-05-09 09:47:24',0),(00000000013,'조수아','lee','포토샵','포토샵','포토샵','포토샵','포토샵',50000,0,'inf_31.png,null,null,null','free',0,'2020-05-09 13:05:20','2020-05-09 13:05:20',0),(00000000014,'정민수','lee','C언어','C언어','C','C','C',50000,0,'inf_41.png,null,null,null','free',0,'2020-05-09 13:05:52','2020-05-09 13:05:52',0),(00000000015,'변재정','lee','자바스크립트','자바스크립트','웹개발','웹개발','웹개발',50000,0,'inf_51.png,null,null,null','free',0,'2020-05-09 13:06:25','2020-05-09 13:06:25',0);
 /*!40000 ALTER TABLE `lecture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,6 +261,38 @@ CREATE TABLE `order` (
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderlist`
+--
+
+DROP TABLE IF EXISTS `orderlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orderlist` (
+  `o_num` int(11) NOT NULL AUTO_INCREMENT,
+  `o_b_num` varchar(45) DEFAULT NULL,
+  `o_l_price` int(11) NOT NULL,
+  `o_l_num` int(11) NOT NULL,
+  `o_l_name` varchar(45) NOT NULL,
+  `o_m_id` varchar(45) NOT NULL,
+  `o_t_type` varchar(45) NOT NULL,
+  `o_t_bank` varchar(45) NOT NULL,
+  `o_t_payer` varchar(45) NOT NULL,
+  `o_t_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `o_sum_money` int(11) NOT NULL,
+  PRIMARY KEY (`o_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderlist`
+--
+
+LOCK TABLES `orderlist` WRITE;
+/*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -387,7 +421,7 @@ CREATE TABLE `wishlist` (
   `w_l_num` int(11) NOT NULL,
   `w_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`w_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,16 +430,9 @@ CREATE TABLE `wishlist` (
 
 LOCK TABLES `wishlist` WRITE;
 /*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
+INSERT INTO `wishlist` VALUES (1,'test',1,'2020-05-09 11:23:05'),(2,'test',2,'2020-05-09 11:55:58');
 /*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'codefarm'
---
-
---
--- Dumping routines for database 'codefarm'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -416,4 +443,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-09 15:00:18
+-- Dump completed on 2020-05-09 22:07:39
