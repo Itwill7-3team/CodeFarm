@@ -396,7 +396,7 @@ header .noLogin{
 }
 
 header .cart_modal_cover{
-	display: block; 
+	display: none; 
     position: absolute;
     width: 442px;
     height: 420px;
@@ -407,6 +407,9 @@ header .cart_modal_cover{
     right: -15px;
     z-index: 10;
     border: 1px solid #e0e0e0;
+}
+header .navbar-item.carts:HOVER>.cart_modal_cover{
+	display: block;
 }
 header .cart_modal{
 	height: 100%;
@@ -464,6 +467,7 @@ header .item_price{
 }
 header .list_el{
 	display: flex;
+	color: black;
 }
 header .tab_btn{
 	width:100%;
@@ -473,6 +477,7 @@ header .tab_btn{
 	font-weight: bold;
 	border-radius: 4px;
 	display: none;
+	font-size: 16px;
 }
 header .tab_btn.active{
 	display: block;

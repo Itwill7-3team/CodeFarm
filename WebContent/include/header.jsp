@@ -276,7 +276,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<a href="#" class="navbar-item"> <button class="btn bold">대시보드</button></a>
 					</div>
 					<!-- 위시리스트  -->
-					<div class="navbar-item">
+					<div class="navbar-item carts">
 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
@@ -374,7 +374,6 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						+"<p class='item_price'>"+data[i].lecturedata.l_price+"</p>"
 						+"</div>"
 						+"</a>" ; 
-					console.log(i);
 				}
 				$("#list_content").html(tag);
 				if(type=="wish"){
