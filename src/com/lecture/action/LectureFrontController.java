@@ -80,7 +80,7 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	
+		}
 		
 		
 		
