@@ -10,7 +10,7 @@
 
 <title>Insert title here</title>
 
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../../include/header.jsp"/>
 <style type="text/css">
 
 #alll{
@@ -76,14 +76,7 @@ width: 1000px;
 	     
 	     <%
 	     String msg = "";
-	     
-	   /*   if(odto.getO_status() == 0){ msg="대기중"; }
-	     else if(odto.getO_status() == 1){ msg="발송준비"; }
-	     else if(odto.getO_status() == 2){ msg="발송완료"; }
-	     else if(odto.getO_status() == 3){ msg="배송중"; }
-	     else if(odto.getO_status() == 4){ msg="배송완료"; }
-	     else if(odto.getO_status() == 5){ msg="주문취소"; }
-	     else{ msg="관리자에게 문의하세요!"; } */
+	 
 	     
 	     switch(odto.getO_status()){
 	     
@@ -98,7 +91,6 @@ width: 1000px;
 	     }
 	     
 	     %>	     
-	     <%-- <td><%=odto.getO_status() %></td> --%>
 	     <td><%=msg %></td>
 	     
 	     <td><%=odto.getO_t_date() %></td>
@@ -113,7 +105,7 @@ width: 1000px;
 
 </section>
 
-<jsp:include page="../include/footer.jsp"/>
+<jsp:include page="/include/footer.jsp"/>
 
 
 </body>
