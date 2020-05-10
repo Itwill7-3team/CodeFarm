@@ -79,36 +79,60 @@ public class LectureDAO {
 		}
 		// getLectureDetail()
 		
+	//getAllCount()
+	public int getAllCount() {
+		int count = 0;
+		try {
+			con = getConnection();
+			sql = "select count(*) as count from lecture";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
 		
+		return count;
+	}
+	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String item){
+	public List<LectureDTO> getLecutreList(String item, PagingDTO paging){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
-
+		int startNum = paging.getStartNum();
+		int endNum = paging.getEndNnum();
 		try {
 		con = getConnection();
-		SQL.append("select * from lecture");
+			/*
+			 * "select * from (" + " select @rownum:=@rownum+1 as rownum lecture.* from (" +
+			 * " from lecture (select @rownum:0) tmp" + ") e where rownum >= ?" +
+			 * ") r where rownum <= ?"
+			 */
+		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM (SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c where C.ROW BETWEEN ? AND ?");
+		
 		if(item.equals("all")){
-		}else if(item.equals("seq")){
+		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
+			SQL.append(" order by l_goods asc");
+		}else if(item.equals("popular")) { //인기? 결제수
+			SQL.append(" order by paynum desc");
+		}else if(item.equals("recent")){ //최신
 			SQL.append(" order by l_number desc");
-		}else if(item.equals("popular")){
-			SQL.append(" where best=?");
-		}
-		/*else if(item.equals("recent")){
-			SQL.append(" where best=?");
-		}*/
-		else if(item.equals("famous")){
-			SQL.append(" where best=?");
+		}else if(item.equals("rating")){ // 평점
+			SQL.append("");
+		}else if(item.equals("famous")){ // 학생수? 결제수
+			SQL.append(" order by paynum desc");
 		}
 		
 		pstmt = con.prepareStatement(SQL.toString());
-		
-		if(item.equals("all")){
-		}
-		/*else{
-			pstmt.setString(1, item);
-		}*/
+		pstmt.setInt(1, startNum);
+		pstmt.setInt(2, endNum);
 		
 		rs = pstmt.executeQuery();
 			
@@ -143,10 +167,10 @@ public class LectureDAO {
 			closeDB();
 		}
 		
-		
 		return lectureList;
 	}
 	// getLectureList()
+
 	
 	//getLectureSelectList()
 			public List<LectureDTO> getLectureSelectList(String item){
@@ -224,7 +248,7 @@ public class LectureDAO {
 				}
 				return lectureList;
 			}
-			//getLectureSelectList()
+	//getLectureSelectList()
 	
 	
 	
