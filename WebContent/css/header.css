@@ -408,6 +408,16 @@ header .cart_modal_cover{
     z-index: 10;
     border: 1px solid #e0e0e0;
 }
+header .cart_modal_cover:BEFORE{
+	border-top: 0 solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 34px;
+}
 header .navbar-item.carts:HOVER>.cart_modal_cover{
 	display: block;
 }

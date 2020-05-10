@@ -11,7 +11,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	if(session.getAttribute("loginEmail")!=null){
 	 loginEmail=(String)session.getAttribute("loginEmail");
 	}
-	//loginEmail="qsz78547@naver.com";
+	loginEmail="qsz78547@naver.com";
 %>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
@@ -273,7 +273,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-item"> <button class="btn bold">대시보드</button></a>
+						<a href="DashBoard.bo" class="navbar-item"> <button class="btn bold">대시보드</button></a>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
