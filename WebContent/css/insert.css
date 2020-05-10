@@ -1,0 +1,61 @@
+@charset "UTF-8";
+.main{
+	min-height: 800px;
+    padding: 83px 0px;
+    box-sizing: border-box;
+}
+.container{
+	max-width: 1180px;
+    margin: 0 auto;
+    align-content: center;
+}
+h1{
+	text-align: center;
+}
+form {
+   display: block;
+    margin-top: 0em;
+    width: 100%;
+    max-width: 587px;
+    margin: 0 auto;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+.btn_sub{
+	border: none;
+    width: 290px;
+    height: 45px;
+    background: #1dc078;
+    font-size: .875rem;
+    font-weight: 800;
+    color: #fff;
+}
+.reset_password .email_section, body.signup_page .sign_up_container .email_section {
+    padding: 1rem;
+    flex-basis: 0;
+}
+
+p{
+	font-size: 10px;
+	margin-left: 40px;
+	
+}
+.error_msg2{
+	font-size: 10px;
+}
+.label_text{
+	min-width: 110px;
+    display: block;
+    float: left;
+    padding: 6px 0;
+}
+.input_container{
+	margin: 16px 0px;
+	
+}
+.text_input{
+	border-style: groove;
+    padding: 6px 12px;
+    border-style: groove;
+}

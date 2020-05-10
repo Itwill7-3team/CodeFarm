@@ -11,7 +11,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	if(session.getAttribute("loginEmail")!=null){
 	 loginEmail=(String)session.getAttribute("loginEmail");
 	}
-	loginEmail="qsz78547@naver.com";
+	//loginEmail="qsz78547@naver.com";
 %>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
@@ -304,10 +304,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+							<a href="MemberLogin.me" class="navbar-item bold"> <button class="btn white">로그인</button></a>
 						</div>
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
+							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
 						</div>
 					<!--로그인 안했을때  -->
 					<%} %>
@@ -331,8 +331,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
+					<a href="MemberLogin.me">로그인</a>
+					<a href="MemberJoin.me">회원가입</a>
 				
 				</div>
 				<div class="login">
