@@ -31,7 +31,12 @@ public class LectureListAction implements Action{
 		/* 페이징 처리 */
 		
 		/* 분류를 위한 방법 --보류 */
+		String s = request.getParameter("s");
+		if(s == null) {
+			s = "";
+		}
 		String item = request.getParameter("item");
+		System.out.println("s : "+s);
 		if(item == null) {
 			item = "all";
 		}
@@ -40,7 +45,7 @@ public class LectureListAction implements Action{
 		System.out.println("LectureListAction_execute() 11 호출");
 		
 		
-		List<LectureDTO> lectureList = ldao.getLecutreList(item,paging);
+		List<LectureDTO> lectureList = ldao.getLecutreList(s,item,paging);
 		System.out.println("beginPage : "+page);
 		request.setAttribute("lectureList", lectureList);
 		request.setAttribute("paging", paging);

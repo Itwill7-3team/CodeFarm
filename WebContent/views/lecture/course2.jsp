@@ -16,9 +16,17 @@
 </head>
 <body>
 <%
+request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
 
-
+String item = "seq";
+String s = "";
+if(request.getParameter("itme") != null){
+	item = request.getParameter("item");
+}
+if(request.getParameter("s") != null){
+	s = request.getParameter("s"); 
+}
 
 /* String pageNum = (String)request.getAttribute("pageNum");
 int count = (int)request.getAttribute("count");
@@ -103,7 +111,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 					<header class="courses_header">
 						<div class="search">
 							<input type="text" class="input" placeholder="강의 검색하기" value="">
-							<button type="button" class="button search_button">검색</button>
+							<button type="button" class="button search_button" >검색</button>
 						</div><!-- search -->					
 					</header><!-- courses_header -->	
 
@@ -124,11 +132,11 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 									</c:forEach>
 										<option value="<c:out value="${item}" />">
 												<c:out value="${item}" /></option> --%>
-									<option value="seq" id="seq" selected>추천순</option>
-									<option value="popular" id="popular">인기순</option>
-									<option value="recent" id="recent">최신순</option>
-									<option value="rating" id="ration">평점순</option>
-									<option value="famous" id="famous">학생수순</option>
+									<option value="seq" id="seq">추천순</option>
+									<option value="popular" id="popular" <%if(item.equals("popular")) out.print("selected"); %>>인기순</option>
+									<option value="recent" id="recent"<%if(item.equals("recent")) out.print("selected"); %>>최신순</option>
+									<option value="rating" id="rating"<%if(item.equals("rating")) out.print("selected"); %>>평점순</option>
+									<option value="famous" id="famous"<%if(item.equals("famous")) out.print("selected"); %>>학생수순</option>
 								</select>
 							</div>
 						</nav><!-- breadcrumb -->
@@ -274,10 +282,19 @@ $(function(){
 						location.href = "./Search.le?item=famous";
 				}
 		});
-	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected");
-	});
-</script>
+$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected");
+// 이 구문에 대한 검사 필요(이 구문을 사용하지 않을 시 select 오류가 발생)!!!!!!!!!!!!
 <!-- selectBox -->
-
+<!-- search -->
+	$(".search_button").on("click",function(){
+		alert($(".input").val());
+		var search = $(".input").val();
+		var orderSelect1 = $("#courses_order_select option:selected").val();
+		
+		location.href = "./Search.le?s="+search+"&item="+orderSelect1; //+"$page="+page페이지 오류 수정 필요!!!!!!!!!!!!!!
+	});
+});
+<!-- search -->
+</script>
 </body>
 </html>
