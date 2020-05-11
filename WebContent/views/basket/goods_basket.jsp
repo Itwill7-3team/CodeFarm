@@ -21,6 +21,8 @@
 </head>
 <link rel="stylesheet" href="./css/basket.css">
 <link rel="stylesheet" href="./css/Wmodal.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 
 </style>
@@ -81,8 +83,14 @@
 		  </div>
 		  </div>
 		  
+<!-- 		  <div class="amount"> -->
+<%-- 		   <span style="text-align: center;"><%=ldto.getL_price() %> 원</span>		   <button class="d_btn" type="button" onclick="location.href ='./BasketDelete.ba?b_num=<%=bdto.getB_num()%>'">장바구니 삭제</button> --%>
 		  <div class="amount">
-		   <span style="text-align: center;"><%=ldto.getL_price() %> 원</span>		   <%-- <button class="d_btn" type="button" onclick="location.href ='./BasketDelete.ba?b_num=<%=bdto.getB_num()%>'">장바구니 삭제</button> --%>
+		  <c:set var="price" value="<%=ldto.getL_price() %>"/>
+		   <span style="text-align: center;">
+		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%--<%=ldto.getL_price() %> 원 --%>
+		   </span>		   
+		   
 		   <div class="tooltip">
 		   <a href ="./BasketDelete.ba?b_num=<%=bdto.getB_num()%>">
 		   <i class="fa fa-close"></i>    <span class="tooltiptext">장바구니 삭제</span> </a><br>
@@ -111,8 +119,12 @@
 		  <option value="vw">VW</option>
 		  <option value="audi" >Audi</option>
 		  </select>
-    </li>	
-    <li>합계&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=total %> 원</li>
+    </li>
+    
+     <c:set var="total" value="<%=total %>"/>
+    <li>합계&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${total}" /> 원</li>
+    
+    
     <li class="myCheckli" style="list-style-type: none; font-size: 12px;"><input type="checkbox" id="myCheck" onclick="myFunction()" checked> (필수) 구매조건 및 개인정보취급방침 동의 
     <button class="Vbtn"onclick="document.getElementById('id01').style.display='block'">[보기]</button>
     <div id="id01" class="Vmodal">

@@ -20,12 +20,15 @@
 
 </head>
 <link rel="stylesheet" href="./css/wishlist.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <link rel="stylesheet" href="../css/viewmodal.css"> -->
 <style>
 
 </style>
 <body>
  <jsp:include page="/include/header.jsp"/>
+ 
  <!-- 
     request 영역에 저장된 객체 저장
     request.setAttribute("basketList", basketList);
@@ -60,7 +63,12 @@
 		  </div>
 		  
 		  <div class="amount">
-		   <span style="text-align: center;"><%=ldto.getL_price() %> 원</span>		   <%-- <button class="d_btn" type="button" onclick="location.href ='./BasketDelete.ba?b_num=<%=bdto.getB_num()%>'">장바구니 삭제</button> --%>
+		  <c:set var="price" value="<%=ldto.getL_price() %>"/>
+		   <span style="text-align: center;">
+		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%--<%=ldto.getL_price() %> 원 --%>
+		   </span>
+		   
+		  		   
 		   <div class="tooltip">
 		   <a href ="./WishListDelete.wi?w_num=<%=wdto.getW_num()%>">
 		   <i class="fa fa-close"></i>    <span class="tooltiptext">위시리스트 삭제</span> </a><br>
