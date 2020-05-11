@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class ReviewDTO {
 
-	private int r_number;			//별점글번호
-	private int r_l_number;			//강의 번호
+	private int r_num;			//별점글번호
+	private int r_l_num;			//강의 번호
 	private String r_l_title;		//강의 이름
 	private String r_content;		//별점글 내용
 	private String r_writer;		//별점글 작성자
@@ -14,17 +14,17 @@ public class ReviewDTO {
 	private int r_re_ref;
 	private int r_re_seq;
 	private Timestamp r_reg_date;	//별점글 작성일자
-	public int getR_number() {
-		return r_number;
+	public int getR_num() {
+		return r_num;
 	}
-	public void setR_number(int r_number) {
-		this.r_number = r_number;
+	public void setR_num(int r_num) {
+		this.r_num = r_num;
 	}
-	public int getR_l_number() {
-		return r_l_number;
+	public int getR_l_num() {
+		return r_l_num;
 	}
-	public void setR_l_number(int r_l_number) {
-		this.r_l_number = r_l_number;
+	public void setR_l_num(int r_l_num) {
+		this.r_l_num = r_l_num;
 	}
 	public String getR_l_title() {
 		return r_l_title;
@@ -78,7 +78,7 @@ public class ReviewDTO {
 	
 	@Override
 	public String toString() {
-		return "ReviewDTO [r_number=" + r_number + ", r_l_number=" + r_l_number + ", r_l_title=" + r_l_title
+		return "ReviewDTO [r_num=" + r_num + ", r_l_num=" + r_l_num + ", r_l_title=" + r_l_title
 				+ ", r_content=" + r_content + ", r_writer=" + r_writer + ", r_rating=" + r_rating + ", r_re_lev="
 				+ r_re_lev + ", r_re_ref=" + r_re_ref + ", r_re_seq=" + r_re_seq + ", r_reg_date=" + r_reg_date + "]";
 	}

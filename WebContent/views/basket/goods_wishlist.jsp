@@ -22,32 +22,27 @@
 <link rel="stylesheet" href="../css/viewmodal.css">
 <style>
 
-body {margin: 0;
-/* border: 1px red solid; */
-}
+body {margin: 0; width: 100%;}
 .image {width: 130px; height: auto;}
-h3 {border-bottom:2px solid pink; padding-bottom: 10px; width: 700px;
-margin-bottom: 10px;
+h3 {border-bottom:2px solid pink; padding-bottom: 10px; width: 650px;
+    margin-bottom: 10px;
 }
 
 #alll{
-margin: 5em auto 30% auto; 
-width: 1000px; height: auto;
-overflow:hidden;
-/* border: 1px blue solid; */
-}
+margin: 5% auto 30% auto; 
+width: 1000px; height: auto;}
 
 .boxx{float:left; 
 border-bottom:1px solid pink; 
-width: 700px; height: auto;  
+width: 650px; height: auto;  
 padding: 10px 10px 20px 0;
-/* border: 1px green solid; */
+
 }
 
 .boxx2{display: inline-block;
 width:320px; height:auto; 
 margin-left: 30px;
-/* border: 1px green solid; */
+
 }
 
 a {text-decoration: none;}
@@ -58,11 +53,48 @@ a {text-decoration: none;}
  .menu {margin-left: 10px; padding-top: 5px;}
  
 .column {float: left;  }
-.content {width:350px; padding: 5px 20px 5px 30px; 
+.content {width:400px; padding: 5px 20px 5px 30px; 
 word-wrap: break-word;}
 
 .boxh3 {float: left; padding-left: 10px;}
 
+/* 주문금액합계 */
+
+.boxh32{width:100%; padding-left: 10px;}
+.si_columns {
+  float: left;
+  width: 100%;
+
+}
+
+.price {
+  list-style-type: none;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+}
+
+/* .price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+ */
+.price .header {
+  color: black;
+  font-size: 18px;
+}
+
+.price>li {
+  padding: 15px 15px 0 15px;
+  text-align: center;
+}
+
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
 
 @media only screen and (max-width: 600px) {
   .si_columns {
@@ -108,6 +140,8 @@ word-wrap: break-word;}
  .d_btn:HOVER>.fa-heart {color: red !important;} 
 		
 
+
+
 /* 툴팁 */
 .tooltip {
   position: relative;
@@ -142,6 +176,65 @@ word-wrap: break-word;}
   visibility: visible;
 }
 
+
+/* The Modal (background) */
+.modal,.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* The Modal (background) */
+
+.modal,.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content,.modal-content2 {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 25%;
+}
+
+/* The Close Button */
+.close,.close2 {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close2:hover,
+.close2:focus  {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.myCheckli {font-size: 10px;}
+
 /* Set a style for all buttons */
 .btn {
   border: none;
@@ -165,13 +258,51 @@ word-wrap: break-word;}
   
 }
 
+/* The Modal (background) */
+.Vmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.Vmodal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  text-align: left;
+  
+}
 
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+ 
+/* The Modal Close Button (x) */
+.Vclose {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
 
+.Vclose:hover,
+.Vclose:focus {
+  color: #f44336;
+  cursor: pointer;
+}
 
 /* Clear floats */
 .Vclearfix::after {
@@ -188,7 +319,7 @@ hr {
 }
 </style>
 <body>
- <jsp:include page="../include/header.jsp"/>
+ <jsp:include page="/include/header.jsp"/>
  <!-- 
     request 영역에 저장된 객체 저장
     request.setAttribute("basketList", basketList);
@@ -228,19 +359,19 @@ hr {
 		   <a href ="./WishListDelete.wi?w_num=<%=wdto.getW_num()%>">
 		   <i class="fa fa-close"></i>    <span class="tooltiptext">장바구니 삭제</span> </a><br>
 		   </div>
-		    <button class="d_btn d_btn2" type="button" onclick="location.href ='./WishToBasketAction.wi?w_num=<%=wdto.getW_num()%>&num=<%=wdto.getW_l_num()%>&name=<%=ldto.getL_title()%>&price=<%=ldto.getL_price() %>'">
+		    <button class="d_btn d_btn2" type="button" onclick="location.href ='./WishListDelete.wi?w_num=<%=wdto.getW_num()%>'">
 		    장바구니 <i class='fas fa-heart'style='color:black;'></i></button>
 		  </div>
 		  
 	</div>
-
+		
 		  
 <% 
   }  
   %>
-  
-</section>		
+
+ 
 </body>
 <!-- footer -->
- <jsp:include page="../include/footer.jsp"></jsp:include>
+ <jsp:include page="/include/footer.jsp"></jsp:include>
 </html>

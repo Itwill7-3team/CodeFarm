@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basket.db.BasketDAO;
+import com.basket.db.BasketDTO;
 import com.wishlist.db.WishlistDAO;
 import com.wishlist.db.WishlistDTO;
 
-public class WishListToBasketAction implements Action {
+public class WishToBasketAction implements Action {
 //위시리스트에서 삭제+장바구니에 추가
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,23 +31,34 @@ public class WishListToBasketAction implements Action {
 		
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
-		// WishDTO 객체 생성 -> 정보 저장
-		WishlistDTO wdto = new WishlistDTO();
+		
+		int w_num = Integer.parseInt(request.getParameter("w_num"));
+
+		
+		// BasketDTO 객체 생성 -> 정보 저장
+		BasketDTO bkdto = new BasketDTO();
 	
-		wdto.setW_l_num(Integer.parseInt(request.getParameter("num")));
-		wdto.setW_m_id(id);
+		bkdto.setB_l_num(Integer.parseInt(request.getParameter("num")));
+		bkdto.setB_l_name(request.getParameter("name"));
+		bkdto.setB_l_price(Integer.parseInt(request.getParameter("price")));
+		bkdto.setB_m_id(id);
 		
-		// WishlistDAO 저장
-		WishlistDAO wdao = new WishlistDAO();
-		// 기존의 위시리스트에 상품이 있는지 체크
-/*		int check = wdao.checkGoods(wdto);
+		// BasketDAO 객체생성
+		BasketDAO bkdao = new BasketDAO();
+		// 기존의 장바구니에 상품이 있는지 체크
+		int check = bkdao.checkGoods(bkdto);
 		
-		// 없을경우 위시리스트에 추가
+		// 없을경우 장바구니에 추가
 		if(check != 1){
-			wdao.WishlistAdd(wdto);
+			bkdao.basketAdd(bkdto);
 		}
-		*/
-		wdao.wishlistAdd(wdto);
+		
+		
+		// WishListDAO 위시 삭제 메서드
+		WishlistDAO wdao= new WishlistDAO();
+		wdao.wishlistDelete(w_num);
+		
+		
 		// 페이지 이동 (장바구니 목록 페이지)
 		forward.setPath("./WishList.wi");
 		forward.setRedirect(true);	

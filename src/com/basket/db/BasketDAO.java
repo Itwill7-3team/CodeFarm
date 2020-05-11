@@ -184,7 +184,10 @@ public class BasketDAO {
 				try {
 					con = getConnection();
 					// 장바구니에서 특정 번호의 상품을 삭제 
-					sql="DELETE FROM model2_basket WHERE b_num=?";
+
+					sql="DELETE FROM codefarm_basket WHERE b_num=?";
+
+					sql="DELETE FROM basket WHERE b_num=?";
 					
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, b_num);
@@ -208,7 +211,7 @@ public class BasketDAO {
 					try {
 						con = getConnection();
 						// 장바구니에서 특정 번호의 상품을 삭제 
-						sql="DELETE FROM model2_basket WHERE b_m_id=?";
+						sql="DELETE FROM codefarm_basket WHERE b_m_id=?";
 						
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, id);
