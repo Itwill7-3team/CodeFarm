@@ -228,7 +228,7 @@ hr {
 		   <a href ="./WishListDelete.wi?w_num=<%=wdto.getW_num()%>">
 		   <i class="fa fa-close"></i>    <span class="tooltiptext">장바구니 삭제</span> </a><br>
 		   </div>
-		    <button class="d_btn d_btn2" type="button" onclick="location.href ='./WishListDelete.wi?w_num=<%=wdto.getW_num()%>'">
+		    <button class="d_btn d_btn2" type="button" onclick="location.href ='./WishToBasketAction.wi?w_num=<%=wdto.getW_num()%>&num=<%=wdto.getW_l_num()%>&name=<%=ldto.getL_title()%>&price=<%=ldto.getL_price() %>'">
 		    장바구니 <i class='fas fa-heart'style='color:black;'></i></button>
 		  </div>
 		  
