@@ -42,7 +42,7 @@
 		  <li class="menu1">
 		    <a href="#">내 결제</a>
 		    <ul>
-		      <li class="menu2 "><a href="#">위시리스트</a></li>
+		      <li class="menu2 "><a href="WishList.wi">위시리스트</a></li>
 		      <li class="menu2 "><a href="#">수강 바구니</a></li>
 		      <li class="menu2 "><a href="#">내 쿠폰함</a></li>
 		      <li class="menu2 "><a href="#">구매 내역</a></li>

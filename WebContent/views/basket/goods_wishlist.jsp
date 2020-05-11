@@ -20,6 +20,8 @@
 
 </head>
 <link rel="stylesheet" href="./css/wishlist.css">
+<!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <link rel="stylesheet" href="../css/viewmodal.css"> -->
@@ -41,6 +43,55 @@
   
     System.out.println("######정보:"+wishList+lectureList);
   %>
+<div class="ws_wrap">
+   
+<!-- aside 영역 -->
+<aside class="profile_aside">
+		<ul class="menu-list">
+		  <li class="menu1
+		  is-active">
+		    <a href="DashBoard.bo">대시보드</a>
+		  </li>
+		  <li class="menu1">
+		    <a href="#">알람</a>
+		  </li>
+		  <li class="menu1">
+		    <a href="#">내 학습</a>
+		    <ul>
+		      <li class="menu2 "><a href="#">수강중인 강의</a></li>
+		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li>
+		      <li class="menu2 "><a href="#">내 질문</a></li>
+		    </ul>
+		  </li>
+		  <li class="menu1">
+		    <a href="#">내 결제</a>
+		    <ul>
+		      <li class="menu2 "><a href="WishList.wi">위시리스트</a></li>
+		      <li class="menu2 "><a href="#">수강 바구니</a></li>
+		      <li class="menu2 "><a href="#">내 쿠폰함</a></li>
+		      <li class="menu2 "><a href="#">구매 내역</a></li>
+		      <li class="menu2 "><a href="#">내 포인트</a></li>
+		    </ul>
+		  </li>
+		  <li class="menu1">
+		    <a href="#">모든 알림</a>
+		  </li>
+		  <li class="menu1">
+		    <a href="#">설정</a>
+		    <ul>
+		      <li class="menu2 "><a href="#">프로필 설정</a></li>
+		      <li class="menu2 "><a href="#">알림 설정</a></li>
+		    </ul>
+		  </li>
+		</ul>
+</aside>
+<!-- aside 영역 -->   
+   
+   
+   
+   
+   
+   
    
   <section id="alll" >			<!-- 위시 수정 -->
    <h3 class="boxh3">위시리스트><a href="BasketList.ba" style="font-size: 16px;">장바구니</a></h3>
@@ -52,17 +103,16 @@
 	  %>
 		<div class="boxx" >
 			<div class="clearfix">
-  			<div class="column menu">
+  	      <div class="column menu">
 		      <img class="image" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
 		         <!--  width="249" height="162" -->
 		         </div>
-		 <div class="column content"> 
+		  <div class="column content"> 
 		  <a href="#" ><%=ldto.getL_title() %></a>
 		  <p style="font-size: 12px;"><%=ldto.getL_m_name() %></p>
 		  </div>
-		  </div>
 		  
-		  <div class="amount">
+		   <div class="amount">
 		  <c:set var="price" value="<%=ldto.getL_price() %>"/>
 		   <span style="text-align: center;">
 		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%--<%=ldto.getL_price() %> 원 --%>
@@ -77,6 +127,10 @@
 		    장바구니 <i class='fas fa-heart'style='color:black;'></i></button>
 		  </div>
 		  
+		  </div>
+		  
+		 
+		  
 	</div>
 		
 		  
@@ -84,7 +138,9 @@
   }  
   %>
 
-</section> 
+</section>
+
+</div> 
 </body>
 <!-- footer -->
  <jsp:include page="/include/footer.jsp"></jsp:include>
