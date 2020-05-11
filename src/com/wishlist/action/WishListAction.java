@@ -44,7 +44,7 @@ public class WishListAction implements Action{
 		
 		//request.setAttribute("basketList", vec.get(0));
 		
-		forward.setPath("./goods_order/goods_wishlist.jsp");
+		forward.setPath("./views/basket/goods_wishlist.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
