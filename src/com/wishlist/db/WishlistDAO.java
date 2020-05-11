@@ -12,12 +12,14 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.wishlist.db.WishlistDTO;
+import com.cart.db.CartDTO;
 import com.lecture.db.LectureDTO;
 
 public class WishlistDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
+	ResultSet rs2 = null;
 	String sql="";
 	
 	
@@ -40,6 +42,7 @@ public class WishlistDAO {
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
+			if(rs2 != null) rs2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +52,7 @@ public class WishlistDAO {
 		public int checkGoods(WishlistDTO wdto){
 			
 			int check=0;
-			//기존의 장바구니에 해당 상품이 있는지 없는지 판별
+			//기존의 위시리스트에 해당 상품이 있는지 없는지 판별
 			try {
 				//1,2
 				getConnection();
@@ -69,7 +72,7 @@ public class WishlistDAO {
 					check=0;
 					System.out.println("@@ 위시리스트 상품확인(신규) 완료!");
 				}
-				System.out.println("@@ 장바구니 체크 완료!(0:신규, 1:기존) :"+check);
+				System.out.println("@@ 위시리스트 체크 완료!(0:신규, 1:기존) :"+check);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -115,8 +118,7 @@ public class WishlistDAO {
 		ArrayList lectureList = new ArrayList();
 		ArrayList wishList = new ArrayList();
 		
-		PreparedStatement pstmt2 = null;
-		ResultSet rs2 = null;
+		
 		
 		try {
 			con = getConnection();
@@ -136,16 +138,19 @@ public class WishlistDAO {
 				wishList.add(wdto);
 				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
-				pstmt2 = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				
-				pstmt2.setInt(1, wdto.getW_l_num());
-				rs2 = pstmt2.executeQuery();
+				pstmt.setInt(1, wdto.getW_l_num());
+				rs2 = pstmt.executeQuery();
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_m_id(rs2.getString("l_m_id"));
+					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
+					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
 					
@@ -215,6 +220,67 @@ public class WishlistDAO {
 					
 				}	
 				// wishlistDelete(id)
+
+
+				public ArrayList<CartDTO> getMemberWishList(String id) {
+					Vector vector= new Vector();
+					ArrayList<CartDTO> cartlist= new ArrayList<CartDTO>();
+					
+					try{
+						con=getConnection();
+						sql="select * from wishlist where w_m_id=?";
+						
+						pstmt=con.prepareStatement(sql);
+						
+						pstmt.setString(1, id);
+						
+						rs=pstmt.executeQuery();
+						
+						while(rs.next()){
+							CartDTO cartDTO =new CartDTO();
+							WishlistDTO wdto= new WishlistDTO();
+							wdto.setW_l_num(rs.getInt("w_l_num"));
+							wdto.setW_m_id(rs.getString("w_m_id"));
+							wdto.setW_num(rs.getInt("w_num"));
+							wdto.setW_date(rs.getTimestamp("w_date"));
+							
+							cartDTO.setWishdata(wdto);
+							sql="select * from lecture where l_number=?";
+							pstmt=con.prepareStatement(sql);
+							
+							pstmt.setInt(1, rs.getInt("w_l_num"));
+							
+							rs2=pstmt.executeQuery();
+							if(rs2.next()){
+								LectureDTO ldto = new LectureDTO();
+								ldto.setL_number(rs2.getInt("l_number"));
+								ldto.setL_m_name(rs2.getString("l_m_name"));
+								ldto.setL_m_id(rs2.getString("l_m_id"));
+								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
+								ldto.setL_content(rs2.getString("l_content"));
+								ldto.setL_type(rs2.getString("l_type"));
+								ldto.setL_type2(rs2.getString("l_type2"));
+								ldto.setL_type3(rs2.getString("l_type3"));
+								ldto.setL_price(rs2.getInt("l_price"));
+								ldto.setL_pct(rs2.getInt("l_pct"));
+								ldto.setL_img(rs2.getString("l_img"));
+								ldto.setL_tag(rs2.getString("l_tag"));
+								ldto.setL_goods(rs2.getInt("l_goods"));
+								ldto.setPct_date(rs2.getTimestamp("pct_date"));
+								ldto.setPaynum(rs2.getInt("paynum"));
+								ldto.setL_title(rs2.getString("l_title"));
+								cartDTO.setLecturedata(ldto);
+							}
+							cartlist.add(cartDTO);
+						}
+					}catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						closeDB();
+					}
+					
+					return cartlist;
+				}
 	
 	
 	

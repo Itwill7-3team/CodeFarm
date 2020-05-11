@@ -349,7 +349,7 @@ hr {
 		         </div>
 		 <div class="column content"> 
 		  <a href="#" ><%=ldto.getL_title() %></a>
-		  <p style="font-size: 12px;"> <%=ldto.getL_m_name()%></p>
+		  <p style="font-size: 12px;"><%=ldto.getL_m_name() %></p>
 		  </div>
 		  </div>
 		  

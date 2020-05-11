@@ -43,7 +43,7 @@
 						<!-- lecture thumbnail -->
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title()%>">
+									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
 						<!-- lecture thumbnail -->
@@ -59,24 +59,9 @@
 										<!-- review 별점 전체 평균  -->
 											<div class='rating_star'>
 												<div class='star_solid' style="width: 97.16981132075472%">
-												<%-- <% for(int i=1; i<6; i++){ %> --%>
-													<i class="fa fa-star" aria-hidden="true"></i>
-													<i class="fa fa-star" aria-hidden="true"></i>
-													<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="1">
-														<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
-																					l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
-													</svg>
-												<%-- <% } %> --%>
+												<% for(int i=1; i<6; i++){ %><i class="fa fa-star"></i><% } %>
 												</div>
-												<% for(int i=5; i>0; i--){ %>
-											<!-- 		<i class="far fa-star"></i> -->
-												<!-- <svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="5">
-													<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7
-																				L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7 l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 z
-																				M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7 -23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z"/>
-												</svg> -->
-												<% } %>
-												
+												<% for(int i=5; i>0; i--){ %><i class="far fa-star"></i><% } %>
 											</div>
 										<!-- review 별점 전체 평균  -->
 <!-- 해당 강의 전체 평점 확인 후 style 수정(DB review TABLE select avg(rating) 가져오기(dao)) -->
@@ -124,9 +109,11 @@
 									</div>
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
-											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">
-												바로 학습하기
-											</button>
+											<% if (ldto.getL_price() == 0) { %>
+											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
+											<% } else { %>
+											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
+											<% } %>
 										</div>
 									</div>
 <!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->									
@@ -160,17 +147,61 @@
 							</div>
 							<div class="course_relation_cover course_floating_bottom is-hidden-mobile">
 								<div class="course_relation_tabs">
-									<div class="course_relation_tab active" id="course_another_tab" fxd-data='{"type": "another"}'>
+									<div class="course_relation_tab divactive" id="course_another_tab">
 										다른 강의
 									</div>
 								</div>
-								<div class="course_another_cover course_relation_list_cover active">
+								<div class="course_another_cover course_relation_list_cover divactive">
 								
 								
 								
 								
 <!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->								
 									<div class="course_another_list">
+									<%
+							/*  action 페이지로 작성하기
+								LectureDTO list_ldto = new Lecture;
+								List  list_ldto.getlist ~~
+								setAtrribute(lectureList ~
+								
+							*/
+									%>
+									<%
+										/*
+										List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList");
+										
+										int size = lectureList.size();
+										int num = 0;
+										
+										if(size > 2) size = 2; //목록 2개만 사용
+										*/
+										int size = 1; // test용
+										if(size != 0){
+										/*
+											while(size <= num;){
+												LectureDTO ldto_list = lectureList.get(num);
+										*/
+									%>
+										<!--
+										<li>
+											<a href="/Detail.le?l_number=<%-- <% ldto_list.getL_number %> --%>">
+												<div class="el_thumbnail">
+													<img src="./img/main-img/<%-- <%= ldto_list.getL_img() %> --%>" alt="<%-- <%= ldto_list.getL_title() %> --%>">
+												</div>
+												<div class="el_info">
+													<div class="el_title"><%-- <%= ldto_list.getL_title() %> --%></div>
+													<div class="el_subinfo">
+														<div class="el_subtitle">
+															<span><%-- <%= ldto_list.getL_price() %> --%></span>
+														</div>
+														<div class="el_metas">
+															<i class="fas fa-user"></i> <%-- <%= DB에서 (subscribe)(DB, lectureDTO 추가) 가져오기  %> --%> <i class="fas fa-star"></i> <%-- <%= DB(reveiw table)에서 (rating_score) 가져오기  %> --%>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>
+										-->
 										<li>
 											<a href="/course/파이썬-예제">
 												<div class="el_thumbnail">
@@ -180,7 +211,7 @@
 													<div class="el_title">김왼손의 파이썬 예제 뽀개기</div>
 													<div class="el_subinfo">
 														<div class="el_subtitle">
-															<span>￦</span>
+															<span>￦0</span>
 														</div>
 														<div class="el_metas">
 															<i class="fas fa-user"></i> 1270 <i class="fas fa-star"></i> 4.9
@@ -189,7 +220,7 @@
 												</div>
 											</a>
 										</li>
-										<li>
+										<li>,
 											<a href="/course/파이썬-입문-hello-coding">
 												<div class="el_thumbnail">
 													<img src="https://cdn.inflearn.com/wp-content/uploads/hello_coding.jpg" alt="[저자직강] Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의">
@@ -207,11 +238,27 @@
 												</div>
 											</a>
 										</li>
+										<%
+										/*
+												num++;
+												}
+										*/
+										 %>
+									<% } else { %>
+										<div class="course_relation_no_result">아직 다른 강의가 없어요.</div>
+									<% } %>
 									</div>
+									<% if(size != 0){ %>
 									<div class="course_another_btn course_relation_btn">
 										<a href="/instructors/57904/courses">+ 다른 강의 더보기</a>
 									</div>
-<!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->																	
+									<!-- 강의 목록 게시판 생성 시 주소 확인 후 변경
+									<div class="course_another_btn course_relation_btn">
+										<a href="/course?m_id=<%-- <% dto.m_id %> --%>">+ 다른 강의 더보기</a>
+									</div>
+									-->
+									<% } %>
+<!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->
 									
 									
 									
@@ -405,7 +452,7 @@
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
 										<div class="curriculum_header">
-											<span class="section_all" fxd-data='{"open": true}'>모두 펼치기	</span>
+											<span class="section_all">모두 펼치기	</span>
 										
 										
 										
@@ -1488,7 +1535,7 @@
 												<!-- review_comment -->
 													<div class="review_comments">
 														<div class="article_container">
-															<article class="media comment" fxd-data="{&quot;id&quot;:48107}">
+															<article class="media comment">
 																<figure class="media-left image is-32x32">
 																	<img loading="lazy" src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" data-src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" class="swiper-lazy" alt="장기효(캡틴판교)">
 																	<div class="onload_placeholder"></div>
@@ -1520,7 +1567,7 @@
 										</div>
 <!-- 리뷰 1 -->	
 										<div class="article_container">
-											<article class="media review_item" fxd-data='{"id":13600,"star":5,"type":"review"}'>
+											<article class="media review_item">
 												<figure class="media-left image is-64x64">
 													<img loading="lazy" src="https://cdn.inflearn.com/public/main/profile/default_profile.png" data-src="https://cdn.inflearn.com/public/main/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
 													<div class="onload_placeholder"></div>

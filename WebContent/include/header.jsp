@@ -242,7 +242,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!--커뮤니티  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold"> <span>커뮤니티</span> <i
+						<a href="askAnswer.bo" class="navbar-link bold"> <span>커뮤니티</span> <i
 							class="fas fa-angle-down"></i> <!-- <img alt="커뮤니티" src="./../img/include-img/below.png"> -->
 						</a>
 						<ul class="navbar-dropdown step1">
@@ -273,11 +273,26 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-item"> <button class="btn bold">대시보드</button></a>
+						<a href="DashBoard.bo" class="navbar-item"> <button class="btn bold">대시보드</button></a>
 					</div>
 					<!-- 위시리스트  -->
-					<div class="navbar-item">
-						<a href="BasketList.ba"><i class="fas fa-shopping-cart"></i></a>
+					<div class="navbar-item carts">
+						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
+						<div class="cart_modal_cover">
+						<div class="cart_modal">
+							<div class="top_content">
+								<span class="tab_menu active" data-type="basket">수강바구니</span>
+								<span class="tab_menu " data-type="wish">위시 리스트</span>
+							</div>
+							<div class="bottom_content">
+								<div class="list_content" id="list_content"></div>
+								<div class="button_content">
+								<button class="tab_btn wish_btn">위시리스트 로 이동</button>
+								<button class="tab_btn basket_btn">수강 바구니 로 이동</button>
+								</div>
+							</div>
+						</div>
+						</div>
 					</div>
 					<!-- 알림 -->
 					<div class="navbar-item">
@@ -289,10 +304,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+							<a href="MemberLogin.me" class="navbar-item bold"> <button class="btn white">로그인</button></a>
 						</div>
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
+							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
 						</div>
 					<!--로그인 안했을때  -->
 					<%} %>
@@ -316,19 +331,63 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
+					<a href="MemberLogin.me">로그인</a>
+					<a href="MemberJoin.me">회원가입</a>
 				
 				</div>
 				<div class="login">
-					<div class="basket"></div>
+					<div class="basket">
+						
+					</div>
 					<div class="status"></div>
 				</div>
 			</div>
 		</div>
 		<!--모바일끝  -->
 	</nav>
-
+<script>
+	$(".tab_menu").click(function() {
+		$(".tab_menu").removeClass("active");
+		$(this).addClass("active");
+		getCarts();
+	});
+	$(".cart").mouseover(function() {
+		getCarts();
+	});
+	function getCarts(){
+		var type = $(".tab_menu.active").attr("data-type");
+		$.ajax({
+			type : "post",
+			url : "./carts.ba?type=" + type,
+			data : {
+				"id" : "test"
+			},
+			dataType : "json",
+			success : function(data) { // 서버에 대한 정상응답이 오면 실행, callback
+				var tag="";
+				for (var i = 0; i <data.length; i++) 
+					{
+					tag+=" <a class='list_el' href=num?'"+data[i].lecturedata.l_number+"'>"
+						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
+						+"<div class='item_content'>"
+						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"
+						+"<p class='item_price'>"+data[i].lecturedata.l_price+"</p>"
+						+"</div>"
+						+"</a>" ; 
+				}
+				$("#list_content").html(tag);
+				if(type=="wish"){
+					$(".basket_btn").removeClass("active");
+					$(".wish_btn").addClass("active");
+				}
+				if(type=="basket"){
+					$(".wish_btn").removeClass("active");
+					$(".basket_btn").addClass("active");
+				}
+			}
+		});
+	}
+</script>
 
 
 </header>

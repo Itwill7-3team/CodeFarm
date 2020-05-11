@@ -1,8 +1,8 @@
-package com.orderlist.db;
+package com.order.db;
 
 import java.sql.Timestamp;
 
-public class OrderlistDTO {
+public class OrderDTO {
 
 	private int o_num;			//결제 번호
 	private int o_b_num;		//결제 장바구니 번호

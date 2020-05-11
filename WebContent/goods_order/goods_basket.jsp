@@ -342,7 +342,7 @@ input[type=text] {
   %>
    
   <section id="alll" >			<!-- 위시 수정 -->
-   <h3 class="boxh3"> 바구니 > <a href="goods_order/goods_wishlis.jsp" style="font-size: 16px;">위시리스트</a></h3>
+   <h3 class="boxh3"> 바구니 > <a href="./WishList.wi" style="font-size: 16px;">위시리스트</a></h3>
   <%
   int total=0;
   for(int i=0;i<basketList.size();i++){
@@ -357,7 +357,7 @@ input[type=text] {
 		         </div>
 		 <div class="column content"> 
 		  <a href="#" ><%=ldto.getL_title() %></a>
-		  <p style="font-size: 12px;"> <%=ldto.getL_content()%></p> <!-- basketDAO 추가 설정 -->
+		  <p style="font-size: 12px;"> <%=ldto.getL_m_name()%></p> <!-- basketDAO 추가 설정 -->
 		  </div>
 		  </div>
 		  
