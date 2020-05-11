@@ -443,14 +443,29 @@ header .tab_menu.active{
     border-bottom: 2px solid #00c471;
     font-weight: 600;
 }
+header .left_content a{
+	display: block;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(33,37,41,.64);
+    color: #fff !important;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    
+}
 header .img_content{
-	width: 128px;
-    height: 83px;
-    overflow: hidden;
+	width: 48px;
+    height: 48px;
     margin-right: 8px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
 }
 header .img_content>img{
 	max-width: 100%;
+	;
 }
 header .item_content{
 	flex: 1 1 auto;

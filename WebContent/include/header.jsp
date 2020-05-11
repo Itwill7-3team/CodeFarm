@@ -311,7 +311,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 										<div class="user_content">
 											<div class="left_content">
 												<div class="img_content">
-												<img src="#"><!-- 코드팜 배너 -->
+												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
+												<a href="#">설정</a>
 												</div>
 											</div>
 											<div class="right_content">
