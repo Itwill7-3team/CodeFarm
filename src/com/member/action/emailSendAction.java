@@ -87,7 +87,7 @@ public class emailSendAction implements Action{
 		   Transport.send(msg);
 		   System.out.println("이메일 정보3: "+m_email);
 		   forward.setPath("/MemberLogin.me");
-		   forward.setRedirect(false);
+		   forward.setRedirect(true);
 			
 	   }catch(Exception e){
 		   Script.moving(response, "오류가 발생했습니다.");

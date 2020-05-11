@@ -294,12 +294,58 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						</div>
 						</div>
 					</div>
+					<!-- 위시리스트 종료 -->
 					<!-- 알림 -->
 					<div class="navbar-item">
 						<a href="#"><i class="fas fa-bell"></i> </a>
 					</div>
 					<!-- 사용자 정보 -->
-					<div class="navbar-item"></div>
+					<div class="navbar-item profile">
+						<div class="profile_hover">
+							<span><a href="#"><i class="fas fa-bell"></i> </a></span>
+						</div>
+							<span class="profile_icon"></span>
+							<div class="profile_modal_cover">
+								<div class="profile_modal">
+									<div class="profile_modal_info">
+										<div class="user_content">
+											<div class="left_content">
+												<div class="img_content">
+												<img src="#"><!-- 코드팜 배너 -->
+												</div>
+											</div>
+											<div class="right_content">
+											<a href="#"><span class="name">변재정<!-- 회원이름  --></span></a>
+											<span class="rank">학생<!-- 회원 등급 --></span>
+											</div>
+										</div>
+									</div>
+									<div class="profile_modal_menu">
+									<div class="tab_content">
+										<span class="tab_item">학생<!-- 회원 등급  --></span>
+									</div>
+									<div class="list_content">
+										<ul>
+											<li class="list_item"><a href="#">이어서 학습하기</a></li>
+											<li class="list_item"><a href="#">수강중인 강의</a></li>
+											<li class="list_item"><a href="#">참여중인 로드맵</a></li>
+											<li class="list_item"><a href="#">내 질문 답변</a></li>
+											<li class="list_item"><a href="#">구매내역</a></li>
+										</ul>
+									</div>
+									</div>
+									<div class="profile_modal_footer">
+										<div class="left_footer">
+										<a href="#">로그아웃</a>
+										</div>
+										<div class="right_footer">
+										<a href="#">고객센터</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
 					<%}else{ %>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
@@ -387,6 +433,12 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			}
 		});
 	}
+	$(".profile_hover").mouseover(function(){
+		$(".profile_modal_cover").addClass("active");
+	});
+	$(".profile_hover").mouseout(function(){
+		$(".profile_modal_cover").removeClass("active");
+	});
 </script>
 
 

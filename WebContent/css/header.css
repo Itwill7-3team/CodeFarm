@@ -356,8 +356,8 @@ header .noLogin{
   cursor: pointer;
 }
 .btn{
-	border: 2px solid #4CAF50;
-    background-color: #4CAF50;
+	border: 2px solid #00c471;
+    background-color: #00c471;
     color: white;
     padding: 6px 14px;
     text-align: center;
@@ -465,8 +465,8 @@ header .bottom_content{
 }
 header .list_content{
 	flex: 1 1 auto;
-    height: 0;
-    overflow-y: auto;
+    height: 0;s
+    /* overflow-y: auto; */
     margin-bottom: 8px;
 }
 header .item_title{
@@ -501,3 +501,85 @@ header .tab_btn.wish_btn{
 header .tab_btn.basket_btn{
 	background-color: #00c471;
 }
+
+/* user_modal*/
+header .profile_modal_cover{
+	display: none;
+    position: absolute;
+    width: 316px;
+    height: 506px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(33,37,41,.24);
+    background-color: #fff;
+    top: 55px;
+    right: -15px;
+    z-index: 10;
+    border: 1px solid #e0e0e0;
+    padding: 16px;
+    color: black;
+}
+header .profile_modal_cover .name{
+	font-size: 20px;
+	font-weight: bold;
+}
+header .profile_modal_cover a{
+	color: black;
+}
+header .profile_modal{
+	height: 100%;
+    display: flex;
+    flex-direction: column;	
+}
+header .profile_modal_info{
+	padding: 0;
+}
+header .user_content{
+	display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+}
+header .left_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+header .right_content{
+	display: flex;
+    flex-direction: column;
+}
+
+header .profile_modal_menu>.tab_content{
+	text-align: center;
+}
+header .profile_modal_menu>.list_content{
+	font-size: 20px;
+}
+header .list_item{
+	margin: 5px 0px;
+}
+header .profile_modal_footer{
+	position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}
+header .left_footer{
+	float: left;
+}
+header .right_footer{
+	float: right;
+}
+header .tab_content{
+	border-bottom: 2px solid #00c471;
+}
+header .navbar-item.profile:HOVER .profile_modal_cover{
+	display: block;
+}
+header .tab_item{
+	font-size: 20px;
+	font-weight: bold;
+}
+/* user_modal 끝 */
