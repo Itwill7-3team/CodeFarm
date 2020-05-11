@@ -3,8 +3,8 @@ package com.board.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.board.db.BoardDAO;
-import com.board.db.BoardDTO;
+import com.question.db.QuestionDAO;
+import com.question.db.QuestionDTO;
 
 public class AskViewAction implements Action {
 
@@ -12,9 +12,9 @@ public class AskViewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int num=Integer.parseInt(request.getParameter("num"));
 		ActionForward forward= new ActionForward();
-		BoardDAO bdao =new BoardDAO();
+		QuestionDAO bdao =new QuestionDAO();
 		
-		BoardDTO bdto=bdao.getBoard(num);
+		QuestionDTO bdto=bdao.getBoard(num);
 		request.setAttribute("bdto", bdto);
 		forward.setPath("./views/board/askView.jsp");
 		forward.setRedirect(false);

@@ -1,4 +1,4 @@
-<%@page import="com.board.db.BoardDTO"%>
+<%@page import="com.question.db.QuestionDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,58 @@
 <link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
+
 	<jsp:include page="/include/header.jsp"></jsp:include>
+	<script>
+$(document).ready(function() {
+	
+});
+function timeBefore(timedate){
+    //현재시간
+    var now = new Date(); 
+    console.log(now);
+    //글쓴 시간 
+    var writeDay = new Date(timedate);
+    var minus;
+    var time;
+    if(now.getFullYear() > writeDay.getFullYear()){
+        minus= now.getFullYear()-writeDay.getFullYear();
+        time = minus+"년 전";
+        console.log(minus+"년 전");
+    }else if(now.getMonth() > writeDay.getMonth()){
+        minus= now.getMonth()-writeDay.getMonth();
+        time = minus+"달 전";
+        console.log(minus+"달 전");
+    }else if(now.getDate() > writeDay.getDate()){
+        minus= now.getDate()-writeDay.getDate();
+        time = minus+"일 전";
+        console.log(minus+"일 전");
+    }else if(now.getDate() == writeDay.getDate()){
+        var nowTime = now.getTime();
+        var writeTime = writeDay.getTime();
+        if(nowTime>writeTime){
+            sec =parseInt(nowTime - writeTime) / 1000;
+            day  = parseInt(sec/60/60/24);
+            sec = (sec - (day * 60 * 60 * 24));
+            hour = parseInt(sec/60/60);
+            sec = (sec - (hour*60*60));
+            min = parseInt(sec/60);
+            sec = parseInt(sec-(min*60));
+            if(hour>0){
+            	time = hour+"시간 전";
+                console.log(hour+"시간 전");
+            }else if(min>0){
+            	time = min+"분 전";
+                console.log(min+"분 전");
+            }else if(sec>0){
+            	time = sec+"초 전";
+                console.log(sec+"초 전");
+            }
+        }
+    }
+    return time;
+}
+</script>
 	<section class="community_header">
 	<div class="container">
 		<h1>묻고 답해요</h1>
@@ -62,26 +113,30 @@
 			<!--  -->
 			<div class="content">
 				<%
-					ArrayList<BoardDTO> boardList=(ArrayList<BoardDTO>)request.getAttribute("boardList");
-					for(BoardDTO bdto: boardList){
+					ArrayList<QuestionDTO> boardList=(ArrayList<QuestionDTO>)request.getAttribute("boardList");
+					for(QuestionDTO qdto: boardList){
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
 						<i class="fab fa-quora">.</i>
-						<span><%=bdto.getTitle() %></span>
+						<span><%=qdto.getQ_title()%></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer"><%=bdto.getWriter() %></span>
-						<span class="post_time"><%=bdto.getReg_date() %></span>
-						<span class="post_locuter"><%=bdto.getL_name() %></span>
+						<span class="post_writer">작성자 : <%=qdto.getQ_writer()%></span>
+						<span class="post_time">시간 : 
+						<script>var time=timeBefore("<%=qdto.getQ_reg_date()%>");
+							document.write(time);//sss
+						</script>
+						</span>	
+						<span class="post_locuter"><%=qdto.getQ_l_name() %></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=qdto.getQ_num()%>'"></div>
 					</div>
 				</div>
 				<%} %>

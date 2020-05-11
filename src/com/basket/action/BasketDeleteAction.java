@@ -18,11 +18,13 @@ public class BasketDeleteAction implements Action{
 		String id =(String) session.getAttribute("id");
 		
 		ActionForward forward = new ActionForward();
-		if(id == null){
+		/*if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
 		}
+		*/
+		id = "test";
 		
 		// 삭제할 장바구니 번호 저장
 		int b_num = Integer.parseInt(request.getParameter("b_num"));

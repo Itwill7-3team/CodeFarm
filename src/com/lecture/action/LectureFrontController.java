@@ -26,6 +26,7 @@ public class LectureFrontController extends HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+
 		System.out.println("-----------[lectureFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
@@ -72,7 +73,15 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/Detail.le")){
+			action = new LectureDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 		
 		
 		
@@ -86,7 +95,6 @@ public class LectureFrontController extends HttpServlet{
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
-		
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				// true
@@ -101,5 +109,5 @@ public class LectureFrontController extends HttpServlet{
 		}
 
 	
-	}
+}
 }

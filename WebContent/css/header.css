@@ -395,3 +395,106 @@ header .noLogin{
   -ms-transform: translate(-50%,-50%);
 }
 
+header .cart_modal_cover{
+	display: none; 
+    position: absolute;
+    width: 442px;
+    height: 420px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(33,37,41,.24);
+    background-color: #fff;
+    top: 55px;
+    right: -15px;
+    z-index: 10;
+    border: 1px solid #e0e0e0;
+}
+header .cart_modal_cover:BEFORE{
+	border-top: 0 solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 34px;
+}
+header .navbar-item.carts:HOVER>.cart_modal_cover{
+	display: block;
+}
+header .cart_modal{
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+header .top_content{
+	display: flex;
+}
+header .tab_menu{
+	flex: 1;
+    padding: 16px 8px 8px;
+    text-align: center;
+    color: #343a40;
+    border-bottom: 2px solid #e9ecef;
+    cursor: pointer;
+    background-color: white;
+}
+header .tab_menu.active{
+	color: #212529;
+    border-bottom: 2px solid #00c471;
+    font-weight: 600;
+}
+header .img_content{
+	width: 128px;
+    height: 83px;
+    overflow: hidden;
+    margin-right: 8px;
+}
+header .item_content{
+	flex: 1 1 auto;
+    width: 0;
+}
+header .bottom_content{
+	flex: 1 1 auto;
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+header .list_content{
+	flex: 1 1 auto;
+    height: 0;
+    overflow-y: auto;
+    margin-bottom: 8px;
+}
+header .item_title{
+	font-weight: bold;
+    margin-bottom: 8px;
+    
+}
+header .item_price{
+	text-align: right;
+	padding: 0 8px;
+}
+header .list_el{
+	display: flex;
+	color: black;
+}
+header .tab_btn{
+	width:100%;
+	color: white;
+	padding: 16px;
+	box-sizing: border-box;
+	font-weight: bold;
+	border-radius: 4px;
+	display: none;
+	font-size: 16px;
+}
+header .tab_btn.active{
+	display: block;
+}
+header .tab_btn.wish_btn{
+	background-color: #ff7867;
+}
+header .tab_btn.basket_btn{
+	background-color: #00c471;
+}

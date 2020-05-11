@@ -36,22 +36,80 @@ public class LectureDAO {
 		}
 	}//자원 해제
 	
+	// getLectureDetail()
+		public LectureDTO getLectureDetail(int l_number){
+			LectureDTO ldto = null;
+			try {
+				getConnection();
+				System.out.print("getLectureDetail() : ");
+				sql = "select "
+					+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+					+ "  l_price,   l_pct,  l_img,       l_tag,      l_goods, "
+					+ "  pct_date,  paynum "
+					+ "from lecture "
+					+ "where l_number = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, l_number);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					ldto = new LectureDTO();
+					ldto.setL_number(l_number);
+					ldto.setL_m_name(rs.getString("l_m_name"));
+					ldto.setL_m_id(rs.getString("l_m_id"));
+					ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
+					ldto.setL_content(rs.getString("l_content"));
+					ldto.setL_type(rs.getString("l_type"));
+					ldto.setL_type2(rs.getString("l_type2"));
+					ldto.setL_type3(rs.getString("l_type3"));
+					ldto.setL_price(rs.getInt("l_price"));
+					ldto.setL_pct(rs.getInt("l_pct"));
+					ldto.setL_img(rs.getString("l_img"));
+					ldto.setL_tag(rs.getString("l_tag"));
+					ldto.setL_goods(rs.getInt("l_goods"));
+					ldto.setPct_date(rs.getTimestamp("pct_date"));
+					ldto.setPaynum(rs.getInt("paynum"));
+					ldto.setL_title(rs.getString("l_title"));
+				}
+				System.out.println("강의 상세정보 저장 완료");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return ldto;
+		}
+		// getLectureDetail()
+		
+		
+	
 	// getLectureList()
 	public List<LectureDTO> getLecutreList(String item){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
-		
+		StringBuffer SQL = new StringBuffer();
+
 		try {
-		con=getConnection();
-		/*SQL.append("select * from lecture");
-		if(item.equals("")){
+		con = getConnection();
+		SQL.append("select * from lecture");
+		if(item.equals("all")){
+		}else if(item.equals("seq")){
+			SQL.append(" order by l_number desc");
+		}else if(item.equals("popular")){
+			SQL.append(" where best=?");
 		}
-			
+		/*else if(item.equals("recent")){
+			SQL.append(" where best=?");
+		}*/
+		else if(item.equals("famous")){
+			SQL.append(" where best=?");
+		}
+		
 		pstmt = con.prepareStatement(SQL.toString());
 		
-		if(item.equals(""))*/
-			
-		sql = "select * from lecture";	
-		pstmt = con.prepareStatement(sql);	
+		if(item.equals("all")){
+		}
+		/*else{
+			pstmt.setString(1, item);
+		}*/
 		
 		rs = pstmt.executeQuery();
 			
@@ -61,14 +119,16 @@ public class LectureDAO {
 			
 			ldto.setL_content(rs.getString("l_content"));
 			ldto.setL_goods(rs.getInt("l_goods"));
-			ldto.setL_m_id(rs.getString("l_id"));
-			ldto.setL_m_name(rs.getString("l_name"));
+			ldto.setL_m_id(rs.getString("l_m_id"));
+			ldto.setL_m_name(rs.getString("l_m_name"));
 			ldto.setL_number(rs.getInt("l_number"));
 			ldto.setL_pct(rs.getInt("l_pct"));
 			ldto.setL_price(rs.getInt("l_price"));
 			ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 			ldto.setL_tag(rs.getString("l_tag"));
 			ldto.setL_type(rs.getString("l_type"));
+			ldto.setL_type2(rs.getString("l_type2"));
+			ldto.setL_type3(rs.getString("l_type3"));
 			ldto.setPaynum(rs.getInt("paynum"));
 			ldto.setPct_date(rs.getTimestamp("pct_date"));
 			ldto.setL_img(rs.getString("l_img"));
@@ -80,7 +140,7 @@ public class LectureDAO {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		}finally{
 			closeDB();
 		}
 		
@@ -89,7 +149,7 @@ public class LectureDAO {
 	}
 	// getLectureList()
 	
-	//getGoodsList()
+	//getLectureSelectList()
 			public List<LectureDTO> getLectureSelectList(String item){
 				
 				List<LectureDTO> lectureList= new ArrayList<LectureDTO>();
@@ -140,14 +200,16 @@ public class LectureDAO {
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
 						ldto.setL_content(rs.getString("l_content"));
 						ldto.setL_goods(rs.getInt("l_goods"));
-						ldto.setL_m_id(rs.getString("l_id"));
-						ldto.setL_m_name(rs.getString("l_name"));
+						ldto.setL_m_id(rs.getString("l_m_id"));
+						ldto.setL_m_name(rs.getString("l_m_name"));
 						ldto.setL_number(rs.getInt("l_number"));
 						ldto.setL_pct(rs.getInt("l_pct"));
 						ldto.setL_price(rs.getInt("l_price"));
 						ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 						ldto.setL_tag(rs.getString("l_tag"));
 						ldto.setL_type(rs.getString("l_type"));
+						ldto.setL_type2(rs.getString("l_type2"));
+						ldto.setL_type3(rs.getString("l_type3"));
 						ldto.setPaynum(rs.getInt("paynum"));
 						ldto.setPct_date(rs.getTimestamp("pct_date"));
 						ldto.setL_img(rs.getString("l_img"));
@@ -165,7 +227,7 @@ public class LectureDAO {
 				}
 				return lectureList;
 			}
-			//getGoodsList()
+			//getLectureSelectList()
 	
 	
 	
