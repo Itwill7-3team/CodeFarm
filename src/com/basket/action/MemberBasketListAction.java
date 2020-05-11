@@ -42,7 +42,7 @@ public class MemberBasketListAction implements Action {
 			WishlistDAO wdao =new WishlistDAO();
 			ArrayList<CartDTO> cartlist=wdao.getMemberWishList(id);
 			
-			
+			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out= response.getWriter();
 			String data =gson.toJson(cartlist);
 			out.write(data);
