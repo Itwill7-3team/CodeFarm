@@ -79,9 +79,7 @@ public class LectureFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
 
-=======
 		
 		
 		
@@ -94,7 +92,6 @@ public class LectureFrontController extends HttpServlet {
 		
 		
 		
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
 		if (forward != null) {
