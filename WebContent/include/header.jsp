@@ -247,7 +247,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						</a>
 						<ul class="navbar-dropdown step1">
 							<li><a href="askAnswer.bo" class="navbar-item"><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-							<li><a href="star.bo" class="navbar-item"><i class="fas fa-star"></i> 수강평 모아보기</a></li>
+							<li><a href="reView.bo" class="navbar-item"><i class="fas fa-star"></i> 수강평 모아보기</a></li>
 							<li><a href="notice.bo" class="navbar-item"><i class="fas fa-bullhorn"></i> 공지사항</a></li>
 							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>

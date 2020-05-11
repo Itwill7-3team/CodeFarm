@@ -42,9 +42,9 @@ public class ReviewDAO {
 			e.printStackTrace();
 		}
 	}//자원 해제
-	public ArrayList<ReviewDTO> getStarList(){
+	public ArrayList<ReviewDTO> getReviewList(){
 		//별점 게시판 리스트 가져오는 메서드
-		ArrayList<ReviewDTO> starList=new ArrayList<ReviewDTO>();
+		ArrayList<ReviewDTO> reviewlist=new ArrayList<ReviewDTO>();
 		try{
 			con=getConnection();
 			sql="select * from r_board";
@@ -52,16 +52,24 @@ public class ReviewDAO {
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				ReviewDTO sdto =new ReviewDTO();
-				
+				ReviewDTO rdto =new ReviewDTO();
+				rdto.setR_num(rs.getInt("r_num"));
+				rdto.setR_l_num(rs.getInt("r_l_num"));
+				rdto.setR_l_title(rs.getString("r_l_title"));
+				rdto.setR_content(rs.getString("r_content"));
+				rdto.setR_writer(rs.getString("r_writer"));
+				rdto.setR_rating(rs.getInt("r_rating"));
+				rdto.setR_re_lev(rs.getInt("r_re_lev"));
+				rdto.setR_re_ref(rs.getInt("r_re_ref"));
+				rdto.setR_re_seq(rs.getInt("r_re_seq"));
+				rdto.setR_reg_date(rs.getTimestamp("r_reg_date"));
+				reviewlist.add(rdto);
 			}
-			
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeDB();
 		}
-		return starList;
+		return reviewlist;
 	}
 }

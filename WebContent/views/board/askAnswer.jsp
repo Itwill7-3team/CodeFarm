@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜</title>
+<title>코딩팜 - 묻고 답하기</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
@@ -66,7 +66,7 @@ function timeBefore(timedate){
 </script>
 	<section class="community_header">
 	<div class="container">
-		<h1>묻고 답해요</h1>
+		<h2>묻고 답해요</h2>
 		<p>
 			질문하고 답변해요~ <br> 모르면 질문하고 ,서로서로 해답을 찾아봐요
 		</p>
