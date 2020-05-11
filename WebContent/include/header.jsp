@@ -273,26 +273,88 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-item"> <button class="btn bold">대시보드</button></a>
+						<a href="DashBoard.bo" class="navbar-item"> <button class="btn bold">대시보드</button></a>
 					</div>
 					<!-- 위시리스트  -->
-					<div class="navbar-item">
-						<a href="BasketList.ba"><i class="fas fa-shopping-cart"></i></a>
+					<div class="navbar-item carts">
+						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
+						<div class="cart_modal_cover">
+						<div class="cart_modal">
+							<div class="top_content">
+								<span class="tab_menu active" data-type="basket">수강바구니</span>
+								<span class="tab_menu " data-type="wish">위시 리스트</span>
+							</div>
+							<div class="bottom_content">
+								<div class="list_content" id="list_content"></div>
+								<div class="button_content">
+								<button class="tab_btn wish_btn" onclick="location.href='WishList.wi'">위시리스트 로 이동</button>
+								<button class="tab_btn basket_btn" onclick="location.href='BasketList.ba'">수강 바구니 로 이동</button>
+								</div>
+							</div>
+						</div>
+						</div>
 					</div>
+					<!-- 위시리스트 종료 -->
 					<!-- 알림 -->
 					<div class="navbar-item">
 						<a href="#"><i class="fas fa-bell"></i> </a>
 					</div>
 					<!-- 사용자 정보 -->
-					<div class="navbar-item"></div>
+					<div class="navbar-item profile">
+						<div class="profile_hover">
+							<span><img src="./img/당근.png"></span>
+						</div>
+							<span class="profile_icon"></span>
+							<div class="profile_modal_cover">
+								<div class="profile_modal">
+									<div class="profile_modal_info">
+										<div class="user_content">
+											<div class="left_content">
+												<div class="img_content">
+												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
+												<a href="#">설정</a>
+												</div>
+											</div>
+											<div class="right_content">
+											<a href="#"><span class="name">변재정<!-- 회원이름  --></span></a>
+											<span class="rank">학생<!-- 회원 등급 --></span>
+											</div>
+										</div>
+									</div>
+									<div class="profile_modal_menu">
+									<div class="tab_content">
+										<span class="tab_item">학생<!-- 회원 등급  --></span>
+									</div>
+									<div class="list_content">
+										<ul>
+											<a href="#"><li class="list_item">이어서 학습하기</li></a>
+											<a href="#"><li class="list_item">수강중인 강의</li></a>
+											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
+											<a href="#"><li class="list_item">내 질문 답변</li></a>
+											<a href="#"><li class="list_item">구매내역</li></a>
+										</ul>
+									</div>
+									</div>
+									<div class="profile_modal_footer">
+										<div class="left_footer">
+										<a href="#">로그아웃</a>
+										</div>
+										<div class="right_footer">
+										<a href="#">고객센터</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
 					<%}else{ %>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+							<a href="MemberLogin.me" class="navbar-item bold"> <button class="btn white">로그인</button></a>
 						</div>
 						<div class="navbar-item">
-							<a href="#" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
+							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
 						</div>
 					<!--로그인 안했을때  -->
 					<%} %>
@@ -316,19 +378,69 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
 				<div class="noLogin">
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
+					<a href="MemberLogin.me">로그인</a>
+					<a href="MemberJoin.me">회원가입</a>
 				
 				</div>
 				<div class="login">
-					<div class="basket"></div>
+					<div class="basket">
+						
+					</div>
 					<div class="status"></div>
 				</div>
 			</div>
 		</div>
 		<!--모바일끝  -->
 	</nav>
-
+<script>
+	$(".tab_menu").click(function() {
+		$(".tab_menu").removeClass("active");
+		$(this).addClass("active");
+		getCarts();
+	});
+	$(".cart").mouseover(function() {
+		getCarts();
+	});
+	function getCarts(){
+		var type = $(".tab_menu.active").attr("data-type");
+		$.ajax({
+			type : "post",
+			url : "./carts.ba?type=" + type,
+			data : {
+				"id" : "test"
+			},
+			dataType : "json",
+			success : function(data) { // 서버에 대한 정상응답이 오면 실행, callback
+				var tag="";
+				for (var i = 0; i <data.length; i++) 
+					{
+					tag+=" <a class='list_el' href=num?'"+data[i].lecturedata.l_number+"'>"
+						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
+						+"<div class='item_content'>"
+						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"
+						+"<p class='item_price'>"+data[i].lecturedata.l_price+"</p>"
+						+"</div>"
+						+"</a>" ; 
+				}
+				$("#list_content").html(tag);
+				if(type=="wish"){
+					$(".basket_btn").removeClass("active");
+					$(".wish_btn").addClass("active");
+				}
+				if(type=="basket"){
+					$(".wish_btn").removeClass("active");
+					$(".basket_btn").addClass("active");
+				}
+			}
+		});
+	}
+	$(".profile_hover").mouseover(function(){
+		$(".profile_modal_cover").addClass("active");
+	});
+	$(".profile_hover").mouseout(function(){
+		$(".profile_modal_cover").removeClass("active");
+	});
+</script>
 
 
 </header>

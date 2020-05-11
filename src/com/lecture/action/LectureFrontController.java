@@ -113,6 +113,18 @@ public class LectureFrontController extends HttpServlet{
 			}
 		}
 		
+
+		
+		
+		
+
+		
+		
+		
+
+		
+		
+		
 		
 		
 		
@@ -137,6 +149,6 @@ public class LectureFrontController extends HttpServlet{
 			}
 		}
 
-	
+	}	
 }
-}
+

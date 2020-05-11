@@ -33,7 +33,7 @@ $(document).ready(function(){
 		<span class="name">피드</span>
 	</div>
 </a>	
-<a href="#" class="mg_auto">
+<a href="DashBoard.bo" class="mg_auto">
 	<div class="dashboard nav_btn">
 		<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
 		<span class="name">대시보드</span>
