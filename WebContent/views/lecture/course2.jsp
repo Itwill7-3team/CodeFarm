@@ -39,60 +39,60 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">IT 프로그래밍</button>
 								<div class="panel">
-									<a href="Search/it-programming.le" class="accordion_content"> ALL </a>
-									<a href="Search.le" class="accordion_content"> 웹개발 </a>
-									<a href="Search.le" class="accordion_content"> 모바일 앱 </a> 
-									<a href="Search.le" class="accordion_content"> 게임 개발 </a>
-									<a href="Search.le" class="accordion_content"> 데이터 사이언스 </a>
-									<a href="Search.le" class="accordion_content"> 보안 </a> 
-									<a href="Search.le" class="accordion_content"> 인공지능 </a> 
-									<a href="Search.le" class="accordion_content"> 알고리즘 </a> 
-									<a href="Search.le" class="accordion_content"> 교양 </a> 
-									<a href="Search.le" class="accordion_content"> 수학 </a> 
-									<a href="Search.le" class="accordion_content"> 서버 </a> 
-									<a href="Search.le" class="accordion_content"> 자동화 </a> 
-									<a href="Search.le" class="accordion_content"> 데이터베이스 </a> 
-									<a href="Search.le" class="accordion_content"> 개발도구 </a> 
-									<a href="Search.le" class="accordion_content"> 프레임워크 및 라이브러리 </a> 
-									<a href="Search.le" class="accordion_content"> 프로그래밍 언어 </a> 
-									<a href="Search.le" class="accordion_content"> 서비스 개발 </a> 
-									<a href="Search.le" class="accordion_content"> 인프라 </a> 
-									<a href="Search.le" class="accordion_content"> 사물인터넷 </a> 
-									<a href="Search.le" class="accordion_content"> 블록체인 </a>
+									<a href="./Search.le?t1=it-programming" class="accordion_content"> ALL </a>
+									<a href="./Search.le?t1=it-programming&t2=web-dev" class="accordion_content"> 웹개발 </a>
+									<a href="./Search.le?t1=it-programming&t2=mobile-app" class="accordion_content"> 모바일 앱 </a> 
+									<a href="./Search.le?t1=it-programming&t2=game-dev" class="accordion_content"> 게임 개발 </a>
+									<a href="./Search.le?t1=it-programming&t2=data-science" class="accordion_content"> 데이터 사이언스 </a>
+									<a href="./Search.le?t1=it-programming&t2=security" class="accordion_content"> 보안 </a> 
+									<a href="./Search.le?t1=it-programming&t2=artificial-intelligence" class="accordion_content"> 인공지능 </a> 
+									<a href="./Search.le?t1=it-programming&t2=algorithm" class="accordion_content"> 알고리즘 </a> 
+									<a href="./Search.le?t1=it-programming&t2=culture" class="accordion_content"> 교양 </a> 
+									<a href="./Search.le?t1=it-programming&t2=math" class="accordion_content"> 수학 </a> 
+									<a href="./Search.le?t1=it-programming&t2=server-dev" class="accordion_content"> 서버 </a> 
+									<a href="./Search.le?t1=it-programming&t2=automation" class="accordion_content"> 자동화 </a> 
+									<a href="./Search.le?t1=it-programming&t2=database-dev" class="accordion_content"> 데이터베이스 </a> 
+									<a href="./Search.le?t1=it-programming&t2=programming-tool" class="accordion_content"> 개발도구 </a> 
+									<a href="./Search.le?t1=it-programming&t2=framework-library" class="accordion_content"> 프레임워크 및 라이브러리 </a> 
+									<a href="./Search.le?t1=it-programming&t2=programming-lang" class="accordion_content"> 프로그래밍 언어 </a> 
+									<a href="./Search.le?t1=it-programming&t2=service-dev" class="accordion_content"> 서비스 개발 </a> 
+									<a href="./Search.le?t1=it-programming&t2=infra" class="accordion_content"> 인프라 </a> 
+									<a href="./Search.le?t1=it-programming&t2=iot" class="accordion_content"> 사물인터넷 </a> 
+									<a href="./Search.le?t1=it-programming&t2=blockchain" class="accordion_content"> 블록체인 </a>
 								</div>
 						</div><!-- IT 아코디언 -->
 
 						<div class="accordion">
 							<button class="accordion_header">크리에이티브</button>
 								<div class="panel">
-									<a href="Search/creative.le" class="accordion_content"> ALL </a>
-									<a href="Search.le" class="accordion_content"> 3D 모델링 </a> 
-									<a href="Search.le" class="accordion_content"> 그래픽 디자인 </a> 
-									<a href="Search.le" class="accordion_content"> 영상 편집, 유튜브 </a> 
-									<a href="Search.le" class="accordion_content"> 영화 그래픽 </a> 
-									<a href="Search.le" class="accordion_content"> 웹앱 디자인 </a> 
-									<a href="Search.le" class="accordion_content"> 게임 디자인 </a> 
-									<a href="Search.le" class="accordion_content"> UX/UI </a> 
-									<a href="Search.le" class="accordion_content"> Sound </a> 
-									<a href="Search.le" class="accordion_content"> AR/VR </a>
+									<a href="./Search.le?t1=creative" class="accordion_content"> ALL </a>
+									<a href="./Search.le?t1=creative&t2=3d_modeling" class="accordion_content"> 3D 모델링 </a> 
+									<a href="./Search.le?t1=it-programming&t2=graphic-design" class="accordion_content"> 그래픽 디자인 </a> 
+									<a href="./Search.le?t1=it-programming&t2=youtube" class="accordion_content"> 영상 편집, 유튜브 </a> 
+									<a href="./Search.le?t1=it-programming&t2=movie-graphic" class="accordion_content"> 영화 그래픽 </a> 
+									<a href="./Search.le?t1=it-programming&t2=webapp-design" class="accordion_content"> 웹앱 디자인 </a> 
+									<a href="./Search.le?t1=it-programming&t2=game-design" class="accordion_content"> 게임 디자인 </a> 
+									<a href="./Search.le?t1=it-programming&t2=ux-ui" class="accordion_content"> UX/UI </a> 
+									<a href="./Search.le?t1=it-programming&t2=sound" class="accordion_content"> Sound </a> 
+									<a href="./Search.le?t1=it-programming&t2=ar-vr" class="accordion_content"> AR/VR </a>
 								</div>
 						</div><!-- 크리에이티브 아코디언 -->
 
 						<div class="accordion">
 							<button class="accordion_header">업무 스킬</button>
 								<div class="panel">
-									<a href="Search/business.le" class="accordion_content"> ALL </a> 
-									<a href="Search.le" class="accordion_content"> MS-OFFICE </a> 
-									<a href="Search.le" class="accordion_content"> 마케팅 </a> 
-									<a href="Search.le" class="accordion_content"> 금융, 주식, 투자 </a> 
-									<a href="Search.le" class="accordion_content"> 데이터 분석 </a> 
-									<a href="Search.le" class="accordion_content"> 업무 자동화 </a> 
-									<a href="Search.le" class="accordion_content"> 회계, 재무 </a> 
-									<a href="Search.le" class="accordion_content"> 경영지식 </a> 
-									<a href="Search.le" class="accordion_content"> 기획 프로젝트 관리 </a> 
-									<a href="Search.le" class="accordion_content"> 글쓰기 </a> 
-									<a href="Search.le" class="accordion_content"> 자기 계발 </a> 
-									<a href="Search.le"class="accordion_content"> 외국어 </a>
+									<a href="./Search.le?t1=business" class="accordion_content"> ALL </a> 
+									<a href="./Search.le?t1=business&t2=office" class="accordion_content"> MS-OFFICE </a> 
+									<a href="./Search.le?t1=it-programming&t2=marketing" class="accordion_content"> 마케팅 </a> 
+									<a href="./Search.le?t1=it-programming&t2=finance" class="accordion_content"> 금융, 주식, 투자 </a> 
+									<a href="./Search.le?t1=it-programming&t2=data-analysis" class="accordion_content"> 데이터 분석 </a> 
+									<a href="./Search.le?t1=it-programming&t2=task-automation" class="accordion_content"> 업무 자동화 </a> 
+									<a href="./Search.le?t1=it-programming&t2=accounting" class="accordion_content"> 회계, 재무 </a> 
+									<a href="./Search.le?t1=it-programming&t2=management" class="accordion_content"> 경영지식 </a> 
+									<a href="./Search.le?t1=it-programming&t2=project-manage" class="accordion_content"> 기획 프로젝트 관리 </a> 
+									<a href="./Search.le?t1=it-programming&t2=writing" class="accordion_content"> 글쓰기 </a> 
+									<a href="./Search.le?t1=it-programming&t2=self-dev" class="accordion_content"> 자기 계발 </a> 
+									<a href="./Search.le?t1=it-programming&t2=foreign-language"class="accordion_content"> 외국어 </a>
 								</div>
 						</div><!-- 업무스킬 아코디언 -->
 					</nav><!-- accordion_category -->
@@ -110,7 +110,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 					<main id="courses_main">
 						<nav class="breadcrumb">
 							<ul>
-								<li><a href="search.le" class="category_link">전체</a></li>
+								<li><a href="search.le?all" class="category_link">전체</a></li>
 							</ul>
 							<!--<button></button> für sidebar_left?? -->
 							<div class="buttons select_view_button">
