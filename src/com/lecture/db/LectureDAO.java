@@ -115,7 +115,10 @@ public class LectureDAO {
 			 * " from lecture (select @rownum:0) tmp" + ") e where rownum >= ?" +
 			 * ") r where rownum <= ?"
 			 */
-		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM (SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c where C.ROW BETWEEN ? AND ?");
+		/*mysql version*/
+		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
+				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
+				+ "where C.ROW BETWEEN ? AND ?");
 		
 		if(item.equals("all")){
 		}else if(item.equals("seq")){ // 추천 좋아요 높은 순

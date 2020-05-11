@@ -8,14 +8,15 @@
 <title>Paging</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-$(function(){
+/* $(function(){
 	var orderSelect1 = $("#courses_order_select option:selected").val();
 	alert(orderSelect1);
-});
+}); */
 </script>
-
 </head>
 <body>
+
+
 	<div class="pagination">
 		<c:url var="pageAction" value="/Search.le"/>
 			<c:if test="${param.prev} ">
