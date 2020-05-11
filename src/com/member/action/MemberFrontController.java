@@ -110,6 +110,17 @@ public class MemberFrontController extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MemberLoginAction.me")){
+			// 로그인 처리 (Model객체 필요)
+			System.out.println("MemberLoginAction.me 주소 요청");
+			
+			action = new MemberLoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

@@ -12,8 +12,8 @@ public class MemberDTO {
 	private String m_addr;		//회원 깃or블로그주소
 	private String m_rank;		//회원 등급
 	private String m_intro;		//회원 소개
-	private String m_emailHash;
-	private boolean m_emailCheck;
+	private String m_emailHash;	//인증해시 코드
+	private boolean m_emailCheck;//이메일 인증 여부
 	//setter getter
 	public String getM_email() {
 		return m_email;
