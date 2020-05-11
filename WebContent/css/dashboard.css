@@ -117,7 +117,7 @@ aside.profile_aside .menu-list .is-active>a {
      height: 230px;
      overflow: hidden;
      padding: .5rem 1rem;
-     min-width: 400px;
+     min-width: 420px;
 }
 
 
@@ -129,6 +129,7 @@ aside.profile_aside .menu-list .is-active>a {
 }
 
 .media-content {
+	margin-left: 1.5rem;
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 1;

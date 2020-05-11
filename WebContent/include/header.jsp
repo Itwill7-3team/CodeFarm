@@ -287,8 +287,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<div class="bottom_content">
 								<div class="list_content" id="list_content"></div>
 								<div class="button_content">
-								<button class="tab_btn wish_btn">위시리스트 로 이동</button>
-								<button class="tab_btn basket_btn">수강 바구니 로 이동</button>
+								<button class="tab_btn wish_btn" onclick="location.href='WishList.wi'">위시리스트 로 이동</button>
+								<button class="tab_btn basket_btn" onclick="location.href='BasketList.ba'">수강 바구니 로 이동</button>
 								</div>
 							</div>
 						</div>
