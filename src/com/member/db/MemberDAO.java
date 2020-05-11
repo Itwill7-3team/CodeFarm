@@ -155,6 +155,8 @@ public class MemberDAO {
 
 				e.printStackTrace();
 
+			}finally {
+				closeDB();
 			}
 
 			return null; // 데이터베이스 오류
@@ -183,6 +185,8 @@ public class MemberDAO {
 
 				e.printStackTrace();
 
+			}finally {
+				closeDB();
 			}
 			return false; // 데이터베이스 오류
 

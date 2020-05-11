@@ -54,7 +54,6 @@ public class emailSendAction implements Action{
 	    String code = SHA256.getEncrypt(to, salt);
 
 	    String subject = "회원가입을 위한 이메일 인증 메일입니다.";
-	    System.out.println("이메일 정보5: "+m_email);
 	    String content = "다음 링크에 접속하여 이메일 인증을 진행해주세요."
 	    	+"<a href='"+host+"emailCheckAction.me?code="+code+"'>이메일인증확인</a>";
 	    
@@ -68,9 +67,8 @@ public class emailSendAction implements Action{
 	    p.put("mail.smtp.socketFactory.port", "465");
 	    p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 	    p.put("mail.smtp.socketFactory.fallback", "false");
-	    System.out.println("이메일 정보5: "+m_email);
+	
 	   try{
-		   System.out.println("이메일 정보2: "+m_email);
 		   Authenticator auth = new Gmail();
 		   Session ses = Session.getInstance(p, auth);
 		   ses.setDebug(true);
@@ -85,7 +83,7 @@ public class emailSendAction implements Action{
 		   msg.addRecipient(Message.RecipientType.TO, toAddr);
 		   msg.setContent(content, "text/html; charset=UTF-8");
 		   Transport.send(msg);
-		   System.out.println("이메일 정보3: "+m_email);
+
 		   forward.setPath("/MemberLogin.me");
 		   forward.setRedirect(false);
 			

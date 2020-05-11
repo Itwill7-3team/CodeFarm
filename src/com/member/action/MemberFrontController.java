@@ -121,6 +121,24 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MemberPw.me")){
+			// 비밀번호 찾기
+			System.out.println("MemberPw.me 주소 요청");
+			
+			forward = new ActionForward();
+			forward.setPath("./views/member/memberPw.jsp");
+			forward.setRedirect(false);	
+		}else if(command.equals("/MemberPwAction.me")){
+			// 비밀번호 찾기
+			System.out.println("MemberPwAction.me 주소 요청");
+			action = new MemberPwAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 		}
 		
 		

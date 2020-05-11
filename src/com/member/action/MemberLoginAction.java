@@ -13,7 +13,7 @@ public class MemberLoginAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("@@@ MemberLoginAction_execute() ");
+		System.out.println("@@@ MemberLoginAction_execute()호출 ");
 
 		// LoginPro.jsp 페이지 동작처럼 사용
 

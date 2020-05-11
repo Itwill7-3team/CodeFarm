@@ -20,7 +20,7 @@
           <svg width="16" id="icon_brand_logo" class="brand_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 433 90"><img src="./img/logo.png"></svg>
 
         </header>
-        <form class="main_form" action="./MemeberLoginAction.me" method="post">
+        <form class="main_form" action="./MemberLoginAction.me" method="post">
           
   <label class="atom_field">
     <span class="label visually_hidden">이메일</span>
@@ -39,8 +39,9 @@
 
         </form>
         <div class="sub_form">
-          <p>비밀번호를 잊어버리셨나요?</p>
-          <a class="find_password">비밀번호 찾기</a>
+        <img src="./img/logo.png">         
+		<p>비밀번호를 잊어버리셨나요?</p>
+          <a class="find_password" href="./MemberPw.me">비밀번호 찾기</a>
         </div>
 
         <!-- <div class="footer_form">
