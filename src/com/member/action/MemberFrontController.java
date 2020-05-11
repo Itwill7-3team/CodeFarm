@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.member.action.MemberJoinAction;
 
 public class MemberFrontController extends HttpServlet{
 	// Controller(서블릿) 생성
@@ -139,6 +138,16 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 	
+		}else if(command.equals("/MemberLogout.me")){
+			// DB 사용(X), 로그아웃 처리로직 =>Action페이지 처리 
+			// MemberLogoutAction 객체 생성 
+			action = new MemberLogoutAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

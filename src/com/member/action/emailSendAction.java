@@ -55,7 +55,7 @@ public class emailSendAction implements Action{
 
 	    String subject = "회원가입을 위한 이메일 인증 메일입니다.";
 	    String content = "다음 링크에 접속하여 이메일 인증을 진행해주세요."
-	    	+"<a href='"+host+"emailCheckAction.me?code="+code+"'>이메일인증확인</a>";
+	    	+"<a href='"+host+"emailCheckAction.me?code="+code+"&m_email="+m_email+"'>이메일인증확인</a>";
 	    
 	    Properties p = new Properties();	
 	    p.put("mail.smtp.user", from);
