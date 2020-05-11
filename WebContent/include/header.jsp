@@ -302,7 +302,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
 						<div class="profile_hover">
-							<span><a href="#"><i class="fas fa-bell"></i> </a></span>
+							<span><img src="./img/당근.png"></span>
 						</div>
 							<span class="profile_icon"></span>
 							<div class="profile_modal_cover">
@@ -327,11 +327,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									</div>
 									<div class="list_content">
 										<ul>
-											<li class="list_item"><a href="#">이어서 학습하기</a></li>
-											<li class="list_item"><a href="#">수강중인 강의</a></li>
-											<li class="list_item"><a href="#">참여중인 로드맵</a></li>
-											<li class="list_item"><a href="#">내 질문 답변</a></li>
-											<li class="list_item"><a href="#">구매내역</a></li>
+											<a href="#"><li class="list_item">이어서 학습하기</li></a>
+											<a href="#"><li class="list_item">수강중인 강의</li></a>
+											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
+											<a href="#"><li class="list_item">내 질문 답변</li></a>
+											<a href="#"><li class="list_item">구매내역</li></a>
 										</ul>
 									</div>
 									</div>
