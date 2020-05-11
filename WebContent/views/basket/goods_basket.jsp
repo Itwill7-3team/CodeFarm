@@ -382,7 +382,7 @@ input[type=text] {
 	
 	  <%
 	  //쿠폰값 수정
-	  total += bdto.getB_l_price() * ldto.getL_price();
+	  total +=  ldto.getL_price();
   }  
   %>
 
@@ -393,7 +393,7 @@ input[type=text] {
   <ul class="price">
     <li style="border-bottom:1px solid pink; padding-bottom: 15px;" > 쿠폰: 
     	<select id="cars" >
-		  <option value="cho" selected>쿠폰을 선택해 주세요.</option>
+		  <option value="cho" selected>쿠폰을 선택해33 주세요.</option>
 		  <option value="volvo">Volvo</option>
 		  <option value="saab">Saab</option>
 		  <option value="vw">VW</option>
