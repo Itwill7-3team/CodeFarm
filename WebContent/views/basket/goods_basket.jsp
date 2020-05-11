@@ -382,7 +382,7 @@ input[type=text] {
 	
 	  <%
 	  //쿠폰값 수정
-	  total += bdto.getB_l_price() * ldto.getL_price();
+	  total += ldto.getL_price();
   }  
   %>
 
