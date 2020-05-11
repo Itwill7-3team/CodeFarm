@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 
-@media screen and (min-width: 1086px) {
+@media screen and (min-width: 1139px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
    header .descktop_content{
    display: flex !important;
@@ -16,7 +16,7 @@
 
 
 
-@media screen and (max-width: 1085px) {
+@media screen and (max-width: 1138px) {
 
 	/* 모바일   */
 	header .descktop_content{
@@ -454,7 +454,16 @@ header .left_content a{
     bottom: 0;
     
 }
-header .img_content{
+header .cart_modal .list_content{
+	overflow-y: auto;
+}
+header .cart_modal .img_content{
+	width: 128px;
+    height: 83px;
+    overflow: hidden;
+    margin-right: 8px;
+}
+header .profile_modal_cover .img_content{
 	width: 48px;
     height: 48px;
     margin-right: 8px;
@@ -484,6 +493,7 @@ header .list_content{
     /* overflow-y: auto; */
     margin-bottom: 8px;
 }
+
 header .item_title{
 	font-weight: bold;
     margin-bottom: 8px;
@@ -506,6 +516,7 @@ header .tab_btn{
 	border-radius: 4px;
 	display: none;
 	font-size: 16px;
+	border: 1px solid;
 }
 header .tab_btn.active{
 	display: block;
@@ -518,6 +529,24 @@ header .tab_btn.basket_btn{
 }
 
 /* user_modal*/
+header .profile_hover{
+	width: 44px;
+    height: 44px;
+    position: relative;
+    color: #4a4a4a;
+    display: flex;
+    line-height: 1.5;
+    align-items: center;
+    margin-left: 5px;
+}
+header .profile_hover>span{
+	display: contents;
+    position: absolute;
+}
+header .profile_hover>span>img{
+	max-width: 100%;
+}
+
 header .profile_modal_cover{
 	display: none;
     position: absolute;
