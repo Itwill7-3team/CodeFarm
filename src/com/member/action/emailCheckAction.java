@@ -13,7 +13,7 @@ public class emailCheckAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8"); 
-		String url = request.getContextPath()+"/index.jsp";
+		String url = request.getContextPath()+"/index.html";
 		MemberDAO mdao = new MemberDAO();
 		String m_email = null;
 		HttpSession session = request.getSession();
