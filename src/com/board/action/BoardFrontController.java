@@ -55,14 +55,22 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 
-		}else if(command.equals("/star.bo")){
-			
+		}else if(command.equals("/reView.bo")){
+			action=new ReViewAction();
 			
 		}else if(command.equals("/notice.bo")){
 			
 		}else if(command.equals("/request.bo")){
 			
 		}
+	else if(command.equals("/DashBoard.bo")){
+		action=new dashboardAction();
+		try{
+			forward=action.execute(request, response);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");

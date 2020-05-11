@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 public class BasketFrontController extends HttpServlet{
 
 	@Override
@@ -69,7 +70,13 @@ public class BasketFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		}else if(command.equals("/carts.ba")){
+			action = new MemberBasketListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");

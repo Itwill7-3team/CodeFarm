@@ -8,6 +8,7 @@
 <title>코딩팜</title>
 </head>
 <body>
+
 <jsp:include page="/include/header.jsp"></jsp:include>
 <section class="community_header">
 	<div class="container">

@@ -12,7 +12,8 @@ public class MemberDTO {
 	private String m_addr;		//회원 깃or블로그주소
 	private String m_rank;		//회원 등급
 	private String m_intro;		//회원 소개
-	
+	private String m_emailHash;
+	private boolean m_emailCheck;
 	//setter getter
 	public String getM_email() {
 		return m_email;
@@ -62,12 +63,42 @@ public class MemberDTO {
 	public void setM_intro(String m_intro) {
 		this.m_intro = m_intro;
 	}
+	public String getM_emailHash() {
+		return m_emailHash;
+	}
+	public void setM_emailHash(String m_emailHash) {
+		this.m_emailHash = m_emailHash;
+	}
+	public boolean isM_emailCheck() {
+		return m_emailCheck;
+	}
+	public void setM_emailCheck(boolean m_emailCheck) {
+		this.m_emailCheck = m_emailCheck;
+	}
 	//toString
 	@Override
 	public String toString() {
-		return "memberDTO [m_email=" + m_email + ", m_pw=" + m_pw + ", m_regdate=" + m_regdate + ", m_name=" + m_name
-				+ ", m_phone=" + m_phone + ", m_addr=" + m_addr + ", m_rank=" + m_rank + ", m_intro=" + m_intro + "]";
+		return "MemberDTO [m_email=" + m_email + ", m_pw=" + m_pw + ", m_regdate=" + m_regdate + ", m_name=" + m_name
+				+ ", m_phone=" + m_phone + ", m_addr=" + m_addr + ", m_rank=" + m_rank + ", m_intro=" + m_intro
+				+ ", m_emailHash=" + m_emailHash + ", m_emailCheck=" + m_emailCheck + "]";
 	}
+	
+	
+	public MemberDTO(String m_email, String m_pw,
+
+			String m_emailHash, boolean m_emailCheck) {
+
+		this.m_email = m_email;
+
+		this.m_pw = m_pw;
+
+		this.m_emailHash = m_emailHash;
+
+		this.m_emailCheck = m_emailCheck;
+
+
+	}
+	
 	
 	
 }
