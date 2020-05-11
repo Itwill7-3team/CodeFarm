@@ -81,7 +81,7 @@
               <div class="box_content">
                 <div class="media">
                   <div class="media-left">
-                      <img src="./img/logo.png" alt="@@@님의 프로필">
+                      <img src="./img/carrotIcon.png" alt="@@@님의 프로필">
                   </div>
                   <div class="media-content">
                     <h5> @@@님, 편안한 밤시간 되세요 🌟</h5> <!-- 인사말 -->
