@@ -39,7 +39,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">IT 프로그래밍</button>
 								<div class="panel">
-									<a href="Search.le/it-programming" class="accordion_content"> ALL </a>
+									<a href="Search/it-programming.le" class="accordion_content"> ALL </a>
 									<a href="Search.le" class="accordion_content"> 웹개발 </a>
 									<a href="Search.le" class="accordion_content"> 모바일 앱 </a> 
 									<a href="Search.le" class="accordion_content"> 게임 개발 </a>
@@ -65,7 +65,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">크리에이티브</button>
 								<div class="panel">
-									<a href="Search.le/creative" class="accordion_content"> ALL </a>
+									<a href="Search/creative.le" class="accordion_content"> ALL </a>
 									<a href="Search.le" class="accordion_content"> 3D 모델링 </a> 
 									<a href="Search.le" class="accordion_content"> 그래픽 디자인 </a> 
 									<a href="Search.le" class="accordion_content"> 영상 편집, 유튜브 </a> 
@@ -81,7 +81,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">업무 스킬</button>
 								<div class="panel">
-									<a href="Search.le/business" class="accordion_content"> ALL </a> 
+									<a href="Search/business.le" class="accordion_content"> ALL </a> 
 									<a href="Search.le" class="accordion_content"> MS-OFFICE </a> 
 									<a href="Search.le" class="accordion_content"> 마케팅 </a> 
 									<a href="Search.le" class="accordion_content"> 금융, 주식, 투자 </a> 

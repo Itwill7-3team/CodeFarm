@@ -55,7 +55,6 @@ public class LectureFrontController extends HttpServlet{
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						
 		/* 삭제 예정 */	
 			/*
 			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
@@ -70,6 +69,7 @@ public class LectureFrontController extends HttpServlet{
 			
 			try {
 				forward = action.execute(request, response);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,9 +80,38 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	
-		
-		
+		}else if(command.equals("/Search/it-programming.le")){
+			System.out.println("/Search/it-programming 처리 model->view");
+			System.out.println("command1 : " + command);
+			action = new LectureListAction();
+			System.out.println("command2 : " + command);
+			try {
+				forward = action.execute(request, response);
+				System.out.println("command3 : " + command);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Search/creative.le")){
+			System.out.println("/Search.le/it-programming 처리 model->view");
+			
+			action = new LectureListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Search/business.le")){
+			System.out.println("/Search.le/it-programming 처리 model->view");
+			
+			action = new LectureListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		
