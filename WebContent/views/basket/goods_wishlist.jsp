@@ -319,7 +319,7 @@ hr {
 }
 </style>
 <body>
- <jsp:include page="../include/header.jsp"/>
+ <jsp:include page="/include/header.jsp"/>
  <!-- 
     request 영역에 저장된 객체 저장
     request.setAttribute("basketList", basketList);
@@ -373,5 +373,5 @@ hr {
  
 </body>
 <!-- footer -->
- <jsp:include page="../include/footer.jsp"></jsp:include>
+ <jsp:include page="/include/footer.jsp"></jsp:include>
 </html>
