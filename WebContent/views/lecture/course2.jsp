@@ -16,6 +16,9 @@
 </head>
 <body>
 <%
+String m_id = (String)session.getAttribute("m_id");
+m_id = "test";
+
 request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
 
@@ -35,6 +38,7 @@ int pageBlock = (Integer)(request.getAttribute("pageBlock"));
 int startPage = (Integer)(request.getAttribute("startPage"));
 int endPage = (Integer)(request.getAttribute("endPage")); */
 %>
+
 	<div id="root">
 		<jsp:include page="/include/header.jsp"/>	
 		<main id="main">
@@ -132,7 +136,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 									</c:forEach>
 										<option value="<c:out value="${item}" />">
 												<c:out value="${item}" /></option> --%>
-									<option value="seq" id="seq">추천순</option>
+									<option value="seq" id="seq" <%if(item.equals("seq")) out.print("selected");%>>추천순</option>
 									<option value="popular" id="popular" <%if(item.equals("popular")) out.print("selected"); %>>인기순</option>
 									<option value="recent" id="recent"<%if(item.equals("recent")) out.print("selected"); %>>최신순</option>
 									<option value="rating" id="rating"<%if(item.equals("rating")) out.print("selected"); %>>평점순</option>
@@ -158,6 +162,8 @@ for(int i=0;i<lectureList.size();i++){
 												</figure>
 											</div>
 											<div class="card_content">
+												<div class= "l_m_id" value="" data-type="<%=ldto.getL_m_id() %>" style="display: none;"><%=ldto.getL_m_id() %></div>
+												<div class= "l_number" style="display: none;"><%=ldto.getL_number() %></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
 												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
@@ -206,7 +212,7 @@ for(int i=0;i<lectureList.size();i++){
 											</a>
 											<div class="card_action_btn">
 												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
+													<i class="fas fa-cart-arrow-down fa-lg" data-type="<%=ldto.getL_number() %>" ></i>
 													<span class="tooltiptext">바구니에 추가</span>
 												</div>
 												<div class="tooltip add_wishlist">
@@ -282,10 +288,10 @@ $(function(){
 						location.href = "./Search.le?item=famous";
 				}
 		});
-$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected");
+/* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
 // 이 구문에 대한 검사 필요(이 구문을 사용하지 않을 시 select 오류가 발생)!!!!!!!!!!!!
-<!-- selectBox -->
-<!-- search -->
+/* selectBox */
+/* search */
 	$(".search_button").on("click",function(){
 		alert($(".input").val());
 		var search = $(".input").val();
@@ -293,8 +299,48 @@ $("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]"
 		
 		location.href = "./Search.le?s="+search+"&item="+orderSelect1; //+"$page="+page페이지 오류 수정 필요!!!!!!!!!!!!!!
 	});
+/* search */
+	/* 장바구니 아쟉스 */
+	$("i.fa-cart-arrow-down").click(function(){
+		
+		/* $("div #num").text(data.num) */
+		/* var l_m_id = $(".l_m_id").attr("data-type"); */
+		var m_id = "<%=session.getAttribute("m_id") %>";
+		
+		console.log("정보 확인1 : "+m_id);
+
+		$.ajax({
+			url : "./BasketAdd.ba",
+			type : "POST",
+			data : {
+				"m_id" : m_id,
+			},
+			datatype : "json",
+			success : function(){
+				
+				$(".fa-cart-arrow-down.none").css('color','#0000ff');
+				/* $(this).css({"background-image":"url('icons/u.png')"}); */
+				console.log("확인");
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+			
+			
+			
+			
+		});
+		
+	});
+	
+	/* 장바구니 아쟉스 */
+	
+	
 });
-<!-- search -->
+
+
+
+
+
 </script>
 </body>
 </html>
