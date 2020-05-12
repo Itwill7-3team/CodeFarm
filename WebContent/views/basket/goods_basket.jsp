@@ -235,8 +235,7 @@
 	//가격
 	buyer_email: '<%=email%>',
 	buyer_name: '<%=name%>',
-	buyer_tel: '<%=phone%>
-',
+	buyer_tel: '<%=phone%>',
 	buyer_postcode : '123-456',
 	m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 	/*
