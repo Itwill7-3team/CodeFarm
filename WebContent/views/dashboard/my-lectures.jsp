@@ -10,12 +10,107 @@
 
 <title>코딩팜</title>
 
-<link rel="stylesheet"
-	href="https://cdn.inflearn.com/dist/css/MAIN.fe7891b79f47d325600b.css">
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://cdn.inflearn.com/dist/css/MAIN.fe7891b79f47d325600b.css"> -->
 
 
 <style type="text/css">
+
+@media screen and (max-width: 1140px) {
+
+	/* 모바일   */
+	.profile_aside{
+	display: none !important;
+	}
+	.e_modal_certification{
+	display: none !important;
+	}
+	
+	.colums{
+/* 	border: 1px solid green; */
+	min-width: 900px;
+	}
+	.container{
+	/* 	border: 1px solid blue; */
+		width: 95% !important; 
+		margin: 0 auto;
+	}
+
+	
+}
+
+@media screen and (max-width: 1360px) {
+	
+
+	.profile_aside>ul{
+	padding: 0 0 0 1em;
+	}
+	.ws_wrap{
+	width: 100% !important;
+	}
+	#alll{
+	margin: 4em 1em !important;
+	}
+}
+
+
+section *{  
+	margin:0 auto;
+	box-sizing: border-box;
+	
+}
+
+
+body{
+	display: block;
+	min-height: 1040px;
+}
+
+nav ul{
+	padding: 0.5rem 1rem;
+	
+}
+
+h3{padding: 0 1rem;}
+
 .container{
+/* 	border: 1px solid blue; */
+	width: 70%; /* 90%; */
+	margin: 0 auto;
+}
+
+/*  */
+
+.profile_aside{
+	display: inline-block;
+    width: 15%;
+    min-width:230px;
+    height: 900px;
+    padding: 3em 0;
+    vertical-align: top;
+/*     border: 1px solid; */
+	
+}
+
+aside.profile_aside .menu-list .is-active>a {
+    background: none;
+    color: #1dc078;
+    font-weight: 700;
+}
+
+.menu-list a:hover {
+    background-color: #fff;
+    color: #363636;
+}
+
+.menu-list a {
+    border-radius: 2px;
+    color: #454545;
+    display: block;
+    padding: .5em .75em;
+}
+
+section .container{
 /* border: 1px blue solid; */
 min-height:1000px; 
 }
@@ -35,11 +130,17 @@ height: 70%;
 
 .control, .field{
 display: inline-block;
+margin: 0.2rem 0;
 }
 
 
 #my-wrap{
 /* border: 1px pink solid; */
+    width: 70%;
+    display: inline-block;
+}
+
+.columns{
 width: 100%;
 }
 
@@ -50,18 +151,231 @@ display: block;
 .order-lect, .find-lect{
 /* border: 1px green solid; */
 display: inline-block;
+padding: 0.2rem;
+margin: 0.2rem;
+vertical-align: bottom;
 }
 
-.order-lect{width: 60%;}
-.find-lect{width: 30%;}
-
-.columns{
-/* border: 1px powderblue solid ; */
+.order-lect{
+min-width: 260px;
+/* width:60%;
+max-height: 65px;
+overflow: hidden;
+ *//*  border: 1px powderblue solid ; */
 }
+.find-lect{max-width: 240px;}
+
 
 .main_container{
     flex-wrap: wrap;
 }
+
+/*  */
+.select:not(.is-multiple) {
+    height: 2.25em;
+}
+
+.select, .input, .button{
+    border:1px #dbdbdb solid; /* 회색 */
+    border-radius: 4px;
+    display: block;
+    max-width: 100%;
+    position: relative;
+     cursor: pointer;
+    display: block;
+    font-size: 1em;
+    max-width: 100%;
+    outline: none;
+}
+
+.profile.my_courses #main .main_container .control_container .control.has_btn .button {
+    position: absolute;
+    bottom: 0;
+}
+.button.is-hovered, .button:hover {
+    border-color: #b5b5b5;
+    color: #363636;
+}
+.order-lect .button {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding: calc(.375em - 1px) .75em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.control_container{
+font-size: 13px;
+max-height: 62px;
+min-width: 490px;
+
+}
+
+.field.has-addons {
+    display: flex;
+    justify-content:flex-start;
+}
+
+.input {
+    border-radius: 3px;
+    box-shadow: none;
+    background: #f6f6f6;
+    color: #5f5f5f;
+    border: 1px solid transparent;
+}
+
+.field.has-addons .control .button:not([disabled]).is-hovered, .field.has-addons .control .button:not([disabled]):hover, .field.has-addons .control .input:not([disabled]).is-hovered, .field.has-addons .control .input:not([disabled]):hover, .field.has-addons .control .select select:not([disabled]).is-hovered, .field.has-addons .control .select select:not([disabled]):hover {
+    z-index: 2;
+}
+.field.has-addons .control:last-child:not(:only-child) .button, .field.has-addons .control:last-child:not(:only-child) .input, .field.has-addons .control:last-child:not(:only-child) .select select {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+    
+.button.is-info.is-hovered, .button.is-info:hover {
+    background-color: #2793da;
+    border-color: transparent;
+    color: #fff;
+}
+
+.button.is-info {
+    background-color: #3298dc;
+    border-color: transparent;
+    color: #fff;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.select select:not([multiple]) {
+    padding-right: 2.5em;
+}
+
+.button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea {
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    height: 2.25em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding: calc(.375em - 1px) calc(.625em - 1px);
+    position: relative;
+    vertical-align:middle;
+}
+
+body, button, input, select, textarea {
+    font-family: Noto Sans KR,-apple-system,"system-ui",BlinkMacSystemFont,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica;
+}
+
+
+.navbar-link:not(.is-arrowless):after, .select:not(.is-multiple):not(.is-loading):after {
+    border: 3px solid transparent;
+    border-radius: 2px;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: .625em;
+    margin-top: -.4375em;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    width: .625em;
+}
+
+.select:not(.is-multiple):not(.is-loading):after {
+    border-color: #1dc078;
+    right: 1.125em;
+    z-index: 4;
+    
+}
+
+
+
+/*  */
+
+.course.card {
+    height: 100%;
+    box-shadow: none;
+}
+.card {
+    background-color: #fff;
+    box-shadow: 0 2px 3px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
+    color: #454545;
+    max-width: 100%;
+    position: relative;
+}
+.card-image {
+    display: block;
+    position: relative;
+}
+
+.image img{
+margin:1em 0;
+width: 290px;
+height: 190px;
+}
+
+.course.card .course_card_front .card-content .course_title {
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.5em;
+    height: 3rem;
+    font-size: .95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: pre-wrap;
+}
+
+.course.card .course_card_front .card-content {
+    padding: .5rem 0;
+}
+
+.card-content, .card-footer, .my_course {
+    background-color: transparent;
+    width: 300px;
+    display: inline-block;
+}
+
+
+.course.card.my_course .dashboard_button_container .button.is-link {
+    padding: .125rem .25rem;
+    height: inherit;
+    display: inline-block;
+    
+}
+
+.button.is-link.is-hovered, .button.is-link:hover {
+    background-color: #1bb571;
+    border-color: transparent;
+    color: #fff;
+}
+.button.is-small {
+    border-radius: 2px;
+    font-size: .75rem;
+}
+.button.is-link {
+    background-color: #1dc078;
+    border-color: transparent;
+    color: #fff;
+}
+.button{
+    display: inline-block;
+border:1px #dbdbdb solid;
+}
+
 
 </style>
 
@@ -188,15 +502,15 @@ display: inline-block;
 
 								<div class="dashboard_button_container is-hidden-mobile">
 									<a href="#"
-										class="button is-small has-icon is-link"> <i
-										class="far fa-pencil"></i>바로학습
+										class="button is-small has-icon is-link"> 
+										<!-- <i class="far fa-pencil"></i> -->바로학습
 									</a>
 								</div>
 
 								<div
 									class="archive_icon_container tooltip is-tooltip-warning is-tooltip-left e_add_archive_course"
 									data-tooltip="강의 숨기기">
-									<i class="fal fa-archive"></i>
+									<!-- <i class="fal fa-archive"></i> -->
 								</div>
 							</div>
 						</div>
@@ -206,8 +520,7 @@ display: inline-block;
 						
 						</div>
 						<div class="archive_btn_container">
-							<a href="#" class="button"> <i
-								class="far fa-boxes"></i> <span>숨긴 강의 보기</span></a>
+							<a href="#" class="button"> <!-- <i class="far fa-boxes"></i> --> <span>숨긴 강의 보기</span></a>
 						</div>
 					</div><!-- #my-lecture -->
 
@@ -221,7 +534,6 @@ display: inline-block;
 
 
 </div>
-<jsp:include page="/include/footer.jsp"/>
 </body>
-
 </html>
+<jsp:include page="/include/footer.jsp"/>
