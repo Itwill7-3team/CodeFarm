@@ -39,6 +39,10 @@ padding-bottom: 10px; min-width: 550px;
 margin-bottom: 10px;
 }
 
+#lec{
+	display: inline-block;
+	margin-left: 2em !important;
+}
 
 .ws_wrap{
 /* 	border:1px solid; */
@@ -95,7 +99,8 @@ ul {
 #alll{
 display:inline-block;
 margin: 4em 5%; 
-min-width: 550; height: 100%;
+min-width: 550; 
+min-height: 500px;
 /* border: 1px blue solid; */
 }
 
