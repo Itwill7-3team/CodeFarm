@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-<title>코딩팜 - ${ ldto.l_m_id }</title>
+<title>코딩팜 - ${ ldto.l_title }</title>
 
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="./css/courseDetail.css">
