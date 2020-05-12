@@ -1,6 +1,5 @@
 package com.lecture.action;
 
-import java.io.Console;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lecture.action.LectureListAction;
 
-
-public class LectureFrontController extends HttpServlet{
+public class LectureFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,13 +21,14 @@ public class LectureFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
-	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		System.out.println("-----------[lectureFrontController]doProcess호출---------");
 		Action action = null;
 		ActionForward forward = null;
-		
+
 		String requestURI = request.getRequestURI();
 		System.out.println("URI : " + requestURI);
 
@@ -38,34 +37,50 @@ public class LectureFrontController extends HttpServlet{
 
 		String command = requestURI.substring(contextPath.length());
 		System.out.println("command : " + command);
-		
 
 		System.out.println("----------페이지 주소 계산 완료----------------------");
-		
+
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("/Main.le")){
-			forward=new ActionForward();
-			forward.setPath("./views/main/main.jsp");
-			forward.setRedirect(false);
-			
-		/* 삭제 예정 */	
+		if (command.equals("/Main.le")) {
+
+			System.out.println("/model->view");
+
+			action = new LectureMainListAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			/* 삭제 예정 */
 			/*
-			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
-			 * forward.setPath("./views/lecture/course2.jsp"); forward.setRedirect(false);
+			 * }else if(command.equals("/Search.le")){ forward=new
+			 * ActionForward(); forward.setPath("./views/lecture/course2.jsp");
+			 * forward.setRedirect(false);
 			 */
-		/* 삭제 예정 */	
-			
-		}else if(command.equals("/Search.le")){
+			/* 삭제 예정 */
+
+		} else if (command.equals("/Search.le")) {
 			System.out.println("/Search.le 처리 model->view");
-			
+
 			action = new LectureListAction();
-			
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/Detail.le")) {
+			action = new LectureDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+
+		
 		
 		
 		
@@ -79,7 +94,6 @@ public class LectureFrontController extends HttpServlet{
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
-		
 		if (forward != null) {
 			if (forward.isRedirect()) {
 				// true
@@ -92,7 +106,5 @@ public class LectureFrontController extends HttpServlet{
 				dis.forward(request, response);
 			}
 		}
-
-	
 	}
 }

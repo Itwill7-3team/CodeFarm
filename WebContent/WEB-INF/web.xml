@@ -14,6 +14,16 @@
     <url-pattern>*.le</url-pattern>
   </servlet-mapping>
   <!-- 강의 -->
+  <!-- 강의등록 -->
+  <servlet>
+    <servlet-name>InstructorFrontController</servlet-name>
+    <servlet-class>com.instructor.action.InstructorFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InstructorFrontController</servlet-name>
+    <url-pattern>*.in</url-pattern>
+  </servlet-mapping>
+  <!-- 강의등록 -->
   <!-- 게시판 -->
   <servlet>
     <servlet-name>BoardFrontController</servlet-name>
@@ -46,7 +56,7 @@
   <!-- 장바구니 -->
   <!-- 주문 -->
   <servlet>
-    <servlet-name>OrderFrontController</servlet-name>
+    <servlet-name>OrderFrontController</servlet-name>	
     <servlet-class>com.order.action.OrderFrontController</servlet-class>
   </servlet>
   <servlet-mapping>
@@ -64,18 +74,5 @@
     <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
   <!-- 위시리스트 -->
-  
-  <!-- 강사 강의 등록 -->
-	<servlet>
-     <servlet-name>InstructorFrontController</servlet-name>
-     <servlet-class>com.instructor.action.InstructorFrontController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-     <servlet-name>InstructorFrontController</servlet-name>
-     <url-pattern>*.in</url-pattern>
-  </servlet-mapping>  
-  <!-- 강사 강의 등록 -->
-  
   
 </web-app>

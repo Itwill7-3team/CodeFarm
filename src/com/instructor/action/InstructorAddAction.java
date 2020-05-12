@@ -8,8 +8,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import com.instructor.action.ActionForward;
-import com.instructor.db.InstructorDAO;
-import com.instructor.db.LectureDTO;
+import com.lecture.db.LectureDAO;
+import com.lecture.db.LectureDTO;
+
 
 public class InstructorAddAction implements Action {
 
@@ -88,13 +89,14 @@ public class InstructorAddAction implements Action {
 		
 		// 3. AdminGoodsDAO 객체를 생성해서 처리 
 		//  -> insertGoods(dto)
-		InstructorDAO inDao = new InstructorDAO();
-		inDao.insertlectures(ldto);
+		LectureDAO ldao = new LectureDAO();
+		ldao.insertlectures(ldto);
 		
 		
 		// 4. 페이지 이동 (List페이지)
 		ActionForward forward = new ActionForward();
 		forward.setPath("./InstructorLectureList.in");
+		forward.setPath("./Search.le");
 		forward.setRedirect(true);	
 		return forward;
 		

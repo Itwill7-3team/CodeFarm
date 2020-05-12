@@ -10,6 +10,8 @@ public class LectureDTO {
 	private String l_title;			//강의제목
 	private String l_content;		//강의 내용
 	private String l_type;			//강의 분류
+	private String l_type2;			//강의 분류
+	private String l_type3;			//강의 분류
 	private int l_price;			//강의 가격
 	private int l_pct; 				//할인률
 	private String l_img;			//강의 사진
@@ -104,15 +106,29 @@ public class LectureDTO {
 	public void setPaynum(int paynum) {
 		this.paynum = paynum;
 	}
-	
-	//toString
+
+	public String getL_type2() {
+		return l_type2;
+	}
+	public void setL_type2(String l_type2) {
+		this.l_type2 = l_type2;
+	}
+	public String getL_type3() {
+		return l_type3;
+	}
+	public void setL_type3(String l_type3) {
+		this.l_type3 = l_type3;
+	}
 	@Override
 	public String toString() {
-		return "lectureDTO [l_number=" + l_number + ", l_m_name=" + l_m_name + ", l_m_id=" + l_m_id + ", l_title="
-				+ l_title + ", l_content=" + l_content + ", l_type=" + l_type + ", l_price=" + l_price + ", l_pct="
-				+ l_pct + ", l_img=" + l_img + ", l_tag=" + l_tag + ", l_goods=" + l_goods + ", l_reg_date="
-				+ l_reg_date + ", pct_date=" + pct_date + ", paynum=" + paynum + "]";
+		return "LectureDTO [l_number=" + l_number + ", l_m_name=" + l_m_name + ", l_m_id=" + l_m_id + ", l_title="
+				+ l_title + ", l_content=" + l_content + ", l_type=" + l_type + ", l_type2=" + l_type2 + ", l_type3="
+				+ l_type3 + ", l_price=" + l_price + ", l_pct=" + l_pct + ", l_img=" + l_img + ", l_tag=" + l_tag
+				+ ", l_goods=" + l_goods + ", l_reg_date=" + l_reg_date + ", pct_date=" + pct_date + ", paynum="
+				+ paynum + "]";
 	}
+	
+	
 	
 	
 }

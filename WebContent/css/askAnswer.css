@@ -6,17 +6,22 @@
 	display: none;
 	}
 }
-@media print,screen and (max-width: 800px) {
+@media print,screen and (max-width: 1000px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
-	aside{
+	.community_content aside{
 	display: none !important;}
 }
-
-
+.container>h2{
+	font-size:2em;
+	margin: 0;
+}
+.container>p{
+	margin: 0;
+}
 .container{
 	width:100%;
 	max-width: 1180px;
-	margin: 0 auto;
+	margin: 12px auto;
 }
 .community_header{
 	background-color: #333b3d;
@@ -25,20 +30,34 @@
 }
 
 
-article{
+
+.community_content{
 	width:100%;
-	float:left;
 	max-width:1180px;
 	margin: 0 auto;
 	min-height: 500px;
 	display: flex;
 }
-aside{
+.community_content aside{
 	float: left;
     width: 17%;
     min-height: 700px;
     display: flex;
     flex: 2;
+}
+.side_container a{
+	color: black;
+}
+.side_container li{
+	padding: 6px 0px;
+}
+.side_container{
+	box-sizing: border-box;
+    padding: 8px;
+}
+.small_tag{
+	font-size: 10px;
+    color: #86898c;
 }
 .columns{
 	float: left;
@@ -61,7 +80,7 @@ aside{
    
 }
 .right_item{
-	margin:2px 0px;
+	margin:5px 0px;
 }
 .comment_link>input{
 	background-color: #4CAF50;
@@ -116,23 +135,11 @@ aside{
 	border-radius: 5px;
     padding: calc(.375em - 1px) calc(.625em - 1px);
 }
-.small_tag{
-	font-size: 10px;
-    color: #86898c;
-}
+
 body a:ACTIVE{
 	color:black
 }
-.side_container a{
-	color: black;
-}
-.side_container li{
-	margin-top:5px;
-}
-.side_container{
-	box-sizing: border-box;
-    padding: 8px;
-}
+
 .main_content>.content{
   float: left;
     width: 100%;

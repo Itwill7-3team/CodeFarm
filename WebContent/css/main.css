@@ -164,12 +164,19 @@ color:#454545;
 font-size: 1.2rem;
 text-align: left;
 margin-left: 0.8rem;
+margin-bottom: 0.3rem;
+}
+
+.card p{
+text-align: left;
+margin-left: 0.8rem;
 }
 
 .price {
-  color: grey;
+  font-weight: 700;
+  color: #175cbe;
   font-size: 16px;
-  margin: 0 0.8rem;
+  margin-left: 47%;
 }
 
 
@@ -183,15 +190,35 @@ text-decoration: none;
 }
 
 .card-in{
-padding: 1rem 0.8rem;
+padding: 0.5rem 0.8rem;
 text-align: left;
 }
 
-
+.mg-l50{
+margin-left: 50px;
+}
+.mg-t10{
+margin-top: 10px;
+}
 
 /*STAR=ck*/
 .checked {  color: orange;}
 
+.tag:not(body) {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #454545;
+    display: inline-flex;
+    font-size: .75rem;
+    height: 2em;
+    justify-content: center;
+    line-height: 1.5;
+    padding-left: .75em;
+    padding-right: .75em;
+    white-space: nowrap;
+    background-color:hsl(155,40%,87%);
+}
 
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 컨텐츠 */
 
@@ -252,8 +279,8 @@ text-align: left;
 }
 
 .interest img{
-width:150px;
-height: 100px;
+width:70px;
+height: 50px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 margin: 5px;
 text-align: center;

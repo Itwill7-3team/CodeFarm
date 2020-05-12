@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.basket.action.BasketAddAction;
+import com.basket.action.BasketDeleteAction;
+import com.basket.action.BasketListAction;
+
 
 public class WishlistFrontController extends HttpServlet{
 
@@ -39,12 +43,47 @@ public class WishlistFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("주소")){
-			
-			
-			
+		if(command.equals("/WishListAdd.wi")){
+			action = new WishListAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+			else if(command.equals("/WishList.wi")){
+			System.out.println("/WishList.wi 처리 (model->view)");
+			action = new WishListAction();
+			try {
+				forward = action.execute(request, response);
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+			else if (command.equals("/WishListDelete.wi")) {
+			// WishListDelete.wi -> 삭제처리(model)
+			System.out.println("/WishListDelete.wi 주소 처리(model)");
+			// WishListDeleteAction 객체
+			action = new WishListDeleteAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
+			else if (command.equals("/WishToBasketAction.wi")) {
+				System.out.println("/WishToBasket.wi 주소 처리(model)");
+				// WishToBasketAction 객체
+				action=new WishToBasketAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

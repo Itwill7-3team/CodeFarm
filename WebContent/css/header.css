@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 
-@media screen and (min-width: 1075px) {
+@media screen and (min-width: 1139px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
    header .descktop_content{
    display: flex !important;
@@ -15,7 +15,8 @@
 }
 
 
-@media screen and (max-width: 1074px) {
+
+@media screen and (max-width: 1138px) {
 
 	/* 모바일   */
 	header .descktop_content{
@@ -83,20 +84,34 @@ header .navbar-item{
     line-height: 1.5;
     position: relative;
     align-items: center;
-    height: 100%;
     margin-left:5px;
 }
+header .step1:BEFORE{
+	border-top:0 solid transparent;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	border-bottom:10px solid #fff;
+	content:"";
+	position: absolute;
+	top:-10px;
+	left:30px;
+}
+header .navbar-left .fas,header .navbar-left .far{
+	margin-right: 8px;
+}
 
+header .h-back .navbar-dropdown{
+	height: 410px;
+}
 header .navbar-dropdown{
 	left:0;
 	top:48px;
 	background-color:white;
 	position:absolute;
 	display:none;
-	padding:0;
+	padding:6px 0px;
 	width: 180px;
-    height: 410px; /*사이즈 지정   */ 
-    border-radius: 0;
+    border-radius: 2px;
     z-index:999;
     box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
 }
@@ -212,3 +227,403 @@ header .noLogin{
   position: sticky;
   top: 0;
 }
+
+
+
+/*사이드바 css  */
+
+/* 아코디언시작 */
+
+.nav-accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;/*  */
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+.active, .nav-accordion:hover {
+  background-color: #ccc;
+}
+.navbar-left li{
+	padding: 5px;
+}
+.nav-accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  /* padding: 0 18px; */
+}
+/* 아코디언 끝  */
+
+.nav-container{
+	display: block;
+	flex-grow: 1;
+    margin: 0 auto	0 0;
+    position: relative;
+}
+
+
+/* sbar_left */
+.accors .accord:not(:last-child) {
+    margin-bottom: 0;
+}
+.accors .accord .nav-accordion { 
+    cursor: pointer;
+    align-items: center;
+    line-height: 1.25;
+    position: relative;
+}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+.nav-container .accors .nav-accordion {
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    color: #fff;
+    background: #ff6318d1;
+    justify-content: center;
+    height: 50px;
+    border-radius: 0;
+    white-space: nowrap;
+    font-weight: 700;
+
+}
+.nav-container .accors .accord:first-of-type .nav-accordion {
+    border-top: 1px solid #e4e4e4;
+}
+.accors .accord .nav-accordion+.panel {
+    overflow-y: hidden;
+    max-height: 0;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transition: max-height .2s ease;
+}
+.nav-container .accors .panel {
+    color: #595959;
+    background: #fff;
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.accors .accord:not(:last-child) .acco_ctt {
+    border-radius: 0;
+}
+.accors .accord a:not(.button):not(.tag) {
+    color: currentColor;
+}
+.nav-container .accors .acco_ctt {
+    display: inline-flex;
+    text-decoration: none;
+    width: 100%;/*  */
+    white-space: nowrap;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-left: 1px solid #e4e4e4;
+    height: 50px;
+    padding: 0;
+}
+
+/* 오버레이 */
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 93%; /* 93 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 2;
+  cursor: pointer;
+}
+.btn{
+	border: 2px solid #00c471;
+    background-color: #00c471;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 4px;
+}
+.btn:HOVER{
+	opacity: 0.6;
+	color: hotpink;
+}
+#m-side-menu{ /* 사이드메뉴들어감 */
+  position: absolute;
+  background-color:white;
+  top: 50%; 
+  left: 25%;
+  width: 50%;
+  height: 101%; 
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  overflow: auto;
+}
+
+#exit{ /* 반투명 회색 여백 클릭하면 나가게 */
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  width: 50%;
+  height: 100%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+header .cart_modal_cover{
+	display: none; 
+    position: absolute;
+    width: 442px;
+    height: 420px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(33,37,41,.24);
+    background-color: #fff;
+    top: 55px;
+    right: -15px;
+    z-index: 10;
+    border: 1px solid #e0e0e0;
+}
+header .cart_modal_cover:BEFORE{
+	border-top: 0 solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 34px;
+}
+header .navbar-item.carts:HOVER>.cart_modal_cover{
+	display: block;
+}
+header .cart_modal{
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+header .top_content{
+	display: flex;
+}
+header .tab_menu{
+	flex: 1;
+    padding: 16px 8px 8px;
+    text-align: center;
+    color: #343a40;
+    border-bottom: 2px solid #e9ecef;
+    cursor: pointer;
+    background-color: white;
+}
+header .tab_menu.active{
+	color: #212529;
+    border-bottom: 2px solid #00c471;
+    font-weight: 600;
+}
+header .left_content a{
+	display: block;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(33,37,41,.64);
+    color: #fff !important;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    
+}
+header .cart_modal .list_content{
+	overflow-y: auto;
+}
+header .cart_modal .img_content{
+	width: 128px;
+    height: 83px;
+    overflow: hidden;
+    margin-right: 8px;
+}
+header .profile_modal_cover .img_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+}
+header .img_content>img{
+	max-width: 100%;
+	;
+}
+header .item_content{
+	flex: 1 1 auto;
+    width: 0;
+}
+header .bottom_content{
+	flex: 1 1 auto;
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+header .list_content{
+	flex: 1 1 auto;
+    height: 0;s
+    /* overflow-y: auto; */
+    margin-bottom: 8px;
+}
+
+header .item_title{
+	font-weight: bold;
+    margin-bottom: 8px;
+    
+}
+header .item_price{
+	text-align: right;
+	padding: 0 8px;
+}
+header .list_el{
+	display: flex;
+	color: black;
+}
+header .tab_btn{
+	width:100%;
+	color: white;
+	padding: 16px;
+	box-sizing: border-box;
+	font-weight: bold;
+	border-radius: 4px;
+	display: none;
+	font-size: 16px;
+	border: 1px solid;
+}
+header .tab_btn.active{
+	display: block;
+}
+header .tab_btn.wish_btn{
+	background-color: #ff7867;
+}
+header .tab_btn.basket_btn{
+	background-color: #00c471;
+}
+
+/* user_modal*/
+header .profile_hover{
+	width: 44px;
+    height: 44px;
+    position: relative;
+    color: #4a4a4a;
+    display: flex;
+    line-height: 1.5;
+    align-items: center;
+    margin-left: 5px;
+}
+header .profile_hover>span{
+	display: contents;
+    position: absolute;
+}
+header .profile_hover>span>img{
+	max-width: 100%;
+}
+
+header .profile_modal_cover{
+	display: none;
+    position: absolute;
+    width: 316px;
+    height: 506px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(33,37,41,.24);
+    background-color: #fff;
+    top: 55px;
+    right: -15px;
+    z-index: 10;
+    border: 1px solid #e0e0e0;
+    padding: 16px;
+    color: black;
+}
+header .profile_modal_cover .name{
+	font-size: 20px;
+	font-weight: bold;
+}
+header .profile_modal_cover a{
+	color: black;
+}
+header .profile_modal{
+	height: 100%;
+    display: flex;
+    flex-direction: column;	
+}
+header .profile_modal_info{
+	padding: 0;
+}
+header .user_content{
+	display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+}
+header .left_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+header .right_content{
+	display: flex;
+    flex-direction: column;
+}
+
+header .profile_modal_menu>.tab_content{
+	text-align: center;
+}
+header .profile_modal_menu>.list_content{
+	font-size: 20px;
+}
+header .list_item{
+	margin: 5px 0px;
+}
+header .profile_modal_footer{
+	position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}
+header .left_footer{
+	float: left;
+}
+header .right_footer{
+	float: right;
+}
+header .tab_content{
+	border-bottom: 2px solid #00c471;
+}
+header .navbar-item.profile:HOVER .profile_modal_cover{
+	display: block;
+}
+header .tab_item{
+	font-size: 20px;
+	font-weight: bold;
+}
+/* user_modal 끝 */

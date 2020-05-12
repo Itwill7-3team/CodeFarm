@@ -14,13 +14,7 @@ public class CommentDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  CommentDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 	private Connection getConnection() throws Exception{
