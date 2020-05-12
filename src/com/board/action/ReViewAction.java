@@ -1,6 +1,7 @@
 package com.board.action;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ public class ReViewAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward= new ActionForward();
 		ReviewDAO rdao= new ReviewDAO();
-		ArrayList<ReviewDTO> reviewlist =rdao.getReviewList();
+		ArrayList<Map<String, Object>> reviewlist =rdao.getReviewList();
 		
 		request.setAttribute("reviewlist", reviewlist);
 		

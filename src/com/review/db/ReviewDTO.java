@@ -6,7 +6,6 @@ public class ReviewDTO {
 
 	private int r_num;			//별점글번호
 	private int r_l_num;			//강의 번호
-	private String r_l_title;		//강의 이름
 	private String r_content;		//별점글 내용
 	private String r_writer;		//별점글 작성자
 	private int r_rating;			//별점
@@ -25,12 +24,6 @@ public class ReviewDTO {
 	}
 	public void setR_l_num(int r_l_num) {
 		this.r_l_num = r_l_num;
-	}
-	public String getR_l_title() {
-		return r_l_title;
-	}
-	public void setR_l_title(String r_l_title) {
-		this.r_l_title = r_l_title;
 	}
 	public String getR_content() {
 		return r_content;
@@ -78,7 +71,7 @@ public class ReviewDTO {
 	
 	@Override
 	public String toString() {
-		return "ReviewDTO [r_num=" + r_num + ", r_l_num=" + r_l_num + ", r_l_title=" + r_l_title
+		return "ReviewDTO [r_num=" + r_num + ", r_l_num=" + r_l_num 
 				+ ", r_content=" + r_content + ", r_writer=" + r_writer + ", r_rating=" + r_rating + ", r_re_lev="
 				+ r_re_lev + ", r_re_ref=" + r_re_ref + ", r_re_seq=" + r_re_seq + ", r_reg_date=" + r_reg_date + "]";
 	}

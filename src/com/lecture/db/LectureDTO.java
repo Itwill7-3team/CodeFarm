@@ -106,9 +106,7 @@ public class LectureDTO {
 	public void setPaynum(int paynum) {
 		this.paynum = paynum;
 	}
-	
-	
-	
+
 	public String getL_type2() {
 		return l_type2;
 	}

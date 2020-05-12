@@ -50,7 +50,7 @@
 					<div class="post_metas">
 						<div class="writer"><%=rdto.getR_writer() %></div>
 						<div class="reg_date"><%=rdto.getR_reg_date() %></div>
-						<div class="lecture_title"><%=rdto.getR_l_title() %></div>
+						<div class="lecture_title"><!--  --></div>
 					</div>
 					</div>
 					<div class="review_right">
