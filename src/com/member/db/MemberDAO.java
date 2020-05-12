@@ -1,13 +1,16 @@
 package com.member.db;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
 
 public class MemberDAO {
 	Connection con= null;
@@ -276,6 +279,62 @@ public class MemberDAO {
 				}
 				return check;
 			}
+			
+			// getMemberList()
+			public List<MemberDTO> getMemberList(){
+				
+				List<MemberDTO> memberList = new ArrayList<MemberDTO>();
+				
+				try {
+					// 1,2
+					con = getConnection();
+					// 3 sql
+					sql = "select * from member";
+					pstmt = con.prepareStatement(sql);
+					
+					// 4 실행
+					rs = pstmt.executeQuery();
+					
+					// 5  rs 값 비교
+				    while(rs.next()){
+				    	MemberDTO mdto = new MemberDTO();
+				    	mdto.setM_email(rs.getString("m_email"));
+				    	mdto.setM_rank(rs.getString("m_rank"));
+				    	//  한사람의 정보를  memberList배열에 한칸으로 저저장
+				    	memberList.add(mdto);
+				    }
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					closeDB();
+				}
+				return memberList;
+			}
+			// getMemberList()
+			
+			
+			
+			//AdminDelte()
+			public void AdminDelete(String m_email) {
+				try {
+					con = getConnection();
+					sql = "delete from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_email);
+					pstmt.executeUpdate();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			//AdminDelte()
+			
+			
+			//
 	}
+	
+
+
 	
 	

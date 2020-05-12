@@ -84,21 +84,7 @@ public class MemberDTO {
 	}
 	
 	
-	public MemberDTO(String m_email, String m_pw,
 
-			String m_emailHash, boolean m_emailCheck) {
-
-		this.m_email = m_email;
-
-		this.m_pw = m_pw;
-
-		this.m_emailHash = m_emailHash;
-
-		this.m_emailCheck = m_emailCheck;
-
-
-	}
-	
 	
 	
 }

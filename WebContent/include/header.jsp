@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
+
+
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta name="viewport"
 content="width=device-width, user-scalable=yes,
 initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
-	if(session.getAttribute("loginEmail")!=null){
-	 loginEmail=(String)session.getAttribute("loginEmail");
+	if(session.getAttribute("m_email")!=null){
+	 loginEmail=(String)session.getAttribute("m_email");
 	}
-	loginEmail="qsz78547@naver.com";
 %>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
@@ -274,6 +276,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
 						<a href="DashBoard.bo" class="navbar-item"> <button class="btn bold">대시보드</button></a>
+						<a href="MemberLogout.me" class="navbar-item"> <button class="btn bold ">로그아웃</button></a>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
@@ -304,7 +307,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a href="MemberLogin.me" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+							<a  class="navbar-item bold"> <button class="btn bold login_btn">로그인</button></a>
 						</div>
 						<div class="navbar-item">
 							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
@@ -345,6 +348,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		</div>
 		<!--모바일끝  -->
 	</nav>
+	
 <script>
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
@@ -354,6 +358,34 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	$(".cart").mouseover(function() {
 		getCarts();
 	});
+	
+	
+	$(".login_btn").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./MemberLogin.me",
+			data : {
+				
+				m_email : $("#email").val()
+			},
+
+			success : function(data) {
+				alert("로그인클릭"+data);
+				$(".login_form").html(data);
+			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+			}
+
+		});
+	});
+	// 요래 하면 여러가지 다양한 ajax 옵션을 줄수 있어서 개인적으로 더 선호한다.
+	
+	 
+	// 간단하게 요렇게 써도 됨
+	//$("#div 아이디").load("로딩할 페이지 URL", {넘길 파라메터});
+	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");
 		$.ajax({
@@ -391,3 +423,4 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 
 </header>
+<div class="login_form"></div> 

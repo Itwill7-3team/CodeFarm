@@ -28,12 +28,16 @@ public class MemberLogoutAction implements Action {
 		
 		out.print("<script>");
 		out.print(" alert('로그아웃 성공'); ");
-		out.print(" location.href='./Main.le'; ");
+		out.print(" location.href='Main.le'; ");
 		out.print("</script>");
-		
 		out.close();
 		
+		/*
+		 * ActionForward forward = new ActionForward(); forward.setPath("./Main.le");
+		 * forward.setRedirect(true);
+		 */
 		return null;
+		
 	}
 
 }

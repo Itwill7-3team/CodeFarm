@@ -125,7 +125,7 @@ public class MemberFrontController extends HttpServlet{
 			System.out.println("MemberPw.me 주소 요청");
 			
 			forward = new ActionForward();
-			forward.setPath("./views/member/memberPw.jsp");
+			forward.setPath("./views/member/MemberPw.jsp");
 			forward.setRedirect(false);	
 		}else if(command.equals("/MemberPwAction.me")){
 			// 비밀번호 찾기
@@ -143,6 +143,14 @@ public class MemberFrontController extends HttpServlet{
 			// MemberLogoutAction 객체 생성 
 			action = new MemberLogoutAction();
 			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberAdmin.me")){
+			// MemberAdminAction 객체 생성 
+			action = new MemberListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
