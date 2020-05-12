@@ -151,7 +151,7 @@ for(int i=0;i<lectureList.size();i++){
 								
 								<div class="column flip-card is-4-tablet is-desktop">
 									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href='./lectureDetail.le?num=<%=ldto.getL_number()%>'>
+										<a class="flip-card-front" href='Detail.le?num=<%=ldto.getL_number()%>'> <!-- 디테일 연결하겠습니다. -->
 											<div class="card_image">
 												<figure class="image is_tumbnail">
 													<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
@@ -180,8 +180,8 @@ for(int i=0;i<lectureList.size();i++){
 												<!-- </div> --><!-- course_data -->
 											</div>
 										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
+										<div class="flip-card-back course_card_back" >
+											<a href="Detail.le?num=<%=ldto.getL_number()%>"> <!-- 디테일 연결하겠습니다 -->
 												<p class="course_decription"><%=ldto.getL_content() %></p>
 												<div class="back_course_data">
 													<div class="course_level">

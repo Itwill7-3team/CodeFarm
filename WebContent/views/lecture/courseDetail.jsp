@@ -43,7 +43,9 @@
 						<!-- lecture thumbnail -->
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>">
+<%-- 	<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>"> --%>
+		<!-- DB lecture테이블 등록 이미지 split으로 가져오기 -->	
+		<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
 						<!-- lecture thumbnail -->

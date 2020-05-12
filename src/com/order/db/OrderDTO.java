@@ -9,13 +9,20 @@ public class OrderDTO {
 	private int o_l_price;		//결제 강의 가격
 	private int o_l_num;		//결제 강의 번호
 	private String o_l_name;	//결제 강의 이름
-	private int o_m_id;			//결제 회원 아이디
+	private String o_m_id;			//결제 회원 아이디
 	private String o_t_type;	//결제 방식
 	private String o_t_bank;	//온라인 결제
 	private String o_t_payer;	//입금자명
 	private Timestamp o_t_date;	//결제시간
 	private int o_sum_money;	//결제 가격
+	private int O_status; // 주문 상태(무통장)
 	
+	public int getO_status() {
+		return O_status;
+	}
+	public void setO_status(int o_status) {
+		O_status = o_status;
+	}
 	//getter setter
 	public int getO_num() {
 		return o_num;
@@ -47,10 +54,10 @@ public class OrderDTO {
 	public void setO_l_name(String o_l_name) {
 		this.o_l_name = o_l_name;
 	}
-	public int getO_m_id() {
+	public String getO_m_id() {
 		return o_m_id;
 	}
-	public void setO_m_id(int o_m_id) {
+	public void setO_m_id(String o_m_id) {
 		this.o_m_id = o_m_id;
 	}
 	public String getO_t_type() {
@@ -85,12 +92,13 @@ public class OrderDTO {
 	}
 	
 	//toString
+	
 	@Override
 	public String toString() {
-		return "orderlistDTO [o_num=" + o_num + ", o_b_num=" + o_b_num + ", o_l_price=" + o_l_price + ", o_l_num="
-				+ o_l_num + ", o_l_name=" + o_l_name + ", o_m_id=" + o_m_id + ", o_t_type=" + o_t_type + ", o_t_bank="
-				+ o_t_bank + ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money
-				+ "]";
+		return "OrderDTO [o_num=" + o_num + ", o_b_num=" + o_b_num + ", o_l_price=" + o_l_price + ", o_l_num=" + o_l_num
+				+ ", o_l_name=" + o_l_name + ", o_m_id=" + o_m_id + ", o_t_type=" + o_t_type + ", o_t_bank=" + o_t_bank
+				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + ", O_status="
+				+ O_status + "]";
 	}
 	
 	
