@@ -10,7 +10,9 @@
 <title>코딩팜-강의만들기</title>
 <link href="./css/addLecture.css" rel="stylesheet">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 	<script>
@@ -19,6 +21,26 @@
 				$(".side_item").removeClass("active");
 				$(this).addClass("active");
 			});
+		
+		//btn클릭시  active클래스 추가
+		$(".level").click(function() {
+			$(".level").removeClass("active");
+			$(this).addClass("active");
+		});
+		//input버튼 새로 추가하는 액션
+		$(".addInput").click(function() {
+			var name = $(this).parent(".input_item").children(".input_box").children("input:last").attr("name");
+			var placeholder = $(this).parent(".input_item").children(".input_box").children("input:last").attr("placeholder");
+			var value=Number($(this).val())+1;
+			$(this).val(value);
+			console.log(name + placeholder +value);
+			$(this).parent(".input_item").children(".input_box").append('<input class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
+		//textarea 자동으로 세로너비 증가
+		});
+		function xSize(e) {
+			e.style.height = '1px';
+			e.style.height = (e.scrollHeight + 12) + 'px';
+		}
 		});
 	</script>
 	<div class="header">
@@ -58,48 +80,71 @@
 
 			<div class="submit_button">
 				<button class="btn">제출하기</button>
+				<button class="btn red" onclick="javascript:history.back();">나가기</button>
 			</div>
 		</div>
 		</aside>
 		<div class="main_content_cover">
 			<div class="main_content">
 				<div class="title input_item">
-					<label class="menu_label">강의 제목</label> <input class="input"
+					<label class="menu_label">강의 제목</label> 
+					<div class="input_box">
+					<input class="input"
 						name="title" placeholder="제목을 입력해주세요" autocomplete="off">
-
+						</div>
+				</div>
+				<div class="title input_item">
+					<label class="menu_label">이 강의는</label> <div class="input_box">
+					<input class="input"
+						name="title" placeholder="강의에 대한 짧은 설명을 적어주세요" autocomplete="off">
+						</div>
 				</div>
 				<div class="title input_item">
 					<label class="menu_label">이런걸 배울수 있어요 <span class="tip">Tip></span></label>
-					<input class="input" name="title" placeholder="ex)리액트 네이티브 개발"
-						autocomplete="off">
-					<button class="addInput btn">추가하기</button>
+					<div class="input_box">
+					<input class="input"
+						name="title" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
+						</div>
+					<button class="addInput btn" value="1">추가하기</button>
 				</div>
 				<div class="title input_item">
 					<label class="menu_label">이런 분들에게 추천해요 <span class="tip">Tip></span></label>
-					<input class="input" name="title" placeholder="ex)코딩을 처음 접하는 사람"
-						autocomplete="off">
-					<button class="addInput btn">추가하기</button>
+					<div class="input_box">
+					<input class="input"
+						name="title" placeholder="ex)코딩 처음 접하는 사람" autocomplete="off">
+						</div>
+					<button class="addInput btn" value="1">추가하기</button>
 				</div>
 				<div class="title input_item">
-					<label class="menu_label">선수 지식이 필요하다면 무엇인가요? <span
-						class="select">(선택)</span></label> <input class="input" name="title"
-						placeholder="ex)c언어" autocomplete="off">
-					<button class="addInput btn">추가하기</button>
+					<label class="menu_label">선수 지식이 필요하다면 무엇인가요? <span class="select">(선택)</span></label>
+					<div class="input_box">
+					<input class="input"
+						name="title" placeholder="ex)C언어" autocomplete="off">
+						</div>
+					<button class="addInput btn" value="1">추가하기</button>
+				</div>
+				
+				<div class="title input_item">
+					<label class="menu_label">카테고리 </label> 
+					<div class="button_box">
+					<button class="btn level" value="IT프로그래밍">IT프로그래밍</button>
+					<button class="btn level" value="크리에이티브">크리에이티브</button>
+					<button class="btn level" value="업무스킬">업무스킬</button>
+					<button class="btn level" value="그외">그외</button>
+					</div>
+				</div>
+				<div class="title input_item">
+					<label class="menu_label">강의수준</label> 
+					<div class="button_box">
+					<button class="btn level" value="입문">입문</button>
+					<button class="btn level" value="초급">초급</button>
+					<button class="btn level" value="중급">중급</button>
+					<button class="btn level" value="고급">고급</button>
+					</div>
+					<input type="hidden" >
 				</div>
 			</div>
 		</div>
 	</div>
-	<script>
-		$(".addInput").click(function() {
-			var name = $(this).prev(["input"]).attr("name");
-			var placeholder = $(this).prev(["input"]).attr("placeholder");
-			var label = $(this).prev(["label"]).val();
-			console.log(name + placeholder + label);
-		});
-		function xSize(e) {
-			e.style.height = '1px';
-			e.style.height = (e.scrollHeight + 12) + 'px';
-		}
-	</script>
 </body>
 </html>

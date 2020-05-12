@@ -12,21 +12,27 @@ body{
     padding: 17px 20px;
     background: #2c2e37;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 77;
 }
 .content{
 	height: 100%;
     width: 100%;
     display: flex;
+    position: relative;
     margin: 0 auto;
+    float: left;
+    box-sizing: border-box;
 }
 .sidebar{
 	min-width: 200px;
-    width: 20%;
-    position: fixed;
-    height: 100%;
+    width: 15%;
+    float: left;
     background-color: rgb(241, 241, 241);
     box-sizing: border-box;
     padding: 20px;
+    position: sticky;
 }
 .fa-circle{
     /* opacity: 0.6; */
@@ -94,21 +100,24 @@ body{
     border-radius: 4px;
     width: 100%;
     margin-top: 15px;
+    flex:1;
 }
 .submit_button{
 	margin: 60px 10px;
 }
 .main_content_cover{
-	width: 80%;
-    flex: 1;
-    height: 100%;
-    position: fixed;
-    left: 20%;
-    padding:0 30px;
+	height: fit-content;
+    padding: 0 30px;
+    background-color: white;
+    float: left;
+    display: block;
+    box-sizing: border-box;
 }
 .main_content{
     box-sizing: border-box;
-    max-width: 400px;
+    max-width: 650px;
+    width: 100%;
+    position: inherit;
 }
 .input{
 	width: 100%;
@@ -117,6 +126,7 @@ body{
     border-radius: 6px;
     border: 1px solid #fff;
     background-color: #f1f1f1;
+    margin: 2px 0px;
     box-sizing: border-box;
 }
 .textarea{
@@ -132,6 +142,26 @@ body{
 }
 .input_item{
 	box-sizing: border-box;
-    max-width: 400px;
+    max-width: 100%;
     margin: 20px 0px;
+}
+.menu_label{
+	color:rgb(202, 198, 198);
+}
+.button_box{
+	display: flex;
+}
+.button_box>.btn{
+	color: #00c471;
+	background-color: white;
+	margin: 5px 2px;
+}
+.button_box>.btn.active{
+	opacity: 0.8;
+    background-color: #00c471;
+    color: white;
+}
+.red{
+	background-color: #ff7867;
+	border: 1px solid #ff7867; 
 }
