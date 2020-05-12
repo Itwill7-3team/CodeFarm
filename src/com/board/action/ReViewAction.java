@@ -6,10 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lecture.db.LectureDAO;
-import com.question.db.QuestionDAO;
 import com.review.db.ReviewDAO;
-import com.review.db.ReviewDTO;
 
 public class ReViewAction implements Action {
 

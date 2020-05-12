@@ -1,0 +1,137 @@
+@CHARSET "UTF-8";
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.header{
+	color: white;
+    height: 64px;
+    width: 100%;
+    font-size: 24px;
+    padding: 17px 20px;
+    background: #2c2e37;
+    box-sizing: border-box;
+}
+.content{
+	height: 100%;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+}
+.sidebar{
+	min-width: 200px;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    background-color: rgb(241, 241, 241);
+    box-sizing: border-box;
+    padding: 20px;
+}
+.fa-circle{
+    /* opacity: 0.6; */
+}
+.side_item.final>i {
+	color:#1dc078;
+}
+.side_item.active>i {
+	color:black;
+}
+.side_item.active>span{
+	color: black;
+	font-weight: bold;
+}
+.side_items{
+	position: relative;
+}
+.fas{
+	align-content: center;
+    display: contents;
+}
+.side_items:BEFORE {
+	content: "";
+    display: block;
+    border-left: solid 2px #dad7d7;
+    height: 71%;
+    left: 10px;
+    top: 15%;
+    width: 1px;
+    position: absolute;
+    z-index: -1;
+}
+.side_item{
+	margin: 2px 3px;
+    display: block;
+    z-index: 11;
+    position: relative;
+    padding: 5px 0px;
+    color:rgb(202, 198, 198);
+}
+.side_title{
+	box-sizing: border-box;
+    padding: 17px;
+    font-size: 18px;
+    font-weight: bold
+}
+.item_title{
+	margin-left: 20px;
+}
+.mouse:HOVER{
+	cursor: pointer;
+}
+.final{
+	font-weight: bold;
+}
+.btn{
+	border: 2px solid #00c471;
+    background-color: #00c471;
+    color: white;
+    padding: 6px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 15px;
+}
+.submit_button{
+	margin: 60px 10px;
+}
+.main_content_cover{
+	width: 80%;
+    flex: 1;
+    height: 100%;
+    position: fixed;
+    left: 20%;
+    padding:0 30px;
+}
+.main_content{
+    box-sizing: border-box;
+    max-width: 400px;
+}
+.input{
+	width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    background-color: #f1f1f1;
+    box-sizing: border-box;
+}
+.textarea{
+	width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    background-color: #f1f1f1;
+    box-sizing: border-box;
+    resize: none; 
+    overflow: hidden;
+}
+.input_item{
+	box-sizing: border-box;
+    max-width: 400px;
+    margin: 20px 0px;
+}

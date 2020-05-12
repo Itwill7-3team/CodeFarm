@@ -70,14 +70,14 @@ public class ReviewDAO {
 				rdto.setR_reg_date(rs.getTimestamp("r_reg_date"));
 				reviewdata.put("rdto", rdto);
 				
-				sql="select * from lecture where l_num=?";
+				sql="select * from lecture where l_number=?";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, rs.getInt("r_l_num"));
+				pstmt.setInt(1,rs.getInt("r_l_num"));
 				
 				rs2=pstmt.executeQuery();
 				if(rs2.next()){
 					LectureDTO ldto= new LectureDTO();
-					ldto.setL_number(rs.getInt("l_num"));
+					ldto.setL_number(rs2.getInt("l_number"));
 					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_m_id(rs2.getString("l_m_id"));
 					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
@@ -93,6 +93,7 @@ public class ReviewDAO {
 					ldto.setPct_date(rs2.getTimestamp("pct_date"));
 					ldto.setPaynum(rs2.getInt("paynum"));
 					ldto.setL_title(rs2.getString("l_title"));
+					reviewdata.put("ldto", ldto);
 				}
 				
 				reviewlist.add(reviewdata);
