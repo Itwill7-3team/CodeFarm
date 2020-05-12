@@ -34,7 +34,7 @@
 		  <li class="menu1">
 		    <a href="#">내 학습</a>
 		    <ul>
-		      <li class="menu2 "><a href="#">수강중인 강의</a></li>
+		      <li class="menu2 "><a href="MyLecture.bo">수강중인 강의</a></li>
 		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li>
 		      <li class="menu2 "><a href="#">내 질문</a></li>
 		    </ul>
