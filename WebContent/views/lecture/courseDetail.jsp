@@ -114,7 +114,7 @@
 											<% if (ldto.getL_price() == 0) { %>
 											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 											<% } else { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn" onclick="location.href='BasketList.ba';">수강 신청</button>
+											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">수강 신청</button>
 											<% } %>
 										</div>
 									</div>
