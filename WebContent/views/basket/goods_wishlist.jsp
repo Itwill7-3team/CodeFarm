@@ -17,14 +17,11 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
-
 </head>
 <link rel="stylesheet" href="./css/wishlist.css">
-<!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
-
+<link rel="stylesheet" href="./css/main.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- <link rel="stylesheet" href="../css/viewmodal.css"> -->
 <style>
 
 </style>
@@ -87,13 +84,52 @@
 </aside>
 <!-- aside 영역 -->   
    
+  <section id="lec">
+<h1 class="title">위시리스트</h1> 
+<%
+for(int i=0;i<wishList.size();i++){ 
+	 WishlistDTO wdto = (WishlistDTO)wishList.get(i);
+	  LectureDTO ldto = (LectureDTO)lectureList.get(i);
+%>
+			
+<div class="card">
+<a href="Detail.le?num=<%=ldto.getL_number() %>">
+  <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+    <h2><%=ldto.getL_title() %></h2>
+</a>
+	<p><%=ldto.getL_m_name() %></p> 
+	<div class="card-in">
+		<span class="fa fa-star checked"></span><!-- 찬하트 -->
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="far fa-star checked"></span><!--빈하트  -->
+		<span class="review_cnt">(0)</span> 
+		
+		<span class="mg-l50">
+		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
+		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
+		</span>
+	
+	<div class="mg-t10">
+		<span class="tags tag"><%=ldto.getL_tag() %></span>
+	
+		<c:set var="price" value="<%=ldto.getL_price() %>"/>
+		<span class="price">
+		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+	</div>		
+
+	</div>
+</div>
+<%} %>	
+
+</section> 
    
    
    
    
    
-   
-  <section id="alll" >			<!-- 위시 수정 -->
+<%--   <section id="alll" >			<!-- 위시 수정 -->
    <h3 class="boxh3">위시리스트><a href="BasketList.ba" style="font-size: 16px;">장바구니</a></h3>
   <%
   int total=0;
@@ -115,7 +151,7 @@
 		   <div class="amount">
 		  <c:set var="price" value="<%=ldto.getL_price() %>"/>
 		   <span style="text-align: center;">
-		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%--<%=ldto.getL_price() %> 원 --%>
+		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%=ldto.getL_price() %> 원
 		   </span>
 		   
 		  		   
@@ -138,7 +174,7 @@
   }  
   %>
 
-</section>
+</section> --%>
 
 </div> 
 </body>
