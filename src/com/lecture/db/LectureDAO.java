@@ -106,11 +106,15 @@ public class LectureDAO {
 	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String item, PagingDTO paging){
+	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
+		System.out.println("s :"+s);
+		/* s = " "; */
+		System.out.println("s :"+s);
+		
 		try {
 		con = getConnection();
 			/*
@@ -121,7 +125,7 @@ public class LectureDAO {
 		/*mysql version*/
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW BETWEEN ? AND ?");
+				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ?");
 		
 		if(item.equals("all")){
 		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
@@ -139,6 +143,7 @@ public class LectureDAO {
 		pstmt = con.prepareStatement(SQL.toString());
 		pstmt.setInt(1, startNum);
 		pstmt.setInt(2, endNum);
+		pstmt.setString(3, "%"+s+"%");
 		
 		rs = pstmt.executeQuery();
 			
@@ -166,6 +171,7 @@ public class LectureDAO {
 			lectureList.add(ldto);
 		}	
 		System.out.println("사용자 강의 목록 저장완료");
+		System.out.println("내용"+lectureList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
