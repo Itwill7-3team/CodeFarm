@@ -57,6 +57,11 @@ public class BoardFrontController extends HttpServlet{
 
 		}else if(command.equals("/reView.bo")){
 			action=new ReViewAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}else if(command.equals("/notice.bo")){
 			
@@ -65,6 +70,14 @@ public class BoardFrontController extends HttpServlet{
 		}
 	else if(command.equals("/DashBoard.bo")){
 		action=new dashboardAction();
+		try{
+			forward=action.execute(request, response);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	else if(command.equals("/MyLecture.bo")){
+		action=new myLectureAction();
 		try{
 			forward=action.execute(request, response);
 		}catch (Exception e) {

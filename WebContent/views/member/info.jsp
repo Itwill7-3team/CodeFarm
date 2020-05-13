@@ -1,3 +1,4 @@
+<%@page import="com.member.db.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,6 +67,7 @@
 	if(m_email == null){
 		response.sendRedirect("Main.le");
 	}
+	MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
 %>
 <!-- 대시보드 -->
     <div class="main_container">
@@ -73,7 +75,7 @@
       	<form action="./UpdateInfoAction.me">
       		<div class="email">
       			<span class="colum_name">이메일</span>
-      			<input type="text" name="m_email" class="input_me" value=""> 
+      			<input type="text" name="m_email" class="input_me" value="<%=mdto.getM_email()%>"> 
       		</div>
       	</form>	
    		</div>

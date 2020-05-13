@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-<title>코딩팜 - ${ ldto.l_m_id }</title>
+<title>코딩팜 - ${ ldto.l_title }</title>
 
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="./css/courseDetail.css">
@@ -43,7 +43,9 @@
 						<!-- lecture thumbnail -->
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>">
+<%-- 	<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>"> --%>
+		<!-- DB lecture테이블 등록 이미지 split으로 가져오기 -->	
+		<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
 						<!-- lecture thumbnail -->
@@ -112,7 +114,7 @@
 											<% if (ldto.getL_price() == 0) { %>
 											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 											<% } else { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
+											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">수강 신청</button>
 											<% } %>
 										</div>
 									</div>

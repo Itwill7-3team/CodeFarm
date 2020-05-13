@@ -35,7 +35,7 @@ for(int i=0;i<bestList.size();i++){
 %>
 			
 <div class="card">
-<a href="#">
+<a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
@@ -77,7 +77,7 @@ for(int i=0;i<newList.size();i++){
 %>
 			
 <div class="card">
-<a href="#">
+<a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
@@ -92,7 +92,7 @@ for(int i=0;i<newList.size();i++){
 		
 		<span class="mg-l50">
 		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
 		</span>
 		
 	<div class="mg-t10">
@@ -118,7 +118,7 @@ for(int i=0;i<freeList.size();i++){
 %>
 			
 <div class="card">
-<a href="#">
+<a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
@@ -133,7 +133,7 @@ for(int i=0;i<freeList.size();i++){
 		
 		<span class="mg-l50">
 		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="#"><i class="fa fa-cart-plus"></i></a>
+		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
 		</span>
 		
 	<div class="mg-t10">

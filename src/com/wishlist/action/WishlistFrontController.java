@@ -74,6 +74,17 @@ public class WishlistFrontController extends HttpServlet{
 			}
 		}
 		
+			else if (command.equals("/WishToBasketAction.wi")) {
+				System.out.println("/WishToBasket.wi 주소 처리(model)");
+				// WishToBasketAction 객체
+				action=new WishToBasketAction();
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
 		

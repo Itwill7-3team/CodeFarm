@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
+
 
 
 public class MemberFrontController extends HttpServlet{
@@ -151,6 +151,15 @@ public class MemberFrontController extends HttpServlet{
 		}else if(command.equals("/MemberAdmin.me")){
 			// MemberAdminAction 객체 생성 
 			action = new MemberListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MemberInfo.me")){
+			// MemberAdminAction 객체 생성 
+			action = new MemberInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
+
 public class LectureDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
@@ -80,36 +82,63 @@ public class LectureDAO {
 		}
 		// getLectureDetail()
 		
+	//getAllCount()
+	public int getAllCount() {
+		int count = 0;
+		try {
+			con = getConnection();
+			sql = "select count(*) as count from lecture";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
 		
+		return count;
+	}
+	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String item){
+	public List<LectureDTO> getLecutreList(String item, PagingDTO paging){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
-
+		int startNum = paging.getStartNum();
+		int endNum = paging.getEndNnum();
 		try {
 		con = getConnection();
-		SQL.append("select * from lecture");
+			/*
+			 * "select * from (" + " select @rownum:=@rownum+1 as rownum lecture.* from (" +
+			 * " from lecture (select @rownum:0) tmp" + ") e where rownum >= ?" +
+			 * ") r where rownum <= ?"
+			 */
+		/*mysql version*/
+		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
+				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
+				+ "where C.ROW BETWEEN ? AND ?");
+		
 		if(item.equals("all")){
-		}else if(item.equals("seq")){
+		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
+			SQL.append(" order by l_goods asc");
+		}else if(item.equals("popular")) { //인기? 결제수
+			SQL.append(" order by paynum desc");
+		}else if(item.equals("recent")){ //최신
 			SQL.append(" order by l_number desc");
-		}else if(item.equals("popular")){
-			SQL.append(" where best=?");
-		}
-		/*else if(item.equals("recent")){
-			SQL.append(" where best=?");
-		}*/
-		else if(item.equals("famous")){
-			SQL.append(" where best=?");
+		}else if(item.equals("rating")){ // 평점
+			SQL.append("");
+		}else if(item.equals("famous")){ // 학생수? 결제수
+			SQL.append(" order by paynum desc");
 		}
 		
 		pstmt = con.prepareStatement(SQL.toString());
-		
-		if(item.equals("all")){
-		}
-		/*else{
-			pstmt.setString(1, item);
-		}*/
+		pstmt.setInt(1, startNum);
+		pstmt.setInt(2, endNum);
 		
 		rs = pstmt.executeQuery();
 			
@@ -144,10 +173,10 @@ public class LectureDAO {
 			closeDB();
 		}
 		
-		
 		return lectureList;
 	}
 	// getLectureList()
+
 	
 	//getLectureSelectList()
 			public List<LectureDTO> getLectureSelectList(String item){
@@ -227,8 +256,59 @@ public class LectureDAO {
 				}
 				return lectureList;
 			}
-			//getLectureSelectList()
-	
+	//getLectureSelectList()
+			public void insertlectures(LectureDTO ldto) {
+				// TODO Auto-generated method stub
+				System.out.println("insertlectures(ldto)");
+				
+				int num = 0;
+				try {
+					con=getConnection();
+					sql = "select max(l_number) from lecture";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					
+					if(rs.next()){
+						num = rs.getInt("max(l_number)")+1;
+					}
+					System.out.println("lecture num");
+					
+					sql = "insert into lecture"
+							+ "(l_number,l_m_name,l_m_id,l_reg_date,l_content,l_type,l_type2,l_type3,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum,l_title) "
+							+ "value(?,?,?,now(),?,?,?,?,?,?,?,?,?,now(),?,?)";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					pstmt.setString(2, ldto.getL_m_name());
+					pstmt.setString(3, ldto.getL_m_id());
+					/*reg_date*/
+					pstmt.setString(4, ldto.getL_content());
+					pstmt.setString(5, ldto.getL_type());
+					pstmt.setString(6, ldto.getL_type2());
+					pstmt.setString(7, ldto.getL_type3());
+					pstmt.setInt(8, ldto.getL_price());
+					pstmt.setInt(9, ldto.getL_pct());
+					pstmt.setString(10, ldto.getL_img());
+					pstmt.setString(11, ldto.getL_tag());
+					pstmt.setInt(12, ldto.getL_goods());
+					/*pct_date*/
+					pstmt.setInt(13, ldto.getPaynum());
+					pstmt.setString(14, ldto.getL_title());
+					
+					pstmt.executeUpdate();
+					System.out.println("강의 등록 성공");
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("강의 등록 실패");
+					
+				}finally{
+					closeDB();
+				}
+				
+				
+				
+			}
 	
 	
 }

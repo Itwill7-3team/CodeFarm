@@ -331,7 +331,35 @@ public class MemberDAO {
 			//AdminDelte()
 			
 			
-			//
+			//getInfo()
+			public MemberDTO getInfo(String m_email) {
+				MemberDTO mdto = new MemberDTO();
+				try {
+					con = getConnection();
+					sql = "select * from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_email);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						mdto.setM_email(rs.getString("m_email"));
+						mdto.setM_rank(rs.getString("m_rank"));
+						mdto.setM_addr(rs.getString("m_addr"));
+						mdto.setM_intro(rs.getString("m_intro"));
+						mdto.setM_name(rs.getString("m_name"));
+						mdto.setM_phone(rs.getString("m_phone"));
+						mdto.setM_pw(rs.getString("m_pw"));
+						
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return mdto;
+				
+			}
+			
+			//getInfo()
 	}
 	
 

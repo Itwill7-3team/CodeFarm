@@ -56,8 +56,8 @@ public class MemberLoginAction implements Action {
 			// 자바스크립트를 통한 페이지 이동은 컨트롤러 없이 바로 이동 
 			out.print("<script>");
 			out.print("  alert('아이디가 없습니다.'); ");
-			//out.print("  history.back(); ");
-			out.print(" location.href='./MemberLogin.me'; ");
+			out.print("  history.back(); ");
+			//out.print(" location.href='./MemberLogin.me'; ");
 			out.print("</script>");
             // out 객체의 자원 해제 
 			out.close();
