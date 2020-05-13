@@ -99,7 +99,7 @@
 	<%
 		//쿠폰값 수정
 			total += ldto.getL_price();
-			stotal = total * (100 - ldto.getL_pct()) / 100; // 할인 수정
+			stotal = total * (100 - ldto.getL_pct()) / 100; // 할인수정
 		}
 	%>
 
