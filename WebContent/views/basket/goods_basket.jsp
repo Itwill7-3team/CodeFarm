@@ -59,6 +59,7 @@
 
 	<%
 		int total = 0;
+		int stotal = 0;
 		for (int i = 0; i < basketList.size(); i++) {
 			BasketDTO bdto = (BasketDTO) basketList.get(i);
 			LectureDTO ldto = (LectureDTO) lectureList.get(i);
@@ -98,6 +99,7 @@
 	<%
 		//쿠폰값 수정
 			total += ldto.getL_price();
+			stotal = total * (100 - ldto.getL_pct()) / 100; // 할인 수정
 		}
 	%>
 
