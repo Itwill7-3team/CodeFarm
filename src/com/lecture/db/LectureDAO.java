@@ -136,6 +136,7 @@ public class LectureDAO {
 			SQL.append(" order by paynum desc");
 		}
 		
+		
 		pstmt = con.prepareStatement(SQL.toString());
 		pstmt.setInt(1, startNum);
 		pstmt.setInt(2, endNum);

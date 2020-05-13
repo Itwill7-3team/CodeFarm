@@ -54,8 +54,11 @@ p{
 	margin: 16px 0px;
 	
 }
+
+
 .text_input{
-	border-style: groove;
-    padding: 6px 12px;
-    border-style: groove;
+	border-style: hidden;
+    font-size: 24px;
+    font-style: oblique;
+    background-color: #d6d6d6;
 }

@@ -7,8 +7,8 @@
    type="javax.sql.DataSource"
    driverClassName="com.mysql.jdbc.Driver"
    url="jdbc:mysql://localhost:3306/codefarm"
-   username="codefarm"
-   password="codefarmfarm"
+   username="root"
+   password="1234"
    maxActive="500"
    maxIdle="100"  
   />
