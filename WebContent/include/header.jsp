@@ -305,7 +305,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
 						<div class="profile_hover">
-							<span><img src="./img/당근.png"></span>
+							<span><img src="./img/sunny.png"></span>
 						</div>
 							<span class="profile_icon"></span>
 							<div class="profile_modal_cover">
