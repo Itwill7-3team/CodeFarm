@@ -271,6 +271,7 @@ for (i = 0; i < acc.length; i++) {
 </script>
 <!-- selectBox -->
 <script>
+
 $(function(){
 	$("#courses_order_select").change(
 		function() {

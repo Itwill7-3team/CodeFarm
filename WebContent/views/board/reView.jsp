@@ -1,3 +1,5 @@
+<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.review.db.ReviewDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -39,18 +41,21 @@
 	 <div class="columns">
 		<div class="main_content">
 			<div class="content">
-			<% 	ArrayList<ReviewDTO> reviewlist= (ArrayList<ReviewDTO>)request.getAttribute("reviewlist");
+			<% ArrayList<Map<String, Object>> reviewlist= (ArrayList<Map<String, Object>>)request.getAttribute("reviewlist");
 				for(int i=0; i<reviewlist.size();i++){
-					ReviewDTO rdto=reviewlist.get(i);					
+					Map<String, Object> map=reviewlist.get(i);
+					LectureDTO ldto=(LectureDTO)map.get("ldto");
+					ReviewDTO rdto=(ReviewDTO)map.get("rdto");
 			%>
 				<div class="review_list_item">
 					<div class="review_left_item">
 					<div class="star_item"><%=rdto.getR_rating() %></div>
 					<div class="content_item"><%=rdto.getR_content() %></div>
 					<div class="post_metas">
+						<div class="goods"><%=ldto.getL_goods() %></div>
 						<div class="writer"><%=rdto.getR_writer() %></div>
 						<div class="reg_date"><%=rdto.getR_reg_date() %></div>
-						<div class="lecture_title"><%=rdto.getR_l_title() %></div>
+						<div class="lecture_title"><%=ldto.getL_title() %></div>
 					</div>
 					</div>
 					<div class="review_right">

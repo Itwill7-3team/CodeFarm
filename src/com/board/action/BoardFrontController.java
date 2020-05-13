@@ -76,6 +76,14 @@ public class BoardFrontController extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
+	else if(command.equals("/MyLecture.bo")){
+		action=new myLectureAction();
+		try{
+			forward=action.execute(request, response);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
