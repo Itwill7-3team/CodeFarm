@@ -88,7 +88,7 @@
 											<small>(<%= review_rating.get("reviewAll") %>개의 수강평)</small>
 										</span>
 										<br class="is-hidden-mobile">
-										<small class="student_cnt"><%= ldto.getPaynum() %>명의 수강생a</small>
+										<small class="student_cnt"><%= ldto.getPaynum() %>명의 수강생</small>
 										<br>
 										
 									<!-- lecture_type_category -->
