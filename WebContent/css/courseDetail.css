@@ -787,6 +787,23 @@ article.media span.option span {
 	padding: 16px 0;
 }
 
+.course_sub_btn {
+    width: 48%;
+    color: #616161;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.cartBtn, .wishBtn {
+    border-radius: 2px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.16);
+    border: none;
+    background: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
 .course_detail .course_description .curriculum .curriculum_accordion {
 	margin: 0;
 }

@@ -133,8 +133,8 @@
 												<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 											<% } else { %>
 												<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
-												<button class="btn is_outlined course_sub_btn course_cart_btn cartBtn" fxd-data="{&quot;course_id&quot;:325362,&quot;course_slug&quot;:&quot;돋보이는-신입사원-엑셀-트레이닝&quot;}">
-											    	<i class="far fa-cart-plus"></i><span class="text">수강 바구니</span>
+												<button class="is_outlined course_sub_btn course_cart_btn cartBtn">
+											    	<i class="fa fa-cart-plus"></i><span class="text">수강 바구니</span>
 											    </button>
 											<% } %>
 										</div>
