@@ -100,7 +100,7 @@
 /*************************************************************************************/
 
 *, :after, :before { box-sizing: inherit; }
-:focus { outline: .05em auto #1dc078; }
+:focus { outline: .05em auto #dbdbdb; }
 
 html.noscroll { overflow: hidden; }
 html {
@@ -199,11 +199,15 @@ p {
 
 @media screen and (max-width:768px) {
 	.rating_star {
-		width: 4rem;
+		width: auto;
 	}
 	.rating_star svg, .rating_star i {
 		width: .8rem;
 	}
+}
+
+.average_star .rating_star {
+	height: 25px;
 }
 
 div:not (.course_description ) .content li+li {
@@ -760,12 +764,12 @@ article.media span.option span {
 }
 
 .lecbtn.is_primary {
-	background: #1dc078;
+	background: #3273dc;
 	color: #fff;
 }
 
 .lecbtn.is_primary:active, .lecbtn.is_primary:hover {
-	background: #14965c;
+	background: #276cda;
 }
 
 .lecbtn.is_disable {
