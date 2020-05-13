@@ -33,7 +33,7 @@
 				<div class="side_item" data-type="curriculum">
 					<i class="fas fa-check-circle"></i><span class="item_title mouse">커리큘럼</span>
 				</div>
-				<div class="side_item final" data-type="cover-img">
+				<div class="side_item" data-type="cover-img">
 					<i class="fas fa-check-circle"></i><span class="item_title mouse">커버이미지</span>
 				</div>
 			</div>
@@ -162,6 +162,22 @@
 						name="title" placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
 				</div>
 			</div>
+			<div class="main_content" id="curriculum">
+				
+				<div class="section_cover">
+					<div class="section input_item">
+						<label class="menu_label">섹션 0</label>
+						<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">
+						<button class="addvideo btn" value="1">영상 추가하기</button>
+					</div>  
+				</div>
+					<button class="addsection btn" value="1">섹션 추가하기</button>  
+			</div>
+			<div class="main_content" id="cover-img">
+				<div class="title input_item">
+					<button class="addimg btn" value="1">메인 사진 추가하기</button>  
+				</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -171,6 +187,7 @@ $(document).ready(function() {
 		$("#information").css("display", "block");
 		//클릭하면 display 나옴
 		$(".side_item").click(function() {
+			$(".side_item.active").addClass("final");
 			$(".side_item").removeClass("active");
 			$(this).addClass("active");
 			var active = $(this).attr("data-type");
@@ -195,8 +212,23 @@ $(document).ready(function() {
 			$(this).val(value);
 			console.log(name + placeholder +value);
 			$(this).parent(".input_item").children(".input_box").append('<input class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
-		//textarea 자동으로 세로너비 증가
 		});
+		//동영상 추가 이벤트
+			
+			
+		//섹션추가 이벤트
+		var	sectionNum=1;
+		$(".addsection").click(function() {
+			
+			$(this).parent().children(".section_cover").append('<div class="section input_item">'
+				+'<label class="menu_label">섹션 '+sectionNum+'</label>'
+				+'<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">'
+				+'<button class="addvideo btn" value="1">영상 추가하기</button>'
+				+'</div>');
+			sectionNum++;
+		});
+		
+		//textarea 자동으로 세로너비 증가
 		function xSize(e) {
 			e.style.height = '1px';
 			e.style.height = (e.scrollHeight + 12) + 'px';
