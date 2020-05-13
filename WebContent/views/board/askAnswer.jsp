@@ -151,7 +151,7 @@ function timeBefore(timedate){
 			<h4 class="best_name">김홍준</h4>
 			<h4 class="best_name">박유준</h4>
 			<h4 class="best_name">변재정</h4>
-			<h4 class="best_name">최우형</h4>
+			<h4 class="best_name">최우영</h4>
 			<h4 class="best_name">조수아</h4>
 			</div>
 		</div>
