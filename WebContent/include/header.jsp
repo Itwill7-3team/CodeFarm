@@ -367,11 +367,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			url : "./MemberLogin.me",
 			data : {
 				
-				m_email : $("#email").val()
+				
 			},
 
 			success : function(data) {
-				alert("로그인클릭"+data);
+
 				$(".login_form").html(data);
 			},
 			error : function(xhr, status, error) {
@@ -380,11 +380,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 		});
 	});
-	// 요래 하면 여러가지 다양한 ajax 옵션을 줄수 있어서 개인적으로 더 선호한다.
+
 	
 	 
-	// 간단하게 요렇게 써도 됨
-	//$("#div 아이디").load("로딩할 페이지 URL", {넘길 파라메터});
 	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");

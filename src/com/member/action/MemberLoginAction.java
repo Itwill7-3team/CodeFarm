@@ -95,7 +95,7 @@ public class MemberLoginAction implements Action {
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberAdmin.me");
+		forward.setPath("./Main.le");
 		
 		forward.setRedirect(true);
 		return forward;

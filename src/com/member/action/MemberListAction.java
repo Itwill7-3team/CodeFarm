@@ -1,5 +1,6 @@
 package com.member.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +25,19 @@ public class MemberListAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		if( m_email == null ||  !m_email.equals("admin@naver.com") ){
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			
-			return forward;
+			session.removeAttribute("m_email");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.print("<script>");
+			out.print("alert('관리자 아이디로 로그인해주세요.');");
+			out.print("location.href='Main.le';");
+			out.print("</script>");
+			out.close();
+			/*
+			 * forward.setPath("./Main.le"); forward.setRedirect(true);
+			 * 
+			 * return forward;
+			 */
 		}
 		
 		// DB 처리객체  MemberDAO 생성

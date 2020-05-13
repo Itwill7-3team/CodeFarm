@@ -91,7 +91,7 @@ public class MemberJoinAction implements Action{
 		// 페이지 이동(로그인 페이지로이동)
 		// ActionForward 객체를 생성해서 값 저장 후 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberLogin.me");
+		forward.setPath("./Main.le");
 		forward.setRedirect(true);		
 		
 		return forward;

@@ -1,5 +1,3 @@
-<%@page import="com.member.db.MemberDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,8 +18,7 @@
 <div id="root">
  <jsp:include page="/include/header.jsp"/>     
 <section>
-  <div class="container">
-    <div class="columns">
+
     
 <!-- aside 영역 -->
 <aside class="profile_aside">
@@ -64,58 +61,23 @@
 		</ul>
 </aside>
 <!-- aside 영역 -->
-
+<% 
+ 	String m_email = (String)session.getAttribute("m_email");
+	if(m_email == null){
+		response.sendRedirect("Main.le");
+	}
+%>
 <!-- 대시보드 -->
-      <div class="main_container">
-      <div class="member_main">
-     <div class="info_title"><h2>회원 목록</h2></div>
-       <%
-          	// 세션값 제어( 로그인,관리자 여부 )
-		String m_email = (String) session.getAttribute("m_email");
-	    
-	    if(m_email == null || !m_email.equals("admin@naver.com")){
-	    	
-	    	response.sendRedirect("Main.le");
-	    	
-	    }
-
-		// 이전페이지에서 전달된 데이터를 처리 (회원목록리스트)
-		// request 영역에 저장
-		// request.setAttribute("memberList", memberList);
-		List<MemberDTO> memberList 
-		   = (List<MemberDTO>)request.getAttribute("memberList");
-
-		// 표를 사용해서 데이터 출력
-	%>
-	  <table class="member_info">
-	    <tr class="calum_info">
-	      <th>아이디</th>
-	      <th>등급</th>
-	      <th>탈퇴</th>
-	    </tr>
-	    
-	    <%
-	       for(int i=0;i<memberList.size();i++){
-	    	   MemberDTO mdto = memberList.get(i);
-	    	   %>
-	    	    <tr>
-			      <td><%=mdto.getM_email() %></td>
-			      <td><%=mdto.getM_rank() %></td>
-			      <td><input type="button" value="회원 탈퇴" onclick="location.href='AdminDeleteAction.me?<%=mdto.getM_email() %>'" ></td>
-			    </tr>
-	    	   <%
-	       }
-	    %>
-	  </table>
-          
-  
-          
-          
-          
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="main_container">
+      	<div class="member_main">
+      	<form action="./UpdateInfoAction.me">
+      		<div class="email">
+      			<span class="colum_name">이메일</span>
+      			<input type="text" name="m_email" class="input_me" value=""> 
+      		</div>
+      	</form>	
+   		</div>
+  	</div>
  </section>
 
 <!-- 대시보드 -->
@@ -124,7 +86,6 @@
     
 </div>
 
-</iframe>
 
 
 

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="./css/login.css">
    <!-- 
      로그인 페이지 
      ID,PW를 입력받아서 전달페이지 
    -->
+   <div class="clear">
    <div class="back"></div>
    <div class="modal"><div class="dimmed"></div>
       <div class="dimmed"></div>
@@ -54,7 +55,16 @@
         </div> -->
         <div class="sub_form">
           <p>아직 인프런 회원이 아니신가요?</p>
-          <a href="/signup">회원가입하기</a>
+          <a href="MemberJoin.me">회원가입하기</a>
         </div>
       </section>
     </div>      
+</div>
+
+
+<script type="text/javascript">
+	$(".back").click(function(){
+		
+		$(".clear").html(" ");
+	});
+</script>

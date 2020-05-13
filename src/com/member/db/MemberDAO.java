@@ -53,7 +53,7 @@ public class MemberDAO {
 	//이메일 체크  업데이트
 		public int update_emailcheck(String m_email) {
 			
-			sql = "update member set m_emailCheck = true where m_email=?";
+			sql = "update member set m_emailCheck = true, m_rank='회원' where m_email=?";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
