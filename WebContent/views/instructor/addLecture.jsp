@@ -168,7 +168,7 @@
 					<div class="section input_item">
 						<label class="menu_label">섹션 0</label>
 						<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">
-						<button class="addvideo btn" value="1">영상 추가하기</button>
+						<input class="addvideo btn" value="영상추가하기" type="file">영상 추가하기</button>
 					</div>  
 				</div>
 					<button class="addsection btn" value="1">섹션 추가하기</button>  
