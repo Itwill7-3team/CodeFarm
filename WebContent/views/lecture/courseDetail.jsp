@@ -32,7 +32,7 @@
 		//int l_number = Integer.parseInt(request.getParameter("l_number"));
 		//String id = (String)session.getAttribute("id"); // 로그인 정보 확인 후 수정
 		session.setAttribute("m_rank", "회원");  // 로그인 테스트용
-		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용
+		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용a
 		
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
 		//List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
