@@ -1,63 +1,5 @@
 @CHARSET "UTF-8";
 
-/*!
- * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
- *//*
-@font-face {
-	font-family: 'Font Awesome 5 Free';
-	font-style: normal;
-	font-weight: 900;
-	font-display: block;
-	src: url("../webfonts/fa-solid-900.eot");
-	src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"),
-		 url("../webfonts/fa-solid-900.woff2") format("woff2"),
-		 url("../webfonts/fa-solid-900.woff") format("woff"), 
-		 url("../webfonts/fa-solid-900.ttf") format("truetype"),
-		 url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
-}
-@font-face {
-	font-family: 'Font Awesome 5 Free';
-	font-style: normal;
-	font-weight: 400;
-	font-display: block;
-	src: url("../webfonts/fa-regular-400.eot");
-	src: url("../webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"),
-		 url("../webfonts/fa-regular-400.woff2") format("woff2"),
-		 url("../webfonts/fa-regular-400.woff") format("woff"),
-		 url("../webfonts/fa-regular-400.ttf") format("truetype"),
-		 url("../webfonts/fa-regular-400.svg#fontawesome") format("svg");
-}
-.fa, .fab, .fad, .fal, .far, .fas {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	line-height: 1;
-}
-.fa, .fas, .fal {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-}
-.far {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 400; }
-
-.fa-plus:before              { content: "\f067"; }
-.fa-minus:before             { content: "\f068"; }
-.fa-user-tie:before          { content: "\f508"; }
-.fa-play-circle:before       { content: "\f144"; }
-.fa-clock:before             { content: "\f017"; }
-.fa-certificate:before       { content: "\f0a3"; }
-.fa-signal:before            { content: "\f012"; }
-.fa-user:before              { content: "\f007"; }
-.fa-star:before              { content: "\f005"; }
-.fa-lightbulb:before         { content: "\f0eb"; }
-.fa-laugh:before             { content: "\f599"; }
-*/
-/*************************************************************************************/
 /* noto-sans-kr-regular - latin_korean */
 @font-face {
   font-family: 'Noto Sans KR';
@@ -106,15 +48,13 @@ html.noscroll { overflow: hidden; }
 html {
 	position: relative;
 	min-height: 100%;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: transparent;
 	line-height: 1.625;
-	scroll-behavior: smooth;
+	box-sizing: border-box;
 }
 
 body {
-	color: #000a12;
 	font-size: 1rem;
+	line-height: 1.5;
 	min-height: 100vh;
 	overflow-x: hidden;
 	background-color: #fff;
@@ -124,6 +64,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	text-rendering: optimizeSpeed;
 }
+
 embed, iframe, object {
 	height: auto;
 	max-width: 100%;
@@ -141,20 +82,17 @@ a {
 	color: currentColor;
 	text-decoration: none;
 }
-a:hover { color: #454545; }
-strong {
-	color: #000a12;
-}
 small { font-size: 12px; }
 p {
 	line-height: 1.6;
 	font-size: 16px;
 }
 
-
 #main { min-height:800px; }
 #main.sticky { margin-top:64px; }
-@media screen and (max-width:768px){ #main.sticky { margin-top:48px; } }
+@media screen and (max-width: 768px) {
+	#main.sticky { margin-top:48px; }
+}
 
 .is_thumbnail {
 	display: block;
@@ -198,12 +136,8 @@ p {
 }
 
 @media screen and (max-width:768px) {
-	.rating_star {
-		width: auto;
-	}
-	.rating_star svg, .rating_star i {
-		width: .8rem;
-	}
+	.rating_star { width: auto; }
+	.rating_star svg, .rating_star i { width: .8rem; }
 }
 
 .average_star .rating_star {
@@ -247,23 +181,6 @@ article.media .reactions {
 	justify-content: flex-end;
 }
 
-article.media .reactions button.like {
-	cursor: pointer;
-	background: transparent;
-	border: none;
-	margin-top: 3px;
-	padding-right: 0;
-	margin-right: 1rem;
-}
-
-article.media .reactions button.like svg>path {
-	fill: #ff7867;
-}
-
-article.media .reactions button.like .number {
-	color: #ff7867;
-}
-
 article.media .reactions span.number {
 	font-size: .825rem;
 	padding: 0;
@@ -284,85 +201,71 @@ article.media span.option span {
 	padding: 0 .5px;
 }
 
-.course_detail section.course_description_container .container .course_description .is-12>.content
-	{
+.course_detail section.course_description_container .container .course_description .is-12>.content {
 	max-width: 969px;
 	margin: 0 auto;
 }
 
-.course_detail section.course_description_container .container .course_description .content
-	{
+.course_detail section.course_description_container .container .course_description .content {
 	padding: 0;
 	margin: 0 auto;
 	font-size: 17px;
 }
 
 .course_detail section.course_description_container .container .course_description .content h1,
-	.course_detail section.course_description_container .container .course_description .content h4,
-	.course_detail section.course_description_container .container .course_description .content li,
-	.course_detail section.course_description_container .container .course_description .content p
-	{
+.course_detail section.course_description_container .container .course_description .content h4,
+.course_detail section.course_description_container .container .course_description .content li,
+.course_detail section.course_description_container .container .course_description .content p {
 	word-break: keep-all;
 	word-wrap: break-word;
 }
 
-.course_detail section.course_description_container .container .course_description .content h2
-	{
+.course_detail section.course_description_container .container .course_description .content h2{
 	font-size: 1.75rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content h3.sub_heading
-	{
+.course_detail section.course_description_container .container .course_description .content h3.sub_heading{
 	font-size: 1.5rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content h4.sub_heading
-	{
+.course_detail section.course_description_container .container .course_description .content h4.sub_heading{
 	font-size: 1.25rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content .description_sub
-	{
+.course_detail section.course_description_container .container .course_description .content .description_sub{
 	margin-top: .5rem;
 	padding: 1rem;
 	background-color: #f5f8f8;
 }
 
-.course_detail section.course_description_container .container .course_description .content .description_sub+.description_sub
-	{
+.course_detail section.course_description_container .container .course_description .content .description_sub+.description_sub{
 	margin-top: .75rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content .description_sub ul
-	{
+.course_detail section.course_description_container .container .course_description .content .description_sub ul{
 	margin-left: .75rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content .description_sub ul i
-	{
+.course_detail section.course_description_container .container .course_description .content .description_sub ul i{
 	color: #ff7867;
 	margin-right: .25rem;
 }
 
-.course_detail section.course_description_container .container .course_description .content .body
-	{
+.course_detail section.course_description_container .container .course_description .content .body{
 	padding: 1rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body
-	{
+.course_detail section.course_description_container .container .course_description .body{
 	line-height: 1.7;
 	color: #333;
 	font-size: 17px;
 }
 
-.course_detail section.course_description_container .container .course_description .body li
-	{
+.course_detail section.course_description_container .container .course_description .body li{
 	list-style: initial;
 }
 
-.course_detail section.course_description_container .container .course_description .body blockquote ul
-	{
+.course_detail section.course_description_container .container .course_description .body blockquote ul{
 	margin-left: 1rem;
 }
 
@@ -371,116 +274,96 @@ article.media span.option span {
 	.course_detail section.course_description_container .container .course_description .body h3,
 	.course_detail section.course_description_container .container .course_description .body h4,
 	.course_detail section.course_description_container .container .course_description .body h5,
-	.course_detail section.course_description_container .container .course_description .body p
-	{
+	.course_detail section.course_description_container .container .course_description .body p{
 	color: #333;
 }
 
 .course_detail section.course_description_container .container .course_description .body h4,
 	.course_detail section.course_description_container .container .course_description .body h5,
-	.course_detail section.course_description_container .container .course_description .body h6
-	{
+	.course_detail section.course_description_container .container .course_description .body h6{
 	padding-top: 1rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body p+p
-	{
+.course_detail section.course_description_container .container .course_description .body p+p{
 	padding-top: .5rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body h1
-	{
+.course_detail section.course_description_container .container .course_description .body h1{
 	margin-bottom: 0;
 	font-size: 1.5rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body h2
-	{
+.course_detail section.course_description_container .container .course_description .body h2{
 	font-size: 1.75rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body h3
-	{
+.course_detail section.course_description_container .container .course_description .body h3{
 	font-size: 1.5rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body h3 img
-	{
+.course_detail section.course_description_container .container .course_description .body h3 img{
 	display: none;
 }
 
-.course_detail section.course_description_container .container .course_description .body h4
-	{
+.course_detail section.course_description_container .container .course_description .body h4{
 	font-size: 1.25rem;
 }
 
-.course_detail section.course_description_container .container .course_description .body p
-	{
+.course_detail section.course_description_container .container .course_description .body p{
 	margin-bottom: 5px;
 }
 
 .course_detail section.course_description_container .container .course_description .body ol,
-	.course_detail section.course_description_container .container .course_description .body ul
-	{
+	.course_detail section.course_description_container .container .course_description .body ul{
 	margin: 1rem 2em;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor{
 	margin-top: 64px;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor:after
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor:after{
 	content: "";
 	display: block;
 	clear: both;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor .profile
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor .profile{
 	display: inline-flex;
 	align-items: center;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor .profile .name
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor .profile .name{
 	margin-left: 8px;
 	font-size: 1.125rem;
 	margin-bottom: 0;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor .profile .name a
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor .profile .name a{
 	text-decoration: underline;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor .profile .name span
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor .profile .name span{
 	font-size: .9em;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor figure.image
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor figure.image{
 	margin: 0;
 	width: 64px;
 	height: 64px;
 }
 
-.course_detail section.course_description_container .container .course_description .course_instructor .introduce
-	{
+.course_detail section.course_description_container .container .course_description .course_instructor .introduce{
 	margin: .5rem 0 0 4.5rem;
 	color: #5f5f5f;
 }
 
 .course_detail section.course_description_container .container .course_description .course_date,
-	.course_detail section.course_description_container .container .course_description .reviews
-	{
+	.course_detail section.course_description_container .container .course_description .reviews{
 	margin-top: 64px;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary{
 	margin: 3rem 3.5rem;
 	display: flex;
 	max-width: 600px;
@@ -489,8 +372,7 @@ article.media span.option span {
 }
 
 @media screen and (max-width:768px) {
-	.course_detail section.course_description_container .container .course_description .reviews .review_summary
-		{
+	.course_detail section.course_description_container .container .course_description .reviews .review_summary{
 		max-width: inherit;
 		width: 100%;
 		padding: 16px;
@@ -498,8 +380,7 @@ article.media span.option span {
 	}
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .average
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .average{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -507,226 +388,183 @@ article.media span.option span {
 	width: 150px;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .average .average_num
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .average .average_num{
 	display: block;
 	font-size: 2.5rem;
 	font-weight: 700;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars{
 	width: 360px;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars .review_counting
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars .review_counting{
 	display: flex;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars .review_counting label
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .progress_bars .review_counting label{
 	width: 2.5rem;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_summary .not_yet_reviews
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_summary .not_yet_reviews{
 	width: 100%;
 	text-align: center;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item{
 	padding: 0;
 	margin-bottom: 1rem;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item+.media
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item+.media{
 	border-top: none;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item figure
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item figure{
 	margin: 1.25rem 1rem 0 0;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item .content
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item .content{
 	padding: 1rem 0 0;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item .content .updated_at
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item .content .updated_at{
 	margin-left: .75rem;
 	color: #bdbdbd;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item .content .review_body
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item .content .review_body{
 	white-space: pre-line;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item .review_comments .media.comment
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item .review_comments .media.comment{
 	border-top: none;
 }
 
-.course_detail section.course_description_container .container .course_description .reviews .review_item .review_comments .media.comment .content
-	{
+.course_detail section.course_description_container .container .course_description .reviews .review_item .review_comments .media.comment .content{
 	padding: 0;
 }
 
-.course_detail section.course_description_container .similar_users_courses
-	{
+.course_detail section.course_description_container .similar_users_courses{
 	position: relative;
 	background-color: #f7f7f7;
 	z-index: 9;
 }
 
 @media screen and (max-width:768px) {
-	.course_detail section.course_description_container .similar_users_courses
-		{
+	.course_detail section.course_description_container .similar_users_courses{
 		padding: .75rem;
 	}
 }
 
-.course_detail section.course_description_container .similar_users_courses h1
-	{
+.course_detail section.course_description_container .similar_users_courses h1{
 	font-size: 2rem;
 }
 
-.course_detail section.course_description_container .similar_users_courses .columns
-	{
+.course_detail section.course_description_container .similar_users_courses .columns{
 	overflow: hidden;
 }
 
 @media screen and (max-width:768px) {
-	.course_detail section.course_description_container .similar_users_courses .columns
-		{
+	.course_detail section.course_description_container .similar_users_courses .columns{
 		overflow: scroll;
 	}
-	.course_detail section.course_description_container .similar_users_courses .columns .column
-		{
+	.course_detail section.course_description_container .similar_users_courses .columns .column{
 		padding: .25rem;
 	}
 }
 
 @media screen and (max-width:768px) {
-	.course_detail section.course_description_container .container .course_description .reviews .review_summary .average
-		{
+	.course_detail section.course_description_container .container .course_description .reviews .review_summary .average{
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 		justify-content: center;
 		font-size: 1rem;
 	}
-	.course_detail section.course_description_container .container .course_description .reviews .review_summary .average .average_num
-		{
+	.course_detail section.course_description_container .container .course_description .reviews .review_summary .average .average_num{
 		display: block;
 		font-size: 1.5rem;
 		font-weight: 700;
 	}
-	.course_detail section.course_description_container .container .course_description .content
-		{
+	.course_detail section.course_description_container .container .course_description .content{
 		padding: 0;
 	}
-	.course_detail section.course_description_container .container .course_description .content h1.main_heading
-		{
+	.course_detail section.course_description_container .container .course_description .content h1.main_heading{
 		font-size: 1.4rem;
 		margin-top: 32px;
 	}
-	.course_detail section.course_description_container .container .course_description .content h4.sub_heading
-		{
+	.course_detail section.course_description_container .container .course_description .content h4.sub_heading{
 		font-size: 1.125rem;
 	}
-	.course_detail section.course_description_container .container .course_description .body
-		{
+	.course_detail section.course_description_container .container .course_description .body{
 		padding: 0;
 		color: #333;
 	}
-	.course_detail section.course_description_container .container .course_description .body h1
-		{
+	.course_detail section.course_description_container .container .course_description .body h1{
 		font-size: 1.3rem;
 	}
-	.course_detail section.course_description_container .container .course_description .body h2
-		{
+	.course_detail section.course_description_container .container .course_description .body h2{
 		margin-top: 8px;
 		font-size: 1.5rem;
 		line-height: 1.4;
 		color: #333;
 		font-weight: 600;
 	}
-	.course_detail section.course_description_container .container .course_description .body h3
-		{
+	.course_detail section.course_description_container .container .course_description .body h3{
 		font-size: 1.25rem;
 		line-height: 1.4;
 		color: #333;
 	}
-	.course_detail section.course_description_container .container .course_description .body h3 img
-		{
+	.course_detail section.course_description_container .container .course_description .body h3 img{
 		display: none;
 	}
-	.course_detail section.course_description_container .container .course_description .body h4
-		{
+	.course_detail section.course_description_container .container .course_description .body h4{
 		font-size: 1.125rem;
 		color: #333;
 	}
-	.course_detail section.course_description_container .container .course_description .body h4 img
-		{
+	.course_detail section.course_description_container .container .course_description .body h4 img{
 		display: none;
 	}
-	.course_detail section.course_description_container .container .course_description .body p
-		{
+	.course_detail section.course_description_container .container .course_description .body p{
 		font-size: 17px;
 		color: #333;
 	}
-	.course_detail section.course_description_container .container .course_description .body h3+h4
-		{
+	.course_detail section.course_description_container .container .course_description .body h3+h4{
 		padding-top: 0;
 	}
-	.course_detail section.course_description_container .container .course_description .body ul
-		{
+	.course_detail section.course_description_container .container .course_description .body ul{
 		margin-left: 1rem;
 	}
-	.course_detail section.course_description_container .container .course_description .body ul li
-		{
+	.course_detail section.course_description_container .container .course_description .body ul li{
 		list-style: circle;
 	}
-	.course_detail section.course_description_container .container .course_description .course_instructor
-		{
+	.course_detail section.course_description_container .container .course_description .course_instructor{
 		margin-top: 64px;
 	}
-	.course_detail section.course_description_container .container .course_description .course_instructor .profile .name
-		{
+	.course_detail section.course_description_container .container .course_description .course_instructor .profile .name{
 		font-size: 1rem;
 	}
-	.course_detail section.course_description_container .container .course_description .course_instructor .profile .name span
-		{
+	.course_detail section.course_description_container .container .course_description .course_instructor .profile .name span{
 		font-size: .9em;
 	}
-	.course_detail section.course_description_container .container .course_description .course_instructor figure.image
-		{
+	.course_detail section.course_description_container .container .course_description .course_instructor figure.image{
 		width: 40px;
 		height: 40px;
 	}
-	.course_detail section.course_description_container .container .course_description .course_instructor .introduce
-		{
+	.course_detail section.course_description_container .container .course_description .course_instructor .introduce{
 		margin: .5rem 0 0 3rem;
 		font-size: .9rem;
 	}
-	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media-left
-		{
+	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media-left{
 		width: 24px;
 		height: 24px;
 	}
-	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media.comment
-		{
+	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media.comment{
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media.comment .media-left
-		{
+	.course_detail section.course_description_container .container .course_description article.reviews .article_container .media.comment .media-left{
 		display: none;
 	}
 }
@@ -738,8 +576,7 @@ article.media span.option span {
 
 .course_detail .description.legacy .content h1, .course_detail .description.legacy .content h2,
 	.course_detail .description.legacy .content h3, .course_detail .description.legacy .content h4,
-	.course_detail .description.legacy .content h5, .course_detail .description.legacy .content h6
-	{
+	.course_detail .description.legacy .content h5, .course_detail .description.legacy .content h6{
 	margin-top: 1.5rem;
 }
 
@@ -804,6 +641,12 @@ article.media span.option span {
     text-align: center;
 }
 
+@media screen and (max-width: 1420px) and (min-width: 767px){
+	.course_sub_btn .text {
+  	 	 display: none;
+	}
+}
+
 .course_detail .course_description .curriculum .curriculum_accordion {
 	margin: 0;
 }
@@ -827,7 +670,75 @@ article.media span.option span {
 		justify-content: space-around;
 	}
 }
-
+@media screen and (max-width:768px) {
+	.curriculum .curriculum_accordion .curriculum_header,
+	.curriculum .curriculum_accordion .curriculum_header {
+		justify-content: space-around;
+	}
+}
+@media screen and (max-width:768px) {
+	.curriculum .curriculum_accordion .curriculum_header,
+	.curriculum .curriculum_accordion .curriculum_header {
+		justify-content: space-around;
+	}
+}
+@media screen and (max-width:768px) {
+	.course_detail .course_header_container .course_floating_btn {
+		width: 100%;
+		height: 48px;
+		top: 48px;
+		left: 0;
+		right: 0;
+		display: contents
+	}
+	.course_detail .course_header_container .course_floating_btn .box {
+		background: none;
+		color: #fff
+	}
+	.course_detail .course_header_container .course_floating_btn .box .course_btns
+		{
+		padding: 0 .75rem
+	}
+	.course_detail .course_header_container .course_floating_btn .box .course_instructor_profile
+		{
+		display: none
+	}
+	.course_detail .course_header_container .course_floating_btn .box .course_metas .course_info.level
+		{
+		display: flex
+	}
+	.course_detail .course_header_container .course_floating_btn .box .course_metas .course_info.level .level-left
+		{
+		flex: auto
+	}
+	.course_detail .course_header_container .course_floating_btn .box .course_metas .course_info.level .level-right
+		{
+		margin-top: 0
+	}
+	.course_detail .course_header_container .column.course_title>div .inf_progress
+		{
+		max-width: inherit;
+		width: 100%
+	}
+}
+@media screen and (max-width:768px) {
+	section.course_edit_section div.main_section div.course_edit_step.curriculum #plus-circle-icon
+		{
+		width: 10px;
+		height: 10px;
+	}
+	section.course_edit_section div.main_section div.course_edit_step.curriculum .add_unit_btn,
+		section.course_edit_section div.main_section div.course_edit_step.curriculum .course_unit_videos_uploader
+		{
+		font-size: .85rem;
+	}
+}
+@media screen and (max-width:768px) {
+	section.course_edit_section div.main_section div.course_edit_step.curriculum .curriculum_list .unit .unit_box .unit_btns
+		{
+		flex-direction: column
+	}
+}
 
 .course_detail .course_description .curriculum .curriculum_accordion .section_cover
 	{
@@ -835,7 +746,8 @@ article.media span.option span {
 	margin: 5px 0;
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header
 	{
 	padding: 10px;
 	display: flex;
@@ -847,7 +759,8 @@ article.media span.option span {
 	font-size: 1rem
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_left,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left
 	{
 	display: flex;
 	flex: 1 1 auto;
@@ -856,52 +769,145 @@ article.media span.option span {
 	width: 75%
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left i
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_left i,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left i
 	{
 	padding-right: .5rem
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_right
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_right,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_right
 	{
 	display: flex;
 	flex: 1 0 auto;
 	justify-content: flex-end
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header>*>span
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header>*>span,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header>*>span
 	{
 	margin: 0 5px
 }
 
 @media screen and (max-width:768px) {
-	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header>*>span
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header>*>span,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header>*>span
 		{
 		margin: 0 3px
 	}
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header .unit_title
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header .unit_title,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header .unit_title
 	{
 	font-weight: 700
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.plus
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_icon.plus,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.plus
 	{
 	display: inline
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.plus,
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.minus
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.plus,
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_icon.minus,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.plus,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.minus
 	{
 	display: none
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.minus
+.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.minus,
+	.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.minus
 	{
 	display: inline
 }
 
-.course_detail .course_description .curriculum .curriculum_accordion .lecture_cover
+
+
+
+
+
+
+@media screen and (max-width:768px) { 
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header
+		{
+		padding: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: #f5f5f5;
+		border-radius: 2px;
+		cursor: pointer;
+		font-size: 1rem
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_left,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left
+		{
+		display: flex;
+		flex: 1 1 auto;
+		align-items: center;
+		justify-content: flex-start;
+		width: 75%
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_left i,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_left i
+		{
+		padding-right: .5rem
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_right,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_right
+		{
+		display: flex;
+		flex: 1 0 auto;
+		justify-content: flex-end
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header>*>span,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header>*>span
+		{
+		margin: 0 5px
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header .unit_title,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header .unit_title
+		{
+		font-weight: 700
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_icon.plus,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.plus
+		{
+		display: inline
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.plus,
+		.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header_icon.minus,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.plus,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header_icon.minus
+		{
+		display: none
+	}
+	
+	.course_detail .course_dashboard .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.minus,
+		.course_detail .course_description .curriculum .curriculum_accordion .section_cover .section_header.open .section_header_icon.minus
+		{
+		display: inline
+	}
+	.lecture_cover
+	{
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height .35s ease-in-out;
+	font-size: .95rem
+}
+}
+
+.lecture_cover
 	{
 	max-height: 0;
 	overflow: hidden;
@@ -1146,67 +1152,56 @@ article.media span.option span {
 	margin-top: .25rem;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section {
 	margin: 20px 0;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section>div+div
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section>div+div {
 	margin-top: 8px;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_btn_cover .course_btn
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_btn_cover .course_btn {
 	padding: 12px 0;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover {
 	display: flex;
 	justify-content: space-between;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn {
 	width: 48%;
 	color: #616161;
 	padding: 12px;
 	font-size: 14px;
 }
 
-@media screen and (max-width:1420px) and (min-width:767px) {
-	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn .text
-		{
+@media screen and (max-width: 1420px) and (min-width: 767px) {
+	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn .text {
 		display: none;
 	}
 }
 
 .course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn i,
-	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn span
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_price_cover .course_btn_section .course_sub_btn_cover .course_sub_btn span{
 	margin: 0 3px;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_info_cover
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_info_cover{
 	color: #929292;
 	font-size: 14px;
 	word-break: break-all;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_info_cover .course_info_row
-	{
+.course_info_cover .course_info_row{
 	margin-bottom: 3px;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_info_cover .course_info_row i
-	{
+.course_info_cover .course_info_row i{
 	margin-right: 8px;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_top .course_info_cover .course_info_row a
-	{
+.course_info_cover .course_info_row a{
 	text-decoration: underline;
 	font-weight: 700;
 }
@@ -1236,8 +1231,7 @@ article.media span.option span {
 }
 
 @media screen and (max-width:1420px) and (min-width:767px) {
-	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_tabs .course_relation_tab .name
-		{
+	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_tabs .course_relation_tab .name {
 		display: none;
 	}
 }
@@ -1266,21 +1260,18 @@ article.media span.option span {
 	border-bottom: 1px solid #dedede;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li {
 	display: block;
 	border-bottom: 1px solid #dedede;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a {
 	display: inline-flex;
 	padding: 16px;
 	width: 100%;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail {
 	display: flex;
 	align-items: center;
 	width: 70px;
@@ -1288,14 +1279,12 @@ article.media span.option span {
 	margin-right: 7px;
 }
 
-.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail img
-	{
+.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail img {
 	width: 100%;
 }
 
 @media screen and (max-width:1420px) and (min-width:767px) {
-	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail
-		{
+	.course_detail .course_header_container .enroll_btn_container .course_floating_btn .course_floating_bottom.course_relation_cover .course_relation_list_cover li a .el_thumbnail {
 		display: none;
 	}
 }
@@ -1377,9 +1366,7 @@ article.media span.option span {
 }
 
 @media screen and (max-width:768px) {
-	.course_detail .course_footer_container {
-		display: block;
-	}
+	.course_detail .course_footer_container { display: block; }
 }
 
 .course_detail .course_footer_container .course_btn_cover {
@@ -1454,25 +1441,4 @@ article.media span.option span {
 }
 
 
-.course_detail .article_container textarea {
-	max-width: 600px;
-}
-
-.course_detail.course_news .add_post {
-	padding: 1rem 0 0;
-}
-
-.course_detail.course_news .comments_container .show_comments {
-	cursor: pointer;
-	font-size: .75rem;
-}
-
-@media screen and (max-width:1024px) {
-	.course_detail.course_news .add_post {
-		padding: .5rem;
-	}
-	.course_detail.course_news .posts_container {
-		margin-top: 0;
-	}
-}
 

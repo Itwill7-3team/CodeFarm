@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.lecture.db.LectureDTO"%>
@@ -34,6 +35,7 @@
 		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용
 		
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
+		//List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
 		Map review_rating = (Map)request.getAttribute("review_rating"); // 별점 정보
 		//ArrayList<ReviewDTO> reviewList = request.getAttribute("reviewList"); // 리뷰 정보
 		
@@ -113,10 +115,9 @@
 						<div class="course_floating_btn">
 							<div class="course_floating_top">
 								<div class="course_price_cover">
+								
+								<!-- SideMenu_price -->
 									<div class="course_price_section">
-									
-<!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->
-									<!-- 유.무료, 금액, 장바구니, 강의 시청 -->
 										<div class="course_price">
 											<% if (ldto.getL_price() == 0) { %>
 												무료
@@ -127,30 +128,49 @@
 											<% } %>
 										</div>
 									</div>
+								<!-- SideMenu_price -->
+									
+								<!-- SideMenu_button -->
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
 											<% if (ldto.getL_price() == 0) { %>
+<!-- 강의 시청 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
 												<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
+										</div>
 											<% } else { %>
 												<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
-												<button class="is_outlined course_sub_btn course_cart_btn cartBtn">
-											    	<i class="fa fa-cart-plus"></i><span class="text">수강 바구니</span>
-											    </button>
-											<% } %>
 										</div>
+												<div class="course_btn_cover">
+													<button class="is_outlined course_sub_btn course_wish_btn wishBtn">
+<!-- 위시리스트 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+														<span class="wish">
+															<i class="fa fa-heart-o"></i>
+															<span class="wish_cnt"><%= ldto.getL_goods() %></span>
+														</span>
+														<span class="text">위시</span>
+													</button>
+<!-- 장바구니 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+													<button class="is_outlined course_sub_btn course_cart_btn cartBtn">
+												    	<i class="fa fa-cart-plus"></i><span class="text">수강 바구니</span>
+												    </button>
+											    </div>
+											<% } %>
 									</div>
-<!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->
-
-								</div>
-								<div class="course_info_cover">
+								<!-- SideMenu_button -->
 								
-<!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->								
+								</div>
+								
+							<!-- SideMenu_info -->
+								<div class="course_info_cover">
 									<div class="course_info_row">
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/instructors/57904/courses">김왼손의 왼손코딩</a>
+<!-- 회원 번호 => 주소변경 -->
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/instructors/57904/courses"><%= ldto.getL_m_name() %></a>
 									</div>
 									<div class="course_info_row">
+<!-- 강의 수 강의시간 변경 -->
 										<i class="far fa-play-circle"></i>50회 수업· 총 4시간 2분수업
 									</div>
+<!--시청 기간, 수료증, 난이도 삭제 예정
 									<div class="course_info_row">
 										<i class="far fa-clock"></i><span class="has-text-weight-bold">평생</span> 무제한 시청
 									</div>
@@ -160,24 +180,16 @@
 									<div class="course_info_row">
 										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
 									</div>
-<!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->		
-
-
-
-
-						
+시청 기간, 수료증, 난이도 삭제 예정  -->
 								</div>
+							<!-- SideMenu_info -->
+						
 							</div>
 							<div class="course_relation_cover course_floating_bottom is-hidden-mobile">
 								<div class="course_relation_tabs">
-									<div class="course_relation_tab divactive" id="course_another_tab">
-										다른 강의
-									</div>
+									<div class="course_relation_tab divactive" id="course_another_tab">다른 강의</div>
 								</div>
 								<div class="course_another_cover course_relation_list_cover divactive">
-								
-								
-								
 								
 <!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->								
 									<div class="course_another_list">
@@ -475,7 +487,7 @@
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
 										<div class="curriculum_header">
-											<span class="section_all">모두 펼치기	</span>
+											<span class="section_all"></span>
 										
 										
 										
@@ -1407,7 +1419,7 @@
 
 <!-- 등록일 & 수정일 확인(DB) -->									
 									<div>
-										2017년 10월 13일<span class="last_update_date"> (마지막 업데이트 일자 : 2019년 2월 17일)</span>
+										<%= ldto.getL_reg_date() %><span class="last_update_date"> (마지막 업데이트 일자 : 2019년 2월 17일)</span>
 									</div>
 <!-- 등록일 & 수정일 확인(DB) -->																		
 									
@@ -1708,7 +1720,7 @@
 									+ "  <div class='media-content'><div class='content'><p>"
 									+ "    <small>"
 									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
-									+ "      <span class='updated_at'>2달 전</span>"
+									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
 									+ "    </small><br>"
 									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
 									+ "  </p></div></div>"
