@@ -96,13 +96,24 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;  
   background-color: #f1f1f1;
-   height: auto;
+  height: auto;
+  margin-bottom: 10px;
+   
 }
 .Wibox{
-/* border-bottom:1px solid red; */
-width: 650px; height: auto;  
-padding: 10px 10px 20px 0;
+	border-bottom: 1px solid red;
+    width: 650px;
+    height: auto;
+    padding: 10px 10px 10px 0;
+    display: inline-block;
+    
 }
+.Wbox{float: left;}
+.Wcolumn{}
+.Wcontent{display: inline-block;
+    width: 320px;
+    height: auto;
+    margin-left: 30px;}
 </style>
 
 
@@ -127,18 +138,19 @@ padding: 10px 10px 20px 0;
   <div class="Wmodal-content">
     <span class="Wclose">&times;</span>
     <h2>위시리스트</h2>
+    <hr>
     
-    <div class="Wrow">
-       <div class="Wcolumn"> 
-        <div class="Wcard">
           <%
            for (int i = 0; i < wishlistList.size(); i++) {
         	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
           	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
           	BasketDTO bdto = (BasketDTO) basketList.get(i);
           	  %>
+          	  <div class="Wrow">
+       <div class="Wcolumn"> 
+        <div class="Wcard">
           <div class="Wibox">
-          <div class="wbox" style="display: inline-block;">
+          <div class="Wbox" style="display: inline-block;">
            <a href="Detail.le?num=<%=ldto.getL_number() %>">
  			 <img style="width: 130px; height: auto;" src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
 				</a>
@@ -150,9 +162,7 @@ padding: 10px 10px 20px 0;
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
-			 
-			 
-          <div class="amount">
+			 <div class="amount">
 			<c:set var="price" value="<%=ldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
 					value="ko_KR" />
@@ -169,22 +179,24 @@ padding: 10px 10px 20px 0;
 				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
 			</button>
 		</div>
+			 
+          
          </div> 
          
          
           </div>
           
-          
-          
+          </div>
+           </div> 
           <%
           }
           %>
 
 			
-       </div> 
+      
         
         
-      </div>
+      
     </div>
   </div>
 
