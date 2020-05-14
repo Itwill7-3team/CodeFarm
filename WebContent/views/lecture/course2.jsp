@@ -16,8 +16,8 @@
 </head>
 <body>
 <%
-String m_id = (String)session.getAttribute("m_id");
-m_id = "test";
+/* String m_id = (String)session.getAttribute("m_id");
+m_id = "test"; */
 
 request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
@@ -162,8 +162,8 @@ for(int i=0;i<lectureList.size();i++){
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class= "l_m_id" value="" data-type="<%=ldto.getL_m_id() %>" style="display: none;"><%=ldto.getL_m_id() %></div>
-												<div class= "l_number" style="display: none;"><%=ldto.getL_number() %></div>
+												<div class= "l_m_id" value="" style="display: none;"><%=ldto.getL_m_id() %></div>
+												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
 												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
@@ -303,34 +303,50 @@ $(function(){
 /* search */
 	/* 장바구니 아쟉스 */
 	$("i.fa-cart-arrow-down").click(function(){
+
+		var m_email = "${m_email}";
+		var l_number = $(this).attr('data-type'); 
+		console.log("정보 확인1 : "+m_email+" 2 : "+l_number);
+
+		$(this).each(function(){
+			console.log("정보"+l_number);
+
 		
 		/* $("div #num").text(data.num) */
 		/* var l_m_id = $(".l_m_id").attr("data-type"); */
 		<%-- var m_id = '<%=session.getAttribute("m_id") %>'; --%>
-		var m_id = '${m_id}';
-		
-		console.log("정보 확인1 : "+m_id);
+		/* var m_id = '${m_id}'; */
+		/* var l_number = "aaa"; */
 
 		$.ajax({
 			url : "./BasketAdd.ba",
 			type : "POST",
 			data : {
-				"m_id" : m_id,
+				"m_email" : m_email,
+				"l_number" : l_number
 			},
 			datatype : "json",
 			success : function(){
 				
-				$(".fa-cart-arrow-down.none").css('color','#0000ff');
+				//$(".fa-cart-arrow-down.none").css('color','#0000ff');
+				/* $(".fa-cart-arrow-down").css('color','#0000ff'); */
+				/* $("i.fa-cart-arrow-down").each(function(){$(this).css('color','#0000ff');}); */
+				
+					$().css('color','#0000ff');
+
+				
+				
 				/* $(this).css({"background-image":"url('icons/u.png')"}); */
-				console.log("확인");
+				console.log("확인"+this);
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");
 			}
-			
-			
-			
-			
 		});
+
+	});
+		
+		
+		
 		
 	});
 	
