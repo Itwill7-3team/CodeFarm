@@ -74,7 +74,7 @@ public class WishlistFrontController extends HttpServlet{
 			}
 		}
 		
-			else if (command.equals("/WishToBasketAction.wi")) {
+			else if (command.equals("/WishToBasket.wi")) {
 				System.out.println("/WishToBasket.wi 주소 처리(model)");
 				// WishToBasketAction 객체
 				action=new WishToBasketAction();
