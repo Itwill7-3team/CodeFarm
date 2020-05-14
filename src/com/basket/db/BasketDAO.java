@@ -49,18 +49,19 @@ public class BasketDAO {
 	}//자원 해제
 	
 	//checkGoods()
-			public int checkGoods(BasketDTO wdto){
+			public int checkGoods(BasketDTO bkdto){
 				
-				int check=0;
+				int check=-1;
 				//기존의 장바구니에 해당 상품이 있는지 없는지 판별
 				try {
 					//1,2
 					getConnection();
 					
 					//3
-					sql="SELECT * FROM basket WHERE b_l_num=?";
+					sql="SELECT * FROM basket WHERE b_l_num=? and b_m_id=?";
 					pstmt=con.prepareStatement(sql);
-					pstmt.setInt(1, wdto.getB_l_num());
+					pstmt.setInt(1, bkdto.getB_l_num());
+					pstmt.setString(2, bkdto.getB_m_id());
 					rs=pstmt.executeQuery();
 
 					if(rs.next()){ //상품이 있다. => 상품추가안함.
@@ -76,7 +77,9 @@ public class BasketDAO {
 					
 				} catch (Exception e) {
 					e.printStackTrace();
-				} 
+				} finally {
+					closeDB();
+				}
 				return check;
 			}
 			//checkGoods()

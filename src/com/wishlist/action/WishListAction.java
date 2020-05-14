@@ -19,15 +19,15 @@ public class WishListAction implements Action{
 		// 세션값(id)있을때만 처리 가능
 		// 없을경우 로그인페이지 이동
 		HttpSession session = request.getSession();
-		
-		String id = (String) session.getAttribute("id");
-		id="test";//////////아이디 임의지정
+
+		String id =(String) session.getAttribute("m_email");
+		//id="test";//////////아이디 임의지정
 		ActionForward forward = new ActionForward();
-/*		if(id == null){
+		if(id == null){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;
-		}*/
+		}
 		
 		// BasketDAO 객체 생성
 		WishlistDAO wdao = new WishlistDAO();
