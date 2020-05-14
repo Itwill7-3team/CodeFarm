@@ -26,6 +26,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
+/* Float four columns side by side */
+.Wcolumn {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.Wrow {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.Wrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .Wcolumn {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.Wcard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  
+  background-color: #f1f1f1;
+}
+
 </style>
 <body>
 	<jsp:include page="/include/header.jsp" />
@@ -39,23 +74,48 @@
 	<section id="alll"> <!-- 위시 수정 -->
 
 	<h3 class="boxh3">
-		바구니 > <a
-			onclick="document.getElementById('id010').style.display='block'"
-			style="font-size: 16px;">위시리스트</a>
+		바구니 > <a id="Wabtn" style="font-size: 16px;">위시리스트</a>
 	</h3>
-	<div id="id010" class="Wmodal">
-		<span onclick="document.getElementById('id010').style.display='none'"
-			class="Wclose" title="WClose WModal">×</span>
-		<form class="Wmodal-content" action="/action_page.php">
-			<div class="Wcontainer">
-				<h1>위시리스트</h1>
+	<!-- Trigger/Open The Modal -->
+<a id="aWbtn">Open Modal</a>
 
-				<div class="column menu"></div>
+<!-- The Modal -->
+<div id="WmyModal" class="Wmodal">
 
-			</div>
+  <!-- Modal content -->
+  <div class="Wmodal-content">
+    <span class="Wclose">&times;</span>
+    <h2>위시리스트</h2>
+    
+    <div class="Wrow">
+      <div class="Wcolumn">
+        <div class="Wcard">
+          
+          
+          <%
+           for (int i = 0; i < wishlistList.size(); i++) {
+        	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
+          	  LectureDTO ldto = (LectureDTO) lectureList.get(i); 
+          	  %>
+          <div>
+           <a href="Detail.le?num=<%=ldto.getL_number() %>">
+ 			 <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+  			  <h2><%=ldto.getL_title() %></h2>
+</a>
+          </div>
+          
+          
+          <%
+          }
+          %>
 
-		</form>
-	</div>
+          <p>Some text</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 	<%
 		int total = 0;
@@ -361,6 +421,37 @@
 			}
 		}
 	</script>
+
+<script>
+// Get the modal
+var Wmodal = document.getElementById("WmyModal");
+
+// Get the button that opens the modal
+var Wbtn = document.getElementById("Wabtn");
+
+// Get the <span> element that closes the modal
+var Wspan = document.getElementsByClassName("Wclose")[0];
+
+// When the user clicks the button, open the modal 
+Wbtn.onclick = function() {
+  Wmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+Wspan.onclick = function() {
+  Wmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == Wmodal) {
+    Wmodal.style.display = "none";
+  }
+}
+</script>
+
+
+
 </section>
 
 </body>

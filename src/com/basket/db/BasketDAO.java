@@ -120,9 +120,13 @@ public class BasketDAO {
 		
 		ArrayList lectureList = new ArrayList();
 		ArrayList basketList = new ArrayList();
+		ArrayList wishlistList = new ArrayList();
 		
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
+		
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
 		
 		try {
 			con = getConnection();
@@ -140,7 +144,7 @@ public class BasketDAO {
 				bkdto.setB_l_price(rs.getInt("b_l_price"));
 				bkdto.setB_m_id(rs.getString("b_m_id"));
 				bkdto.setB_num(rs.getInt("b_num"));
-				
+				System.out.println("-----bkdto------");
 				basketList.add(bkdto);
 				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
@@ -159,14 +163,31 @@ public class BasketDAO {
 					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
-					
+					System.out.println("-----ldto------");
 					lectureList.add(ldto);
 				}
+				sql = "SELECT * FROM wishlist WHERE w_num=?";
+				pstmt3 = con.prepareStatement(sql);
 				
+				pstmt3.setInt(1, bkdto.getB_l_num());
+				rs3 = pstmt3.executeQuery();
+				
+				if(rs3.next()) {
+					WishlistDTO widto = new WishlistDTO();
+					
+					widto.setW_date(rs3.getTimestamp("w_date"));
+					widto.setW_l_num(rs3.getInt("w_l_num"));
+					widto.setW_m_id(rs3.getString("w_m_id"));
+					widto.setW_num(rs3.getInt("w_num"));
+					System.out.println("-----widto------");
+					wishlistList.add(widto);
+					
+				}
 			}
 			
 			vec.add(0,basketList);
 			vec.add(1, lectureList);
+			vec.add(2,wishlistList);
 			
 			System.out.println(" 장바구니,상품정보 리스트 백터에 저장완료 :"+vec);			
 			
