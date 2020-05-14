@@ -80,7 +80,7 @@ for(int i=0;i<wishList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListDelete.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
+		<a href="WishListDelete.wi?num=<%=wdto.getW_num() %>"><i class="fa fa-heart-o"></i></a><!-- 위시리스트 삭제 -->
 		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
 		</span>
 	

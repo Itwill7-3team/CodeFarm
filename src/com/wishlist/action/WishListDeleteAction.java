@@ -25,7 +25,7 @@ public class WishListDeleteAction implements Action{
 		}
 		
 		// 삭제할 위시리스트 번호 저장
-		int w_num = Integer.parseInt(request.getParameter("w_num"));
+		int w_num = Integer.parseInt(request.getParameter("num"));
 		// WishlistDAO 객체 생성
 		WishlistDAO wdao = new WishlistDAO();
 		
