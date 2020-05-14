@@ -16,6 +16,10 @@
 </head>
 <body>
 <%
+/* String m_id = (String)session.getAttribute("m_id");
+m_id = "test"; */
+
+request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
 
 
@@ -66,6 +70,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">크리에이티브</button>
 								<div class="panel">
+
 
 									<a href="./Search.le?t1=creative" class="accordion_content"> ALL </a>
 									<a href="./Search.le?t1=creative&t2=3d_modeling" class="accordion_content"> 3D 모델링 </a> 
@@ -363,6 +368,7 @@ $(function(){
 						location.href = "./Search.le?item=famous";
 				}
 		});
+	
 /* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
 // 이 구문에 대한 검사 필요(이 구문을 사용하지 않을 시 select 오류가 발생)!!!!!!!!!!!!
 /* selectBox */
@@ -377,33 +383,50 @@ $(function(){
 /* search */
 	/* 장바구니 아쟉스 */
 	$("i.fa-cart-arrow-down").click(function(){
+
+		var m_email = "${m_email}";
+		var l_number = $(this).attr('data-type'); 
+		console.log("정보 확인1 : "+m_email+" 2 : "+l_number);
+
+		$(this).each(function(){
+			console.log("정보"+l_number);
+
 		
 		/* $("div #num").text(data.num) */
 		/* var l_m_id = $(".l_m_id").attr("data-type"); */
-		var m_id = "<%=session.getAttribute("m_id") %>";
-		
-		console.log("정보 확인1 : "+m_id);
+		<%-- var m_id = '<%=session.getAttribute("m_id") %>'; --%>
+		/* var m_id = '${m_id}'; */
+		/* var l_number = "aaa"; */
 
 		$.ajax({
 			url : "./BasketAdd.ba",
 			type : "POST",
 			data : {
-				"m_id" : m_id,
+				"m_email" : m_email,
+				"l_number" : l_number
 			},
 			datatype : "json",
 			success : function(){
 				
-				$(".fa-cart-arrow-down.none").css('color','#0000ff');
+				//$(".fa-cart-arrow-down.none").css('color','#0000ff');
+				/* $(".fa-cart-arrow-down").css('color','#0000ff'); */
+				/* $("i.fa-cart-arrow-down").each(function(){$(this).css('color','#0000ff');}); */
+				
+					$().css('color','#0000ff');
+
+				
+				
 				/* $(this).css({"background-image":"url('icons/u.png')"}); */
-				console.log("확인");
+				console.log("확인"+this);
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");
 			}
-			
-			
-			
-			
 		});
+
+	});
+		
+		
+		
 		
 	});
 

@@ -277,7 +277,7 @@ public class MemberDAO {
 				}finally {
 					closeDB();
 				}
-				return check;
+				return 1;
 			}
 			
 			// getMemberList()

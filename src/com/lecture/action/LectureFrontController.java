@@ -56,9 +56,18 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Search/creative.le")){
-			System.out.println("/Search.le/it-programming 처리 model->view");
-			
+
+			/* 삭제 예정 */
+			/*
+			 * }else if(command.equals("/Search.le")){ forward=new
+			 * ActionForward(); forward.setPath("./views/lecture/course2.jsp");
+			 * forward.setRedirect(false);
+			 */
+			/* 삭제 예정 */
+
+		} else if (command.equals("/Search.le")) {
+			System.out.println("/Search.le 처리 model->view");
+
 			action = new LectureListAction();
 			
 			try {
