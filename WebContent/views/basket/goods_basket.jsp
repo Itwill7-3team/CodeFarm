@@ -22,16 +22,55 @@
 
 </head>
 <link rel="stylesheet" href="./css/basket.css">
-<link rel="stylesheet" href="./css/Wmodal.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
-/* Float four columns side by side */
-.Wcolumn {
-  float: left;
-  width: 100%;
-  padding: 0 10px;
+.Wmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+/* Modal Content */
+.Wmodal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.Wclose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.Wclose:hover,
+.Wclose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* Float four columns side by side */
+/* .Wcolumn {
+  float: left;
+  width: 90%;
+  padding: 0 10px;
+ 
+} */
 
 /* Remove extra left and right margins, due to padding */
 .Wrow {margin: 0 -5px;}
@@ -55,13 +94,18 @@
 /* Style the counter cards */
 .Wcard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  
+  padding: 16px;  
   background-color: #f1f1f1;
+   height: auto;
 }
-
+.Wibox{
+/* border-bottom:1px solid red; */
+width: 650px; height: auto;  
+padding: 10px 10px 20px 0;
+}
 </style>
+
+
 <body>
 	<jsp:include page="/include/header.jsp" />
 	<%
@@ -74,12 +118,9 @@
 	<section id="alll"> <!-- 위시 수정 -->
 
 	<h3 class="boxh3">
-		바구니 > <a id="Wabtn" style="font-size: 16px;">위시리스트</a>
+		바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">위시리스트</a>
 	</h3>
-	<!-- Trigger/Open The Modal -->
-<a id="aWbtn">Open Modal</a>
-
-<!-- The Modal -->
+	<!-- The Modal -->
 <div id="WmyModal" class="Wmodal">
 
   <!-- Modal content -->
@@ -88,29 +129,61 @@
     <h2>위시리스트</h2>
     
     <div class="Wrow">
-      <div class="Wcolumn">
+       <div class="Wcolumn"> 
         <div class="Wcard">
-          
-          
           <%
            for (int i = 0; i < wishlistList.size(); i++) {
         	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
-          	  LectureDTO ldto = (LectureDTO) lectureList.get(i); 
+          	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
+          	BasketDTO bdto = (BasketDTO) basketList.get(i);
           	  %>
-          <div>
+          <div class="Wibox">
+          <div class="wbox" style="display: inline-block;">
            <a href="Detail.le?num=<%=ldto.getL_number() %>">
- 			 <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
-  			  <h2><%=ldto.getL_title() %></h2>
-</a>
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+				</a>
+         
+          <div class="Wcolumn Wcontent">
+				<a href="#"><%=ldto.getL_title()%></a>
+				<p style="font-size: 12px;">
+					<%=ldto.getL_m_name()%></p>
+				<!-- basketDAO 추가 설정 -->
+			  </div>
+			 </div> 
+			 
+			 
+          <div class="amount">
+			<c:set var="price" value="<%=ldto.getL_price()%>" />
+			<span style="text-align: center;"> <fmt:setLocale
+					value="ko_KR" />
+				<fmt:formatNumber type="currency" value="${price}" />
+			</span>
+
+			<div class="tooltip">
+				<a href="./WishListDelete.wi?b_num=<%=widto.getW_num()%>"> <i
+					class="fa fa-close"></i> <span class="tooltiptext">위시리스트 삭제</span>
+				</a><br>
+			</div>
+			<button class="d_btn d_btn2" type="button"
+				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
+				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
+			</button>
+		</div>
+         </div> 
+         
+         
           </div>
+          
           
           
           <%
           }
           %>
 
-          <p>Some text</p>
-        </div>
+			
+       </div> 
+        
+        
       </div>
     </div>
   </div>
