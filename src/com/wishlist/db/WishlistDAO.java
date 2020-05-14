@@ -51,14 +51,14 @@ public class WishlistDAO {
 	//checkGoods()
 		public int checkGoods(WishlistDTO wdto){
 			
-			int check=0;
+			int check=-1;
 			//기존의 위시리스트에 해당 상품이 있는지 없는지 판별
 			try {
 				//1,2
 				getConnection();
 				
 				//3
-				sql="SELECT * FROM wishlist WHERE w_l_num=?, w_m_id=? ";
+				sql="SELECT * FROM wishlist WHERE w_l_num=? and w_m_id=? ";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, wdto.getW_l_num());
 				pstmt.setString(2, wdto.getW_m_id());
@@ -77,7 +77,9 @@ public class WishlistDAO {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			} finally {
+				closeDB();
+			}
 			return check;
 		}
 		//checkGoods()
