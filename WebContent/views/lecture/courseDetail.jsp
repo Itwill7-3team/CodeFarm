@@ -1,7 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html lang="ko-KR">
 <head>
@@ -23,7 +27,26 @@
 
 <body class="course_detail">
 	<%
-		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto");
+		int l_number = 2; // 테스트용
+		request.setAttribute("l_number", l_number); // 테스트용
+		//int l_number = Integer.parseInt(request.getParameter("l_number"));
+		//String id = (String)session.getAttribute("id"); // 로그인 정보 확인 후 수정
+		session.setAttribute("m_rank", "회원");  // 로그인 테스트용
+		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용
+		
+		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
+		//List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
+		Map review_rating = (Map)request.getAttribute("review_rating"); // 별점 정보
+		//ArrayList<ReviewDTO> reviewList = request.getAttribute("reviewList"); // 리뷰 정보
+		
+		// 리스트 테스트용
+		ArrayList<String> reviewList = new ArrayList<String>();
+		reviewList.add("aa");
+		reviewList.add("bb");
+		reviewList.add("cc");
+		reviewList.add("dd");
+		reviewList.add("ee");
+		request.setAttribute("reviewList", reviewList);
 	%>
 	<div id="root">
 	
@@ -43,9 +66,7 @@
 						<!-- lecture thumbnail -->
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-<%-- 	<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>"> --%>
-		<!-- DB lecture테이블 등록 이미지 split으로 가져오기 -->	
-		<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="<%= ldto.getL_title() %>">
+									<img src="./img/main-img/<%= ldto.getL_img().split(",")[0] %>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
 						<!-- lecture thumbnail -->
@@ -57,27 +78,28 @@
 									<div class="course_meta">
 										<span>
 										
-<!-- 해당 강의 전체 평점 확인 후 style 수정(DB review TABLE select avg(rating) 가져오기(dao)) -->
 										<!-- review 별점 전체 평균  -->
 											<div class='rating_star'>
-												<div class='star_solid' style="width: 97.16981132075472%">
-												<% for(int i=1; i<6; i++){ %><i class="fa fa-star"></i><% } %>
+												<div class='star_solid' style="width:<%= (double)review_rating.get("rating_avg") * 20 %>%">
+												<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
 												</div>
-												<% for(int i=5; i>0; i--){ %><i class="far fa-star"></i><% } %>
+												<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
 											</div>
 										<!-- review 별점 전체 평균  -->
-<!-- 해당 강의 전체 평점 확인 후 style 수정(DB review TABLE select avg(rating) 가져오기(dao)) -->
 
-<!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->	
-											<small>(212개의 수강평)</small>
+											<small>(<%= review_rating.get("reviewAll") %>개의 수강평)</small>
 										</span>
 										<br class="is-hidden-mobile">
-										<small class="student_cnt">10943명의 수강생</small>
+										<small class="student_cnt"><%= ldto.getPaynum() %>명의 수강생</small>
 										<br>
+										
+									<!-- lecture_type_category -->
 										<small class="course_skills">
-											<a href="/tag-curation/skill/57" target="_blank">Python</a>
+<!-- ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ주소변경 -->
+											<a href=""><%= ldto.getL_type3() %></a>
+											<%-- <a href="/tag-curation/skill/57" target="_blank"><%= ldto.getL_type3() %></a> --%>
 										</small>
-<!-- 수강 후기 갯수(count) & 수강생 수(count) & 카테고리 확인 (DB)  -->											
+									<!-- lecture_type_category -->
 										
 									</div>
 								</div>
@@ -93,12 +115,9 @@
 						<div class="course_floating_btn">
 							<div class="course_floating_top">
 								<div class="course_price_cover">
+								
+								<!-- SideMenu_price -->
 									<div class="course_price_section">
-
-
-
-									
-<!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->									
 										<div class="course_price">
 											<% if (ldto.getL_price() == 0) { %>
 												무료
@@ -109,27 +128,49 @@
 											<% } %>
 										</div>
 									</div>
+								<!-- SideMenu_price -->
+									
+								<!-- SideMenu_button -->
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
 											<% if (ldto.getL_price() == 0) { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
-											<% } else { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">수강 신청</button>
-											<% } %>
+<!-- 강의 시청 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+												<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 										</div>
+											<% } else { %>
+												<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
+										</div>
+												<div class="course_btn_cover">
+													<button class="is_outlined course_sub_btn course_wish_btn wishBtn">
+<!-- 위시리스트 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+														<span class="wish">
+															<i class="fa fa-heart-o"></i>
+															<span class="wish_cnt"><%= ldto.getL_goods() %></span>
+														</span>
+														<span class="text">위시</span>
+													</button>
+<!-- 장바구니 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+													<button class="is_outlined course_sub_btn course_cart_btn cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">
+												    	<i class="fa fa-cart-plus"></i><span class="text">수강 바구니</span>
+												    </button>
+											    </div>
+											<% } %>
 									</div>
-<!-- 유.무료 // 유로 - 금액 & 할인 & 시간 확인  + 수강 신청하기 & 찜 & 장바구니 추가  //  무료 - 바로 학습하기 ->강의실 이동 -->									
-
-								</div>
-								<div class="course_info_cover">
+								<!-- SideMenu_button -->
 								
-<!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->								
+								</div>
+								
+							<!-- SideMenu_info -->
+								<div class="course_info_cover">
 									<div class="course_info_row">
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/instructors/57904/courses">김왼손의 왼손코딩</a>
+<!-- 회원 번호 => 주소변경 -->
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/instructors/57904/courses"><%= ldto.getL_m_name() %></a>
 									</div>
 									<div class="course_info_row">
+<!-- 강의 수 강의시간 변경 -->
 										<i class="far fa-play-circle"></i>50회 수업· 총 4시간 2분수업
 									</div>
+<!--시청 기간, 수료증, 난이도 삭제 예정
 									<div class="course_info_row">
 										<i class="far fa-clock"></i><span class="has-text-weight-bold">평생</span> 무제한 시청
 									</div>
@@ -139,24 +180,16 @@
 									<div class="course_info_row">
 										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
 									</div>
-<!-- 강사 & 강의 수 & 총 시간 & 시청일 제한 & 수료증 확인 & 난이도 확인 -->		
-
-
-
-
-						
+시청 기간, 수료증, 난이도 삭제 예정  -->
 								</div>
+							<!-- SideMenu_info -->
+						
 							</div>
 							<div class="course_relation_cover course_floating_bottom is-hidden-mobile">
 								<div class="course_relation_tabs">
-									<div class="course_relation_tab divactive" id="course_another_tab">
-										다른 강의
-									</div>
+									<div class="course_relation_tab divactive" id="course_another_tab">다른 강의</div>
 								</div>
 								<div class="course_another_cover course_relation_list_cover divactive">
-								
-								
-								
 								
 <!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->								
 									<div class="course_another_list">
@@ -222,7 +255,7 @@
 												</div>
 											</a>
 										</li>
-										<li>,
+										<li>
 											<a href="/course/파이썬-입문-hello-coding">
 												<div class="el_thumbnail">
 													<img src="https://cdn.inflearn.com/wp-content/uploads/hello_coding.jpg" alt="[저자직강] Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의">
@@ -262,8 +295,8 @@
 									<% } %>
 <!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->
 									
-									
-									
+									 
+									 
 									
 									
 								</div>
@@ -454,7 +487,7 @@
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
 										<div class="curriculum_header">
-											<span class="section_all">모두 펼치기	</span>
+											<span class="section_all"></span>
 										
 										
 										
@@ -1386,7 +1419,7 @@
 
 <!-- 등록일 & 수정일 확인(DB) -->									
 									<div>
-										2017년 10월 13일<span class="last_update_date"> (마지막 업데이트 일자 : 2019년 2월 17일)</span>
+										<%= ldto.getL_reg_date() %><span class="last_update_date"> (마지막 업데이트 일자 : 2019년 2월 17일)</span>
 									</div>
 <!-- 등록일 & 수정일 확인(DB) -->																		
 									
@@ -1398,164 +1431,202 @@
 								<article class="reviews" id="reviews">
 									<h4 class="sub_heading">수강 후기</h4>
 									<div class="review_summary">
+									
+									<%-- 
+									<% if(reviewList.size() != 0){ %>
+									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
 										<div class="average">
-										
-										
-										
-										
-										
-										
-<!-- (위쪽과 동일) 수강 평점 확인  -->										
-											<span class="average_num">4.9</span>
-<!-- (위쪽과 동일) 수강 평점 확인  -->										
-											
-											
-											
-											
-											
-<!-- (위쪽과 동일) 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->										
-											<span class="average_star"><div class='rating_star'>
-													<div class='star_solid' style="width: 98%">
-													<% for(int i=1; i<6; i++){ %>
-														<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-															<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
-																						l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z"/>
-														</svg>
-													<%} %>
+											<span class="average_num"><%= review_rating.get("rating_avg") %></span>
+											<span class="average_star">
+												<div class='rating_star'>
+													<div class='star_solid' style="width:<%= (double)review_rating.get("rating_avg") * 20 %>%">
+													<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
 													</div>
-													<% for(int i=5; i>0; i--){ %>
-													<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-														<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7
-																					L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4-33.7 l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 z
-																					M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7 -23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z"/>
-													</svg>
-													<%} %>
+													<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
 												</div>
 											</span>
-<!-- (위쪽과 동일) 평점 확인 후 점수 만큼 반복문이용 별 개수 지정 -->		
-
-
-
-
-<!-- (위쪽과 동일) 수강평 개수 확인 -->									
-											<h5 class="review_total">212개의 수강평</h5>
-<!-- (위쪽과 동일) 수강평 개수 확인 -->									
-
-
-
-
-
+											<h5 class="review_total"><%= review_rating.get("reviewAll") %>개의 수강평</h5>
 										</div>
+									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
 										
-										
-										
-										
-										
-<!-- 프로그래스 바  max값 = 전체 value의 합  각각value 가져오기 (DB)  -->			
+									<!-- 평점 progress_bar -->
 										<div class="progress_bars">
+										<% for(int i=5; i>0; i--){ %>
 											<div class="review_counting">
-												<label>5점</label>
-												<progress class="progress is-link" max="212" value="186"></progress>
+												<label><%= i %>점</label>
+												<progress class="progress is-link" max="<%= review_rating.get("reviewAll") %>" value="<%= review_rating.get("rating_" + i) %>"></progress>
 											</div>
-											<div class="review_counting">
-												<label>4점</label>
-												<progress class="progress is-link" max="212" value="22"></progress>
-											</div>
-											<div class="review_counting">
-												<label>3점</label>
-												<progress class="progress is-link" max="212" value="4"></progress>
-											</div>
-											<div class="review_counting">
-												<label>2점</label>
-												<progress class="progress is-link" max="212" value="0"></progress>
-											</div>
-											<div class="review_counting">
-												<label>1점</label>
-												<progress class="progress is-link" max="212" value="0"></progress>
-											</div>
+										<% } %>
 										</div>
-<!-- 프로그래스 바  max값 = 전체 value의 합  각각value 가져오기 (DB)  -->										
-
-
-
+									<!-- 평점 progress_bar -->
+									
+									<% } else { %>
+										<p class="not_yet_reviews">아직 평가를 충분히 받지 못한 강의 입니다.<br>모두에게 도움이 되는 수강평의 주인공이 되어주세요!😄️️</p>
+									<% } %>
+									 --%>
+									 
+<!-- +++++++++++++++삭제 후 사용+++++++++++++++ -->							 
+									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
+										<div class="average">
+											<span class="average_num"><%= review_rating.get("rating_avg") %></span>
+											<span class="average_star">
+												<div class='rating_star'>
+													<div class='star_solid' style="width:<%= (double)review_rating.get("rating_avg") * 20 %>%">
+													<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
+													</div>
+													<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
+												</div>
+											</span>
+											<h5 class="review_total"><%= review_rating.get("reviewAll") %>개의 수강평</h5>
+										</div>
+									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
+										
+									<!-- 평점 progress_bar -->
+										<div class="progress_bars">
+										<% for(int i=5; i>0; i--){ %>
+											<div class="review_counting">
+												<label><%= i %>점</label>
+												<progress class="progress is-link" max="<%= review_rating.get("reviewAll") %>" value="<%= review_rating.get("rating_" + i) %>"></progress>
+											</div>
+										<% } %>
+										</div>
+									<!-- 평점 progress_bar -->
+<!-- +++++++++++++++삭제 후 사용+++++++++++++++ -->						
 
 									</div>
 									<div class="review_list">
 									
-									
-									
-									
-									
-									
-
-<!-- 회원별 리뷰 평점 & 리뷰 내용 & 작성일로부터의 기간 받아오기(DB) -->		
-<!-- 리뷰 1 -->							
+<!-- %%%%% 삭제 %%%%% 후 %%%%% 사용 %%%%% -->	
 										<div class="article_container">
 											<article class="media review_item">
 												<figure class="media-left image is-64x64">
-													<img src="../public/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
-													<div class="onload_placeholder"></div>
-													<div class="swiper-lazy-preloader"></div>
+													<img src="./img/main-img/lect_10.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
 												</figure>
 												<div class="media-content">
 													<div class="content">
-														<span>
-															<div class='rating_star'>
-																<div class='star_solid'>
-																<% for(int i=1; i<6; i++){ %>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-																		<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
-																									l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z" />
-																	</svg>
-																<%} %>
-																</div>
-																<% for(int i=5; i>0; i--){ %>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-																	<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6, -45.6 -23.9, -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8, -36.7 36.1, -17.7 54.6 l 105.7 103-25 145.5 c -4.5 26.3, 23.2 46, 46.4 33.7
-																								L 288 439.6 l 130.7 68.7 c 23.2 12.2, 50.9 -7.4, 46.4 -33.7, l -25 -145.5 105.7 -103 c 19 -18.5, 8.5 -50.8, -17.7 -54.6 z
-																								M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7-23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z" />
-																</svg>
-																<%} %>
-															</div>
-														</span>
-										<!-- 회원 닉네임 -->				
+														<span><div class='rating_star'>
+															<div class='star_solid'><% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %></div>
+															<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
+														</div></span>
 														<strong>조수연</strong>
-										<!-- 회원 닉네임 -->				
-														<small class="review updated_at">
-										<!--  -->				
-															<span>8달 전</span>
-															<span class="option"></span>
-														</small>
-														<br>
+														<small class="review updated_at"><span>8달 전</span><span class="option"></span></small><br>
 														<div class="review_body">
 															너무 훌륭한 강의였어요. 정말 하나도 모르고 들어왔거든요. 다른 사람이 만들어둔 모듈을 보는데, 어머 알겠는거예요. 우와, 감동입니다.
 															김왼손님, 진짜 감사합니다. 이제 시작이라서 한참은 더 헤메겠지만, 너무 재미있는 강의 였어요. 강추 백만개 날리고 싶어요~
 														</div>
+														<div class="reactions"><button class="button is-link is-small">
+																<span class="is-hidden-mobile">답글 쓰기</span>
+																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
+															</button></div></div>
+													<div class="review_comments"><div class="article_container"><article class="media comment">
+														<figure class="media-left image is-32x32">
+															<img loading="lazy" src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" data-src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" class="swiper-lazy" alt="장기효(캡틴판교)">
+														</figure>
+														<div class="media-content"><div class="content">
+															<p><small><span class="author"><strong>장기효(캡틴판교)</strong></span><span class="updated_at">2달 전</span></small><br>
+															<span class="article_body">
+																안녕하세요 세훈님, 도움이 되었던 부분에 대해 자세히 적어주셔서 감사합니다 :) 개인 프로젝트 하실 때 수업 내용들을 많이 참고하셔서 재밌게 개발하실 수 있으면 좋겠네요. 후속 강의들도 많은 관심 부탁드립니다 감사합니다 :)
+															</span></p>
+													</div></div></article></div></div></div></article>
+										</div>
+										<div class="article_container">
+											<article class="media review_item">
+												<figure class="media-left image is-64x64">
+													<img loading="lazy" src="https://cdn.inflearn.com/public/main/profile/default_profile.png" data-src="https://cdn.inflearn.com/public/main/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
+												</figure>
+												<div class="media-content"><div class="content"><span><div class='rating_star'>
+													<div class='star_solid'>
+													<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
+													</div>
+													<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
+												</div></span><strong>박찬영</strong><small class="review updated_at"><span>7달 전</span><span class="option"> </span></small><br>
+												<div class="review_body">
+													아무것도 모르고 의지만 있었던 저를 프로그램을 만들 수 있게 해 준 강의입니다. 무엇보다 재미있게 설명을 해 주십니다. 좋은 강의를 그것도 무료로
+													들을 수 있어 추천합니다!
+											</div></div></div></article>
+										</div>
+<!-- %%%%% 삭제 %%%%% 후 %%%%% 사용 %%%%% -->	
+
+<%--
+								<!-- review_container -->
+									<%
+									if(reviewList.size() != 0){ 
+										for(int r_loop=0; r_loop<reviewList.size(); r_loop++){
+									%>
+										<div class="article_container">
+											<article class="media review_item">
+											
+											<% if(reviewList.get(r_loop).getR_re_lev == 0){ %>
+				<!-- ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
+											<!-- 회원 아이콘 등록 -->
+												<figure class="media-left image is-64x64">
+													<img src="./img/main-img/lect_10.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
+												</figure>
+											<!-- 회원 아이콘 등록 -->
+											
+												<div class="media-content">
+													<div class="content">
+													
+													<!-- 회원별 별점 정보 -->
+														<span>
+															<div class='rating_star'>
+																<div class='star_solid'>
+																<% for(int i=1; i<reviewList.get(r_loop).getR_rating; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
+																</div>
+																<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
+															</div>
+														</span>
+													<!-- 회원별 별점 정보 -->
+											
+													<!-- 회원 이름 -->
+														<strong><%= reviewList.get(r_loop).getR_writer %></strong>
+													<!-- 회원 이름 -->
+													
+													<!-- 작성 일자 -->
+														<small class="review updated_at">
+															<span><%= reviewList.get(r_loop).getR_reg_date %></span>
+															<span class="option"></span>
+														</small><br>
+													<!-- 작성 일자 -->
+														
+													<!-- 리뷰 내용 -->
+														<div class="review_body">
+															<%= reviewList.get(r_loop).getR_content %>
+														</div>
+													<!-- 리뷰 내용 -->
+													
+													<!-- 답글 등록 버튼 -->
+													<% if(m_rank.equals("강사")){ %>
+														<div class="reactions">
+															<button class="button is-link is-small">
+																<span class="is-hidden-mobile">답글 쓰기</span>
+																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
+															</button>
+														</div>
+													<% } %>
+													<!-- 답글 등록 버튼 -->
 													</div>
 													
-												
+											<% } else if(reviewList.get(r_loop).getR_re_lev >= 1) { %>
 												<!-- review_comment -->
 													<div class="review_comments">
 														<div class="article_container">
 															<article class="media comment">
 																<figure class="media-left image is-32x32">
-																	<img loading="lazy" src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" data-src="https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png" class="swiper-lazy" alt="장기효(캡틴판교)">
-																	<div class="onload_placeholder"></div>
-																	<div class="swiper-lazy-preloader"></div>
+																	<img src="./img/main-img/lect_9.png" class="swiper-lazy" alt="<%= reviewList.get(r_loop).getR_writer %>">
 																</figure>
 																<div class="media-content">
 																	<div class="content">
 																		<p>
+																		<!-- 회원 이름, 작성 일자, 내용 -->
 																			<small>
-																				<span class="author">
-																					<strong>장기효(캡틴판교)</strong>
-																				</span>
-																				<span class="updated_at">2달 전</span>
-																			</small>
-																			<br>
+																				<span class="author"><strong><%= reviewList.get(r_loop).getR_writer %></strong></span>
+																				<span class="updated_at"><%= reviewList.get(r_loop).getR_reg_date %></span>
+																			</small><br>
 																			<span class="article_body">
-																				안녕하세요 세훈님, 도움이 되었던 부분에 대해 자세히 적어주셔서 감사합니다 :) 개인 프로젝트 하실 때 수업 내용들을 많이 참고하셔서 재밌게 개발하실 수 있으면 좋겠네요. 후속 강의들도 많은 관심 부탁드립니다 감사합니다 :)
+																				<%= reviewList.get(r_loop).getR_content %>
 																			</span>
+																		<!-- 회원 이름, 작성 일자, 내용 -->
 																		</p>
 																	</div>
 																</div>
@@ -1563,62 +1634,18 @@
 														</div>
 													</div>
 												<!-- review_comment -->
+											<% } %>
 													
 												</div>
 											</article>
 										</div>
-<!-- 리뷰 1 -->	
-										<div class="article_container">
-											<article class="media review_item">
-												<figure class="media-left image is-64x64">
-													<img loading="lazy" src="https://cdn.inflearn.com/public/main/profile/default_profile.png" data-src="https://cdn.inflearn.com/public/main/profile/default_profile.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
-													<div class="onload_placeholder"></div>
-													<div class="swiper-lazy-preloader"></div>
-												</figure>
-												<div class="media-content">
-													<div class="content">
-														<span>
-														<div class='rating_star'>
-															<div class='star_solid'>
-																<% for(int i=1; i<6; i++){ %>
-																	<svg aria-hidden="true" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-																		<path fill="currentColor" d="M 259.3 17.8 L 194 150.2 47.9 171.5 c -26.2 3.8 -36.7 36.1 -17.7 54.6 l 105.7 103 -25 145.5 c -4.5 26.3 23.2 46 46.4 33.7 L 288 439.6 l 130.7 68.7 c 23.2 12.2 50.9 -7.4 46.4 -33.7
-																									l -25 -145.5 105.7 -103 c 19 -18.5 8.5 -50.8 -17.7 -54.6 L 382 150.2 316.7 17.8 c -11.7 -23.6 -45.6 -23.9 -57.4 0 z" />
-																	</svg>
-																<%} %>
-																</div>
-																<% for(int i=5; i>0; i--){ %>
-																<svg aria-hidden="true" data-prefix="fal" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" data-value="<%= i %>">
-																	<path fill="currentColor" d="M 528.1 171.5 L 382 150.2 316.7 17.8 c -11.7 -23.6, -45.6 -23.9, -57.4 0 L 194 150.2 47.9 171.5 c -26.2 3.8, -36.7 36.1, -17.7 54.6 l 105.7 103-25 145.5 c -4.5 26.3, 23.2 46, 46.4 33.7
-																								L 288 439.6 l 130.7 68.7 c 23.2 12.2, 50.9 -7.4, 46.4 -33.7, l -25 -145.5 105.7 -103 c 19 -18.5, 8.5 -50.8, -17.7 -54.6 z
-																								M 405.8 317.9 l 27.8 162 L 288 403.5 142.5 480 l 27.8 -162 L 52.5 203.1 l 162.7-23.6 L 288 32 l 72.8 147.5 162.7 23.6 -117.7 114.8 z" />
-																</svg>
-																<%} %>
-														</div>
-														</span>
-														<strong>박찬영</strong>
-														<small class="review updated_at">
-														<span>7달 전</span>
-															<span class="option"> </span>
-														</small>
-														<br>
-														<div class="review_body">
-															아무것도 모르고 의지만 있었던 저를 프로그램을 만들 수 있게 해 준 강의입니다. 무엇보다 재미있게 설명을 해 주십니다. 좋은 강의를 그것도 무료로
-															들을 수 있어 추천합니다!
-											
-														</div>
-													</div>
-												</div>
-											</article>
-										</div>
-<!-- 회원별 리뷰 평점 & 리뷰 내용 & 작성일로부터의 기간 받아오기(DB) -->																			
+									<%
+										} //for(int r_loop=0; r_loop<reviewList.size(); r_loop++)
+									} //if(reviewList.size() != 0)
+									%>
+								<!-- review_container -->
+--%>
 										
-										
-										
-										
-										
-										
-										<button class="is-fullwidth button is-link e_show_more_review">다른 수강평 보기</button>
 									</div>
 								</article>
 							</div>
@@ -1632,94 +1659,136 @@
 	
 	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 	<script type="text/javascript">
-	
+		
 	$(document).ready(function(){
+		
+	/* 수강평 더 보기 버튼 생성 */
+		var review_cnt = $(".review_list .article_container").length;
+		if(review_cnt < ${ fn:length(reviewList) }){
+			$("<button class='is-fullwidth button is-link e_show_more_review'>다른 수강평 보기</button>").appendTo(".review_list");
+		}
+	/* 수강평 더 보기 버튼 생성 */
+		
+	/* 수강평 로드 */
+		$(".e_show_more_review").click(function(){
+			$.ajax({
+				url      : "/CodeFarm/DetailReview.le",
+				type     : "POST",
+				dataType : "json",
+				data: {
+					l_number : <%= l_number %>
+				},
+				success: function (json){
+					var output = "";
+					for(var i=0; i<json.length; i++){
+					//	var arr_Date = json[i].r_reg_date.split(" ");
+					//	var reg_Date = arr_Date[0] + " " + arr_Date[1] + " " + arr_Date[2];
+						output += "<div class='article_container'><article class='media review_item'>"
+								+ "  <figure class='media-left image is-64x64'>"
+								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
+								+ "  </figure>"
+								+ "  <div class='media-content'>"
+								+ "    <div class='content'>"
+								+ "      <span><div class='rating_star'>"
+								+ "        <div class='star_solid'>";
+							for(var innerStar=1; innerStar<json[i].r_rating + 1; innerStar++){
+								output += "<i class='fa fa-star' data-value="+innerStar+"></i>";
+							}
+						output += "          </div>"
+							for(var outerStar=5; outerStar>0; outerStar--){
+								output += "<i class='far fa-star' data-value="+outerStar+"></i>";
+							}
+						output += "      </div></span>"
+								+ "      <strong>" + json[i].r_writer + "</strong>"
+								+ "      <small class='review updated_at'>"
+								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
+								+ "      </small><br>"
+								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
+							if("${ m_rank }" == "강사"){
+							output += "      <div class='reactions'>"
+									+ "        <button class='button is-link is-small'>"
+									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
+									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
+									+ "        </button>"
+									+ "      </div>";
+							}
+							if(json[i].r_re_lev == 1){
+							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
+									+ "  <figure class='media-left image is-32x32'>"
+									+ "    <img src='https://cdn.inflearn.com/wp-content/uploads/avatars/54224/59aca9480cbf0-bpfull.png'>"
+									+ "  </figure>"
+									+ "  <div class='media-content'><div class='content'><p>"
+									+ "    <small>"
+									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
+									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
+									+ "    </small><br>"
+									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
+									+ "  </p></div></div>"
+									+ "</article></div></div>";
+							}
+						output += "  </article></div>";
+					}
+					$(".article_container:last").after(output);
+					$("button").remove(".e_show_more_review");
+				}
+			});
+		});
+	/* 수강평 로드 */
 	
-/* 스크롤 변경시 sticky 고정 */
-		var t = $(".tabs");
-		var navTop = t.offset().top;
-		var e = 1;
-		//var didScroll;
-	//	alert("n : " + n + "\nw : " + window.pageYOffset);
-	
-		$(window).scroll(function(event){
-			
-			var offsetY = window.pageYOffset;
-			
-			if(offsetY < navTop){
-				t.removeClass("sticky");
-			}else if(offsetY > navTop){
-				t.addClass("sticky")
+	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
+		var t_Nav   = $(".tabs");
+		var h_Nav   = $("header");
+		
+		var t_Top   = t_Nav.offset().top;
+		var d_Top   = $("#description").offset().top;
+		var c_Top   = $("#curriculum").offset().top;
+		var r_Top   = $("#reviews").offset().top;
+		
+		var desc    = $(".tabs_li.description");
+		var curr    = $(".tabs_li.curriculum");
+		var reviews = $(".tabs_li.reviews");
+		
+		$(window).on('scroll', function(){
+			var offsetY = $(document).scrollTop();
+			var Y_ex = offsetY + (window.innerHeight / 10);
+				
+			if(offsetY < t_Top){
+				t_Nav.removeClass("sticky");
+				h_Nav.removeClass("is-hidden");
+			}else if(offsetY > t_Top){
+				t_Nav.addClass("sticky");
+				h_Nav.addClass("is-hidden");
 			}
 			
-		});
-/* 
-		setInterval(function() {
-		    if (didScroll) {
-		    	stk();
-		        didScroll = false;
-		    }
-		}, 100);
-	
-		function stk() {
-			if(window.pageYOffset > navTop){
-				if(1 !== e){
-					e = 1;
-					t.classList.remove("sticky");
-				} else if(2 !== e) {
-					e = 2;
-					t.classList.add("sticky")
+			if(Y_ex < d_Top){
+				desc.addClass("is-active");
+				curr.removeClass("is-active");
+				reviews.removeClass("is-active");
+				history.pushState("", "", "#");
+			}else{
+				if(Y_ex < c_Top){
+					desc.addClass("is-active");
+					curr.removeClass("is-active");
+					reviews.removeClass("is-active");
+					history.pushState("", "", "#description");
+				}else{
+					if(Y_ex < r_Top){
+						desc.removeClass("is-active");
+						curr.addClass("is-active");
+						reviews.removeClass("is-active");
+						history.pushState("", "", "#curriculum");
+					}else{
+						desc.removeClass("is-active");
+						curr.removeClass("is-active");
+						reviews.addClass("is-active");
+						history.pushState("", "", "#reviews");
+					}
 				}
 			}
-		}
-		 */
-/* 
-		var didScroll;
-		var lastScrollTop = 0;
-		var delta = 300;
-		var navbarHeight = $('tabs').outerHeight();
-		
-		$(window).scroll(function(event){
-		    didScroll = true;
 		});
+	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
 	
-		setInterval(function() {
-		    if (didScroll) {
-		        hasScrolled();
-		        didScroll = false;
-		    }
-		}, 5);
-	
-		function hasScrolled() {
-		    var st = $(this).scrollTop();
-		    
-		    if(Math.abs(lastScrollTop - st) <= delta)
-		        return;
-		    
-		    if (st > lastScrollTop && st > navbarHeight){
-		        $('.tabs').addClass('sticky');
-		    } else {
-		        if(st + $(window).height() < $(document).height()) {
-		            $('.tabs').removeClass('sticky');
-		        }
-		    }
-		    lastScrollTop = st;
-		}
-*/
-/* 스크롤 변경시 sticky 고정 */
-
-
-/* 스크롤 변경시 주소 변경
-		var G = $.offset($("#description")).top,
-	            Y = $.offset($("#curriculum")).top,
-	            K = $.offset($("#reviews")).top;
-	        J(location.hash.split("?")[0]), window.addEventListener("scroll", (function() {
-	            var t = window.pageYOffset + 2 * window.innerHeight / 10;
-	            J(t < G ? "#" : t < Y ? "#description" : t < K ? "#curriculum" : "#reviews")
-	        }))
-*/
-        
-/* 강의 목록 opne */
+	/* 강의 목록 opne */
 	    $(".section_cover").on('click', function () {
 	    	var $this = $(this);
 	    	var checkElement = $this.children();
@@ -1732,8 +1801,7 @@
 	    		checkElement.next().css('max-height', 'max-content');
 	    	}
 	    });
-/* 강의 목록 opne */
-    
+	/* 강의 목록 opne */
 		
 	});
 	
