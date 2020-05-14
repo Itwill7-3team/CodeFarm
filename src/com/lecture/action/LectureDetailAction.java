@@ -15,8 +15,10 @@ public class LectureDetailAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("LectureDetailAction_execute()");
 
+		// main또는 search 에서 강의이미지 클릭=> num 파라미터를 넘겨 받습니다.
+		// DB lecture 테이블을 이용, 상세페이지 이동합니다.
 		int l_number = 2; // 테스트용_테스트 후 아래 코드 사용
-		//int l_number = Integer.parseInt(request.getParameter("l_number"));
+		// int l_number = Integer.parseInt(request.getParameter("num"));
 		int count = 2;
 		
 		LectureDAO ldao = new LectureDAO();

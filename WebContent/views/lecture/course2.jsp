@@ -18,6 +18,8 @@
 <%
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
 
+
+
 /* String pageNum = (String)request.getAttribute("pageNum");
 int count = (int)request.getAttribute("count");
 int pageCount = ((Integer)(request.getAttribute("pageCount"))).intValue();
@@ -37,7 +39,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">IT 프로그래밍</button>
 								<div class="panel">
-									<a href="Search.le?All" class="accordion_content"> ALL </a>
+									<a href="Search.le/it-programming" class="accordion_content"> ALL </a>
 									<a href="Search.le" class="accordion_content"> 웹개발 </a>
 									<a href="Search.le" class="accordion_content"> 모바일 앱 </a> 
 									<a href="Search.le" class="accordion_content"> 게임 개발 </a>
@@ -63,7 +65,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">크리에이티브</button>
 								<div class="panel">
-									<a href="Search.le" class="accordion_content"> ALL </a>
+									<a href="Search.le/creative" class="accordion_content"> ALL </a>
 									<a href="Search.le" class="accordion_content"> 3D 모델링 </a> 
 									<a href="Search.le" class="accordion_content"> 그래픽 디자인 </a> 
 									<a href="Search.le" class="accordion_content"> 영상 편집, 유튜브 </a> 
@@ -79,7 +81,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						<div class="accordion">
 							<button class="accordion_header">업무 스킬</button>
 								<div class="panel">
-									<a href="Search.le" class="accordion_content"> ALL </a> 
+									<a href="Search.le/business" class="accordion_content"> ALL </a> 
 									<a href="Search.le" class="accordion_content"> MS-OFFICE </a> 
 									<a href="Search.le" class="accordion_content"> 마케팅 </a> 
 									<a href="Search.le" class="accordion_content"> 금융, 주식, 투자 </a> 
@@ -117,94 +119,22 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 							</div>
 							<div class="select courses_order_selector">
 								<select id="courses_order_select" name="order_select">
-									<option value="seq">추천순</option>
-									<option value="popular">인기순</option>
-									<option value="recent" >최신순</option>
-									<option value="rating">평점순</option>
-									<option value="famous">학생수순</option>
+									<%-- <c:forEach var="item" items="${PagingDTO.item()}" begin="0" end="5" step="1"> 
+										<option value="">${item}</option>
+									</c:forEach>
+										<option value="<c:out value="${item}" />">
+												<c:out value="${item}" /></option> --%>
+									<option value="seq" id="seq" selected>추천순</option>
+									<option value="popular" id="popular">인기순</option>
+									<option value="recent" id="recent">최신순</option>
+									<option value="rating" id="ration">평점순</option>
+									<option value="famous" id="famous">학생수순</option>
 								</select>
 							</div>
 						</nav><!-- breadcrumb -->
 						<!-- <div class="courses_skills"></div>courses_skill 구현 가능성?? -->
 						<div class="courses_container">
 							<div class="columns is-multiline course_card_item">
-								<div class="column flip-card is-4-tablet is-desktop">
-									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href="#">
-											<div class="card_image">
-												<figure class="image is_tumbnail">
-													<img src="./img/course-img/koala.jpg" alt="">
-													<div class="course_card_ribbon">
-														<i class="fas fa-cut"></i>
-														25% 할인중
-														<small>(<span>12</span>일 남음)
-														</small>
-													</div>
-												</figure>
-											</div>
-											<div class="card_content">
-												<div class="course_title">[연재할인]진짜 현업에서 쓰이는 직장인의 실무 엑셀 - 데이터 가공부터 분석까지</div>
-												<div class="course_instructor">제주코딩베이스센터</div>
-												<!-- <div class="course_data columns is-multiline"> -->
-													<div class="rating">
-														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
-													</div>
-													<div class="course_price">
-														<del>￦22,000</del><br>
-														<span class="pay_price">￦16.500</span>
-													</div>
-													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">독점</span>
-														<span class="tag" style="background-color:hsl(321,63%,90%)">베스트셀러</span>
-													</div>
-												<!-- </div> --><!-- course_data -->
-											</div>
-										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
-												<p class="course_decription">다가오는 코딩 테스트에 대비하여 기본적으로 알아야 할 개념을 복습하고 Python, Javascript를 통해 알고리즘 문제를 풀어볼 수 있습니다.</p>
-												<div class="back_course_data">
-													<div class="course_level">
-														<span>
-															<i class="fas fa-shoe-prints"></i>
-															초급
-														</span>
-													</div>
-													<div class="course_category">
-														<span>
-															<i class="fab fa-accusoft"></i>
-															프로그래밍 언어
-														</span>
-													</div>
-													<div class="course_skills">
-														<span>
-															<i class="fas fa-file-import"></i>
-															 알고리즘, 개발자취업, 코딩 테스트
-														</span>
-													</div>
-												</div>
-											</a>
-											<div class="card_action_btn">
-												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg"></i>
-													<span class="tooltiptext">바구니에 추가</span>
-												</div>
-												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
-													<span class="tooltiptext">위시리스트에 추가</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
 								
 <%
 for(int i=0;i<lectureList.size();i++){ 
@@ -213,7 +143,7 @@ for(int i=0;i<lectureList.size();i++){
 								
 								<div class="column flip-card is-4-tablet is-desktop">
 									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href='./lectureDetail.le?num=<%=ldto.getL_number()%>'>
+										<a class="flip-card-front" href='Detail.le?num=<%=ldto.getL_number()%>'> <!-- 디테일 연결하겠습니다. -->
 											<div class="card_image">
 												<figure class="image is_tumbnail">
 													<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
@@ -242,8 +172,8 @@ for(int i=0;i<lectureList.size();i++){
 												<!-- </div> --><!-- course_data -->
 											</div>
 										</a>
-										<div class="flip-card-back course_card_back">
-											<a href="#">
+										<div class="flip-card-back course_card_back" >
+											<a href="Detail.le?num=<%=ldto.getL_number()%>"> <!-- 디테일 연결하겠습니다 -->
 												<p class="course_decription"><%=ldto.getL_content() %></p>
 												<div class="back_course_data">
 													<div class="course_level">
@@ -290,16 +220,13 @@ for(int i=0;i<lectureList.size();i++){
 					
 					<footer class="courses_footer">
 						<nav class="pagination_list">
-						<div class="pagination">
-							<a href="#">&laquo;</a> 
-							<a href="#" class="active">1</a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							<a href="#">6</a>
-							<a href="#" class="#">&raquo;</a>
-						</div>
+						<jsp:include page="/include/paging.jsp">
+							<jsp:param value="${paging.page}" name="page"/>
+							<jsp:param value="${paging.beginPage}" name="beginPage"/>
+							<jsp:param value="${paging.endPage}" name="endPage"/>
+							<jsp:param value="${paging.prev}" name="prev"/>
+							<jsp:param value="${paging.next}" name="next"/>
+						</jsp:include>
 						</nav><!-- pagination_list -->
 					</footer><!--courses_footer  -->
 					
@@ -328,29 +255,30 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<!-- selectBox -->
 <script>
+
 $(function(){
-	$("#courses_order_select").change(function(){
-		var orderSelect = $("#courses_order_select option:selected").val();
-		alert(orderSelect);
-		if(orderSelect == "seq"){
-			// alert(orderSelect);
-			location.href="./Search.le?item=seq";
-		}else if(orderSelect =="popular"){
-			location.href="./Search.le?item=popular";
-		}else if(orderSelect =="recent"){
-			location.href="./Search.le?item=recent";
-		}else if(orderSelect =="rating"){
-			location.href="./Search.le?item=rating";
-		}else if(orderSelect == "famous"){
-			location.href="./Search.le?item=famous";
-		}
-		
-		orderSelect 
-		
+	$("#courses_order_select").change(
+		function() {
+			var orderSelect1 = $("#courses_order_select option:selected").val();
+					/* alert(orderSelect1); */
+				if (orderSelect1 == "seq") {
+						location.href = "./Search.le?item=seq";
+				} else if (orderSelect1 == "popular") {
+						location.href = "./Search.le?item=popular";
+				} else if (orderSelect1 == "recent") {
+						location.href = "./Search.le?item=recent";
+				} else if (orderSelect1 == "rating") {
+						location.href = "./Search.le?item=rating";
+				} else if (orderSelect1 == "famous") {
+						location.href = "./Search.le?item=famous";
+				}
+		});
+	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected");
 	});
-});
 </script>
+<!-- selectBox -->
 
 </body>
 </html>

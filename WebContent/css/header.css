@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 
-@media screen and (min-width: 1086px) {
+@media screen and (min-width: 1139px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
    header .descktop_content{
    display: flex !important;
@@ -16,7 +16,7 @@
 
 
 
-@media screen and (max-width: 1085px) {
+@media screen and (max-width: 1138px) {
 
 	/* 모바일   */
 	header .descktop_content{
@@ -295,7 +295,7 @@ header .noLogin{
     color: #fff;
     background: #ff6318d1;
     justify-content: center;
-    height: 50px;
+/*     height: 50px; */
     border-radius: 0;
     white-space: nowrap;
     font-weight: 700;
@@ -356,8 +356,8 @@ header .noLogin{
   cursor: pointer;
 }
 .btn{
-	border: 2px solid #4CAF50;
-    background-color: #4CAF50;
+	border: 2px solid #00c471;
+    background-color: #00c471;
     color: white;
     padding: 6px 14px;
     text-align: center;
@@ -443,11 +443,38 @@ header .tab_menu.active{
     border-bottom: 2px solid #00c471;
     font-weight: 600;
 }
-header .img_content{
+header .left_content a{
+	display: block;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(33,37,41,.64);
+    color: #fff !important;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    
+}
+header .cart_modal .list_content{
+	overflow-y: auto;
+}
+header .cart_modal .img_content{
 	width: 128px;
     height: 83px;
     overflow: hidden;
     margin-right: 8px;
+}
+header .profile_modal_cover .img_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+}
+header .img_content>img{
+	max-width: 100%;
+	;
 }
 header .item_content{
 	flex: 1 1 auto;
@@ -462,10 +489,11 @@ header .bottom_content{
 }
 header .list_content{
 	flex: 1 1 auto;
-    height: 0;
-    overflow-y: auto;
+    height: 0;s
+    /* overflow-y: auto; */
     margin-bottom: 8px;
 }
+
 header .item_title{
 	font-weight: bold;
     margin-bottom: 8px;
@@ -488,6 +516,7 @@ header .tab_btn{
 	border-radius: 4px;
 	display: none;
 	font-size: 16px;
+	border: 1px solid;
 }
 header .tab_btn.active{
 	display: block;
@@ -498,3 +527,103 @@ header .tab_btn.wish_btn{
 header .tab_btn.basket_btn{
 	background-color: #00c471;
 }
+
+/* user_modal*/
+header .profile_hover{
+	width: 44px;
+    height: 44px;
+    position: relative;
+    color: #4a4a4a;
+    display: flex;
+    line-height: 1.5;
+    align-items: center;
+    margin-left: 5px;
+}
+header .profile_hover>span{
+	display: contents;
+    position: absolute;
+}
+header .profile_hover>span>img{
+	max-width: 100%;
+}
+
+header .profile_modal_cover{
+	display: none;
+    position: absolute;
+    width: 316px;
+    height: 506px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(33,37,41,.24);
+    background-color: #fff;
+    top: 55px;
+    right: -15px;
+    z-index: 10;
+    border: 1px solid #e0e0e0;
+    padding: 16px;
+    color: black;
+}
+header .profile_modal_cover .name{
+	font-size: 20px;
+	font-weight: bold;
+}
+header .profile_modal_cover a{
+	color: black;
+}
+header .profile_modal{
+	height: 100%;
+    display: flex;
+    flex-direction: column;	
+}
+header .profile_modal_info{
+	padding: 0;
+}
+header .user_content{
+	display: flex;
+    width: 100%;
+    margin-bottom: 16px;
+}
+header .left_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+header .right_content{
+	display: flex;
+    flex-direction: column;
+}
+
+header .profile_modal_menu>.tab_content{
+	text-align: center;
+}
+header .profile_modal_menu>.list_content{
+	font-size: 20px;
+}
+header .list_item{
+	margin: 5px 0px;
+}
+header .profile_modal_footer{
+	position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+}
+header .left_footer{
+	float: left;
+}
+header .right_footer{
+	float: right;
+}
+header .tab_content{
+	border-bottom: 2px solid #00c471;
+}
+header .navbar-item.profile:HOVER .profile_modal_cover{
+	display: block;
+}
+header .tab_item{
+	font-size: 20px;
+	font-weight: bold;
+}
+/* user_modal 끝 */

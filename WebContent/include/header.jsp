@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
+
+
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta name="viewport"
 content="width=device-width, user-scalable=yes,
 initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
-	if(session.getAttribute("loginEmail")!=null){
-	 loginEmail=(String)session.getAttribute("loginEmail");
+	if(session.getAttribute("m_email")!=null){
+	 loginEmail=(String)session.getAttribute("m_email");
 	}
-	loginEmail="qsz78547@naver.com";
 %>
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
@@ -247,7 +249,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						</a>
 						<ul class="navbar-dropdown step1">
 							<li><a href="askAnswer.bo" class="navbar-item"><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-							<li><a href="star.bo" class="navbar-item"><i class="fas fa-star"></i> 수강평 모아보기</a></li>
+							<li><a href="reView.bo" class="navbar-item"><i class="fas fa-star"></i> 수강평 모아보기</a></li>
 							<li><a href="notice.bo" class="navbar-item"><i class="fas fa-bullhorn"></i> 공지사항</a></li>
 							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>
@@ -274,6 +276,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 대시보드 -->
 					<div class="navbar-item">
 						<a href="DashBoard.bo" class="navbar-item"> <button class="btn bold">대시보드</button></a>
+						
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
@@ -287,24 +290,72 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<div class="bottom_content">
 								<div class="list_content" id="list_content"></div>
 								<div class="button_content">
-								<button class="tab_btn wish_btn">위시리스트 로 이동</button>
-								<button class="tab_btn basket_btn">수강 바구니 로 이동</button>
+								<button class="tab_btn wish_btn" onclick="location.href='WishList.wi'">위시리스트 로 이동</button>
+								<button class="tab_btn basket_btn" onclick="location.href='BasketList.ba'">수강 바구니 로 이동</button>
 								</div>
 							</div>
 						</div>
 						</div>
 					</div>
+					<!-- 위시리스트 종료 -->
 					<!-- 알림 -->
 					<div class="navbar-item">
 						<a href="#"><i class="fas fa-bell"></i> </a>
 					</div>
 					<!-- 사용자 정보 -->
-					<div class="navbar-item"></div>
+					<div class="navbar-item profile">
+						<div class="profile_hover">
+							<span><img src="./img/sunny.png"></span>
+						</div>
+							<span class="profile_icon"></span>
+							<div class="profile_modal_cover">
+								<div class="profile_modal">
+									<div class="profile_modal_info">
+										<div class="user_content">
+											<div class="left_content">
+												<div class="img_content">
+												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
+												<a href="#">설정</a>
+												</div>
+											</div>
+											<div class="right_content">
+											<a href="#"><span class="name">변재정<!-- 회원이름  --></span></a>
+											<span class="rank">학생<!-- 회원 등급 --></span>
+											</div>
+										</div>
+									</div>
+									<div class="profile_modal_menu">
+									<div class="tab_content">
+										<span class="tab_item">학생<!-- 회원 등급  --></span>
+									</div>
+									<div class="list_content">
+										<ul>
+											<a href="#"><li class="list_item">이어서 학습하기</li></a>
+											<a href="#"><li class="list_item">수강중인 강의</li></a>
+											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
+											<a href="#"><li class="list_item">내 질문 답변</li></a>
+											<a href="#"><li class="list_item">구매내역</li></a>
+											<a href="addLecture.in"><li class="list_item">강의등록하기</li></a>
+										</ul>
+									</div>
+									</div>
+									<div class="profile_modal_footer">
+										<div class="left_footer">
+										<a href="MemberLogout.me">로그아웃</a>
+										</div>
+										<div class="right_footer">
+										<a href="#">고객센터</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
 					<%}else{ %>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a href="MemberLogin.me" class="navbar-item bold"> <button class="btn white">로그인</button></a>
+							<a  class="navbar-item bold"> <button class="btn bold login_btn">로그인</button></a>
 						</div>
 						<div class="navbar-item">
 							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
@@ -345,6 +396,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		</div>
 		<!--모바일끝  -->
 	</nav>
+	
 <script>
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
@@ -354,6 +406,32 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	$(".cart").mouseover(function() {
 		getCarts();
 	});
+	
+	
+	$(".login_btn").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./MemberLogin.me",
+			data : {
+				
+				
+			},
+
+			success : function(data) {
+
+				$(".login_form").html(data);
+			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+			}
+
+		});
+	});
+
+	
+	 
+	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");
 		$.ajax({
@@ -387,7 +465,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			}
 		});
 	}
+	$(".profile_hover").mouseover(function(){
+		$(".profile_modal_cover").addClass("active");
+	});
+	$(".profile_hover").mouseout(function(){
+		$(".profile_modal_cover").removeClass("active");
+	});
 </script>
 
 
 </header>
+<div class="login_form"></div> 

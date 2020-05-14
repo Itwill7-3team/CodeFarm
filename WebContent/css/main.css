@@ -116,6 +116,31 @@ height: 320px;
   
 }
 
+@media screen and (max-width: 500px) {
+	/* 웹 가장작은 사이즈일때, 카드2장 나오도록 */
+.card{
+	width:47%; height: 47%; 
+	margin: 0;
+	font-size: 13px;}
+.card img {
+	width: 100%!important; 
+	height: 47%!important; 
+	margin: 0;}
+.card-in {
+	width: 100%!important; 
+	height: 20%!important; 
+	margin: 0;}
+.card h2 {
+    font-size: 1rem !important;
+    text-align: left;
+    margin-left: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+.price {
+    margin-left: 65% !important;
+}
+	
+}
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 프로덕트 */
 
 body{margin: 0;}
@@ -161,7 +186,7 @@ height: 165px;
 
 .card h2{
 color:#454545;
-font-size: 1.2rem;
+font-size: 1.1rem;
 text-align: left;
 margin-left: 0.8rem;
 margin-bottom: 0.3rem;

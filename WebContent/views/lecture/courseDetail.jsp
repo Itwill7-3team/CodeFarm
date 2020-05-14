@@ -150,7 +150,7 @@
 														<span class="text">위시</span>
 													</button>
 <!-- 장바구니 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
-													<button class="is_outlined course_sub_btn course_cart_btn cartBtn">
+													<button class="is_outlined course_sub_btn course_cart_btn cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">
 												    	<i class="fa fa-cart-plus"></i><span class="text">수강 바구니</span>
 												    </button>
 											    </div>

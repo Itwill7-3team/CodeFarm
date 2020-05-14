@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.order.action.OrderAddAction;
+import com.order.action.OrderListAction;
+
 
 public class OrderFrontController extends HttpServlet{
 
@@ -39,11 +42,31 @@ public class OrderFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
-		if(command.equals("주소")){
+		if(command.equals("/OrderAdd.or")){
 			
+			System.out.println("/OrderAdd.or 처리 (model)");
 			
+			// OrderAddAction() 객체 생성 
+			action = new OrderAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/OrderList.or")){
+			// /OrderList.or => model->view
+			System.out.println("/OrderList.or 처리 (model->view)");
+			// OrderListAction() 객체 생성
+			action = new OrderListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}
+		
 		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
