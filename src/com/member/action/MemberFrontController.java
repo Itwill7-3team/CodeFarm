@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
 
-import com.member.action.MemberJoinAction;
+
 
 public class MemberFrontController extends HttpServlet{
 	// Controller(서블릿) 생성
@@ -108,6 +107,62 @@ public class MemberFrontController extends HttpServlet{
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberLoginAction.me")){
+			// 로그인 처리 (Model객체 필요)
+			System.out.println("MemberLoginAction.me 주소 요청");
+			
+			action = new MemberLoginAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberPw.me")){
+			// 비밀번호 찾기
+			System.out.println("MemberPw.me 주소 요청");
+			
+			forward = new ActionForward();
+			forward.setPath("./views/member/MemberPw.jsp");
+			forward.setRedirect(false);	
+		}else if(command.equals("/MemberPwAction.me")){
+			// 비밀번호 찾기
+			System.out.println("MemberPwAction.me 주소 요청");
+			action = new MemberPwAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		}else if(command.equals("/MemberLogout.me")){
+			// DB 사용(X), 로그아웃 처리로직 =>Action페이지 처리 
+			// MemberLogoutAction 객체 생성 
+			action = new MemberLogoutAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberAdmin.me")){
+			// MemberAdminAction 객체 생성 
+			action = new MemberListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MemberInfo.me")){
+			// MemberAdminAction 객체 생성 
+			action = new MemberInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

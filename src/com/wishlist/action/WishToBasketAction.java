@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.basket.db.BasketDAO;
 import com.basket.db.BasketDTO;
+import com.lecture.db.LectureDAO;
+import com.lecture.db.LectureDTO;
 import com.wishlist.db.WishlistDAO;
 import com.wishlist.db.WishlistDTO;
 
@@ -20,27 +22,30 @@ public class WishToBasketAction implements Action {
 		// 세션값이 없을경우 장바구니 사용 불가능 (로그인 페이지 이동)
 		
 		HttpSession session = request.getSession();
-		String id =(String) session.getAttribute("id");
-		id="test";
+		String id =(String) session.getAttribute("m_email");
+		//id="test";
 		ActionForward forward = new ActionForward();
-	/*	if( id == null ){
+		if( id == null ){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;			
-		}*/
+		}
 		
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 		
-		int w_num = Integer.parseInt(request.getParameter("w_num"));
-
+		int w_num = Integer.parseInt(request.getParameter("num"));
+		int l_number = Integer.parseInt(request.getParameter("number"));
+		
+		//getLecture해서 lecture정보 저장
+		LectureDTO ldto= new LectureDAO().getLectureDetail(l_number);
 		
 		// BasketDTO 객체 생성 -> 정보 저장
 		BasketDTO bkdto = new BasketDTO();
 	
-		bkdto.setB_l_num(Integer.parseInt(request.getParameter("num")));
-		bkdto.setB_l_name(request.getParameter("name"));
-		bkdto.setB_l_price(Integer.parseInt(request.getParameter("price")));
+		bkdto.setB_l_num(ldto.getL_number());
+		bkdto.setB_l_name(ldto.getL_title());
+		bkdto.setB_l_price(ldto.getL_price());
 		bkdto.setB_m_id(id);
 		
 		// BasketDAO 객체생성

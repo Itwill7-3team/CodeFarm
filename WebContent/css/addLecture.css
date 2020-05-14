@@ -3,7 +3,6 @@ body{
 	margin: 0;
 	padding: 0;
 }
-
 .header{
 	color: white;
     height: 64px;
@@ -33,6 +32,7 @@ body{
     box-sizing: border-box;
     padding: 20px;
     position: sticky;
+    min-height: 100vh;
 }
 .fa-circle{
     /* opacity: 0.6; */
@@ -101,6 +101,7 @@ body{
     width: 100%;
     margin-top: 15px;
     flex:1;
+    box-sizing: border-box;
 }
 .submit_button{
 	margin: 60px 10px;
@@ -112,10 +113,12 @@ body{
     float: left;
     display: block;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 700px;
 }
 .main_content{
+	display:none;
     box-sizing: border-box;
-    max-width: 650px;
     width: 100%;
     position: inherit;
 }
@@ -164,4 +167,12 @@ body{
 .red{
 	background-color: #ff7867;
 	border: 1px solid #ff7867; 
+}
+.tip{
+	color: #00c471;
+	font-weight: bold;
+	margin: 0px 5px;
+}
+.select{
+	color:#ff7867;
 }

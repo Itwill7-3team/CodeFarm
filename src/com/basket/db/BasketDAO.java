@@ -49,18 +49,19 @@ public class BasketDAO {
 	}//자원 해제
 	
 	//checkGoods()
-			public int checkGoods(BasketDTO wdto){
+			public int checkGoods(BasketDTO bkdto){
 				
-				int check=0;
+				int check=-1;
 				//기존의 장바구니에 해당 상품이 있는지 없는지 판별
 				try {
 					//1,2
 					getConnection();
 					
 					//3
-					sql="SELECT * FROM basket WHERE b_l_num=?";
+					sql="SELECT * FROM basket WHERE b_l_num=? and b_m_id=?";
 					pstmt=con.prepareStatement(sql);
-					pstmt.setInt(1, wdto.getB_l_num());
+					pstmt.setInt(1, bkdto.getB_l_num());
+					pstmt.setString(2, bkdto.getB_m_id());
 					rs=pstmt.executeQuery();
 
 					if(rs.next()){ //상품이 있다. => 상품추가안함.
@@ -76,7 +77,9 @@ public class BasketDAO {
 					
 				} catch (Exception e) {
 					e.printStackTrace();
-				} 
+				} finally {
+					closeDB();
+				}
 				return check;
 			}
 			//checkGoods()
@@ -120,9 +123,13 @@ public class BasketDAO {
 		
 		ArrayList lectureList = new ArrayList();
 		ArrayList basketList = new ArrayList();
+		ArrayList wishlistList = new ArrayList();
 		
 		PreparedStatement pstmt2 = null;
 		ResultSet rs2 = null;
+		
+		PreparedStatement pstmt3 = null;
+		ResultSet rs3 = null;
 		
 		try {
 			con = getConnection();
@@ -140,7 +147,7 @@ public class BasketDAO {
 				bkdto.setB_l_price(rs.getInt("b_l_price"));
 				bkdto.setB_m_id(rs.getString("b_m_id"));
 				bkdto.setB_num(rs.getInt("b_num"));
-				
+				System.out.println("-----bkdto------");
 				basketList.add(bkdto);
 				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
@@ -159,14 +166,31 @@ public class BasketDAO {
 					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
-					
+					System.out.println("-----ldto------");
 					lectureList.add(ldto);
 				}
+				sql = "SELECT * FROM wishlist WHERE w_num=?";
+				pstmt3 = con.prepareStatement(sql);
 				
+				pstmt3.setInt(1, bkdto.getB_l_num());
+				rs3 = pstmt3.executeQuery();
+				
+				if(rs3.next()) {
+					WishlistDTO widto = new WishlistDTO();
+					
+					widto.setW_date(rs3.getTimestamp("w_date"));
+					widto.setW_l_num(rs3.getInt("w_l_num"));
+					widto.setW_m_id(rs3.getString("w_m_id"));
+					widto.setW_num(rs3.getInt("w_num"));
+					System.out.println("-----widto------");
+					wishlistList.add(widto);
+					
+				}
 			}
 			
 			vec.add(0,basketList);
 			vec.add(1, lectureList);
+			vec.add(2,wishlistList);
 			
 			System.out.println(" 장바구니,상품정보 리스트 백터에 저장완료 :"+vec);			
 			
