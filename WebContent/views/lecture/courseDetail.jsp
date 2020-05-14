@@ -28,7 +28,7 @@
 <body class="course_detail">
 	<%
 		int l_number = 2; // 테스트용
-		request.setAttribute("l_number", l_number); // 테스트용a
+		request.setAttribute("l_number", l_number); // 테스트용
 		//int l_number = Integer.parseInt(request.getParameter("l_number"));
 		//String id = (String)session.getAttribute("id"); // 로그인 정보 확인 후 수정
 		session.setAttribute("m_rank", "회원");  // 로그인 테스트용
