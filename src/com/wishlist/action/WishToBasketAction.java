@@ -20,14 +20,14 @@ public class WishToBasketAction implements Action {
 		// 세션값이 없을경우 장바구니 사용 불가능 (로그인 페이지 이동)
 		
 		HttpSession session = request.getSession();
-		String id =(String) session.getAttribute("id");
-		id="test";
+		String id =(String) session.getAttribute("m_email");
+		//id="test";
 		ActionForward forward = new ActionForward();
-	/*	if( id == null ){
+		if( id == null ){
 			forward.setPath("./MemberLogin.me");
 			forward.setRedirect(true);
 			return forward;			
-		}*/
+		}
 		
 		// 한글처리
 		request.setCharacterEncoding("UTF-8");

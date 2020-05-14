@@ -58,9 +58,10 @@ public class WishlistDAO {
 				getConnection();
 				
 				//3
-				sql="SELECT * FROM wishlist WHERE w_l_num=?";
+				sql="SELECT * FROM wishlist WHERE w_l_num=?, w_m_id=? ";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, wdto.getW_l_num());
+				pstmt.setString(2, wdto.getW_m_id());
 				rs=pstmt.executeQuery();
 
 				if(rs.next()){ //상품이 있다. => 상품추가안함.
