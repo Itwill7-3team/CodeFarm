@@ -137,11 +137,6 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 									</c:forEach>
 										<option value="<c:out value="${item}" />">
 												<c:out value="${item}" /></option> --%>
-									<option value="seq" id="seq" selected>추천순</option>
-									<option value="popular" id="popular">인기순</option>
-									<option value="recent" id="recent">최신순</option>
-									<option value="rating" id="ration">평점순</option>
-									<option value="famous" id="famous">학생수순</option>
 								</select>
 							</div>
 						</nav><!-- breadcrumb -->
