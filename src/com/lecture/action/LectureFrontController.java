@@ -24,8 +24,8 @@ public class LectureFrontController extends HttpServlet{
 		doProcess(req, resp);
 	}
 	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		System.out.println("-----------[lectureFrontController]doProcess호출---------");
 		Action action = null;
@@ -47,53 +47,27 @@ public class LectureFrontController extends HttpServlet{
 		if(command.equals("/Main.le")){
 			
 			System.out.println("/model->view");
-						
-						action = new LectureMainListAction();
-						
-						try {
-							forward = action.execute(request, response);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-		/* 삭제 예정 */	
-			/*
-			 * }else if(command.equals("/Search.le")){ forward=new ActionForward();
-			 * forward.setPath("./views/lecture/course2.jsp"); forward.setRedirect(false);
-			 */
-		/* 삭제 예정 */	
-			
-		}else if(command.equals("/Search.le")){
-			System.out.println("/Search.le 처리 model->view");
-			
-			action = new LectureListAction();
-			
-			try {
-				forward = action.execute(request, response);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/Detail.le")){
-			action = new LectureDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(command.equals("/Search/it-programming.le")){
-			System.out.println("/Search/it-programming 처리 model->view");
-			System.out.println("command1 : " + command);
-			action = new LectureListAction();
-			System.out.println("command2 : " + command);
+
+			action = new LectureMainListAction();
+
 			try {
 				forward = action.execute(request, response);
 				System.out.println("command3 : " + command);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Search/creative.le")){
-			System.out.println("/Search.le/it-programming 처리 model->view");
-			
+
+			/* 삭제 예정 */
+			/*
+			 * }else if(command.equals("/Search.le")){ forward=new
+			 * ActionForward(); forward.setPath("./views/lecture/course2.jsp");
+			 * forward.setRedirect(false);
+			 */
+			/* 삭제 예정 */
+
+		} else if (command.equals("/Search.le")) {
+			System.out.println("/Search.le 처리 model->view");
+
 			action = new LectureListAction();
 			
 			try {

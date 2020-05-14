@@ -306,7 +306,8 @@ $(function(){
 		
 		/* $("div #num").text(data.num) */
 		/* var l_m_id = $(".l_m_id").attr("data-type"); */
-		var m_id = "<%=session.getAttribute("m_id") %>";
+		<%-- var m_id = '<%=session.getAttribute("m_id") %>'; --%>
+		var m_id = '${m_id}';
 		
 		console.log("정보 확인1 : "+m_id);
 

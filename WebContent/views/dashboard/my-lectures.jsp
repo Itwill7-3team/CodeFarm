@@ -16,42 +16,42 @@
 
 <style type="text/css">
 
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1085px) {
 
 	/* 모바일   */
 	.profile_aside{
 	display: none !important;
 	}
-	.e_modal_certification{
-	display: none !important;
+	
+	
+	.main_container{
+	width: 100% !important;
 	}
 	
-	.colums{
-/* 	border: 1px solid green; */
-	min-width: 900px;
+	.is-half{
+	width: 100% !important;
+	padding: 0.5rem 3rem !important;
 	}
-	.container{
-	/* 	border: 1px solid blue; */
-		width: 95% !important; 
-		margin: 0 auto;
+	
+	#my-wrap{
+	width: 60% !important;
+	margin: 0 auto;
 	}
-
 	
 }
 
 @media screen and (max-width: 1360px) {
-	
-
 	.profile_aside>ul{
-	padding: 0 0 0 1em;
+	padding: 0 0 0 1em !important;
 	}
-	.ws_wrap{
+	.container{
 	width: 100% !important;
 	}
 	#alll{
 	margin: 4em 1em !important;
 	}
 }
+
 
 
 section *{  
@@ -134,11 +134,11 @@ margin: 0.2rem 0;
 }
 
 
-#my-wrap{
-/* border: 1px pink solid; */
-    width: 70%;
-    display: inline-block;
-}
+/* #my-wrap{ */
+
+/*     width: 70%; */
+/*     display: inline-block; */
+/* } */
 
 .columns{
 width: 100%;
@@ -165,11 +165,11 @@ overflow: hidden;
 }
 .find-lect{max-width: 240px;}
 
-
-.main_container{
+.main_container {
     flex-wrap: wrap;
+    display: inline-block;
+    margin-top: 30px;
 }
-
 /*  */
 .select:not(.is-multiple) {
     height: 2.25em;
@@ -389,36 +389,11 @@ border:1px #dbdbdb solid;
 		<div class="columns">
 
 			<!-- aside -->
-			<aside class="column is-2 menu sidebar_left profile_aside">
-			<ul class="menu-list">
-				<li class="menu1  "><a href="DashBoard.bo">대시보드</a></li>
-				<li class="menu1  "><a href="#">알람</a></li>
-				<li class="menu1  is-active"><a href="#">내 학습</a>
-					<ul>
-						<li class="menu2 is_now"><a href="#">수강중인 강의</a></li>
-						<li class="menu2 "><a href="#">참여중인 로드맵</a></li>
-						<li class="menu2 "><a href="#">내 질문</a></li>
-					</ul></li>
-				<li class="menu1  "><a href="/wishlist">내 결제</a>
-					<ul>
-						<li class="menu2 "><a href="WishList.wi">위시리스트</a></li>
-						<li class="menu2 "><a href="BasketList.ba">수강 바구니</a></li>
-						<li class="menu2 "><a href="#">내 쿠폰함</a></li>
-						<li class="menu2 "><a href="#">구매 내역</a></li>
-						<li class="menu2 "><a href="#">내 포인트</a></li>
-					</ul></li>
-				<li class="menu1  "><a href="#">모든 알림</a></li>
-				<li class="menu1  "><a href="#">설정</a>
-					<ul>
-						<li class="menu2 "><a href="#">프로필 설정</a></li>
-						<li class="menu2 "><a href="#">알림 설정</a></li>
-					</ul></li>
-			</ul>
+			<jsp:include page="/include/dash-aside.jsp"/>
 
-			</aside>
 			<!-- aside -->
 			
-<div id="my-wrap">
+ <div class="main_container">
 				<div class="column is-10 main_container">
 					<small class="is-hidden-mobile"> <nav class="breadcrumb"
 							aria-label="breadcrumbs">

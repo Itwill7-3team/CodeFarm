@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.member_info{
+
+    box-sizing: border-box;
+}
+td{
+	width: 330px;
+	text-align: center;
+    font-size: 22px;
+}
+th{
+	font-size: 25px;
+    color: darkseagreen;
+    font-style: initial;
+
+}
+.calum_info{
+	height: 44px;
+}
+.info_title{
+	font-size: 28px;
+    margin: 58px 99px 10px 31px;
+    color: #1dc078;
+    font-style: normal;
+}

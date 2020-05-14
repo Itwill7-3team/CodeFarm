@@ -43,49 +43,22 @@
 <div class="ws_wrap">
    
 <!-- aside 영역 -->
-<aside class="profile_aside">
-		<ul class="menu-list">
-		  <li class="menu1
-		  is-active">
-		    <a href="DashBoard.bo">대시보드</a>
-		  </li>
-		  <li class="menu1">
-		    <a href="#">알람</a>
-		  </li>
-		  <li class="menu1">
-		    <a href="#">내 학습</a>
-		    <ul>
-		      <li class="menu2 "><a href="#">수강중인 강의</a></li>
-		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li>
-		      <li class="menu2 "><a href="#">내 질문</a></li>
-		    </ul>
-		  </li>
-		  <li class="menu1">
-		    <a href="#">내 결제</a>
-		    <ul>
-		      <li class="menu2 "><a href="WishList.wi">위시리스트</a></li>
-		      <li class="menu2 "><a href="#">수강 바구니</a></li>
-		      <li class="menu2 "><a href="#">내 쿠폰함</a></li>
-		      <li class="menu2 "><a href="#">구매 내역</a></li>
-		      <li class="menu2 "><a href="#">내 포인트</a></li>
-		    </ul>
-		  </li>
-		  <li class="menu1">
-		    <a href="#">모든 알림</a>
-		  </li>
-		  <li class="menu1">
-		    <a href="#">설정</a>
-		    <ul>
-		      <li class="menu2 "><a href="#">프로필 설정</a></li>
-		      <li class="menu2 "><a href="#">알림 설정</a></li>
-		    </ul>
-		  </li>
-		</ul>
-</aside>
+<jsp:include page="/include/dash-aside.jsp"/>
 <!-- aside 영역 -->   
    
   <section id="lec">
-<h1 class="title">위시리스트</h1> 
+<div class="column is-10 main_container">
+					<small class="is-hidden-mobile"> <nav class="breadcrumb"
+							aria-label="breadcrumbs">
+						<ul>
+							<li><a href="#">내 결제</a></li>
+							<li><a href="#">위시리스트</a></li>
+						</ul>
+						</nav>
+					</small>
+
+					<h3 class="heading is-hidden-mobile">위시리스트</h3>
+</div>					
 <%
 for(int i=0;i<wishList.size();i++){ 
 	 WishlistDTO wdto = (WishlistDTO)wishList.get(i);
@@ -107,7 +80,7 @@ for(int i=0;i<wishList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
+		<a href="WishListDelete.wi?num=<%=wdto.getW_num() %>"><i class="fa fa-heart-o"></i></a><!-- 위시리스트 삭제 -->
 		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
 		</span>
 	

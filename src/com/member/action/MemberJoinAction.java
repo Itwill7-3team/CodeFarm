@@ -65,9 +65,12 @@ public class MemberJoinAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		// 전달된 회원정보를 저장 객체생성(자바빈객체)
-		MemberDTO mb = new MemberDTO(m_email, m_pw, salt, false);
+		MemberDTO mb = new MemberDTO();
 		// 전달된 파라미터정보를 저장 
-		
+		mb.setM_email(m_email);
+		mb.setM_pw(m_pw);
+		mb.setM_emailHash(salt);
+		mb.setM_emailCheck(false);
 		// 확인
 		//System.out.println(mb.toString());
 
@@ -88,7 +91,7 @@ public class MemberJoinAction implements Action{
 		// 페이지 이동(로그인 페이지로이동)
 		// ActionForward 객체를 생성해서 값 저장 후 이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberLogin.me");
+		forward.setPath("./Main.le");
 		forward.setRedirect(true);		
 		
 		return forward;
