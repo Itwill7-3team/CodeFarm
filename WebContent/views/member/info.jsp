@@ -10,6 +10,26 @@
 <title>코딩팜</title>
 <style type="text/css">
 
+.profile_aside {
+    display: inline-block;
+    width: 15%;
+    min-width: 230px;
+    height: 900px;
+    padding: 3em 0;
+    vertical-align: top;
+    margin-left: 19em;
+    /* border: 1px solid; */
+}
+
+.main_container {
+    display: inline-block;
+    width: 65% !important;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 60px;
+    /* border: 1px solid red; */
+}
+
 input[type="file" i] {
     -webkit-appearance: initial;
     background-color: initial;
@@ -69,13 +89,14 @@ span {
 %>
 <!-- 대시보드 -->
       <div class="main_container">
-        <small class="is-hidden-mobile">
+<small class="is-hidden-mobile">
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
     <li><a href="#">설정</a></li>
     <li><a href="#">프로필 설정</a></li>
   </ul>
-</nav></small>
+</nav>
+</small>
         <h6>계정 설정</h6>
           <div class="tabs">
             <ul>
@@ -109,7 +130,7 @@ span {
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>
-            <textarea class="tinymce" id="mce_0" aria-hidden="true" cols="40" rows="20">
+            <textarea class="tinymce" id="mce_0" aria-hidden="true" cols="40" rows="10">
             
             </textarea>
 		
