@@ -127,7 +127,7 @@
 												무료
 											<% } else { %>
 											<script type="text/javascript">
-												document.write(numberFormat(${ ldto.l_price }));					
+												document.write(NumberFormat(${ ldto.l_price }));					
 											</script>원
 											<% } %>
 										</div>
