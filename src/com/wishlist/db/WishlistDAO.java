@@ -149,6 +149,7 @@ public class WishlistDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_number(rs2.getInt("l_number"));
 					ldto.setL_m_id(rs2.getString("l_m_id"));
 					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));

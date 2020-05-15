@@ -146,6 +146,7 @@ height: 320px;
 body{margin: 0;}
 
 #lec{
+width: 100%;
 margin: 60px auto;
 text-align: center;
 }

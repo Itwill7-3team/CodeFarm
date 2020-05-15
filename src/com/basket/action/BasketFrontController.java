@@ -64,7 +64,6 @@ public class BasketFrontController extends HttpServlet{
 			System.out.println("/BasketDelete.ba 주소 처리(model)");
 			// BasketDeleteAction 객체
 			action = new BasketDeleteAction();
-
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -76,7 +75,9 @@ public class BasketFrontController extends HttpServlet{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
 				e.printStackTrace();
-			}
+			}/* else if(command.equals("/WishList.wi"))
+				action = new wishlistview();*/
+			
 		}
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
