@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.notice.db.NoticeDAO;
 import com.notice.db.NoticeDTO;
-import com.question.db.QuestionDAO;
-import com.question.db.QuestionDTO;
 
 public class NoticeWriteAction implements Action {
 
@@ -20,6 +19,15 @@ public class NoticeWriteAction implements Action {
 		System.out.println("@@@NoticeWriteAction_execute()실행");
 
 		//세션확인
+		HttpSession session = request.getSession();
+
+		String id =(String) session.getAttribute("m_email");
+		
+		if(id == null && !id.equals("admin@naver.com")){
+			forward.setPath("./MemberLogin.me");
+			forward.setRedirect(true);
+			return forward;
+		}
 		
 		//한글처리
 		request.setCharacterEncoding("utf-8");

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class BoardFrontController extends HttpServlet{
@@ -76,9 +77,21 @@ public class BoardFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/noticeWrite.bo")){
 			//글쓰기 뷰
+			
+			//세션확인
+			HttpSession session = request.getSession();
+
+			String id =(String) session.getAttribute("m_email");
+			
 			forward= new ActionForward();
+			
+			if(id == null || !id.equals("admin@naver.com")){
+				forward.setPath("./notice.bo");
+				forward.setRedirect(true);
+				
+			}else{
 			forward.setPath("./views/board/noticeWriteForm.jsp");
-			forward.setRedirect(false);		
+			forward.setRedirect(false);}		
 			
 		}else if(command.equals("/noticeWriteAction.bo")){
 			//글쓰기 모델

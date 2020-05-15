@@ -100,7 +100,7 @@ public class NoticeDAO {
 	}
 	// getNoticeCount()
 	
-	//insertNotice(ndto)
+	//C-insertNotice(ndto)
 	public int insertNotice(NoticeDTO ndto) {
 		int check=-1;
 		int num=0;
@@ -144,7 +144,7 @@ public class NoticeDAO {
 	}
 	//insertNotice(ndto)
 	
-	//getNotice(num)
+	//R-getNotice(num)
 		public NoticeDTO getNotice(int num){
 				NoticeDTO ndto = null;
 			try {
@@ -181,6 +181,12 @@ public class NoticeDAO {
 			return ndto;
 		}
 		//getNoticeContent(num)
+		
+		//U-updateNotice(num,ndto)
+		
+		
+		
+		//D-deleteNotice(num)
 	
 	
 }
