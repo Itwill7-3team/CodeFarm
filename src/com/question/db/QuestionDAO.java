@@ -56,7 +56,6 @@ public class QuestionDAO {
 				QuestionDTO qdto=new QuestionDTO();
 				qdto.setQ_num(rs.getInt("q_num"));
 				qdto.setQ_l_num(rs.getInt("q_l_num"));
-				qdto.setQ_l_name(rs.getString("q_l_name"));
 				qdto.setQ_title(rs.getString("q_title"));
 				qdto.setQ_content(rs.getString("q_content"));
 				qdto.setQ_writer(rs.getString("q_writer"));

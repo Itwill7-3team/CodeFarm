@@ -824,7 +824,11 @@ article.media span.option span {
 }
 
 
-
+.course_detail .course_dashboard .curriculum, .course_detail .course_description .curriculum {
+	color: #595959;
+    max-width: 969px;
+    margin: 64px auto 0;
+}
 
 
 
