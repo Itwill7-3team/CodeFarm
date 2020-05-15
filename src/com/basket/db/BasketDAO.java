@@ -20,6 +20,7 @@ public class BasketDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	ResultSet rs2=null;
+	ResultSet rs3 = null;
 	String sql="";
 	
 	
@@ -41,8 +42,9 @@ public class BasketDAO {
 		try {
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
-			if(con !=null) con.close();
+			if(con != null) con.close();
 			if(rs2 != null) rs2.close();
+			if(rs3 != null) rs3.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -125,12 +127,8 @@ public class BasketDAO {
 		ArrayList basketList = new ArrayList();
 		ArrayList wishlistList = new ArrayList();
 		
-		PreparedStatement pstmt2 = null;
-		ResultSet rs2 = null;
 		
-		PreparedStatement pstmt3 = null;
-		ResultSet rs3 = null;
-		
+
 		try {
 			con = getConnection();
 			
@@ -151,10 +149,10 @@ public class BasketDAO {
 				basketList.add(bkdto);
 				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
-				pstmt2 = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				
-				pstmt2.setInt(1, bkdto.getB_l_num());
-				rs2 = pstmt2.executeQuery();
+				pstmt.setInt(1, bkdto.getB_l_num());
+				rs2 = pstmt.executeQuery();
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
@@ -170,10 +168,10 @@ public class BasketDAO {
 					lectureList.add(ldto);
 				}
 				sql = "SELECT * FROM wishlist WHERE w_num=?";
-				pstmt3 = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				
-				pstmt3.setInt(1, bkdto.getB_l_num());
-				rs3 = pstmt3.executeQuery();
+				pstmt.setInt(1, bkdto.getB_l_num());
+				rs3 = pstmt.executeQuery();
 				
 				if(rs3.next()) {
 					WishlistDTO widto = new WishlistDTO();

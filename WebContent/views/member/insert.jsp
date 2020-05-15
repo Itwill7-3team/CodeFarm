@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜-회원가입</title>
 <link rel="stylesheet" href="./css/insert.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
@@ -57,7 +58,7 @@
 	var idcheck2=false;
 	var pwcheck=false;
 	var pwcheck2=false;
-	var regExpPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{0,50})(?=.*[a-zA-Z]{2,50}).{8,15}$/;
+	var regExpPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,15}$/;
 	var regExpEm = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
 		$(".btn_sub").click(function() {
