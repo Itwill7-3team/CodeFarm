@@ -21,6 +21,11 @@ input[type="file" i] {
     border: initial;
     display: none;
 }
+
+.file-label{
+cursor: pointer;
+}
+
 input[type="password" i] {
     -webkit-text-security: disc !important;
     display: block;
