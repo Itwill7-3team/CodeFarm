@@ -20,6 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 
 <style type="text/css">
+
 .content{
 width: 50%;
 margin: 0 auto;
@@ -78,21 +79,30 @@ id= email.substring(0,idx);
 
 System.out.print("id"+id);
 
+
+//request.setAttribute("ndto", ndto);
+//request.setAttribute("pageNum", pageNum);
+
+NoticeDTO ndto=(NoticeDTO)request.getAttribute("ndto");
+String pageNum=request.getAttribute("pageNum").toString();
+
 %>
 
 
 <fieldset class="content">
 <legend>공지사항</legend>
-<form action="./noticeWriteAction.bo" method="post">
-글쓴이 : <%=id%><br>
-제목 : <input type="text" name="n_title"><br>
+<form action="./noticeUpdateAction.bo" method="post">
+<input type="hidden" name="num" value="<%=ndto.getN_num()%>">
+글쓴이 : <%=ndto.getN_writer() %><br>
+제목 : <input type="text" name="n_title" value="<%=ndto.getN_title() %>"><br>
 내용<br>
 <textarea name="n_content" id="summernote">
+<%=ndto.getN_content() %>
 </textarea>
-<input type="submit" value="글쓰기">
+<input type="submit" value="수정하기">
 </form>
 
-<h2><a href="notice.bo">공지 게시판 글 목록보기</a></h2>
+<h2><a href="notice.bo?pageNum=<%=pageNum%>">목록보기</a></h2>
 </fieldset>
 <!-- 컨텐츠 -->
 <!-- 푸터 -->

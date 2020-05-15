@@ -10,6 +10,24 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜-공지</title>
 <link href="./css/reView.css" rel="stylesheet">
+<style type="text/css">
+.content{
+width: 50%;
+margin: 0 auto;
+min-height: 700px;
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+</style>
+
 </head>
 <body>
 <!-- 헤더 -->
@@ -20,23 +38,26 @@
 <%
 
 NoticeDTO ndto=(NoticeDTO)request.getAttribute("ndto");
-//String pageNum=request.getAttribute("pageNum").toString();
+String pageNum=request.getAttribute("pageNum").toString();
 
 %>
 
-<fieldset>
-<legend>공지 게시글</legend>
-<form action="" method="post">
-글쓴이 : <input type="text" name="n_writer" value="<%=ndto.getN_writer()%>"><br>
-제목 : <input type="text" name="n_title" value="<%=ndto.getN_title()%>"><br>
-내용<br>
-<textarea rows="10" cols="30" name="n_content">
+<fieldset class="content">
+<legend>Notice</legend>
+<h2><%=ndto.getN_title()%></h2>
+<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
+<hr>
 <%=ndto.getN_content() %>
-</textarea><br>
-<input type="submit" value="글쓰기">
-</form>
+
+
+<button onclick="location.href='noticeUpdate.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>';">수정하기</button>
+<button onclick="location.href='noticeDeleteAction.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>';">삭제하기</button>
+<br>
+
+
 </fieldset>
-<h2><a href="notice.bo">공지 게시판 글 목록보기</a></h2>
+<h3 style="width:50%; margin: 0 auto;"><a href="notice.bo?pageNum=<%=pageNum%> %>" >목록보기</a></h3>
+<br>
 
 <!-- 컨텐츠 -->
 <!-- 푸터 -->

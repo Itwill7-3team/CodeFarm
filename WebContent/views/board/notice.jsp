@@ -71,6 +71,16 @@ if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
 }
 
+//페이징 정보
+String pageNum=(String)request.getAttribute("pageNum");
+int count = (Integer)request.getAttribute("count");
+int pageCount=(Integer)request.getAttribute("pageCount");
+int pageBlock=(int)request.getAttribute("pageBlock");
+int startPage=(int)request.getAttribute("startPage");
+int endPage=(int)request.getAttribute("endPage");
+
+
+
 %>
 
 <section class="community_header">
@@ -98,6 +108,19 @@ email=(String)session.getAttribute("m_email");
 	 <!-- 메인콘텐츠  -->
 	 	<div class="columns">
 		<div class="main_content">
+		<%
+		if(count < 1){
+			System.out.println("공지없음");
+		%>
+		
+		<h1>등록된 공지사항이 없습니다 :-D</h1>
+		<span class="file-cta">
+        <img class="thumbnail_image" 
+				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.5;"> <!-- 당근이미지 -->
+        </span>
+		<%	
+		}else{
+		%>
 			<!--  -->
 			<div class="content">
 				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
@@ -109,7 +132,7 @@ email=(String)session.getAttribute("m_email");
 					<div class="item_content">
 					<div class="post_title">
 						<i class="fab fa-quora">.</i>
-			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>">
+			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
 						<span><%=ndto.getN_title()%></span>
 			</a>
 						
@@ -130,10 +153,40 @@ email=(String)session.getAttribute("m_email");
 				</div>
 				<%} %>
 			</div>
+			<%
+			if(startPage > pageBlock){
+				//페이지 [이전]
+			%>
+				<a href="./notice.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+			<%
+			}
+			%>
+			<%
+			if(count != 0){
+				for(int i=startPage;i<=endPage;i++){
+				//페이지 숫자 뿌리기
+				%>
+				<a href="./notice.bo?pageNum=<%=i%>">[<%=i %>]</a>
+				<%
+				}
+			}
+			%>
+			<%
+			if(endPage < pageCount){
+				//페이지 [다음]
+			%>
+				<a href="./notice.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+			<%
+			}
+			%>
+			
 			<%if(email.equals("admin@naver.com")){%>
 			<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
-			<%} %>
+			<%}
+			
+			}%>
 		</div>
+	
 	
 	</div>
 	 

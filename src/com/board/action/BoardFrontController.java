@@ -90,7 +90,7 @@ public class BoardFrontController extends HttpServlet{
 				forward.setRedirect(true);
 				
 			}else{
-			forward.setPath("./views/board/noticeWriteForm.jsp");
+			forward.setPath("/views/board/noticeWriteForm.jsp");
 			forward.setRedirect(false);}		
 			
 		}else if(command.equals("/noticeWriteAction.bo")){
@@ -102,8 +102,32 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/noticeContent.bo")){
-			//게시글 1개 읽기 (모델-뷰)
+			//게시글 읽기 (모델-뷰)
 			action=new NoticeContentAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeUpdate.bo")){
+			//게시글 읽기(모델-뷰)
+			action=new NoticeUpdate();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeUpdateAction.bo")){
+			//게시글 읽기(모델-뷰)
+			action=new NoticeUpdateAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeDeleteAction.bo")){
+			//게시글 삭제(모델)
+			action=new NoticeDeleteAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
