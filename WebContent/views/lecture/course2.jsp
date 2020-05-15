@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<%@page import="com.basket.db.BasketDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -347,8 +347,6 @@ $(function(){
 });
 </script>
 </body>
-=======
-<%@page import="com.basket.db.BasketDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -832,5 +830,4 @@ $(function(){
 
 </script>
 </body>
->>>>>>> branch 'bhong1' of https://github.com/Itwill7-3team/CodeFarm.git
 </html>
