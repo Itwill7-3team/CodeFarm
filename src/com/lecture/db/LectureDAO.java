@@ -11,12 +11,15 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.apache.catalina.ha.deploy.FileChangeListener;
+
 
 
 public class LectureDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
+	ResultSet rs2=null;
 	String sql="";
 	
 	
@@ -31,6 +34,7 @@ public class LectureDAO {
 	public void closeDB(){
 		try {
 			if(rs !=null) rs.close();
+			if(rs2 !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
 		} catch (SQLException e) {
@@ -42,7 +46,7 @@ public class LectureDAO {
 		public LectureDTO getLectureDetail(int l_number){
 			LectureDTO ldto = null;
 			try {
-				getConnection();
+				con = getConnection();
 				System.out.print("getLectureDetail() : ");
 				sql = "select "
 					+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
@@ -310,6 +314,56 @@ public class LectureDAO {
 				
 				
 			}
+			
+			
+	// getFileList()
+	public ArrayList<ArrayList<FileDTO>> getFileList(int l_number){
+		ArrayList<ArrayList<FileDTO>> fileSet = new ArrayList<ArrayList<FileDTO>>();
+		try{
+			con = getConnection();
+			System.out.print("getFileList() : ");
+			sql = "select distinct f_sec_list "
+				+ "from            file "
+				+ "where           f_l_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
+				sql = "select   * "
+					+ "from     file "
+					+ "where    f_l_num = ? and f_sec_list = ? "
+					+ "order by f_sec_list asc, f_col_list asc";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, l_number);
+				pstmt.setInt(2, rs.getInt(1));
+				rs2 = pstmt.executeQuery();
+				while(rs2.next()){
+					FileDTO fdto = new FileDTO();
+					fdto.setF_num(rs2.getInt("f_num"));
+					fdto.setF_l_num(rs2.getInt("f_l_num"));
+					fdto.setF_sec_list(rs2.getInt("f_sec_list"));
+					fdto.setF_sec_name(rs2.getString("f_sec_name"));
+					fdto.setF_col_list(rs2.getInt("f_col_list"));
+					fdto.setF_col_name(rs2.getString("f_col_name"));
+					fdto.setF_name(rs2.getString("f_name"));
+					fdto.setF_o_name(rs2.getString("f_o_name"));
+					fdto.setF_playtime(rs2.getDouble("f_playtime"));
+					fdto.setF_reg_date(rs2.getTimestamp("f_reg_date"));
+					fdto.setF_ip(rs2.getString("f_ip"));
+					fileList.add(fdto);
+				}
+				fileSet.add(fileList);
+			}
+			System.out.println("강의 파일 목록 저장 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return fileSet;
+	}
+	// getFileList()
 	
 	
 }
