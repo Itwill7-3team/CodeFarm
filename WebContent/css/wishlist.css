@@ -47,7 +47,7 @@ margin-bottom: 10px;
 
 #lec{
 	display: inline-block;
-	margin-left: 2em !important;
+	margin-left: 1em !important;
 }
 
 .ws_wrap{
@@ -275,4 +275,37 @@ hr {
   .cancelbtn, .deletebtn {
      width: 100%;
   }
+}
+
+
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+#lec {
+    width: 78% !important;
+    margin: 60px auto;
+    text-align: left !important;
+}
+
+.card{
+	width: 220px;
+	font-size: 11px !important;
+}
+.card img{
+	width: 220px !important;
+	height: 145px !important;
 }

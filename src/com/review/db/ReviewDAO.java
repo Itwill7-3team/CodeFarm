@@ -111,7 +111,7 @@ public class ReviewDAO {
 		Map<String, Object> review_rating = new HashMap<>();
 		try {
 			con = getConnection();
-			System.out.print("getLectureDetail() : ");
+			System.out.print("getAvgrating() : ");
 			sql = "select "
 				+ "  count(*) reviewAll, round(avg(r_rating), 1) rating_avg, "
 				+ "  count(if(r_rating=5, r_rating, null)) rating_5, count(if(r_rating=4, r_rating, null)) rating_4, "

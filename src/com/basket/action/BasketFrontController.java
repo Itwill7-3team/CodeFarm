@@ -11,6 +11,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 
 
 
+
 public class BasketFrontController extends HttpServlet{
 
 	@Override
@@ -79,7 +80,32 @@ public class BasketFrontController extends HttpServlet{
 			}/* else if(command.equals("/WishList.wi"))
 				action = new wishlistview();*/
 			
+		}else if(command.equals("/JqBasketAdd.ba")){
+			// /BasketListAction() 객체 생성(Model->view)					
+			System.out.println("/JqBasketAdd.ba");
+			
+			action = new JqBasketAddAction();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		}else if(command.equals("/JqBasket.ba")){
+			// /BasketListAction() 객체 생성(Model->view)					
+			System.out.println("/JqBasket.ba");
+			
+			action = new JqBasket();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		}
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동
