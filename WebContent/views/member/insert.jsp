@@ -21,6 +21,7 @@
 				<div class="input_container">
 					<label class="input_label"> <span class="label_text">이메일</span>
 						<input class="text_input" name="m_email" id="email" type="email">
+						<input type="button" value="idcheck" id="id_check_btn">
 					</label>
 					<p class="error"></p>
 				</div>
@@ -56,6 +57,9 @@
 	var idcheck2=false;
 	var pwcheck=false;
 	var pwcheck2=false;
+	var regExpPw = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{0,50})(?=.*[a-zA-Z]{2,50}).{8,15}$/;
+	var regExpEm = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
 		$(".btn_sub").click(function() {
 			if(idcheck && idcheck2 && pwcheck && pwcheck2)
 			$(".signup_form").attr("action","./MemberJoinAction.me"); //action 생성
@@ -64,7 +68,19 @@
 			}
 		});
 
-		$("#email").blur(function() {
+		$("#id_check_btn").click(function() {
+			if($("#email").val()==""){
+				$(".error").text("아이디를 입력해주세요!");
+				$(".error").css("color", "red");
+				idcheck=false;
+				return;
+			}
+			if(!regExpEm.test($("#email").val())) {
+				$(".error").text("이메일형식을 맞춰주세요");
+				$(".error").css("color", "red");
+				idcheck=false;
+				return;
+			}
 			$.ajax({
 				type : "POST",
 				url : "./idCheck.me",
@@ -77,11 +93,13 @@
 						$(".error").text("사용가능한 이메일입니다.");
 						$(".error").css("color", "blue");
 						idcheck=true;
+						return;
 
 					} else if (data == 1) {
 						$(".error").text("이미 등록된 이메일입니다.");
 						$(".error").css("color", "red");
 						idcheck=false;
+						return;
 					}
 				},
 				error : function(xhr, status, error) {
@@ -91,7 +109,7 @@
 			});
 		});
 
-		$("#email_check").blur(function() { // 포커스를 잃었을 때
+		$("#email_check").on("input propertychange paste",function() {  //값을 입력하거나 값이 바뀌었을경우
 			if ($("#email").val() == $("#email_check").val()) {
 				$(".error_msg").text("이메일 확인");
 				$(".error_msg").css("color", "blue");
@@ -104,9 +122,9 @@
 			}
 		});
 
-		$("#password").blur(function() {
-			if (!/^[a-zA-Z0-9]{10,15}$/.test($("#password").val())) {
-				$(".error_msg1").text("숫자와 영문자 조합으로 10~15자리를 사용해야 합니다.");
+		$("#password").on("input propertychange paste",function() { //값을 입력하거나 값이 바뀌었을경우
+			if (!regExpPw.test($("#password").val())) {
+				$(".error_msg1").text("숫자와 영문자 특수문자(선택) 조합으로 8~15자리를 사용해야 합니다.");
 				$(".error_msg1").css("color", "red");
 				pwcheck=false;
 				return false;
@@ -117,7 +135,7 @@
 			}
 
 		});
-		$("#password_check").blur(function() { // 포커스를 잃었을 때
+		$("#password_check").on("input propertychange paste",function() { //값을 입력하거나 값이 바뀌었을경우
 			if ($("#password").val() == $("#password_check").val()) {
 				$(".error_msg2").text("비밀번호가 일치합니다.");
 				$(".error_msg2").css("color", "blue");

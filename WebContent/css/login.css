@@ -3,7 +3,7 @@
     width: 360px;
     height: 530px;
     background: #fff;
-    position: absolute;
+    position: fixed;
     border-radius: 3px;
     top: 0;
     right: 0;
