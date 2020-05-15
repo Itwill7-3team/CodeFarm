@@ -234,7 +234,7 @@ header .noLogin{
 
 /* 아코디언시작 */
 
-.nav-accordion {
+header .nav-accordion {
   background-color: #eee;
   color: #444;
   cursor: pointer;
@@ -246,13 +246,13 @@ header .noLogin{
   font-size: 15px;
   transition: 0.4s;
 }
-.active, .nav-accordion:hover {
+header .active, .nav-accordion:hover {
   background-color: #ccc;
 }
-.navbar-left li{
+header .navbar-left li{
 	padding: 5px;
 }
-.nav-accordion:after {
+header .nav-accordion:after {
   content: '\002B';
   color: #777;
   font-weight: bold;
@@ -260,7 +260,7 @@ header .noLogin{
   margin-left: 5px;
 }
 
-.panel {
+header .panel {
   background-color: white;
   max-height: 0;
   overflow: hidden;
@@ -269,7 +269,7 @@ header .noLogin{
 }
 /* 아코디언 끝  */
 
-.nav-container{
+header .nav-container{
 	display: block;
 	flex-grow: 1;
     margin: 0 auto	0 0;
@@ -278,17 +278,17 @@ header .noLogin{
 
 
 /* sbar_left */
-.accors .accord:not(:last-child) {
+header .accors .accord:not(:last-child) {
     margin-bottom: 0;
 }
-.accors .accord .nav-accordion { 
+header .accors .accord .nav-accordion { 
     cursor: pointer;
     align-items: center;
     line-height: 1.25;
     position: relative;
 }
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-.nav-container .accors .nav-accordion {
+header .nav-container .accors .nav-accordion {
     border-bottom: 1px solid #e4e4e4;
     border-right: 1px solid #e4e4e4;
     border-left: 1px solid #e4e4e4;
@@ -301,10 +301,10 @@ header .noLogin{
     font-weight: 700;
 
 }
-.nav-container .accors .accord:first-of-type .nav-accordion {
+header .nav-container .accors .accord:first-of-type .nav-accordion {
     border-top: 1px solid #e4e4e4;
 }
-.accors .accord .nav-accordion+.panel {
+header .accors .accord .nav-accordion+.panel {
     overflow-y: hidden;
     max-height: 0;
     border-radius: 4px;
@@ -312,20 +312,20 @@ header .noLogin{
     border-top-right-radius: 0;
     transition: max-height .2s ease;
 }
-.nav-container .accors .panel {
+header .nav-container .accors .panel {
     color: #595959;
     background: #fff;
     border: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.accors .accord:not(:last-child) .acco_ctt {
+header .accors .accord:not(:last-child) .acco_ctt {
     border-radius: 0;
 }
-.accors .accord a:not(.button):not(.tag) {
+header .accors .accord a:not(.button):not(.tag) {
     color: currentColor;
 }
-.nav-container .accors .acco_ctt {
+header .nav-container .accors .acco_ctt {
     display: inline-flex;
     text-decoration: none;
     width: 100%;/*  */
@@ -342,7 +342,7 @@ header .noLogin{
 }
 
 /* 오버레이 */
-#overlay {
+ #overlay {
   position: fixed;
   display: none;
   width: 100%;
@@ -355,7 +355,7 @@ header .noLogin{
   z-index: 2;
   cursor: pointer;
 }
-.btn{
+header .btn{
 	border: 2px solid #00c471;
     background-color: #00c471;
     color: white;
@@ -366,7 +366,7 @@ header .noLogin{
     font-size: 20px;
     border-radius: 4px;
 }
-.btn:HOVER{
+header .btn:HOVER{
 	opacity: 0.6;
 	color: hotpink;
 }
@@ -405,7 +405,7 @@ header .cart_modal_cover{
     background-color: #fff;
     top: 55px;
     right: -15px;
-    z-index: 10;
+    z-index: 77;
     border: 1px solid #e0e0e0;
 }
 header .cart_modal_cover:BEFORE{
@@ -557,7 +557,7 @@ header .profile_modal_cover{
     background-color: #fff;
     top: 55px;
     right: -15px;
-    z-index: 10;
+    z-index:77;
     border: 1px solid #e0e0e0;
     padding: 16px;
     color: black;
