@@ -13,7 +13,6 @@
 </head>
 <link rel="stylesheet" href="./css/admin.css">
 <body class="profile dashboard is_logged_in " >
-
     
 <div id="root">
  <jsp:include page="/include/header.jsp"/>     

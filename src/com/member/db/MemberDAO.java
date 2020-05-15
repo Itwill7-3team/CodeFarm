@@ -72,18 +72,19 @@ public class MemberDAO {
 		
 		
 
-		public int join(MemberDTO user) {
+		public int join(MemberDTO mdto) {
 			int check=-1;
-			sql = "INSERT INTO member (m_email, m_pw, m_emailHash, m_regdate, m_emailCheck) VALUES (?, ?, ?, now(), false)";
+			sql = "INSERT INTO member (m_email,m_nick, m_pw, m_emailHash, m_regdate, m_emailCheck) VALUES (?,?, ?, ?, now(), false)";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
 
-				pstmt.setString(1, user.getM_email());
+				pstmt.setString(1, mdto.getM_email());
+				pstmt.setString(2, mdto.getM_email().split("@")[0]);
 
-				pstmt.setString(2, user.getM_pw());
+				pstmt.setString(3, mdto.getM_pw());
 
-				pstmt.setString(3, user.getM_emailHash());
+				pstmt.setString(4, mdto.getM_emailHash());
 
 			
 
