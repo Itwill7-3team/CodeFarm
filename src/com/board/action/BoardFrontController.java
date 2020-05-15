@@ -39,6 +39,7 @@ public class BoardFrontController extends HttpServlet{
 		System.out.println("----------페이지 주소 계산 완료----------------------");
 		
 		System.out.println("----------------------페이지구분(view/model)--------------------");
+////////문답
 		if(command.equals("/askAnswer.bo")){
 			action=new askAnswerAction();
 			try{
@@ -63,14 +64,40 @@ public class BoardFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+			
+/////////공지	
 		}else if(command.equals("/notice.bo")){
+			//공지 게시판 리스트
 			action=new NoticeAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/noticeWrite.bo")){
+			//글쓰기 뷰
+			forward= new ActionForward();
+			forward.setPath("./views/board/noticeWriteForm.jsp");
+			forward.setRedirect(false);		
 			
+		}else if(command.equals("/noticeWriteAction.bo")){
+			//글쓰기 모델
+			action=new NoticeWriteAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeWriteAction.bo")){
+			//게시글 1개 읽기 (모델-뷰)
+			action=new NoticeWriteAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+/////////리퀘스트			
 		}else if(command.equals("/request.bo")){
 			
 		}
