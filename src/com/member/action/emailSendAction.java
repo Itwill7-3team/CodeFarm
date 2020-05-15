@@ -84,7 +84,7 @@ public class emailSendAction implements Action{
 		   msg.setContent(content, "text/html; charset=UTF-8");
 		   Transport.send(msg);
 
-		   forward.setPath("/MemberLogin.me");
+		   forward.setPath("./Main.le");
 		   forward.setRedirect(true);
 			
 	   }catch(Exception e){

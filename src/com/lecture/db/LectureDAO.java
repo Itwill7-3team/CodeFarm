@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -43,48 +45,48 @@ public class LectureDAO {
 	}//자원 해제
 	
 	// getLectureDetail()
-		public LectureDTO getLectureDetail(int l_number){
-			LectureDTO ldto = null;
-			try {
-				con = getConnection();
-				System.out.print("getLectureDetail() : ");
-				sql = "select "
-					+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
-					+ "  l_price,   l_pct,  l_img,       l_tag,      l_goods, "
-					+ "  pct_date,  paynum "
-					+ "from lecture "
-					+ "where l_number = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, l_number);
-				rs = pstmt.executeQuery();
-				if(rs.next()){
-					ldto = new LectureDTO();
-					ldto.setL_number(l_number);
-					ldto.setL_m_name(rs.getString("l_m_name"));
-					ldto.setL_m_id(rs.getString("l_m_id"));
-					ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
-					ldto.setL_content(rs.getString("l_content"));
-					ldto.setL_type(rs.getString("l_type"));
-					ldto.setL_type2(rs.getString("l_type2"));
-					ldto.setL_type3(rs.getString("l_type3"));
-					ldto.setL_price(rs.getInt("l_price"));
-					ldto.setL_pct(rs.getInt("l_pct"));
-					ldto.setL_img(rs.getString("l_img"));
-					ldto.setL_tag(rs.getString("l_tag"));
-					ldto.setL_goods(rs.getInt("l_goods"));
-					ldto.setPct_date(rs.getTimestamp("pct_date"));
-					ldto.setPaynum(rs.getInt("paynum"));
-					ldto.setL_title(rs.getString("l_title"));
-				}
-				System.out.println("강의 상세정보 저장 완료");
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				closeDB();
+	public LectureDTO getLectureDetail(int l_number){
+		LectureDTO ldto = null;
+		try {
+			con = getConnection();
+			System.out.print("getLectureDetail() : ");
+			sql = "select "
+				+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+				+ "  l_price,   l_pct,  l_img,       l_tag,      l_goods, "
+				+ "  pct_date,  paynum "
+				+ "from lecture "
+				+ "where l_number = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				ldto = new LectureDTO();
+				ldto.setL_number(l_number);
+				ldto.setL_m_name(rs.getString("l_m_name"));
+				ldto.setL_m_id(rs.getString("l_m_id"));
+				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
+				ldto.setL_content(rs.getString("l_content"));
+				ldto.setL_type(rs.getString("l_type"));
+				ldto.setL_type2(rs.getString("l_type2"));
+				ldto.setL_type3(rs.getString("l_type3"));
+				ldto.setL_price(rs.getInt("l_price"));
+				ldto.setL_pct(rs.getInt("l_pct"));
+				ldto.setL_img(rs.getString("l_img"));
+				ldto.setL_tag(rs.getString("l_tag"));
+				ldto.setL_goods(rs.getInt("l_goods"));
+				ldto.setPct_date(rs.getTimestamp("pct_date"));
+				ldto.setPaynum(rs.getInt("paynum"));
+				ldto.setL_title(rs.getString("l_title"));
 			}
-			return ldto;
+			System.out.println("강의 상세정보 저장 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
-		// getLectureDetail()
+		return ldto;
+	}
+	// getLectureDetail()
 		
 	//getAllCount()
 	public int getAllCount() {
@@ -370,6 +372,47 @@ public class LectureDAO {
 		return fileSet;
 	}
 	// getFileList()
+	
+	// getLectureList(String l_m_id) // 강사별 강의 목록
+	public List<LectureDTO> getLectureList(String l_m_id){
+		List<LectureDTO> lectureList= new ArrayList<LectureDTO>();
+		try {
+			con = getConnection();
+			System.out.print("getLectureList() : ");
+			
+			sql = "select * from lecture where l_m_id = ?";
+			pstmt = con.prepareStatement(sql); 
+			pstmt.setString(1, l_m_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				LectureDTO ldto=new LectureDTO();
+				ldto.setL_number(rs.getInt("l_number"));
+				ldto.setL_m_name(rs.getString("l_m_name"));
+				ldto.setL_m_id(rs.getString("l_m_id"));
+				ldto.setL_title(rs.getString("l_title"));
+				ldto.setL_content(rs.getString("l_content"));
+				ldto.setL_type(rs.getString("l_type"));
+				ldto.setL_type2(rs.getString("l_type2"));
+				ldto.setL_type3(rs.getString("l_type3"));
+				ldto.setL_price(rs.getInt("l_price"));
+				ldto.setL_pct(rs.getInt("l_pct"));
+				ldto.setL_img(rs.getString("l_img"));
+				ldto.setL_tag(rs.getString("l_tag"));
+				ldto.setL_goods(rs.getInt("l_goods"));
+				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
+				ldto.setPct_date(rs.getTimestamp("pct_date"));
+				ldto.setPaynum(rs.getInt("paynum"));
+				lectureList.add(ldto);
+			}
+			System.out.println("강사별 강의 목록 저장 완료 ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return lectureList;
+	}
+	// getLectureList(String l_m_id) // 강사별 강의 목록
 	
 	
 }
