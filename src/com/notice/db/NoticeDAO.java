@@ -77,8 +77,6 @@ public class NoticeDAO {
 		return noticeList;
 	}
 	
-	
-	
 	// getNoticeCount()
 	public int getNoticeCount(){
 		int check = 0;
@@ -102,46 +100,48 @@ public class NoticeDAO {
 	}
 	// getNoticeCount()
 	
-	// getReviewList(l_number, count);
-//		public ArrayList<NoticeDTO> getReviewList(int l_number, int count){
-//			ArrayList<NoticeDTO> ReviewList = new ArrayList<>();
-//			int startRow = 0;
-//			try {
-//				con = getConnection();
-//				System.out.print("getReviewList() : ");
-//				// 최초 2개만 로드 & 이후 전체 로드
-//				if(count <= 2){ startRow = 0; }
-//				else if(count > 2){ startRow = 2; }
-//				sql = "select   * "
-//					+ "from     n_board "
-//					+ "where    n_l_num = ? "
-//					+ "order by n_re_ref desc, n_re_seq asc "
-//					+ "limit    ?, ?";
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setInt(1, l_number);
-//				pstmt.setInt(2, startRow);
-//				pstmt.setInt(3, count);
-//				rs = pstmt.executeQuery();
-//				while(rs.next()){
-//					NoticeDTO ndto = new NoticeDTO();
-//					ndto.setn_num(rs.getInt("n_num"));
-//					ndto.setn_l_num(rs.getInt("n_l_num"));
-//					ndto.setn_content(rs.getString("n_content"));
-//					ndto.setn_writer(rs.getString("n_writer"));
-//					ndto.setn_rating(rs.getInt("n_rating"));
-//					ndto.setn_re_lev(rs.getInt("n_re_lev"));
-//					ndto.setn_re_ref(rs.getInt("n_re_ref"));
-//					ndto.setn_re_seq(rs.getInt("n_re_seq"));
-//					ndto.setn_reg_date(rs.getTimestamp("n_reg_date"));
-//					ReviewList.add(ndto);
-//				}
-//				System.out.println("성공 (개시글 갯수) : " + ReviewList.size());
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				closeDB();
-//			}
-//			return ReviewList;
-//		}
-		// getBoardList(l_number, count);
+	//insertNotice(ndto)
+	public int insertNotice(NoticeDTO ndto) {
+		int check=-1;
+		int num=0;
+		//1: 성공/ -1: 실패
+		
+		try {
+			//1,2
+			con=getConnection();
+			
+			//3 글번호 => 오토인크리먼트
+			sql="select max(n_num) from n_board";
+			pstmt= con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				num=rs.getInt("max(n_num)")+1;
+			}
+			System.out.println("글번호:"+num);
+			//3 글작성메서드
+			sql="insert into n_board (n_title,n_content,n_writer,n_re_ref,n_re_lev,n_re_seq) values(?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, ndto.getN_title());
+			pstmt.setString(2, ndto.getN_content());
+			pstmt.setString(3, ndto.getN_writer());
+			pstmt.setInt(4, num); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
+			pstmt.setInt(5, 0); //re_lev :초기화 => 답글 들여쓰기
+			pstmt.setInt(6, 0); //re_seq :초기화 => 답글 순서
+			check=pstmt.executeUpdate();
+			//4
+			if(check==1){
+				System.out.println("글쓰기 성공"+check);
+			}else{
+				System.out.println("글쓰기 실패"+check);
+			}					
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	//insertNotice(ndto)
+	
 }

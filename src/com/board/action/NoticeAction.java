@@ -16,8 +16,10 @@ public class NoticeAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//int num=Integer.parseInt(request.getParameter("num"));
 		ActionForward forward= new ActionForward();
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@notice action execute()실행");
+		System.out.println("@@@@@@NoticeAction_execute()실행");
 
+		//세션처리
+		
 		NoticeDAO ndao= new NoticeDAO();
 
 		ArrayList<NoticeDTO> noticeList= ndao.getNoticeList();

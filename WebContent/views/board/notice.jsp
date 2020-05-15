@@ -120,6 +120,7 @@ function timeBefore(timedate){
 				</div>
 				<%} %>
 			</div>
+			<button onclick="location.href='NoticeWrite.bo';">글쓰기</button>
 		</div>
 	
 	</div>
