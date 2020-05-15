@@ -39,7 +39,6 @@ public class JqBasket implements Action {
 		int check = bkdao.checkGoods(bkdto);
 		System.out.println("확인 check : "+check);
 		
-		System.out.println("check: "+check);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out= response.getWriter();
 		out.write(Integer.toString(check));

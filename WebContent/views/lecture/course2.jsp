@@ -217,7 +217,7 @@ for(int i=0;i<lectureList.size();i++){
 													<span class="tooltiptext">바구니에 추가</span>
 												</div>
 												<div class="tooltip add_wishlist">
-													<i class="fas fa-heartbeat fa-lg"></i>
+													<i class="fas fa-heartbeat fa-lg" data-type="<%=ldto.getL_number() %>"></i>
 													<span class="tooltiptext">위시리스트에 추가</span>
 												</div>
 											</div>
@@ -291,6 +291,7 @@ $(function(){
 				}
 		});
 /* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
+/* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
 // 이 구문에 대한 검사 필요(이 구문을 사용하지 않을 시 select 오류가 발생)!!!!!!!!!!!!
 /* selectBox */
 /* search */
@@ -302,15 +303,14 @@ $(function(){
 		location.href = "./Search.le?s="+search+"&item="+orderSelect1; //+"$page="+page페이지 오류 수정 필요!!!!!!!!!!!!!!
 	});
 /* search */
-	/* 장바구니 아쟉스 */
-	
+
+/* 장바구니 아쟉스 */
 	$(".flip-card").mouseover(function(){
 		
 		var m_email = "${m_email}";
 		var l_number = $(this).find("i.fa-cart-arrow-down").attr('data-type'); 
 		
 		/* console.log("정보 확인1 : "+m_email+" 2 : "+l_number); */
-		
 		
 		$.ajax({
 			url : "./JqBasket.ba",
@@ -326,15 +326,10 @@ $(function(){
 				}else if(check == 1){
 					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#0000ff');
 				}
-			
-/* 				$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#0000ff'); */
-		
-		
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");
 			}
 		});
-		
 	});
 	
 	$("i.fa-cart-arrow-down").click(function(){
@@ -371,9 +366,7 @@ $(function(){
 						/* l_number.css('color','#0000ff'); */
 						}else if(check == 0){
 						$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','white');
-							
 						}
-				
 				
 						/* $(this).css({"background-image":"url('icons/u.png')"}); */
 						console.log("확인"+l_number);
@@ -382,12 +375,98 @@ $(function(){
 					}
 				});
 			});
-		
 		}/* else */	
-		
-		
 	});
-	/* 장바구니 아쟉스 */
+/* 장바구니 아쟉스 */
+	
+	
+/* 위시리스트 아쟉스 */
+	$(".flip-card-inner").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-heartbeat").attr('data-type'); 
+		
+		/* console.log("정보 확인3 : "+m_email+" 4 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqWishlist.wi",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
+				}else if(check == 1){
+					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','red');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+
+	$("i.fa-heartbeat").click(function(){
+		var m_email = "${m_email}";
+		var l_number = $(this).attr('data-type'); 
+		
+		if(m_email == ""){
+			$(".login_btn").trigger("click");
+		}else{
+			
+			console.log("정보 확인1 : "+m_email+" 2 : "+l_number);
+			$(this).each(function(){
+				console.log("정보"+l_number);
+		
+				$.ajax({
+					url : "./JqWishlistController.wi",
+					type : "POST",
+					data : {
+						"m_email" : m_email,
+						"l_number" : l_number
+					},
+					datatype : "json",
+					success : function(check){
+						if(check == 1){
+						$("i.fa-heartbeat[data-type="+l_number+"]").css('color','red');
+						}else if(check == 0){
+						$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
+						}
+				
+						console.log("확인"+l_number);
+					},error : function(xhr, error, code) {
+						alert("시스템 오류입니다.");
+					}
+				});
+			});
+		}
+	});
+/* 위시리스트 아쟉스 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 });

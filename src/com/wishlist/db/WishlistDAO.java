@@ -285,7 +285,31 @@ public class WishlistDAO {
 					
 					return cartlist;
 				}
-	
+
+	/* Jquery용 wishlistDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqwishlistDelete(int l_number){
+								
+		try {
+			con = getConnection();
+			// 위시에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM wishlist WHERE w_l_num=?";
+									
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+									
+			pstmt.executeUpdate();
+						
+			System.out.println(l_number+"번의 강의 위시리시트에서 삭제 완료");
+									
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */				
+				
 	
 	
 	

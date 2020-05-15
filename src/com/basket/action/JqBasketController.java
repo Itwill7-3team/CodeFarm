@@ -16,7 +16,7 @@ public class JqBasketController implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("BasketAddAction_execute() 호출");
+		System.out.println("JqBasketController_execute() 호출");
 		
 		String m_email  = request.getParameter("m_email");
 		int l_number = Integer.parseInt(request.getParameter("l_number")); 
