@@ -102,7 +102,10 @@ function timeBefore(timedate){
 					<div class="item_content">
 					<div class="post_title">
 						<i class="fab fa-quora">.</i>
+			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>">
 						<span><%=ndto.getN_title()%></span>
+			</a>
+						
 					</div>
 					<p class="post_metas">
 						<span class="post_time">시간 : 
@@ -120,7 +123,7 @@ function timeBefore(timedate){
 				</div>
 				<%} %>
 			</div>
-			<button onclick="location.href='NoticeWrite.bo';">글쓰기</button>
+			<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
 		</div>
 	
 	</div>

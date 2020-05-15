@@ -88,9 +88,9 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/noticeWriteAction.bo")){
+		}else if(command.equals("/noticeContent.bo")){
 			//게시글 1개 읽기 (모델-뷰)
-			action=new NoticeWriteAction();
+			action=new NoticeContentAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {

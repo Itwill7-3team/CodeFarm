@@ -144,4 +144,43 @@ public class NoticeDAO {
 	}
 	//insertNotice(ndto)
 	
+	//getNotice(num)
+		public NoticeDTO getNotice(int num){
+				NoticeDTO ndto = null;
+			try {
+				//1,2
+				con=getConnection();
+				//3
+				sql="select * from n_board where n_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				
+				//4
+				rs=pstmt.executeQuery();
+				
+				//5
+				if(rs.next()){
+					ndto = new NoticeDTO();
+					ndto.setN_num(rs.getInt("n_num"));
+					ndto.setN_title(rs.getString("n_title"));
+					ndto.setN_content(rs.getString("n_content"));
+					ndto.setN_writer(rs.getString("n_writer"));
+					ndto.setReg_date(rs.getTimestamp("reg_date"));
+					ndto.setN_re_lev(rs.getInt("n_re_lev"));
+					ndto.setN_re_ref(rs.getInt("n_re_ref"));
+					ndto.setN_re_seq(rs.getInt("n_re_seq"));
+					
+				}
+				System.out.println("@@@해당 정보 저장 완료:"+ndto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			
+			return ndto;
+		}
+		//getNoticeContent(num)
+	
+	
 }

@@ -30,7 +30,7 @@ public class TechRequestAction implements Action{
 		
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO mdto = new MemberDTO();
-		mdao.techRequest(mdto);
+		//mdao.techRequest(mdto);
 		
 		return null;
 	}
