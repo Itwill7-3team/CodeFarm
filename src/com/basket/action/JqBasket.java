@@ -18,28 +18,10 @@ public class JqBasket implements Action {
 
 		System.out.println("JqBasket_execute() 호출");
 		
-		// 세션값을 사용해서 장바구니 사용 가능 
-		// 세션값이 없을경우 장바구니 사용 불가능 (로그인 페이지 이동)
-		
-/*		
-			HttpSession session = request.getSession();
-		String id =(String)session.getAttribute("m_email");
-		int l_number = (Integer)session.getAttribute("l_number");*/
-		
-	
-		
-		String id  = request.getParameter("m_email");
+		String m_email  = request.getParameter("m_email");
 		int l_number = Integer.parseInt(request.getParameter("l_number")); 
-		System.out.println("확인 : "+id+l_number);
+		System.out.println("확인 : "+m_email+l_number);
 		
-		
-		ActionForward forward = new ActionForward();
-		if( id == null ){
-			forward.setPath("./MemberLogin.me");
-			forward.setRedirect(true);
-			return forward;			
-		}
-		// 한글처리
 		request.setCharacterEncoding("UTF-8");
 		
 		LectureDTO ldto=new LectureDAO().getLectureDetail(l_number);
@@ -48,21 +30,20 @@ public class JqBasket implements Action {
 		// b_num, b_m_id, b_l_num, b_date, b_l_price, b_l_name
 				
 		bkdto.setB_l_num(ldto.getL_number());
-		bkdto.setB_m_id(id);
+		bkdto.setB_m_id(m_email);
 		
 		System.out.println("bkdto:"+bkdto);
 		
 		BasketDAO bkdao = new BasketDAO();
 		
 		int check = bkdao.checkGoods(bkdto);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@check"+check);
+		System.out.println("확인 check : "+check);
 		
 		System.out.println("check: "+check);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out= response.getWriter();
 		out.write(Integer.toString(check));
 		out.close();
-		
 		
 		return null;
 	}

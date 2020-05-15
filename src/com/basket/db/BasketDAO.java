@@ -308,6 +308,31 @@ public class BasketDAO {
 					}
 					return cartList;
 				}
+				
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqbasketDelete(int l_number){
+					
+		try {
+			con = getConnection();
+			// 장바구니에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM basket WHERE b_l_num=?";
+						
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+						
+			pstmt.executeUpdate();
+			
+			System.out.println(l_number+"번의 강의 장바구니에서 삭제 완료");
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+				
 	
 	
 }

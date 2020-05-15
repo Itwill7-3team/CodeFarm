@@ -80,11 +80,10 @@ public class BasketFrontController extends HttpServlet{
 			}/* else if(command.equals("/WishList.wi"))
 				action = new wishlistview();*/
 			
-		}else if(command.equals("/JqBasketAdd.ba")){
-			// /BasketListAction() 객체 생성(Model->view)					
-			System.out.println("/JqBasketAdd.ba");
+		}else if(command.equals("/JqBasketController.ba")){
+			System.out.println("/JqBasketController.ba");
 			
-			action = new JqBasketAddAction();
+			action = new JqBasketController();
 			try {
 				/*forward = */action.execute(request, response);
 			} catch (Exception e) {
@@ -93,7 +92,6 @@ public class BasketFrontController extends HttpServlet{
 			}
 		
 		}else if(command.equals("/JqBasket.ba")){
-			// /BasketListAction() 객체 생성(Model->view)					
 			System.out.println("/JqBasket.ba");
 			
 			action = new JqBasket();
