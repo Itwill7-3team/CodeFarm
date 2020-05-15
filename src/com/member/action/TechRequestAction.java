@@ -9,30 +9,30 @@ import javax.servlet.http.HttpSession;
 import com.member.db.MemberDAO;
 import com.member.db.MemberDTO;
 
-public class MemberInfoAction implements Action{
+public class TechRequestAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		String m_email = (String)session.getAttribute("m_email");
-		if(m_email == null) {
+		String m_name = (String)request.getParameter("m_name");
+		String m_addr = (String)request.getParameter("m_addr");
+		String m_phone = (String)request.getParameter("m_phone") +"-"+(String)request.getParameter("m_phone2")
+		+"-"+(String)request.getParameter("m_phone3");
+		String m_intro = (String)request.getParameter("M_intro");
+		if(m_email == null ) {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
-			out.print("alert('로그인을 해주세요');");
-			out.print("locattion.href='Main.le'");
+			out.print("alert('로그인을 먼저 해주세요.');");
+			out.print("location.href = 'Main.le';");
 			out.print("</script>");
 			out.close();
-			return null;
 		}
 		
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO mdto = new MemberDTO();
+		//mdao.techRequest(mdto);
 		
-		mdto = mdao.getInfo(m_email);
-		request.setAttribute("mdto", mdto);
-		ActionForward forward = new  ActionForward();
-		forward.setPath("./views/member/info.jsp");
-		forward.setRedirect(false);
-		return forward;
+		return null;
 	}
 
 }
