@@ -1,10 +1,12 @@
 package com.lecture.action;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lecture.db.FileDTO;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
 import com.review.db.ReviewDAO;
@@ -26,13 +28,15 @@ public class LectureDetailAction implements Action {
 		
 		ReviewDAO rdao = new ReviewDAO();
 		Map<String, Object> review_rating = rdao.getAvgrating(l_number);
-		// lecture 내 review 파트 완성 후 아래 코드 사용
+	// lecture 내 review 파트 완성 후 아래 코드 사용
 	//	ArrayList<ReviewDTO> reviewList = rdao.getReviewList(l_number, count);
+		ArrayList<ArrayList<FileDTO>> fileSet = ldao.getFileList(l_number);
 		
 		request.setAttribute("ldto", ldto);
 		request.setAttribute("review_rating", review_rating);
-		// lecture 내 review 파트 완성 후 아래 코드 사용
+	// lecture 내 review 파트 완성 후 아래 코드 사용
 	//	request.setAttribute("reviewList", reviewList);
+		request.setAttribute("fileSet", fileSet);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/lecture/courseDetail.jsp");

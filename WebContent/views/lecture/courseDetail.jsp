@@ -1,3 +1,7 @@
+<%@page import="com.lecture.db.FileDTO"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Map"%>
@@ -27,26 +31,26 @@
 
 <body class="course_detail">
 	<%
-		int l_number = 2; // 테스트용
-		request.setAttribute("l_number", l_number); // 테스트용
-		//int l_number = Integer.parseInt(request.getParameter("l_number"));
-		//String id = (String)session.getAttribute("id"); // 로그인 정보 확인 후 수정
-		session.setAttribute("m_rank", "회원");  // 로그인 테스트용
-		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용
+		// 받아오는 값
+		//String id = (String)session.getAttribute("id"); // 아이디
+		//String m_rank = (String)session.getAttribute("m_rank"); // 회원 등급
 		
+		//int l_number = Integer.parseInt(request.getParameter("l_number")); // 강의 번호
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
+		
 		//List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
 		Map review_rating = (Map)request.getAttribute("review_rating"); // 별점 정보
 		//ArrayList<ReviewDTO> reviewList = request.getAttribute("reviewList"); // 리뷰 정보
+		ArrayList<ArrayList<FileDTO>> fileSet = (ArrayList<ArrayList<FileDTO>>)request.getAttribute("fileSet"); // 파일 정보
 		
-		// 리스트 테스트용
-		ArrayList<String> reviewList = new ArrayList<String>();
-		reviewList.add("aa");
-		reviewList.add("bb");
-		reviewList.add("cc");
-		reviewList.add("dd");
-		reviewList.add("ee");
+	/* 테스트 용 */
+		int l_number = 2; // 테스트용
+		request.setAttribute("l_number", l_number); // 테스트용
+		session.setAttribute("m_rank", "회원");  // 로그인 테스트용
+		String m_rank = (String)session.getAttribute("m_rank"); // 로그인 테스트용
+		ArrayList<String> reviewList = new ArrayList<String>(Arrays.asList("adg", "ger", "agee", "erghe", "hgree")); // 리스트 테스트용
 		request.setAttribute("reviewList", reviewList);
+	/* 테스트 용 */
 	%>
 	<div id="root">
 	
@@ -486,44 +490,67 @@
 								<article class="curriculum" id="curriculum">
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
+									
+									
 										<div class="curriculum_header">
 											<span class="section_all"></span>
+<!-- 강의 수 & 시간 데이터 받아오기(DB 합쳐서 계산 or 계산값 가져오기) -->
+									<%
+										int fileCount = 0;
 										
-										
-										
-										
-											
-<!-- 강의 수 & 시간 데이터 받아오기(DB 합쳐서 계산 or 계산값 가져오기) -->											
+										ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
+										for(int i=0; i<fileSet.size(); i++){
+											for(int j=0; j<fileSet.get(i).size(); j++){
+												System.out.println(fileSet.get(i).get(j));
+												fileList.add(fileSet.get(i).get(j));
+												System.out.println(fileList.get(fileCount).getF_playtime());
+												fileCount++;
+											}
+										}
+												System.out.println(fileCount);
+									%>
 											<span class="curriculum_length">50 강의</span>
 											<span class="curriculum_runtime">4시간 2분</span>
 <!-- 강의 수 & 시간 데이터 받아오기(DB 합쳐서 계산 or 계산값 가져오기) -->											
-
-
-
-
 										</div>
 									
 									
 									
 										
-<!-- 반복문 / 배열 이용 교육과정 출력 div내부 확인 후 작업 할 것(DB - DB처리후 출력확인) -->										
+<!-- 반복문 / 배열 이용 교육과정 출력 div내부 확인 후 작업 할 것(DB - DB처리후 출력확인) -->
+									
+									<!-- section_content -->
+									<%
+									//for(int sec_i=0; sec_i<fileList.size(); sec_i++){
+									//fileList.get(sec_i).getF_sec_list;
+									%>
 										<div class="section_cover">
 											<div class="section_header">
 												<div class="section_header_left">
 													<span class="section_header_icon plus"><i class="fa fa-plus"></i></span>
 													<span class="section_header_icon minus"><i class="fa fa-minus"></i></span>
+<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
 													<span class="unit_title">섹션 0. 미운코딩새끼</span>
+													<span class="unit_title">섹션 . 미운코딩새끼</span>
 												</div>
 												<div class="section_header_right is-hidden-mobile">
 													<span class="unit_length">1 강의</span>
 													<span class="unit_time"><i class="far fa-clock"></i>04 : 00</span>
 												</div>
 											</div>
+											
+										<!-- video_play -->
+										<%-- <% for(int file_i=0; file_i<fileList.size(); file_i++){ %> --%>
 											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8204">
-
+											
+											<!-- video -->
+<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
+												<a class="unit_item" href="#">
+												<%-- <a class="unit_item" href="/lecture.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fdto.getF_num %>"> --%>
 													<div class="unit_item_left">
+<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
 														<i class="fa fa-play-circle-o"></i><span class="unit_title">미운코딩새끼</span>
+														<%--<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fdto.getF_sec_name %></span> --%>
 													</div>
 													<div class="unit_item_right">
 														<span class="unit_preview">
@@ -532,11 +559,21 @@
 																<span class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
 															</button>
 														</span>
+<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
 														<span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i>04 : 00</span>
+														<%-- <span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i><%= fdto.getFile_playtime %></span> --%>
 													</div>
 												</a>
+											<!-- video -->
+											
 											</div>
+										<%-- <% } %> --%>
+										<!-- video_play -->
+											
 										</div>
+									<%-- <% } %> --%>
+									<!-- section_content -->
+									
 										<div class="section_cover">
 											<div class="section_header">
 												<div class="section_header_left">
@@ -1412,22 +1449,13 @@
 								</article>
 								<article class="course_date">
 									<h4 class="sub_heading">공개 일자</h4>
-									
-									
-									
-									
-
-<!-- 등록일 & 수정일 확인(DB) -->									
+<!-- update 날짜 DB추가 후 뒤쪽 날짜 변경 -->	
 									<div>
-										<%= ldto.getL_reg_date() %><span class="last_update_date"> (마지막 업데이트 일자 : 2019년 2월 17일)</span>
+										<%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %><span class="last_update_date"> <%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %></span>
 									</div>
-<!-- 등록일 & 수정일 확인(DB) -->																		
-									
-									
-									
-									
-									
 								</article>
+								
+							<!-- review_area -->
 								<article class="reviews" id="reviews">
 									<h4 class="sub_heading">수강 후기</h4>
 									<div class="review_summary">
@@ -1557,10 +1585,11 @@
 											<article class="media review_item">
 											
 											<% if(reviewList.get(r_loop).getR_re_lev == 0){ %>
-				<!-- ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
 											<!-- 회원 아이콘 등록 -->
 												<figure class="media-left image is-64x64">
+<!-- DB에 회원 아이콘 등록 후 아래 코드 사용  -->
 													<img src="./img/main-img/lect_10.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
+													<!-- <img src="./img/member-img/" class="swiper-lazy is-rounded" alt="<%= mdto.getM_icon %>" /> -->
 												</figure>
 											<!-- 회원 아이콘 등록 -->
 											
@@ -1648,6 +1677,8 @@
 										
 									</div>
 								</article>
+							<!-- review_area -->
+							
 							</div>
 						</div>
 					</div>

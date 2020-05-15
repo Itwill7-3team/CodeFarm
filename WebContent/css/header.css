@@ -627,3 +627,7 @@ header .tab_item{
 	font-weight: bold;
 }
 /* user_modal 끝 */
+
+.adminstyle a{
+	color: red;
+}
