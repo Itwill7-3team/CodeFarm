@@ -1,3 +1,4 @@
+<%@page import="com.basket.db.BasketDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,11 +17,16 @@
 </head>
 <body>
 <%
-/* String m_id = (String)session.getAttribute("m_id");
+/* 
 m_id = "test"; */
 
 request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
+List<BasketDTO> basketList = (List<BasketDTO>) request.getAttribute("basketList");
+String m_email = (String)session.getAttribute("m_email");
+
+
+
 
 String item = "seq";
 String s = "";
@@ -151,6 +157,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 <%
 for(int i=0;i<lectureList.size();i++){ 
 	LectureDTO ldto = lectureList.get(i);
+	
 %>
 								
 								<div class="column flip-card is-4-tablet is-desktop">
@@ -212,7 +219,7 @@ for(int i=0;i<lectureList.size();i++){
 											</a>
 											<div class="card_action_btn">
 												<div class="tooltip add_cart">
-													<i class="fas fa-cart-arrow-down fa-lg" data-type="<%=ldto.getL_number() %>" ></i>
+													<i class="fas fa-cart-arrow-down fa-lg" data-type="<%=ldto.getL_number() %>"></i>
 													<span class="tooltiptext">바구니에 추가</span>
 												</div>
 												<div class="tooltip add_wishlist">
@@ -223,7 +230,10 @@ for(int i=0;i<lectureList.size();i++){
 										</div>
 									</div>
 								</div>
-<%} %>								
+<%
+
+} 
+%>								
 								
 								
 								
@@ -302,54 +312,165 @@ $(function(){
 	});
 /* search */
 	/* 장바구니 아쟉스 */
-	$("i.fa-cart-arrow-down").click(function(){
-
-		var m_email = "${m_email}";
-		var l_number = $(this).attr('data-type'); 
-		console.log("정보 확인1 : "+m_email+" 2 : "+l_number);
-
-		$(this).each(function(){
-			console.log("정보"+l_number);
-
+	
+	$(".flip-card").mouseover(function(){
 		
-		/* $("div #num").text(data.num) */
-		/* var l_m_id = $(".l_m_id").attr("data-type"); */
-		<%-- var m_id = '<%=session.getAttribute("m_id") %>'; --%>
-		/* var m_id = '${m_id}'; */
-		/* var l_number = "aaa"; */
-
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-cart-arrow-down").attr('data-type'); 
+		
+		/* console.log("정보 확인1 : "+m_email+" 2 : "+l_number); */
+		
 		$.ajax({
-			url : "./BasketAdd.ba",
+			url : "./JqBasket.ba",
 			type : "POST",
 			data : {
 				"m_email" : m_email,
 				"l_number" : l_number
 			},
 			datatype : "json",
-			success : function(){
-				
-				//$(".fa-cart-arrow-down.none").css('color','#0000ff');
-				/* $(".fa-cart-arrow-down").css('color','#0000ff'); */
-				/* $("i.fa-cart-arrow-down").each(function(){$(this).css('color','#0000ff');}); */
-				
-					$().css('color','#0000ff');
+			success : function(check){
+				if(check == 0){
+					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','white');
+				}else if(check == 1){
+					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#0000ff');
+				}
+			
+/* 				$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#0000ff'); */
+		
 
-				
-				
-				/* $(this).css({"background-image":"url('icons/u.png')"}); */
-				console.log("확인"+this);
+
+		
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");
 			}
 		});
-
-	});
-		
-		
-		
 		
 	});
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	$("i.fa-cart-arrow-down").click(function(){
+
+		var m_email = "${m_email}";
+		var l_number = $(this).attr('data-type'); 
+		
+		if(m_email == ""){
+			$(".login_btn").trigger("click");
+		}else{
+			
+			console.log("정보 확인1 : "+m_email+" 2 : "+l_number);
+
+			$(this).each(function(){
+				console.log("정보"+l_number);
+
+		
+			/* $("div #num").text(data.num) */
+			/* var l_m_id = $(".l_m_id").attr("data-type"); */
+			<%-- var m_id = '<%=session.getAttribute("m_id") %>'; --%>
+			/* var m_id = '${m_id}'; */
+			/* var l_number = "aaa"; */
+
+				$.ajax({
+					url : "./JqBasketAdd.ba",
+					type : "POST",
+					data : {
+						"m_email" : m_email,
+						"l_number" : l_number
+					},
+					datatype : "json",
+					success : function(){
+				
+						//$(".fa-cart-arrow-down.none").css('color','#0000ff');
+						/* $(".fa-cart-arrow-down").css('color','#0000ff'); */
+						/* $("i.fa-cart-arrow-down").each(function(){$(this).css('color','#0000ff');}); */
+					
+						$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#0000ff');
+						/* l_number.css('color','#0000ff'); */
+				
+				
+				
+						/* $(this).css({"background-image":"url('icons/u.png')"}); */
+						console.log("확인"+l_number);
+					},error : function(xhr, error, code) {
+						alert("시스템 오류입니다.");
+					}
+				});
+
+			});
+		
+		}/* else */	
+		
+		
+	});
 	/* 장바구니 아쟉스 */
 	
 	
