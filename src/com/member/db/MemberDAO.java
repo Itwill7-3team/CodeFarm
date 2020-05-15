@@ -327,10 +327,11 @@ public class MemberDAO {
 					if(rs.next()) {
 						mdto.setM_email(rs.getString("m_email"));
 						mdto.setM_rank(rs.getString("m_rank"));
-						//mdto.setM_addr(rs.getString("m_addr"));
-						//mdto.setM_intro(rs.getString("m_intro"));
-						//mdto.setM_name(rs.getString("m_name"));
-						//mdto.setM_phone(rs.getString("m_phone"));
+						mdto.setM_addr(rs.getString("m_addr"));
+						mdto.setM_intro(rs.getString("m_intro"));
+						mdto.setM_nick(rs.getString("m_nick"));
+						mdto.setM_name(rs.getString("m_name"));
+						mdto.setM_phone(rs.getString("m_phone"));
 						mdto.setM_pw(rs.getString("m_pw"));
 					}
 				} catch (Exception e) {
