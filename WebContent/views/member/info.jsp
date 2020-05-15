@@ -15,15 +15,19 @@
     width: 15%;
     min-width: 230px;
     height: 900px;
-    padding: 3em 0;
     vertical-align: top;
     margin-left: 19em;
     /* border: 1px solid; */
 }
 
-.main_container {
+.container{
     display: inline-block;
     width: 65% !important;
+    }
+    
+.main_container {
+    display: inline-block;
+    width: 60% !important;
     height: 100%;
     margin: 0 auto;
     margin-top: 60px;
@@ -70,16 +74,6 @@ span {
 </head>
 <link rel="stylesheet" href="./css/admin.css">
 <body class="profile dashboard is_logged_in " >
-
-    
-<div id="root">
- <jsp:include page="/include/header.jsp"/>     
-<section>
-
-    
-<!-- aside 영역 -->
-<jsp:include page="/include/dash-aside.jsp"/>
-<!-- aside 영역 -->
 <% 
  	String m_email = (String)session.getAttribute("m_email");
 	if(m_email == null){
@@ -87,6 +81,13 @@ span {
 	}
 	MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
 %>
+    
+<div id="root">
+<jsp:include page="/include/header.jsp"/>     
+<!-- aside 영역 -->
+<jsp:include page="/include/dash-aside.jsp"/>
+<!-- aside 영역 -->
+<div class="container">
 <!-- 대시보드 -->
       <div class="main_container">
 <small class="is-hidden-mobile">
@@ -113,7 +114,7 @@ span {
         <form class="field profile_upload">
           <div class="file is-boxed">
             <label class="file-label">
-              <input type="file" class="file-input" name="profile_image">
+<!--               <input type="file" class="file-input" name="profile_image"> -->
               <span class="file-cta">
                 <img class="thumbnail_image" 
 				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.8;" alt="@@@님의 프로필"> <!-- 당근이미지 -->
@@ -137,7 +138,7 @@ span {
 		  </label>
         </div>
       </div>
-      <button class="button is-primary" type="button" disabled="">저장하기</button>
+      <button class="button is-primary" type="button">저장하기</button>
     </div>
 
     <div class="email_pwd_container">
@@ -150,7 +151,7 @@ span {
           <input id="email_change" type="email" class="input" value="<%=m_email %>" placeholder="변경할 이메일을 입력해주세요">
           <small class="invalid"></small>
           <div class="button_container">
-            <button class="button is-primary" type="button" disabled="">저장하기</button>
+            <button class="button is-primary" type="button">저장하기</button>
           </div>
         </div>
       </div>
@@ -162,13 +163,13 @@ span {
         <input id="confirm_password" type="password" data-type="confirm" class="input" placeholder="새 비밀번호 확인">
         <small class="invalid"></small>
         <div class="button_container">
-          <button class="button is-primary" type="button" disabled="">저장하기</button>
+          <button class="button is-primary" type="button">저장하기</button>
         </div>
       </div>
 
       <div class="secession">
         <div class="label_wrap">
-          <label class="label input_label"><span>탈퇴</span></label>
+          <label class="label input_label"><span>탈퇴</span></label> <!-- 토글  -->
           <span class="toggle_btn">
             <i class="fal fa-chevron-right"></i>
           </span>
@@ -186,23 +187,20 @@ span {
           <input class="input" type="password" placeholder="현재 비밀번호">
           <small class="invalid"></small>
           <div class="button_container">
-            <button class="button" disabled="">탈퇴하기</button>
+            <button class="button">탈퇴하기</button>
           </div>
         </div>
       </div>
     </div>
-</div></section></div>
-      </div>
-    </div>
-<!-- 대시보드 -->
-      
-<jsp:include page="/include/footer.jsp"/>
-    
 </div>
+</section>
 
-
-
-
+</div>
+</div>
+</div>
+<!-- 대시보드 -->
+</div>
+<jsp:include page="/include/footer.jsp"/>
 </body>
 
 </html>
