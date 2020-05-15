@@ -39,10 +39,10 @@ public class WishlistDAO {
 	
 	public void closeDB(){
 		try {
+			if(rs2 != null) rs2.close();
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
-			if(rs2 != null) rs2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

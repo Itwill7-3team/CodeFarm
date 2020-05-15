@@ -64,6 +64,12 @@ public class BoardFrontController extends HttpServlet{
 			}
 			
 		}else if(command.equals("/notice.bo")){
+			action=new NoticeAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}else if(command.equals("/request.bo")){
 			
