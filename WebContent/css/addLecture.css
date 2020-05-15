@@ -135,7 +135,7 @@ body{
 }
 .main_content_cover{
 	height: fit-content;
-    padding: 0 30px;
+    padding: 10px 30px;
     background-color: white;
     display: block;
     box-sizing: border-box;
@@ -196,6 +196,9 @@ body{
 	opacity: 0.8;
     background-color: #00c471;
     color: white;
+}
+.button_item{
+	margin:20px 0px;
 }
 .red{
 	background-color: #ff7867;
