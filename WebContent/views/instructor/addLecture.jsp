@@ -5,18 +5,25 @@
 <head>
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="./smarteditor/js/HuskyEZCreator.js"
-	charset="utf-8"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜-강의만들기</title>
 <link href="./css/addLecture.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
-	crossorigin="anonymous"></script>
+
+	
+
+	
 </head>
 <body>
 	<jsp:include page="/include/header.jsp" />
+	<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
 	<div class="header">
 		<div class="header_center">
 			<span class="header_title">내 강의 만들기</span>
@@ -61,8 +68,8 @@
 
 			</div>
 			<div class="submit_button">
-				<button class="btn submit">제출하기</button>
-				<button class="btn red" onclick="javascript:history.back();">나가기</button>
+				<button class="button submit">제출하기</button>
+				<button class="button red" onclick="javascript:history.back();">나가기</button>
 			</div>
 			</aside>
 			<div class="main_content_cover">
@@ -84,7 +91,7 @@
 								class="fas fa-angle-right"></i></span></label>
 					</div>
 						<input class="box_input" name="title" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
-						<button class="addInput btn" data-name="abilities" value="1">추가하기</button>
+						<button class="addInput button" data-name="abilities" value="1">추가하기</button>
 					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ol class="boxes abilities">
 						</ol>
@@ -95,7 +102,7 @@
 						<i class="fas fa-angle-right"></i></span></label>
 					</div>
 						<input class="box_input" name="title" placeholder="ex)코딩 처음 접하는 사람" autocomplete="off">
-						<button class="addInput btn" data-name="targets" value="1">추가하기</button>
+						<button class="addInput button" data-name="targets" value="1">추가하기</button>
 						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ol class="boxes targets">
 						</ol>
@@ -106,7 +113,7 @@
 							class="select">(선택)</span></label>
 					</div>
 						<input class="box_input" name="title" placeholder="ex)C언어" autocomplete="off">
-						<button class="addInput btn" data-name="based" value="1">추가하기</button>
+						<button class="addInput button" data-name="based" value="1">추가하기</button>
 						
 						<ol class="boxes based">
 						</ol>
@@ -115,10 +122,10 @@
 						<div class="label_box">
 							<label class="menu_label">카테고리 </label>
 							<div class="button_box">
-								<button class="btn category1" value="IT프로그래밍">IT프로그래밍</button>
-								<button class="btn category1" value="크리에이티브">크리에이티브</button>
-								<button class="btn category1" value="업무스킬">업무스킬</button>
-								<button class="btn category1" value="그외">그외</button>
+								<button class="button category1" value="IT프로그래밍">IT프로그래밍</button>
+								<button class="button category1" value="크리에이티브">크리에이티브</button>
+								<button class="button category1" value="업무스킬">업무스킬</button>
+								<button class="button category1" value="그외">그외</button>
 							</div>
 						</div>
 					</div>
@@ -126,10 +133,10 @@
 						<div class="title button_item">
 							<label class="menu_label">강의수준</label>
 							<div class="button_box">
-								<button class="btn level" value="입문">입문</button>
-								<button class="btn level" value="초급">초급</button>
-								<button class="btn level" value="중급">중급</button>
-								<button class="btn level" value="고급">고급</button>
+								<button class="button level" value="입문">입문</button>
+								<button class="button level" value="초급">초급</button>
+								<button class="button level" value="중급">중급</button>
+								<button class="button level" value="고급">고급</button>
 							</div>
 							<input type="hidden">
 						</div>
@@ -164,6 +171,7 @@
 						<label class="menu_label">강의 상세 내용(해당내용은 강의 상세페이지에서
 							보여집니다.)</label>
 						<!-- 에디터 넣는자리  시작 -->
+						<div id="summernote">Hello Summernote</div>
 						<!-- 에디터 넣는자리 끝  -->
 					</div>
 				</div>
@@ -191,16 +199,16 @@
 						<div class="section input_item">
 							<label class="menu_label">섹션 0</label> <input type="text"
 								class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">
-							<input class="addvideo btn" value="영상추가하기" type="file">영상
+							<input class="addvideo button" value="영상추가하기" type="file">영상
 							추가하기
 							</button>
 						</div>
 					</div>
-					<button class="addsection btn" value="1">섹션 추가하기</button>
+					<button class="addsection button" value="1">섹션 추가하기</button>
 				</div>
 				<div class="main_content" id="cover-img">
 					<div class="title input_item">
-						<button class="addimg btn" value="1">메인 사진 추가하기</button>
+						<button class="addimg button" value="1">메인 사진 추가하기</button>
 					</div>
 				</div>
 			</div>
@@ -213,6 +221,28 @@ $(document).ready(function() {
 	$("header").removeClass("sticky");
 	//시작할때 하나 화면출력
 	$("#information").css("display", "block");
+	 //에디터
+
+	/* 
+		  // 여기에 코드를 작성
+	
+				  $('#summernote').summernote({
+					  height: 300,                 // set editor height
+					  minHeight: null,             // set minimum height of editor
+				      maxHeight: null,             // set maximum height of editor
+				      focus: true,                  // set focus to editable area after initializing summernote
+				      lang: "ko-KR",					// 한글 설정
+						placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
+
+				  });
+				 */
+
+				/* 이미지.. */
+				
+		
+	//에디터 끝 
+	
+	
 	//클릭하면 display 나옴
 	$(".side_item").click(function() {
 		$(".side_item.active").addClass("final");
@@ -235,13 +265,13 @@ $(document).ready(function() {
 	});
 	//input버튼 새로 추가하는 액션
 	$(".addInput").click(function() {
-		var name = $(this).parent(".input_item").children(".input_box").children("input:first").attr("name");
-		var placeholder = $(this).parent(".input_item").children(".input_box").children("input:first").attr("placeholder");
-		var value = Number($(this).val()) + 1;
-		$(this).val(value);
+		var type=$(this).attr("data-name");
+		var name = $(this).prev("input:first").attr("name");
+		var placeholder = $(this).prev("input:first").attr("placeholder");
+		var value=$(this).prev("input:first").val();
 		console.log(name + placeholder+ value);
-		$(this).parent(".input_item").children(".input_box").append(
-		'<input class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
+		$(this).next(".boxes").c.append(
+		'<li class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
 	});
 	//동영상 추가 이벤트
 
@@ -254,32 +284,30 @@ $(document).ready(function() {
 		+ sectionNum
 		+ '</label>'
 		+ '<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">'
-		+ '<button class="addvideo btn" value="1">영상 추가하기</button>'
+		+ '<button class="addvideo button" value="1">영상 추가하기</button>'
 		+ '</div>');
 	sectionNum++;
 	});
 
-							//textarea 자동으로 세로너비 증가
-							function xSize(e) {
-								e.style.height = '1px';
-								e.style.height = (e.scrollHeight + 12) + 'px';
-							}
+	//textarea 자동으로 세로너비 증가
+	function xSize(e) {
+	e.style.height = '1px';
+	e.style.height = (e.scrollHeight + 12) + 'px';
+	}
 
-							//제출하기 버튼 누르면 발생하는 이벤트
-							$(".btn.submit").click(
-									function() {
-										var title = $(".title.input_item")
-												.val();
-										var content = $(
-												".course_summary.input_item")
-												.children(".input_box")
-												.children(".input")
-										var body
-
-									});
-
-						});
+	//제출하기 버튼 누르면 발생하는 이벤트
+	$(".button.submit").click(
+	function() {
+	var title = $(".title.input_item").val();
+	var content = $(".course_summary.input_item").children(".input_box").children(".input");
+	});
+	$('#summernote').summernote();
+});
+/* $('#summernote').summernote('insertImage', url, function ($image) {
+	  $image.css('width', $image.width() / 3);
+	  $image.attr('data-filename', 'retriever');
+	});  */
 	</script>
-	
+
 </body>
 </html>

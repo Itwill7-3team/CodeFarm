@@ -117,7 +117,7 @@ body{
 .final{
 	font-weight: bold;
 }
-.header .btn,.content .btn{
+.header .button,.content .button{
 	display: block;
     border: 0;
     border-radius: 1px;
@@ -127,7 +127,7 @@ body{
     max-width: 450px;
     background: #1dc078;
     color: #fff;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 800;
 	padding: 6px 14px;
 	border: 2px solid #00c471;
@@ -192,7 +192,7 @@ body{
 .title_sub_heading{
 	font-size: 28px;
 }
-.button_box>.btn{
+.button_box>.button{
 	color: #00c471;
     background-color: white;
     margin: 5px 2px;
@@ -201,7 +201,7 @@ body{
     cursor: pointer;
     border-radius: 4px;
 }
-.button_box>.btn.active{
+.button_box>.button.active{
 	opacity: 0.8;
     background-color: #00c471;
     color: white;
@@ -263,7 +263,7 @@ body{
     margin-left: 1rem;
 
 }
-.btn.del{
+.button.del{
 	cursor: pointer;
     font-size: .8rem;
 }

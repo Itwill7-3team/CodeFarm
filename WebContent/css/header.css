@@ -47,6 +47,9 @@ header .descktop_content,header .mobile_content{
 	display: flex;
     height: 100%;
 }
+header a {
+	text-decoration: none !important;
+}
 header .banner{
 	display: flex;
     align-items: center;
