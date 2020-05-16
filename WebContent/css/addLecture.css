@@ -6,6 +6,7 @@
 body{
 	margin: 0;
 	padding: 0;
+	background-color: rgb(241, 241, 241)
 }
 .header{
 	color: white;
@@ -41,9 +42,7 @@ body{
     border-radius: 3px;
     border: 0;
 }
-.content_cover{
-	background-color: rgb(241, 241, 241);
-}
+
 .content{
 	height: 100%;
     width: 1280px;
@@ -51,9 +50,10 @@ body{
     position: relative;
     margin: 0 auto;
     box-sizing: border-box;
+    margin-top: 24px;
 }
 .sidebar{
-	min-width: 300px;
+	min-width: 200px;
     width: 20%;
     float: left;
     box-sizing: border-box;
@@ -69,6 +69,8 @@ body{
 }
 .side_item.active>i {
 	color:black;
+	font-size: 15px;
+	font-weight: bold;
 }
 .side_item.active>span{
 	color: #595959;
@@ -76,6 +78,7 @@ body{
 }
 .side_items{
 	position: relative;
+	font-size: 14px;
 }
 .fas{
 	align-content: center;
@@ -102,9 +105,8 @@ body{
 }
 .side_title{
 	box-sizing: border-box;
-    padding: 17px;
-    font-size: 18px;
-    font-weight: bold
+    padding: 17px 0px;
+    font-weight: bold;
 }
 .item_title{
 	margin-left: 20px;
@@ -116,20 +118,22 @@ body{
 	font-weight: bold;
 }
 .header .btn,.content .btn{
-	border: 2px solid #00c471;
-    background-color: #00c471;
-    color: white;
-    padding: 6px 14px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    border-radius: 4px;
+	display: block;
+    border: 0;
+    border-radius: 1px;
+    margin-top: .5rem;
+    height: 45px;
     width: 100%;
-    margin-top: 15px;
-    flex:1;
-    box-sizing: border-box;
+    max-width: 450px;
+    background: #1dc078;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+	padding: 6px 14px;
+	border: 2px solid #00c471;
     cursor: pointer;
+    margin-bottom: 5px;
+
 }
 .submit_button{
 	margin: 60px 10px;
@@ -141,6 +145,7 @@ body{
     display: block;
     box-sizing: border-box;
     width: 100%;
+        box-shadow: 0 2px 10px 0 hsla(0,0%,74.9%,.5);
 }
 .main_content{
 	display:none;
@@ -148,7 +153,7 @@ body{
     width: 100%;
     position: inherit;
 }
-.input{
+.box_input{
 	width: 100%;
     padding: 0px 12px;
     height: 45px;
@@ -158,6 +163,7 @@ body{
     background-color: #f1f1f1;
     margin: 2px 0px;
     box-sizing: border-box;
+    width: 450px;
 }
 .textarea{
 	width: 100%;
@@ -191,12 +197,25 @@ body{
     background-color: white;
     margin: 5px 2px;
     width: auto;
+   	display:inline-block;
     cursor: pointer;
+    border-radius: 4px;
 }
 .button_box>.btn.active{
 	opacity: 0.8;
     background-color: #00c471;
     color: white;
+}
+.field{
+	margin-top: 24px;
+}
+.warn_wrap{
+	text-align: right;
+    max-width: 450px;
+}
+.warn_wrap>span{
+	color: #fb6351;
+    font-size: 12px;
 }
 .button_item{
 	margin:20px 0px;
@@ -223,4 +242,28 @@ body{
 .textarea_item{
 	box-sizing: border-box;
     margin: 20px 0px;
+}
+.dynamic_box{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+    padding: 10px 10px 10px 20px;
+    border: 1px solid #cfcfcf;
+    border-radius: 1px;
+}
+.content_box{
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-basis: 100%;
+}
+.btns{
+	min-width: 3rem;
+    margin-left: 1rem;
+
+}
+.btn.del{
+	cursor: pointer;
+    font-size: .8rem;
 }

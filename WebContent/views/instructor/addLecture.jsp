@@ -66,64 +66,73 @@
 			</div>
 			</aside>
 			<div class="main_content_cover">
-				<h4 class="title_heading">강의 제작</h4>
-				<h4 class="title_sub_heading">강의 제작</h4>
+				<h4 class="title_heading">강의제작</h4>
+				<h4 class="title_sub_heading">강의 정보</h4>
 				<div class="main_content" id="information">
+				<div class="field">
 					<div class="title input_item">
 						<label class="menu_label">강의 제목</label>
 						<div class="input_box">
-							<input class="input" name="title" placeholder="제목을 입력해주세요"
+							<input class="box_input" name="title" placeholder="제목을 입력해주세요"
 								autocomplete="off">
 						</div>
 					</div>
-
-					<div class="can_do input_item">
+				</div>
+				<div class="field">
+					<div class="label_box">
 						<label class="menu_label">이런걸 배울수 있어요 <span class="tip">Tip<i
 								class="fas fa-angle-right"></i></span></label>
-						<div class="input_box">
-							<input class="input" name="title" placeholder="ex)리엑트 네이티브 개발"
-								autocomplete="off">
-						</div>
-						<button class="addInput btn" value="1">추가하기</button>
 					</div>
-					<div class="student_target input_item">
-						<label class="menu_label">이런 분들에게 추천해요 <span class="tip">Tip<i
-								class="fas fa-angle-right"></i></span></label>
-						<div class="input_box">
-							<input class="input" name="title" placeholder="ex)코딩 처음 접하는 사람"
-								autocomplete="off">
-						</div>
-						<button class="addInput btn" value="1">추가하기</button>
+						<input class="box_input" name="title" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
+						<button class="addInput btn" data-name="abilities" value="1">추가하기</button>
+					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
+						<ol class="boxes abilities">
+						</ol>
+				</div>
+				<div class="field">
+					<div class="label_box">
+						<label class="menu_label">이런 분들에게 추천해요 <span class="tip">Tip
+						<i class="fas fa-angle-right"></i></span></label>
 					</div>
-
-					<div class="prerequisite input_item">
+						<input class="box_input" name="title" placeholder="ex)코딩 처음 접하는 사람" autocomplete="off">
+						<button class="addInput btn" data-name="targets" value="1">추가하기</button>
+						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
+						<ol class="boxes targets">
+						</ol>
+				</div>
+				<div class="field">
+					<div class="label_box">
 						<label class="menu_label">선수 지식이 필요하다면 무엇인가요? <span
 							class="select">(선택)</span></label>
-						<div class="input_box">
-							<input class="input" name="title" placeholder="ex)C언어"
-								autocomplete="off">
-						</div>
-						<button class="addInput btn" value="1">추가하기</button>
 					</div>
-
-					<div class="title button_item">
-						<label class="menu_label">카테고리 </label>
-						<div class="button_box">
-							<button class="btn category1" value="IT프로그래밍">IT프로그래밍</button>
-							<button class="btn category1" value="크리에이티브">크리에이티브</button>
-							<button class="btn category1" value="업무스킬">업무스킬</button>
-							<button class="btn category1" value="그외">그외</button>
+						<input class="box_input" name="title" placeholder="ex)C언어" autocomplete="off">
+						<button class="addInput btn" data-name="based" value="1">추가하기</button>
+						
+						<ol class="boxes based">
+						</ol>
+				</div>
+					<div class="field">
+						<div class="label_box">
+							<label class="menu_label">카테고리 </label>
+							<div class="button_box">
+								<button class="btn category1" value="IT프로그래밍">IT프로그래밍</button>
+								<button class="btn category1" value="크리에이티브">크리에이티브</button>
+								<button class="btn category1" value="업무스킬">업무스킬</button>
+								<button class="btn category1" value="그외">그외</button>
+							</div>
 						</div>
 					</div>
-					<div class="title button_item">
-						<label class="menu_label">강의수준</label>
-						<div class="button_box">
-							<button class="btn level" value="입문">입문</button>
-							<button class="btn level" value="초급">초급</button>
-							<button class="btn level" value="중급">중급</button>
-							<button class="btn level" value="고급">고급</button>
+					<div class="field">
+						<div class="title button_item">
+							<label class="menu_label">강의수준</label>
+							<div class="button_box">
+								<button class="btn level" value="입문">입문</button>
+								<button class="btn level" value="초급">초급</button>
+								<button class="btn level" value="중급">중급</button>
+								<button class="btn level" value="고급">고급</button>
+							</div>
+							<input type="hidden">
 						</div>
-						<input type="hidden">
 					</div>
 				</div>
 				<div class="main_content" id="introduction">
@@ -199,91 +208,56 @@
 	</div>
 	<script>
 		//태그 다완성되면 시작됨
-		$(document)
-				.ready(
-						function() {
-							$("header").removeClass("sticky");
+		
+$(document).ready(function() {
+	$("header").removeClass("sticky");
+	//시작할때 하나 화면출력
+	$("#information").css("display", "block");
+	//클릭하면 display 나옴
+	$(".side_item").click(function() {
+		$(".side_item.active").addClass("final");
+		$(".side_item").removeClass("active");
+		$(this).addClass("active");
+		var active = $(this).attr("data-type");
+		$(".main_content").css("display", "none");
+		$('#' + active).css("display","block");
+		$(".title_sub_heading").html(
+		$(this).children("span").html());
+	});
+	//btn클릭시  active클래스 추가
+	$(".level").click(function() {
+		$(".level").removeClass("active");
+		$(this).addClass("active");
+	});
+		$(".category1").click(function() {
+		$(".category1").removeClass("active");
+		$(this).addClass("active");
+	});
+	//input버튼 새로 추가하는 액션
+	$(".addInput").click(function() {
+		var name = $(this).parent(".input_item").children(".input_box").children("input:first").attr("name");
+		var placeholder = $(this).parent(".input_item").children(".input_box").children("input:first").attr("placeholder");
+		var value = Number($(this).val()) + 1;
+		$(this).val(value);
+		console.log(name + placeholder+ value);
+		$(this).parent(".input_item").children(".input_box").append(
+		'<input class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
+	});
+	//동영상 추가 이벤트
 
-							//시작할때 하나 화면출력
-							$("#information").css("display", "block");
-							//클릭하면 display 나옴
-							$(".side_item")
-									.click(
-											function() {
-												$(".side_item.active")
-														.addClass("final");
-												$(".side_item").removeClass(
-														"active");
-												$(this).addClass("active");
-												var active = $(this).attr(
-														"data-type");
-												$(".main_content").css(
-														"display", "none");
-												$('#' + active).css("display",
-														"block");
-												$(".title_sub_heading").html(
-														$(this)
-																.children(
-																		"span")
-																.html());
-											});
-
-							//btn클릭시  active클래스 추가
-							$(".level").click(function() {
-								$(".level").removeClass("active");
-								$(this).addClass("active");
-							});
-							$(".category1").click(function() {
-								$(".category1").removeClass("active");
-								$(this).addClass("active");
-							});
-							//input버튼 새로 추가하는 액션
-							$(".addInput")
-									.click(
-											function() {
-												var name = $(this)
-														.parent(".input_item")
-														.children(".input_box")
-														.children("input:first")
-														.attr("name");
-												var placeholder = $(this)
-														.parent(".input_item")
-														.children(".input_box")
-														.children("input:first")
-														.attr("placeholder");
-												var value = Number($(this)
-														.val()) + 1;
-												$(this).val(value);
-												console.log(name + placeholder
-														+ value);
-												$(this)
-														.parent(".input_item")
-														.children(".input_box")
-														.append(
-																'<input class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
-											});
-							//동영상 추가 이벤트
-
-							//섹션추가 이벤트
-							var sectionNum = 1;
-							$(".addsection")
-									.click(
-											function() {
-
-												$(this)
-														.parent()
-														.children(
-																".section_cover")
-														.append(
-																'<div class="section input_item">'
-																		+ '<label class="menu_label">섹션 '
-																		+ sectionNum
-																		+ '</label>'
-																		+ '<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">'
-																		+ '<button class="addvideo btn" value="1">영상 추가하기</button>'
-																		+ '</div>');
-												sectionNum++;
-											});
+	//섹션추가 이벤트
+	var sectionNum = 1;
+	$(".addsection").click(function() {
+		$(this).parent().children(".section_cover").append(
+		'<div class="section input_item">'
+		+ '<label class="menu_label">섹션 '
+		+ sectionNum
+		+ '</label>'
+		+ '<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">'
+		+ '<button class="addvideo btn" value="1">영상 추가하기</button>'
+		+ '</div>');
+	sectionNum++;
+	});
 
 							//textarea 자동으로 세로너비 증가
 							function xSize(e) {
