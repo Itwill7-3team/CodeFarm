@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.basket.action.BasketAddAction;
 import com.basket.action.BasketDeleteAction;
 import com.basket.action.BasketListAction;
+import com.basket.action.JqBasket;
 
 
 public class WishlistFrontController extends HttpServlet{
@@ -74,7 +75,7 @@ public class WishlistFrontController extends HttpServlet{
 			}
 		}
 		
-			else if (command.equals("/WishToBasketAction.wi")) {
+			else if (command.equals("/WishToBasket.wi")) {
 				System.out.println("/WishToBasket.wi 주소 처리(model)");
 				// WishToBasketAction 객체
 				action=new WishToBasketAction();
@@ -83,7 +84,32 @@ public class WishlistFrontController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+		}else if(command.equals("/JqWishlist.wi")){
+			System.out.println("/JqWishlist.wi");
+				
+			action = new JqWishlist();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+					e.printStackTrace();
 			}
+		}else if(command.equals("/JqWishlistController.wi")){
+			System.out.println("/JqWishlistController.wi");
+				
+			action = new JqWishlistController();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+					e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

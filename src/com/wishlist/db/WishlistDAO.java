@@ -39,10 +39,10 @@ public class WishlistDAO {
 	
 	public void closeDB(){
 		try {
+			if(rs2 != null) rs2.close();
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
-			if(rs2 != null) rs2.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,14 +51,14 @@ public class WishlistDAO {
 	//checkGoods()
 		public int checkGoods(WishlistDTO wdto){
 			
-			int check=0;
+			int check=-1;
 			//기존의 위시리스트에 해당 상품이 있는지 없는지 판별
 			try {
 				//1,2
 				getConnection();
 				
 				//3
-				sql="SELECT * FROM wishlist WHERE w_l_num=?, w_m_id=? ";
+				sql="SELECT * FROM wishlist WHERE w_l_num=? and w_m_id=? ";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, wdto.getW_l_num());
 				pstmt.setString(2, wdto.getW_m_id());
@@ -77,7 +77,9 @@ public class WishlistDAO {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			} 
+			} finally {
+				closeDB();
+			}
 			return check;
 		}
 		//checkGoods()
@@ -147,6 +149,7 @@ public class WishlistDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_number(rs2.getInt("l_number"));
 					ldto.setL_m_id(rs2.getString("l_m_id"));
 					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));
@@ -282,7 +285,31 @@ public class WishlistDAO {
 					
 					return cartlist;
 				}
-	
+
+	/* Jquery용 wishlistDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqwishlistDelete(int l_number){
+								
+		try {
+			con = getConnection();
+			// 위시에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM wishlist WHERE w_l_num=?";
+									
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+									
+			pstmt.executeUpdate();
+						
+			System.out.println(l_number+"번의 강의 위시리시트에서 삭제 완료");
+									
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */				
+				
 	
 	
 	

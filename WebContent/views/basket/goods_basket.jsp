@@ -22,11 +22,101 @@
 
 </head>
 <link rel="stylesheet" href="./css/basket.css">
-<link rel="stylesheet" href="./css/Wmodal.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
+.Wmodal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.Wmodal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.Wclose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.Wclose:hover,
+.Wclose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* Float four columns side by side */
+/* .Wcolumn {
+  float: left;
+  width: 90%;
+  padding: 0 10px;
+ 
+} */
+
+/* Remove extra left and right margins, due to padding */
+.Wrow {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.Wrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .Wcolumn {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.Wcard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;  
+  background-color: #f1f1f1;
+  height: auto;
+  margin-bottom: 10px;
+   
+}
+.Wibox{
+	border-bottom: 1px solid red;
+    width: 650px;
+    height: auto;
+    padding: 10px 10px 10px 0;
+    display: inline-block;
+    
+}
+.Wbox{float: left;}
+.Wcolumn{}
+.Wcontent{display: inline-block;
+    width: 320px;
+    height: auto;
+    margin-left: 30px;}
 </style>
+
+
 <body>
 	<jsp:include page="/include/header.jsp" />
 	<%
@@ -39,23 +129,78 @@
 	<section id="alll"> <!-- 위시 수정 -->
 
 	<h3 class="boxh3">
-		바구니 > <a
-			onclick="document.getElementById('id010').style.display='block'"
-			style="font-size: 16px;">위시리스트</a>
+		바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">위시리스트</a>
 	</h3>
-	<div id="id010" class="Wmodal">
-		<span onclick="document.getElementById('id010').style.display='none'"
-			class="Wclose" title="WClose WModal">×</span>
-		<form class="Wmodal-content" action="/action_page.php">
-			<div class="Wcontainer">
-				<h1>위시리스트</h1>
+	<!-- The Modal -->
+<div id="WmyModal" class="Wmodal">
 
-				<div class="column menu"></div>
+  <!-- Modal content -->
+  <div class="Wmodal-content">
+    <span class="Wclose">&times;</span>
+    <h2>위시리스트</h2>
+    <hr>
+    
+          <%
+           for (int i = 0; i < wishlistList.size(); i++) {
+        	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
+          	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
+          	BasketDTO bdto = (BasketDTO) basketList.get(i);
+          	  %>
+          	  <div class="Wrow">
+       <div class="Wcolumn"> 
+        <div class="Wcard">
+          <div class="Wibox">
+          <div class="Wbox" style="display: inline-block;">
+           <a href="Detail.le?num=<%=ldto.getL_number() %>">
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+				</a>
+         
+          <div class="Wcolumn Wcontent">
+				<a href="#"><%=ldto.getL_title()%></a>
+				<p style="font-size: 12px;">
+					<%=ldto.getL_m_name()%></p>
+				<!-- basketDAO 추가 설정 -->
+			  </div>
+			 </div> 
+			 <div class="amount">
+			<c:set var="price" value="<%=ldto.getL_price()%>" />
+			<span style="text-align: center;"> <fmt:setLocale
+					value="ko_KR" />
+				<fmt:formatNumber type="currency" value="${price}" />
+			</span>
 
+			<div class="tooltip">
+				<a href="./WishListDelete.wi?b_num=<%=widto.getW_num()%>"> <i
+					class="fa fa-close"></i> <span class="tooltiptext">위시리스트 삭제</span>
+				</a><br>
 			</div>
+			<button class="d_btn d_btn2" type="button"
+				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
+				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
+			</button>
+		</div>
+			 
+          
+         </div> 
+         
+         
+          </div>
+          
+          </div>
+           </div> 
+          <%
+          }
+          %>
 
-		</form>
-	</div>
+			
+      
+        
+        
+      
+    </div>
+  </div>
+
+</div>
 
 	<%
 		int total = 0;
@@ -361,6 +506,37 @@
 			}
 		}
 	</script>
+
+<script>
+// Get the modal
+var Wmodal = document.getElementById("WmyModal");
+
+// Get the button that opens the modal
+var Wbtn = document.getElementById("Wabtn");
+
+// Get the <span> element that closes the modal
+var Wspan = document.getElementsByClassName("Wclose")[0];
+
+// When the user clicks the button, open the modal 
+Wbtn.onclick = function() {
+  Wmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+Wspan.onclick = function() {
+  Wmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == Wmodal) {
+    Wmodal.style.display = "none";
+  }
+}
+</script>
+
+
+
 </section>
 
 </body>

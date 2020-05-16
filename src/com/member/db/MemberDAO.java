@@ -17,13 +17,7 @@ public class MemberDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	String sql="";
-	public  MemberDAO() {//기본 생성자
-		try{
-			con=getConnection();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 	private Connection getConnection() throws Exception{
@@ -52,44 +46,43 @@ public class MemberDAO {
 	
 	//이메일 체크  업데이트
 		public int update_emailcheck(String m_email) {
-			
+			int check=-1;
 			sql = "update member set m_emailCheck = true, m_rank='회원' where m_email=?";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, m_email);
-				pstmt.executeUpdate();
-				return 1;
+				check=pstmt.executeUpdate();
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				closeDB();
 			}
-			
-			return -1;
+			return check;
 		}
 		
 		
 		
 
-		public int join(MemberDTO user) {
-
-			sql = "INSERT INTO member (m_email, m_pw, m_emailHash, m_regdate, m_emailCheck) VALUES (?, ?, ?, now(), false)";
-
+		public int join(MemberDTO mdto) {
+			int check=-1;
+			sql = "INSERT INTO member (m_email,m_nick, m_pw, m_emailHash, m_regdate, m_emailCheck) VALUES (?,?, ?, ?, now(), false)";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
 
-				pstmt.setString(1, user.getM_email());
+				pstmt.setString(1, mdto.getM_email());
+				pstmt.setString(2, mdto.getM_email().split("@")[0]);
 
-				pstmt.setString(2, user.getM_pw());
+				pstmt.setString(3, mdto.getM_pw());
 
-				pstmt.setString(3, user.getM_emailHash());
+				pstmt.setString(4, mdto.getM_emailHash());
 
 			
 
-				return pstmt.executeUpdate();
+				check= pstmt.executeUpdate();
 
 			} catch (Exception e) {
 
@@ -99,16 +92,15 @@ public class MemberDAO {
 				closeDB();
 			}
 
-			return -1; // 회원가입 실패
+			return check; // 회원가입 실패
 
 		}
 
 		
 
 		public String getUserEmail(String userID) {
-
 			sql = "SELECT m_email FROM member WHERE m_email = ?";
-
+			String check=null;
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
@@ -118,20 +110,16 @@ public class MemberDAO {
 				rs = pstmt.executeQuery();
 
 				while(rs.next()) {
-
-					return rs.getString(1); // 이메일 주소 반환
-
+					check= rs.getString(1); // 이메일 주소 반환
 				}
 
 			} catch (Exception e) {
-
 				e.printStackTrace();
-
 			}finally {
 				closeDB();
 			}
 
-			return null; // 데이터베이스 오류
+			return check; // 데이터베이스 오류
 
 		}
 
@@ -139,7 +127,7 @@ public class MemberDAO {
 		public String getHash(String m_email) {
 
 			sql = "SELECT m_emailHash FROM member WHERE m_email = ?";
-
+			String check=null;
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
@@ -150,8 +138,7 @@ public class MemberDAO {
 
 				while(rs.next()) {
 					System.out.println(rs.getString("m_emailHash"));
-					return rs.getString("m_emailHash"); // 이메일 주소 반환
-
+					check= rs.getString("m_emailHash"); // 이메일 주소 반환
 				}
 
 			} catch (Exception e) {
@@ -162,14 +149,14 @@ public class MemberDAO {
 				closeDB();
 			}
 
-			return null; // 데이터베이스 오류
+			return check; // 데이터베이스 오류
 
 		}
 
 		public boolean getUserEmailChecked(String userID) {
 
 			sql = "SELECT m_emailCheck FROM member WHERE m_email = ?";
-
+			boolean check =false;
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
@@ -179,19 +166,14 @@ public class MemberDAO {
 				rs = pstmt.executeQuery();
 
 				while(rs.next()) {
-
-					return rs.getBoolean(1); // 이메일 등록 여부 반환
-
+					check= rs.getBoolean(1); // 이메일 등록 여부 반환
 				}
-
 			} catch (Exception e) {
-
 				e.printStackTrace();
-
 			}finally {
 				closeDB();
 			}
-			return false; // 데이터베이스 오류
+			return check; // 데이터베이스 오류
 
 		}
 
@@ -200,7 +182,7 @@ public class MemberDAO {
 		public boolean setUserEmailChecked(String userID) {
 
 			sql = "UPDATE member SET m_emailCheck = true WHERE m_email = ?";
-
+			boolean check=false;
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
@@ -209,7 +191,7 @@ public class MemberDAO {
 
 				pstmt.executeUpdate();
 
-				return true; // 이메일 등록 설정 성공
+				check= true; // 이메일 등록 설정 성공
 
 			} catch (Exception e) {
 
@@ -219,20 +201,21 @@ public class MemberDAO {
 				closeDB();
 			}
 
-			return false; // 이메일 등록 설정 실패
+			return check; // 이메일 등록 설정 실패
 
 		}
 		
 		//이메일 중복 체크
 		public int idCheck(String m_email) {
-			sql = "select * from member where m_email = ?";
+			sql = "select count(*) from member where m_email = ?";
+			int check=0;
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, m_email);
 				rs = pstmt.executeQuery();
-				if(rs.next()) {
-					return 1;
+				if(rs.next()){
+					check=rs.getInt(1);
 				}
 				
 			} catch (Exception e) {
@@ -241,7 +224,7 @@ public class MemberDAO {
 			}finally {
 				closeDB();
 			}
-			return 0;
+			return check;
 		}
 
 		
@@ -277,7 +260,7 @@ public class MemberDAO {
 				}finally {
 					closeDB();
 				}
-				return check;
+				return 1;
 			}
 			
 			// getMemberList()
@@ -325,8 +308,9 @@ public class MemberDAO {
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}finally {
+					closeDB();
 				}
-				
 			}
 			//AdminDelte()
 			
@@ -345,18 +329,18 @@ public class MemberDAO {
 						mdto.setM_rank(rs.getString("m_rank"));
 						mdto.setM_addr(rs.getString("m_addr"));
 						mdto.setM_intro(rs.getString("m_intro"));
+						mdto.setM_nick(rs.getString("m_nick"));
 						mdto.setM_name(rs.getString("m_name"));
 						mdto.setM_phone(rs.getString("m_phone"));
 						mdto.setM_pw(rs.getString("m_pw"));
-						
 					}
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}finally {
+					closeDB();
 				}
-				
 				return mdto;
-				
 			}
 			
 			//getInfo()

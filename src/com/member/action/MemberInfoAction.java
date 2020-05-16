@@ -21,6 +21,7 @@ public class MemberInfoAction implements Action{
 			out.print("locattion.href='Main.le'");
 			out.print("</script>");
 			out.close();
+			return null;
 		}
 		
 		MemberDAO mdao = new MemberDAO();
@@ -30,6 +31,7 @@ public class MemberInfoAction implements Action{
 		request.setAttribute("mdto", mdto);
 		ActionForward forward = new  ActionForward();
 		forward.setPath("./views/member/info.jsp");
+		forward.setRedirect(false);
 		return forward;
 	}
 

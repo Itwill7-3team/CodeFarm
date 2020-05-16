@@ -38,11 +38,12 @@ public class BasketListAction implements Action {
 
 		// 해당정보 request 저장
 		ArrayList basketList = (ArrayList)vec.get(0);
-
 		ArrayList lectureList = (ArrayList)vec.get(1);
+		ArrayList wishlistList = (ArrayList)vec.get(2);
 		
 		request.setAttribute("basketList", basketList);
 		request.setAttribute("lectureList", lectureList);
+		request.setAttribute("wishlistList", wishlistList);
 		
 		//request.setAttribute("basketList", vec.get(0));
 		

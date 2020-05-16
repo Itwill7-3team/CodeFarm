@@ -20,6 +20,7 @@ public class BasketDAO {
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	ResultSet rs2=null;
+	ResultSet rs3 = null;
 	String sql="";
 	
 	
@@ -41,28 +42,28 @@ public class BasketDAO {
 		try {
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
-			if(con !=null) con.close();
+			if(con != null) con.close();
 			if(rs2 != null) rs2.close();
+			if(rs3 != null) rs3.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}//자원 해제
 	
 	//checkGoods()
-			public int checkGoods(BasketDTO bdto){
+			public int checkGoods(BasketDTO bkdto){
 				
-				int check=0;
+				int check=-1;
 				//기존의 장바구니에 해당 상품이 있는지 없는지 판별
 				try {
 					//1,2
 					getConnection();
 					
 					//3
-					sql="SELECT * FROM basket WHERE b_l_num=?, b_m_id=?";
+					sql="SELECT * FROM basket WHERE b_l_num=? and b_m_id=?";
 					pstmt=con.prepareStatement(sql);
-					
-					pstmt.setInt(1, bdto.getB_l_num());
-					pstmt.setString(2, bdto.getB_m_id());
+					pstmt.setInt(1, bkdto.getB_l_num());
+					pstmt.setString(2, bkdto.getB_m_id());
 					rs=pstmt.executeQuery();
 
 					if(rs.next()){ //상품이 있다. => 상품추가안함.
@@ -78,7 +79,9 @@ public class BasketDAO {
 					
 				} catch (Exception e) {
 					e.printStackTrace();
-				} 
+				} finally {
+					closeDB();
+				}
 				return check;
 			}
 			//checkGoods()
@@ -122,10 +125,10 @@ public class BasketDAO {
 		
 		ArrayList lectureList = new ArrayList();
 		ArrayList basketList = new ArrayList();
+		ArrayList wishlistList = new ArrayList();
 		
-		PreparedStatement pstmt2 = null;
-		ResultSet rs2 = null;
 		
+
 		try {
 			con = getConnection();
 			
@@ -142,14 +145,14 @@ public class BasketDAO {
 				bkdto.setB_l_price(rs.getInt("b_l_price"));
 				bkdto.setB_m_id(rs.getString("b_m_id"));
 				bkdto.setB_num(rs.getInt("b_num"));
-				
+				System.out.println("-----bkdto------");
 				basketList.add(bkdto);
 				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
-				pstmt2 = con.prepareStatement(sql);
+				pstmt = con.prepareStatement(sql);
 				
-				pstmt2.setInt(1, bkdto.getB_l_num());
-				rs2 = pstmt2.executeQuery();
+				pstmt.setInt(1, bkdto.getB_l_num());
+				rs2 = pstmt.executeQuery();
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
@@ -161,14 +164,31 @@ public class BasketDAO {
 					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_price(rs2.getInt("l_price"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
-					
+					System.out.println("-----ldto------");
 					lectureList.add(ldto);
 				}
+				sql = "SELECT * FROM wishlist WHERE w_num=?";
+				pstmt = con.prepareStatement(sql);
 				
+				pstmt.setInt(1, bkdto.getB_l_num());
+				rs3 = pstmt.executeQuery();
+				
+				if(rs3.next()) {
+					WishlistDTO widto = new WishlistDTO();
+					
+					widto.setW_date(rs3.getTimestamp("w_date"));
+					widto.setW_l_num(rs3.getInt("w_l_num"));
+					widto.setW_m_id(rs3.getString("w_m_id"));
+					widto.setW_num(rs3.getInt("w_num"));
+					System.out.println("-----widto------");
+					wishlistList.add(widto);
+					
+				}
 			}
 			
 			vec.add(0,basketList);
 			vec.add(1, lectureList);
+			vec.add(2,wishlistList);
 			
 			System.out.println(" 장바구니,상품정보 리스트 백터에 저장완료 :"+vec);			
 			
@@ -288,6 +308,31 @@ public class BasketDAO {
 					}
 					return cartList;
 				}
+				
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqbasketDelete(int l_number){
+					
+		try {
+			con = getConnection();
+			// 장바구니에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM basket WHERE b_l_num=?";
+						
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+						
+			pstmt.executeUpdate();
+			
+			System.out.println(l_number+"번의 강의 장바구니에서 삭제 완료");
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+				
 	
 	
 }

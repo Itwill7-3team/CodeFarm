@@ -8,9 +8,16 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜</title>
 
-<!--   <link rel="stylesheet" href="https://cdn.inflearn.com/dist/css/MAIN.4cb95bc7bc2095575584.css"> -->
 <link rel="stylesheet" href="./css/dashboard.css">
 </head>
+
+<%
+	String loginEmail="";
+	if(session.getAttribute("m_email")!=null){
+	 loginEmail=(String)session.getAttribute("m_email");
+	}
+%>
+
 
 <body class="profile dashboard is_logged_in " >
 
@@ -49,9 +56,9 @@
                   <div class="media-content">
                     <h5> @@@님, 편안한 밤시간 되세요 🌟</h5> <!-- 인사말 -->
                     <span>닉네임:@@@ </span><br> <!-- 유저 닉네임 -->
-                    <span>이메일:aaa @gmail.com</span><br> <!-- 유저 이메일 -->
+                    <span>이메일:<%=loginEmail %></span><br> <!-- 유저 이메일 -->
                   </div>
-                  <a class="bottom_right" href="#">프로필 수정하기</a>
+                  <a class="bottom_right" href="MemberInfo.me">프로필 수정하기</a>
                 </div>
               </div>
             </div>
@@ -72,7 +79,7 @@
     <progress class="progress is-link" value="31.03" max="100">31.03%</progress> <!-- 프로그래스바 -->
   </div>
 <div class="buttons bottom_right">
-  <a href="#" class="button is-link">내 모든 강의</a>
+  <a href="MyLecture.bo" class="button is-link">내 모든 강의</a>
   <a class="button is-primary" href="#">이어서 학습하기</a>
 </div></div>
             </div>

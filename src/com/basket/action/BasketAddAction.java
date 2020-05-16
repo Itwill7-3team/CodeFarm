@@ -20,7 +20,7 @@ public class BasketAddAction implements Action {
 		// 세션값이 없을경우 장바구니 사용 불가능 (로그인 페이지 이동)
 		
 		HttpSession session = request.getSession();
-		String id =(String) session.getAttribute("m_email");
+		String id =(String)session.getAttribute("m_email");
 		//id="test";
 		
 		ActionForward forward = new ActionForward();
@@ -50,7 +50,7 @@ public class BasketAddAction implements Action {
 		BasketDAO bkdao = new BasketDAO();
 		// 기존의 장바구니에 상품이 있는지 체크
 		int check = bkdao.checkGoods(bkdto);
-		
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@check"+check);
 		// 없을경우 장바구니에 추가
 		if(check != 1){
 			bkdao.basketAdd(bkdto);
