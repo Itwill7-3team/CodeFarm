@@ -60,6 +60,7 @@ public class BasketDAO {
 					//3
 					sql="SELECT * FROM basket WHERE b_l_num=?, b_m_id=?";
 					pstmt=con.prepareStatement(sql);
+					
 					pstmt.setInt(1, bdto.getB_l_num());
 					pstmt.setString(2, bdto.getB_m_id());
 					rs=pstmt.executeQuery();
