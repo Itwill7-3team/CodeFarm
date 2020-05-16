@@ -198,7 +198,7 @@
 					<div class="section_cover">
 						<div class="section input_item">
 							<label class="menu_label">섹션 0</label> <input type="text"
-								class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">
+								class="box_input" placeholder="섹션제목을 적어주세요" autocomplete="off">
 							<input class="addvideo button" value="영상추가하기" type="file">영상
 							추가하기
 							</button>
@@ -223,23 +223,17 @@ $(document).ready(function() {
 	$("#information").css("display", "block");
 	 //에디터
 
-	/* 
-		  // 여기에 코드를 작성
-	
-				  $('#summernote').summernote({
-					  height: 300,                 // set editor height
-					  minHeight: null,             // set minimum height of editor
-				      maxHeight: null,             // set maximum height of editor
-				      focus: true,                  // set focus to editable area after initializing summernote
-				      lang: "ko-KR",					// 한글 설정
-						placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
+	$('#summernote').summernote({
+			  height: 500,                 // set editor height
+			  minHeight: null,             // set minimum height of editor
+		      maxHeight: null,             // set maximum height of editor
+		      focus: true,                  // set focus to editable area after initializing summernote
+		      lang: "ko-KR",					// 한글 설정
+				placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
 
-				  });
-				 */
+		  });
 
-				/* 이미지.. */
-				
-		
+
 	//에디터 끝 
 	
 	
@@ -270,8 +264,16 @@ $(document).ready(function() {
 		var placeholder = $(this).prev("input:first").attr("placeholder");
 		var value=$(this).prev("input:first").val();
 		console.log(name + placeholder+ value);
-		$(this).next(".boxes").c.append(
-		'<li class="input" name="'+name+value+'" placeholder="'+placeholder+'" autocomplete="off">'); //=; 
+		$(this).siblings(".boxes").append(
+		'<li class="dynamic_box" data-content='+type+'>'
+			+'<div class="content_box">'
+				+value
+			+"</div>"
+			+'<div class="btns">'
+				+'<a class="btn_icon del">'+'<i class="fas fa-trash-alt"></i>'+'</a>'
+				+'<span class="btn_icon handle">'+'<i class="fas fa-grip-lines"></i>'+'</span>'
+			+'</div>'
+		+'</li>');
 	});
 	//동영상 추가 이벤트
 
@@ -301,12 +303,7 @@ $(document).ready(function() {
 	var title = $(".title.input_item").val();
 	var content = $(".course_summary.input_item").children(".input_box").children(".input");
 	});
-	$('#summernote').summernote();
 });
-/* $('#summernote').summernote('insertImage', url, function ($image) {
-	  $image.css('width', $image.width() / 3);
-	  $image.attr('data-filename', 'retriever');
-	});  */
 	</script>
 
 </body>

@@ -15,7 +15,6 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	 loginEmail=(String)session.getAttribute("m_email");
 	}
 %>
-
 <jsp:include page="nav-footer.jsp" />
 <header class="sticky">
 
@@ -434,13 +433,12 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	 
 	
 	function getCarts(){
-		var id= '<%=loginEmail%>';
 		var type = $(".tab_menu.active").attr("data-type");
 		$.ajax({
 			type : "post",
 			url : "./carts.ba?type=" + type,
 			data : {
-				"id" : id
+				"id" : "<%=loginEmail%>"
 			},
 			dataType : "json",
 			success : function(data) { // 서버에 대한 정상응답이 오면 실행, callback

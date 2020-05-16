@@ -355,7 +355,7 @@ header .nav-container .accors .acco_ctt {
   right: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.2);
-  z-index: 2;
+  z-index: 990;
   cursor: pointer;
 }
 header .btn{
@@ -385,6 +385,7 @@ header .btn:HOVER{
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   overflow: auto;
+
 }
 
 #exit{ /* 반투명 회색 여백 클릭하면 나가게 */

@@ -259,11 +259,18 @@ body{
     flex-basis: 100%;
 }
 .btns{
-	min-width: 3rem;
-    margin-left: 1rem;
+	min-width: 53px;
+    margin-left: 8px;
 
 }
 .button.del{
 	cursor: pointer;
     font-size: .8rem;
+}
+.boxes{
+	max-width: 450px;
+	box-sizing: border-box;
+}
+.btn_icon{
+	margin-left: 13px;
 }
