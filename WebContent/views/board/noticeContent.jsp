@@ -36,6 +36,10 @@ textarea {
 <!-- 컨텐츠 -->
 
 <%
+String email="";
+if(session.getAttribute("m_email")!=null){
+email=(String)session.getAttribute("m_email");
+}
 
 NoticeDTO ndto=(NoticeDTO)request.getAttribute("ndto");
 String pageNum=request.getAttribute("pageNum").toString();
@@ -49,9 +53,12 @@ String pageNum=request.getAttribute("pageNum").toString();
 <hr>
 <%=ndto.getN_content() %>
 
-
+<%if(email.equals("admin@naver.com")){%>
 <button onclick="location.href='noticeUpdate.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>';">수정하기</button>
 <button onclick="location.href='noticeDeleteAction.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>';">삭제하기</button>
+<%}%>
+
+
 <br>
 
 
