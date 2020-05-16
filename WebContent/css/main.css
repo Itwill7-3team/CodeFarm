@@ -116,8 +116,15 @@ height: 320px;
   
 }
 
+@media screen and (max-width: 760px) {
+#lec {
+    width: 85%!important;}
+.card{
+	margin: 0 auto;}
+
+}
 @media screen and (max-width: 500px) {
-	/* 웹 가장작은 사이즈일때, 카드2장 나오도록 */
+	/* 웹 가장작은 사이즈, 카드2장 나오도록 */
 #lec {
     width: 100%!important;}
 .card{
