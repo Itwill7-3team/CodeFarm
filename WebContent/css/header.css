@@ -368,7 +368,8 @@ header .btn{
 }
 header .btn:HOVER{
 	opacity: 0.6;
-	color: hotpink;
+    background-color: white;
+    color: #00c471;
 }
 #m-side-menu{ /* 사이드메뉴들어감 */
   position: absolute;

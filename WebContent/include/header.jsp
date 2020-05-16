@@ -358,7 +358,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<a  class="navbar-item bold"> <button class="btn bold login_btn">로그인</button></a>
 						</div>
 						<div class="navbar-item">
-							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn red">회원가입</button></a>
+							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn bold">회원가입</button></a>
 						</div>
 					<!--로그인 안했을때  -->
 					<%} %>

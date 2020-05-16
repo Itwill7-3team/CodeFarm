@@ -129,6 +129,7 @@ body{
     margin-top: 15px;
     flex:1;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .submit_button{
 	margin: 60px 10px;
@@ -140,7 +141,6 @@ body{
     display: block;
     box-sizing: border-box;
     width: 100%;
-    font-size: 22px;
 }
 .main_content{
 	display:none;
@@ -191,6 +191,7 @@ body{
     background-color: white;
     margin: 5px 2px;
     width: auto;
+    cursor: pointer;
 }
 .button_box>.btn.active{
 	opacity: 0.8;
