@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="./css/nav-footer.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 <script>
 $(document).ready(function(){
 	var data=document.location.href.split("/CodeFarm/");
