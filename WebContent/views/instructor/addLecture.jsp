@@ -194,6 +194,7 @@
 						<button class="addimg btn" value="1">메인 사진 추가하기</button>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
