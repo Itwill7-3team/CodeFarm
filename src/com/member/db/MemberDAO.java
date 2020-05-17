@@ -260,7 +260,7 @@ public class MemberDAO {
 				}finally {
 					closeDB();
 				}
-				return 1;
+				return check;
 			}
 			
 			// getMemberList()
@@ -344,6 +344,40 @@ public class MemberDAO {
 			}
 			
 			//getInfo()
+			
+			
+			//자기소개 업데이트
+			public void IntroUpdate(String m_email,String m_intro, String m_nick) {
+				try {
+					con = getConnection();
+					sql = "update member set m_intro =? where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_intro);
+					pstmt.setString(2, m_nick);
+					pstmt.setString(3, m_email);
+					pstmt.executeUpdate();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			
+			public void update_pw(String m_email, String m_pw) {
+				try {
+					con = getConnection();
+					sql = "update member set m_pw=? where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_pw);
+					pstmt.setString(2, m_email);
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
 	}
 	
 
