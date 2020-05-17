@@ -112,15 +112,13 @@ public class LectureDAO {
 	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging){
+	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
 		System.out.println("s :"+s);
-		/* s = " "; */
-		System.out.println("s :"+s);
-		
+		System.out.println("t1 : "+t1+"t2 : "+t2);
 		try {
 		con = getConnection();
 			/*
@@ -131,7 +129,8 @@ public class LectureDAO {
 		/*mysql version*/
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ?");
+				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ? "
+				+ "and l_type like ? and l_type2 like ?");
 		
 		if(item.equals("all")){
 		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
@@ -146,11 +145,12 @@ public class LectureDAO {
 			SQL.append(" order by paynum desc");
 		}
 		
-		
 		pstmt = con.prepareStatement(SQL.toString());
 		pstmt.setInt(1, startNum);
 		pstmt.setInt(2, endNum);
 		pstmt.setString(3, "%"+s+"%");
+		pstmt.setString(4, "%"+t1+"%");
+		pstmt.setString(5, "%"+t2+"%");
 		
 		rs = pstmt.executeQuery();
 			
