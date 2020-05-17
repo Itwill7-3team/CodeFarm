@@ -93,8 +93,8 @@
 						<input class="box_input" name="title" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
 						<button class="addInput button" data-name="abilities" value="1">추가하기</button>
 					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
-						<ol class="boxes abilities">
-						</ol>
+						<ul class="boxes abilities">
+						</ul>
 				</div>
 				<div class="field">
 					<div class="label_box">
@@ -104,8 +104,8 @@
 						<input class="box_input" name="title" placeholder="ex)코딩 처음 접하는 사람" autocomplete="off">
 						<button class="addInput button" data-name="targets" value="1">추가하기</button>
 						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
-						<ol class="boxes targets">
-						</ol>
+						<ul class="boxes targets">
+						</ul>
 				</div>
 				<div class="field">
 					<div class="label_box">
@@ -115,8 +115,8 @@
 						<input class="box_input" name="title" placeholder="ex)C언어" autocomplete="off">
 						<button class="addInput button" data-name="based" value="1">추가하기</button>
 						
-						<ol class="boxes based">
-						</ol>
+						<ul class="boxes based">
+						</ul>
 				</div>
 					<div class="field">
 						<div class="label_box">
@@ -263,20 +263,53 @@ $(document).ready(function() {
 		var name = $(this).prev("input:first").attr("name");
 		var placeholder = $(this).prev("input:first").attr("placeholder");
 		var value=$(this).prev("input:first").val();
-		console.log(name + placeholder+ value);
+		if($(this).prev("input:first").val()){
 		$(this).siblings(".boxes").append(
-		'<li class="dynamic_box" data-content='+type+'>'
-			+'<div class="content_box">'
-				+value
-			+"</div>"
+		'<li class="dynamic_box" data-content='+value+'>'
+			+'<div class="content_box">'+value+"</div>"
 			+'<div class="btns">'
 				+'<a class="btn_icon del">'+'<i class="fas fa-trash-alt"></i>'+'</a>'
 				+'<span class="btn_icon handle">'+'<i class="fas fa-grip-lines"></i>'+'</span>'
 			+'</div>'
 		+'</li>');
+		$(this).prev("input:first").val("");
+		}
+		 
 	});
-	//동영상 추가 이벤트
+	//외부스크립트 이동메서드
+	
+		 $(".boxes").sortable({
+			 	containment : 'parent',
+		        cursor:"move",
+		        forcePlaceholderSize: true,
+		        opacity: 0.5,
+		        placeholder: "sortable-placeholder",
+		        handle:".btn_icon.handle",
+		        start: function(event, ui) {
 
+		            ui.item.data('start_pos', ui.item.index());
+		        },
+
+		        stop: function(event, ui) {
+		            var spos = ui.item.data('start_pos');
+		            var epos = ui.item.index();
+
+		        }
+		    }); 
+		 $("#sortable").disableSelection();
+
+ 
+
+
+	//input 으로 추가한 ol태그 삭제
+
+	$(".field").on("click",(".btn_icon.del"),function(){
+		$(this).parents(".dynamic_box").remove();
+	});
+	//input으로 추가한 ol태그 위치변경
+	$(".field").on("click",(".btn_icon.handle"),function(){
+	//동영상 추가 이벤트
+	});
 	//섹션추가 이벤트
 	var sectionNum = 1;
 	$(".addsection").click(function() {
@@ -303,7 +336,9 @@ $(document).ready(function() {
 	var title = $(".title.input_item").val();
 	var content = $(".course_summary.input_item").children(".input_box").children(".input");
 	});
+	
 });
+	
 	</script>
 
 </body>
