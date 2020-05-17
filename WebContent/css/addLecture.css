@@ -6,7 +6,7 @@
 body{
 	margin: 0;
 	padding: 0;
-	background-color: rgb(241, 241, 241)
+	background-color: #f5f5f5;
 }
 .header{
 	color: white;
@@ -29,8 +29,8 @@ body{
     justify-content: space-between;
 }
 .green{
-	background-color: #00c471;
-	color: white;
+	background-color: #00c471 !important;
+	color: white !important;
 	border: 1px solid #00c471;
 	
 }
@@ -41,6 +41,8 @@ body{
     font-size: 18px;
     border-radius: 3px;
     border: 0;
+    color: black;
+    background-color: white;
 }
 
 .content{
@@ -145,7 +147,8 @@ body{
     display: block;
     box-sizing: border-box;
     width: 100%;
-        box-shadow: 0 2px 10px 0 hsla(0,0%,74.9%,.5);
+   	box-shadow: 0 2px 10px 0 hsla(0,0%,74.9%,.5);
+    max-width: 750px;
 }
 .main_content{
 	display:none;
@@ -176,9 +179,13 @@ body{
     resize: none; 
     overflow: hidden;
 }
+.section_cover{
+	border: 1px solid;
+    box-sizing: border-box;
+    padding: 17px;
+}
 .input_item{
 	box-sizing: border-box;
-    margin: 20px 0px;
     max-width: 450px;
 }
 .menu_label{
@@ -274,3 +281,39 @@ body{
 .btn_icon{
 	margin-left: 13px;
 }
+/* 커버 이미지*/
+.img_upload{
+	display: flex;
+    margin-top: 32px;
+}
+.tumnail{
+	width: 240px;
+    height: 156px;
+    min-width: 240px;
+    object-fit: cover;
+    background: #d8d8d8;
+}
+.uploader{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 1.5625rem;
+    margin-bottom: 1rem;
+}
+.button2{
+	height: 50px;
+    width: 85px;
+    margin-left: -5px;
+    border-radius: 0;
+    border: none;
+    background: #747474;
+    color: #fff;
+    font-size: 16px;
+}
+.button2.upload{
+	margin-left: 0;
+    background: #1dc078;
+    opacity: 0.7;
+}
+/* 커버 이미지 끝*/

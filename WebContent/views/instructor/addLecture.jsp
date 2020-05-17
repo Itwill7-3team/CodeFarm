@@ -207,9 +207,44 @@
 					<button class="addsection button" value="1">섹션 추가하기</button>
 				</div>
 				<div class="main_content" id="cover-img">
-					<div class="title input_item">
-						<button class="addimg button" value="1">메인 사진 추가하기</button>
-					</div>
+						<div class="notification">
+						<h3 class="bold">커버 이미지 - 썸네일 및 홍보영상 등록</h3>
+						<p>
+							강의 커버 이미지(썸네일)를 직접 제작하실 경우, 이미지 규정에 맞춰 주세요.<br>
+							이미지가 규정에 맞지 않을 경우, 운영팀 판단하에 임의로 변경될 수 있습니다.<br>
+							홍보동영상 등록에 홍보동영상이나 강의 첫번째 영상(무료공개)을 등록해주세요.
+						</p>
+						</div>
+					<hr>
+						<div class="img_upload">
+							<img class="tumnail">
+							<div class="uploader">
+							<p>
+							          강의를 대표하는 이미지 
+							  <a data-id="10" class="show_guide_modal ">
+							    <span class="icon is-small">
+							      <i class="far fa-question-circle"></i>
+							    </span>
+							  </a><br>
+							          <small>
+							          이미지 크기: 768 × 500(px), 확장자: jpg, jpeg, png, 이미지에 한글을 포함할 수 없습니다.
+							     </small>
+							 </p>
+							 <form id="component_file_form" class="control" data-id="">
+   							 <input id="image_file_upload" class="hidden_input" type="file" name="file" accept=".jpg, .jpeg, .png">
+    							<div class="file_info">파일을 선택하세요</div>
+   								<div style="font-size: 0; margin-top: 5px; text-align: right;">
+      							<button type="button" class="button2 add">파일 선택</button>
+							    <button type="button" class="button2 upload" disabled="">업로드</button>
+						  </div>
+					 <div class="downloadable">
+      
+						    </div>
+						  </form>
+						</div>
+							<!--uploader 끝  -->
+						</div>
+						<!-- img_upload 끝 -->
 				</div>
 			</div>
 		</div>
