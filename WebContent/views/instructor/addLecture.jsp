@@ -151,13 +151,13 @@
 							강의 소개글은 강의 수강신청 및 판매율에 결정적인 영향을 끼칩니다.<br> 최소 7줄 이상의 소개를
 							부탁드려요!<br> 강의 소개글 분량이 모자란 경우, 제출 후 반려될 수 있습니다.
 						</p>
-						<br> <br>
+						<br> 
 						<h3 class="bold">매력적인 소개글</h3>
 						<p>
 							학생들이 강의 소개를 볼 때 수강하고 싶도록 마음껏 내 강의의 매력을 어필해 보세요.<br> <span
 								class="bold">사진, 그래프, 영상</span>등 설득될만한 자료를 꼭 첨부해 주세요!
 						</p>
-						<br> <br>
+						<br> 
 						<p>
 							혹시 강의 소개 작성이 막막한 분들을 위해 가이드를 준비했어요<br> 가이드를 보고 싶은 분들은 <a
 								href="#">이곳</a> 을 클릭!!
@@ -178,20 +178,54 @@
 							강의의 커리큘럼을 모두 작성한 뒤 수업마다 영상을 연결해 주셨나요?<br> 일부 영상에 재생 에러가 발생할
 							경우, 파일명을 바꿔서 재업로드해주세요.<br> 강의 커리큘럼이 확정되지 않으면 강의를 오픈할 수 없습니다.
 						</p>
-						<br> <br>
+						<br>
 						<h3 class="bold">무료공개 수업 최소 1개 이상!</h3>
 						<p>
 							무료공개 수업을 최소 한 개 이상 설정해주세요.<br> 강의를 잘 표현 할 수 있는 좋은 수업을 보여준다면
 							수강신청률이 올라갑니다.
 						</p>
-						<br> <br>
+						<br>
 						<h3 class="bold">여러개의 섹션으로 나눠주세요</h3>
 						<p>
 							수업들을 여러 섹션으로 잘게 묶어 놓으면 학생들이 훨씬 효과적으로 학습할 수 있습니다.<br> 보통 1개
 							섹션당 4~6개의 수업으로 구성하면 좋아요!
 						</p>
 					</div>
-					<div class="section_cover">
+					<div class="add_unit_button_wrapper">
+						<button class="button4 add_unit_btn add_section_btn" value="1"><i class="fas fa-plus-circle"></i> 섹션 추가하기</button>
+					</div>
+					<ul class="curriculum_list">
+						<li class="unit unit_section">
+							<div class="box unit_box">
+								<h3 class="section_title">
+									<span>섹션 0 : </span>
+									<span>첫번째 섹션의 제목을 입력해주세요.</span>
+								</h3>
+								<div class="unit_btns">
+									<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle"></i> 수업추가하기</button>
+									<button class="button4 section_mod_btn"><i class="fas fa-pen"></i></button>
+									<button class="button4 unit_del_btn"><i class="fas fa-trash-alt"></i></button>
+								</div>
+							</div>
+						</li>
+						<li class="unit unit_lecture">
+							<div class="box unit_box">
+      <p><span class="unit_label">수업 1 : </span><span>asd</span></p>
+      <div class="unit_btns">
+        <div>
+        	<button type="button" class="button4 lecture_mod_btn" >
+        		<i class="fas fa-pen"></i>
+  			</button>
+          	<button type="button" class="button4 unit_del_btn" >
+    			<i class="fas fa-trash-alt"></i>
+  		 	</button>
+        </div>
+      </div>
+    </div>
+						</li>
+					
+					</ul>
+					<!-- <div class="section_cover">
 						<div class="section input_item">
 							<label class="menu_label">섹션 0</label> <input type="text"
 								class="box_input" placeholder="섹션제목을 적어주세요" autocomplete="off">
@@ -199,8 +233,8 @@
 							추가하기
 							</button>
 						</div>
-					</div>
-					<button class="addsection button" value="1">섹션 추가하기</button>
+					</div> -->
+					
 				</div>
 				<div class="main_content" id="cover-img">
 						<div class="notification">
@@ -249,7 +283,7 @@
 							설정해 주신 강의 가격은 부가세 미포함 가격입니다.<br>
 							수강 기한에 제한을 두실 경우 반드시 개월 단위로 표기해주세요.<br>
 						</p>
-						<br> <br>
+						<br> 
 						<h3 class="bold">강의 계약정보 체크</h3>
 						<p>
 						유료 강의의 경우, 체크해주신 계약정보 동의 여부에 따라 계약서가 발송됩니다.<br>
@@ -273,15 +307,15 @@
 						<div class="field">
 							<div class="label">공개설정</div>
 							<div class="buttons">
-								<button>코딩팜 공개</button>
-								<button>URL 로만 접근</button>
+								<button class="button3 isActive" data-content="1">코딩팜 공개</button>
+								<button class="button3" data-content="0">URL 로만 접근</button>
 							</div>
 						</div>
 						<div class="field">
 							<div class="label">수강 기한</div>
 							<div class="buttons">
-								<button class="button2">무제한</button>
-								<button class="button">제한</button>
+								<button  class="button3 isActive">무제한</button>
+								<button  class="button3">제한</button>
 							</div>
 						</div>
 						<div class="field">
@@ -387,9 +421,24 @@ $(document).ready(function() {
 
 		        }
 		    }); 
-		 $("#sortable").disableSelection();
+		 $("#boxes").disableSelection();
+		$(".ui-sortable").sortable({
+			containment : 'parent',
+	        cursor:"move",
+	        forcePlaceholderSize: true,
+	        opacity: 0.5,
+			 start: function(event, ui) {
 
- 
+		            ui.item.data('start_pos', ui.item.index());
+		        },
+
+		        stop: function(event, ui) {
+		            var spos = ui.item.data('start_pos');
+		            var epos = ui.item.index();
+
+		        }
+		});
+		 $("#ui-sortable").disableSelection();
 
 
 	//input 으로 추가한 ol태그 삭제

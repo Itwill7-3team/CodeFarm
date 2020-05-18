@@ -2,11 +2,15 @@
 *{
 	margin: 0;
 	padding: 0;
+	outline: none;
 }
 body{
 	margin: 0;
 	padding: 0;
 	background-color: #f5f5f5;
+}
+h3{
+	font-size:20px !important;
 }
 .header{
 	color: white;
@@ -114,6 +118,7 @@ body{
 .item_title{
 	margin-left: 20px;
 }
+
 .mouse:HOVER{
 	cursor: pointer;
 }
@@ -320,9 +325,9 @@ body{
     opacity: 0.7;
 }
 /* 커버 이미지 끝*/
-}
 
-/*2020-05-18  */
+
+/* 설정 */
 .control{
 	margin-top: 16px;
     position: relative;
@@ -345,4 +350,63 @@ body{
 .notice{
 	margin-top: 16px;
 }
-/*2020-05-18  */
+.button3{
+	width: 120px;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin-right: 8px;
+    margin-bottom: 1px;
+}
+.button3.isActive{
+	background: #1dc078;
+    color: #fff;
+    border: 1px solid #1dc078;
+}
+/* 설정 */
+/* 커리큘럼  */
+.curriculum_list{
+	cursor: move;
+}
+.unit{
+	box-shadow: inset 1px 0 #5eceb3, inset -1px 0 #5eceb3;
+}
+.button4{
+	height: 30px;
+    padding: 0 5px;
+    border: none;
+    background-color: white;
+}
+.box.unit_box{
+	padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.section_title{
+	display: inline-block;
+}
+.unit_btn{
+	display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+.unit.unit_section{
+	box-shadow: inset 1px 1px #5eceb3, inset -1px 0 #5eceb3;
+}
+.add_unit_button_wrapper{
+	text-align: right;
+}
+.unit_lecture{
+	padding: 9px;
+}
+.unit_lecture>.unit_box{
+	border: 1px dashed #d0d0d0;
+    box-shadow: none;
+}
+.unit_btns{
+	 align-self: center;
+}
+/* 커리큘럼 */
