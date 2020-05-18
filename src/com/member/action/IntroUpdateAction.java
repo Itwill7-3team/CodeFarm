@@ -11,6 +11,7 @@ import com.member.db.MemberDAO;
 public class IntroUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String m_email = (String)session.getAttribute("m_email");
 		
