@@ -16,7 +16,7 @@ public class Script {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('" + msg + "')");
-			script.println("history.back()");
+			script.println("location.href='Main.le'");
 			script.println("</script>");
 			script.close();
 		} catch (Exception e) {

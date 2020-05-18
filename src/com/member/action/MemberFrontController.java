@@ -186,8 +186,35 @@ public class MemberFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("./views/member/tech_request.jsp");
 			forward.setRedirect(false);
+			
+		}else if(command.equals("/IntroUpdateAction.me")) {
+			action = new IntroUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/PwUpdateAction.me")){
+			action = new PwUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MemberDeleteAction.me")){
+			action = new MemberDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		
 		
 		
 		

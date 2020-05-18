@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.member.db.MemberDAO;
+import com.member.db.MemberDTO;
 
 public class MemberLoginAction implements Action {
 
@@ -92,6 +93,11 @@ public class MemberLoginAction implements Action {
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("m_email", m_email);
+		
+		MemberDTO mdto =new MemberDAO().getInfo(m_email);
+		String nick = mdto.getM_nick();
+		
+		session.setAttribute("nick", nick);
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();

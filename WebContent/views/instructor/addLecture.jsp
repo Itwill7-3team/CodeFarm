@@ -29,7 +29,7 @@
 			<span class="header_title">내 강의 만들기</span>
 			<div class="header_right">
 				<button class="right_btn">강의보기</button>
-				<button class="right_btn green">저장</button>
+				<button class="right_btn save">저장</button>
 			</div>
 		</div>
 	</div>
@@ -57,19 +57,15 @@
 			<div class="side_menu">
 				<div class="side_title">설정</div>
 				<div class="side_items">
-					<div class="side_item">
+					<div class="side_item" data-type="course_setting">
 						<i class="fas fa-check-circle"></i><span class="item_title mouse">강의설정</span>
 					</div>
-					<div class="side_item">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">지식공유자
-							설정</span>
-					</div>
+					
 				</div>
 
 			</div>
 			<div class="submit_button">
 				<button class="button submit">제출하기</button>
-				<button class="button red" onclick="javascript:history.back();">나가기</button>
 			</div>
 			</aside>
 			<div class="main_content_cover">
@@ -145,7 +141,7 @@
 				<div class="main_content" id="introduction">
 					<div class="title textarea_item">
 						<label class="menu_label">강의 두줄 요약 </label>
-						<textarea class="textarea" name="title"
+						<textarea class="textarea description" name="title"
 							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
 					</div>
 					<hr>
@@ -246,6 +242,66 @@
 						</div>
 						<!-- img_upload 끝 -->
 				</div>
+				<div class="main_content" id="course_setting">
+					<div class="notification">
+						<h3 class="bold">강의 설정 - 가격 및 수강 기한</h3>
+						<p>
+							설정해 주신 강의 가격은 부가세 미포함 가격입니다.<br>
+							수강 기한에 제한을 두실 경우 반드시 개월 단위로 표기해주세요.<br>
+						</p>
+						<br> <br>
+						<h3 class="bold">강의 계약정보 체크</h3>
+						<p>
+						유료 강의의 경우, 체크해주신 계약정보 동의 여부에 따라 계약서가 발송됩니다.<br>
+						오픈 전, 계약정보 수정을 원하시면 인프런 운영팀으로 문의 주세요.<br>
+						</p>
+					</div>
+					<hr>
+					<div class="field" >
+						<div class="label">가격 설정</div>
+						<div class="control">
+							<input class="box_input price" type="number" name="price" placeholder="가격을 설정해주세요" min="0" step="1000" max="1000000">
+							<span>₩</span>
+						</div>
+						<div class="notice">
+							<p>
+								1. 가격 설정 후 제출하신 후에는, 가격 변경이 되지 않아요! 바꾸고 싶은 경우에는 운영팀에 문의해주세요 :)<br>
+								2. 입력하신 가격은 부가세 미포함 가격입니다. 실제 수강생에는 부가세 10% 합산된 가격으로 보입니다.<br>
+								3. 가격은 무료의 경우 0원으로 유료의 경우 10,000원 이상 1,000원 단위로 설정할 수 있습니다.
+							</p>
+						</div>
+						<div class="field">
+							<div class="label">공개설정</div>
+							<div class="buttons">
+								<button>코딩팜 공개</button>
+								<button>URL 로만 접근</button>
+							</div>
+						</div>
+						<div class="field">
+							<div class="label">수강 기한</div>
+							<div class="buttons">
+								<button class="button2">무제한</button>
+								<button class="button">제한</button>
+							</div>
+						</div>
+						<div class="field">
+							<div class="label">시작 메시지 <span>(수정가능)</span></div>
+							<textarea class="textarea" name="title"
+							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">안녕하세요. 👋
+백문이 불여일견! 학습이 곧 시작됩니다. 
+궁금한 점은 [질문 답변] 을 이용해주세요 :)
+							</textarea>
+						</div>
+						<div class="field">
+							<div class="label">완강 메시지 <span>(수정가능)</span></div>
+							<textarea class="textarea" name="title" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
+강의는 어떠셨나요? 학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!
+여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)
+							</textarea>
+						</div>
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -311,8 +367,8 @@ $(document).ready(function() {
 		}
 		 
 	});
-	//외부스크립트 이동메서드
 	
+	//box slide UI method
 		 $(".boxes").sortable({
 			 	containment : 'parent',
 		        cursor:"move",
@@ -360,10 +416,9 @@ $(document).ready(function() {
 	});
 
 	//textarea 자동으로 세로너비 증가
-	function xSize(e) {
-	e.style.height = '1px';
-	e.style.height = (e.scrollHeight + 12) + 'px';
-	}
+	$(".textarea").on("keydown keyup change",function(){
+		 $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
+	});
 
 	//제출하기 버튼 누르면 발생하는 이벤트
 	$(".button.submit").click(
@@ -371,7 +426,53 @@ $(document).ready(function() {
 	var title = $(".title.input_item").val();
 	var content = $(".course_summary.input_item").children(".input_box").children(".input");
 	});
-	
+	//저장하기 버튼 누르면 저장하는 이벤트
+	$(".save").on("click",function(){
+		//강의 제목
+		var title=$("input[name=title]").val();
+		//이런걸 배울수 있어요
+		var abilities="";
+		for(var i=0;i<$(".boxes.abilities").children().size();i++)
+			abilities+=$(".boxes.abilities").children().eq(i).attr("data-content")+"/";
+		console.log(abilities);
+		//이런 분들에게 추천해요
+		var targets="";
+		for(var i=0;i<$(".boxes.targets").children().size();i++)
+			targets+=$(".boxes.targets").children().eq(i).attr("data-content")+"/";
+		console.log(targets);
+		//선수 지식이 필요하다면 무엇인가요?
+		var based="";
+		for(var i=0;i<$(".boxes.based").children().size();i++)
+			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
+		console.log(based);
+		//카테고리
+		var category=$(".button.category1.active").attr("value");
+		console.log(category);
+		//강의수준
+		var level=$(".button.level").attr("value");
+		console.log(level);
+		/* 1페이지 끝 */
+		//강의 두줄 요약
+		var description=$(".textarea.description").val();
+		console.log(description);
+		//강의 상세 내용(해당내용은 강의 상세페이지에서 보여집니다.)
+		var body=$(".note-editable").html();
+		console.log(body);
+		/* 2페이지 끝 */
+		
+		/* 3페이지  끝 */
+		
+		/* 4페이지 끝  */
+		//가격정보
+		var price= $(".box_input.price").val();
+		console.log(price);
+		//오픈 여부
+		//var open=$(".buttons")
+		//수강기간
+		/* 5페이지 끝 */
+		//data 처리 시작
+		//ajax 처리(Data저장)
+	});
 });
 	
 	</script>
