@@ -141,7 +141,7 @@
 				<div class="main_content" id="introduction">
 					<div class="title textarea_item">
 						<label class="menu_label">강의 두줄 요약 </label>
-						<textarea class="textarea" name="title"
+						<textarea class="textarea description" name="title"
 							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
 					</div>
 					<hr>
@@ -393,11 +393,50 @@ $(document).ready(function() {
 	});
 	//저장하기 버튼 누르면 저장하는 이벤트
 	$(".save").on("click",function(){
+		//강의 제목
 		var title=$("input[name=title]").val();
-		var abilities=$(".boxes.abilities").
-		console.log(title);
+		//이런걸 배울수 있어요
+		var abilities="";
+		for(var i=0;i<$(".boxes.abilities").children().size();i++)
+			abilities+=$(".boxes.abilities").children().eq(i).attr("data-content")+"/";
+		console.log(abilities);
+		//이런 분들에게 추천해요
+		var targets="";
+		for(var i=0;i<$(".boxes.targets").children().size();i++)
+			targets+=$(".boxes.targets").children().eq(i).attr("data-content")+"/";
+		console.log(targets);
+		//선수 지식이 필요하다면 무엇인가요?
+		var based="";
+		for(var i=0;i<$(".boxes.based").children().size();i++)
+			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
+		console.log(based);
+		//카테고리
+		var category=$(".button.category1.active").attr("value");
+		console.log(category);
+		//강의수준
+		var level=$(".button.level").attr("value");
+		console.log(level);
+		/* 1페이지 끝 */
+		//강의 두줄 요약
+		var description=$(".textarea.description").val();
+		console.log(description);
+		//강의 상세 내용(해당내용은 강의 상세페이지에서 보여집니다.)
+		var body=$(".note-editable").html();
+		console.log(body);
+		/* 2페이지 끝 */
 		
+		/* 3페이지  끝 */
 		
+		/* 4페이지 끝  */
+		//가격정보
+		var price= $(".box_input.price").val();
+		console.log(price);
+		//오픈 여부
+		//var open=$(".buttons")
+		//수강기간
+		/* 5페이지 끝 */
+		//data 처리 시작
+		//ajax 처리(Data저장)
 	});
 });
 	
