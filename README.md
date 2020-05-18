@@ -1,11 +1,12 @@
 # CodeFarm Project
 프로젝트 참가자:<br>
 1.변재정<br>
-2.LEE소영
-3.홍준킴[외쿡에서 살다왔어요 ]
-4.정민수
-5.조수아
-6.최우영
+2.LEE소영<br>
+3.홍준킴[외쿡에서 살다왔어요]<br>
+4.정민수<br>
+5.조수아<br>
+6.최우영<br>
+<hr>
 # 학습 관리 시스템(learning management system)[LEE MAKER SYSTEM]
 https://bit.ly/2wV7HC2 1234<br>
 제작 참고자료 http://naver.me/5ykyBqcs [naver] <br> https://drive.google.com/file/d/1fXHY5bVUV8GywTpPKrp77Vukq9fdRFNH/view?usp=sharing[google driver]<br>
