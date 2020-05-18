@@ -1,11 +1,13 @@
+<%@page import="com.lecture.action.LectureListAction"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="com.lecture.db.FileDTO"%>
-<%@page import="java.util.Arrays"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
-<%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -38,9 +40,9 @@
 		//int l_number = Integer.parseInt(request.getParameter("l_number")); // 강의 번호
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
 		
-		//List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
-		Map review_rating = (Map)request.getAttribute("review_rating"); // 별점 정보
-		//ArrayList<ReviewDTO> reviewList = request.getAttribute("reviewList"); // 리뷰 정보
+		List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
+		Map<Integer, Map<String, Object>> ratingList = (Map<Integer, Map<String, Object>>)request.getAttribute("ratingList"); // 별점 정보
+		//ArrayList<ReviewDTO> reviewList = request.getAttribute("rev;iewList"); // 리뷰 정보
 		ArrayList<ArrayList<FileDTO>> fileSet = (ArrayList<ArrayList<FileDTO>>)request.getAttribute("fileSet"); // 파일 정보
 		
 	/* 테스트 용 */
@@ -51,6 +53,30 @@
 		ArrayList<String> reviewList = new ArrayList<String>(Arrays.asList("adg", "ger", "agee", "erghe", "hgree")); // 리스트 테스트용
 		request.setAttribute("reviewList", reviewList);
 	/* 테스트 용 */
+	
+	/* 파일 개수, 시간 계산 */
+		int fileCount = 0;
+		double totalTime = 0;
+		int total_Hour = 0;
+		int total_Min = 0;
+		ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
+		
+		for(int i=0; i<fileSet.size(); i++){
+			for(int j=0; j<fileSet.get(i).size(); j++){
+				fileList.add(fileSet.get(i).get(j));
+				totalTime += fileList.get(fileCount).getF_playtime();
+				fileCount++;
+			}
+		}
+		
+		if(totalTime >= 3600){
+			total_Hour = (int)(totalTime / 3600);
+			total_Min = (int)((totalTime - (total_Hour * 3600)) / 60);
+		}else{
+			total_Hour = 0;
+			total_Min = (int)(totalTime / 60);
+		}
+	/* 파일 개수, 시간 계산 */
 	%>
 	<div id="root">
 	
@@ -84,14 +110,14 @@
 										
 										<!-- review 별점 전체 평균  -->
 											<div class='rating_star'>
-												<div class='star_solid' style="width:<%= (double)review_rating.get("rating_avg") * 20 %>%">
+												<div class='star_solid' style="width:<%= (double)ratingList.get(ldto.getL_number()).get("rating_avg") * 20 %>%">
 												<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
 												</div>
 												<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
 											</div>
 										<!-- review 별점 전체 평균  -->
 
-											<small>(<%= review_rating.get("reviewAll") %>개의 수강평)</small>
+											<small>(<%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평)</small>
 										</span>
 										<br class="is-hidden-mobile">
 										<small class="student_cnt"><%= ldto.getPaynum() %>명의 수강생</small>
@@ -99,7 +125,7 @@
 										
 									<!-- lecture_type_category -->
 										<small class="course_skills">
-<!-- ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ주소변경 -->
+<!-- ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ주소변경 - 강의 태그 카테고리별 링크 -->
 											<a href=""><%= ldto.getL_type3() %></a>
 											<%-- <a href="/tag-curation/skill/57" target="_blank"><%= ldto.getL_type3() %></a> --%>
 										</small>
@@ -127,7 +153,7 @@
 												무료
 											<% } else { %>
 											<script type="text/javascript">
-												document.write(NumberFormat(${ ldto.l_price }));					
+												document.write(numberFormat(${ ldto.l_price }));					
 											</script>원
 											<% } %>
 										</div>
@@ -142,6 +168,7 @@
 												<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 										</div>
 											<% } else { %>
+<!-- 수강 신청 onCilck 링크 추가 필요 & 결재 내역 확인 후 강의 보기 버튼 추가 -->
 												<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
 										</div>
 												<div class="course_btn_cover">
@@ -171,8 +198,11 @@
 										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/instructors/57904/courses"><%= ldto.getL_m_name() %></a>
 									</div>
 									<div class="course_info_row">
-<!-- 강의 수 강의시간 변경 -->
-										<i class="far fa-play-circle"></i>50회 수업· 총 4시간 2분수업
+										<i class="far fa-play-circle"></i><%
+											out.println(fileCount + "회 수업 · 총 ");
+											if(total_Hour != 0){ out.print(total_Hour + "시간" + total_Min + "분 수업"); }
+											else { out.print(total_Min + "분 수업"); }
+										%>
 									</div>
 <!--시청 기간, 수료증, 난이도 삭제 예정
 									<div class="course_info_row">
@@ -195,52 +225,46 @@
 								</div>
 								<div class="course_another_cover course_relation_list_cover divactive">
 								
-<!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->								
+<!-- 같은 강사의 강의 리스트 2개 보여주기 & 더 보기(DB확인) -->
 									<div class="course_another_list">
 									<%
-							/*  action 페이지로 작성하기
-								LectureDTO list_ldto = new Lecture;
-								List  list_ldto.getlist ~~
-								setAtrribute(lectureList ~
-								
-							*/
-									%>
-									<%
-										/*
-										List<LectureDTO> lectureList = (List<LectureDTO>)request.getAttribute("lectureList");
 										
-										int size = lectureList.size();
-										int num = 0;
+									/*
+										int lec_loop = 0;
 										
-										if(size > 2) size = 2; //목록 2개만 사용
-										*/
-										int size = 1; // test용
-										if(size != 0){
-										/*
-											while(size <= num;){
-												LectureDTO ldto_list = lectureList.get(num);
-										*/
+										if(lectureList.size() >= 2) { lec_loop = 2; }
+										else if(lectureList.size() == 1) { lec_loop = 1; }
+										else{ lec_loop = 0; }
+										
+										if(lec_loop == 2 || lec_loop == 1){
+											for(int i=0; i<lec_loop; i++){
+									*/
+												System.out.println("sssssssssssssssssssss");
+									// 현재 강의 제외하기
+												//lectureList.get(i).getL_number()
 									%>
-										<!--
+										<%for(int i=0; i<1; i++){ %>
 										<li>
-											<a href="/Detail.le?l_number=<%-- <% ldto_list.getL_number %> --%>">
+											<a href="/Detail.le?num=<%-- <% lectureList.get(i).getL_number() %> --%>">
 												<div class="el_thumbnail">
-													<img src="./img/main-img/<%-- <%= ldto_list.getL_img() %> --%>" alt="<%-- <%= ldto_list.getL_title() %> --%>">
+													<img src="./img/main-img/<%= lectureList.get(i).getL_img() %>" alt="<%= lectureList.get(i).getL_title() %>">
 												</div>
 												<div class="el_info">
-													<div class="el_title"><%-- <%= ldto_list.getL_title() %> --%></div>
+													<div class="el_title"><%= lectureList.get(i).getL_title() %></div>
 													<div class="el_subinfo">
 														<div class="el_subtitle">
-															<span><%-- <%= ldto_list.getL_price() %> --%></span>
+															<span><%= lectureList.get(i).getL_price() %></span>
 														</div>
 														<div class="el_metas">
-															<i class="fas fa-user"></i> <%-- <%= DB에서 (subscribe)(DB, lectureDTO 추가) 가져오기  %> --%> <i class="fas fa-star"></i> <%-- <%= DB(reveiw table)에서 (rating_score) 가져오기  %> --%>
+															<i class="fas fa-user"></i> <%= ratingList.get(lectureList.get(i).getL_number()).get("reviewAll") %> <i class="fas fa-star"></i> <%= ratingList.get(lectureList.get(i).getL_number()).get("rating_avg") %>
 														</div>
 													</div>
 												</div>
 											</a>
 										</li>
-										-->
+										<% } %>
+										
+										<%-- <% } } %> --%>
 										<li>
 											<a href="/course/파이썬-예제">
 												<div class="el_thumbnail">
@@ -278,16 +302,13 @@
 											</a>
 										</li>
 										<%
-										/*
-												num++;
-												}
-										*/
+										if(false){
 										 %>
 									<% } else { %>
 										<div class="course_relation_no_result">아직 다른 강의가 없어요.</div>
 									<% } %>
 									</div>
-									<% if(size != 0){ %>
+									<% if(true){ %>
 									<div class="course_another_btn course_relation_btn">
 										<a href="/instructors/57904/courses">+ 다른 강의 더보기</a>
 									</div>
@@ -440,7 +461,7 @@
 											</h3>
 											<p class="m_-7880752960710192036p1">
 												<strong>
-													<span class="m_-7880752960710192036s1">김왼손</span>
+													<span class="m_-7880752960710192036s1"><%= ldto.getL_m_name() %></span>
 												</strong>
 											</p>
 											<blockquote>
@@ -469,16 +490,17 @@
 									
 									
 
-<!-- 강사 아이콘 & 강의실 이름 정보 가져오기 - 회원 정보페이지에서 등록된 정보로 기본 출력 -->									
 										<div class="course_instructor_profile">
 											<figure class="image">
+<!-- DB에 회원 아이콘 등록 후 아래 코드 사용  -->
+												<%-- <img class="is-rounded" src="./img/member-img/<%= mdto.getM_icon %>"> --%>
 												<img class="is-rounded" src="https://cdn.inflearn.com/wp-content/uploads/avatars/57904/5a37dd40d732e-bpfull.png">
 											</figure>
 										</div>
 										<h4 class="name">
-											<a href="/instructors/57904/courses">김왼손의 왼손코딩</a>
+<!-- 회원 번호 => 주소변경 -->
+											<a href="/instructors/57904/courses"><%= ldto.getL_m_name() %></a>
 										</h4>
-<!-- 강사 아이콘 & 강의실 이름 정보 가져오기 - 회원 정보페이지에서 등록된 정보로 기본 출력 -->																			
 										
 										
 										
@@ -487,966 +509,117 @@
 									</div>
 									<p class="introduce"></p>
 								</article>
+								
+							<!-- 교육 과정 -->
 								<article class="curriculum" id="curriculum">
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
 									
-									
+									<!-- video count, playtime -->
 										<div class="curriculum_header">
 											<span class="section_all"></span>
-<!-- 강의 수 & 시간 데이터 받아오기(DB 합쳐서 계산 or 계산값 가져오기) -->
-									<%
-										int fileCount = 0;
-										
-										ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
-										for(int i=0; i<fileSet.size(); i++){
-											for(int j=0; j<fileSet.get(i).size(); j++){
-												System.out.println(fileSet.get(i).get(j));
-												fileList.add(fileSet.get(i).get(j));
-												System.out.println(fileList.get(fileCount).getF_playtime());
-												fileCount++;
-											}
-										}
-												System.out.println(fileCount);
-									%>
-											<span class="curriculum_length">50 강의</span>
-											<span class="curriculum_runtime">4시간 2분</span>
-<!-- 강의 수 & 시간 데이터 받아오기(DB 합쳐서 계산 or 계산값 가져오기) -->											
+											<span class="curriculum_length"><%= fileCount %> 강의</span>
+											<span class="curriculum_runtime">
+										<%
+											if(total_Hour != 0){ out.print(total_Hour + "시간" + total_Min + "분"); }
+											else { out.print(total_Min + "분"); }
+										%>
+											</span>
 										</div>
-									
-									
-									
+									<!-- video count, playtime -->
 										
-<!-- 반복문 / 배열 이용 교육과정 출력 div내부 확인 후 작업 할 것(DB - DB처리후 출력확인) -->
-									
 									<!-- section_content -->
 									<%
-									//for(int sec_i=0; sec_i<fileList.size(); sec_i++){
-									//fileList.get(sec_i).getF_sec_list;
+									fileCount = 0;
+									double sec_Total = 0;
+									
+									for(int i=0; i<fileSet.size(); i++){
 									%>
 										<div class="section_cover">
 											<div class="section_header">
 												<div class="section_header_left">
 													<span class="section_header_icon plus"><i class="fa fa-plus"></i></span>
 													<span class="section_header_icon minus"><i class="fa fa-minus"></i></span>
-<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
-													<span class="unit_title">섹션 0. 미운코딩새끼</span>
-													<span class="unit_title">섹션 . 미운코딩새끼</span>
+													<span class="unit_title">섹션 <%= i %>. <%= fileList.get(fileCount).getF_sec_name() %></span>
 												</div>
 												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span>
-													<span class="unit_time"><i class="far fa-clock"></i>04 : 00</span>
+													<span class="unit_length"><%= fileSet.get(i).size() %> 강의</span>
+													<span class="unit_time"><i class="far fa-clock"></i><%
+														/* 섹션별 시간 계산 */
+														for(int t=0; t<fileSet.get(i).size(); t++){
+															sec_Total += fileList.get(t).getF_playtime();
+														}
+														int sec_Min = (int)(sec_Total / 60);
+														int sec_Sec = (int)(sec_Total - sec_Min * 60);
+														
+														String sMin_Str = sec_Min <= 10 ? "0" + Integer.toString(sec_Min) : Integer.toString(sec_Min);
+														String sSec_Str = sec_Sec <= 10 ? "0" + Integer.toString(sec_Sec) : Integer.toString(sec_Sec);
+														
+														out.println(sMin_Str + " : " + sSec_Str);
+														%>
+													</span>
 												</div>
 											</div>
 											
 										<!-- video_play -->
-										<%-- <% for(int file_i=0; file_i<fileList.size(); file_i++){ %> --%>
 											<div class="lecture_cover">
 											
+										<% for(int j=0; j<fileSet.get(i).size(); j++){ %>
 											<!-- video -->
+<!-- 회원 확인 후 링크 이동 -->
+											<% if(false){ %>
 <!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
 												<a class="unit_item" href="#">
 												<%-- <a class="unit_item" href="/lecture.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fdto.getF_num %>"> --%>
+											<% } else { %>
+												<div class="unit_item">
+											<% } %>
 													<div class="unit_item_left">
 <!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">미운코딩새끼</span>
+														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
 														<%--<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fdto.getF_sec_name %></span> --%>
 													</div>
 													<div class="unit_item_right">
 														<span class="unit_preview">
+														<% if(false){ %>
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">미리보기</span>
 																<span class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
 															</button>
+														<% } %>
 														</span>
-<!-- 파일관련 DB & 파일 업로드 후 주소, 변수 변경 후 아래 코드 사용 -->
-														<span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i>04 : 00</span>
-														<%-- <span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i><%= fdto.getFile_playtime %></span> --%>
+														<span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i>
+														<%  /* 파일별 시간 계산 */
+															int col_Min = (int)(fileList.get(j).getF_playtime() / 60);
+															int col_Sec = (int)(fileList.get(j).getF_playtime() - col_Min * 60);
+															
+															String cMin_Str = col_Min <= 10 ? "0" + Integer.toString(col_Min) : Integer.toString(col_Min);
+															String cSec_Str = col_Sec <= 10 ? "0" + Integer.toString(col_Sec) : Integer.toString(col_Sec);
+															
+															out.println(cMin_Str + " : " + cSec_Str);
+														%>
+														</span>
 													</div>
+<!-- 회원 확인 후 링크 이동 -->
+											<% if(false){ %>
 												</a>
+											<% } else { %>
+												</div>
+											<% } %>
 											<!-- video -->
-											
+										<% fileCount++; } %>
+										
 											</div>
-										<%-- <% } %> --%>
 										<!-- video_play -->
-											
 										</div>
-									<%-- <% } %> --%>
+									<% } %>
 									<!-- section_content -->
 									
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i class="fa fa-plus"></i></span>
-													<span class="section_header_icon minus"><i class="fa fa-minus"></i></span>
-													<span class="unit_title">섹션 1. 프로그램과 프로그래밍</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span>
-													<span class="unit_time"><i class="far fa-clock"></i>08 : 00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8206">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">프로그램과 프로그래밍</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview">
-															<button class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span>
-																<span class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button>
-														</span>
-														<span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i>08 : 00</span>
-													</div>
-												</a>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus">
-													<i class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														2. 파이썬</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>17 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8208">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">왜 파이썬일까요?</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview">
-															<button class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span>
-																<span class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button>
-														</span>
-														<span class="unit_time is-hidden-mobile"><i class="far fa-clock"></i>10 : 00</span>
-													</div>
-												</a>
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8209">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">파이썬 설치하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div></a>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														3. 입력과 출력</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>09 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8211"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">출력하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div></a><a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8212"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">입력하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div></a>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														4. 변수와 이름</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>08 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8214"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">변수와
-															변수이름</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>08 : 00</span>
-													</div></a>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														5. 프로그램의 기본재료</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">3 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>15 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8216"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">숫자형,
-															문자형, 불린</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div></a><a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8217"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">리스트,
-															튜플, 딕셔너리</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div></a><a class="unit_item" href="/course/파이썬-기초-강좌/lecture/8218"><div
-														class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">자료형
-															변환하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"><button
-																class="button is-link is-small">
-																<span class="is-hidden-mobile">미리보기</span><span
-																	class="is-hidden-tablet"><i class="fa fa-smile-o"></i></span>
-															</button></span> <span class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>02 : 00</span>
-													</div></a>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														6. 주석</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>02 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">주석</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>02 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														7. 문자열</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">8 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>29 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">문자열</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">포맷팅</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>02 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">format()</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">인덱싱</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">슬라이싱</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">메서드</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">독스트링</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>01 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">end,
-															이스케이프 코드</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														8. 리스트</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">4 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>18 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">리스트</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">값
-															추가하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">인덱싱,
-															슬라이싱</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">메서드</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														9. 튜플</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>05 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">튜플</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>02 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">패킹,
-															언패킹</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														10. for</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">4 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>19 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">for</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">range()</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>02 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">for
-															x 2</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">컴프리헨션</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														11. 연산자</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">7 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>35 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">할당</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>08 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">산술</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">%로
-															홀짝 구분하기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">문자열
-															연산자</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">비교</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">논리</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">멤버쉽</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														12. 조건문</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>12 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">if</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">else,
-															elif</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														13. while</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>10 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">while</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">continue,
-															break</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														14. 딕셔너리</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>10 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">딕셔너리</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>06 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">메서드</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														15. 함수</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">3 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>12 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">함수</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">함수를
-															사용하는 이유</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">여러개
-															돌려주기</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>04 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														16. 모듈</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">2 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>10 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">모듈</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>03 : 00</span>
-													</div>
-												</div>
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">랜덤</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>07 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														17. 객체</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>05 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">객체</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														18. 코딩 스타일</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>05 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">코딩
-															스타일</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>05 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="section_cover">
-											<div class="section_header">
-												<div class="section_header_left">
-													<span class="section_header_icon plus"><i
-														class="fa fa-plus"></i></span> <span
-														class="section_header_icon minus"><i
-														class="fa fa-minus"></i></span> <span class="unit_title">섹션
-														19. 구글링 방법</span>
-												</div>
-												<div class="section_header_right is-hidden-mobile">
-													<span class="unit_length">1 강의</span> <span
-														class="unit_time"><i class="far fa-clock"></i>09 :
-														00</span>
-												</div>
-											</div>
-											<div class="lecture_cover">
-												<div class="unit_item">
-													<div class="unit_item_left">
-														<i class="fa fa-play-circle-o"></i><span class="unit_title">구글링
-															방법</span>
-													</div>
-													<div class="unit_item_right">
-														<span class="unit_preview"></span> <span
-															class="unit_time is-hidden-mobile"><i
-															class="far fa-clock"></i>09 : 00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-<!-- 반복문 / 배열 이용 교육과정 출력 div내부 확인 후 작업 할 것(DB - DB처리후 출력확인) -->		
-
-
-
-
-								
 									</div>
 								</article>
+							<!-- 교육 과정 -->
+							
+							<!-- 수강 후기 -->
 								<article class="course_date">
 									<h4 class="sub_heading">공개 일자</h4>
 <!-- update 날짜 DB추가 후 뒤쪽 날짜 변경 -->	
@@ -1455,7 +628,7 @@
 									</div>
 								</article>
 								
-							<!-- review_area -->
+							<!-- 수강 후기 -->
 								<article class="reviews" id="reviews">
 									<h4 class="sub_heading">수강 후기</h4>
 									<div class="review_summary">
@@ -1493,19 +666,19 @@
 									<% } %>
 									 --%>
 									 
-<!-- +++++++++++++++삭제 후 사용+++++++++++++++ -->							 
+<!-- +++++++++++++++삭제 & 위쪽 코드 주석 해제 후 사용+++++++++++++++ -->							 
 									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
 										<div class="average">
-											<span class="average_num"><%= review_rating.get("rating_avg") %></span>
+											<span class="average_num"><%= ratingList.get(ldto.getL_number()).get("rating_avg") %></span>
 											<span class="average_star">
 												<div class='rating_star'>
-													<div class='star_solid' style="width:<%= (double)review_rating.get("rating_avg") * 20 %>%">
+													<div class='star_solid' style="width:<%= (double)ratingList.get(ldto.getL_number()).get("rating_avg") * 20 %>%">
 													<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
 													</div>
 													<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
 												</div>
 											</span>
-											<h5 class="review_total"><%= review_rating.get("reviewAll") %>개의 수강평</h5>
+											<h5 class="review_total"><%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평</h5>
 										</div>
 									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
 										
@@ -1514,17 +687,17 @@
 										<% for(int i=5; i>0; i--){ %>
 											<div class="review_counting">
 												<label><%= i %>점</label>
-												<progress class="progress is-link" max="<%= review_rating.get("reviewAll") %>" value="<%= review_rating.get("rating_" + i) %>"></progress>
+												<progress class="progress is-link" max="<%= ratingList.get(ldto.getL_number()).get("reviewAll") %>" value="<%= ratingList.get(ldto.getL_number()).get("rating_" + i) %>"></progress>
 											</div>
 										<% } %>
 										</div>
 									<!-- 평점 progress_bar -->
-<!-- +++++++++++++++삭제 후 사용+++++++++++++++ -->						
+<!-- +++++++++++++++삭제 & 위쪽 코드 주석 해제 후 사용+++++++++++++++ -->						
 
 									</div>
 									<div class="review_list">
 									
-<!-- %%%%% 삭제 %%%%% 후 %%%%% 사용 %%%%% -->	
+<!-- %%%%% 삭제 %%%%% 아래 코드 주석 해제 후 %%%%% 사용 %%%%% -->		
 										<div class="article_container">
 											<article class="media review_item">
 												<figure class="media-left image is-64x64">
@@ -1573,7 +746,7 @@
 													들을 수 있어 추천합니다!
 											</div></div></div></article>
 										</div>
-<!-- %%%%% 삭제 %%%%% 후 %%%%% 사용 %%%%% -->	
+<!-- %%%%% 삭제 %%%%% 아래 코드 주석 해제 후 %%%%% 사용 %%%%% -->	
 
 <%--
 								<!-- review_container -->
@@ -1587,9 +760,7 @@
 											<% if(reviewList.get(r_loop).getR_re_lev == 0){ %>
 											<!-- 회원 아이콘 등록 -->
 												<figure class="media-left image is-64x64">
-<!-- DB에 회원 아이콘 등록 후 아래 코드 사용  -->
-													<img src="./img/main-img/lect_10.png" class="swiper-lazy is-rounded" alt="default_profile.png" />
-													<!-- <img src="./img/member-img/" class="swiper-lazy is-rounded" alt="<%= mdto.getM_icon %>" /> -->
+
 												</figure>
 											<!-- 회원 아이콘 등록 -->
 											
@@ -1677,7 +848,7 @@
 										
 									</div>
 								</article>
-							<!-- review_area -->
+							<!-- 수강 후기 -->
 							
 							</div>
 						</div>
@@ -1688,7 +859,6 @@
 		</main>
 	</div>
 	
-	<script src="https://code.jquery.com/jquery-2.2.1.js"></script>
 	<script type="text/javascript">
 		
 	$(document).ready(function(){
@@ -1712,8 +882,6 @@
 				success: function (json){
 					var output = "";
 					for(var i=0; i<json.length; i++){
-					//	var arr_Date = json[i].r_reg_date.split(" ");
-					//	var reg_Date = arr_Date[0] + " " + arr_Date[1] + " " + arr_Date[2];
 						output += "<div class='article_container'><article class='media review_item'>"
 								+ "  <figure class='media-left image is-64x64'>"
 								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
@@ -1820,16 +988,16 @@
 	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
 	
 	/* 강의 목록 opne */
-	    $(".section_cover").on('click', function () {
+	    $(".section_header").on('click', function () {
 	    	var $this = $(this);
 	    	var checkElement = $this.children();
 	        
-	    	if(checkElement.is(".section_header") && (checkElement.next().css('max-height') != '0px')){
-	    		checkElement.removeClass('open');
-	    		checkElement.next().css('max-height', '0');
-	    	} else if(checkElement.is(".section_header") && (checkElement.next().css('max-height') == '0px')){
-	    		checkElement.addClass('open');
-	    		checkElement.next().css('max-height', 'max-content');
+	    	if($this.is(".section_header") && ($this.nextAll().css('max-height') != '0px')){
+	    		$this.removeClass('open');
+	    		$this.nextAll().css('max-height', '0');
+	    	} else if($this.is(".section_header") && ($this.nextAll().css('max-height') == '0px')){
+	    		$this.addClass('open');
+	    		$this.nextAll().css('max-height', 'max-content');
 	    	}
 	    });
 	/* 강의 목록 opne */

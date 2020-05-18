@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .modal>.signin_modal {
-    width: 360px;
-    height: 530px;
+    width: 300px;
+    height: 700px;
     background: #fff;
     position: fixed;
     border-radius: 3px;
@@ -48,15 +48,14 @@ article, aside, figure, footer, header, hgroup, section {
     color: #929292;
 }
 
-.atom_field .input {
+.atom_field .name .addr {
     background: #f6f6f6;
     height: 44px;
     border-radius: 3px;
-    font-size: 1rem;
+    font-size: 0.5rem;
     color: #5f5f5f;
     box-shadow: none;
     border: 0;
-    padding: 0 12px;
 }
 
 .modal>.signin_modal .main_form .signin {

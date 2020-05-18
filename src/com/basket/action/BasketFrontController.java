@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 
 
 
@@ -78,7 +80,28 @@ public class BasketFrontController extends HttpServlet{
 			}/* else if(command.equals("/WishList.wi"))
 				action = new wishlistview();*/
 			
+		}else if(command.equals("/JqBasketController.ba")){
+			System.out.println("/JqBasketController.ba");
+			
+			action = new JqBasketController();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}else if(command.equals("/JqBasket.ba")){
+			System.out.println("/JqBasket.ba");
+			
+			action = new JqBasket();
+			try {
+				/*forward = */action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
 		}
+		
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

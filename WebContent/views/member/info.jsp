@@ -74,6 +74,7 @@ span {
 </head>
 <link rel="stylesheet" href="./css/admin.css">
 <body class="profile dashboard is_logged_in " >
+
 <% 
  	String m_email = (String)session.getAttribute("m_email");
 	if(m_email == null){
@@ -123,50 +124,43 @@ span {
           </div>
           <small class="warning"></small>
         </form>
-
+        
+	<form action="./IntroUpdateAction.me" method="post">
         <div class="right">
           <label for="name" class="label input_label">
             <span>닉네임</span>
-            <input id="name" type="text" class="input" value="닉네임" placeholder="변경할 닉네임을 입력해주세요">
+            <input id="name" type="text" class="input" value="<%=mdto.getM_nick() %>" placeholder="변경할 닉네임을 입력해주세요">
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>
-            <textarea class="tinymce" id="mce_0" aria-hidden="true" cols="40" rows="10">
-            
-            </textarea>
+            <textarea name="n_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="40" rows="10" placeholder="자기소개를 해주세요"><%
+            if(mdto.getM_intro() == null){
+            	%>자신을 소개를 해주세요.
+            	<%
+            }else if(mdto.getM_intro() != null){
+            	out.print(mdto.getM_intro());
+            }
+            %></textarea>
 		
 		  </label>
         </div>
       </div>
-      <button class="button is-primary" type="button">저장하기</button>
+      <input type="submit" class="button is-primary"  value="저장하기">
     </div>
-
+</form>
     <div class="email_pwd_container">
-      <div class="email_edit">
-        <label for="email_change" class="label input_label">
-          <span>이메일</span>
-          <small>(※ 이메일 변경 후 재인증 필요)</small>
-        </label>
-        <div class="edit_container">
-          <input id="email_change" type="email" class="input" value="<%=m_email %>" placeholder="변경할 이메일을 입력해주세요">
-          <small class="invalid"></small>
-          <div class="button_container">
-            <button class="button is-primary" type="button">저장하기</button>
-          </div>
-        </div>
-      </div>
-
+	<form action="./PwUpdateAction.me">
       <div class="password_edit">
         <label for="new_password" class="label input_label"><span>비밀번호</span></label>
-        <input id="password" type="password" data-type="current" class="input" placeholder="현재 비밀번호">
-        <input id="new_password" type="password" data-type="new" class="input" placeholder="새 비밀번호">
+        <input id="m_pw" type="password" data-type="current" class="input" placeholder="현재 비밀번호">
+        <input id="new_pw" type="password" data-type="new" class="input" placeholder="새 비밀번호">
         <input id="confirm_password" type="password" data-type="confirm" class="input" placeholder="새 비밀번호 확인">
         <small class="invalid"></small>
         <div class="button_container">
-          <button class="button is-primary" type="button">저장하기</button>
+          <input type="submit" class="button is-primary" value="저장하기">
         </div>
       </div>
-
+</form>
       <div class="secession">
         <div class="label_wrap">
           <label class="label input_label"><span>탈퇴</span></label> <!-- 토글  -->
@@ -202,5 +196,31 @@ span {
 </div>
 <jsp:include page="/include/footer.jsp"/>
 </body>
+<script type="text/javascript">
+$("#password").on("input propertychange paste",function() { //값을 입력하거나 값이 바뀌었을경우
+	if (!regExpPw.test($("#password").val())) {
+		$(".error_msg1").text("숫자와 영문자 특수문자(선택) 조합으로 8~15자리를 사용해야 합니다.");
+		$(".error_msg1").css("color", "red");
+		pwcheck=false;
+		return false;
+	} else {
+		$(".error_msg1").text("사용가능");
+		$(".error_msg1").css("color", "blue");
+		pwcheck=true;
+	}
 
+});
+$("#password_check").on("input propertychange paste",function() { //값을 입력하거나 값이 바뀌었을경우
+	if ($("#password").val() == $("#password_check").val()) {
+		$(".error_msg2").text("비밀번호가 일치합니다.");
+		$(".error_msg2").css("color", "blue");
+		pwcheck2=true;
+
+	} else {
+		$(".error_msg2").text("비밀번호가 일치하지 않습니다.");
+		$(".error_msg2").css("color", "red");
+		pwcheck2=false;
+	}
+});
+</script>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class BoardFrontController extends HttpServlet{
@@ -76,9 +77,21 @@ public class BoardFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/noticeWrite.bo")){
 			//글쓰기 뷰
+			
+			//세션확인
+			HttpSession session = request.getSession();
+
+			String id =(String) session.getAttribute("m_email");
+			
 			forward= new ActionForward();
-			forward.setPath("./views/board/noticeWriteForm.jsp");
-			forward.setRedirect(false);		
+			
+			if(id == null || !id.equals("admin@naver.com")){
+				forward.setPath("./notice.bo");
+				forward.setRedirect(true);
+				
+			}else{
+			forward.setPath("/views/board/noticeWriteForm.jsp");
+			forward.setRedirect(false);}		
 			
 		}else if(command.equals("/noticeWriteAction.bo")){
 			//글쓰기 모델
@@ -88,9 +101,33 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/noticeWriteAction.bo")){
-			//게시글 1개 읽기 (모델-뷰)
-			action=new NoticeWriteAction();
+		}else if(command.equals("/noticeContent.bo")){
+			//게시글 읽기 (모델-뷰)
+			action=new NoticeContentAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeUpdate.bo")){
+			//게시글 읽기(모델-뷰)
+			action=new NoticeUpdate();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeUpdateAction.bo")){
+			//게시글 읽기(모델-뷰)
+			action=new NoticeUpdateAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/noticeDeleteAction.bo")){
+			//게시글 삭제(모델)
+			action=new NoticeDeleteAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
