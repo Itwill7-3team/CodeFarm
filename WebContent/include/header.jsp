@@ -15,8 +15,10 @@ content="width=device-width, user-scalable=yes,
 initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
+	String nick="";
 	if(session.getAttribute("m_email")!=null){
 	 loginEmail=(String)session.getAttribute("m_email");
+	 nick=(String)session.getAttribute("nick");
 	}
 %>
 <jsp:include page="nav-footer.jsp" />
@@ -323,7 +325,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 												</div>
 											</div>
 											<div class="right_content">
-											<a href="#"><span class="name">변재정<!-- 회원이름  --></span></a>
+											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
 											<span class="rank">학생<!-- 회원 등급 --></span>
 											</div>
 										</div>
