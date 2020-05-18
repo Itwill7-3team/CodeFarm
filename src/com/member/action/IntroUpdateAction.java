@@ -7,33 +7,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.member.db.MemberDAO;
-import com.member.db.MemberDTO;
 
-public class MemberInfoAction implements Action{
+public class IntroUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.setContentType("text/html; charset=UTF-8"); 
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String m_email = (String)session.getAttribute("m_email");
+		
+		String m_intro = request.getParameter("m_intro");
+		String m_nick = request.getParameter("m_nick");
+		
 		if(m_email == null) {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('로그인을 해주세요');");
-			out.print("location.href='Main.le'");
+			out.print("locattion.href='Main.le'");
 			out.print("</script>");
 			out.close();
 			return null;
 		}
-		
 		MemberDAO mdao = new MemberDAO();
-		MemberDTO mdto = new MemberDTO();
-		
-		mdto = mdao.getInfo(m_email);
-		request.setAttribute("mdto", mdto);
-		ActionForward forward = new  ActionForward();
-		forward.setPath("./views/member/info.jsp");
-		forward.setRedirect(false);
+		mdao.IntroUpdate(m_email,m_intro,m_nick);
+		ActionForward forward = new ActionForward();
+		forward.setPath("./MemberInfo.me");
+		forward.setRedirect(true);
 		return forward;
 	}
-
 }
