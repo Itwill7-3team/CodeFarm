@@ -394,8 +394,11 @@ $(document).ready(function() {
 	//저장하기 버튼 누르면 저장하는 이벤트
 	$(".save").on("click",function(){
 		var title=$("input[name=title]").val();
+		var abilities=$(".boxes.abilities").
 		console.log(title);
-	});///////ssss
+		
+		
+	});
 });
 	
 	</script>
