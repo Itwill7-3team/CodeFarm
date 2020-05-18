@@ -125,7 +125,7 @@ public class BasketDAO {
 		
 		ArrayList lectureList = new ArrayList();
 		ArrayList basketList = new ArrayList();
-		ArrayList wishlistList = new ArrayList();
+		ArrayList wishList = new ArrayList();
 		
 		
 
@@ -157,6 +157,7 @@ public class BasketDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
+					ldto.setL_number(rs2.getInt("l_number"));
 					ldto.setL_m_id(rs2.getString("l_m_id"));
 					ldto.setL_m_name(rs2.getString("l_m_name"));
 					ldto.setL_img(rs2.getString("l_img"));
@@ -181,14 +182,14 @@ public class BasketDAO {
 					widto.setW_m_id(rs3.getString("w_m_id"));
 					widto.setW_num(rs3.getInt("w_num"));
 					System.out.println("-----widto------");
-					wishlistList.add(widto);
+					wishList.add(widto);
 					
 				}
 			}
 			
 			vec.add(0,basketList);
 			vec.add(1, lectureList);
-			vec.add(2,wishlistList);
+			vec.add(2,wishList);
 			
 			System.out.println(" 장바구니,상품정보 리스트 백터에 저장완료 :"+vec);			
 			
