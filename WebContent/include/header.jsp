@@ -6,13 +6,19 @@
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
 <meta name="viewport"
 content="width=device-width, user-scalable=yes,
 initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
+	String nick="";
 	if(session.getAttribute("m_email")!=null){
 	 loginEmail=(String)session.getAttribute("m_email");
+	 nick=(String)session.getAttribute("nick");
 	}
 %>
 <jsp:include page="nav-footer.jsp" />
@@ -319,7 +325,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 												</div>
 											</div>
 											<div class="right_content">
-											<a href="#"><span class="name">변재정<!-- 회원이름  --></span></a>
+											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
 											<span class="rank">학생<!-- 회원 등급 --></span>
 											</div>
 										</div>

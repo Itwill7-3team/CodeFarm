@@ -86,7 +86,7 @@ public class emailSendAction implements Action{
 
 		   forward.setPath("./Main.le");
 		   forward.setRedirect(true);
-			
+			session.removeAttribute("m_email");
 	   }catch(Exception e){
 		   Script.moving(response, "오류가 발생했습니다.");
 	   }

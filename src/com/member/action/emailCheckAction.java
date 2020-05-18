@@ -17,8 +17,8 @@ public class emailCheckAction implements Action{
 		MemberDAO mdao = new MemberDAO();
 		String m_email = null;
 		HttpSession session = request.getSession();
-		if(session.getAttribute("m_email") != null){
-			m_email = (String)session.getAttribute("m_email");
+		if(request.getParameter("m_email") != null){
+			m_email = (String)request.getParameter("m_email");
 		}
 		
 		String code = request.getParameter("code");

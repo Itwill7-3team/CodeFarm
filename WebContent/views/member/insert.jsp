@@ -49,9 +49,9 @@
 					<div class="button_wrapper">
 						<button type="submit" class="btn_sub">가입하기</button>
 					</div>
+					</div>
 			</form>
 		</div>
-	</div>
 	</div>
 	<script type="text/javascript">
 	var idcheck=false;

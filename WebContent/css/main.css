@@ -116,8 +116,17 @@ height: 320px;
   
 }
 
+@media screen and (max-width: 760px) {
+#lec {
+    width: 85%!important;}
+.card{
+	margin: 0 auto;}
+
+}
 @media screen and (max-width: 500px) {
-	/* 웹 가장작은 사이즈일때, 카드2장 나오도록 */
+	/* 웹 가장작은 사이즈, 카드2장 나오도록 */
+#lec {
+    width: 100%!important;}
 .card{
 	width:47%; height: 47%; 
 	margin: 0;
@@ -146,9 +155,9 @@ height: 320px;
 body{margin: 0;}
 
 #lec{
-width: 100%;
+width: 70%;
 margin: 60px auto;
-text-align: center;
+text-align: left;
 }
 
 .title {
@@ -157,7 +166,7 @@ text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
     flex: none;
-    width: 38%; /* 여백조절 */
+    width: 50%; /* 여백조절 38*/
 }
 
 .title a {
@@ -258,18 +267,7 @@ margin: 3rem auto;
 text-align: center;
 }
 
-.title {
-	color: #1E1E1E;
-    line-height: 1.5;
-    font-size: 1.8rem;
-    font-weight: 600;
-    flex: none;
-    width: 38%; /* 여백조절 */
-}
-
 .title>a{
-text-decoration: none;
-font-size:1rem;
 color: 3B3B38;
 }
 

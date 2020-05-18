@@ -2,11 +2,15 @@
 *{
 	margin: 0;
 	padding: 0;
+	outline: none;
 }
 body{
 	margin: 0;
 	padding: 0;
-	background-color: rgb(241, 241, 241)
+	background-color: #f5f5f5;
+}
+h3{
+	font-size:20px !important;
 }
 .header{
 	color: white;
@@ -28,19 +32,22 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.green{
-	background-color: #00c471;
-	color: white;
-	border: 1px solid #00c471;
+.save{
+	background-color: #00c471 !important;
+	color: white !important;
+	border: 1px solid #00c471 !important;
 	
 }
 .header_right>button{
 	font-weight: 800;
+	background-color:white;
     width: 160px;
     height: 48px;
     font-size: 18px;
     border-radius: 3px;
     border: 0;
+    color: black;
+    background-color: white;
 }
 
 .content{
@@ -111,6 +118,7 @@ body{
 .item_title{
 	margin-left: 20px;
 }
+
 .mouse:HOVER{
 	cursor: pointer;
 }
@@ -145,7 +153,8 @@ body{
     display: block;
     box-sizing: border-box;
     width: 100%;
-        box-shadow: 0 2px 10px 0 hsla(0,0%,74.9%,.5);
+   	box-shadow: 0 2px 10px 0 hsla(0,0%,74.9%,.5);
+    max-width: 750px;
 }
 .main_content{
 	display:none;
@@ -175,6 +184,12 @@ body{
     box-sizing: border-box;
     resize: none; 
     overflow: hidden;
+    min-height: 100px;
+}
+.section_cover{
+	border: 1px solid;
+    box-sizing: border-box;
+    padding: 17px;
 }
 .input_item{
 	box-sizing: border-box;
@@ -274,3 +289,124 @@ body{
 .btn_icon{
 	margin-left: 13px;
 }
+/* 커버 이미지*/
+.img_upload{
+	display: flex;
+    margin-top: 32px;
+}
+.tumnail{
+	width: 240px;
+    height: 156px;
+    min-width: 240px;
+    object-fit: cover;
+    background: #d8d8d8;
+}
+.uploader{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 1.5625rem;
+    margin-bottom: 1rem;
+}
+.button2{
+	height: 50px;
+    width: 85px;
+    margin-left: -5px;
+    border-radius: 0;
+    border: none;
+    background: #747474;
+    color: #fff;
+    font-size: 16px;
+}
+.button2.upload{
+	margin-left: 0;
+    background: #1dc078;
+    opacity: 0.7;
+}
+/* 커버 이미지 끝*/
+
+
+/* 설정 */
+.control{
+	margin-top: 16px;
+    position: relative;
+}
+.box_input.price{
+	max-width: 330px;
+    text-align: right;
+    background: none;
+    border-bottom: 1px solid;
+    border-radius: unset;
+}
+.control>span{
+	display: inline-block;
+    position: absolute;
+    transform: translateY(100%);
+    vertical-align: middle;
+    left: 10px;
+    top: 0;
+}
+.notice{
+	margin-top: 16px;
+}
+.button3{
+	width: 120px;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin-right: 8px;
+    margin-bottom: 1px;
+}
+.button3.isActive{
+	background: #1dc078;
+    color: #fff;
+    border: 1px solid #1dc078;
+}
+/* 설정 */
+/* 커리큘럼  */
+.curriculum_list{
+	cursor: move;
+}
+.unit{
+	box-shadow: inset 1px 0 #5eceb3, inset -1px 0 #5eceb3;
+}
+.button4{
+	height: 30px;
+    padding: 0 5px;
+    border: none;
+    background-color: white;
+}
+.box.unit_box{
+	padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.section_title{
+	display: inline-block;
+}
+.unit_btn{
+	display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+.unit.unit_section{
+	box-shadow: inset 1px 1px #5eceb3, inset -1px 0 #5eceb3;
+}
+.add_unit_button_wrapper{
+	text-align: right;
+}
+.unit_lecture{
+	padding: 9px;
+}
+.unit_lecture>.unit_box{
+	border: 1px dashed #d0d0d0;
+    box-shadow: none;
+}
+.unit_btns{
+	 align-self: center;
+}
+/* 커리큘럼 */
