@@ -47,12 +47,13 @@ public class MemberDAO {
 	//이메일 체크  업데이트
 		public int update_emailcheck(String m_email) {
 			int check=-1;
-			sql = "update member set m_emailCheck = true, m_rank='회원' where m_email=?";
+			sql = "update member set m_emailCheck = true, m_rank='회원' where m_email=? ";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, m_email);
 				check=pstmt.executeUpdate();
+				check=1;
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -372,6 +373,19 @@ public class MemberDAO {
 					pstmt.setString(2, m_email);
 					pstmt.executeUpdate();
 					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			public void memberDelete(String m_email) {
+				try {
+					con = getConnection();
+					sql = "delete from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_email);
+					pstmt.executeUpdate();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

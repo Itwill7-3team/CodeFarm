@@ -184,11 +184,13 @@ span {
             <p>3. 탈퇴 후 연동된 소셜 계정 정보도 사라지며, 소셜 로그인으로 기존 계정 이용이 불가능합니다.</p>
             <p>4. 현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주됩니다.</p>
           </div>
-          <input class="input" type="password" placeholder="현재 비밀번호">
+          <form class="delete_form" method="post">
+          <input class="input" name="m_pw" type="password" placeholder="현재 비밀번호">
           <small class="invalid"></small>
           <div class="button_container">
-            <button class="button">탈퇴하기</button>
+            <button class="delete_btn">탈퇴하기</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -241,6 +243,12 @@ var regExpEm = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]
 			$(".error_msg2").text("비밀번호가 일치하지 않습니다.");
 			$(".error_msg2").css("color", "red");
 			pwcheck2=false;
+		}
+	});
+	
+	$(".delete_btn").click(function(){
+		if(confirm("정말 회원탈퇴를 하시겠습니까?")){
+			$(".delete_form").attr("action","./MemberDeleteAction.me");
 		}
 	});
 </script>
