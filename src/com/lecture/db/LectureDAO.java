@@ -205,35 +205,17 @@ public class LectureDAO {
 					if(item.equals("all")){					
 					}
 					else if(item.equals("best")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" order by l_goods desc limit 1,5");
 					}
 					else if(item.equals("new")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" order by l_reg_date desc limit 1,5"); //신규 5개
 					}
 					else if(item.equals("free")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" where l_price=0 order by l_reg_date desc limit 1,5");
 					}
-					else{
-						SQL.append(" WHERE l_type=?");
-					}
-					
+
 					pstmt=con.prepareStatement(SQL.toString()); 
-					
-					if(item.equals("all")){					
-					}
-					else if(item.equals("best")){
-						pstmt.setString(1, "best");
-					}
-					else if(item.equals("new")){
-						pstmt.setString(1, "new");
-					}
-					else if(item.equals("free")){
-						pstmt.setString(1, "free");
-					}
-					else{ //카테고리정보
-						pstmt.setString(1, item);
-					}
-					
+			
 					rs=pstmt.executeQuery();
 					while(rs.next()){
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
