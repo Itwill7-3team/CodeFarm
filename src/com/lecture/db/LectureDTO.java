@@ -23,7 +23,8 @@ public class LectureDTO {
 	private Timestamp pct_date;		//할인날짜
 	private int pay_count;			//결제 횟수
 	private int record;				//강의등록여부
-	
+	private String start_msg;
+	private String end_msg;
 	
 	//setter getter
 	public int getL_number() {
@@ -140,7 +141,20 @@ public class LectureDTO {
 	public void setRecord(int record) {
 		this.record = record;
 	}
-	//toString
+	
+	
+	public String getStart_msg() {
+		return start_msg;
+	}
+	public void setStart_msg(String start_msg) {
+		this.start_msg = start_msg;
+	}
+	public String getEnd_msg() {
+		return end_msg;
+	}
+	public void setEnd_msg(String end_msg) {
+		this.end_msg = end_msg;
+	}
 	@Override
 	public String toString() {
 		return "LectureDTO [l_number=" + l_number + ", l_m_email=" + l_m_email + ", l_title=" + l_title
@@ -148,7 +162,8 @@ public class LectureDTO {
 				+ ", l_description=" + l_description + ", l_content=" + l_content + ", l_type=" + l_type + ", l_type2="
 				+ l_type2 + ", l_level=" + l_level + ", l_img=" + l_img + ", l_price=" + l_price + ", l_goods="
 				+ l_goods + ", l_pct=" + l_pct + ", l_reg_date=" + l_reg_date + ", pct_date=" + pct_date
-				+ ", pay_count=" + pay_count + ", record=" + record + "]";
+				+ ", pay_count=" + pay_count + ", record=" + record + ", start_msg=" + start_msg + ", end_msg="
+				+ end_msg + "]";
 	}
 	
 
