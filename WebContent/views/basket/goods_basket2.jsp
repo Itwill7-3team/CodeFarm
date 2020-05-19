@@ -128,7 +128,7 @@
 	<%
 		List basketList = (List) request.getAttribute("basketList");
 		List lectureList = (List) request.getAttribute("lectureList");
-		List wishList = (List)request.getAttribute("wishlistList");
+		List wishlistList = (List) request.getAttribute("wishlistList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
 
@@ -147,9 +147,10 @@
     <hr>
     
           <%
-           for (int i = 0; i < wishList.size(); i++) {
-        	  WishlistDTO widto = (WishlistDTO) wishList.get(i);
+           for (int i = 0; i < wishlistList.size(); i++) {
+        	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
           	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
+          	  BasketDTO bdto = (BasketDTO) basketList.get(i);
           	  %>
           	  <div class="Wrow">
        <div class="Wcolumn"> 
@@ -163,7 +164,7 @@
           <div class="Wcolumn Wcontent">
 				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_email()%></p>
+					<%=ldto.getL_m_name()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
@@ -173,17 +174,16 @@
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />
 			</span>
+
 			<div class="tooltip">
 				<a href="./WishListDelete.wi?b_num=<%=widto.getW_num()%>"> <i
 					class="fa fa-close"></i> <span class="tooltiptext">위시리스트 삭제</span>
 				</a><br>
 			</div>
-	 		<% BasketDTO bdto = new BasketDTO(); { %>
 			<button class="d_btn d_btn2" type="button"
 				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
 				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
-			</button>   
-			<%} %> 
+			</button> 
 		</div>
 			 
           
@@ -197,7 +197,7 @@
           <%
           }
           %>
-    
+
 			
       
         
@@ -205,7 +205,6 @@
       
     </div>
   </div>
-
 
 
 	<%
@@ -223,7 +222,7 @@
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_email()%></p>
+					<%=ldto.getL_m_name()%></p>
 				<!-- basketDAO 추가 설정 -->
 			</div>
 		</div>

@@ -66,7 +66,7 @@ public class OrderDAO {
 			con = getConnection();
 			
 			// 주문 일련번호 계산하기 (o_num)
-			sql="select max(o_num) from codefarm_orderlist";
+			sql="select max(o_num) from orderlist";
 			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -85,7 +85,7 @@ public class OrderDAO {
 						
 				
 			// 18,20번 ?-> now()변경
-			sql ="INSERT INTO codeform_orderlist "
+			sql ="INSERT INTO orderlist "
 					+ "values("
 					+ "?,?,?,?,?,"
 					+ "?,?,?,?,?,"
@@ -101,7 +101,7 @@ public class OrderDAO {
 			pstmt.setInt(3, bkdto.getB_l_price());
 			pstmt.setInt(4, bkdto.getB_l_num());
 			pstmt.setString(5, ldto.getL_title());
-			pstmt.setString(6, ldto.getL_m_id());	
+			pstmt.setString(6, ldto.getL_m_email());	
 			pstmt.setString(8, oldto.getO_t_type());
 			pstmt.setString(9, oldto.getO_t_bank());
 			pstmt.setString(10, oldto.getO_t_payer());
@@ -141,7 +141,7 @@ public class OrderDAO {
 					+ "o_t_type,o_t_bank, "
 					+ "o_t_payer,o_t_date "
 					+ "sum(o_sum_money) as o_sum_money "
-					+ "from codefarm_orderlist "
+					+ "from orderlist "
 					+ "where o_m_id=? "
 					+ "group by o_b_num "
 					+ "order by o_b_num desc";

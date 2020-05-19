@@ -15,13 +15,13 @@ public class OrderDTO {
 	private String o_t_payer;	//입금자명
 	private Timestamp o_t_date;	//결제시간
 	private int o_sum_money;	//결제 가격
-	private int O_status; // 주문 상태(무통장)
+	private int o_status; // 주문 상태(무통장)
 	
 	public int getO_status() {
-		return O_status;
+		return o_status;
 	}
 	public void setO_status(int o_status) {
-		O_status = o_status;
+		o_status = o_status;
 	}
 	//getter setter
 	public int getO_num() {
@@ -97,8 +97,8 @@ public class OrderDTO {
 	public String toString() {
 		return "OrderDTO [o_num=" + o_num + ", o_b_num=" + o_b_num + ", o_l_price=" + o_l_price + ", o_l_num=" + o_l_num
 				+ ", o_l_name=" + o_l_name + ", o_m_id=" + o_m_id + ", o_t_type=" + o_t_type + ", o_t_bank=" + o_t_bank
-				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + ", O_status="
-				+ O_status + "]";
+				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + ", o_status="
+				+ o_status + "]";
 	}
 	
 	

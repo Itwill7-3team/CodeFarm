@@ -21,7 +21,7 @@ public class OrderAddAction implements Action{
 		
 		// 세션값 사용해서 로그인 체크
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("m_email");
 
 		ActionForward forward = new ActionForward();
 		if (id == null) {

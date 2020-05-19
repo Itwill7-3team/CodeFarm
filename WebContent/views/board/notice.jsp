@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜-공지사항</title>
-<link href="./css/reView.css" rel="stylesheet">
+<link href="./css/notice.css" rel="stylesheet">
 </head>
 <body>
 
@@ -131,7 +131,7 @@ int endPage=(int)request.getAttribute("endPage");
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
-						<i class="fab fa-quora">.</i>
+						<span class="N">N.</span>
 			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
 						<span><%=ndto.getN_title()%></span>
 			</a>
