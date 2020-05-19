@@ -77,6 +77,10 @@
     flex:1;
 }
 
+.notice_list{
+	min-height: 500px;
+}
+
 .notice_content{
 /* 	border: 1px red solid; */
 	width: 70%;
@@ -106,9 +110,15 @@
 	padding: 0;
 	list-style: none;
 }
+.content_side li p{
+	font-size: small;
+	height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .N{
-	font-size: x-large;
+	font-size: 28px;
     font-weight: 600;
 	color: #00c471;
 }
@@ -134,4 +144,22 @@ hr{
 	display: block;
 	font-size: 28px;
 	font-weight: 400;
+}
+
+.pageNation{
+	text-align: center;
+}
+
+.pageNation a {
+    border: 1px #b5b5b5 solid;
+    color: #00c471;
+/*     color: #ffffff; */
+/*     background-color: #00c471; */
+    margin: 0.8em;
+    padding: 0.1em 0.4em;
+}
+.pageNation a:ACTIVE {
+	color: #ffffff;
+    background-color: #00c471;
+    
 }

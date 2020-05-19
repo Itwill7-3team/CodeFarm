@@ -118,6 +118,7 @@ int endPage=(int)request.getAttribute("endPage");
         <img class="thumbnail_image" 
 				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.5;"> <!-- 당근이미지 -->
         </span>
+        <div class="notice_list">
 		<%	
 		}else{
 		%>
@@ -128,7 +129,7 @@ int endPage=(int)request.getAttribute("endPage");
 					NoticeDTO ndto=noticeList.get(i);
 					
 			%>
-				<div class="quest_list_item">
+				<div class="notice_list_item">
 					<div class="item_content">
 					<div class="post_title">
 						<span class="N">N.</span>
@@ -152,7 +153,13 @@ int endPage=(int)request.getAttribute("endPage");
 					</div>
 				</div>
 				<%} %>
+				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pageNation">
 			<%
 			if(startPage > pageBlock){
 				//페이지 [이전]
@@ -166,7 +173,7 @@ int endPage=(int)request.getAttribute("endPage");
 				for(int i=startPage;i<=endPage;i++){
 				//페이지 숫자 뿌리기
 				%>
-				<a href="./notice.bo?pageNum=<%=i%>">[<%=i %>]</a>
+				<a href="./notice.bo?pageNum=<%=i%>"><%=i %></a>
 				<%
 				}
 			}
@@ -185,13 +192,13 @@ int endPage=(int)request.getAttribute("endPage");
 			<%}
 			
 			}%>
-		</div>
+		
+</div>	
 	
 	
-	</div>
 	 
 		
-	</div>
+	
 	<!-- 메인콘텐츠  -->
 	</article>
 <jsp:include page="/include/footer.jsp"></jsp:include>
