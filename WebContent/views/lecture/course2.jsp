@@ -161,7 +161,8 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 for(int i=0;i<lectureList.size();i++){ 
 	LectureDTO ldto = lectureList.get(i);
 	String view = request.getParameter("view");
-	if(request.getParameter("view") == "card"){
+
+	if(view == "card"){
 	out.print(view);
 	
 %>

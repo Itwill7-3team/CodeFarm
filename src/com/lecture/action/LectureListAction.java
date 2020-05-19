@@ -39,6 +39,7 @@ public class LectureListAction implements Action{
 			item = "seq";
 		}
 		/* order-selecter */
+		System.out.println("item : "+item);
 		
 		/* 3번째 페이징 처리 와 그 파리미터 */ 
 		int page = 1;
