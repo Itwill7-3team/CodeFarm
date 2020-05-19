@@ -15,8 +15,13 @@
 </script>
 </head>
 <body>
+<%-- <%
 
-
+String item = "seq";
+if(request.getParameter("item") == ""){
+	item = request.getParameter("item");
+}
+%> item 값 오류 --%>
 	<div class="pagination">
 		<c:url var="pageAction" value="/Search.le"/>
 			<c:if test="${param.prev} ">
@@ -28,12 +33,12 @@
 						${index}
 					</c:when>
 					<c:otherwise>
-						<a href="${pageAction}?item=${param.item}&page=${index}">${index}</a>
+						<a href="${pageAction}?t1=${param.t1}&t2=${param.t2 }&item=${param.item}&view=${param.view}&page=${index}">${index}</a>
 					</c:otherwise>
 				</c:choose>	
 			</c:forEach>
 			<c:if test="${param.next} ">
-				<a href="${pageAction}?item=${param.item}&page=${param.endPage+1}">다음 페이지</a>
+				<a href="${pageAction}?<%-- item=${param.item}& --%>page=${param.endPage+1}">다음 페이지</a>
 			</c:if> 
 	</div>
 	

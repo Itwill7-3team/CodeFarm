@@ -143,15 +143,13 @@ public class LectureDAO {
 	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging){
+	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
 		System.out.println("s :"+s);
-		/* s = " "; */
-		System.out.println("s :"+s);
-		
+		System.out.println("t1 : "+t1+"t2 : "+t2);
 		try {
 		con = getConnection();
 			/*
@@ -162,10 +160,12 @@ public class LectureDAO {
 		/*mysql version*/
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ?");
+				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ? "
+				+ "and l_type like ? and l_type2 like ?");
 		
-		if(item.equals("all")){
-		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
+/*		if(item.equals("all")){
+		}else*/ 
+		if(item.equals("seq")){ // 추천 좋아요 높은 순
 			SQL.append(" order by l_goods asc");
 		}else if(item.equals("popular")) { //인기? 결제수
 			SQL.append(" order by paynum desc");
@@ -177,11 +177,12 @@ public class LectureDAO {
 			SQL.append(" order by paynum desc");
 		}
 		
-		
 		pstmt = con.prepareStatement(SQL.toString());
 		pstmt.setInt(1, startNum);
 		pstmt.setInt(2, endNum);
 		pstmt.setString(3, "%"+s+"%");
+		pstmt.setString(4, "%"+t1+"%");
+		pstmt.setString(5, "%"+t2+"%");
 		
 		rs = pstmt.executeQuery();
 			
@@ -237,35 +238,17 @@ public class LectureDAO {
 					if(item.equals("all")){					
 					}
 					else if(item.equals("best")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" order by l_goods desc limit 1,5");
 					}
 					else if(item.equals("new")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" order by l_reg_date desc limit 1,5"); //신규 5개
 					}
 					else if(item.equals("free")){
-						SQL.append(" WHERE l_tag=?");
+						SQL.append(" where l_price=0 order by l_reg_date desc limit 1,5");
 					}
-					else{
-						SQL.append(" WHERE l_type=?");
-					}
-					
+
 					pstmt=con.prepareStatement(SQL.toString()); 
-					
-					if(item.equals("all")){					
-					}
-					else if(item.equals("best")){
-						pstmt.setString(1, "best");
-					}
-					else if(item.equals("new")){
-						pstmt.setString(1, "new");
-					}
-					else if(item.equals("free")){
-						pstmt.setString(1, "free");
-					}
-					else{ //카테고리정보
-						pstmt.setString(1, item);
-					}
-					
+			
 					rs=pstmt.executeQuery();
 					while(rs.next()){
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
