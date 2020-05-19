@@ -852,7 +852,7 @@ a:hover {
     margin-right: .5rem;
 }
 .course_card_back{
-    display: none;
+/*     display: none; */
     position: absolute;
     top: 0;
     width: 100%;
@@ -915,16 +915,19 @@ a:hover {
     line-height: .75em;
     vertical-align: -.0667em;
 }
-i.fa-cart-arrow-down:HOVER {
-    color: #0000ff;
+div.column.flip-card .card_action_btn>div i.fas.fa-cart-arrow-down.fa-lg:HOVER {
+    color: #0000ff !important;
 }
-i.fa-heartbeat:HOVER {
-    color: #ff0000;
+div.column.flip-card .card_action_btn>div i.fa-heartbeat:HOVER {
+    color: #ff0000 !important;
 }
 
 
 /* list css!!!! */
-.box.coures-list-item{
+div.type-list{
+	display: block;
+}
+div.list-action .box.coures-list-item{
     padding: 1.25rem;
     align-items: flex-start;
     display: flex;
@@ -937,57 +940,57 @@ i.fa-heartbeat:HOVER {
     margin-top: 0;
     margin-bottom: 0;
 }
-.image-left{
+div.list-action .image-left{
 	flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;
     margin-right: 1rem;
 }
-.content-container{
+div.list-action  .content-container{
 	width: 100%;
     display: flex;
 }
-.image.is_tumbnail{
+div.list-action .image.is_tumbnail{
 	width: 8rem;
 	margin: 0;
  }
-.course-price{
+div.list-action .course-price{
 	margin-left: auto;
     text-align: center;
     min-width: 6.5rem;
 }
-.course-info .course-title{
+div.list-action .course-info .course-title{
 	font-size: 1.125rem;
 }
-.course-info .tags{
+div.list-action .course-info .tags{
 	margin: .25rem 0;
 }
-.course-info .tags .tag{
+div.list-action .course-info .tags .tag{
 	border-radius: 290486px;
 	margin-right: .5rem;
 	font-size: .5rem;
 	background-color: hsl(204.8958707289181,84.79387348187056%,92.25754128957558%);
 }
-.rating-star{
+div.list-action .rating-star{
 	position: relative;
     width: 5.7rem;
     display: inline-block;
 }
-.rating span{
+div.list-action .rating span{
 	position: absolute;
     top: .25rem;
     font-size: .5rem;
     left: 6.2rem;
 }
-.product-amount {
+div.list-action .product-amount {
     font-size: 1.125rem;
     font-weight: 700;
 }
-.cart-btn-container {
+div.list-action .cart-btn-container {
     margin-top: .25rem;
     text-align: right;
 }
-.cart-btn-container .cart-btn-controller>div {
+div.list-action .cart-btn-container .cart-btn-controller>div {
     -webkit-appearance: none;
     align-items: center;
     border: 1px solid #dbdbdb;
@@ -1007,13 +1010,31 @@ i.fa-heartbeat:HOVER {
     white-space: nowrap;
     margin-bottom: .125rem;
 }
-.cart-btn-controller>div i.fas.fa-cart-arrow-down.fa-lg {
-    color: #fda011;
-    font-weight: 400;
+div.list-action .box.coures-list-item {
+    border-top: 1px solid hsla(0,0%,85.9%,.5);
 }
-.cart-btn-controller>div i.fas.fa-heartbeat.fa-lg{
+
+
+div.list-action .cart-btn-controller>div i.fas.fa-cart-arrow-down.fa-lg {
     color: #fda011;
-    font-weight: 400;
+}
+div.list-action .cart-btn-controller>div i.fas.fa-heartbeat.fa-lg{
+    color: #fda011;
+}
+div.list-action .cart-btn-controller>div i.fas.fa-cart-arrow-down.fa-lg:HOVER {
+    color: white;
+}
+div.list-action .cart-btn-controller>div i.fas.fa-heartbeat.fa-lg:HOVER{
+    color: white;
+}
+div.list-action .cart-btn-controller>div.tooltip .tooltiptext{
+	width: 150px;
+	top: 120%;
+ 	left: 50%;
+  	margin-left: -60px; 
+}
+div.list-action .cart-btn-controller>div.tooltip .tooltiptext::after{
+    display: none;
 }
 
 

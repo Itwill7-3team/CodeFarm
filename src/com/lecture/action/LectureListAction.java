@@ -31,17 +31,25 @@ public class LectureListAction implements Action{
 		}
 		/* side-bar */
 		
-		
 		/* 2번째 order-selecter 파라미터 */
 		String item = request.getParameter("item");
 		System.out.println("item : "+item);
 		if(item == null) {
 			item = "seq";
 		}
-		/* order-selecter */
 		System.out.println("item : "+item);
+		/* order-selecter */
 		
-		/* 3번째 페이징 처리 와 그 파리미터 */ 
+		/* 3번째 view-switcher 파라미터 */
+		String view = request.getParameter("view");
+		System.out.println("view : "+view);
+		if(view == null){
+			view = "card";
+		}
+		/*view-switcher*/
+		
+		
+		/* 4번째 페이징 처리 와 그 파리미터 */ 
 		int page = 1;
 		
 		int count = ldao.getAllCount();
@@ -54,7 +62,7 @@ public class LectureListAction implements Action{
 		paging.setPage(page);
 		/* 페이징 처리 */
 		
-		 /* 4번째 search-bar 파라미터 */
+		 /* 5번째 search-bar 파라미터 */
 		String s = request.getParameter("s");
 		System.out.println("s : "+s);
 		if(s == null) {
@@ -63,7 +71,6 @@ public class LectureListAction implements Action{
 		/* search-bar */
 		
 	/* 분류를 위한 방법  */
-		
 		
 		System.out.println("LectureListAction_execute() 11 호출");
 		

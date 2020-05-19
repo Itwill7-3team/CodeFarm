@@ -132,8 +132,9 @@ public class LectureDAO {
 				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ? "
 				+ "and l_type like ? and l_type2 like ?");
 		
-		if(item.equals("all")){
-		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
+/*		if(item.equals("all")){
+		}else*/ 
+		if(item.equals("seq")){ // 추천 좋아요 높은 순
 			SQL.append(" order by l_goods asc");
 		}else if(item.equals("popular")) { //인기? 결제수
 			SQL.append(" order by paynum desc");

@@ -27,6 +27,7 @@ String item = "seq";
 String s = "";
 String t1 = "";
 String t2 = "";
+String view = "card";
 if(request.getParameter("item") != null){
 	item = request.getParameter("item");
 }
@@ -38,6 +39,9 @@ if(request.getParameter("t1") != null){
 }
 if(request.getParameter("t2") != null){
 	t2 = request.getParameter("t2"); 
+}
+if(request.getParameter("view") != null){
+	view = request.getParameter("view");
 }
 
 /* String pageNum = (String)request.getAttribute("pageNum");
@@ -135,8 +139,8 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 							</ul>
 							<!--<button></button> für sidebar_left?? -->
 							<div class="buttons select_view_button">
-								<button class="button switcher is-selected is-link"data-type="card" id="card-view"><i class="fas fa-th"></i></button>
-								<button class="button switcher" data-type="list" id="list-view"><i class="fas fa-list"></i></button>
+								<button class="button switcher is-selected <%if(view.equals("card")) out.print("is-link"); %>"data-type="card" id="card-view"><i class="fas fa-th"></i></button>
+								<button class="button switcher <%if(view.equals("list")) out.print("is-link"); %>" data-type="list" id="list-view"><i class="fas fa-list"></i></button>
 							</div>
 							<div class="select courses_order_selector">
 								<select id="courses_order_select" name="order_select">
@@ -155,15 +159,14 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						</nav><!-- breadcrumb -->
 						<!-- <div class="courses_skills"></div>courses_skill 구현 가능성?? -->
 						<div class="courses_container">
-							<div class="columns is-multiline course_card_item type-card">
+							<div class="columns<%if(view.equals("card")) {out.print(" is-multiline course_card_item type-card");}else{out.print("type-list");}; %>">
 								
 <%
 for(int i=0;i<lectureList.size();i++){ 
 	LectureDTO ldto = lectureList.get(i);
-	String view = request.getParameter("view");
-
-	if(view == "card"){
-	out.print(view);
+	
+	if(view.equals("card")){
+	
 	
 %>
 								
@@ -239,7 +242,7 @@ for(int i=0;i<lectureList.size();i++){
 								</div>
 <%
 }else{
-%>								
+%>							
 								<div class="course-list-body list-action">
 									<div class="box coures-list-item">
 										<a href="#"class="image-left">
@@ -287,12 +290,9 @@ for(int i=0;i<lectureList.size();i++){
 									</div><!-- course-list-item -->
 								</div><!-- course-list-body -->
 <%
-	}
+ 	}
 } 
 %>								
-								
-								
-								
 								
 							</div><!-- course-card-item -->
 						</div><!-- courses_ container-->
@@ -337,6 +337,9 @@ for (i = 0; i < acc.length; i++) {
 <!-- selectBox -->
 <script>
 $(function(){
+	
+	$("div.list-action .box.coures-list-item:first").css("border-top","none")
+
 	function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -529,13 +532,16 @@ $(function(){
 /* 위시리스트 아쟉스 */
 
 /* view switcher */
-	$("button.switcher").bind("click", function(e){
+ 	$("button.switcher").bind("click", function(e){
 		e.preventDefault();
 		var theid = $(this).attr("id");
 		var theproducts = $("div.course_card_item");
 		var thetypeC = $(".flip-card")
 		var thetypeL = $(".list-action")
 		var classNames = $(this).attr('class').split(' ');
+		var orderSelect1 = $("#courses_order_select option:selected").val();
+		var t1 = getParameterByName('t1');
+		var t2 = getParameterByName('t2');
 		
 		if($(this).hasClass("is-link")) {
 			return false;
@@ -543,24 +549,31 @@ $(function(){
 
   			if(theid == "card-view") {
 				$(this).addClass("is-link");
-				$("#list-view").removeClass("is-link");
+				/* $("#list-view").removeClass("is-link"); */
 			
 				theproducts.removeClass("type-list");
 				theproducts.addClass("type-card");
+				
+				
 				/* thetypeL.css('display','none');
 				thetypeC.css('display','flex'); */
-				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+item+"&view=card";
+				
+ 				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view=card";
 			}
 			
 			else if(theid == "list-view") {
 				$(this).addClass("is-link");
-				$("#card-view").removeClass("is-link");
+				/* $("#card-view").removeClass("is-link"); */
 					
 				theproducts.removeClass("type-card")
 				theproducts.addClass("type-list");
+				
+				
 				/* thetypeL.css('display','block');
 				thetypeC.css('display','none'); */
-				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+item+"&view=list";
+				
+				
+				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view=list";
 			} 
 		}
 	});
