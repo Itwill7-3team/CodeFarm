@@ -39,7 +39,7 @@ for(int i=0;i<bestList.size();i++){
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
-	<p><%=ldto.getL_m_name() %></p> 
+	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
 		<span class="fa fa-star checked"></span><!-- 찬하트 -->
 		<span class="fa fa-star checked"></span>
@@ -54,7 +54,7 @@ for(int i=0;i<bestList.size();i++){
 		</span>
 	
 	<div class="mg-t10">
-		<span class="tags tag"><%=ldto.getL_tag() %></span>
+		<span class="tags tag"><%=ldto.getL_type() %></span>
 	
 		<c:set var="price" value="<%=ldto.getL_price() %>"/>
 		<span class="price">
@@ -81,7 +81,7 @@ for(int i=0;i<newList.size();i++){
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
-	<p><%=ldto.getL_m_name() %></p> 
+	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
@@ -96,7 +96,7 @@ for(int i=0;i<newList.size();i++){
 		</span>
 		
 	<div class="mg-t10">
-		<span class="tags tag"><%=ldto.getL_tag() %></span>
+		<span class="tags tag"><%=ldto.getL_type() %></span>
 	
 		<c:set var="price" value="<%=ldto.getL_price() %>"/>
 		<span class="price">
@@ -122,7 +122,7 @@ for(int i=0;i<freeList.size();i++){
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
 </a>
-	<p><%=ldto.getL_m_name() %></p> 
+	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
@@ -137,7 +137,7 @@ for(int i=0;i<freeList.size();i++){
 		</span>
 		
 	<div class="mg-t10">
-		<span class="tags tag"><%=ldto.getL_tag() %></span>
+		<span class="tags tag"><%=ldto.getL_type() %></span>
 	
 		<c:set var="price" value="<%=ldto.getL_price() %>"/>
 		<span class="price">
