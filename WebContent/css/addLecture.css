@@ -4,6 +4,10 @@
 	padding: 0;
 	outline: none;
 }
+p{
+	margin: 0 !important;
+	align-self:center;
+}
 body{
 	margin: 0;
 	padding: 0;
@@ -401,6 +405,7 @@ h3{
     padding: 0 5px;
     border: none;
     background-color: white;
+    font-size:16px;
 }
 .box.unit_box{
 	padding: 16px;
@@ -431,6 +436,6 @@ h3{
 }
 .unit_btns{
 	 align-self: center;
-}
+	 
 
 /* 커리큘럼 */

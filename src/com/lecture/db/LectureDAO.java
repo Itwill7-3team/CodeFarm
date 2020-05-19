@@ -358,7 +358,7 @@ public class LectureDAO {
 					fdto.setF_o_name(rs2.getString("f_o_name"));
 					fdto.setF_playtime(rs2.getDouble("f_playtime"));
 					fdto.setF_reg_date(rs2.getTimestamp("f_reg_date"));
-					fdto.setF_ip(rs2.getString("f_ip"));
+					fdto.setF_m_email(rs2.getString("f_m_email"));
 					fileList.add(fdto);
 				}
 				fileSet.add(fileList);
