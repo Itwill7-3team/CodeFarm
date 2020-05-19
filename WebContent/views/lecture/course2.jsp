@@ -419,6 +419,33 @@ $(function(){
 			}
 		});
 	});
+	$(".list-action").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-cart-arrow-down").attr('data-type'); 
+		
+		/* console.log("정보 확인1 : "+m_email+" 2 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqBasket.ba",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','white');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+
 	
 	$("i.fa-cart-arrow-down").click(function(){
 		var m_email = "${m_email}";
@@ -489,6 +516,32 @@ $(function(){
 					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
 				}else if(check == 1){
 					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','red');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+	$(".coures-list-item").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-heartbeat").attr('data-type'); 
+		
+		/* console.log("정보 확인3 : "+m_email+" 4 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqWishlist.wi",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-heartbeat[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
 				}
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");
