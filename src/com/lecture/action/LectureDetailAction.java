@@ -26,7 +26,7 @@ public class LectureDetailAction implements Action {
 		
 		LectureDAO ldao = new LectureDAO();
 		LectureDTO ldto = ldao.getLectureDetail(l_number); // 강의 상세 정보
-		List<LectureDTO> lectureList = ldao.getLectureList(ldto.getL_m_id()); // 강사별 강의 목록
+		List<LectureDTO> lectureList = ldao.getLectureList(ldto.getL_m_email()); // 강사별 강의 목록
 		ArrayList<ArrayList<FileDTO>> fileSet = ldao.getFileList(l_number); // 강의내 섹션별 파일 목록
 		
 		ArrayList<Integer> l_numList = new ArrayList<Integer>(); // 강사의 다른 강의 번호 저장

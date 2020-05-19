@@ -101,7 +101,7 @@ public class OrderDAO {
 			pstmt.setInt(3, bkdto.getB_l_price());
 			pstmt.setInt(4, bkdto.getB_l_num());
 			pstmt.setString(5, ldto.getL_title());
-			pstmt.setString(6, ldto.getL_m_id());	
+			pstmt.setString(6, ldto.getL_m_email());	
 			pstmt.setString(8, oldto.getO_t_type());
 			pstmt.setString(9, oldto.getO_t_bank());
 			pstmt.setString(10, oldto.getO_t_payer());
