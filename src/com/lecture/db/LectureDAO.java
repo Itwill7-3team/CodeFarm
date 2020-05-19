@@ -84,7 +84,7 @@ public class LectureDAO {
 			con = getConnection();
 			System.out.print("getLectureDetail() : ");
 			sql = "select "
-				+ "  l_m_email, l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+				+ "  l_m_email, l_title,  l_reg_date,  l_content,  l_type,  l_type2, "
 				+ "  l_price,   l_pct,  l_img,     l_goods, "
 				+ "  pct_date,  pay_count "
 				+ "from lecture "
@@ -100,7 +100,6 @@ public class LectureDAO {
 				ldto.setL_content(rs.getString("l_content"));
 				ldto.setL_type(rs.getString("l_type"));
 				ldto.setL_type2(rs.getString("l_type2"));
-				ldto.setL_level(rs.getString("l_level"));
 				ldto.setL_price(rs.getInt("l_price"));
 				ldto.setL_pct(rs.getInt("l_pct"));
 				ldto.setL_img(rs.getString("l_img"));
@@ -238,13 +237,13 @@ public class LectureDAO {
 					if(item.equals("all")){					
 					}
 					else if(item.equals("best")){
-						SQL.append(" order by l_goods desc limit 1,5");
+						SQL.append(" order by l_goods desc limit 0,5");
 					}
 					else if(item.equals("new")){
-						SQL.append(" order by l_reg_date desc limit 1,5"); //신규 5개
+						SQL.append(" order by l_reg_date desc limit 0,5"); //신규 5개
 					}
 					else if(item.equals("free")){
-						SQL.append(" where l_price=0 order by l_reg_date desc limit 1,5");
+						SQL.append(" where l_price=0 order by l_reg_date desc limit 0,5");
 					}
 
 					pstmt=con.prepareStatement(SQL.toString()); 
