@@ -282,7 +282,7 @@ public class BasketDAO {
 							if(rs2.next()){
 								LectureDTO ldto = new LectureDTO();
 								ldto.setL_number(rs2.getInt("l_number"));
-								ldto.setL_m_email(rs.getString("l_m_email"));
+								ldto.setL_m_email(rs2.getString("l_m_email"));
 								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 								ldto.setL_content(rs2.getString("l_content"));
 								ldto.setL_type(rs2.getString("l_type"));
