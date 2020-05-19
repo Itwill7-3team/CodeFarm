@@ -14,7 +14,7 @@ public class FileDTO {
 	private String f_o_name;		//원본 파일 이름
 	private double f_playtime;		//재생 시간
 	private Timestamp f_reg_date;	//등록일
-	private String f_ip;			//ip
+	private String f_m_email;			//ip
 	
 	public int getF_num() {
 		return f_num;
@@ -76,19 +76,21 @@ public class FileDTO {
 	public void setF_reg_date(Timestamp f_reg_date) {
 		this.f_reg_date = f_reg_date;
 	}
-	public String getF_ip() {
-		return f_ip;
-	}
-	public void setF_ip(String f_ip) {
-		this.f_ip = f_ip;
-	}
 	
+	
+	public String getF_m_email() {
+		return f_m_email;
+	}
+	public void setF_m_email(String f_m_email) {
+		this.f_m_email = f_m_email;
+	}
 	@Override
 	public String toString() {
 		return "FileDTO [f_num=" + f_num + ", f_l_num=" + f_l_num + ", f_sec_list=" + f_sec_list + ", f_sec_name="
 				+ f_sec_name + ", f_col_list=" + f_col_list + ", f_col_name=" + f_col_name + ", f_name=" + f_name
-				+ ", f_o_name=" + f_o_name + ", f_playtime=" + f_playtime + ", f_reg_date=" + f_reg_date + ", f_ip="
-				+ f_ip + "]";
+				+ ", f_o_name=" + f_o_name + ", f_playtime=" + f_playtime + ", f_reg_date=" + f_reg_date
+				+ ", f_m_email=" + f_m_email + "]";
 	}
+	
 	
 }
