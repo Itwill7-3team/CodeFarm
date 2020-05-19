@@ -163,7 +163,7 @@
           <div class="Wcolumn Wcontent">
 				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
@@ -223,7 +223,7 @@
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			</div>
 		</div>

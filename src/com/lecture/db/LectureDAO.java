@@ -51,7 +51,7 @@ public class LectureDAO {
 			con = getConnection();
 			System.out.print("getLectureDetail() : ");
 			sql = "select "
-				+ "  l_m_email, l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+				+ "  l_m_email, l_title,  l_reg_date,  l_content,  l_type,  l_type2, "
 				+ "  l_price,   l_pct,  l_img,     l_goods, "
 				+ "  pct_date,  pay_count "
 				+ "from lecture "
@@ -67,7 +67,6 @@ public class LectureDAO {
 				ldto.setL_content(rs.getString("l_content"));
 				ldto.setL_type(rs.getString("l_type"));
 				ldto.setL_type2(rs.getString("l_type2"));
-				ldto.setL_level(rs.getString("l_level"));
 				ldto.setL_price(rs.getInt("l_price"));
 				ldto.setL_pct(rs.getInt("l_pct"));
 				ldto.setL_img(rs.getString("l_img"));
