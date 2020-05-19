@@ -77,6 +77,13 @@ public class InstructorFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("./views/instructor/addLecture.jsp");
 			forward.setRedirect(false);
+		}else if(command.equals("/addLectureImg.in")){
+			action=new LectureAddImg();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
