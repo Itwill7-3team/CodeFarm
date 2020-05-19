@@ -121,8 +121,6 @@ public class WishlistDAO {
 		ArrayList lectureList = new ArrayList();
 		ArrayList wishList = new ArrayList();
 		
-		
-		
 		try {
 			con = getConnection();
 			
@@ -140,6 +138,7 @@ public class WishlistDAO {
 				
 				wishList.add(wdto);
 				
+				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
 				pstmt = con.prepareStatement(sql);
 				
@@ -148,21 +147,21 @@ public class WishlistDAO {
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
-					
-					ldto.setL_content(rs.getString("l_content"));
-					ldto.setL_goods(rs.getInt("l_goods"));
-					ldto.setL_m_email(rs.getString("l_m_email"));
-					ldto.setL_number(rs.getInt("l_number"));
-					ldto.setL_pct(rs.getInt("l_pct"));
-					ldto.setL_price(rs.getInt("l_price"));
-					ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
-					ldto.setL_type(rs.getString("l_type"));
-					ldto.setL_type2(rs.getString("l_type2"));
-					ldto.setL_level(rs.getString("l_level"));
-					ldto.setPay_count(rs.getInt("pay_count"));
-					ldto.setPct_date(rs.getTimestamp("pct_date"));
-					ldto.setL_img(rs.getString("l_img"));
-					ldto.setL_title(rs.getString("l_title"));
+
+					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_m_email(rs2.getString("l_m_email"));
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
+					ldto.setL_type(rs2.getString("l_type"));
+					ldto.setL_type2(rs2.getString("l_type2"));
+					ldto.setL_level(rs2.getString("l_level"));
+					ldto.setPay_count(rs2.getInt("pay_count"));
+					ldto.setPct_date(rs2.getTimestamp("pct_date"));
+					ldto.setL_img(rs2.getString("l_img"));
+					ldto.setL_title(rs2.getString("l_title"));
 					
 					lectureList.add(ldto);
 				}
