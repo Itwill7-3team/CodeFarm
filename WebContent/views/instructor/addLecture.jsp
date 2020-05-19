@@ -342,8 +342,7 @@
 		</div>
 	</div>
 	<script>
-		//태그 다완성되면 시작됨
-		
+//태그 다완성되면 시작됨
 $(document).ready(function() {
 	$("header").removeClass("sticky");
 	//시작할때 하나 화면출력
@@ -440,24 +439,7 @@ $(document).ready(function() {
 		            reorder();
 		        }
 		});
-		 //정렬 이벤트
-		function reorder() {
-			var index=0;
-		    $(".ui-sortable").children("li").each(function(i, box) {
-			console.log($(box).attr("class"));
-		    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
-		    		index++;
-		    	}else{
-		    		index=0;
-		    	}
-		        $(box).find(".unit_label").html("수업  "+index+" :");
-				if($(this).next().length==0 || $(this).next().attr("class")=="unit unit_section ui-sortable-handle")
-					 $(this).css("border-bottom","1px solid #5eceb3");
-				else
-					 $(this).css("border-bottom","none");
-				
-		        
-		    });
+		
 		    $(".unit_section").each(function(i, box) {
 		        $(box).find(".unit_label").html("세션  "+i+" :");
 
@@ -465,7 +447,8 @@ $(document).ready(function() {
 				$(".ui-sortable").children("li").css("border-top","none");
 			if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
 				$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
-		}
+		
+
 
 
 	//input 으로 추가한 ol태그 삭제
@@ -530,6 +513,25 @@ $(document).ready(function() {
 		var input = prompt('바뀔 이름을 입력해주세요');
 		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
 	});
+	 //정렬 이벤트
+	function reorder() {
+		var index=0;
+	    $(".ui-sortable").children("li").each(function(i, box) {
+		console.log($(box).attr("class"));
+	    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
+	    		index++;
+	    	}else{
+	    		index=0;
+	    	}
+	        $(box).find(".unit_label").html("수업  "+index+" :");
+			if($(this).next().length==0 || $(this).next().attr("class")=="unit unit_section ui-sortable-handle")
+				 $(this).css("border-bottom","1px solid #5eceb3");
+			else
+				 $(this).css("border-bottom","none");
+			
+	        
+	    });
+	 }
 	//textarea 자동으로 세로너비 증가
 	$(".textarea").on("keydown keyup change",function(){
 		 $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
@@ -561,7 +563,7 @@ $(document).ready(function() {
 			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
 		console.log(based);
 		//카테고리
-		var category=$(".button.category1.active").attr("value");
+		var category=$(".button.category1.active").attr("value")+"/";
 		console.log(category);
 		//강의수준
 		var level=$(".button.level").attr("value");
@@ -576,17 +578,40 @@ $(document).ready(function() {
 		/* 2페이지 끝 */
 		
 		/* 3페이지  끝 */
-		
+		var img=$(".file_info").html();
+		console.log(img);
 		/* 4페이지 끝  */
 		//가격정보
 		var price= $(".box_input.price").val();
 		console.log(price);
-		//오픈 여부
-		//var open=$(".buttons")
-		//수강기간
 		/* 5페이지 끝 */
-		//data 처리 시작
+		//data 처리 끝
 		//ajax 처리(Data저장)
+		 $.ajax({
+			 type: "POST",
+	            //enctype: 'multipart/form-data',
+	            url: "./addLectureAction.in",
+	            data: {
+					"id": "${m_email}",            	
+	            	"title": title,
+	            	"abilities":abilities,
+	            	"targets":targets,
+	            	"based":based,
+	            	"category":category,
+	            	"level":level,
+	            	"description":description,
+	            	"body":body,
+	            	"img":img,
+	            	"price":price
+	            },
+
+	            success:function(data){
+	            	alert("데이터 전송 성공");
+	            },
+	            error: function (data) {
+	            	alert("저장실패!");
+	            }
+	        });
 	});
 	$(".hidden_input").on("change", function() {
 		if($(this).val()){
@@ -607,6 +632,7 @@ $(document).ready(function() {
 	            enctype: 'multipart/form-data',
 	            url: "./addLectureImg.in",
 	            data: data,
+	            
 	            processData: false,
 	            contentType: false,
 	            cache: false,
@@ -616,7 +642,7 @@ $(document).ready(function() {
 	            },
 	            error: function (data) {
 	            	alert("fail");
-	            }//sssss
+	            }
 	        });
 	});
 	reorder();
