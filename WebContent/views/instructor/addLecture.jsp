@@ -322,7 +322,7 @@
 						</div> -->
 						<div class="field">
 							<div class="label">시작 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea" name="title"
+							<textarea class="textarea start-msg" name="start-msg"
 							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">안녕하세요. 👋
 백문이 불여일견! 학습이 곧 시작됩니다. 
 궁금한 점은 [질문 답변] 을 이용해주세요 :)
@@ -330,7 +330,7 @@
 						</div>
 						<div class="field">
 							<div class="label">완강 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea" name="title" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
+							<textarea class="textarea end-msg" name="end-msg" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
 강의는 어떠셨나요? 학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!
 여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)
 							</textarea>
@@ -440,13 +440,7 @@ $(document).ready(function() {
 		        }
 		});
 		
-		    $(".unit_section").each(function(i, box) {
-		        $(box).find(".unit_label").html("세션  "+i+" :");
-
-		    });
-				$(".ui-sortable").children("li").css("border-top","none");
-			if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
-				$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
+		    
 		
 
 
@@ -531,6 +525,13 @@ $(document).ready(function() {
 			
 	        
 	    });
+	    $(".unit_section").each(function(i, box) {
+	        $(box).find(".unit_label").html("세션  "+i+" :");
+
+	    });
+			$(".ui-sortable").children("li").css("border-top","none");
+		if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
+			$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
 	 }
 	//textarea 자동으로 세로너비 증가
 	$(".textarea").on("keydown keyup change",function(){
@@ -584,6 +585,8 @@ $(document).ready(function() {
 		//가격정보
 		var price= $(".box_input.price").val();
 		console.log(price);
+		var start_msg=$(".textarea.start-msg").val();
+		var end_msg=$(".textarea.end-msg").val();
 		/* 5페이지 끝 */
 		//data 처리 끝
 		//ajax 처리(Data저장)
@@ -602,7 +605,9 @@ $(document).ready(function() {
 	            	"description":description,
 	            	"body":body,
 	            	"img":img,
-	            	"price":price
+	            	"price":price,
+	            	"start-msg":start_msg,
+	            	"end-msg":end_msg
 	            },
 
 	            success:function(data){
