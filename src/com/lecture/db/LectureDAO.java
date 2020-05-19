@@ -44,6 +44,39 @@ public class LectureDAO {
 		}
 	}//자원 해제
 	
+	public void insertLecture(LectureDTO ldto){
+		try{
+			con=getConnection();
+			sql="insert into lecture ("
+					+ "l_m_email,l_title,l_abilities,"
+					+ "l_targets,l_based,l_description,"
+					+ "l_content,l_type,l_type2,l_level,"
+					+ "l_img,l_price) "
+					+ "values(?,?,?,?,?,?,?,?,?,?,"
+					+ "?,?)";
+			pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, ldto.getL_m_email());
+				pstmt.setString(2, ldto.getL_title());
+				pstmt.setString(3, ldto.getL_abilities());
+				pstmt.setString(4, ldto.getL_targets());
+				pstmt.setString(5, ldto.getL_based());
+				pstmt.setString(6, ldto.getL_description());
+				pstmt.setString(7, ldto.getL_content());
+				pstmt.setString(8, ldto.getL_type());
+				pstmt.setString(9, ldto.getL_type2());
+				pstmt.setString(10, ldto.getL_level());
+				pstmt.setString(11, ldto.getL_img());
+				pstmt.setInt(12, ldto.getL_price());
+				
+				pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	}
+	
+	
 	// getLectureDetail()
 	public LectureDTO getLectureDetail(int l_number){
 		LectureDTO ldto = null;
@@ -109,15 +142,13 @@ public class LectureDAO {
 	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging){
+	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
 		System.out.println("s :"+s);
-		/* s = " "; */
-		System.out.println("s :"+s);
-		
+		System.out.println("t1 : "+t1+"t2 : "+t2);
 		try {
 		con = getConnection();
 			/*
@@ -128,10 +159,12 @@ public class LectureDAO {
 		/*mysql version*/
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ?");
+				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ? "
+				+ "and l_type like ? and l_type2 like ?");
 		
-		if(item.equals("all")){
-		}else if(item.equals("seq")){ // 추천 좋아요 높은 순
+/*		if(item.equals("all")){
+		}else*/ 
+		if(item.equals("seq")){ // 추천 좋아요 높은 순
 			SQL.append(" order by l_goods asc");
 		}else if(item.equals("popular")) { //인기? 결제수
 			SQL.append(" order by paynum desc");
@@ -143,11 +176,12 @@ public class LectureDAO {
 			SQL.append(" order by paynum desc");
 		}
 		
-		
 		pstmt = con.prepareStatement(SQL.toString());
 		pstmt.setInt(1, startNum);
 		pstmt.setInt(2, endNum);
 		pstmt.setString(3, "%"+s+"%");
+		pstmt.setString(4, "%"+t1+"%");
+		pstmt.setString(5, "%"+t2+"%");
 		
 		rs = pstmt.executeQuery();
 			
@@ -245,7 +279,7 @@ public class LectureDAO {
 				return lectureList;
 			}
 	//getLectureSelectList()
-			public void insertlectures(LectureDTO ldto) {
+			/*public void insertlectures(LectureDTO ldto) {
 				// TODO Auto-generated method stub
 				System.out.println("insertlectures(ldto)");
 				
@@ -267,7 +301,7 @@ public class LectureDAO {
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, num);
 					pstmt.setString(2, ldto.getL_m_email());
-					/*reg_date*/
+					reg_date
 					pstmt.setString(3, ldto.getL_content());
 					pstmt.setString(4, ldto.getL_type());
 					pstmt.setString(5, ldto.getL_type2());
@@ -277,7 +311,7 @@ public class LectureDAO {
 					pstmt.setString(9, ldto.getL_img());
 					
 					pstmt.setInt(10, ldto.getL_goods());
-					/*pct_date*/
+					pct_date
 					pstmt.setInt(11, ldto.getPay_count());
 					pstmt.setString(12, ldto.getL_title());
 					
@@ -295,7 +329,7 @@ public class LectureDAO {
 				
 				
 				
-			}
+			}*/
 			
 			
 	// getFileList()

@@ -35,8 +35,8 @@ public class InstructorAddAction implements Action {
 						request,
 						realPath,
 						maxSize,
-						"UTF-8",
-						new DefaultFileRenamePolicy()
+						"UTF-8"
+						//new DefaultFileRenamePolicy()
 						);
 		
 		System.out.println("파일 업로드 성공 (서버에 저장완료)");
@@ -87,8 +87,7 @@ public class InstructorAddAction implements Action {
 		
 		// 3. AdminGoodsDAO 객체를 생성해서 처리 
 		//  -> insertGoods(dto)
-		LectureDAO ldao = new LectureDAO();
-		ldao.insertlectures(ldto);
+		
 		
 		
 		// 4. 페이지 이동 (List페이지)
