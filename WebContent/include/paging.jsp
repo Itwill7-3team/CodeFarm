@@ -33,7 +33,7 @@ if(request.getParameter("item") == ""){
 						${index}
 					</c:when>
 					<c:otherwise>
-						<a href="${pageAction}?t1=${param.t1}&t2=${param.t2 }&item=${param.item}&page=${index}">${index}</a>
+						<a href="${pageAction}?t1=${param.t1}&t2=${param.t2 }&item=${param.item}&view=${param.view}&page=${index}">${index}</a>
 					</c:otherwise>
 				</c:choose>	
 			</c:forEach>

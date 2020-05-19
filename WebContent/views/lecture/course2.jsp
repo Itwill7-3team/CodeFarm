@@ -28,6 +28,7 @@ String s = "";
 String t1 = "";
 String t2 = "";
 String view = "card";
+
 if(request.getParameter("item") != null){
 	item = request.getParameter("item");
 }
@@ -379,6 +380,7 @@ $(function(){
 		var orderSelect1 = $("#courses_order_select option:selected").val();
 		var t1 = getParameterByName('t1');
 		var t2 = getParameterByName('t2');
+		var view = getParameterByName('view');
 		var page = getParameterByName('page');
 		/* var itime = getParameterByName('item');
 		
@@ -386,7 +388,7 @@ $(function(){
 			alert("확인"+item);
 		} select 구문에 사용*/
 		
-		location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&page="+page+"&s="+search;
+		location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view="+view+"&page="+page+"&s="+search;
 	});
 /* search */
 
