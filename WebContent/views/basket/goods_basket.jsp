@@ -128,7 +128,7 @@
 	<%
 		List basketList = (List) request.getAttribute("basketList");
 		List lectureList = (List) request.getAttribute("lectureList");
-		List wishList = (List)request.getAttribute("wishList");
+		List wishList = (List)request.getAttribute("wishlistList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
 
