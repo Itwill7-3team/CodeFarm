@@ -51,9 +51,9 @@ public class LectureDAO {
 			con = getConnection();
 			System.out.print("getLectureDetail() : ");
 			sql = "select "
-				+ "  l_m_name,    l_m_id,  l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
-				+ "  l_price,   l_pct,  l_img,       l_tag,      l_goods, "
-				+ "  pct_date,  paynum "
+				+ "  l_m_email, l_title,  l_reg_date,  l_content,  l_type,  l_type2,  l_type3, "
+				+ "  l_price,   l_pct,  l_img,     l_goods, "
+				+ "  pct_date,  pay_count "
 				+ "from lecture "
 				+ "where l_number = ?";
 			pstmt = con.prepareStatement(sql);
@@ -62,20 +62,18 @@ public class LectureDAO {
 			if(rs.next()){
 				ldto = new LectureDTO();
 				ldto.setL_number(l_number);
-				ldto.setL_m_name(rs.getString("l_m_name"));
-				ldto.setL_m_id(rs.getString("l_m_id"));
+				ldto.setL_m_email(rs.getString("l_m_email"));
 				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 				ldto.setL_content(rs.getString("l_content"));
 				ldto.setL_type(rs.getString("l_type"));
 				ldto.setL_type2(rs.getString("l_type2"));
-				ldto.setL_type3(rs.getString("l_type3"));
+				ldto.setL_level(rs.getString("l_level"));
 				ldto.setL_price(rs.getInt("l_price"));
 				ldto.setL_pct(rs.getInt("l_pct"));
 				ldto.setL_img(rs.getString("l_img"));
-				ldto.setL_tag(rs.getString("l_tag"));
 				ldto.setL_goods(rs.getInt("l_goods"));
 				ldto.setPct_date(rs.getTimestamp("pct_date"));
-				ldto.setPaynum(rs.getInt("paynum"));
+				ldto.setPay_count(rs.getInt("pay_count"));
 				ldto.setL_title(rs.getString("l_title"));
 			}
 			System.out.println("강의 상세정보 저장 완료");
@@ -160,17 +158,15 @@ public class LectureDAO {
 			
 			ldto.setL_content(rs.getString("l_content"));
 			ldto.setL_goods(rs.getInt("l_goods"));
-			ldto.setL_m_id(rs.getString("l_m_id"));
-			ldto.setL_m_name(rs.getString("l_m_name"));
+			ldto.setL_m_email(rs.getString("l_m_email"));
 			ldto.setL_number(rs.getInt("l_number"));
 			ldto.setL_pct(rs.getInt("l_pct"));
 			ldto.setL_price(rs.getInt("l_price"));
 			ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
-			ldto.setL_tag(rs.getString("l_tag"));
 			ldto.setL_type(rs.getString("l_type"));
 			ldto.setL_type2(rs.getString("l_type2"));
-			ldto.setL_type3(rs.getString("l_type3"));
-			ldto.setPaynum(rs.getInt("paynum"));
+			ldto.setL_level(rs.getString("l_level"));
+			ldto.setPay_count(rs.getInt("pay_count"));
 			ldto.setPct_date(rs.getTimestamp("pct_date"));
 			ldto.setL_img(rs.getString("l_img"));
 			ldto.setL_title(rs.getString("l_title"));
@@ -242,17 +238,15 @@ public class LectureDAO {
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
 						ldto.setL_content(rs.getString("l_content"));
 						ldto.setL_goods(rs.getInt("l_goods"));
-						ldto.setL_m_id(rs.getString("l_m_id"));
-						ldto.setL_m_name(rs.getString("l_m_name"));
+						ldto.setL_m_email(rs.getString("l_m_email"));
 						ldto.setL_number(rs.getInt("l_number"));
 						ldto.setL_pct(rs.getInt("l_pct"));
 						ldto.setL_price(rs.getInt("l_price"));
 						ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
-						ldto.setL_tag(rs.getString("l_tag"));
 						ldto.setL_type(rs.getString("l_type"));
 						ldto.setL_type2(rs.getString("l_type2"));
-						ldto.setL_type3(rs.getString("l_type3"));
-						ldto.setPaynum(rs.getInt("paynum"));
+						ldto.setL_level(rs.getString("l_level"));
+						ldto.setPay_count(rs.getInt("pay_count"));
 						ldto.setPct_date(rs.getTimestamp("pct_date"));
 						ldto.setL_img(rs.getString("l_img"));
 						ldto.setL_title(rs.getString("l_title"));
@@ -287,25 +281,24 @@ public class LectureDAO {
 					System.out.println("lecture num");
 					
 					sql = "insert into lecture"
-							+ "(l_number,l_m_name,l_m_id,l_reg_date,l_content,l_type,l_type2,l_type3,l_price,l_pct,l_img,l_tag,l_goods,pct_date,paynum,l_title) "
+							+ "(l_number,l_m_email,l_reg_date,l_content,l_type,l_type2,l_level,l_price,l_pct,l_img,l_goods,pct_date,paynum,l_title) "
 							+ "value(?,?,?,now(),?,?,?,?,?,?,?,?,?,now(),?,?)";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, num);
-					pstmt.setString(2, ldto.getL_m_name());
-					pstmt.setString(3, ldto.getL_m_id());
+					pstmt.setString(2, ldto.getL_m_email());
 					/*reg_date*/
-					pstmt.setString(4, ldto.getL_content());
-					pstmt.setString(5, ldto.getL_type());
-					pstmt.setString(6, ldto.getL_type2());
-					pstmt.setString(7, ldto.getL_type3());
-					pstmt.setInt(8, ldto.getL_price());
-					pstmt.setInt(9, ldto.getL_pct());
-					pstmt.setString(10, ldto.getL_img());
-					pstmt.setString(11, ldto.getL_tag());
-					pstmt.setInt(12, ldto.getL_goods());
+					pstmt.setString(3, ldto.getL_content());
+					pstmt.setString(4, ldto.getL_type());
+					pstmt.setString(5, ldto.getL_type2());
+					pstmt.setString(6, ldto.getL_level());
+					pstmt.setInt(7, ldto.getL_price());
+					pstmt.setInt(8, ldto.getL_pct());
+					pstmt.setString(9, ldto.getL_img());
+					
+					pstmt.setInt(10, ldto.getL_goods());
 					/*pct_date*/
-					pstmt.setInt(13, ldto.getPaynum());
-					pstmt.setString(14, ldto.getL_title());
+					pstmt.setInt(11, ldto.getPay_count());
+					pstmt.setString(12, ldto.getL_title());
 					
 					pstmt.executeUpdate();
 					System.out.println("강의 등록 성공");
@@ -358,7 +351,7 @@ public class LectureDAO {
 					fdto.setF_o_name(rs2.getString("f_o_name"));
 					fdto.setF_playtime(rs2.getDouble("f_playtime"));
 					fdto.setF_reg_date(rs2.getTimestamp("f_reg_date"));
-					fdto.setF_ip(rs2.getString("f_ip"));
+					fdto.setF_m_email(rs2.getString("f_m_email"));
 					fileList.add(fdto);
 				}
 				fileSet.add(fileList);
@@ -386,22 +379,20 @@ public class LectureDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				LectureDTO ldto=new LectureDTO();
-				ldto.setL_number(rs.getInt("l_number"));
-				ldto.setL_m_name(rs.getString("l_m_name"));
-				ldto.setL_m_id(rs.getString("l_m_id"));
-				ldto.setL_title(rs.getString("l_title"));
 				ldto.setL_content(rs.getString("l_content"));
+				ldto.setL_goods(rs.getInt("l_goods"));
+				ldto.setL_m_email(rs.getString("l_m_email"));
+				ldto.setL_number(rs.getInt("l_number"));
+				ldto.setL_pct(rs.getInt("l_pct"));
+				ldto.setL_price(rs.getInt("l_price"));
+				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 				ldto.setL_type(rs.getString("l_type"));
 				ldto.setL_type2(rs.getString("l_type2"));
-				ldto.setL_type3(rs.getString("l_type3"));
-				ldto.setL_price(rs.getInt("l_price"));
-				ldto.setL_pct(rs.getInt("l_pct"));
-				ldto.setL_img(rs.getString("l_img"));
-				ldto.setL_tag(rs.getString("l_tag"));
-				ldto.setL_goods(rs.getInt("l_goods"));
-				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
+				ldto.setL_level(rs.getString("l_level"));
+				ldto.setPay_count(rs.getInt("pay_count"));
 				ldto.setPct_date(rs.getTimestamp("pct_date"));
-				ldto.setPaynum(rs.getInt("paynum"));
+				ldto.setL_img(rs.getString("l_img"));
+				ldto.setL_title(rs.getString("l_title"));
 				lectureList.add(ldto);
 			}
 			System.out.println("강사별 강의 목록 저장 완료 ");

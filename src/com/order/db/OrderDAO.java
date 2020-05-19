@@ -66,7 +66,7 @@ public class OrderDAO {
 			con = getConnection();
 			
 			// 주문 일련번호 계산하기 (o_num)
-			sql="select max(o_num) from orderlist";
+			sql="select max(o_num) from codefarm_orderlist";
 			
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -85,7 +85,7 @@ public class OrderDAO {
 						
 				
 			// 18,20번 ?-> now()변경
-			sql ="INSERT INTO orderlist "
+			sql ="INSERT INTO codeform_orderlist "
 					+ "values("
 					+ "?,?,?,?,?,"
 					+ "?,?,?,?,?,"
@@ -101,15 +101,15 @@ public class OrderDAO {
 			pstmt.setInt(3, bkdto.getB_l_price());
 			pstmt.setInt(4, bkdto.getB_l_num());
 			pstmt.setString(5, ldto.getL_title());
-			pstmt.setString(6, ldto.getL_m_id());	
-			pstmt.setString(7, oldto.getO_t_type());
-			pstmt.setString(8, oldto.getO_t_bank());
-			pstmt.setString(9, oldto.getO_t_payer());
-			pstmt.setInt(10, ldto.getL_price());
+			pstmt.setString(6, ldto.getL_m_email());	
+			pstmt.setString(8, oldto.getO_t_type());
+			pstmt.setString(9, oldto.getO_t_bank());
+			pstmt.setString(10, oldto.getO_t_payer());
+			pstmt.setInt(11, ldto.getL_price());
 			
 			
-			// 10번?는 함수로 사용됨(now())
-			pstmt.setInt(11, 0); // 21번 ? => 주문 상태표시 
+			// 20번 ?는 함수로 사용됨(now())
+			pstmt.setInt(12, 0); // 21번 ? => 주문 상태표시 
 			
 			pstmt.executeUpdate();
 			
@@ -141,7 +141,7 @@ public class OrderDAO {
 					+ "o_t_type,o_t_bank, "
 					+ "o_t_payer,o_t_date "
 					+ "sum(o_sum_money) as o_sum_money "
-					+ "from orderlist "
+					+ "from codefarm_orderlist "
 					+ "where o_m_id=? "
 					+ "group by o_b_num "
 					+ "order by o_b_num desc";
