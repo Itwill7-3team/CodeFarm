@@ -204,13 +204,13 @@ public class LectureDAO {
 					if(item.equals("all")){					
 					}
 					else if(item.equals("best")){
-						SQL.append(" order by l_goods desc limit 1,5");
+						SQL.append(" order by l_goods desc limit 0,5");
 					}
 					else if(item.equals("new")){
-						SQL.append(" order by l_reg_date desc limit 1,5"); //신규 5개
+						SQL.append(" order by l_reg_date desc limit 0,5"); //신규 5개
 					}
 					else if(item.equals("free")){
-						SQL.append(" where l_price=0 order by l_reg_date desc limit 1,5");
+						SQL.append(" where l_price=0 order by l_reg_date desc limit 0,5");
 					}
 
 					pstmt=con.prepareStatement(SQL.toString()); 
