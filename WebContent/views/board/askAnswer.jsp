@@ -113,14 +113,15 @@ function timeBefore(timedate){
 			<!--  -->
 			<div class="content">
 				<%
+					String pageNum=request.getAttribute("pageNum").toString();
 					ArrayList<QuestionDTO> boardList=(ArrayList<QuestionDTO>)request.getAttribute("boardList");
 					for(QuestionDTO qdto: boardList){
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
-						<i class="fab fa-quora">.</i>
-						<span><%=qdto.getQ_title()%></span>
+						<span class="Q">Q.</span>
+						<span><a href="askView.bo?num=<%=qdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=qdto.getQ_title()%></a></span>
 					</div>
 					<p class="post_metas">
 						<span class="post_writer">작성자 : <%=qdto.getQ_writer()%></span>
@@ -136,7 +137,7 @@ function timeBefore(timedate){
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=qdto.getQ_num()%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=qdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
 				<%} %>

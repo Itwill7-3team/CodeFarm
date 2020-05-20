@@ -19,6 +19,9 @@ public class WishListAddAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id =(String) session.getAttribute("m_email");
+		if(id==null){
+			id=request.getParameter("id");
+		}
 		//id="test";
 		ActionForward forward = new ActionForward();
 		if( id == null ){
@@ -42,9 +45,15 @@ public class WishListAddAction implements Action {
 		
 		// 없을경우 위시리스트에 추가
 		if(check != 1){
-			wdao.wishlistAdd(wdto);
+			wdao.wishlistAdd(wdto);	
+			System.out.println("상품정보 등록");
+			
+			
 		}
-		
+		else{
+			wdao.JqwishlistDelete(Integer.parseInt(request.getParameter("num")));
+			System.out.println("상품정보 제거");
+		}
 		// 페이지 이동 (장바구니 목록 페이지)
 		forward.setPath("./Main.le");
 		forward.setRedirect(true);	

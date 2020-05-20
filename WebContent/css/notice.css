@@ -98,7 +98,6 @@
     float: right;
     min-height: 500px;
     padding: 1em;
-
 }
 
 .content_side h4{
@@ -162,5 +161,13 @@ hr{
 .pageNation a:ACTIVE {
 	color: #ffffff;
     background-color: #00c471;
-    
+}
+
+
+.notice_list_item {
+    border-bottom: 1px solid #ece4e4;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+
 }

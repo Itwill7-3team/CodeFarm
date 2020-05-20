@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="./css/goods.css" rel="stylesheet">
 
-<title>Insert title here</title>
+
+<title>코딩팜-주문목록</title>
 
 <jsp:include page="/include/header.jsp"/>
 <style type="text/css">
@@ -64,8 +64,9 @@ width: 1000px;
 	     </td>
 	     <td><%=odto.getO_l_name() %></td>
 	     <td><%=odto.getO_sum_money() %>원</td>
+	     <td>하늘나라</td>
 	     
-	     <%
+	    <%--  <%
 	     String msg = "";
 
 	     
@@ -82,7 +83,7 @@ width: 1000px;
 	     }
 	     
 	     %>	     
-	     <td><%=msg %></td>
+	     <td><%=msg %></td> --%>
 	     
 	     <td><%=odto.getO_t_date() %></td>
 	   

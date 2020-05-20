@@ -117,11 +117,15 @@
 					<div class="field">
 						<div class="label_box">
 							<label class="menu_label">카테고리 </label>
-							<div class="button_box">
+							<div class="button_box categoryBox1">
 								<button class="button category1" value="IT프로그래밍">IT프로그래밍</button>
 								<button class="button category1" value="크리에이티브">크리에이티브</button>
 								<button class="button category1" value="업무스킬">업무스킬</button>
 								<button class="button category1" value="그외">그외</button>
+							</div>
+							<label class="menu_label"> 2차 분류 </label>
+							<div class="button_box categoryBox2">
+								
 							</div>
 						</div>
 					</div>
@@ -361,7 +365,33 @@ $(document).ready(function() {
 
 
 	//에디터 끝 
-	
+	$(".button_box.categoryBox1").on("click","button",function(){
+		console.log($(this).val());
+		var itprograming=["웹개발","모바일앱","게임 개발","데이터 사이언스","보안","인공지능","알고리즘","교양",
+			"수학","서버","자동화","데이터베이스","개발도구","프레임워크 및 라이브러리","프로그래밍 언어",
+			"서비스 개발","인프라","사물인터넷","블록체인"];
+		var creative=["3D 모델링","그래픽 디자인","영 상 편집", "유튜브","영화 그래픽",
+			"웹앱 디자인","게임 디자인","UX/UI","Sound","AR/VR"];
+		var businessskill=["MS-OFFICE","마케팅","금융 주식 투자","데이터 분석","업무 자동화",
+			"회계 재무","경영지식","기획 프로젝트 관리","글쓰기","자기 계발","외국어"];
+		$(".button_box.categoryBox2").empty();
+			
+		if($(this).val()=="IT프로그래밍"){
+			$.each(itprograming,function(i, element) {
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+			});
+		}
+		if($(this).val()=="크리에이티브"){
+			$.each(creative,function(i, element) {
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+			});
+		}
+		if($(this).val()=="업무스킬"){
+			$.each(businessskill,function(i, element) {
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+			});
+		}
+	});
 	
 	//클릭하면 display 나옴
 	$(".side_item").click(function() {
@@ -379,8 +409,12 @@ $(document).ready(function() {
 		$(".level").removeClass("active");
 		$(this).addClass("active");
 	});
-		$(".category1").click(function() {
+	$(".category1").click(function() {
 		$(".category1").removeClass("active");
+		$(this).addClass("active");
+	});
+	$(".categoryBox2").on("click","button",function() {
+		$(".category2").removeClass("active");
 		$(this).addClass("active");
 	});
 	//input버튼 새로 추가하는 액션
@@ -450,25 +484,33 @@ $(document).ready(function() {
 	});
 	//수업 추가 이벤트
 	$(".ui-sortable").on("click",".add_lecture_btn",function(){
-		var data=prompt("값을 입력해주세요", "");//
+		var data=prompt("값을 입력해주세요", "");
 		if(data==null){return;}
-		$(this).parents("li").before(
-				'<li class="unit unit_lecture ui-sortable-handle">'
-				+'<div class="box unit_box">'
-				      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
-				      +'<div class="unit_btns">'
-				        +'<div>'
-				        	+'<button type="button" class="button4 lecture_mod_btn" >'
-				        		+'<i class="fas fa-pen"></i>'
-				  			+'</button>'
-				          	+'<button type="button" class="button4 unit_del_btn" >'
-				    			+'<i class="fas fa-trash-alt"></i>'
-				  		 	+'</button>'
-				        +'</div>'
-				     +'</div>'
-				 +'</div>'
-			+'</li>'		
-		);
+		for(var i=Number($(this).parents("li").index()+1);i<=$(this).parents("ul").children().size();i++){
+				console.log(i);	
+				console.log("시작값:"+Number($(this).parents("li").index()+1)+"끝 값:"+$(this).parents("ul").children().size());
+			if($(".ui-sortable>li").eq(i).attr("class")=="unit unit_section ui-sortable-handle" || !$(".ui-sortable>li").eq(i) || $(this).parents("ul").children().size()==i ){
+					console.log("실행"+i);				
+				$(".ui-sortable>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
+						+'<div class="box unit_box">'
+						      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
+						      +'<div class="unit_btns">'
+						        +'<div>'
+						        	+'<button type="button" class="button4 lecture_mod_btn" >'
+						        		+'<i class="fas fa-pen"></i>'
+						  			+'</button>'
+						          	+'<button type="button" class="button4 unit_del_btn" >'
+						    			+'<i class="fas fa-trash-alt"></i>'
+						  		 	+'</button>'
+						        +'</div>'
+						     +'</div>'
+						 +'</div>'
+					+'</li>'		
+				);
+				break;
+			}
+		
+		}
 		 reorder();
 	});
 	//섹션추가 이벤트
@@ -508,7 +550,6 @@ $(document).ready(function() {
 	function reorder() {
 		var index=0;
 	    $(".ui-sortable").children("li").each(function(i, box) {
-		console.log($(box).attr("class"));
 	    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
 	    		index++;
 	    	}else{
@@ -556,35 +597,28 @@ $(document).ready(function() {
 		var abilities="";
 		for(var i=0;i<$(".boxes.abilities").children().size();i++)
 			abilities+=$(".boxes.abilities").children().eq(i).attr("data-content")+"/";
-		console.log(abilities);
 		//이런 분들에게 추천해요
 		var targets="";
 		for(var i=0;i<$(".boxes.targets").children().size();i++)
 			targets+=$(".boxes.targets").children().eq(i).attr("data-content")+"/";
-		console.log(targets);
 		//선수 지식이 필요하다면 무엇인가요?
 		var based="";
 		for(var i=0;i<$(".boxes.based").children().size();i++)
 			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
-		console.log(based);
 		//카테고리
-		var category=$(".button.category1.active").attr("value")+"/";
-		console.log(category);
+		var category=$(".button.category1.active").attr("value")+"/"+$(".button.category2.active").attr("value");
 		//강의수준
 		var level=$(".button.level").attr("value");
-		console.log(level);
 		/* 1페이지 끝 */
 		//강의 두줄 요약
 		var description=$(".textarea.description").val();
-		console.log(description);
 		//강의 상세 내용(해당내용은 강의 상세페이지에서 보여집니다.)
 		var body=$(".note-editable").html();
-		console.log(body);
 		/* 2페이지 끝 */
 		
 		/* 3페이지  끝 */
-		var img=$(".file_info").html();
-		console.log(img);
+		var img=$("#image_file_upload").val();
+		
 		/* 4페이지 끝  */
 		//가격정보
 		var price= $(".box_input.price").val();
