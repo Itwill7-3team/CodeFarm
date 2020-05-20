@@ -5,21 +5,19 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.notice.db.NoticeDAO;
-import com.notice.db.NoticeDTO;
-import com.question.db.QuestionDAO;
-import com.question.db.QuestionDTO;
+import com.ask.db.AskDAO;
+import com.ask.db.AskDTO;
 
-public class askAnswerAction implements Action{
+public class AskAnswerAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward= new ActionForward();
-		QuestionDAO bdao= new QuestionDAO();
+		AskDAO bdao= new AskDAO();
 		
 
 		//게시글 유,무 체크
-		int check = bdao.getQuestionCount();
+		int check = bdao.getAskCount();
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////		
 //페이징 처리
@@ -58,7 +56,7 @@ endPage=pageCount;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-ArrayList<QuestionDTO> boardList=null;
+ArrayList<AskDTO> boardList=null;
 		if(check != 0){ //글이 존재한다
 				boardList= bdao.getBoardList(startRow,pageSize);
 		}
@@ -72,7 +70,7 @@ ArrayList<QuestionDTO> boardList=null;
 		request.setAttribute("endPage", endPage);
 
 		
-		System.out.println("askAnswerAction 실행");
+		System.out.println("AskAnswerAction 실행");
 		request.setAttribute("boardList", boardList);
 		forward.setPath("./views/board/askAnswer.jsp");
 		forward.setRedirect(false);

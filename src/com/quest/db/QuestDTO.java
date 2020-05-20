@@ -1,8 +1,8 @@
-package com.question.db;
+package com.quest.db;
 
 import java.sql.Timestamp;
 
-public class QuestionDTO {
+public class QuestDTO {
 
 	private int q_num;			//게시글 번호
 	private int q_l_num;		//게시글 강의 번호

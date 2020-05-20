@@ -1,4 +1,4 @@
-<%@page import="com.ask.db.AskDTO"%>
+<%@page import="com.quest.db.QuestDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -66,9 +66,9 @@ function timeBefore(timedate){
 </script>
 	<section class="community_header">
 	<div class="container">
-		<h2>묻고 답해요</h2>
+		<h2>기능 요청</h2>
 		<p>
-			질문하고 답변해요~ <br> 모르면 질문하고 ,서로서로 해답을 찾아봐요
+			기능요청~ <br> 기능요청
 		</p>
 	</div>
 	</section>
@@ -114,30 +114,30 @@ function timeBefore(timedate){
 			<div class="content">
 				<%
 					String pageNum=request.getAttribute("pageNum").toString();
-					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
-					for(AskDTO bdto: boardList){
+					ArrayList<QuestDTO> boardList=(ArrayList<QuestDTO>)request.getAttribute("boardList");
+					for(QuestDTO bdto: boardList){
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
 						<span class="Q">Q.</span>
-						<span><a href="askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>"><%=bdto.getTitle()%></a></span>
+						<span><a href="askView.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">작성자 : <%=bdto.getWriter()%></span>
+						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
 						<span class="post_time">시간 : 
-						<script>var time=timeBefore("<%=bdto.getReg_date()%>");
+						<script>var time=timeBefore("<%=bdto.getQ_reg_date()%>");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_locuter"><%=bdto.getL_num() %></span>
+						<span class="post_locuter"><%=bdto.getQ_l_num() %></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
 				<%} %>
