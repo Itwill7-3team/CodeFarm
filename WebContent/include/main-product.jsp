@@ -22,7 +22,107 @@ System.out.println("@@@@@@@@@@@@@@lectureList:"+newList);
 System.out.println("@@@@@@@@@@@@@@lectureList:"+freeList);
 
 %>
+<script>
+	$(document).ready(function(){
+		checkwish();
+		checkbasket();
+		$(".addwish_btn").click(function(){//sss
+			var num=$(this).parents(".card").attr("data-type");
+			 $.ajax({
+				 type: "POST",
+		            url: "./WishListAdd.wi",
+		            data: {
+						"id":"${m_email}",  
+						"num":num
+		            },
 
+		            success:function(data){
+		            	checkwish();
+		            },
+		            error: function (data) {
+		            	alert("등록 실패!");
+		            }
+		        });
+		});//wishlist ajax동작
+			
+	$(".addbasket_btn").click(function(){//sss
+		var num=$(this).parents(".card").attr("data-type");
+		console.log(num);
+		 $.ajax({
+			 type: "POST",
+	            url: "./BasketAdd.ba",
+	            data: {
+					"id":"${m_email}",  
+					"num":num
+	            },
+
+	            success:function(data){
+	            	checkbasket();
+	            },
+	            error: function (data) {
+	            	alert("등록 실패!");
+	            }
+	        });
+		});
+	});//ready종료
+
+	function checkwish(){
+		$.ajax({
+			type : "post",
+			url : "./carts.ba?type=wish",
+			data : {
+				"id" :"${m_email}"    
+			},
+			dataType : "json",
+	            success:function(data){
+	            	//다지우고 처음으로
+	            	$(".card").find(".fa-heart").addClass("fa-heart-o").removeClass("fa-heart");
+	            	var data_num=new Array();
+	            	for(i=0;i<data.length;i++){
+	            		data_num[i]=""+data[i].wishdata.w_l_num;
+	            	}
+	            	//card수만큼 반복
+	            	$(".card").each(function(e, element) {
+	            		if(data_num.indexOf($(this).attr("data-type"))!=-1){
+	            			$(element).find(".fa-heart-o").addClass("fa-heart").removeClass("fa-heart-o");
+	            		}
+	            	});
+	            },
+	            error: function (data) {
+	            	alert("등록 실패!");
+	            }
+	        });
+	}
+	function checkbasket(){
+		$.ajax({
+			type : "post",
+			url : "./carts.ba?type=basket",
+			data : {
+				"id" :"${m_email}"    
+			},
+			dataType : "json",
+	            success:function(data){
+	            	//다지우고 처음으로
+	            	$(".card").find(".fa-shopping-cart").addClass("fa-cart-arrow-down").removeClass("fa-shopping-cart");
+	            	var data_num=new Array();
+	            	for(i=0;i<data.length;i++){
+	            		data_num[i]=""+data[i].basketdata.b_l_num;
+	            	}
+	            	//card수만큼 반복
+	            	$(".card").each(function(e, element) {
+	            		if(data_num.indexOf($(this).attr("data-type"))!=-1){
+	            			$(element).find(".fa-cart-arrow-down").addClass("fa-shopping-cart").removeClass("fa-cart-arrow-down");
+	            		}
+	            	});
+	            },
+	            error: function (data) {
+	            	alert("등록 실패!");
+	            }
+	        });
+	}
+	
+
+</script>
 
 <article id="course">
 
@@ -49,8 +149,8 @@ for(int i=0;i<bestList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
+		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
+		<a class="addbasket_btn"><i class="fas fa-cart-arrow-down"></i></a>
 		</span>
 	
 	<div class="mg-t10">
@@ -76,7 +176,7 @@ for(int i=0;i<newList.size();i++){
 	LectureDTO ldto = newList.get(i);
 %>
 			
-<div class="card">
+<div class="card" data-type="<%=ldto.getL_number()%>">
 <a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
@@ -91,8 +191,8 @@ for(int i=0;i<newList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
+		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
+		<a class="addbasket_btn"><i class="fas fa-cart-arrow-down"></i></a>
 		</span>
 		
 	<div class="mg-t10">
@@ -117,7 +217,7 @@ for(int i=0;i<freeList.size();i++){
 	LectureDTO ldto = freeList.get(i);
 %>
 			
-<div class="card">
+<div class="card" data-type="<%=ldto.getL_number()%>">
 <a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
@@ -132,8 +232,8 @@ for(int i=0;i<freeList.size();i++){
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListAdd.wi?num=<%=ldto.getL_number() %>"><i class="fa fa-heart-o"></i></a>
-		<a href="BasketAdd.ba?num=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a>
+		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
+		<a class="addbasket_btn"><i class="fas fa-cart-arrow-down"></i></a>
 		</span>
 		
 	<div class="mg-t10">
@@ -152,44 +252,7 @@ for(int i=0;i<freeList.size();i++){
 
 
 </article>
-<script>
-	function addwish(){
-		var num=$(this).parents(".card").attr("data-type");
-		 $.ajax({
-			 type: "POST",
-	            
-	            url: "./WishListAdd.wi",
-	            data: {
-					"id":"${m_email}",  
-					"num":num
-	            },
 
-	            success:function(data){
-	            	alert("위시리스트 등록 성공");
-	            },
-	            error: function (data) {
-	            	alert("등록 실패!");
-	            }
-	        });
-	}
-	function checkwish(){
-		 $.ajax({
-			 type: "POST",
-	           
-	            url: "./WishListAdd.wi",
-	            data: {
-					"id":"${m_email}",  	
-	            },
-	            success:function(data){
-	            	console.log("check-wish"+data);
-	            },
-	            error: function (data) {
-	            	alert("등록 실패!");
-	            }
-	        });
-	}
-
-</script>
 
 </body>
 </html>

@@ -39,7 +39,7 @@ public class addLectureAction implements Action {
     	String type2="";
     	if(request.getParameter("category")!=null){
     	type=request.getParameter("category").split("/")[0];
-    	//type2=request.getParameter("category").split("/")[1];
+    	type2=request.getParameter("category").split("/")[1];
     	}
     	String level="";
     	if(request.getParameter("level")!=null)

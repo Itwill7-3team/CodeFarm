@@ -302,7 +302,7 @@ html {
 
 .card{
 	height: 280px !important;
-	width: 220px;
+	width: 220px !important;
 	font-size: 11px !important;
 }
 .card img{
@@ -315,6 +315,16 @@ section * {
     box-sizing: border-box;
 }
 
-.price {
-    margin-left: 65% !important;
+/* .price { */
+/*     margin-left: 65% !important; */
+/* } */
+
+
+.breadcrumb li{
+    float: left;
+    margin-right: 1em;
+}
+
+.main_container h3{
+	clear: both;
 }

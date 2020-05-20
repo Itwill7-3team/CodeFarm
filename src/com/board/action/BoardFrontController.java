@@ -56,7 +56,9 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-
+	
+			
+////////리뷰
 		}else if(command.equals("/reView.bo")){
 			action=new ReViewAction();
 			try{

@@ -147,11 +147,12 @@ int endPage=(int)request.getAttribute("endPage");
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-					<hr>
+
 					</div>
 				</div>
-				<%} %>
 				</div>
+				<%} %>
+				
 			</div>
 		</div>
 			<!--  -->

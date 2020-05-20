@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class OrderDTO {
 
 	private int o_num;			//결제 번호
-	private int o_b_num;		//결제 장바구니 번호
+	private String o_b_num;		//결제 장바구니 번호
 	private int o_l_price;		//결제 강의 가격
 	private int o_l_num;		//결제 강의 번호
 	private String o_l_name;	//결제 강의 이름
@@ -15,14 +15,14 @@ public class OrderDTO {
 	private String o_t_payer;	//입금자명
 	private Timestamp o_t_date;	//결제시간
 	private int o_sum_money;	//결제 가격
-	private int o_status; // 주문 상태(무통장)
+	//private int o_status; // 주문 상태(무통장)
 	
-	public int getO_status() {
+/*	public int getO_status() {
 		return o_status;
-	}
-	public void setO_status(int o_status) {
+	}*/
+/*	public void setO_status(int o_status) {
 		o_status = o_status;
-	}
+	}*/
 	//getter setter
 	public int getO_num() {
 		return o_num;
@@ -30,10 +30,10 @@ public class OrderDTO {
 	public void setO_num(int o_num) {
 		this.o_num = o_num;
 	}
-	public int getO_b_num() {
+	public String getO_b_num() {
 		return o_b_num;
 	}
-	public void setO_b_num(int o_b_num) {
+	public void setO_b_num(String o_b_num) {
 		this.o_b_num = o_b_num;
 	}
 	public int getO_l_price() {
@@ -91,16 +91,15 @@ public class OrderDTO {
 		this.o_sum_money = o_sum_money;
 	}
 	
-	//toString
-	
 	@Override
 	public String toString() {
 		return "OrderDTO [o_num=" + o_num + ", o_b_num=" + o_b_num + ", o_l_price=" + o_l_price + ", o_l_num=" + o_l_num
 				+ ", o_l_name=" + o_l_name + ", o_m_id=" + o_m_id + ", o_t_type=" + o_t_type + ", o_t_bank=" + o_t_bank
-				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + ", o_status="
-				+ o_status + "]";
+				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + "]";
 	}
 	
+	//toString
 	
+
 	
 }
