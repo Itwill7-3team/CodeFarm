@@ -294,7 +294,7 @@ public class BasketDAO {
 								
 								ldto.setL_goods(rs2.getInt("l_goods"));
 								ldto.setPct_date(rs2.getTimestamp("pct_date"));
-								ldto.setPay_count(rs.getInt("pay_count"));
+								//ldto.setPay_count(rs.getInt("pay_count"));
 								ldto.setL_title(rs2.getString("l_title"));
 								cdto.setLecturedata(ldto);
 							}

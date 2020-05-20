@@ -70,7 +70,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<div class="main_content">
 			<!--  -->
 
-		<h1><%=ndto.getN_title()%></h1>
+		<h1><span class="N">N.</span><%=ndto.getN_title()%></h1>
 		<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
 		<hr>
 		<div class="notice_content">
@@ -85,7 +85,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 					ndto=noticeList.get(i);
 					
 			%>
-		<li><a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>"><%=ndto.getN_title()%></a></li>
+		<li><a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>"><p><%=ndto.getN_title()%></p></a></li>
 		<%} %>
 		
 		</ul>

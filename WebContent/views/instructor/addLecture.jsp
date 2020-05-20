@@ -439,11 +439,6 @@ $(document).ready(function() {
 		            reorder();
 		        }
 		});
-		
-		    
-		
-
-
 
 	//input 으로 추가한 ol태그 삭제
 
@@ -455,10 +450,12 @@ $(document).ready(function() {
 	});
 	//수업 추가 이벤트
 	$(".ui-sortable").on("click",".add_lecture_btn",function(){
-		$(this).parents("li").after(
+		var data=prompt("값을 입력해주세요", "");//
+		if(data==null){return;}
+		$(this).parents("li").before(
 				'<li class="unit unit_lecture ui-sortable-handle">'
 				+'<div class="box unit_box">'
-				      +'<p><span class="unit_label">수업 1 : </span><span>값을 입력해주세요.</span></p>'
+				      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
 				      +'<div class="unit_btns">'
 				        +'<div>'
 				        	+'<button type="button" class="button4 lecture_mod_btn" >'
@@ -533,6 +530,13 @@ $(document).ready(function() {
 		if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
 			$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
 	 }
+	 //가격 기본값 천원단위이하 짜름
+	 $(".box_input.price").on("change",function(){
+		 if($(".box_input.price").val()!=0 && $(".box_input.price").val()<10000){
+			 $(".box_input.price").val(10000);
+		 }	
+		 $(".box_input.price").val(Math.floor($(".box_input.price").val()/1000)*1000);
+	 });
 	//textarea 자동으로 세로너비 증가
 	$(".textarea").on("keydown keyup change",function(){
 		 $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
