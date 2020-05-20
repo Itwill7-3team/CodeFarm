@@ -121,8 +121,6 @@ public class WishlistDAO {
 		ArrayList lectureList = new ArrayList();
 		ArrayList wishList = new ArrayList();
 		
-		
-		
 		try {
 			con = getConnection();
 			
@@ -140,6 +138,7 @@ public class WishlistDAO {
 				
 				wishList.add(wdto);
 				
+				
 				sql = "SELECT * FROM lecture WHERE l_number=?";
 				pstmt = con.prepareStatement(sql);
 				
@@ -148,15 +147,21 @@ public class WishlistDAO {
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
-					
+
+					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_m_email(rs2.getString("l_m_email"));
 					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
+					ldto.setL_type(rs2.getString("l_type"));
+					ldto.setL_type2(rs2.getString("l_type2"));
+					ldto.setL_level(rs2.getString("l_level"));
+					ldto.setPay_count(rs2.getInt("pay_count"));
+					ldto.setPct_date(rs2.getTimestamp("pct_date"));
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
-					ldto.setL_content(rs2.getString("l_content"));
-					ldto.setL_price(rs2.getInt("l_price"));
-					ldto.setL_pct(rs2.getInt("l_pct"));
 					
 					lectureList.add(ldto);
 				}
@@ -257,21 +262,19 @@ public class WishlistDAO {
 							rs2=pstmt.executeQuery();
 							if(rs2.next()){
 								LectureDTO ldto = new LectureDTO();
-								ldto.setL_number(rs2.getInt("l_number"));
-								ldto.setL_m_name(rs2.getString("l_m_name"));
-								ldto.setL_m_id(rs2.getString("l_m_id"));
-								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 								ldto.setL_content(rs2.getString("l_content"));
+								ldto.setL_goods(rs2.getInt("l_goods"));
+								ldto.setL_m_email(rs2.getString("l_m_email"));
+								ldto.setL_number(rs2.getInt("l_number"));
+								ldto.setL_pct(rs2.getInt("l_pct"));
+								ldto.setL_price(rs2.getInt("l_price"));
+								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 								ldto.setL_type(rs2.getString("l_type"));
 								ldto.setL_type2(rs2.getString("l_type2"));
-								ldto.setL_type3(rs2.getString("l_type3"));
-								ldto.setL_price(rs2.getInt("l_price"));
-								ldto.setL_pct(rs2.getInt("l_pct"));
-								ldto.setL_img(rs2.getString("l_img"));
-								ldto.setL_tag(rs2.getString("l_tag"));
-								ldto.setL_goods(rs2.getInt("l_goods"));
+								ldto.setL_level(rs2.getString("l_level"));
+								ldto.setPay_count(rs2.getInt("pay_count"));
 								ldto.setPct_date(rs2.getTimestamp("pct_date"));
-								ldto.setPaynum(rs2.getInt("paynum"));
+								ldto.setL_img(rs2.getString("l_img"));
 								ldto.setL_title(rs2.getString("l_title"));
 								cartDTO.setLecturedata(ldto);
 							}
@@ -285,7 +288,31 @@ public class WishlistDAO {
 					
 					return cartlist;
 				}
-	
+
+	/* Jquery용 wishlistDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqwishlistDelete(int l_number){
+								
+		try {
+			con = getConnection();
+			// 위시에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM wishlist WHERE w_l_num=?";
+									
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+									
+			pstmt.executeUpdate();
+						
+			System.out.println(l_number+"번의 강의 위시리시트에서 삭제 완료");
+									
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */				
+				
 	
 	
 	

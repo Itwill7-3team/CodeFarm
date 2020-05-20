@@ -52,7 +52,7 @@ public class MemberFrontController extends HttpServlet{
 		
 		
 		if(command.equals("/MemberLogin.me")){
-			// 회원가입처리 페이지로 바로 이동
+			// 로그인 페이지
 			System.out.println("/MemberLogin.me 주소요청 ");
 			// ActionForward 객체 생성
 			forward = new ActionForward();
@@ -71,9 +71,7 @@ public class MemberFrontController extends HttpServlet{
 			
 		}else if(command.equals("/MemberJoinAction.me")){
 			System.out.println("/MemberJoinAction.me 주소 요청");
-			// 데이터 처리가 필요한 페이지로 이동 (Action자바 파일을 생성해서 처리)
-			//MemberJoinAction mja = new MemberJoinAction();
-			// 업캐스팅 사용해서 객체 생성
+			//회원가입 동작
 			action = new MemberJoinAction();		
 			
 			try {
@@ -90,7 +88,9 @@ public class MemberFrontController extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/emailCheckAction.me")) {
+			// 이메일 인증 요청
 			System.out.println("/emailCheckAction.me 주소 요청");
 			action = new emailCheckAction();
 			try {
@@ -99,15 +99,18 @@ public class MemberFrontController extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/idCheck.me")) {
+			//회원  가입시 아이디 확인 
 			System.out.println("/idCheck.me 주소 요청");
-
+			
 			action = new idCheck();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
 		}else if(command.equals("/MemberLoginAction.me")){
 			// 로그인 처리 (Model객체 필요)
@@ -120,6 +123,7 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else if(command.equals("/MemberPw.me")){
 			// 비밀번호 찾기
 			System.out.println("MemberPw.me 주소 요청");
@@ -127,6 +131,7 @@ public class MemberFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("./views/member/MemberPw.jsp");
 			forward.setRedirect(false);	
+			
 		}else if(command.equals("/MemberPwAction.me")){
 			// 비밀번호 찾기
 			System.out.println("MemberPwAction.me 주소 요청");
@@ -149,6 +154,7 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/MemberAdmin.me")){
+			//관리자 회원 관리
 			// MemberAdminAction 객체 생성 
 			action = new MemberListAction();
 			try {
@@ -158,6 +164,7 @@ public class MemberFrontController extends HttpServlet{
 			}
 			
 		}else if(command.equals("/MemberInfo.me")){
+			//회원정보 보기
 			// MemberAdminAction 객체 생성 
 			action = new MemberInfoAction();
 			try {
@@ -165,8 +172,49 @@ public class MemberFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/TechRequestAction.me")) {	
+			// 강사신청 동작
+			action = new TechRequestAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/TechRequest.me")) {
+			//강사 신청 페이지
+			forward = new ActionForward();
+			forward.setPath("./views/member/tech_request.jsp");
+			forward.setRedirect(false);
+			
+		}else if(command.equals("/IntroUpdateAction.me")) {
+			action = new IntroUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/PwUpdateAction.me")){
+			action = new PwUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/MemberDeleteAction.me")){
+			action = new MemberDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
-		
 		
 		
 		

@@ -7,11 +7,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜</title>
-
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://cdn.inflearn.com/dist/css/MAIN.fe7891b79f47d325600b.css"> -->
 
 
 <style type="text/css">

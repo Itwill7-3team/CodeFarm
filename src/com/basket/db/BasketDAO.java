@@ -125,7 +125,7 @@ public class BasketDAO {
 		
 		ArrayList lectureList = new ArrayList();
 		ArrayList basketList = new ArrayList();
-		ArrayList wishlistList = new ArrayList();
+		ArrayList wishList = new ArrayList();
 		
 		
 
@@ -157,8 +157,8 @@ public class BasketDAO {
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
 					
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_m_email("l_m_email");
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					ldto.setL_content(rs2.getString("l_content"));
@@ -181,14 +181,14 @@ public class BasketDAO {
 					widto.setW_m_id(rs3.getString("w_m_id"));
 					widto.setW_num(rs3.getInt("w_num"));
 					System.out.println("-----widto------");
-					wishlistList.add(widto);
+					wishList.add(widto);
 					
 				}
 			}
 			
 			vec.add(0,basketList);
 			vec.add(1, lectureList);
-			vec.add(2,wishlistList);
+			vec.add(2,wishList);
 			
 			System.out.println(" 장바구니,상품정보 리스트 백터에 저장완료 :"+vec);			
 			
@@ -207,7 +207,7 @@ public class BasketDAO {
 					con = getConnection();
 					// 장바구니에서 특정 번호의 상품을 삭제 
 
-					sql="DELETE FROM codefarm_basket WHERE b_num=?";
+					//sql="DELETE FROM basket WHERE b_num=?";
 
 					sql="DELETE FROM basket WHERE b_num=?";
 					
@@ -233,7 +233,7 @@ public class BasketDAO {
 					try {
 						con = getConnection();
 						// 장바구니에서 특정 번호의 상품을 삭제 
-						sql="DELETE FROM codefarm_basket WHERE b_m_id=?";
+						sql="DELETE FROM basket WHERE b_m_id=?";
 						
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, id);
@@ -282,20 +282,19 @@ public class BasketDAO {
 							if(rs2.next()){
 								LectureDTO ldto = new LectureDTO();
 								ldto.setL_number(rs2.getInt("l_number"));
-								ldto.setL_m_name(rs2.getString("l_m_name"));
-								ldto.setL_m_id(rs2.getString("l_m_id"));
+								ldto.setL_m_email(rs2.getString("l_m_email"));
 								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 								ldto.setL_content(rs2.getString("l_content"));
 								ldto.setL_type(rs2.getString("l_type"));
 								ldto.setL_type2(rs2.getString("l_type2"));
-								ldto.setL_type3(rs2.getString("l_type3"));
+								ldto.setL_level(rs2.getString("l_level"));
 								ldto.setL_price(rs2.getInt("l_price"));
 								ldto.setL_pct(rs2.getInt("l_pct"));
 								ldto.setL_img(rs2.getString("l_img"));
-								ldto.setL_tag(rs2.getString("l_tag"));
+								
 								ldto.setL_goods(rs2.getInt("l_goods"));
 								ldto.setPct_date(rs2.getTimestamp("pct_date"));
-								ldto.setPaynum(rs2.getInt("paynum"));
+								ldto.setPay_count(rs.getInt("pay_count"));
 								ldto.setL_title(rs2.getString("l_title"));
 								cdto.setLecturedata(ldto);
 							}
@@ -308,6 +307,31 @@ public class BasketDAO {
 					}
 					return cartList;
 				}
+				
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+	public void JqbasketDelete(int l_number){
+					
+		try {
+			con = getConnection();
+			// 장바구니에서 특정 번호의 상품을 삭제 
+
+			sql="DELETE FROM basket WHERE b_l_num=?";
+						
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+						
+			pstmt.executeUpdate();
+			
+			System.out.println(l_number+"번의 강의 장바구니에서 삭제 완료");
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}	
+	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
+				
 	
 	
 }

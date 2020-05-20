@@ -82,6 +82,7 @@ public class MemberJoinAction implements Action{
 		if(result == 1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("m_email", mb.getM_email());
+
 			Script.moving(response, "입력하신 이메일로 인증해주세요.",url);
 		}else if(result == -1){
 			System.out.println("MemberJoinAction: sql error!!");

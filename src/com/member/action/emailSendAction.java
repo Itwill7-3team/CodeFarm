@@ -84,9 +84,9 @@ public class emailSendAction implements Action{
 		   msg.setContent(content, "text/html; charset=UTF-8");
 		   Transport.send(msg);
 
-		   forward.setPath("/MemberLogin.me");
+		   forward.setPath("./Main.le");
 		   forward.setRedirect(true);
-			
+			session.removeAttribute("m_email");
 	   }catch(Exception e){
 		   Script.moving(response, "오류가 발생했습니다.");
 	   }

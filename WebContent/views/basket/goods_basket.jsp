@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,8 +33,8 @@
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 100%; /*Full width */
+  height: 100%;  /*Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -96,21 +97,31 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;  
   background-color: #f1f1f1;
-  height: auto;
+    max-width: 920px;
+  max-height: 720px;
   margin-bottom: 10px;
+  
    
 }
 .Wibox{
+<<<<<<< HEAD
 	
     width: 650px;
+=======
+    width: 100%;
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
     height: auto;
     padding: 10px 10px 10px 0;
     display: inline-block;
+
     
 }
 .Wbox{float: left;}
-.Wcolumn{}
+.Wmodal-content{max-width: 920px;
+  max-height: 720px;
+  height: 95%;}
 .Wcontent{display: inline-block;
+<<<<<<< HEAD
     width: 320px;
     height: auto;
     margin-left: 30px;}
@@ -122,6 +133,13 @@
  padding-top: 10px; }   
  
  
+=======
+    margin-left: 30px;
+    }
+    
+.Wamount {text-align: center; width: 100px; margin-left: auto;
+ padding-top: 10px; }    
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 </style>
 
 
@@ -130,7 +148,7 @@
 	<%
 		List basketList = (List) request.getAttribute("basketList");
 		List lectureList = (List) request.getAttribute("lectureList");
-		List wishlistList = (List) request.getAttribute("wishlistList");
+		List wishList = (List)request.getAttribute("wishlistList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
 
@@ -149,10 +167,9 @@
     <hr>
     
           <%
-           for (int i = 0; i < wishlistList.size(); i++) {
-        	  WishlistDTO widto = (WishlistDTO) wishlistList.get(i);
+           for (int i = 0; i < wishList.size(); i++) {
+        	  WishlistDTO widto = (WishlistDTO) wishList.get(i);
           	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
-          	BasketDTO bdto = (BasketDTO) basketList.get(i);
           	  %>
           	  <div class="Wrow">
        <div class="Wcolumn"> 
@@ -164,9 +181,9 @@
 				</a>
          
           <div class="Wcolumn Wcontent">
-				<a href="#"><%=ldto.getL_title()%></a>
+				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
@@ -176,16 +193,17 @@
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />
 			</span>
-
 			<div class="tooltip">
 				<a href="./WishListDelete.wi?b_num=<%=widto.getW_num()%>"> <i
 					class="fa fa-close"></i> <span class="tooltiptext">위시리스트 삭제</span>
 				</a><br>
 			</div>
+	 		<% BasketDTO bdto = new BasketDTO(); { %>
 			<button class="d_btn d_btn2" type="button"
 				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
 				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
-			</button>
+			</button>   
+			<%} %> 
 		</div>
 			 
           
@@ -199,7 +217,7 @@
           <%
           }
           %>
-
+    
 			
       
         
@@ -208,7 +226,7 @@
     </div>
   </div>
 
-</div>
+
 
 	<%
 		int total = 0;
@@ -225,7 +243,7 @@
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			</div>
 		</div>
@@ -264,10 +282,10 @@
 				<li style="border-bottom: 1px solid pink; padding-bottom: 15px;">
 					쿠폰: <select id="cars">
 						<option value="cho" selected>쿠폰을 선택해 주세요.</option>
-						<option value="volvo">Volvo</option>
+						<!-- <option value="volvo">Volvo</option>
 						<option value="saab">Saab</option>
 						<option value="vw">VW</option>
-						<option value="audi">Audi</option>
+						<option value="audi">Audi</option> -->
 				</select>
 				</li>
 

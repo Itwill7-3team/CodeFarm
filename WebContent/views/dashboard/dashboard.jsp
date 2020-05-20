@@ -13,8 +13,10 @@
 
 <%
 	String loginEmail="";
+	String nick="";
 	if(session.getAttribute("m_email")!=null){
 	 loginEmail=(String)session.getAttribute("m_email");
+	 nick=(String)session.getAttribute("nick");
 	}
 %>
 
@@ -54,11 +56,11 @@
                       <img src="./img/carrotIcon.png" alt="@@@님의 프로필">
                   </div>
                   <div class="media-content">
-                    <h5> @@@님, 편안한 밤시간 되세요 🌟</h5> <!-- 인사말 -->
-                    <span>닉네임:@@@ </span><br> <!-- 유저 닉네임 -->
+                    <h5> <%=nick %>님, 편안한 밤시간 되세요 🌟</h5> <!-- 인사말 -->
+                    <span>닉네임:<%=nick %> </span><br> <!-- 유저 닉네임 -->
                     <span>이메일:<%=loginEmail %></span><br> <!-- 유저 이메일 -->
                   </div>
-                  <a class="bottom_right" href="#">프로필 수정하기</a>
+                  <a class="bottom_right" href="MemberInfo.me">프로필 수정하기</a>
                 </div>
               </div>
             </div>
@@ -79,7 +81,7 @@
     <progress class="progress is-link" value="31.03" max="100">31.03%</progress> <!-- 프로그래스바 -->
   </div>
 <div class="buttons bottom_right">
-  <a href="#" class="button is-link">내 모든 강의</a>
+  <a href="MyLecture.bo" class="button is-link">내 모든 강의</a>
   <a class="button is-primary" href="#">이어서 학습하기</a>
 </div></div>
             </div>

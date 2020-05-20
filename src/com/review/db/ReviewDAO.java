@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.naming.Context;
@@ -77,21 +78,19 @@ public class ReviewDAO {
 				rs2=pstmt.executeQuery();
 				if(rs2.next()){
 					LectureDTO ldto= new LectureDTO();
-					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_m_email(rs2.getString("l_m_email"));
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_type(rs2.getString("l_type"));
 					ldto.setL_type2(rs2.getString("l_type2"));
-					ldto.setL_type3(rs2.getString("l_type3"));
-					ldto.setL_price(rs2.getInt("l_price"));
-					ldto.setL_pct(rs2.getInt("l_pct"));
-					ldto.setL_img(rs2.getString("l_img"));
-					ldto.setL_tag(rs2.getString("l_tag"));
-					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_level(rs2.getString("l_level"));
+					ldto.setPay_count(rs2.getInt("pay_count"));
 					ldto.setPct_date(rs2.getTimestamp("pct_date"));
-					ldto.setPaynum(rs2.getInt("paynum"));
+					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					reviewdata.put("ldto", ldto);
 				}
@@ -107,22 +106,31 @@ public class ReviewDAO {
 	}
 	
 	// getAvgrating() 강의별 평균 별점 가져오기
-	public Map<String, Object> getAvgrating(int l_number){
-		Map<String, Object> review_rating = new HashMap<>();
+	public Map<Integer, Map<String, Object>> getAvgrating(ArrayList<Integer> l_numList){
+		Map<Integer, Map<String, Object>> ratingList = new HashMap<Integer, Map<String, Object>>();
+		StringBuffer qMark = new StringBuffer();
+		for(int i=0; i<l_numList.size(); i++){
+			qMark.append("?");
+			qMark.append(",");
+		}
+		qMark.deleteCharAt(qMark.lastIndexOf(","));
+		
 		try {
 			con = getConnection();
 			System.out.print("getAvgrating() : ");
 			sql = "select "
-				+ "  count(*) reviewAll, round(avg(r_rating), 1) rating_avg, "
-				+ "  count(if(r_rating=5, r_rating, null)) rating_5, count(if(r_rating=4, r_rating, null)) rating_4, "
-				+ "  count(if(r_rating=3, r_rating, null)) rating_3, count(if(r_rating=2, r_rating, null)) rating_2, "
-				+ "  count(if(r_rating=1, r_rating, null)) rating_1 "
+				+ "  r_l_num,            count(*) reviewAll,           round(avg(r_rating), 1) rating_avg, "
+				+ "  count(if(r_rating = 5, r_rating, null)) rating_5, count(if(r_rating = 4, r_rating, null)) rating_4, "
+				+ "  count(if(r_rating = 3, r_rating, null)) rating_3, count(if(r_rating = 2, r_rating, null)) rating_2, "
+				+ "  count(if(r_rating = 1, r_rating, null)) rating_1 "
 				+ "from   r_board "
-				+ "where  r_re_lev = 0 and r_l_num = ?";
+				+ "where  r_re_lev = 0 and r_l_num in("+qMark.toString()+") group by r_l_num";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, l_number);
+			for(int i=0; i<l_numList.size(); i++){ pstmt.setInt(i + 1, l_numList.get(i)); }
 			rs = pstmt.executeQuery();
-			if(rs.next()){
+			while(rs.next()){
+				Map<String, Object> review_rating = new HashMap<String, Object>();
+				review_rating.put("r_l_num", rs.getInt("r_l_num"));
 				review_rating.put("reviewAll", rs.getInt("reviewAll"));
 				review_rating.put("rating_avg", rs.getDouble("rating_avg"));
 				review_rating.put("rating_5", rs.getInt("rating_5"));
@@ -130,6 +138,7 @@ public class ReviewDAO {
 				review_rating.put("rating_3", rs.getInt("rating_3"));
 				review_rating.put("rating_2", rs.getInt("rating_2"));
 				review_rating.put("rating_1", rs.getInt("rating_1"));
+				ratingList.put(rs.getInt("r_l_num"), review_rating);
 			}
 			System.out.println("강의별 리뷰 정보 가져오기 완료");
 		} catch (Exception e) {
@@ -137,7 +146,7 @@ public class ReviewDAO {
 		} finally {
 			closeDB();
 		}
-		return review_rating;
+		return ratingList;
 	}
 	// getAvgrating() 강의별 평균 별점 가져오기
 	

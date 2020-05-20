@@ -35,8 +35,8 @@ public class InstructorAddAction implements Action {
 						request,
 						realPath,
 						maxSize,
-						"UTF-8",
-						new DefaultFileRenamePolicy()
+						"UTF-8"
+						//new DefaultFileRenamePolicy()
 						);
 		
 		System.out.println("파일 업로드 성공 (서버에 저장완료)");
@@ -47,16 +47,14 @@ public class InstructorAddAction implements Action {
 		// 2. GoodsDTO 객체 생성 (전달받은 정보를 저장)
 		LectureDTO ldto = new LectureDTO();
 		
-		ldto.setPaynum(Integer.parseInt(multi.getParameter("paynum")));
+		ldto.setPay_count(Integer.parseInt(multi.getParameter("pay_count")));
 		ldto.setL_content(multi.getParameter("l_content"));
 		ldto.setL_goods(Integer.parseInt(multi.getParameter("l_goods")));
-		ldto.setL_m_id(multi.getParameter("l_m_id"));
-		ldto.setL_m_name(multi.getParameter("l_m_name"));
+		ldto.setL_m_email(multi.getParameter("l_m_email"));
 		ldto.setL_pct(Integer.parseInt(multi.getParameter("l_pct")));
 		ldto.setL_price(Integer.parseInt(multi.getParameter("l_price")));
 		/*ldto.setL_reg_date(l_reg_date);*/
 		ldto.setL_title(multi.getParameter("l_title"));
-		ldto.setL_tag(multi.getParameter("l_tag"));
 		ldto.setL_type(multi.getParameter("l_type"));
 		/*ldto.setPct_date(pct_date);*/
 		String image = multi.getFilesystemName("file1")+","
@@ -89,8 +87,7 @@ public class InstructorAddAction implements Action {
 		
 		// 3. AdminGoodsDAO 객체를 생성해서 처리 
 		//  -> insertGoods(dto)
-		LectureDAO ldao = new LectureDAO();
-		ldao.insertlectures(ldto);
+		
 		
 		
 		// 4. 페이지 이동 (List페이지)

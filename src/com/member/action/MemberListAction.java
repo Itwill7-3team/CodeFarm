@@ -14,7 +14,7 @@ public class MemberListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		request.setCharacterEncoding("UTF-8");
 		System.out.println(" @@@ MemberListAction_execute()");
 		
 		// 세션값 처리
