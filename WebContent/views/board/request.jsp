@@ -137,24 +137,14 @@ function timeBefore(timedate){
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
 				<%} %>
 			</div>
 		</div>
 		<div class="content_side">
-		<div class="best_kingKnowledge">
-			<h2>이달의 지식왕  <i class="fas fa-crown"></i></h2>
-			<div class="best_list">
-			<h4 class="best_name">이소영</h4>
-			<h4 class="best_name">정민수</h4>
-			<h4 class="best_name">김홍준</h4>
-			<h4 class="best_name">박유준</h4>
-			<h4 class="best_name">변재정</h4>
-			<h4 class="best_name">최우영</h4>
-			<h4 class="best_name">조수아</h4>
-			</div>
+		
 		</div>
 		</div>
 		

@@ -86,7 +86,7 @@
 /* 	border: 1px red solid; */
 	width: 70%;
 	min-height: 500px;
-	padding: 2em;
+	padding: 1em;
 	display: inline-block;
 	border-bottom: 1px solid #929292;
 
@@ -97,7 +97,7 @@
 	width: 18%;
     float: right;
     min-height: 500px;
-    padding: 1em;
+    padding: 0 1em;
 }
 
 .content_side h4{
@@ -148,7 +148,7 @@ hr{
 .pageNation{
 	text-align: center;
 	position: absolute;
-	bottom: 3em;
+	bottom: 15em;
 	left: 50%;
 }
 

@@ -152,7 +152,7 @@ System.out.print("id"+id);
 %>
 	<div class="answer_form">
 		<form action="#" method="post">
-		글쓴이 : <%=id%><br>
+		[답글] 글쓴이 : <%=id%><br>
 		<textarea name="n_content" id="summernote">
 		</textarea>
 		<input type="submit" value="글쓰기">
