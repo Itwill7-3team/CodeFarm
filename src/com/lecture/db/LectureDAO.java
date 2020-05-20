@@ -108,7 +108,7 @@ public class LectureDAO {
 				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 				ldto.setPct_date(rs.getTimestamp("pct_date"));
 				ldto.setPay_count(rs.getInt("pay_count"));
-				ldto.setStart_msg(rs.getString("start_msg"));
+			//	ldto.setStart_msg(rs.getString("start_msg"));
 				ldto.setEnd_msg(rs.getString("end_msg"));
 			}
 			System.out.println("강의 상세정보 저장 완료");
