@@ -180,10 +180,10 @@ for(int i=0;i<lectureList.size();i++){
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class= "l_m_id" value="" style="display: none;"><%=ldto.getL_m_id() %></div>
+												<div class= "l_m_id" style="display: none;"><%=ldto.getL_m_email() %></div>
 												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
-												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
+												<div class="course_instructor">instructor(구현중)</div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="rating_star">
@@ -199,7 +199,7 @@ for(int i=0;i<lectureList.size();i++){
 													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
 													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
 													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)"><%=ldto.getL_tag() %></span>
+														<span class="tag" style="background-color:hsl(155,40%,87%)">tag(구현중)</span>
 													</div>
 												<!-- </div> --><!-- course_data -->
 											</div>
@@ -255,7 +255,7 @@ for(int i=0;i<lectureList.size();i++){
 											<a href=""class="course-info">
 												<h2 href="#" class="course-title"><%=ldto.getL_title() %></h2>
 												<div class="tags">
-													<span class="tag"><%=ldto.getL_tag() %></span>
+													<span class="tag">tag(구현중)</span>
 												</div>
 												<div class="rating">
 													<div class="rating-star">
@@ -419,6 +419,33 @@ $(function(){
 			}
 		});
 	});
+	$(".list-action").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-cart-arrow-down").attr('data-type'); 
+		
+		/* console.log("정보 확인1 : "+m_email+" 2 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqBasket.ba",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','white');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+
 	
 	$("i.fa-cart-arrow-down").click(function(){
 		var m_email = "${m_email}";
@@ -489,6 +516,32 @@ $(function(){
 					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
 				}else if(check == 1){
 					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','red');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+	$(".coures-list-item").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-heartbeat").attr('data-type'); 
+		
+		/* console.log("정보 확인3 : "+m_email+" 4 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqWishlist.wi",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-heartbeat[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
 				}
 			},error : function(xhr, error, code) {
 				alert("시스템 오류입니다.");

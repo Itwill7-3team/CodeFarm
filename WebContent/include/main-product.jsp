@@ -34,7 +34,7 @@ for(int i=0;i<bestList.size();i++){
 	LectureDTO ldto = bestList.get(i);
 %>
 			
-<div class="card">
+<div class="card" data-type="<%=ldto.getL_number()%>">
 <a href="Detail.le?num=<%=ldto.getL_number() %>">
   <img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
     <h2><%=ldto.getL_title() %></h2>
@@ -152,6 +152,44 @@ for(int i=0;i<freeList.size();i++){
 
 
 </article>
+<script>
+	function addwish(){
+		var num=$(this).parents(".card").attr("data-type");
+		 $.ajax({
+			 type: "POST",
+	            
+	            url: "./WishListAdd.wi",
+	            data: {
+					"id":"${m_email}",  
+					"num":num
+	            },
+
+	            success:function(data){
+	            	alert("위시리스트 등록 성공");
+	            },
+	            error: function (data) {
+	            	alert("등록 실패!");
+	            }
+	        });
+	}
+	function checkwish(){
+		 $.ajax({
+			 type: "POST",
+	           
+	            url: "./WishListAdd.wi",
+	            data: {
+					"id":"${m_email}",  	
+	            },
+	            success:function(data){
+	            	console.log("check-wish"+data);
+	            },
+	            error: function (data) {
+	            	alert("등록 실패!");
+	            }
+	        });
+	}
+
+</script>
 
 </body>
 </html>
