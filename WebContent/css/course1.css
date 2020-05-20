@@ -1021,10 +1021,10 @@ div.list-action .cart-btn-controller>div i.fas.fa-heartbeat.fa-lg{
     color: #fda011;
 }
 div.list-action .cart-btn-controller>div i.fas.fa-cart-arrow-down.fa-lg:HOVER {
-    color: white;
+    color: white !important;
 }
 div.list-action .cart-btn-controller>div i.fas.fa-heartbeat.fa-lg:HOVER{
-    color: white;
+    color: white !important;
 }
 div.list-action .cart-btn-controller>div.tooltip .tooltiptext{
 	width: 150px;

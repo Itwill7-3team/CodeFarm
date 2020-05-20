@@ -155,11 +155,26 @@ public class LectureDAO {
 			 * "select * from (" + " select @rownum:=@rownum+1 as rownum lecture.* from (" +
 			 * " from lecture (select @rownum:0) tmp" + ") e where rownum >= ?" +
 			 * ") r where rownum <= ?"
+			 * 
+			 * l_m_name, 
+			 * 
+			 * 
 			 */
+			
 		/*mysql version*/
+			/*
+			 * SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM (" +
+			 * "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
+			 * + "where C.ROW >=? and C.ROW <=? and concat(l_content, l_title) like ? " +
+			 * "and l_type like ? and l_type2 like ?");
+			 * 
+			 *  left join member on (lecture.l_m_email = member.m_email) 
+			 * 
+			 */
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
-				+ "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and C.ROW <=? and concat(l_m_name, l_content, l_title) like ? "
+				+ "SELECT * FROM lecture left join member on (lecture.l_m_email = member.m_email) "
+				+ "ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
+				+ "where C.ROW >=? and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
 				+ "and l_type like ? and l_type2 like ?");
 		
 /*		if(item.equals("all")){
@@ -167,13 +182,13 @@ public class LectureDAO {
 		if(item.equals("seq")){ // 추천 좋아요 높은 순
 			SQL.append(" order by l_goods asc");
 		}else if(item.equals("popular")) { //인기? 결제수
-			SQL.append(" order by paynum desc");
+			SQL.append(" order by pay_count desc");
 		}else if(item.equals("recent")){ //최신
 			SQL.append(" order by l_number desc");
 		}else if(item.equals("rating")){ // 평점
 			SQL.append("");
 		}else if(item.equals("famous")){ // 학생수? 결제수
-			SQL.append(" order by paynum desc");
+			SQL.append(" order by pay_count desc");
 		}
 		
 		pstmt = con.prepareStatement(SQL.toString());
