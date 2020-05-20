@@ -158,6 +158,7 @@ public class LectureDAO {
 			 * 
 			 * l_m_name, 
 			 * 
+			 * 
 			 */
 			
 		/*mysql version*/
@@ -166,9 +167,12 @@ public class LectureDAO {
 			 * "SELECT * FROM lecture ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
 			 * + "where C.ROW >=? and C.ROW <=? and concat(l_content, l_title) like ? " +
 			 * "and l_type like ? and l_type2 like ?");
+			 * 
+			 *  left join member on (lecture.l_m_email = member.m_email) 
+			 * 
 			 */
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
-				+ "SELECT * FROM  lecture left join member on (lecture.l_m_email = member.m_email) "
+				+ "SELECT * FROM lecture left join member on (lecture.l_m_email = member.m_email) "
 				+ "ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
 				+ "where C.ROW >=? and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
 				+ "and l_type like ? and l_type2 like ?");
