@@ -101,7 +101,7 @@
    
 }
 .Wibox{
-	border-bottom: 1px solid red;
+	
     width: 650px;
     height: auto;
     padding: 10px 10px 10px 0;
@@ -114,6 +114,14 @@
     width: 320px;
     height: auto;
     margin-left: 30px;}
+    
+    
+ a {text-decoration: none;}
+
+.Wamount {text-align: center; width: 100px; float: left; 
+ padding-top: 10px; }   
+ 
+ 
 </style>
 
 
@@ -162,7 +170,7 @@
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
-			 <div class="amount">
+			 <div class="Wamount">
 			<c:set var="price" value="<%=ldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
 					value="ko_KR" />
@@ -507,6 +515,7 @@
 		}
 	</script>
 
+<!-- 위시리스트 모달 -->
 <script>
 // Get the modal
 var Wmodal = document.getElementById("WmyModal");
