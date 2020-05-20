@@ -329,10 +329,10 @@
 											<td>은행 선택</td>
 											<td><select id="bankch" name="o_t_bank">
 													<option value="bk_ch" selected>은행을 선택해 주세요</option>
-													<option value="hana">하나은행: 135-123456-12345</option>
-													<option value="kakao">카카오뱅크: 3333-00-3333111</option>
-													<option value="shinhan">신한은행: 110-555-899996</option>
-													<option value="sc">sc제일은행: 779-22-220000</option>
+													<option value="하나은행">하나은행: 135-123456-12345</option>
+													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
+													<option value="신한은행">신한은행: 110-555-899996</option>
+													<option value="sc제일은행">sc제일은행: 779-22-220000</option>
 											</select></td>
 										</tr>
 										<tr>

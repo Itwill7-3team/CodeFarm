@@ -42,7 +42,7 @@ public class BoardFrontController extends HttpServlet{
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 ////////문답
 		if(command.equals("/askAnswer.bo")){
-			action=new askAnswerAction();
+			action=new AskAnswerAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
@@ -138,17 +138,23 @@ public class BoardFrontController extends HttpServlet{
 			
 /////////리퀘스트			
 		}else if(command.equals("/request.bo")){
+			action=new QuestAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 			
-		}
-	else if(command.equals("/DashBoard.bo")){
+/////////대시보드			
+		}else if(command.equals("/DashBoard.bo")){
 		action=new dashboardAction();
 		try{
 			forward=action.execute(request, response);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	else if(command.equals("/MyLecture.bo")){
+/////////내강의		
+		}else if(command.equals("/MyLecture.bo")){
 		action=new myLectureAction();
 		try{
 			forward=action.execute(request, response);
