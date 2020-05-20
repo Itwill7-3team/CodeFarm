@@ -104,12 +104,8 @@
    
 }
 .Wibox{
-<<<<<<< HEAD
-	
-    width: 650px;
-=======
+
     width: 100%;
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
     height: auto;
     padding: 10px 10px 10px 0;
     display: inline-block;
@@ -121,25 +117,12 @@
   max-height: 720px;
   height: 95%;}
 .Wcontent{display: inline-block;
-<<<<<<< HEAD
-    width: 320px;
-    height: auto;
-    margin-left: 30px;}
-    
-    
- a {text-decoration: none;}
 
-.Wamount {text-align: center; width: 100px; float: left; 
- padding-top: 10px; }   
- 
- 
-=======
     margin-left: 30px;
     }
     
 .Wamount {text-align: center; width: 100px; margin-left: auto;
  padding-top: 10px; }    
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 </style>
 
 
