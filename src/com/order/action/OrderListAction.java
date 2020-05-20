@@ -18,7 +18,7 @@ public class OrderListAction implements Action {
 		
 		// ID 체크
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("m_email");
 		ActionForward forward = new ActionForward();
 		if(id == null){
 			forward.setPath("./MemberLogin.me");
