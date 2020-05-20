@@ -158,8 +158,7 @@ public class BasketDAO {
 					LectureDTO ldto = new LectureDTO();
 					
 					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
+					ldto.setL_m_email("l_m_email");
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					ldto.setL_content(rs2.getString("l_content"));
@@ -208,7 +207,7 @@ public class BasketDAO {
 					con = getConnection();
 					// 장바구니에서 특정 번호의 상품을 삭제 
 
-					sql="DELETE FROM codefarm_basket WHERE b_num=?";
+					//sql="DELETE FROM basket WHERE b_num=?";
 
 					sql="DELETE FROM basket WHERE b_num=?";
 					
@@ -234,7 +233,7 @@ public class BasketDAO {
 					try {
 						con = getConnection();
 						// 장바구니에서 특정 번호의 상품을 삭제 
-						sql="DELETE FROM codefarm_basket WHERE b_m_id=?";
+						sql="DELETE FROM basket WHERE b_m_id=?";
 						
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, id);
@@ -283,20 +282,19 @@ public class BasketDAO {
 							if(rs2.next()){
 								LectureDTO ldto = new LectureDTO();
 								ldto.setL_number(rs2.getInt("l_number"));
-								ldto.setL_m_name(rs2.getString("l_m_name"));
-								ldto.setL_m_id(rs2.getString("l_m_id"));
+								ldto.setL_m_email(rs2.getString("l_m_email"));
 								ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 								ldto.setL_content(rs2.getString("l_content"));
 								ldto.setL_type(rs2.getString("l_type"));
 								ldto.setL_type2(rs2.getString("l_type2"));
-								ldto.setL_type3(rs2.getString("l_type3"));
+								ldto.setL_level(rs2.getString("l_level"));
 								ldto.setL_price(rs2.getInt("l_price"));
 								ldto.setL_pct(rs2.getInt("l_pct"));
 								ldto.setL_img(rs2.getString("l_img"));
-								ldto.setL_tag(rs2.getString("l_tag"));
+								
 								ldto.setL_goods(rs2.getInt("l_goods"));
 								ldto.setPct_date(rs2.getTimestamp("pct_date"));
-								ldto.setPaynum(rs2.getInt("paynum"));
+								ldto.setPay_count(rs.getInt("pay_count"));
 								ldto.setL_title(rs2.getString("l_title"));
 								cdto.setLecturedata(ldto);
 							}

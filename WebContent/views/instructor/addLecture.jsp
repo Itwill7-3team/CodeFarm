@@ -167,7 +167,7 @@
 						<label class="menu_label">강의 상세 내용(해당내용은 강의 상세페이지에서
 							보여집니다.)</label>
 						<!-- 에디터 넣는자리  시작 -->
-						<div id="summernote">Hello Summernote</div>
+						<div id="summernote"></div>
 						<!-- 에디터 넣는자리 끝  -->
 					</div>
 				</div>
@@ -194,11 +194,11 @@
 					<div class="add_unit_button_wrapper">
 						<button class="button4 add_unit_btn add_section_btn" value="1"><i class="fas fa-plus-circle"></i> 섹션 추가하기</button>
 					</div>
-					<ul class="curriculum_list">
+					<ul class="curriculum_list ui-sortable">
 						<li class="unit unit_section">
 							<div class="box unit_box">
 								<h3 class="section_title">
-									<span>섹션 0 : </span>
+									<span class="unit_label">섹션 0 : </span>
 									<span>첫번째 섹션의 제목을 입력해주세요.</span>
 								</h3>
 								<div class="unit_btns">
@@ -210,19 +210,20 @@
 						</li>
 						<li class="unit unit_lecture">
 							<div class="box unit_box">
-      <p><span class="unit_label">수업 1 : </span><span>asd</span></p>
-      <div class="unit_btns">
-        <div>
-        	<button type="button" class="button4 lecture_mod_btn" >
-        		<i class="fas fa-pen"></i>
-  			</button>
-          	<button type="button" class="button4 unit_del_btn" >
-    			<i class="fas fa-trash-alt"></i>
-  		 	</button>
-        </div>
-      </div>
-    </div>
+							      <p><span class="unit_label">수업 1 : </span><span>값을 입력해주세요.</span></p>
+							      <div class="unit_btns">
+							        <div>
+							        	<button type="button" class="button4 lecture_mod_btn" >
+							        		<i class="fas fa-pen"></i>
+							  			</button>
+							          	<button type="button" class="button4 unit_del_btn" >
+							    			<i class="fas fa-trash-alt"></i>
+							  		 	</button>
+							        </div>
+							     </div>
+							 </div>
 						</li>
+						
 					
 					</ul>
 					<!-- <div class="section_cover">
@@ -262,9 +263,9 @@
 							 </p>
 							 <form id="component_file_form" class="control" data-id="">
    							 <input id="image_file_upload" class="hidden_input" type="file" name="file" accept=".jpg, .jpeg, .png">
-    							<div class="file_info">파일을 선택하세요</div>
+    							<div class="file_info">업로드 할 파일을 선택해주세요</div>
    								<div style="font-size: 0; margin-top: 5px; text-align: right;">
-      							<button type="button" class="button2 add">파일 선택</button>
+      							<button type="button" class="button2 add" onclick="getFile();">파일 선택</button>
 							    <button type="button" class="button2 upload" disabled="">업로드</button>
 						  </div>
 					 <div class="downloadable">
@@ -304,7 +305,8 @@
 								3. 가격은 무료의 경우 0원으로 유료의 경우 10,000원 이상 1,000원 단위로 설정할 수 있습니다.
 							</p>
 						</div>
-						<div class="field">
+						<!-- 사용 안함  -->
+						<!-- <div class="field">
 							<div class="label">공개설정</div>
 							<div class="buttons">
 								<button class="button3 isActive" data-content="1">코딩팜 공개</button>
@@ -317,10 +319,10 @@
 								<button  class="button3 isActive">무제한</button>
 								<button  class="button3">제한</button>
 							</div>
-						</div>
+						</div> -->
 						<div class="field">
 							<div class="label">시작 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea" name="title"
+							<textarea class="textarea start-msg" name="start-msg"
 							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">안녕하세요. 👋
 백문이 불여일견! 학습이 곧 시작됩니다. 
 궁금한 점은 [질문 답변] 을 이용해주세요 :)
@@ -328,7 +330,7 @@
 						</div>
 						<div class="field">
 							<div class="label">완강 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea" name="title" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
+							<textarea class="textarea end-msg" name="end-msg" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
 강의는 어떠셨나요? 학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!
 여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)
 							</textarea>
@@ -340,8 +342,7 @@
 		</div>
 	</div>
 	<script>
-		//태그 다완성되면 시작됨
-		
+//태그 다완성되면 시작됨
 $(document).ready(function() {
 	$("header").removeClass("sticky");
 	//시작할때 하나 화면출력
@@ -421,25 +422,23 @@ $(document).ready(function() {
 
 		        }
 		    }); 
-		 $("#boxes").disableSelection();
+		 $(".boxes").disableSelection();
+		 //list  움직이는 이벤트
 		$(".ui-sortable").sortable({
 			containment : 'parent',
 	        cursor:"move",
 	        forcePlaceholderSize: true,
 	        opacity: 0.5,
 			 start: function(event, ui) {
-
 		            ui.item.data('start_pos', ui.item.index());
 		        },
 
 		        stop: function(event, ui) {
 		            var spos = ui.item.data('start_pos');
 		            var epos = ui.item.index();
-
+		            reorder();
 		        }
 		});
-		 $("#ui-sortable").disableSelection();
-
 
 	//input 으로 추가한 ol태그 삭제
 
@@ -448,22 +447,96 @@ $(document).ready(function() {
 	});
 	//input으로 추가한 ol태그 위치변경
 	$(".field").on("click",(".btn_icon.handle"),function(){
-	//동영상 추가 이벤트
+	});
+	//수업 추가 이벤트
+	$(".ui-sortable").on("click",".add_lecture_btn",function(){
+		var data=prompt("값을 입력해주세요", "");//
+		if(data==null){return;}
+		$(this).parents("li").before(
+				'<li class="unit unit_lecture ui-sortable-handle">'
+				+'<div class="box unit_box">'
+				      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
+				      +'<div class="unit_btns">'
+				        +'<div>'
+				        	+'<button type="button" class="button4 lecture_mod_btn" >'
+				        		+'<i class="fas fa-pen"></i>'
+				  			+'</button>'
+				          	+'<button type="button" class="button4 unit_del_btn" >'
+				    			+'<i class="fas fa-trash-alt"></i>'
+				  		 	+'</button>'
+				        +'</div>'
+				     +'</div>'
+				 +'</div>'
+			+'</li>'		
+		);
+		 reorder();
 	});
 	//섹션추가 이벤트
-	var sectionNum = 1;
-	$(".addsection").click(function() {
-		$(this).parent().children(".section_cover").append(
-		'<div class="section input_item">'
-		+ '<label class="menu_label">섹션 '
-		+ sectionNum
-		+ '</label>'
-		+ '<input type="text" class="input" placeholder="섹션제목을 적어주세요" autocomplete="off">'
-		+ '<button class="addvideo button" value="1">영상 추가하기</button>'
-		+ '</div>');
-	sectionNum++;
+	$(".add_section_btn").on("click",function(){
+		$(".curriculum_list").append(
+				'<li class="unit unit_section ui-sortable-handle" style="opacity: 1;">'
+				+'<div class="box unit_box">'
+					+'<h3 class="section_title">'
+						+'<span class="unit_label"></span>'
+						+'<span></span>'
+					+'</h3>'
+					+'<div class="unit_btns">'
+						+'<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle" aria-hidden="true"></i> 수업추가하기</button>'
+						+'<button class="button4 section_mod_btn"><i class="fas fa-pen" aria-hidden="true"></i></button>'
+						+'<button class="button4 unit_del_btn"><i class="fas fa-trash-alt" aria-hidden="true"></i></button>'
+					+'</div>'
+				+'</div>'
+			+'</li>'		
+		);
+		 reorder();
 	});
+	//섹션 강의 지우기
+	$(".curriculum_list").on("click",".button4.unit_del_btn",function(){
+		$(this).parents("li").remove();
+		reorder();
+	});
+	//섹션 강의 지우기
+	$(".curriculum_list").on("click",".button4.section_mod_btn",function(){
+		var input = prompt('바뀔 이름을 입력해주세요');
+		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
+	});
+	$(".curriculum_list").on("click",".button4.lecture_mod_btn",function(){
+		var input = prompt('바뀔 이름을 입력해주세요');
+		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
+	});
+	 //정렬 이벤트
+	function reorder() {
+		var index=0;
+	    $(".ui-sortable").children("li").each(function(i, box) {
+		console.log($(box).attr("class"));
+	    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
+	    		index++;
+	    	}else{
+	    		index=0;
+	    	}
+	        $(box).find(".unit_label").html("수업  "+index+" :");
+			if($(this).next().length==0 || $(this).next().attr("class")=="unit unit_section ui-sortable-handle")
+				 $(this).css("border-bottom","1px solid #5eceb3");
+			else
+				 $(this).css("border-bottom","none");
+			
+	        
+	    });
+	    $(".unit_section").each(function(i, box) {
+	        $(box).find(".unit_label").html("세션  "+i+" :");
 
+	    });
+			$(".ui-sortable").children("li").css("border-top","none");
+		if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
+			$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
+	 }
+	 //가격 기본값 천원단위이하 짜름
+	 $(".box_input.price").on("change",function(){
+		 if($(".box_input.price").val()!=0 && $(".box_input.price").val()<10000){
+			 $(".box_input.price").val(10000);
+		 }	
+		 $(".box_input.price").val(Math.floor($(".box_input.price").val()/1000)*1000);
+	 });
 	//textarea 자동으로 세로너비 증가
 	$(".textarea").on("keydown keyup change",function(){
 		 $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
@@ -495,7 +568,7 @@ $(document).ready(function() {
 			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
 		console.log(based);
 		//카테고리
-		var category=$(".button.category1.active").attr("value");
+		var category=$(".button.category1.active").attr("value")+"/";
 		console.log(category);
 		//강의수준
 		var level=$(".button.level").attr("value");
@@ -510,20 +583,82 @@ $(document).ready(function() {
 		/* 2페이지 끝 */
 		
 		/* 3페이지  끝 */
-		
+		var img=$(".file_info").html();
+		console.log(img);
 		/* 4페이지 끝  */
 		//가격정보
 		var price= $(".box_input.price").val();
 		console.log(price);
-		//오픈 여부
-		//var open=$(".buttons")
-		//수강기간
+		var start_msg=$(".textarea.start-msg").val();
+		var end_msg=$(".textarea.end-msg").val();
 		/* 5페이지 끝 */
-		//data 처리 시작
+		//data 처리 끝
 		//ajax 처리(Data저장)
+		 $.ajax({
+			 type: "POST",
+	            //enctype: 'multipart/form-data',
+	            url: "./addLectureAction.in",
+	            data: {
+					"id": "${m_email}",            	
+	            	"title": title,
+	            	"abilities":abilities,
+	            	"targets":targets,
+	            	"based":based,
+	            	"category":category,
+	            	"level":level,
+	            	"description":description,
+	            	"body":body,
+	            	"img":img,
+	            	"price":price,
+	            	"start-msg":start_msg,
+	            	"end-msg":end_msg
+	            },
+
+	            success:function(data){
+	            	alert("데이터 전송 성공");
+	            },
+	            error: function (data) {
+	            	alert("저장실패!");
+	            }
+	        });
 	});
+	$(".hidden_input").on("change", function() {
+		if($(this).val()){
+		$(".file_info").html($(".hidden_input").val().split("\\fakepath\\")[1]);
+			$(".button2.upload").removeAttr("disabled");
+			$(".button2.upload").css("opacity",1);
+		}else{
+			$(".file_info").html("업로드 할 파일을 선택해주세요");
+			$(".button2.upload").attr("disabled","true")
+			$(".button2.upload").css("opacity",0.7);
+		}
+	});
+	$(".button2.upload").on("click",function(){
+		var form=$("#component_file_form")[0];
+		var data = new FormData(form);
+		 $.ajax({
+			 type: "POST",
+	            enctype: 'multipart/form-data',
+	            url: "./addLectureImg.in",
+	            data: data,
+	            
+	            processData: false,
+	            contentType: false,
+	            cache: false,
+	            timeout: 600000,
+	            success:function(data){
+	            	$(".tumnail").attr("src","./upload/"+data);
+	            },
+	            error: function (data) {
+	            	alert("fail");
+	            }
+	        });
+	});
+	reorder();
 });
-	
+	function getFile(){
+		$(".hidden_input").click();
+	}
 	</script>
 
 </body>

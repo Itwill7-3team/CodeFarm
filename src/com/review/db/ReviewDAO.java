@@ -78,21 +78,19 @@ public class ReviewDAO {
 				rs2=pstmt.executeQuery();
 				if(rs2.next()){
 					LectureDTO ldto= new LectureDTO();
-					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_m_email(rs2.getString("l_m_email"));
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_type(rs2.getString("l_type"));
 					ldto.setL_type2(rs2.getString("l_type2"));
-					ldto.setL_type3(rs2.getString("l_type3"));
-					ldto.setL_price(rs2.getInt("l_price"));
-					ldto.setL_pct(rs2.getInt("l_pct"));
-					ldto.setL_img(rs2.getString("l_img"));
-					ldto.setL_tag(rs2.getString("l_tag"));
-					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_level(rs2.getString("l_level"));
+					ldto.setPay_count(rs2.getInt("pay_count"));
 					ldto.setPct_date(rs2.getTimestamp("pct_date"));
-					ldto.setPaynum(rs2.getInt("paynum"));
+					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					reviewdata.put("ldto", ldto);
 				}
@@ -178,7 +176,7 @@ public class ReviewDAO {
 	
 	// getReviewList(l_number);
 		public List<ReviewDTO> getReviewList(int l_number){
-			List<ReviewDTO> ReviewList = new ArrayList<>();
+			List<ReviewDTO> reviewList = new ArrayList<>();
 			try {
 				con = getConnection();
 				System.out.print("getReviewList() : ");
@@ -200,7 +198,7 @@ public class ReviewDAO {
 					rdto.setR_re_ref(rs.getInt("r_re_ref"));
 					rdto.setR_re_seq(rs.getInt("r_re_seq"));
 					rdto.setR_reg_date(rs.getTimestamp("r_reg_date"));
-					ReviewList.add(rdto);
+					reviewList.add(rdto);
 				}
 				System.out.println("리뷰 목록 가져오기 완료");
 			} catch (Exception e) {
@@ -208,7 +206,7 @@ public class ReviewDAO {
 			} finally {
 				closeDB();
 			}
-			return ReviewList;
+			return reviewList;
 		}
 		// getBoardList(l_number);
 }

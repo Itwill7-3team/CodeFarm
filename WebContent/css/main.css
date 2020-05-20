@@ -146,7 +146,7 @@ height: 320px;
     margin-bottom: 0.2rem;
 }
 .price {
-    margin-left: 65% !important;
+    margin-left: 68% !important;
 }
 	
 }
@@ -198,8 +198,9 @@ height: 165px;
 color:#454545;
 font-size: 1.1rem;
 text-align: left;
-margin-left: 0.8rem;
-margin-bottom: 0.3rem;
+margin: 0.3rem 0.8rem;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .card p{
@@ -211,7 +212,7 @@ margin-left: 0.8rem;
   font-weight: 700;
   color: #175cbe;
   font-size: 16px;
-  margin-left: 47%;
+  margin-left: 68%;
 }
 
 

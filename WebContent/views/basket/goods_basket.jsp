@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -163,7 +164,7 @@
           <div class="Wcolumn Wcontent">
 				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
@@ -223,7 +224,7 @@
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_name()%></p>
+					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			</div>
 		</div>

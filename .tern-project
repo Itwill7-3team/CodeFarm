@@ -1,4 +1,6 @@
 {
+<<<<<<< HEAD
+=======
   "ecmaVersion": 5,
   "plugins": {
     "guess-types": {
@@ -14,8 +16,18 @@
 
     }
   },
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
   "libs": [
     "browser",
     "jquery"
-  ]
+  ],
+  "plugins": {
+    "browser-extension": {
+      
+    },
+    "jquery-extension": {
+      
+    }
+  },
+  "ecmaVersion": 6
 }

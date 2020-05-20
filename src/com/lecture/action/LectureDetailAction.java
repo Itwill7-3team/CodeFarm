@@ -1,6 +1,7 @@
 package com.lecture.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,22 +33,20 @@ public class LectureDetailAction implements Action {
 		String m_email = "abc@naver.com"; // 테스트용_테스트 후 아래 코드 사용
 		//String m_email = (String)session.getAttribute("m_email");
 		
-		MemberDTO mdto = null;
-		List<OrderDTO> orderList = null;
-		
+		MemberDAO mdao = new MemberDAO();
 		if(m_email != null){
-			MemberDAO mdao = new MemberDAO();
-			mdto = mdao.getInfo(m_email);
+			MemberDTO mdto = mdao.getInfo(m_email);
 			request.setAttribute("mdto", mdto);
 			
 			OrderDAO odao = new OrderDAO();
-			orderList = odao.getOrderList(m_email);
+			List<OrderDTO> orderList = odao.getOrderList(m_email);
 			request.setAttribute("orderList", orderList);
 		}
 		
 		LectureDAO ldao = new LectureDAO();
 		LectureDTO ldto = ldao.getLectureDetail(l_number); // 강의 상세 정보
-		List<LectureDTO> lectureList = ldao.getLectureList(ldto.getL_m_id()); // 강사별 강의 목록
+		MemberDTO lmdto = mdao.getInfo(ldto.getL_m_email()); // 강사 정보
+		List<LectureDTO> lectureList = ldao.getLectureList(ldto.getL_m_email()); // 강사별 강의 목록
 		List<ArrayList<FileDTO>> fileSet = ldao.getFileList(l_number); // 강의내 섹션별 파일 목록
 		
 		List<Integer> l_numList = new ArrayList<Integer>(); // 강사의 다른 강의 번호 저장
@@ -59,7 +58,23 @@ public class LectureDetailAction implements Action {
 		List<ReviewDTO> reviewList = rdao.getReviewList(l_number); // 강의별 리뷰 목록
 		Map<Integer, Map<String, Object>> ratingList = rdao.getAvgrating(l_numList); // 강의별 리뷰 전체 별점
 		
+		for(int i=0; i<l_numList.size(); i++){ // 별점 없는 강의 별점 초기화
+			if(ratingList.get(l_numList.get(i)) == null){
+				Map<String, Object> review_rating = new HashMap<String, Object>();
+				review_rating.put("r_l_num", l_numList.get(i));
+				review_rating.put("reviewAll", 0);
+				review_rating.put("rating_avg", 0.0);
+				review_rating.put("rating_5", 0);
+				review_rating.put("rating_4", 0);
+				review_rating.put("rating_3", 0);
+				review_rating.put("rating_2", 0);
+				review_rating.put("rating_1", 0);
+				ratingList.put(l_numList.get(i), review_rating);
+			}
+		}
+		
 		request.setAttribute("ldto", ldto);
+		request.setAttribute("lmdto", lmdto);
 		request.setAttribute("lectureList", lectureList);
 		request.setAttribute("fileSet", fileSet);
 		request.setAttribute("reviewList", reviewList);

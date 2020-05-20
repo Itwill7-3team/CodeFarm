@@ -42,7 +42,7 @@ if(session.getAttribute("m_email")!=null){
 		    <a href="#">설정</a>
 		    <ul>
 		      <li class="menu2 "><a href="MemberInfo.me">프로필 설정</a></li>
-		      <li class="menu2 "><a href="#">알림 설정</a></li>
+<!-- 		      <li class="menu2 "><a href="#">알림 설정</a></li> -->
 		    </ul>
 		  </li>
 		  <%

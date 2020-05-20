@@ -38,6 +38,7 @@
 	/* 받아오는 값 */
 		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
 		MemberDTO  mdto = (MemberDTO)request.getAttribute("mdto");  // 회원 정보
+		MemberDTO lmdto = (MemberDTO)request.getAttribute("lmdto"); // 강사 정보
 		
 		List<LectureDTO>    lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
 		List<ReviewDTO>     reviewList  = (List<ReviewDTO>)request.getAttribute("reviewList");   // 리뷰 정보
@@ -52,7 +53,7 @@
 	
 	/* 현 강의 결제 유무 */
 		boolean payCheck = false;
-		if(mdto != null && orderList != null){
+		if(mdto.getM_email() != null && orderList != null){
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
 					payCheck = true;
@@ -128,13 +129,13 @@
 											<small>(<%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평)</small>
 										</span>
 										<br class="is-hidden-mobile">
-										<small class="student_cnt"><%= ldto.getPaynum() %>명의 수강생</small>
+										<small class="student_cnt"><%= ldto.getPay_count() %>명의 수강생</small>
 										<br>
 										
 									<!-- lecture_type_category -->
 										<small class="course_skills">
 <!-- 주소변경 - 강의 태그 카테고리별 링크 카테고리 t1,t2 넘겨주기 -->
-											<a href="./Search.le?t1=<%= ldto.getL_type() %>&t2=<%= ldto.getL_type2() %>"><%= ldto.getL_type3() %></a>
+											<a href="./Search.le?t1=<%= ldto.getL_type() %>&t2=<%= ldto.getL_type2() %>"><%= ldto.getL_type2() %></a>
 										</small>
 									<!-- lecture_type_category -->
 										
@@ -204,7 +205,7 @@ ssssssssssssssssss orderaction 참조
 								<div class="course_info_cover">
 									<div class="course_info_row">
 <!-- 강사 페이지 주소 수정 -->
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_num=<%= ldto.getL_m_id() %>"><%= ldto.getL_m_name() %></a>
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
@@ -266,7 +267,7 @@ ssssssssssssssssss orderaction 참조
 															</span>
 														</div>
 														<div class="el_metas">
-															<i class="fas fa-user"></i> <%= lectureList.get(ja).getPaynum() %> 
+															<i class="fas fa-user"></i> <%= lectureList.get(ja).getPay_count() %> 
 															<i class="fas fa-star"></i> <%= ratingList.get(lectureList.get(ja).getL_number()).get("rating_avg") %>
 														</div>
 													</div>
@@ -284,7 +285,7 @@ ssssssssssssssssss orderaction 참조
 								<% if(lectureList.size() > 2){ %>
 									<div class="course_another_btn course_relation_btn">
 <!-- 강사 페이지 주소 수정 -->
-										<a href="/Instructors.le?m_num=<%= ldto.getL_m_id() %>">+ 다른 강의 더보기</a>
+										<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>">+ 다른 강의 더보기</a>
 									</div>
 								<% } %>
 								</div>
@@ -470,7 +471,7 @@ ssssssssssssssssss orderaction 참조
 										</div>
 										<h4 class="name">
 <!-- 강사 페이지 주소 수정 -->
-											<a href="/Instructors.le?m_num=<%= ldto.getL_m_id() %>"><%= ldto.getL_m_name() %></a>
+											<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
 										</h4>
 									</div>
 									<p class="introduce"></p>
@@ -637,8 +638,12 @@ ssssssssssssssssss orderaction 참조
 									
 								<!-- review_container -->
 									<%
+									int rSize = 0;
+									if(reviewList.size() >= 2){ rSize = 2; }
+									else if(reviewList.size() == 1){ rSize = 1; }
+									else{ rSize = 0; }
 									if(reviewList.size() != 0){
-										for(int r_loop=0; r_loop<2; r_loop++){
+										for(int r_loop=0; r_loop<rSize; r_loop++){
 									%>
 										<div class="article_container">
 											<article class="media review_item">
@@ -677,17 +682,19 @@ ssssssssssssssssss orderaction 참조
 														</div>
 													
 													<!-- 답글 등록 버튼 -->
-													<% if(mdto != null && mdto.getM_rank().equals("강사")){ %>
+													<% if(mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
 														<div class="reactions">
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">답글 쓰기</span>
 																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
 															</button>
 														</div>
-													<% } %>
+													<%  } %>
 													
 													</div>
-												<% if(reviewList.get(r_loop + 1).getR_re_lev() == 1 && reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref()){ %>
+											<%
+											if(rSize == 2){
+												if(reviewList.get(r_loop + 1).getR_re_lev() == 1 && reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref()){ %>
 												<!-- review_comment -->
 													<div class="review_comments">
 														<div class="article_container">
@@ -714,7 +721,10 @@ ssssssssssssssssss orderaction 참조
 														</div>
 													</div>
 												<!-- review_comment -->
-												<% } %>
+											<%
+												}
+											 }
+											 %>
 												</div>
 											</article>
 										</div>
@@ -784,7 +794,7 @@ ssssssssssssssssss orderaction 참조
 								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
 								+ "      </small><br>"
 								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
-							if(${ mdto != null && mdto.getM_rank().equals("강사") }){
+							if(${ mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
 							output += "      <div class='reactions'>"
 									+ "        <button class='button is-link is-small'>"
 									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
