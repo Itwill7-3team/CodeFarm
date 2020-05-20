@@ -174,6 +174,48 @@ public class OrderDAO {
 	
 	
 	
+	//orderDetail(b_num)
+	public List orderDetail(String trade_num) {
+		
+		List orderDetailList = new ArrayList();
+		
+		try {
+			con = getConnection();
+			
+			sql = "select * from orderlist where o_b_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, trade_num);
+			rs = pstmt.executeQuery();
+			System.out.println("@@@@@@@@@@@@@@@@@");
+			
+			while(rs.next()){
+				OrderDTO odto = new OrderDTO();
+			
+				odto.setO_b_num(rs.getString("o_b_num"));
+				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_t_date(rs.getTimestamp("o_t_date"));
+				odto.setO_sum_money(rs.getInt("o_sum_money"));
+				odto.setO_t_type(rs.getString("o_t_type"));
+				odto.setO_t_bank(rs.getString("o_t_bank"));
+				System.out.println("#######################");
+				
+				orderDetailList.add(odto);
+				
+			} // while
+			
+			System.out.println("주문 상세정보 저장 완료: "+orderDetailList);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return orderDetailList;
+	} //orderDetail(b_num)
+	
 	
 	
 	}
