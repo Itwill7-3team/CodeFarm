@@ -73,14 +73,12 @@ String pageNum=request.getAttribute("pageNum").toString();
 		
 		<div class="content_side">
 		<ul>
-		<h4>연관 강의</h4>
-<%-- 			<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList"); --%>
-<!--  				for(int i=0; i<noticeList.size();i++){ -->
-<!--  					bdto=noticeList.get(i); -->
-					
-<%-- 			%> --%>
+		<h4>해당 강의</h4>
 		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><p><%=ldto.getL_title()%></p></a></li>
-<%-- 		<%} %> --%>
+		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><img src="./upload/<%=ldto.getL_img().split(",")[0]%>" style="width: 100%;"></a></li>
+
+		<h4>연관 강의</h4>
+
 		
 		</ul>
 		</div>
