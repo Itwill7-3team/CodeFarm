@@ -117,11 +117,13 @@ header .navbar-dropdown{
     border-radius: 2px;
     z-index:999;
     box-shadow: 8px 5px 8px 1px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
+	
 }
 header .step2,header .step3{
 	position:absolute;
 	top:0;
 	left: 180px;
+	overflow-y: auto;
 }
 
 

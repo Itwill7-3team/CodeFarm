@@ -43,208 +43,112 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<ul class="navbar-dropdown step1 ">
 							<li><a href="Search.le" class="navbar-item">IT프로그래밍</a>
 								<ul class="navbar-dropdown step2">
+									<li><a href="Search.le" class="navbar-item">ALL</a>
+										</li>
 									<li><a href="Search.le" class="navbar-item">웹개발</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">HTML/CSS</a></li>
-											<li><a class="navbar-item" href="Search.le">JavaScript</a></li>
-											<li><a class="navbar-item" href="Search.le">웹 개발</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">Front-End</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">Back-End</a></li>
-											<li><a class="navbar-item" href="Search.le">웹 퍼블리싱</a></li>
-											<li><a class="navbar-item" href="Search.le">Spring</a></li>
-											<li><a class="navbar-item" href="Search.le">Node.js</a></li>
-											<li><a class="navbar-item" href="Search.le">React</a></li>
-											<li><a class="navbar-item" href="Search.le">Vue.js</a></li>
-										</ul></li>
+										</li>
 									<li><a href="Search.le" class="navbar-item">모바일앱</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">모바일앱</a></li>
-											<li><a class="navbar-item" href="Search.le">Android</a></li>
-											<li><a class="navbar-item" href="Search.le">iOS</a></li>
-											<li><a class="navbar-item" href="Search.le">Swift</a></li>
-											<li><a class="navbar-item" href="Search.le">Kotlin</a></li>
-											<li><a class="navbar-item" href="Search.le">Firebase</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">Javascript</a></li>
-											<li><a class="navbar-item" href="Search.le">Google Flutter</a></li>
-											<li><a class="navbar-item" href="Search.le">IONIC</a></li>
-											<li><a class="navbar-item" href="Search.le">웹앱</a></li>
-											<li><a class="navbar-item" href="Search.le">게임개발</a></li>
-										</ul></li>
+										</li>
 									<li><a href="Search.le" class="navbar-item">게임 개발</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">게임개발</a></li>
-											<li><a class="navbar-item" href="Search.le">Unity</a></li>
-											<li><a class="navbar-item" href="Search.le">Unreal
-													Engine</a></li>
-											<li><a class="navbar-item" href="Search.le">C#</a></li>
-											<li><a class="navbar-item" href="Search.le">iOS</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">UE Blueprints</a></li>
-											<li><a class="navbar-item" href="Search.le">Javascript</a></li>
-											<li><a class="navbar-item" href="Search.le">Scratch</a></li>
-											<li><a class="navbar-item" href="Search.le">알고리즘</a></li>
-											<li><a class="navbar-item" href="Search.le">C++</a></li>
-											<li><a class="navbar-item" href="Search.le">Node.js</a></li>
-										</ul></li>
+										</li>
 
 									<li><a href="Search.le" class="navbar-item">데이터 사이언스</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">데이터 분석</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">머신러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">딥러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">인공지능</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 시각화</a></li>
-											<li><a class="navbar-item" href="Search.le">웹 크롤링</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 과학</a></li>
-											<li><a class="navbar-item" href="Search.le">R</a></li>
-											<li><a class="navbar-item" href="Search.le">Keras</a></li>
-											<li><a class="navbar-item" href="Search.le">컴퓨터 비전</a></li>
-											<li><a class="navbar-item" href="Search.le">Tensorflow</a></li>
-										</ul></li>
+										</li>
 
 
 									<li><a href="Search.le" class="navbar-item">보안</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">정보보안</a></li>
-											<li><a class="navbar-item" href="Search.le">모의해킹</a></li>
-											<li><a class="navbar-item" href="Search.le">Forensic</a></li>
-											<li><a class="navbar-item" href="Search.le">리버싱</a></li>
-											<li><a class="navbar-item" href="Search.le">시스템해킹</a></li>
-											<li><a class="navbar-item" href="Search.le">Android</a></li>
-											<li><a class="navbar-item" href="Search.le">악성코드</a></li>
-											<li><a class="navbar-item" href="Search.le">네트워크</a></li>
-											<li><a class="navbar-item" href="Search.le">Window-OS</a></li>
-											<li><a class="navbar-item" href="Search.le">화이트해커</a></li>
-											<li><a class="navbar-item" href="Search.le">Pyhton</a></li>
-											<li><a class="navbar-item" href="Search.le">Metasploit</a></li>
-										</ul></li>
+										</li>
 
 									<li><a href="Search.le" class="navbar-item">인공지능</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">인공지능</a></li>
-											<li><a class="navbar-item" href="Search.le">머신러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">딥러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">컴퓨터 비전</a></li>
-											<li><a class="navbar-item" href="Search.le">Tensorflow</a></li>
-											<li><a class="navbar-item" href="Search.le">Keras</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 분석</a></li>
-											<li><a class="navbar-item" href="Search.le">강화학습</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 과학</a></li>
-											<li><a class="navbar-item" href="Search.le">Javascript</a></li>
-											<li><a class="navbar-item" href="Search.le">R</a></li>
-										</ul></li>
+										</li>
 
 									<li><a href="Search.le" class="navbar-item">알고리즘</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">알고리즘</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">수학</a></li>
-											<li><a class="navbar-item" href="Search.le">C++</a></li>
-											<li><a class="navbar-item" href="Search.le">인공지능</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">코딩 테스트</a></li>
-											<li><a class="navbar-item" href="Search.le">SSAFY</a></li>
-											<li><a class="navbar-item" href="Search.le">게임개발</a></li>
-											<li><a class="navbar-item" href="Search.le">C</a></li>
-											<li><a class="navbar-item" href="Search.le">딥러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">자료구조</a></li>
-										</ul></li>
+										</li>
 									<li><a href="Search.le" class="navbar-item">교양</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">수학</a></li>
-											<li><a class="navbar-item" href="Search.le">깃(GIT)</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">버전관리시스템</a></li>
-											<li><a class="navbar-item" href="Search.le">Front_End</a></li>
-											<li><a class="navbar-item" href="Search.le">사무실무</a></li>
-											<li><a class="navbar-item" href="Search.le">함수형
-													프로그래밍</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 과학</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">Github</a></li>
-											<li><a class="navbar-item" href="Search.le">미적분</a></li>
-											<li><a class="navbar-item" href="Search.le">취업</a></li>
-										</ul></li>
-
-									<li><a href="Search.le" class="navbar-item">서버</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">Back-End</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">Linux</a></li>
-											<li><a class="navbar-item" href="Search.le">Node.js</a></li>
-											<li><a class="navbar-item" href="Search.le">Spring</a></li>
-											<li><a class="navbar-item" href="Search.le">JPA</a></li>
-											<li><a class="navbar-item" href="Search.le">cloud</a></li>
-											<li><a class="navbar-item" href="Search.le">정보보안</a></li>
-											<li><a class="navbar-item" href="Search.le">Firebase</a></li>
-											<li><a class="navbar-item" href="Search.le">네트워크</a></li>
-											<li><a class="navbar-item" href="Search.le">DevOps</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터베이스</a></li>
-										</ul></li>
+										</li>
 
 									<li><a href="Search.le" class="navbar-item">수학</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">수학</a></li>
-											<li><a class="navbar-item" href="Search.le">알고리즘</a></li>
-											<li><a class="navbar-item" href="Search.le">SSAFY</a></li>
-											<li><a class="navbar-item" href="Search.le">선형대수학</a></li>
-											<li><a class="navbar-item" href="Search.le">R</a></li>
-											<li><a class="navbar-item" href="Search.le">미적분</a></li>
-											<li><a class="navbar-item" href="Search.le">통계</a></li>
-											<li><a class="navbar-item" href="Search.le">Tensorflow</a></li>
-											<li><a class="navbar-item" href="Search.le">Raspberry
-													Pi</a></li>
-											<li><a class="navbar-item" href="Search.le">IoT</a></li>
-											<li><a class="navbar-item" href="Search.le">머신러닝</a></li>
-											<li><a class="navbar-item" href="Search.le">C++</a></li>
-										</ul></li>
+										</li>
+
+
+									<li><a href="Search.le" class="navbar-item">서버</a>
+										</li>
 
 									<li><a href="Search.le" class="navbar-item">자동화</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">DevOps</a></li>
-											<li><a class="navbar-item" href="Search.le">Ansible</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">시스템자동화</a></li>
-											<li><a class="navbar-item" href="Search.le">Back-End</a></li>
-											<li><a class="navbar-item" href="Search.le">Linux</a></li>
-											<li><a class="navbar-item" href="Search.le">Docker</a></li>
-											<li><a class="navbar-item" href="Search.le">UiPath</a></li>
-											<li><a class="navbar-item" href="Search.le">Raspberry
-													Pi</a></li>
-											<li><a class="navbar-item" href="Search.le">인공지능</a></li>
-											<li><a class="navbar-item" href="Search.le">Firebase</a></li>
-											<li><a class="navbar-item" href="Search.le">컴퓨터 비전</a></li>
-										</ul></li>
+										</li>
+										
+									<li><a href="Search.le" class="navbar-item">개발도구</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">프레임워크 및 라이브러리</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">프로그래밍 언어</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">서비스 개발</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">인프라</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">사물인터넷</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">블록체인</a>
+										</li>
+								</ul></li>
+							<li><a href="Search.le" class="navbar-item">크리에이티브</a>
+								<ul class="navbar-dropdown step2">
+									<li><a href="Search.le" class="navbar-item">ALL</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">3D 모델링</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">그래픽 디자인</a>
+										</li>
 
-									<li><a href="Search.le" class="navbar-item">데이터베이스</a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le">데이터베이스</a></li>
-											<li><a class="navbar-item" href="Search.le">SQL</a></li>
-											<li><a class="navbar-item" href="Search.le">데이터 분석</a></li>
-											<li><a class="navbar-item" href="Search.le">Java</a></li>
-											<li><a class="navbar-item" href="Search.le">JPA</a></li>
-											<li><a class="navbar-item" href="Search.le">MYSQL</a></li>
-											<li><a class="navbar-item" href="Search.le">Back-End</a></li>
-											<li><a class="navbar-item" href="Search.le">Oracle</a></li>
-											<li><a class="navbar-item" href="Search.le">Spring
-													Data JPA</a></li>
-											<li><a class="navbar-item" href="Search.le">Python</a></li>
-											<li><a class="navbar-item" href="Search.le">Spring</a></li>
-											<li><a class="navbar-item" href="Search.le">Spring
-													Boot</a></li>
-										</ul></li>
+									<li><a href="Search.le" class="navbar-item">영 상 편집, 유튜브</a>
+										</li>
+
+
+									<li><a href="Search.le" class="navbar-item">영화 그래픽</a>
+										</li>
+
+									<li><a href="Search.le" class="navbar-item">웹앱 디자인</a>
+										</li>
+
+									<li><a href="Search.le" class="navbar-item">게임 디자인</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">UX/UI</a>
+										</li>
+
+									<li><a href="Search.le" class="navbar-item">Sound</a>
+										</li>
+
+									<li><a href="Search.le" class="navbar-item">AR/VR</a>
+										</li>
+
 								</ul></li>
 							<li><a href="Search.le" class="navbar-item">업무 스킬</a>
 								<ul class="navbar-dropdown step2">
-									<li><a href="Search.le" class="navbar-item"></a>
-										<ul class="navbar-dropdown step3">
-											<li><a class="navbar-item" href="Search.le"></a></li>
-										</ul></li>
+									<li><a href="Search.le" class="navbar-item">ALL</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">MS-OFFICE</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">마케팅</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">금융,주식,투자</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">데이터 분석</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">업무 자동화</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">회계,재무</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">경영지식</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">기획,프로젝트 관리</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">글쓰기</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">자기 계발</a>
+										</li>
+									<li><a href="Search.le" class="navbar-item">외국어</a>
+										</li>
 								</ul></li>
 						</ul>
 					</div>
