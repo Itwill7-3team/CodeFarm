@@ -11,6 +11,9 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜-수강평 모아보기</title>
 <link href="./css/reView.css" rel="stylesheet">
+<style type="text/css">
+
+</style>
 </head>
 <body>
 
@@ -49,7 +52,14 @@
 			%>
 				<div class="review_list_item">
 					<div class="review_left_item">
-					<div class="star_item"><%=rdto.getR_rating() %></div>
+					<div class="star_item">
+					<div class="rating_star">
+					<div class="star_solid" style="width: <%=rdto.getR_rating()*20 %>%">
+					<i class="fa fa-star" data-value="1" aria-hidden="true"></i><i class="fa fa-star" data-value="2" aria-hidden="true"></i><i class="fa fa-star" data-value="3" aria-hidden="true"></i><i class="fa fa-star" data-value="4" aria-hidden="true"></i><i class="fa fa-star" data-value="5" aria-hidden="true"></i>
+					</div>
+					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
+					</div>
+					</div>
 					<div class="content_item"><%=rdto.getR_content() %></div>
 					<div class="post_metas">
 						<div class="goods"><%=ldto.getL_goods() %></div>
@@ -75,7 +85,7 @@
 			<h4 class="best_name">김홍준</h4>
 			<h4 class="best_name">박유준</h4>
 			<h4 class="best_name">변재정</h4>
-			<h4 class="best_name">최우형</h4>
+			<h4 class="best_name">최우영</h4>
 			<h4 class="best_name">조수아</h4>
 			</div>
 		</div>

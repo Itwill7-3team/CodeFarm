@@ -360,7 +360,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
 						+"<div class='item_content'>"
 						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"
-						+"<p class='item_price'>"+data[i].lecturedata.l_price+"</p>"
+						+"<p class='item_price'>"+numberWithCommas(data[i].lecturedata.l_price)+"</p>"
 						+"</div>"
 						+"</a>" ; 
 				}
@@ -382,6 +382,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	$(".profile_hover").mouseout(function(){
 		$(".profile_modal_cover").removeClass("active");
 	});
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+
 </script>
 
 
