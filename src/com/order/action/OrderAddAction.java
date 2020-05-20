@@ -38,8 +38,9 @@ public class OrderAddAction implements Action{
 		
 		// 결제타입 추가
 		oldto.setO_m_id(id);
-		oldto.setO_t_type("무통장입금");
+		oldto.setO_t_type("무통장 입금");
 		oldto.setO_t_payer(request.getParameter("o_t_payer"));
+		oldto.setO_t_bank(request.getParameter("o_t_bank"));
 		
 		// 장바구니 상품정보
 		BasketDAO bkdao = new BasketDAO();

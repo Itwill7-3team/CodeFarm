@@ -326,7 +326,7 @@
 				<div class="modal-content">
 					<span class="close">&times;</span>
 					<button class="si_btn" id="check_module">카드 결제</button>
-					<button class="si_btn" id="myBtn2">무통장 입금</button>
+					<button class="si_btn" id="myBtn2" name="">무통장 입금</button>
 						<!-- 실행 x -->
 					<button class="si_btn">모바일 결제</button>
 					<button class="si_btn">네이버 페이</button>
@@ -344,7 +344,7 @@
 									<table style="border-collapse: collapse;">
 										<tr>
 											<td>은행 선택</td>
-											<td><select id="bankch">
+											<td><select id="bankch" name="o_t_bank">
 													<option value="bk_ch" selected>은행을 선택해 주세요</option>
 													<option value="hana">하나은행: 135-123456-12345</option>
 													<option value="kakao">카카오뱅크: 3333-00-3333111</option>
@@ -354,7 +354,7 @@
 										</tr>
 										<tr>
 											<td>입금자명</td>
-											<td><input type="text" placeholder="코딩팜"> <br>
+											<td><input type="text" placeholder="코딩팜" name="o_t_payer"> <br>
 											<br></td>
 										</tr>
 										<tr>
