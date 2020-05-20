@@ -1,5 +1,5 @@
+<%@page import="com.ask.db.AskDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
-<%@page import="com.question.db.QuestionDTO"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,7 +25,7 @@ if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
 }
 
-QuestionDTO bdto=(QuestionDTO)request.getAttribute("bdto");
+AskDTO bdto=(AskDTO)request.getAttribute("bdto");
 LectureDTO ldto= (LectureDTO)request.getAttribute("ldto");
 String pageNum=request.getAttribute("pageNum").toString();
 %>
@@ -58,12 +58,12 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<div class="main_content">
 			<!--  -->
 
-		<h1><span class="N">Q.</span><%=bdto.getQ_title()%></h1>
+		<h1><span class="N">Q.</span><%=bdto.getTitle()%></h1>
 		<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
 		<hr>
 		<div class="QnA_content">
-		<p>작성자: <%=bdto.getQ_writer() %></p>
-		<%=bdto.getQ_content() %>
+		<p>작성자: <%=bdto.getWriter()%></p>
+		<%=bdto.getContent()%>
 		
 		
 		
@@ -83,7 +83,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 		</ul>
 		</div>
 <!-- 		<!-- 관리자제어 -->
-		<%if(email.equals(bdto.getQ_writer())){%>
+		<%if(email.equals(bdto.getWriter())){%>
 <%-- 		<button onclick="location.href='askAnswerUpdate.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>';">수정하기</button> --%>
 <%-- 		<button onclick="location.href='askAnswerDeleteAction.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>';">삭제하기</button> --%>
 		
