@@ -171,7 +171,7 @@
 						<label class="menu_label">강의 상세 내용(해당내용은 강의 상세페이지에서
 							보여집니다.)</label>
 						<!-- 에디터 넣는자리  시작 -->
-						<div id="summernote"></div>
+						<div id="summernote2"></div>
 						<!-- 에디터 넣는자리 끝  -->
 					</div>
 				</div>
@@ -353,7 +353,7 @@ $(document).ready(function() {
 	$("#information").css("display", "block");
 	 //에디터
 
-	$('#summernote').summernote({
+	$('#summernote2').summernote({
 			  height: 500,                 // set editor height
 			  minHeight: null,             // set minimum height of editor
 		      maxHeight: null,             // set maximum height of editor
@@ -362,7 +362,7 @@ $(document).ready(function() {
 				placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
 
 		  });
-
+	
 
 	//에디터 끝 
 	$(".button_box.categoryBox1").on("click","button",function(){
@@ -482,6 +482,23 @@ $(document).ready(function() {
 	//input으로 추가한 ol태그 위치변경
 	$(".field").on("click",(".btn_icon.handle"),function(){
 	});
+	//수업 변경 이벤트
+	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
+		$("<div>").dialog ({
+			
+			modal:true,
+			open:function() {
+				
+				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라
+				
+			},
+			
+			height:400,
+			width:400,
+			//title:"외부파일 창 띄우기"
+				
+		});
+	});
 	//수업 추가 이벤트
 	$(".ui-sortable").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");
@@ -542,10 +559,7 @@ $(document).ready(function() {
 		var input = prompt('바뀔 이름을 입력해주세요');
 		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
 	});
-	$(".curriculum_list").on("click",".button4.lecture_mod_btn",function(){
-		var input = prompt('바뀔 이름을 입력해주세요');
-		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
-	});
+	
 	 //정렬 이벤트
 	function reorder() {
 		var index=0;
