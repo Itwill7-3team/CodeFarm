@@ -65,7 +65,7 @@ width: 1000px;
 	     <td><%=odto.getO_l_name() %></td>
 	     <td><%=odto.getO_sum_money() %>원</td>
 	     
-	     <%
+	    <%--  <%
 	     String msg = "";
 
 	     
@@ -82,7 +82,7 @@ width: 1000px;
 	     }
 	     
 	     %>	     
-	     <td><%=msg %></td>
+	     <td><%=msg %></td> --%>
 	     
 	     <td><%=odto.getO_t_date() %></td>
 	   

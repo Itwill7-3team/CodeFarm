@@ -452,7 +452,7 @@ $(document).ready(function() {
 	$(".ui-sortable").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");//
 		if(data==null){return;}
-		$(this).parents("li").before(
+		$(this).parents("li").after(
 				'<li class="unit unit_lecture ui-sortable-handle">'
 				+'<div class="box unit_box">'
 				      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
@@ -583,8 +583,8 @@ $(document).ready(function() {
 		/* 2페이지 끝 */
 		
 		/* 3페이지  끝 */
-		var img=$(".file_info").html();
-		console.log(img);
+		var img=$("#image_file_upload").val();
+		
 		/* 4페이지 끝  */
 		//가격정보
 		var price= $(".box_input.price").val();

@@ -127,7 +127,6 @@ int endPage=(int)request.getAttribute("endPage");
 				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
 				for(int i=0; i<noticeList.size();i++){
 					NoticeDTO ndto=noticeList.get(i);
-					
 			%>
 				<div class="notice_list_item">
 					<div class="item_content">
@@ -136,7 +135,6 @@ int endPage=(int)request.getAttribute("endPage");
 			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
 						<span><%=ndto.getN_title()%></span>
 			</a>
-						
 					</div>
 					<p class="post_metas">
 						<span class="post_time">시간 : 
@@ -149,52 +147,54 @@ int endPage=(int)request.getAttribute("endPage");
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-					<hr>
+
 					</div>
 				</div>
-				<%} %>
 				</div>
+				<%} %>
+				
 			</div>
 		</div>
+			<!--  -->
+			<div class="pageNation">
+						<%
+						if(startPage > pageBlock){
+							//페이지 [이전]
+						%>
+							<a href="./notice.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+						<%
+						}
+						%>
+						<%
+						if(count != 0){
+							for(int i=startPage;i<=endPage;i++){
+							//페이지 숫자 뿌리기
+							%>
+							<a href="./notice.bo?pageNum=<%=i%>"><%=i %></a>
+							<%
+							}
+						}
+						%>
+						<%
+						if(endPage < pageCount){
+							//페이지 [다음]
+						%>
+							<a href="./notice.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+						<%
+						}
+						%>
+						
+						<%if(email.equals("admin@naver.com")){%>
+						<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
+						<%}
+						
+						}%>
+					
+			</div>	
+			<!--  -->
 	</div>
 </div>
 
-<div class="pageNation">
-			<%
-			if(startPage > pageBlock){
-				//페이지 [이전]
-			%>
-				<a href="./notice.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
-			<%
-			}
-			%>
-			<%
-			if(count != 0){
-				for(int i=startPage;i<=endPage;i++){
-				//페이지 숫자 뿌리기
-				%>
-				<a href="./notice.bo?pageNum=<%=i%>"><%=i %></a>
-				<%
-				}
-			}
-			%>
-			<%
-			if(endPage < pageCount){
-				//페이지 [다음]
-			%>
-				<a href="./notice.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
-			<%
-			}
-			%>
-			
-			<%if(email.equals("admin@naver.com")){%>
-			<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
-			<%}
-			
-			}%>
-		
-</div>	
-	
 	
 	 
 		

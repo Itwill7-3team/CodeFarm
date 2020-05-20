@@ -134,9 +134,21 @@ public class OrderDAO {
 		try {
 			con = getConnection();
 			
+<<<<<<< HEAD
 			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer,o_t_date,sum(o_sum_money) as o_sum_money "
 					+ "from orderlist where o_m_id=? "
 					+ "group by o_b_num order by o_b_num desc";
+=======
+			sql = "select o_b_num,o_l_price, "
+					+ "o_l_name,o_status, o_l_num, "
+					+ "o_t_type,o_t_bank, "
+					+ "o_t_payer,o_t_date, "
+					+ "sum(o_sum_money) as o_sum_money "
+					+ "from codefarm.order "
+					+ "where o_m_id=? "
+					+ "group by o_b_num "
+					+ "order by o_b_num desc";
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);		
@@ -147,8 +159,13 @@ public class OrderDAO {
 				oldto.setO_b_num(rs.getString("o_b_num"));
 				oldto.setO_l_name(rs.getString("o_l_name"));
 				oldto.setO_l_price(rs.getInt("o_l_price"));
+<<<<<<< HEAD
 				//oldto.setO_l_num(rs.getInt("o_l_num"));
 				//oldto.setO_status(rs.getInt("o_status"));
+=======
+				oldto.setO_l_num(rs.getInt("o_l_num"));
+				oldto.setO_status(rs.getInt("o_status"));
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 				oldto.setO_t_type(rs.getString("o_t_type"));
 				oldto.setO_sum_money(rs.getInt("o_sum_money"));
 				oldto.setO_t_date(rs.getTimestamp("o_t_date"));
