@@ -636,7 +636,7 @@ article.media span.option span {
     box-shadow: 0 0 4px 0 rgba(0,0,0,.16);
     border: none;
     background: #fff;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     text-align: center;
 }
@@ -1430,6 +1430,10 @@ article.media span.option span {
 	background-color: #fff;
 	border-bottom: 1px solid #cfcfcf;
 	z-index: 72;
+}
+.course_detail #main.sticky .course_floating_btn {
+	position: fixed;
+	top: 89px;
 }
 
 .course_detail .tabs.sticky ul {

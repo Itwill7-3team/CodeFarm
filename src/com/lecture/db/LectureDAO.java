@@ -325,8 +325,8 @@ public class LectureDAO {
 			
 			
 	// getFileList()
-	public ArrayList<ArrayList<FileDTO>> getFileList(int l_number){
-		ArrayList<ArrayList<FileDTO>> fileSet = new ArrayList<ArrayList<FileDTO>>();
+	public List<ArrayList<FileDTO>> getFileList(int l_number){
+		List<ArrayList<FileDTO>> fileSet = new ArrayList<ArrayList<FileDTO>>();
 		try{
 			con = getConnection();
 			System.out.print("getFileList() : ");
@@ -363,7 +363,7 @@ public class LectureDAO {
 				}
 				fileSet.add(fileList);
 			}
-			System.out.println("강의 파일 목록 저장 완료");
+			System.out.println("강의 파일 목록 저장 완료, 강의 섹션 수 : " + fileSet.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -404,7 +404,7 @@ public class LectureDAO {
 				ldto.setPaynum(rs.getInt("paynum"));
 				lectureList.add(ldto);
 			}
-			System.out.println("강사별 강의 목록 저장 완료 ");
+			System.out.println("강사별 강의 목록 저장 완료, 강의 수 : " + lectureList.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
