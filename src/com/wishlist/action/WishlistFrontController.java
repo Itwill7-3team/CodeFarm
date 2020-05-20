@@ -12,6 +12,7 @@ import com.basket.action.BasketAddAction;
 import com.basket.action.BasketDeleteAction;
 import com.basket.action.BasketListAction;
 import com.basket.action.JqBasket;
+import com.lecture.action.LectureDetailAction;
 
 
 public class WishlistFrontController extends HttpServlet{
@@ -101,6 +102,13 @@ public class WishlistFrontController extends HttpServlet{
 				/*forward = */action.execute(request, response);
 			} catch (Exception e) {
 					e.printStackTrace();
+			}
+		} else if (command.equals("/WishListReg.wi")) {
+			action = new WishListRegAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		

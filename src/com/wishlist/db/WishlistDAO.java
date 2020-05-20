@@ -313,9 +313,35 @@ public class WishlistDAO {
 	}	
 	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */				
 				
-	
-	
-	
-	
+	// wishListReg(wdto) Detail_wishList
+	public String wishListReg(WishlistDTO wdto){
+		String check = "";
+		StringBuffer SQL = new StringBuffer();
+		try {
+			con = getConnection();
+			sql = "select * from wishlist where w_l_num = ? and w_m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, wdto.getW_l_num());
+			pstmt.setString(2, wdto.getW_m_id());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				SQL.append("delete from wishlist where w_l_num = ? and w_m_id = ?");
+				check = "delete";
+			} else {
+				SQL.append("insert into wishlist(w_m_id, w_l_num) values(?, ?)");
+				check = "insert";
+			}
+			pstmt = con.prepareStatement(SQL.toString());
+			pstmt.setInt(1, wdto.getW_l_num());
+			pstmt.setString(2, wdto.getW_m_id());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	// wishListReg(wdto) Detail_wishList
 	
 }

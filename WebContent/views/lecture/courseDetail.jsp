@@ -4,7 +4,6 @@
 <%@page import="com.member.db.MemberDTO"%>
 <%@page import="com.lecture.db.FileDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Arrays"%>
@@ -14,6 +13,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE>
 <html lang="ko-KR">
 <head>
@@ -26,12 +26,6 @@
 <link rel="stylesheet" href="./css/bulma.css">
 
 </head>
-
-<script type="text/javascript">
-	function numberFormat(inputNumber) {
-		return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-</script>
 
 <body class="course_detail">
 	<%
@@ -53,7 +47,7 @@
 	
 	/* 현 강의 결제 유무 */
 		boolean payCheck = false;
-		if(mdto.getM_email() != null && orderList != null){
+		if(mdto != null && mdto.getM_email() != null && orderList != null){
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
 					payCheck = true;
@@ -134,7 +128,6 @@
 										
 									<!-- lecture_type_category -->
 										<small class="course_skills">
-<!-- 주소변경 - 강의 태그 카테고리별 링크 카테고리 t1,t2 넘겨주기 -->
 											<a href="./Search.le?t1=<%= ldto.getL_type() %>&t2=<%= ldto.getL_type2() %>"><%= ldto.getL_type2() %></a>
 										</small>
 									<!-- lecture_type_category -->
@@ -160,9 +153,7 @@
 											<% if (ldto.getL_price() == 0) { %>
 												무료
 											<% } else { %>
-											<script type="text/javascript">
-												document.write(numberFormat(${ ldto.l_price }));					
-											</script>원
+											<fmt:formatNumber value="<%= ldto.getL_price() %>" />원
 											<% } %>
 										</div>
 									</div>
@@ -175,9 +166,9 @@
 											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 										</div>
 										<% } else { %>
-<!-- 수강 신청 onCilck 링크 추가 필요 & 결제 내역 확인 후 강의 보기 버튼 추가
+<!-- 수강 신청 onCilck -> 결제page
+
 ssssssssssssssssss orderaction 참조
-	prompt -> 결제page
 -->
 											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
 										</div>
@@ -204,8 +195,7 @@ ssssssssssssssssss orderaction 참조
 							<!-- SideMenu_info -->
 								<div class="course_info_cover">
 									<div class="course_info_row">
-<!-- 강사 페이지 주소 수정 -->
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
@@ -214,17 +204,12 @@ ssssssssssssssssss orderaction 참조
 											else { out.print(total_Min + "분 수업"); }
 										%>
 									</div>
-<!--시청 기간, 수료증, 난이도 삭제 예정
 									<div class="course_info_row">
 										<i class="far fa-clock"></i><span class="has-text-weight-bold">평생</span> 무제한 시청
 									</div>
 									<div class="course_info_row">
-										<i class="fas fa-certificate"></i><span class="has-text-weight-bold">수료증 미발급</span> 강의
+										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold"><%= ldto.getL_level() %></span>
 									</div>
-									<div class="course_info_row">
-										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
-									</div>
-시청 기간, 수료증, 난이도 삭제 예정  -->
 								</div>
 							<!-- SideMenu_info -->
 						
@@ -251,8 +236,7 @@ ssssssssssssssssss orderaction 참조
 											}
 									%>
 										<li>
-<!-- 강의  이미지 등록 주소ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
-											<a href="/Detail.le?num=<%-- <% lectureList.get(i).getL_number() %> --%>">
+											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
 												<div class="el_thumbnail">
 													<img src="./img/main-img/<%= lectureList.get(ja).getL_img().split(",")[0] %>" alt="<%= lectureList.get(ja).getL_title() %>">
 												</div>
@@ -261,9 +245,8 @@ ssssssssssssssssss orderaction 참조
 													<div class="el_subinfo">
 														<div class="el_subtitle">
 															<span>
-															<script type="text/javascript">
-																document.write("￦" + numberFormat(${ lectureList.get(ja).getL_price() }));					
-															</script>
+																<fmt:setLocale value="ko_KR"/>
+																<fmt:formatNumber value="<%= ldto.getL_price() %>" type="currency" />
 															</span>
 														</div>
 														<div class="el_metas">
@@ -284,8 +267,7 @@ ssssssssssssssssss orderaction 참조
 									</div>
 								<% if(lectureList.size() > 2){ %>
 									<div class="course_another_btn course_relation_btn">
-<!-- 강사 페이지 주소 수정 -->
-										<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>">+ 다른 강의 더보기</a>
+										<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">+ 다른 강의 더보기</a>
 									</div>
 								<% } %>
 								</div>
@@ -346,6 +328,9 @@ ssssssssssssssssss orderaction 참조
 										혼자서 얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력 속으로 풍덩
 										빠져볼까요? :^)
 	<!-- DB lecture -> content 작성 후 삭제 -->
+										<%= ldto.getL_targets() %>
+										<%= ldto.getL_based() %>
+										<%= ldto.getL_description() %>
 										<%= ldto.getL_content() %>
 									</div>
 								<!-- 강의 소개 1 -->
@@ -470,8 +455,7 @@ ssssssssssssssssss orderaction 참조
 											</figure>
 										</div>
 										<h4 class="name">
-<!-- 강사 페이지 주소 수정 -->
-											<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
+											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 										</h4>
 									</div>
 									<p class="introduce"></p>
@@ -592,9 +576,11 @@ ssssssssssssssssss orderaction 참조
 							<!-- 수강 후기 -->
 								<article class="course_date">
 									<h4 class="sub_heading">공개 일자</h4>
-<!-- update 날짜 DB추가 후 뒤쪽 날짜 변경 -->	
 									<div>
-										<%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %><span class="last_update_date"> <%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %></span>
+										<fmt:formatDate value="<%= ldto.getL_reg_date() %>" type="date" pattern="yyyy년 MM월 dd일"/>
+										<span class="last_update_date">
+										 (마지막 업데이트 일자 : <fmt:formatDate value="<%= ldto.getPct_date() %>" type="date" pattern="yyyy년 MM월 dd일"/>)
+										</span>
 									</div>
 								</article>
 								
@@ -672,7 +658,9 @@ ssssssssssssssssss orderaction 참조
 													
 													<!-- 작성 일자 -->
 														<small class="review updated_at">
-															<span><%= new SimpleDateFormat("yyyy-MM-dd").format(reviewList.get(r_loop).getR_reg_date()) %></span>
+															<span>
+																<fmt:formatDate value="<%= reviewList.get(r_loop).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
+															</span>
 															<span class="option"></span>
 														</small><br>
 														
@@ -682,7 +670,7 @@ ssssssssssssssssss orderaction 참조
 														</div>
 													
 													<!-- 답글 등록 버튼 -->
-													<% if(mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
+													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
 														<div class="reactions">
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">답글 쓰기</span>
@@ -708,7 +696,9 @@ ssssssssssssssssss orderaction 참조
 																		<!-- 회원 이름, 작성 일자, 내용 -->
 																			<small>
 																				<span class="author"><strong><%= reviewList.get(r_loop).getR_writer() %></strong></span>
-																				<span class="updated_at"><%= new SimpleDateFormat("yyyy-MM-dd").format(reviewList.get(r_loop).getR_reg_date()) %></span>
+																				<span class="updated_at">
+																					<fmt:formatDate value="<%= reviewList.get(r_loop).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
+																				</span>
 																			</small><br>
 																			<span class="article_body">
 																				<%= reviewList.get(r_loop).getR_content() %>
@@ -751,80 +741,6 @@ ssssssssssssssssss orderaction 참조
 	<script type="text/javascript">
 		
 	$(document).ready(function(){
-		
-	/* 수강평 더 보기 버튼 생성 */
-		var review_cnt = $(".review_list .article_container").length;
-		if(review_cnt < ${ fn:length(reviewList) }){
-			$("<button class='is-fullwidth button is-link e_show_more_review'>다른 수강평 보기</button>").appendTo(".review_list");
-		}
-	/* 수강평 더 보기 버튼 생성 */
-		
-	/* 수강평 로드 */
-		$(".e_show_more_review").click(function(){
-			$.ajax({
-				url      : "/CodeFarm/DetailReview.le",
-				type     : "POST",
-				dataType : "json",
-				data: {
-					l_number : ${ ldto.getL_number() }
-				},
-				success: function (json){
-					var output = "";
-					var pre_count = $(".review_list>.article_container").length;
-					for(var i=pre_count; i<json.length; i++){
-						if(json[i].r_re_lev == 0){
-						output += "<div class='article_container'><article class='media review_item'>"
-								+ "  <figure class='media-left image is-64x64'>"
-								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
-								+ "  </figure>"
-								+ "  <div class='media-content'>"
-								+ "    <div class='content'>"
-								+ "      <span><div class='rating_star'>"
-								+ "        <div class='star_solid'>";
-							for(var innerStar=1; innerStar<json[i].r_rating + 1; innerStar++){
-								output += "<i class='fa fa-star' data-value="+innerStar+"></i>";
-							}
-						output += "          </div>"
-							for(var outerStar=5; outerStar>0; outerStar--){
-								output += "<i class='far fa-star' data-value="+outerStar+"></i>";
-							}
-						output += "      </div></span>"
-								+ "      <strong>" + json[i].r_writer + "</strong>"
-								+ "      <small class='review updated_at'>"
-								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
-								+ "      </small><br>"
-								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
-							if(${ mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
-							output += "      <div class='reactions'>"
-									+ "        <button class='button is-link is-small'>"
-									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
-									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
-									+ "        </button>"
-									+ "      </div>";
-							}
-						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
-							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
-									+ "  <figure class='media-left image is-32x32'>"
-									+ "    <img src='./img/main-img/lect_9.png' alt='" + json[i].r_writer + "'>"
-									+ "  </figure>"
-									+ "  <div class='media-content'><div class='content'><p>"
-									+ "    <small>"
-									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
-									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
-									+ "    </small><br>"
-									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
-									+ "  </p></div></div>"
-									+ "</article></div></div>";
-							}
-						 }
-						output += "  </article></div>";
-					}
-					$(".review_list>.article_container:last").after(output);
-					$("button").remove(".e_show_more_review");
-				}
-			});
-		});
-	/* 수강평 로드 */
 	
 	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
 		var t_Nav   = $(".tabs");
@@ -896,7 +812,116 @@ ssssssssssssssssss orderaction 참조
 	    	}
 	    });
 	/* 강의 목록 opne */
+	
+	/* 위시리스트 */
+		$(".wishBtn").click(function(){
+			var hIcon = $(".wish > i");
+			if(${ mdto != null && mdto.getM_email() != null }){
+				$.ajax({
+					url      : "./WishListReg.wi",
+					type     : "POST",
+					dataType : "text",
+					data: {
+						l_number : ${ ldto.getL_number() },
+						m_email  : "${ mdto.getM_email() }"
+					},
+					success: function(text){
+						alert(text);
+						if(text.equals("insert")){
+							hIcon.removeClass("fa-heart-o");
+							hIcon.addClass("fa-heart");
+						} else {
+							hIcon.addClass("fa-heart-o");
+							hIcon.removeClass("fa-heart");
+						}
+					}
+				});
+			} else {
+				$.ajax({
+					url  : "./MemberLogin.me",
+					type : "POST",
+					success : function(data) {
+						$(".login_form").html(data);
+					},
+				});
+			}
+		});
+	/* 위시리스트 */
+	
+	/* 수강평 더 보기 버튼 생성 */
+		var review_cnt = $(".review_list .article_container").length;
+		if(review_cnt < ${ fn:length(reviewList) }){
+			$("<button class='is-fullwidth button is-link e_show_more_review'>다른 수강평 보기</button>").appendTo(".review_list");
+		}
+	/* 수강평 더 보기 버튼 생성 */
 		
+	/* 수강평 로드 */
+		$(".e_show_more_review").click(function(){
+			$.ajax({
+				url      : "./DetailReview.le",
+				type     : "POST",
+				dataType : "json",
+				data: {
+					l_number : ${ ldto.getL_number() }
+				},
+				success: function (json){
+					var output = "";
+					var pre_count = $(".review_list>.article_container").length;
+					for(var i=pre_count; i<json.length; i++){
+						if(json[i].r_re_lev == 0){
+						output += "<div class='article_container'><article class='media review_item'>"
+								+ "  <figure class='media-left image is-64x64'>"
+								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
+								+ "  </figure>"
+								+ "  <div class='media-content'>"
+								+ "    <div class='content'>"
+								+ "      <span><div class='rating_star'>"
+								+ "        <div class='star_solid'>";
+							for(var innerStar=1; innerStar<json[i].r_rating + 1; innerStar++){
+								output += "<i class='fa fa-star' data-value=" + innerStar + "></i>";
+							}
+						output += "          </div>"
+							for(var outerStar=5; outerStar>0; outerStar--){
+								output += "<i class='far fa-star' data-value=" + outerStar + "></i>";
+							}
+						output += "      </div></span>"
+								+ "      <strong>" + json[i].r_writer + "</strong>"
+								+ "      <small class='review updated_at'>"
+								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
+								+ "      </small><br>"
+								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
+							if(${ mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
+							output += "      <div class='reactions'>"
+									+ "        <button class='button is-link is-small'>"
+									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
+									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
+									+ "        </button>"
+									+ "      </div>";
+							}
+						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
+							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
+									+ "  <figure class='media-left image is-32x32'>"
+									+ "    <img src='./img/main-img/lect_9.png' alt='" + json[i].r_writer + "'>"
+									+ "  </figure>"
+									+ "  <div class='media-content'><div class='content'><p>"
+									+ "    <small>"
+									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
+									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
+									+ "    </small><br>"
+									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
+									+ "  </p></div></div>"
+									+ "</article></div></div>";
+							}
+						 }
+						output += "  </article></div>";
+					}
+					$(".review_list>.article_container:last").after(output);
+					$("button").remove(".e_show_more_review");
+				}
+			});
+		});
+	/* 수강평 로드 */
+	
 	});
 	
 	</script>
