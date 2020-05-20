@@ -21,6 +21,9 @@ public class BasketAddAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id =(String)session.getAttribute("m_email");
+		if(id==null){
+			id=request.getParameter("id");
+		}
 		//id="test";
 		
 		ActionForward forward = new ActionForward();
@@ -54,6 +57,9 @@ public class BasketAddAction implements Action {
 		// 없을경우 장바구니에 추가
 		if(check != 1){
 			bkdao.basketAdd(bkdto);
+		}
+		else{
+			bkdao.JqbasketDelete(Integer.parseInt(request.getParameter("num")));
 		}
 		
 		// 페이지 이동 (장바구니 목록 페이지)

@@ -174,7 +174,7 @@ public class LectureDAO {
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture left join member on (lecture.l_m_email = member.m_email) "
 				+ "ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
+				+ "where C.ROW >=? and record=1 and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
 				+ "and l_type like ? and l_type2 like ?");
 		
 /*		if(item.equals("all")){
@@ -249,16 +249,17 @@ public class LectureDAO {
 					//상품 인기상품 목록 => 조건절 best=?
 					//상품 카테고리별 목록(6개) => 조건절 카테고리=? 으로 처리가능
 					SQL.append("SELECT * FROM lecture");
-					if(item.equals("all")){					
+					if(item.equals("all")){		
+						SQL.append(" where record=1");
 					}
 					else if(item.equals("best")){
-						SQL.append(" order by l_goods desc limit 0,5");
+						SQL.append(" where record=1 order by l_goods desc limit 0,5 ");
 					}
 					else if(item.equals("new")){
-						SQL.append(" order by l_reg_date desc limit 0,5"); //신규 5개
+						SQL.append(" where record=1 order by l_reg_date desc limit 0,5 "); //신규 5개
 					}
 					else if(item.equals("free")){
-						SQL.append(" where l_price=0 order by l_reg_date desc limit 0,5");
+						SQL.append(" where l_price=0 and record=1 order by l_reg_date desc limit 0,5");
 					}
 
 					pstmt=con.prepareStatement(SQL.toString()); 

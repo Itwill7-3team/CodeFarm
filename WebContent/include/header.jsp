@@ -445,6 +445,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			url : "./carts.ba?type=" + type,
 			data : {
 				"id" : "<%=loginEmail%>"
+				
 			},
 			dataType : "json",
 			success : function(data) { // 서버에 대한 정상응답이 오면 실행, callback
