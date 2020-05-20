@@ -120,8 +120,8 @@ function timeBefore(timedate){
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
-						<span class="Q">Q.</span>
-						<span><a href="askView.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
+						<span class="Q">Rq.</span>
+						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
 					</div>
 					<p class="post_metas">
 						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
@@ -137,7 +137,7 @@ function timeBefore(timedate){
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
 				<%} %>
