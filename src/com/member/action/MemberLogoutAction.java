@@ -25,11 +25,16 @@ public class MemberLogoutAction implements Action {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+		String referer = (String)request.getHeader("REFERER");
 		
 		out.print("<script>");
 		out.print(" alert('로그아웃 성공'); ");
-		out.print(" location.href='Main.le'; ");
-		out.print("</script>");
+		if(referer != null){
+			out.print(" location.href='" + referer + "'; ");
+		} else {
+			out.print(" location.href='Main.le'; ");
+		}
+		out.print("</script>"); 
 		out.close();
 		
 		/*

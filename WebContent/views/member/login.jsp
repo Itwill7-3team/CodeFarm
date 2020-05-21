@@ -44,8 +44,8 @@
        <div class="footer_form">
        
           <div class="social">
-          <div id="kakaoLogin"></div>
-          <div id="naverIdLogin"></div>
+          <div class="kakao_btn" id="kakaoLogin"></div>
+          <div class="naver_btn" id="naverIdLogin"></div>
           
 
            <!--  <a data-type="facebook" href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=1101702136522636&amp;redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&amp;scope=email" class="button facebook_auth oauth2" rel="noreferrer noopener">
@@ -122,8 +122,8 @@ var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "n1A2gvk1H0li6JGsisBI",
 			callbackUrl: "http://localhost:8090/CodeFarm/naverLogin.me",
-			isPopup: true, /* 팝업을 통한 연동처리 여부 */
-			loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
 		}
 	);
 	

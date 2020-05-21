@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,8 @@ import com.order.db.OrderDAO;
 import com.order.db.OrderDTO;
 import com.review.db.ReviewDAO;
 import com.review.db.ReviewDTO;
+import com.wishlist.db.WishlistDAO;
+import com.wishlist.db.WishlistDTO;
 
 public class LectureDetailAction implements Action {
 
@@ -30,18 +33,30 @@ public class LectureDetailAction implements Action {
 		// main또는 search 에서 강의이미지 클릭=> num 파라미터를 넘겨 받습니다.
 		int l_number = 2; // 테스트용_테스트 후 아래 코드 사용
 		//int l_number = Integer.parseInt(request.getParameter("num"));
-		String m_email = "abc@naver.com"; // 테스트용_테스트 후 아래 코드 사용
-		//String m_email = (String)session.getAttribute("m_email");
+		//String m_email = "abc@naver.com"; // 테스트용_테스트 후 아래 코드 사용
+		String m_email = (String)session.getAttribute("m_email");
 		
 		MemberDAO mdao = new MemberDAO();
+		WishlistDAO wdao = new WishlistDAO();
 		if(m_email != null){
-			MemberDTO mdto = mdao.getInfo(m_email);
+			MemberDTO mdto = mdao.getInfo(m_email); // 회원 정보
 			request.setAttribute("mdto", mdto);
 			
 			OrderDAO odao = new OrderDAO();
-			List<OrderDTO> orderList = odao.getOrderList(m_email);
+			List<OrderDTO> orderList = odao.getOrderList(m_email); // 회원 주문 확인
 			request.setAttribute("orderList", orderList);
+			
+			Vector vec = wdao.getWishList(m_email); // 회원별 위시 확인
+			ArrayList<WishlistDTO> wishList = (ArrayList<WishlistDTO>)vec.get(0);
+			for(int i=0; i<wishList.size(); i++){
+				if(wishList.get(i).getW_l_num() == l_number){
+					WishlistDTO wdto = wishList.get(i);
+					request.setAttribute("wdto", wdto);
+					//break;
+				}
+			}
 		}
+		int wCount = wdao.getWishListCount(l_number); // 강의 위시 수
 		
 		LectureDAO ldao = new LectureDAO();
 		LectureDTO ldto = ldao.getLectureDetail(l_number); // 강의 상세 정보
@@ -75,10 +90,11 @@ public class LectureDetailAction implements Action {
 		
 		request.setAttribute("ldto", ldto);
 		request.setAttribute("lmdto", lmdto);
-		request.setAttribute("lectureList", lectureList);
+		request.setAttribute("wCount", wCount);
 		request.setAttribute("fileSet", fileSet);
 		request.setAttribute("reviewList", reviewList);
 		request.setAttribute("ratingList", ratingList);
+		request.setAttribute("lectureList", lectureList);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/lecture/courseDetail.jsp");

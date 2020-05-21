@@ -330,6 +330,7 @@ public class MemberDAO {
 						mdto.setM_rank(rs.getString("m_rank"));
 						mdto.setM_addr(rs.getString("m_addr"));
 						mdto.setM_intro(rs.getString("m_intro"));
+						mdto.setM_nick(rs.getString("m_nick"));
 						mdto.setM_name(rs.getString("m_name"));
 						mdto.setM_phone(rs.getString("m_phone"));
 						mdto.setM_pw(rs.getString("m_pw"));
@@ -347,13 +348,13 @@ public class MemberDAO {
 			
 			
 			//자기소개 업데이트
-			public void IntroUpdate(String m_email,String m_intro, String m_name) {
+			public void IntroUpdate(String m_email,String m_intro, String m_nick) {
 				try {
 					con = getConnection();
-					sql = "update member set m_intro =?, m_name=? where m_email=?";
+					sql = "update member set m_intro =?, m_nick=? where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, m_intro);
-					pstmt.setString(2, m_name);
+					pstmt.setString(2, m_nick);
 					pstmt.setString(3, m_email);
 					pstmt.executeUpdate();
 				} catch (Exception e) {
@@ -419,16 +420,18 @@ public class MemberDAO {
 				}
 			}
 			
-			public void apiLogin(MemberDTO mdto) {
+			public MemberDTO apiLogin(MemberDTO mdto) {
 				
 				try {
 					con = getConnection();
-					sql = "select m_email from member where m_email=?";
+					sql = "select * from member where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, mdto.getM_email());
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
+						mdto.setM_nick(rs.getString("m_nick"));
 						
+						return mdto;
 					}else {
 						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
 								+ "m_regdate, m_emailCheck) values (?,?,?,'회원',now(),true)";
@@ -446,7 +449,7 @@ public class MemberDAO {
 				}finally {
 					closeDB();
 				}
-			
+				return mdto;
 			}
 	}
 	

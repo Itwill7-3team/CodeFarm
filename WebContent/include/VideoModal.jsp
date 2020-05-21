@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<html>
 <head>
-
 <style type="text/css">
 *, :after, :before{
 	box-sizing: inherit;
@@ -132,7 +131,7 @@ overflow-y: auto;
     .buttons .button{
     	margin-bottom: .5rem;
     }
-    .button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea{
+    .button5, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea{
     	-webkit-appearance: none;
 	    align-items: center !important;
 	    border: 1px solid transparent !important;
@@ -147,7 +146,7 @@ overflow-y: auto;
 	    position: relative !important;
 	    vertical-align: top !important;
     }
-    .button{
+    .button5{
 	  	background-color: #fff !important;
 	    border-color: #dbdbdb !important;
 	    border-width: 1px !important;
@@ -239,7 +238,7 @@ overflow-y: auto;
 	    border: 1px solid #979797;
 	    border-radius: 0;
    }
-   #component_file_form .button{
+   #component_file_form .button5{
 	   	height: 50px;
 	    width: 85px;
 	    margin-left: -5px;
@@ -248,11 +247,11 @@ overflow-y: auto;
 	    background: #747474;
 	    color: #fff;
    }
-   #component_file_form .button.upload{
+   #component_file_form .button5.upload{
 	   	margin-left: 0;
 	    background: #1dc078;
    }
-   .button.is-primary.is-hovered, .button.is-primary{
+   .button5.is-primary.is-hovered, .button5.is-primary{
    		background-color: #ff6d5a;
 	    border-color: transparent;
 	    color: #fff;
@@ -266,7 +265,7 @@ overflow-y: auto;
    }
 </style>
 </head>
-<body>
+
 <div class="video modal ">
             <div class="dimmed"></div>
             <section class="modal-card content modal_content modify_lecture_modal_content">
@@ -323,8 +322,8 @@ overflow-y: auto;
     <input id="attach_file_input" class="hidden_input" type="file" name="file" accept="*">
     <div class="file_info">파일을 선택하세요</div>
     <div style="font-size: 0; margin-top: 5px;">
-      <button type="button" class="button add">파일 선택</button>
-      <button type="button" class="button upload" disabled="">업로드</button>
+      <button type="button" class="button5 add">파일 선택</button>
+      <button type="button" class="button5 upload" disabled="">업로드</button>
     </div>
     <div class="downloadable">
       
@@ -333,14 +332,15 @@ overflow-y: auto;
               </div>
               <div class="modal-card-foot">
                 <div class="buttons">
-                  <button type="button" class="button cancel_btn">취소</button>
-                  <button type="button" class="button add_btn is-primary">
+                  <button type="button" class="button5 cancel_btn">취소</button>
+                  <button type="button" class="button5 add_btn is-primary">
                     저장
                   </button>
                 </div>
               </div>
             </section>
           </div>
+          </html>
 <script>
 //에디터
 
@@ -355,7 +355,9 @@ $('#summernote').summernote({
 
 	  });
  $('.x_btn').click(function(){
-	$(".video.modal").remove();
+	removeModal();
 }); 
-
+	 function removeModal(){
+		$(".video.modal").remove();
+	} 
 </script>

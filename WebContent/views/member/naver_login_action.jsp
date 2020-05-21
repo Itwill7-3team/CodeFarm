@@ -30,10 +30,10 @@ var naverLogin = new naver.LoginWithNaverId(
 naverLogin.getLoginStatus(function (status) {
 	if (status) {
 		var email = naverLogin.user.getEmail();
-		var name = naverLogin.user.getNickName();
+		var name = naverLogin.user.getName();
 	
 		var uniqId = naverLogin.user.getId();
-		 alert(uniqId); 
+		alert(name);
 		 $('#m_email').val(email);
          $('#m_pw').val(uniqId);
          $('#m_nick').val(name);
