@@ -1,0 +1,72 @@
+package com.board.action;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ask.db.AskDAO;
+import com.ask.db.AskDTO;
+
+public class AnswerAction implements Action{
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("AnswerAction 실행");
+		ActionForward forward= new ActionForward();
+	
+		//세션확인
+				HttpSession session = request.getSession();
+
+				String id =(String) session.getAttribute("m_email");
+				
+				if(id == null && !id.equals("admin@naver.com")){
+					forward.setPath("./MemberLogin.me");
+					forward.setRedirect(true);
+					return forward;
+				}
+				
+		//한글처리
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=UTF-8"); 
+		
+		//
+		String num=request.getParameter("num");
+		String pageNum=request.getParameter("pageNum");
+		String type= "answer";
+		
+		//정보받기 (글쓴이, 내용, re_ref, re_lev+1)
+		AskDTO bdto= new AskDTO();
+		bdto.setRe_ref(Integer.parseInt(request.getParameter("num")));
+		bdto.setRe_lev(Integer.parseInt(request.getParameter("num")+1));
+		bdto.setWriter(request.getParameter("writer"));
+		bdto.setContent(request.getParameter("content"));
+		bdto.setType(type);
+		
+		AskDAO bdao= new AskDAO();
+		
+		//답글 메서드
+		int check =bdao.insertAnswer(bdto);
+		//답글 작성 실패시 알림
+		if(check != 1) {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('글쓰기 실패!')");
+			out.println("history.back()");
+			out.println("</script>");
+			out.close();
+			}
+				
+		//페이지 이동
+
+		//request.setAttribute("boardList", boardList);
+		forward.setPath("askView.bo?num="+num+"&pageNum="+pageNum);
+		forward.setRedirect(false);
+		
+		System.out.println("AnswerAction 종료");
+		return forward;
+	}
+
+}

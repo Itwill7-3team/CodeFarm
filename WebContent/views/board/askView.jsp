@@ -140,7 +140,9 @@ id= email.substring(0,idx);
 System.out.print("id"+id);
 %>
 	<div class="answer_form">
-		<form action="#" method="post">
+		<form action="AnswerAction.bo" method="post">
+		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
+		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		[답글] 글쓴이 : <%=id%><br>
 		<textarea name="n_content" id="summernote">
 		</textarea>
