@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="./css/VideoModal.css" rel="stylesheet">
 <html>
 <head>
 <style type="text/css">
@@ -356,7 +355,9 @@ $('#summernote').summernote({
 
 	  });
  $('.x_btn').click(function(){
-	$(".video.modal").remove();
+	removeModal();
 }); 
-
+	 function removeModal(){
+		$(".video.modal").remove();
+	} 
 </script>
