@@ -92,9 +92,12 @@ public class InstructorFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/addLectureList.in")){
-			forward=new ActionForward();
-			forward.setPath("./views/instructor/addLecturelist.jsp");
-			forward.setRedirect(false);
+			action = new InstructorGetListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
