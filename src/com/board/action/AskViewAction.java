@@ -1,5 +1,7 @@
 package com.board.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,9 +24,14 @@ public class AskViewAction implements Action {
 		LectureDAO ldao= new LectureDAO();
 		LectureDTO ldto = ldao.getLectureDetail(bdto.getL_num());
 		
+		AskDAO bdao1 =new AskDAO();
+		List<AskDTO> answerList =bdao1.getAnswerList(num);
+		
+		
 		System.out.println("@@@@@@@@@@@@bdao:"+bdto);
 		request.setAttribute("bdto", bdto);
 		request.setAttribute("ldto", ldto);
+		request.setAttribute("answerList", answerList);
 		request.setAttribute("pageNum", pageNum);
 		forward.setPath("./views/board/askView.jsp");
 		forward.setRedirect(false);

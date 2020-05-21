@@ -420,19 +420,21 @@ public class MemberDAO {
 				}
 			}
 			
-			public void apiLogin(MemberDTO mdto) {
+			public MemberDTO apiLogin(MemberDTO mdto) {
 				
 				try {
 					con = getConnection();
-					sql = "select m_email from member where m_email=?";
+					sql = "select * from member where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, mdto.getM_email());
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
+						mdto.setM_nick(rs.getString("m_nick"));
 						
+						return mdto;
 					}else {
 						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
-								+ "m_emailCheck) values (?,?,?,'회원',true)";
+								+ "m_regdate, m_emailCheck) values (?,?,?,'회원',now(),true)";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, mdto.getM_email());
 						pstmt.setString(2, mdto.getM_pw());
@@ -447,7 +449,7 @@ public class MemberDAO {
 				}finally {
 					closeDB();
 				}
-			
+				return mdto;
 			}
 	}
 	
