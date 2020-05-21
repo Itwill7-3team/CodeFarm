@@ -215,7 +215,7 @@ public class AskDAO {
 				con = getConnection();
 				System.out.print("getAnswerCount() : ");
 				
-				sql = "select * from board where re_ref=? and re_seq>0";
+				sql = "select count(*) from board where re_ref=? and re_seq>0";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, num);
 				rs = pstmt.executeQuery();

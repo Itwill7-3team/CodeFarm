@@ -1,3 +1,4 @@
+<%@page import="com.ask.db.AskDAO"%>
 <%@page import="com.ask.db.AskDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -135,7 +136,12 @@ function timeBefore(timedate){
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-					<span>답변 1개 </span></div>
+					<%
+					//답글유무 체크
+					int check = new AskDAO().getAnswerCount(bdto.getNum());
+					System.out.println("check:"+check); 
+					%>
+					<span>답변 <%=check %>개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
 					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
