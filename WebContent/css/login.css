@@ -116,10 +116,9 @@ a {
 .modal>.signin_modal .footer_form>.social {
     margin-top: 8px;
     display: grid;
-    height: 72px;
-    grid-template: repeat(2,1fr)/repeat(2,1fr);
+    height: 94px;
+    
     grid-row-gap: 5px;
-    grid-column-gap: 9px;
 }
 
 .modal>.signin_modal .sub_form {

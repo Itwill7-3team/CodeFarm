@@ -234,7 +234,7 @@ public class MemberFrontController extends HttpServlet{
 		}else if(command.equals("/naverLogin.me")){
 			// 회원가입 처리페이지 (/MemberJoin.me)
 			// 회원가입처리 페이지로 바로 이동
-			System.out.println("/MemberJoin.me 주소요청 ");
+			System.out.println("/naverLogin.me 주소요청 ");
 			
 			// ActionForward 객체 생성
 			forward = new ActionForward();
@@ -251,6 +251,16 @@ public class MemberFrontController extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		}else if(command.equals("/naverLoginAction.me")){
+			// 회원가입 처리페이지 (/MemberJoin.me)
+			// 회원가입처리 페이지로 바로 이동
+			System.out.println("/naverLoginAction.me 주소요청 ");
+			
+			// ActionForward 객체 생성
+			forward = new ActionForward();
+			forward.setPath("./views/member/naver_login_action.jsp");
+			forward.setRedirect(false);		
 			
 		}
 		

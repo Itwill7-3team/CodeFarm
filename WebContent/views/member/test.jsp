@@ -68,6 +68,26 @@ Kakao.Auth.createLoginButton({
 	naverLogin.init();
 	
 </script>
+
+<script type="text/javascript">
+naverLogin.getLoginStatus(function (status) {
+	if (status) {
+		var email = naverLogin.user.getEmail();
+		var name = naverLogin.user.getNickName();
+	
+		var uniqId = naverLogin.user.getId();
+		 alert(uniqId); 
+		 $('#m_email').val(email);
+         $('#m_pw').val(uniqId);
+         $('#m_nick').val(name);
+         $('.apiAction').submit();
+        
+		
+			} else {
+		console.log("AccessToken이 올바르지 않습니다.");
+	}
+});
+</script>
 <!-- // 네이버아이디로로그인 초기화 Script -->
 </body>
 </html>
