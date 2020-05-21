@@ -100,6 +100,14 @@ public class BasketFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		
+		}else if(command.equals("/BasketToWi.ba")) {
+			System.out.println("#############/BasketToWi.ba");
+			action = new BasketToWiAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

@@ -217,6 +217,7 @@
 		for (int i = 0; i < basketList.size(); i++) {
 			BasketDTO bdto = (BasketDTO) basketList.get(i);
 			LectureDTO ldto = (LectureDTO) lectureList.get(i);
+			WishlistDTO widto = (WishlistDTO) wishList.get(i);
 	%>
 	<div class="boxx">
 		<div class="clearfix">
@@ -244,9 +245,11 @@
 				</a><br>
 			</div>
 			<button class="d_btn d_btn2" type="button"
-				onclick="location.href ='./BasketDelete.ba?b_num=<%=bdto.getB_num()%>'">
+				onclick="location.href ='./BasketToWi.ba?b_num=<%=bdto.getB_num()%>&number=<%=ldto.getL_number() %>'">
 				위시리스트 <i class='fas fa-heart' style='color: black;'></i>
 			</button>
+			<!-- onclick="location.href ='./BasketToWi.ba?w_num=<%=bdto.getB_l_num()%>'"> -->
+			<!-- onclick="location.href ='./WishListAdd.wi?w_num=<%=widto.getW_num()%>'"> -->
 		</div>
 
 	</div>
@@ -421,9 +424,9 @@
 			location.href = "./BasketList.ba";
 		});
 	});
-		</script>
+
 	<!-- modal -->
-	<script>
+
 		// Get the modal
 		var modal = document.getElementById("myModal");
 
@@ -449,9 +452,9 @@
 				modal.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- modal2 -->
-	<script>
+
 		// Get the modal
 		var modal2 = document.getElementById("myModal2");
 	
@@ -477,9 +480,9 @@
 				modal2.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- 약관 -->
-	<script>
+
 		// Get the modal
 		var Vmodal = document.getElementById('id01');
 
@@ -489,9 +492,9 @@
 				Vmodal.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- 약관 숨기기  -->
-	<script type="text/javascript">
+
 		function myFunction() {
 			var checkBox = document.getElementById("myCheck");
 			var text = document.getElementById("text");
@@ -501,9 +504,9 @@
 				text.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- 무통장 결제 체크 -->
-	<script type="text/javascript">
+
 		function CheckForm(Join) {
 
 			//체크박스 체크여부 확인 [하나]
@@ -514,10 +517,10 @@
 				return false;
 			}
 		}
-	</script>
+
 
 <!-- 위시리스트 모달 -->
-<script>
+
 // Get the modal
 var Wmodal = document.getElementById("WmyModal");
 
@@ -543,6 +546,7 @@ window.onclick = function(event) {
     Wmodal.style.display = "none";
   }
 }
+
 </script>
 
 
