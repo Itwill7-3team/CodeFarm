@@ -262,7 +262,7 @@ article.media span.option span {
 }
 
 .course_detail section.course_description_container .container .course_description .body li{
-	list-style: initial;
+	list-style: none;
 }
 
 .course_detail section.course_description_container .container .course_description .body blockquote ul{
