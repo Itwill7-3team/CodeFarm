@@ -16,6 +16,7 @@ public class OrderDTO {
 	private Timestamp o_t_date;	//결제시간
 	private int o_sum_money;	//결제 가격
 	private String o_status; // 주문 상태(무통장)
+
 	
 	public String getO_status() {
 		return o_status;
