@@ -248,7 +248,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											<a href="#"><li class="list_item">수강중인 강의</li></a>
 											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
 											<a href="#"><li class="list_item">내 질문 답변</li></a>
-											<a href="#"><li class="list_item">구매내역</li></a>
+											<a href="OrderList.or"><li class="list_item">구매내역</li></a>
 											<a href="addLecture.in"><li class="list_item">강의등록하기</li></a>
 											<a href="addLectureList.in"><li class="list_item">강의목록</li></a>
 										</ul>
