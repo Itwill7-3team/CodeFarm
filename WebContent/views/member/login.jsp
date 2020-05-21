@@ -5,6 +5,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
 <link rel="stylesheet" href="./css/login.css">
    <!-- 
      로그인 페이지 
@@ -76,7 +77,7 @@
 
 	$(".back").click(function(){
 		
-		$(".clear").html(" ");
+		$(".login_form").html(" ");
 	});
 </script>
 
@@ -86,6 +87,8 @@
 <input type="hidden" id="m_nick" name="m_nick" value="a">
 </form>
 <script type="text/javascript">
+$(document).ready(function(){
+	
 Kakao.init('c95ddde2f236e0f76a1f9ee16378769a');
 Kakao.Auth.createLoginButton({
 	  container: '#kakaoLogin',
@@ -111,6 +114,7 @@ Kakao.Auth.createLoginButton({
 	    console.log(error);
 	  },
 	});
+});
 
 
 
