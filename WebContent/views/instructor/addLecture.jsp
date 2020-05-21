@@ -486,7 +486,7 @@ $(document).ready(function() {
 	});
 	//수업 변경 이벤트
 	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
-		$("<div>").dialog ({
+		$("<div id='modal'>").dialog ({
 			modal:true,
 			open:function() {
 				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라

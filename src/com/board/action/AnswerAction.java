@@ -18,16 +18,16 @@ public class AnswerAction implements Action{
 		ActionForward forward= new ActionForward();
 	
 		//세션확인
-				HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
-				String id =(String) session.getAttribute("m_email");
+		String id =(String) session.getAttribute("m_email");
 				
-				if(id == null && !id.equals("admin@naver.com")){
-					forward.setPath("./MemberLogin.me");
-					forward.setRedirect(true);
-					return forward;
-				}
-				
+		if(id == null){
+			forward.setPath("./Main.le");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
 		//한글처리
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8"); 
@@ -45,6 +45,7 @@ public class AnswerAction implements Action{
 		bdto.setWriter(request.getParameter("writer"));
 		bdto.setContent(request.getParameter("content"));
 		bdto.setRe_ref(Integer.parseInt(request.getParameter("num")));
+		bdto.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));
 		bdto.setRe_lev(lev+1);
 		
 		AskDAO bdao= new AskDAO();

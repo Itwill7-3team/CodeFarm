@@ -74,9 +74,12 @@ public class InstructorFrontController extends HttpServlet{
 			}
 			
 		}else if(command.equals("/addLecture.in")){
-			forward=new ActionForward();
-			forward.setPath("./views/instructor/addLecture.jsp");
-			forward.setRedirect(false);
+			action=new InstructorLectureListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/addLectureImg.in")){
 			action=new LectureAddImg();
 			try{
@@ -92,9 +95,12 @@ public class InstructorFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/addLectureList.in")){
-			forward=new ActionForward();
-			forward.setPath("./views/instructor/addLecturelist.jsp");
-			forward.setRedirect(false);
+			action = new InstructorGetListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
