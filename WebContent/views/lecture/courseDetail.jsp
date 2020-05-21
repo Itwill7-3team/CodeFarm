@@ -79,6 +79,42 @@
 			total_Min = (int)(totalTime / 60);
 		}
 	/* 파일 개수, 시간 계산 */
+	
+	/* DB에 추가해 주세요
+
+insert into codefarm.lecture
+ values(null, 'abc@naver.com', '김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)',
+ '파이썬의 기초를 쉽게 배울 수 있습니다./파이썬이 뭔지, 코딩이 뭔지 감을 잡게 됩니다./혼자서도 코딩을 공부할 수 있는 법을 배웁니다.
+/다음 단계를 위한 준비를 할 수 있습니다./컴퓨터처럼 문제를 해결하는 방법을 배웁니다./나도 할 수 있다는 자신감을 얻게 됩니다./',
+ '코딩을 한 번도 해본 적 없는 분/아무리 열심히 해도 코딩이 어려운 분/코딩이라는게 뭔지 맛보고 싶은 분/반복되는 포기로 코딩이 미워지려고 하는 분/',
+ 'HTML/CSS/Javascript/', '대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다.
+지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을',
+ '<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
+<iframe src=\"https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?
+rel=0&amp;modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allow=\"autoplay; encrypted-media\"
+allowfullscreen=\"allowfullscreen\" style=\"position: absolute; top: 0px; bottom: 0px; left: 0px;
+right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" id=\"669956749\">
+</iframe></div><div><h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 
+자세한 내용은 <a href=\"https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-hello-coding/\"> 
+[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의</a>에서 확인하실 수	있습니다.=====&nbsp;
+<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
+<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;
+modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\" style=\"position: absolute; 
+top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" 
+id=\"830993609\"></iframe></div> * 인스타그램 김왼손(<a href=\"https://www.instagram.com/lefty_khim/\">@lefty_khim</a>
+)을 팔로우하세요!* 미운코딩새끼 전자책 ▶ <a href=\"https://wikidocs.net/book/1421\" target=\"_blank\" rel=\"noopener\">
+https://wikidocs.net/book/1421</a> * 더 많은 무료 강의 ▶ <a href=\"https://goo.gl/AwAwUT\" target=\"_blank\" 
+rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코딩이 너무 어려웠습니다. 
+잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 
+지금도 저와 같은 고민을 하는 분들이 많을 거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.
+미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한 강의입니다.?파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 
+코딩을 왜 배워야 하는지, 왜필요한지에 대해서 답을 주지는 않지만?코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을 수?있습니다.
+코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 
+대신?가장?중요하고 자주 쓰는 문법만 빠르고 가볍게 다룹니다. 코딩을 처음 접하는?분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 
+얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력속으로?풍덩?빠져볼까요? :^)',
+ 'IT프로그래밍', '프로그래밍 언어', '', 'lect_8.png', '50000', '0', '0', '1', now(), now(), '12053', NULL, NULL);
+
+	*/
 	%>
 	<div id="root">
 	
@@ -282,7 +318,7 @@
 						<a href="#reviews">수강후기</a>
 					</li>
 					<li class="tabs_li reviews ">
-						<a href="#reviews">수정하기</a>
+						<a href="addLecture.in?num=<%=ldto.getL_number()%>">수정하기</a>
 					</li>
 				</ul>
 			</div>
@@ -297,9 +333,8 @@
 							<%-- 강의 소개 --%>
 								<article class="description" id="description">
 								
-<%--
 						<!-- l_description -->
-							<% if(ldto.getL_description != null){ %>
+							<% if(!ldto.getL_description().equals(null)){ %>
 								<div class="course_summary description_sub">
 									<h3 class="sub_heading has-icon">이 강의는 <i class="far fa-lightbulb"></i></h3>
 									<%= ldto.getL_description() %>
@@ -308,19 +343,17 @@
 							
 						<!-- l_abilities -->
 							<%
-								if(ldto.getL_abilities != null){
-								out.printlln("<div class="can_do description_sub">
-												<h3 class="sub_heading has-icon">이런 걸 배울 수 있어요 <i class="fa fa-smile-o"></i></h3>
-												<ul>");
-									for(int i=0; i<getL_abilities().split("/").size(); i++){
-										out.println("<li><i class="far fa-check"></i> " + getL_abilities().split("/")[i] + "</li>");
+								if(!ldto.getL_abilities().equals(null)){
+									out.println("<div class='can_do description_sub'><h3 class='sub_heading has-icon'>이런 걸 배울 수 있어요 <i class='fa fa-smile-o'></i></h3><ul>");
+									for(int i=0; i<ldto.getL_abilities().split("/").length; i++){
+										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_abilities().split("/")[i] + "</li>");
 									}
-								out.println("</ul>");
+									out.println("</ul></div>");
 								}
 							%>
 		
 						<!-- l_content -->
-							<% if((ldto.getL_content() != null){ %>
+							<% if(!ldto.getL_content().equals(null)){ %>
 								<div class="body" itemprop="articleBody">
 									<%= ldto.getL_content() %>
 								</div>
@@ -328,80 +361,26 @@
 							
 						<!-- l_targets -->
 							<%
-								if(ldto.getL_targets != null){
-								out.printlln("<div class="student_target description_sub">
-												<h3 class="sub_heading has-icon">도움 되는 분들 <i class="fa fa-smile-o"></i></h3>
-												<ul>");
-									for(int i=0; i<getL_targets().split("/").size(); i++){
-										out.println("<li><i class="far fa-check"></i> " + getL_targets().split("/")[i] + "</li>");
+								if(!ldto.getL_targets().equals(null)){
+									out.println("<div class='student_target description_sub'><h3 class='sub_heading has-icon'>도움 되는 분들 <i class='fa fa-smile-o'></i></h3><ul>");
+									//String[] targetSize = ldto.getL_targets().split("/");
+									for(int i=0; i<ldto.getL_targets().split("/").length; i++){
+										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_targets().split("/")[i] + "</li>");
 									}
-								out.println("</ul>");
+									out.println("</ul></div>");
 								}
 							%>
 							
 						<!-- l_based -->
 							<%
-								if(ldto.getL_based != null){
-								out.printlln("<div class="prerequisite description_sub">
-												<h3 class="sub_heading has-icon">선수 지식 <i class="fa fa-smile-o"></i></h3>
-												<ul>");
-									for(int i=0; i<getL_based().split("/").size(); i++){
-										out.println("<li><i class="far fa-check"></i> " + getL_based().split("/")[i] + "</li>");
+								if(!ldto.getL_based().equals(null)){
+									out.println("<div class='prerequisite description_sub'><h3 class='sub_heading has-icon'>선수 지식 <i class='fa fa-smile-o'></i></h3><ul>");
+									for(int i=0; i<ldto.getL_based().split("/").length; i++){
+										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_based().split("/")[i] + "</li>");
 									}
-								out.println("</ul>");
+									out.println("</ul></div>");
 								}
 							%>
---%>
-										
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@삭제@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
-
-<div class="course_summary description_sub">
-	<h3 class="sub_heading has-icon">이 강의는 <i class="far fa-lightbulb"></i></h3>
-	대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을
-	거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한 강의입니다.
-	파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 코딩을 왜 배워야 하는지, 왜 필요한지에대해서 답을 주지는 않지만 코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을 수
-	있습니다.코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 대신 가장 중요하고 자주 쓰는 문법만 빠르고 가볍게
-	다룹니다. 코딩을 처음 접하는 분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력 속으로 풍덩빠져볼까요? :^)</div>
-<div class="body" itemprop="articleBody"><div><div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
-	<iframe src="https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?rel=0&amp;modestbranding=1&amp;vq=hd720"
-		frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"
-		style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="669956749"></iframe></div></div>
-<div><h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 자세한 내용은
-	<a href="https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-hello-coding/">
-		[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의</a>에서 확인하실 수	있습니다.=====&nbsp;
-		<div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
-		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;modestbranding=1&amp;vq=hd720" frameborder="0" allowfullscreen="allowfullscreen"
-			style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="830993609"></iframe></div>
-* 인스타그램 김왼손(<a href="https://www.instagram.com/lefty_khim/">@lefty_khim</a>)을 팔로우하세요!* 미운코딩새끼 전자책 ▶
-<a href="https://wikidocs.net/book/1421" target="_blank" rel="noopener">https://wikidocs.net/book/1421</a>
-* 더 많은 무료 강의 ▶ <a href="https://goo.gl/AwAwUT" target="_blank" rel="noopener">https://goo.gl/AwAwUT</a>
-<h3><strong><span style="color: #ff0000;">1.</span> 강좌 소개</strong></h3>
-<ul><li>코딩이 너무 어려워 미워지려고 하는 분들을 위한 강의입니다.</li><li>파이썬의 기초를 쉽고 빠르고 가뿐하게 배울 수 있습니다.</li><li>코딩을 처음 접하는 분들이 들어도 좋습니다.</li></ul>
-대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이
-많을 거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한
-강의입니다.?파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 코딩을 왜 배워야 하는지, 왜필요한지에 대해서 답을 주지는 않지만?코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을
-수?있습니다.코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 대신?가장?중요하고 자주 쓰는 문법만 빠르고 가볍게
-다룹니다. 코딩을 처음 접하는?분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력속으로?풍덩?빠져볼까요? :^)
-<h3><span style="color: #ff0000;">2.</span> 학습목표</h3>
-<ul><li class="m_-7880752960710192036p1"><span class="m_-7880752960710192036s1">파이썬의 기초를 쉽게 배울 수 있습니다.</span></li>
-	<li class="m_-7880752960710192036p1">파이썬이 뭔지, 코딩이 뭔지 감을 잡게 됩니다.</li>
-	<li class="m_-7880752960710192036p1"><span class="m_-7880752960710192036s1">혼자서도 코딩을 공부할 수 있는 법을 배웁니다.</span></li>
-	<li>다음 단계를 위한 준비를 할 수 있습니다.</li><li>컴퓨터처럼 문제를 해결하는 방법을 배웁니다.</li><li>나도 할 수 있다는 자신감을 얻게 됩니다.</li></ul>
-<h3><span style="color: #ff0000;">3.</span> 도움이 되는 분들</h3>
-<ul><li class="m_-7880752960710192036p1"><span class="m_-7880752960710192036s1">코딩을 한 번도 해본 적 없는 분</span></li>
-	<li class="m_-7880752960710192036p1"><span class="m_-7880752960710192036s1">아무리 열심히 해도 코딩이 어려운 분</span></li>
-	<li>코딩이라는게 뭔지 맛보고 싶은 분</li><li class="m_-7880752960710192036p1">반복되는 포기로 코딩이 미워지려고 하는 분</li></ul>
-<h3><span style="color: #ff0000;">4.</span> 강사 소개</h3>
-<p class="m_-7880752960710192036p1"><strong><span class="m_-7880752960710192036s1">김왼손</span></strong></p>
-<blockquote><p class="m_-7880752960710192036p1"><span class="m_-7880752960710192036s1">
-			자동차에 세상을 보여주는 연구원. 좋아하는 일만 하며 재미있게 살고 싶은 요즘 젊은이. 가르치는 게 좋아 공부하는 선생이자, 배우는 게 좋아 가르치는 학생. 프로그래밍이라면 치를 떨던 프포자였지만,
-			지금은 ‘<a href="https://www.youtube.com/channel/UC0h8NzL2vllvp3PjdoYSK4g?sub_confirmation=1" target="_blank" rel="noopener">김왼손의 왼손코딩</a>’을 운영하는 잉끼 유튜버.</span></p></blockquote></div>
-
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@삭제@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
-<%----------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@----------------------%>
 
 								</article>
 							<%-- 강의 소개 --%>
@@ -637,7 +616,7 @@
 													
 													</div>
 											<%
-											if(rSize == 2){
+											if(rSize == 2 && reviewList.get(r_loop).getR_re_lev() == 1){
 												if(reviewList.get(r_loop + 1).getR_re_lev() == 1 && reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref()){ %>
 												<%-- review_comment --%>
 													<div class="review_comments">

@@ -24,6 +24,7 @@
 String email="";
 if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
+
 }
 
 AskDTO bdto=(AskDTO)request.getAttribute("bdto");
@@ -127,16 +128,27 @@ String pageNum=request.getAttribute("pageNum").toString();
 		
 	<!-- 답글목록 -->
 <div class="A_content">
-<%
-List<AskDTO> answerList= (ArrayList)request.getAttribute("answerList");
 
-for(AskDTO adto : answerList){
-%>
-<h1><%=adto.getWriter() %></h1>	
-<h1><%=adto.getContent() %></h1>	
 
-<hr>	
 <%
+//답글 카운트가 있으면 나오도록 조건설정
+int check=(int)request.getAttribute("check");
+AskDTO adto= null;
+if(check>0){
+
+	List<AskDTO> answerList= (ArrayList)request.getAttribute("answerList");
+	
+	for(int i=0; i<answerList.size(); i++){
+	adto= (AskDTO)answerList.get(i);
+	
+	String writer = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
+	
+	%>
+	<h3><%=writer %></h3>	
+	<h3><%=adto.getContent() %></h3>	
+	<hr>	
+	<%
+	}
 }
 %>
 </div>
@@ -152,20 +164,24 @@ for(AskDTO adto : answerList){
 		
 	<!-- 메인콘텐츠  -->
 	</article>
-	
-	<!-- 답글쓰기폼 -->
 <%
 String id="id";
 int idx= email.indexOf("@");
 id= email.substring(0,idx);
 System.out.print("id"+id);
-%>
+%>	
+	<!-- 답글쓰기폼 -->
+
 	<div class="answer_form">
-		<form action="AnswerAction.bo" method="post">
+		<form action="AnswerAction.bo?" method="post">
 		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
-		<input type="hidden" name="writer" value="<%=id%>">
+		<input type="hidden" name="writer" value="<%=email%>">
 		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
 		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
+<%if(check>1){ %>
+		<input type="hidden" name="re_seq" value="<%=adto.getRe_seq()+1%>">
+<%} %>
+		<input type="hidden" name="re_seq" value="1">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		
 		[답글] 글쓴이 : <%=id%><br>

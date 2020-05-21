@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
@@ -15,9 +17,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
 	String nick="";
+	String rank="";
 	if(session.getAttribute("m_email")!=null){
 	 loginEmail=(String)session.getAttribute("m_email");
 	 nick=(String)session.getAttribute("nick");
+	 rank=(String)session.getAttribute("m_rank");
 	}
 %>
 <jsp:include page="nav-footer.jsp" />
@@ -235,7 +239,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									</div>
 									<div class="profile_modal_menu">
 									<div class="tab_content">
-										<span class="tab_item">학생<!-- 회원 등급  --></span>
+										<span class="tab_item active">학생<!-- 회원 등급  --></span>
+										<span class="tab_item">지식공유<!-- 회원 등급  --></span>
 									</div>
 									<div class="list_content">
 										<ul>
@@ -387,7 +392,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
-
+	
 </script>
 
 
