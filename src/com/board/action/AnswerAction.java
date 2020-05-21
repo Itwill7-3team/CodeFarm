@@ -36,14 +36,16 @@ public class AnswerAction implements Action{
 		String num=request.getParameter("num");
 		String pageNum=request.getParameter("pageNum");
 		String type= "answer";
+		int lev=Integer.parseInt(request.getParameter("re_lev"));
 		
 		//정보받기 (글쓴이, 내용, re_ref, re_lev+1)
 		AskDTO bdto= new AskDTO();
-		bdto.setRe_ref(Integer.parseInt(request.getParameter("num")));
-		bdto.setRe_lev(Integer.parseInt(request.getParameter("num")+1));
+		bdto.setType(type);
+		bdto.setTitle(request.getParameter("title"));
 		bdto.setWriter(request.getParameter("writer"));
 		bdto.setContent(request.getParameter("content"));
-		bdto.setType(type);
+		bdto.setRe_ref(Integer.parseInt(request.getParameter("num")));
+		bdto.setRe_lev(lev+1);
 		
 		AskDAO bdao= new AskDAO();
 		
@@ -58,15 +60,19 @@ public class AnswerAction implements Action{
 			out.println("</script>");
 			out.close();
 			}
+		if(check == 1) {
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('글쓰기 성공!')");
+			out.println("location.href='askView.bo?num="+num+"&pageNum="+pageNum+"';");
+			out.println("</script>");
+			out.close();
+		}
 				
 		//페이지 이동
 
-		//request.setAttribute("boardList", boardList);
-		forward.setPath("askView.bo?num="+num+"&pageNum="+pageNum);
-		forward.setRedirect(false);
-		
 		System.out.println("AnswerAction 종료");
-		return forward;
+		return null;
 	}
 
 }

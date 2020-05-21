@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.ask.db.AskDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.Map"%>
@@ -120,7 +121,27 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<button onclick="location.href='#';">수정하기</button>
 		<button onclick="location.href='#';">삭제하기</button>
 		<%}%>
-		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a>			
+		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button>
+		
+		
+		
+	<!-- 답글목록 -->
+<div class="A_content">
+<%
+List<AskDTO> answerList= (ArrayList)request.getAttribute("answerList");
+
+for(AskDTO adto : answerList){
+%>
+<h1><%=adto.getWriter() %></h1>	
+<h1><%=adto.getContent() %></h1>	
+
+<hr>	
+<%
+}
+%>
+</div>
+	<!-- 답글목록 -->
+		
 		</div>
 		<br>	
 		<br>	
@@ -142,9 +163,13 @@ System.out.print("id"+id);
 	<div class="answer_form">
 		<form action="AnswerAction.bo" method="post">
 		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
+		<input type="hidden" name="writer" value="<%=id%>">
+		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
+		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
+		
 		[답글] 글쓴이 : <%=id%><br>
-		<textarea name="n_content" id="summernote">
+		<textarea name="content" id="summernote">
 		</textarea>
 		<input type="submit" value="글쓰기">
 		</form>
