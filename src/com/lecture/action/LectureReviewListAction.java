@@ -1,10 +1,6 @@
 package com.lecture.action;
 
-import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,13 +20,10 @@ public class LectureReviewListAction implements Action {
 		int l_number = Integer.parseInt(request.getParameter("l_number"));
 		
 		ReviewDAO rdao = new ReviewDAO();
-		
-		int count = rdao.getReviewCount(l_number);
-		ArrayList<ReviewDTO> reviewList = rdao.getReviewList(l_number, count);
+		List<ReviewDTO> reviewList = rdao.getReviewList(l_number);
 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String review = gson.toJson(reviewList);
-		
 		response.getWriter().print(review);
 		
 		return null;

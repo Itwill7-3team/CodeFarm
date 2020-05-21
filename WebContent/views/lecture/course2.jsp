@@ -25,12 +25,26 @@ List<BasketDTO> basketList = (List<BasketDTO>) request.getAttribute("basketList"
 String m_email = (String)session.getAttribute("m_email");
 String item = "seq";
 String s = "";
-if(request.getParameter("itme") != null){
+String t1 = "";
+String t2 = "";
+String view = "card";
+
+if(request.getParameter("item") != null){
 	item = request.getParameter("item");
 }
 if(request.getParameter("s") != null){
 	s = request.getParameter("s"); 
 }
+if(request.getParameter("t1") != null){
+	t1 = request.getParameter("t1"); 
+}
+if(request.getParameter("t2") != null){
+	t2 = request.getParameter("t2"); 
+}
+if(request.getParameter("view") != null){
+	view = request.getParameter("view");
+}
+
 /* String pageNum = (String)request.getAttribute("pageNum");
 int count = (int)request.getAttribute("count");
 int pageCount = ((Integer)(request.getAttribute("pageCount"))).intValue();
@@ -122,12 +136,12 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 					<main id="courses_main">
 						<nav class="breadcrumb">
 							<ul>
-								<li><a href="search.le?all" class="category_link">전체</a></li>
+								<li><a href="search.le" class="category_link">전체</a></li>
 							</ul>
 							<!--<button></button> für sidebar_left?? -->
 							<div class="buttons select_view_button">
-								<button class="button is-selected is-link" data-type="card"><i class="fas fa-th"></i></button>
-								<button class="button" data-type="list"><i class="fas fa-list"></i></button>
+								<button class="button switcher is-selected <%if(view.equals("card")) out.print("is-link"); %>"data-type="card" id="card-view"><i class="fas fa-th"></i></button>
+								<button class="button switcher <%if(view.equals("list")) out.print("is-link"); %>" data-type="list" id="list-view"><i class="fas fa-list"></i></button>
 							</div>
 							<div class="select courses_order_selector">
 								<select id="courses_order_select" name="order_select">
@@ -136,7 +150,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 									</c:forEach>
 										<option value="<c:out value="${item}" />">
 												<c:out value="${item}" /></option> --%>
-									<option value="seq" id="seq" <%if(item.equals("seq")) out.print("selected");%>>추천순</option>
+									<option value="seq" id="seq" selected>추천순</option>
 									<option value="popular" id="popular" <%if(item.equals("popular")) out.print("selected"); %>>인기순</option>
 									<option value="recent" id="recent"<%if(item.equals("recent")) out.print("selected"); %>>최신순</option>
 									<option value="rating" id="rating"<%if(item.equals("rating")) out.print("selected"); %>>평점순</option>
@@ -146,27 +160,30 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 						</nav><!-- breadcrumb -->
 						<!-- <div class="courses_skills"></div>courses_skill 구현 가능성?? -->
 						<div class="courses_container">
-							<div class="columns is-multiline course_card_item">
+							<div class="columns<%if(view.equals("card")) {out.print(" is-multiline course_card_item type-card");}else{out.print("type-list");}; %>">
 								
 <%
 for(int i=0;i<lectureList.size();i++){ 
 	LectureDTO ldto = lectureList.get(i);
 	
+	if(view.equals("card")){
+	
+	
 %>
 								
 								<div class="column flip-card is-4-tablet is-desktop">
 									<div class="card course flip-card-inner">
-										<a class="flip-card-front" href='Detail.le?num=<%=ldto.getL_number()%>'> <!-- 디테일 연결하겠습니다. -->
+										<a class="flip-card-front" href='Detail.le?num=<%=ldto.getL_number()%>'>
 											<div class="card_image">
 												<figure class="image is_tumbnail">
 													<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
 												</figure>
 											</div>
 											<div class="card_content">
-												<div class= "l_m_id" value="" style="display: none;"><%=ldto.getL_m_id() %></div>
+												<div class= "l_m_id" style="display: none;"><%=ldto.getL_m_email() %></div>
 												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
-												<div class="course_instructor"><%=ldto.getL_m_name() %></div>
+												<div class="course_instructor">instructor(구현중)</div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="rating_star">
@@ -182,13 +199,13 @@ for(int i=0;i<lectureList.size();i++){
 													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
 													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
 													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)"><%=ldto.getL_tag() %></span>
+														<span class="tag" style="background-color:hsl(155,40%,87%)">tag(구현중)</span>
 													</div>
 												<!-- </div> --><!-- course_data -->
 											</div>
 										</a>
 										<div class="flip-card-back course_card_back" >
-											<a href="Detail.le?num=<%=ldto.getL_number()%>"> <!-- 디테일 연결하겠습니다 -->
+											<a href="Detail.le?num=<%=ldto.getL_number()%>">
 												<p class="course_decription"><%=ldto.getL_content() %></p>
 												<div class="back_course_data">
 													<div class="course_level">
@@ -225,11 +242,58 @@ for(int i=0;i<lectureList.size();i++){
 									</div>
 								</div>
 <%
+}else{
+%>							
+								<div class="course-list-body list-action">
+									<div class="box coures-list-item">
+										<a href="#"class="image-left">
+											<figure class="image is_tumbnail">
+												<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+											</figure>
+										</a>
+										<div class="content-container">
+											<a href=""class="course-info">
+												<h2 href="#" class="course-title"><%=ldto.getL_title() %></h2>
+												<div class="tags">
+													<span class="tag">tag(구현중)</span>
+												</div>
+												<div class="rating">
+													<div class="rating-star">
+														<div class="star_solid" style="width:0%"></div>
+															<i class="far fa-star"></i>
+															<i class="far fa-star"></i>
+															<i class="far fa-star"></i>
+															<i class="far fa-star"></i>
+															<i class="far fa-star"></i>
+													</div>
+													<span>(0)</span>
+												</div>
+											</a>
+											<div class="course-price">
+												<div class="product-amount">
+													<c:set var="price" value="<%=ldto.getL_price() %>"/>
+													<span class="course-price-kr"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+												</div>
+												<div class="cart-btn-container">
+													<div class="cart-btn-controller">
+														<div class="tooltip add_cart">
+															<i class="fas fa-cart-arrow-down fa-lg" data-type="<%=ldto.getL_number() %>"></i>
+															<span class="tooltiptext">바구니에 추가</span>
+														</div>
+														<div class="tooltip add_wishlist">
+															<i class="fas fa-heartbeat fa-lg" data-type="<%=ldto.getL_number() %>"></i>
+															<span class="tooltiptext">위시리스트에 추가</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div><!--content-container  -->
+									</div><!-- course-list-item -->
+								</div><!-- course-list-body -->
+<%
+ 	}
 } 
 %>								
-								
-								
-								
 								
 							</div><!-- course-card-item -->
 						</div><!-- courses_ container-->
@@ -274,24 +338,39 @@ for (i = 0; i < acc.length; i++) {
 <!-- selectBox -->
 <script>
 $(function(){
+	
+	$("div.list-action .box.coures-list-item:first").css("border-top","none")
+
+	function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+	
+	
 	$("#courses_order_select").change(
 		function() {
 			var orderSelect1 = $("#courses_order_select option:selected").val();
+			var t1 = getParameterByName('t1');
+			var t2 = getParameterByName('t2');
+			
 					/* alert(orderSelect1); */
 				if (orderSelect1 == "seq") {
-						location.href = "./Search.le?item=seq";
+						location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item=seq";
 				} else if (orderSelect1 == "popular") {
-						location.href = "./Search.le?item=popular";
+						location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item=popular";
 				} else if (orderSelect1 == "recent") {
-						location.href = "./Search.le?item=recent";
+						location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item=recent";
 				} else if (orderSelect1 == "rating") {
-						location.href = "./Search.le?item=rating";
+						location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item=rating";
 				} else if (orderSelect1 == "famous") {
-						location.href = "./Search.le?item=famous";
+						location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item=famous";
 				}
 		});
 /* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
-/* 	$("#courses_order_select > option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
+/* $("#courses_order_select>option[value="+'<c:out value="${ param.item }"/>'+"]").attr("selected","selected"); */
 // 이 구문에 대한 검사 필요(이 구문을 사용하지 않을 시 select 오류가 발생)!!!!!!!!!!!!
 /* selectBox */
 /* search */
@@ -299,8 +378,17 @@ $(function(){
 		alert($(".input").val());
 		var search = $(".input").val();
 		var orderSelect1 = $("#courses_order_select option:selected").val();
+		var t1 = getParameterByName('t1');
+		var t2 = getParameterByName('t2');
+		var view = getParameterByName('view');
+		var page = getParameterByName('page');
+		/* var itime = getParameterByName('item');
 		
-		location.href = "./Search.le?s="+search+"&item="+orderSelect1; //+"$page="+page페이지 오류 수정 필요!!!!!!!!!!!!!!
+		if(item == null){
+			alert("확인"+item);
+		} select 구문에 사용*/
+		
+		location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view="+view+"&page="+page+"&s="+search;
 	});
 /* search */
 
@@ -331,6 +419,33 @@ $(function(){
 			}
 		});
 	});
+	$(".list-action").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-cart-arrow-down").attr('data-type'); 
+		
+		/* console.log("정보 확인1 : "+m_email+" 2 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqBasket.ba",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-cart-arrow-down[data-type="+l_number+"]").css('color','white');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
+
 	
 	$("i.fa-cart-arrow-down").click(function(){
 		var m_email = "${m_email}";
@@ -407,6 +522,32 @@ $(function(){
 			}
 		});
 	});
+	$(".coures-list-item").mouseover(function(){
+		
+		var m_email = "${m_email}";
+		var l_number = $(this).find("i.fa-heartbeat").attr('data-type'); 
+		
+		/* console.log("정보 확인3 : "+m_email+" 4 : "+l_number); */
+		
+		$.ajax({
+			url : "./JqWishlist.wi",
+			type : "POST",
+			data : {
+				"m_email" : m_email,
+				"l_number" : l_number
+			},
+			datatype : "json",
+			success : function(check){
+				if(check == 0){
+					/* $("i.fa-heartbeat[data-type="+l_number+"]").css('color','#fda011'); */
+				}else if(check == 1){
+					$("i.fa-heartbeat[data-type="+l_number+"]").css('color','white');
+				}
+			},error : function(xhr, error, code) {
+				alert("시스템 오류입니다.");
+			}
+		});
+	});
 
 	$("i.fa-heartbeat").click(function(){
 		var m_email = "${m_email}";
@@ -444,9 +585,54 @@ $(function(){
 		}
 	});
 /* 위시리스트 아쟉스 */
-	
-	
-	
+
+/* view switcher */
+ 	$("button.switcher").bind("click", function(e){
+		e.preventDefault();
+		var theid = $(this).attr("id");
+		var theproducts = $("div.course_card_item");
+		var thetypeC = $(".flip-card")
+		var thetypeL = $(".list-action")
+		var classNames = $(this).attr('class').split(' ');
+		var orderSelect1 = $("#courses_order_select option:selected").val();
+		var t1 = getParameterByName('t1');
+		var t2 = getParameterByName('t2');
+		
+		if($(this).hasClass("is-link")) {
+			return false;
+		} else {
+
+  			if(theid == "card-view") {
+				$(this).addClass("is-link");
+				/* $("#list-view").removeClass("is-link"); */
+			
+				theproducts.removeClass("type-list");
+				theproducts.addClass("type-card");
+				
+				
+				/* thetypeL.css('display','none');
+				thetypeC.css('display','flex'); */
+				
+ 				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view=card";
+			}
+			
+			else if(theid == "list-view") {
+				$(this).addClass("is-link");
+				/* $("#card-view").removeClass("is-link"); */
+					
+				theproducts.removeClass("type-card")
+				theproducts.addClass("type-list");
+				
+				
+				/* thetypeL.css('display','block');
+				thetypeC.css('display','none'); */
+				
+				
+				location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view=list";
+			} 
+		}
+	});
+/* view switcher */
 	
 	
 	

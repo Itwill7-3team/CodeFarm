@@ -21,7 +21,7 @@ public class OrderAddAction implements Action{
 		
 		// 세션값 사용해서 로그인 체크
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("m_email");
 
 		ActionForward forward = new ActionForward();
 		if (id == null) {
@@ -38,15 +38,16 @@ public class OrderAddAction implements Action{
 		
 		// 결제타입 추가
 		oldto.setO_m_id(id);
-		oldto.setO_t_type("무통장입금");
+		oldto.setO_t_type("무통장 입금");
 		oldto.setO_t_payer(request.getParameter("o_t_payer"));
+		oldto.setO_t_bank(request.getParameter("o_t_bank"));
 		
-		// 장바구니 상품정보
+		
+		
 		BasketDAO bkdao = new BasketDAO();
 		Vector vec = bkdao.getBasketList(id);
 		List basketList = (List) vec.get(0);
 		List lectureList = (List) vec.get(1);
-		
 		// 결제모듈 동작 처리 
 		// OrderlistDAO 객체 생성 -> addOrder()
 		OrderDAO oldao = new OrderDAO();

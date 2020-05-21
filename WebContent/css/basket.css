@@ -81,7 +81,7 @@ word-wrap: break-word;}
   }
 }
 .si_btn {
-  background-color: #F25E5E;
+  background-color: #00c471;
   border: none;
   color: white;
   width: 100%;
@@ -101,7 +101,7 @@ word-wrap: break-word;}
 
 /* 위시리스트 */
  .d_btn {
-  background-color: #F28379;
+  background-color: #fff;
   border: none;
   color: #262523;
   padding: 5px 10px;
@@ -121,7 +121,10 @@ word-wrap: break-word;}
 .tooltip {
   position: relative;
   display: inline-block;
+  
 }
+
+.tooltip:HOVER {color: red;}
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -149,6 +152,7 @@ word-wrap: break-word;}
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;
+  
 }
 
 

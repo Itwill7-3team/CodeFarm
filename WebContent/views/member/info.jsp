@@ -21,17 +21,22 @@
 }
 
 .container{
-    display: inline-block;
-    width: 65% !important;
+/*     display: inline-block; */
+    width: 70% !important;
+    margin: 0 auto;
     }
     
 .main_container {
     display: inline-block;
-    width: 60% !important;
+    width: 50% !important;
     height: 100%;
     margin: 0 auto;
     margin-top: 60px;
     /* border: 1px solid red; */
+}
+
+.main_container h6{
+margin: 0 2em;
 }
 
 input[type="file" i] {
@@ -46,15 +51,23 @@ input[type="file" i] {
     display: none;
 }
 
-.file-label{
-cursor: pointer;
-}
+/* .file-label{ */
+/* cursor: pointer; */
+/* } */
 
-input[type="password" i] {
+input[type="text" i], textarea {
+    padding: 0.5em 1em;
+    width: 200px;
+    border-radius: 5px;
+}
+input[type="password" i]{
     -webkit-text-security: disc !important;
     display: block;
     text-align: left;
     margin: 0;
+    padding: 0.5em 1em;
+    width: 200px;
+    border-radius: 5px;
 }
 label {
     cursor: default;
@@ -65,6 +78,26 @@ span {
     display: block;
     font-weight: inherit;
     font-style: inherit;
+}
+
+.breadcrumb li,.tabs li{
+float: left;
+margin: 0 0.5em;
+}
+.profile_edit_container,.password_edit,.secession{
+    clear: both;
+    margin: 2em;
+    padding: 1em 6em;
+/*     border: 1px solid; */
+}
+.button.is-primary {
+   width: 200px;
+   text-align: center;
+   padding-left: 4em;
+}
+
+.optional{
+display: none;
 }
 
 </style>
@@ -82,15 +115,17 @@ span {
 	}
 	MemberDTO mdto = (MemberDTO)request.getAttribute("mdto");
 %>
+<jsp:include page="/include/header.jsp"/>   
+
     
 <div id="root">
-<jsp:include page="/include/header.jsp"/>     
+  
+<div class="container">
+<!-- 대시보드 -->
 <!-- aside 영역 -->
 <jsp:include page="/include/dash-aside.jsp"/>
 <!-- aside 영역 -->
-<div class="container">
-<!-- 대시보드 -->
-      <div class="main_container">
+<div class="main_container">
 <small class="is-hidden-mobile">
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>
@@ -101,10 +136,10 @@ span {
 </small>
         <h6>계정 설정</h6>
           <div class="tabs">
-            <ul>
-              <li class="is-active"><a href="#">프로필 설정</a></li>
-              <li><a href="#">알림 설정</a></li>
-            </ul>
+<!--             <ul> -->
+<!--               <li class="is-active"><a href="#">프로필 설정</a></li> -->
+<!--               <li><a href="#">알림 설정</a></li> -->
+<!--             </ul> -->
           </div>
         <div class="tab_content">
 <section class="hero profile_setting">
@@ -129,11 +164,11 @@ span {
         <div class="right">
           <label for="name" class="label input_label">
             <span>닉네임</span>
-            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_nick() %>" placeholder="변경할 닉네임을 입력해주세요">
+            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_name() %>" placeholder="변경할 닉네임을 입력해주세요">
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>
-            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="40" rows="10" placeholder="자기소개를 해주세요"><%
+            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" placeholder="자기소개를 해주세요"><%
             if(mdto.getM_intro() == null){
             	%>자신을 소개를 해주세요.
             	<%
@@ -169,13 +204,13 @@ span {
 </form>
       <div class="secession">
         <div class="label_wrap">
-          <label class="label input_label"><span>탈퇴</span></label> <!-- 토글  -->
-          <span class="toggle_btn">
-            <i class="fal fa-chevron-right"></i>
-          </span>
+          <label class="label input_label"><span>탈퇴
+            <i class="fas fa-minus-circle"></i>
+          </span></label><!-- 토글  -->
         </div>
         <div class="optional">
           <div class="notice">
+          <br>
             <h3>탈퇴 안내 사항</h3>
             <p>코딩팜에 만족하지 못하셨나요? 탈퇴하기 전에 먼저 개선 요청을 해보시는 건 어떨까요? 그래도 탈퇴하시겠다면 탈퇴 전에 아래 유의사항을 꼭 읽어주세요!</p>
             <p>🙇🏻&zwj;♂️ 감사합니다 🙇🏻&zwj;♀️</p><br>
@@ -183,6 +218,7 @@ span {
             <p>2. 탈퇴 후 동일한 메일로 재가입이 가능하지만, 탈퇴 한 계정과 연동되지 않습니다.</p>
             <p>3. 탈퇴 후 연동된 소셜 계정 정보도 사라지며, 소셜 로그인으로 기존 계정 이용이 불가능합니다.</p>
             <p>4. 현재 비밀번호를 입력하고 탈퇴하기를 누르시면 위 내용에 동의하는 것으로 간주됩니다.</p>
+          <br>
           </div>
           <form class="delete_form" method="post">
           <input class="input" name="m_pw" type="password" placeholder="현재 비밀번호">
@@ -200,6 +236,12 @@ span {
 </div>
 </div>
 </div>
+<script type="text/javascript">
+$(".secession").click(function(){
+  $(".optional").toggle();
+});
+</script>
+
 <!-- 대시보드 -->
 </div>
 <jsp:include page="/include/footer.jsp"/>

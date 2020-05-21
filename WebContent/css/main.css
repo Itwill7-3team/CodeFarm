@@ -146,9 +146,39 @@ height: 320px;
     margin-bottom: 0.2rem;
 }
 .price {
-    margin-left: 65% !important;
+    margin-left: 68% !important;
 }
 	
+}
+@media screen and (max-width: 480px) {
+	/* 가장작은 사이즈, 카드1장 나오도록 */
+#lec {
+    width: 70%!important;
+    margin: 0 auto;}
+.card{
+	min-width:225px;
+	width:85%;
+    height: 50%; 
+	font-size: 13px;}
+.card img {
+	width: 100%!important; 
+	height: 50%!important; 
+	}
+.card-in {
+	width: 100%!important; 
+	height: 20%!important; 
+	}
+.card h2 {
+    font-size: 1rem !important;
+    text-align: left;
+    margin-left: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+.title {
+    width: 100% !important;
+    font-size: 22px !important;
+}
+
 }
 /*  */ /*  *//*  *//*  *//*  *//*  *//*  *//*  *//* 프로덕트 */
 
@@ -198,8 +228,9 @@ height: 165px;
 color:#454545;
 font-size: 1.1rem;
 text-align: left;
-margin-left: 0.8rem;
-margin-bottom: 0.3rem;
+margin: 0.3rem 0.8rem;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .card p{
@@ -211,7 +242,9 @@ margin-left: 0.8rem;
   font-weight: 700;
   color: #175cbe;
   font-size: 16px;
-  margin-left: 47%;
+  margin-right: 0.5em;
+  position: absolute;
+  right: 0;
 }
 
 
@@ -234,6 +267,7 @@ margin-left: 50px;
 }
 .mg-t10{
 margin-top: 10px;
+position: relative;
 }
 
 /*STAR=ck*/

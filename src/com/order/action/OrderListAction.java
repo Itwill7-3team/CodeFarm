@@ -18,7 +18,7 @@ public class OrderListAction implements Action {
 		
 		// ID 체크
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("m_email");
 		ActionForward forward = new ActionForward();
 		if(id == null){
 			forward.setPath("./MemberLogin.me");
@@ -34,7 +34,7 @@ public class OrderListAction implements Action {
 			request.setAttribute("orderList", orderList);
 			
 			// 페이지 이동(./goods_order/order_list.jsp)
-			forward.setPath("./view/basket/order_list.jsp");
+			forward.setPath("./views/basket/order_list.jsp");
 			forward.setRedirect(false);	
 			return forward;
 		

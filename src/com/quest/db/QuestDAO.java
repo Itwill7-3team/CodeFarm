@@ -1,4 +1,4 @@
-package com.question.db;
+package com.quest.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import com.review.db.ReviewDTO;
 
-public class QuestionDAO {
+public class QuestDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
@@ -43,17 +43,42 @@ public class QuestionDAO {
 		}
 	}//자원 해제
 	
-	public ArrayList<QuestionDTO> getBoardList(){
-		ArrayList<QuestionDTO> boardList= new ArrayList<QuestionDTO>();
+	//getQuestionCount()
+	public int getQuestCount(){
+		int check = 0;
+		try {
+			con = getConnection();
+			System.out.print("getQuestCount() : ");
+			
+			sql = "select count(*) from q_board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = rs.getInt(1);
+			}
+			System.out.println("문답게시판 전체 글 개수 : " + check);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return check;
+	}
+	
+	public ArrayList<QuestDTO> getBoardList(int startRow, int pageSize){
+		ArrayList<QuestDTO> boardList= new ArrayList<QuestDTO>();
 		try{
 			con=getConnection();
-			sql="select * from q_board";
+			sql="select * from q_board "
+					+ "order by q_re_ref desc, q_re_seq asc "
+					+ "limit ?,?";
 			pstmt=con.prepareStatement(sql);
-			
+			pstmt.setInt(1, startRow-1); //시작행-1
+			pstmt.setInt(2, pageSize); //가져갈 글의 개수
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				QuestionDTO qdto=new QuestionDTO();
+				QuestDTO qdto=new QuestDTO();
 				qdto.setQ_num(rs.getInt("q_num"));
 				qdto.setQ_l_num(rs.getInt("q_l_num"));
 				qdto.setQ_title(rs.getString("q_title"));
@@ -70,15 +95,15 @@ public class QuestionDAO {
 		}finally {
 			closeDB();
 		}
-		
-		
 		return boardList;
 	}
-	public QuestionDTO getBoard(int num){
-		QuestionDTO qdto= new QuestionDTO();
+	
+	
+	public QuestDTO getBoard(int num){
+		QuestDTO qdto= new QuestDTO();
 		try{
 			con=getConnection();
-			sql="select * from q_board where num = ?";
+			sql="select * from q_board where q_num = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			
@@ -86,7 +111,7 @@ public class QuestionDAO {
 			if(rs.next()){
 				qdto.setQ_num(rs.getInt("q_num"));
 				qdto.setQ_l_num(rs.getInt("q_l_num"));
-				qdto.setQ_l_name(rs.getString("q_l_name"));
+//				qdto.setQ_l_name(rs.getString("q_l_name"));
 				qdto.setQ_title(rs.getString("q_title"));
 				qdto.setQ_content(rs.getString("q_content"));
 				qdto.setQ_writer(rs.getString("q_writer"));

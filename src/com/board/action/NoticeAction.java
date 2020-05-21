@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ask.db.AskDAO;
+import com.ask.db.AskDTO;
 import com.notice.db.NoticeDAO;
 import com.notice.db.NoticeDTO;
-import com.question.db.QuestionDAO;
-import com.question.db.QuestionDTO;
 
 public class NoticeAction implements Action {
 
@@ -28,7 +28,7 @@ public class NoticeAction implements Action {
 /////////////////////////////////////////////////////////////////////////////////////////////////		
 //페이징 처리
 //한페이지에 보여질 글 개수
-int pageSize=10;
+int pageSize=5;
 //현 페이지가 몇 페이지인지를 확인		
 String pageNum=null;
 pageNum = request.getParameter("pageNum");		

@@ -78,21 +78,19 @@ public class ReviewDAO {
 				rs2=pstmt.executeQuery();
 				if(rs2.next()){
 					LectureDTO ldto= new LectureDTO();
-					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_name(rs2.getString("l_m_name"));
-					ldto.setL_m_id(rs2.getString("l_m_id"));
-					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_m_email(rs2.getString("l_m_email"));
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_reg_date(rs2.getTimestamp("l_reg_date"));
 					ldto.setL_type(rs2.getString("l_type"));
 					ldto.setL_type2(rs2.getString("l_type2"));
-					ldto.setL_type3(rs2.getString("l_type3"));
-					ldto.setL_price(rs2.getInt("l_price"));
-					ldto.setL_pct(rs2.getInt("l_pct"));
-					ldto.setL_img(rs2.getString("l_img"));
-					ldto.setL_tag(rs2.getString("l_tag"));
-					ldto.setL_goods(rs2.getInt("l_goods"));
+					ldto.setL_level(rs2.getString("l_level"));
+					ldto.setPay_count(rs2.getInt("pay_count"));
 					ldto.setPct_date(rs2.getTimestamp("pct_date"));
-					ldto.setPaynum(rs2.getInt("paynum"));
+					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					reviewdata.put("ldto", ldto);
 				}
@@ -108,7 +106,7 @@ public class ReviewDAO {
 	}
 	
 	// getAvgrating() 강의별 평균 별점 가져오기
-	public Map<Integer, Map<String, Object>> getAvgrating(ArrayList<Integer> l_numList){
+	public Map<Integer, Map<String, Object>> getAvgrating(List<Integer> l_numList){
 		Map<Integer, Map<String, Object>> ratingList = new HashMap<Integer, Map<String, Object>>();
 		StringBuffer qMark = new StringBuffer();
 		for(int i=0; i<l_numList.size(); i++){
@@ -159,7 +157,7 @@ public class ReviewDAO {
 			con = getConnection();
 			System.out.print("getReviewCount() : ");
 			
-			sql = "select count(*) from r_board where r_l_num = ?";
+			sql = "select count(*) from r_board where r_re_lev = 0 and r_l_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, l_number);
 			rs = pstmt.executeQuery();
@@ -176,25 +174,18 @@ public class ReviewDAO {
 	}
 	// getReviewCount(l_number)
 	
-	// getReviewList(l_number, count);
-		public ArrayList<ReviewDTO> getReviewList(int l_number, int count){
-			ArrayList<ReviewDTO> ReviewList = new ArrayList<>();
-			int startRow = 0;
+	// getReviewList(l_number);
+		public List<ReviewDTO> getReviewList(int l_number){
+			List<ReviewDTO> reviewList = new ArrayList<>();
 			try {
 				con = getConnection();
 				System.out.print("getReviewList() : ");
-				// 최초 2개만 로드 & 이후 전체 로드
-				if(count <= 2){ startRow = 0; }
-				else if(count > 2){ startRow = 2; }
 				sql = "select   * "
 					+ "from     r_board "
 					+ "where    r_l_num = ? "
-					+ "order by r_re_ref desc, r_re_seq asc "
-					+ "limit    ?, ?";
+					+ "order by r_re_ref desc, r_re_seq asc";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, l_number);
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, count);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 					ReviewDTO rdto = new ReviewDTO();
@@ -207,15 +198,15 @@ public class ReviewDAO {
 					rdto.setR_re_ref(rs.getInt("r_re_ref"));
 					rdto.setR_re_seq(rs.getInt("r_re_seq"));
 					rdto.setR_reg_date(rs.getTimestamp("r_reg_date"));
-					ReviewList.add(rdto);
+					reviewList.add(rdto);
 				}
-				System.out.println("성공 (개시글 갯수) : " + ReviewList.size());
+				System.out.println("리뷰 목록 가져오기 완료");
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				closeDB();
 			}
-			return ReviewList;
+			return reviewList;
 		}
-		// getBoardList(l_number, count);
+		// getBoardList(l_number);
 }

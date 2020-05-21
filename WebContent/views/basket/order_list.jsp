@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="./css/goods.css" rel="stylesheet">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<title>Insert title here</title>
+<title>코딩팜-주문목록</title>
 
 <jsp:include page="/include/header.jsp"/>
 <style type="text/css">
@@ -46,26 +47,39 @@ width: 1000px;
 	<table>
 
 	  <tr>
-	     <td><b>주문번호</b></td>
-	     <td><b>상품명</b></td>
-	     <td><b>주문금액</b></td>
-	     <td><b>주문상태</b></td>
-	     <td><b>주문일시</b></td>
+	     <td><b>주문 번호</b></td>
+	     <td><b>주문명</b></td>
+	     <td><b>금액</b></td>
+	     <td><b>상태</b></td>
+	     <td><b>주문 날짜</b></td>
 	  </tr>
 
 	  <%
+	  int total = 0;
 	   for(int i=0;i<orderList.size();i++){
 		   OrderDTO odto = (OrderDTO) orderList.get(i);
 	  %>
 	    <tr>
 	     <td>
+	       <a href="./OrderDetail.or?trade_num=<%=odto.getO_b_num()%>">
 	       <%=odto.getO_b_num()%>
-	           
+	       </a>   
 	     </td>
 	     <td><%=odto.getO_l_name() %></td>
-	     <td><%=odto.getO_sum_money() %>원</td>
 	     
 	     <%
+	      total = odto.getO_sum_money();
+	     %>
+	     
+	     <%-- <td><%=odto.getO_sum_money() %></td> --%> 
+	   <td> <c:set var="total" value="<%=total%>" />
+	     <fmt:setLocale value="ko_KR" />
+		<fmt:formatNumber type="currency" value="${total}" /> 원</td>
+	    
+	    <!-- status 수정 -->
+	     <td>하늘나라</td>
+	     
+	    <%--  <%
 	     String msg = "";
 
 	     
@@ -82,7 +96,7 @@ width: 1000px;
 	     }
 	     
 	     %>	     
-	     <td><%=msg %></td>
+	     <td><%=msg %></td> --%>
 	     
 	     <td><%=odto.getO_t_date() %></td>
 	   

@@ -65,6 +65,15 @@ public class OrderFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/OrderDetail.or")){
+			System.out.println("/OrderDetail.or 처리 (model -> view)");
+			action = new OrderDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		}
 		
 		
