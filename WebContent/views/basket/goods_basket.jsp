@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜</title>
+<title>코딩팜 - 수강 바구니 | 온라인 강의 플랫폼</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -142,7 +142,7 @@
 	<section id="alll"> <!-- 위시 수정 -->
 
 	<h3 class="boxh3">
-		바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">위시리스트</a>
+		수강 바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">내 위시리스트 <i class='far fa-heart'></i> > </a> 
 	</h3>
 	<!-- The Modal -->
 <div id="WmyModal" class="Wmodal">
@@ -252,8 +252,6 @@
 				onclick="location.href ='./BasketToWi.ba?b_num=<%=bdto.getB_num()%>&number=<%=ldto.getL_number() %>'">
 				위시리스트 <i class='fas fa-heart' style='color: black;'></i>
 			</button>
-			<!-- onclick="location.href ='./BasketToWi.ba?w_num=<%=bdto.getB_l_num()%>'"> -->
-			<!-- onclick="location.href ='./WishListAdd.wi?w_num=<%=widto.getW_num()%>'"> -->
 		</div>
 
 	</div>
@@ -287,8 +285,8 @@
 
 
 				<li class="myCheckli"
-					style="list-style-type: none; font-size: 12px;"><input
-					type="checkbox" id="myCheck" onclick="myFunction()" checked>
+					style="list-style-type: none; font-size: 12px;">
+					<input type="checkbox" id="myCheck" required onclick="myFunction()">
 					(필수) 구매조건 및 개인정보취급방침 동의
 					<button class="Vbtn"
 						onclick="document.getElementById('id01').style.display='block'">[보기]</button>
@@ -303,7 +301,7 @@
 						</form>
 					</div> <br>
 						<!-- 체크 해제 시 보이기 -->
-					<p id="text" style="display: none; color: red">구매조건 및 결제대행 서비스
+					<p id="text" style="color: red">구매조건 및 결제대행 서비스
 						약관 동의하여야 합니다.</p></li>
 			</ul>
 			<button id="myBtn" class="si_btn" type="button">
@@ -333,13 +331,13 @@
 									<hr>
 									<table style="border-collapse: collapse;">
 										<tr>
-											<td>은행 선택</td>
+											<td>은행 선택</td> 
 											<td><select id="bankch" name="o_t_bank">
 													<option value="bk_ch" selected>은행을 선택해 주세요</option>
-													<option value="하나은행">하나은행: 135-123456-12345</option>
-													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
+													<option value="하나은행">하나은행: 135-123456-12345 </option>
+													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111 </option>
 													<option value="신한은행">신한은행: 110-555-899996</option>
-													<option value="sc제일은행">sc제일은행: 779-22-220000</option>
+													<option value="sc제일은행">sc제일은행: 779-22-220000 </option>
 											</select></td>
 										</tr>
 										<tr>
@@ -499,6 +497,8 @@
 
 	<!-- 약관 숨기기  -->
 
+	
+		
 		function myFunction() {
 			var checkBox = document.getElementById("myCheck");
 			var text = document.getElementById("text");
@@ -508,6 +508,8 @@
 				text.style.display = "none";
 			}
 		}
+		
+		
 
 	<!-- 무통장 결제 체크 -->
 
