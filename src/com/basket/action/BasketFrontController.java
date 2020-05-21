@@ -112,12 +112,13 @@ public class BasketFrontController extends HttpServlet{
 			}
 		} else if (command.equals("/BasketReg.ba")) {
 			action = new BasketRegAction();
-			try{
-				forward=action.execute(request, response);
-			}catch (Exception e) {
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		} else if(command.equals("/BasketIn.ba")) {
+			action = new BasketInAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
