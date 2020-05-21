@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
-import com.wishlist.action.WishListRegAction;
 
 
 
