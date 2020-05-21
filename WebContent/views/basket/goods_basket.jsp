@@ -115,7 +115,8 @@
 .Wbox{float: left;}
 .Wmodal-content{max-width: 920px;
   max-height: 720px;
-  height: 95%;}
+  height: 95%;
+  overflow: auto;}
 .Wcontent{display: inline-block;
 
     margin-left: 30px;
@@ -132,6 +133,7 @@
 		List basketList = (List) request.getAttribute("basketList");
 		List lectureList = (List) request.getAttribute("lectureList");
 		List wishList = (List)request.getAttribute("wishlistList");
+		List wishLectureList = (List)request.getAttribute("wishLectureList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
 
@@ -152,26 +154,26 @@
           <%
            for (int i = 0; i < wishList.size(); i++) {
         	  WishlistDTO widto = (WishlistDTO) wishList.get(i);
-          	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
+          	  LectureDTO wldto = (LectureDTO) wishLectureList.get(i);
           	  %>
           	  <div class="Wrow">
        <div class="Wcolumn"> 
         <div class="Wcard">
           <div class="Wibox">
           <div class="Wbox" style="display: inline-block;">
-           <a href="Detail.le?num=<%=ldto.getL_number() %>">
- 			 <img style="width: 130px; height: auto;" src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+           <a href="Detail.le?num=<%=wldto.getL_number() %>">
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img().split(",")[0]%>" alt="">
 				</a>
          
           <div class="Wcolumn Wcontent">
-				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
+				<a href="Detail.le?num=<%=wldto.getL_number()%>"><%=wldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_email()%></p>
+					<%=wldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
 			 <div class="Wamount">
-			<c:set var="price" value="<%=ldto.getL_price()%>" />
+			<c:set var="price" value="<%=wldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />

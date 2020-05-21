@@ -10,6 +10,8 @@
 <title>코딩팜-강의만들기</title>
 <link href="./css/addLecture.css" rel="stylesheet">
 
+
+
 	
 
 	
@@ -485,16 +487,11 @@ $(document).ready(function() {
 	//수업 변경 이벤트
 	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
 		$("<div>").dialog ({
-			
 			modal:true,
 			open:function() {
-				
 				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라
-				
 			},
-			
-			height:400,
-			width:400,
+			width:1280,
 			//title:"외부파일 창 띄우기"
 				
 		});

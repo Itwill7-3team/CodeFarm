@@ -398,6 +398,57 @@ public class MemberDAO {
 				}
 				
 			}
+			public void techRequest(MemberDTO mdto) {
+				try {
+					con = getConnection();
+					sql = "update member set m_name=?, m_intro=?, m_phone=?,"
+							+ "m_rank='강사',m_addr=? where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mdto.getM_name() );
+					pstmt.setString(2, mdto.getM_intro());
+					pstmt.setString(3, mdto.getM_phone());
+					pstmt.setString(4, mdto.getM_addr());
+					pstmt.setString(5, mdto.getM_email());
+					pstmt.executeUpdate();
+					
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					closeDB();
+				}
+			}
+			
+			public void apiLogin(MemberDTO mdto) {
+				
+				try {
+					con = getConnection();
+					sql = "select m_email from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mdto.getM_email());
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						
+					}else {
+						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
+								+ "m_emailCheck) values (?,?,?,'회원',true)";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, mdto.getM_email());
+						pstmt.setString(2, mdto.getM_pw());
+						pstmt.setString(3, mdto.getM_nick());
+						pstmt.executeUpdate();
+						
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					closeDB();
+				}
+			
+			}
 	}
 	
 

@@ -1,10 +1,10 @@
+<%@page import="com.wishlist.db.WishlistDTO"%>
 <%@page import="com.order.db.OrderDTO"%>
 <%@page import="com.order.action.OrderListAction"%>
 <%@page import="com.review.db.ReviewDTO"%>
 <%@page import="com.member.db.MemberDTO"%>
 <%@page import="com.lecture.db.FileDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Arrays"%>
@@ -14,6 +14,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE>
 <html lang="ko-KR">
 <head>
@@ -27,18 +28,14 @@
 
 </head>
 
-<script type="text/javascript">
-	function numberFormat(inputNumber) {
-		return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-</script>
-
 <body class="course_detail">
 	<%
 	/* 받아오는 값 */
-		LectureDTO ldto = (LectureDTO)request.getAttribute("ldto"); // 강의 정보
-		MemberDTO  mdto = (MemberDTO)request.getAttribute("mdto");  // 회원 정보
-		MemberDTO lmdto = (MemberDTO)request.getAttribute("lmdto"); // 강사 정보
+		int wCount = (int)request.getAttribute("wCount");
+		LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");  // 강의 정보
+		MemberDTO  mdto  = (MemberDTO)request.getAttribute("mdto");   // 회원 정보
+		MemberDTO lmdto  = (MemberDTO)request.getAttribute("lmdto");  // 강사 정보
+		WishlistDTO wdto = (WishlistDTO)request.getAttribute("wdto"); // 위시 정보 
 		
 		List<LectureDTO>    lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
 		List<ReviewDTO>     reviewList  = (List<ReviewDTO>)request.getAttribute("reviewList");   // 리뷰 정보
@@ -51,9 +48,11 @@
 		request.setAttribute("l_number", ldto.getL_number());
 	/* request, session 저장 */
 	
+	System.out.println(ldto);
+	System.out.println(wdto);
 	/* 현 강의 결제 유무 */
 		boolean payCheck = false;
-		if(mdto.getM_email() != null && orderList != null){
+		if(mdto != null && mdto.getM_email() != null && orderList != null){
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
 					payCheck = true;
@@ -89,42 +88,42 @@
 	%>
 	<div id="root">
 	
-<!-- include header -->	
+<%-- include header --%>	
 	<jsp:include page="/include/header.jsp"/>
-<!-- include header -->	
+<%-- include header --%>	
 		
 		<main id="main">
 		<section class="course_header_container">
 			<div class="container">
 				<div class="columns">
 				
-				<!-- title_bar -->
+				<%-- title_bar --%>
 					<div class="column is-8">
 						<div class="columns">
 						
-						<!-- lecture thumbnail -->
+						<%-- lecture thumbnail --%>
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
 									<img src="./img/main-img/<%= ldto.getL_img().split(",")[0] %>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
-						<!-- lecture thumbnail -->
+						<%-- lecture thumbnail --%>
 						
-						<!-- lecture title -->
+						<%-- lecture title --%>
 							<div class="column course_title">
 								<div>
 									<h1><%= ldto.getL_title()%></h1>
 									<div class="course_meta">
 										<span>
 										
-										<!-- review 별점 전체 평균  -->
+										<%-- review 별점 전체 평균  --%>
 											<div class='rating_star'>
 												<div class='star_solid' style="width:<%= (double)ratingList.get(ldto.getL_number()).get("rating_avg") * 20 %>%">
 												<% for(int i=1; i<6; i++){ %><i class="fa fa-star"  data-value="<%= i %>"></i><% } %>
 												</div>
 												<% for(int i=5; i>0; i--){ %><i class="far fa-star" data-value="<%= i %>"></i><% } %>
 											</div>
-										<!-- review 별점 전체 평균  -->
+										<%-- review 별점 전체 평균  --%>
 
 											<small>(<%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평)</small>
 										</span>
@@ -132,80 +131,73 @@
 										<small class="student_cnt"><%= ldto.getPay_count() %>명의 수강생</small>
 										<br>
 										
-									<!-- lecture_type_category -->
+									<%-- lecture_type_category --%>
 										<small class="course_skills">
-<!-- 주소변경 - 강의 태그 카테고리별 링크 카테고리 t1,t2 넘겨주기 -->
 											<a href="./Search.le?t1=<%= ldto.getL_type() %>&t2=<%= ldto.getL_type2() %>"><%= ldto.getL_type2() %></a>
 										</small>
-									<!-- lecture_type_category -->
+									<%-- lecture_type_category --%>
 										
 									</div>
 								</div>
 							</div>
-						<!-- lecture title -->
+						<%-- lecture title --%>
 						
 						</div>
 					</div>
-				<!-- title_bar -->
+				<%-- title_bar --%>
 				
-				<!-- SideMenu -->
+				<%-- SideMenu --%>
 					<div class="column is-4 enroll_btn_container">
 						<div class="course_floating_btn">
 							<div class="course_floating_top">
 								<div class="course_price_cover">
 								
-								<!-- SideMenu_price -->
+								<%-- SideMenu_price --%>
 									<div class="course_price_section">
 										<div class="course_price">
 											<% if (ldto.getL_price() == 0) { %>
 												무료
 											<% } else { %>
-											<script type="text/javascript">
-												document.write(numberFormat(${ ldto.l_price }));					
-											</script>원
+											<fmt:formatNumber value="<%= ldto.getL_price() %>" />원
 											<% } %>
 										</div>
 									</div>
-								<!-- SideMenu_price -->
+								<%-- SideMenu_price --%>
 									
-								<!-- SideMenu_button -->
+								<%-- SideMenu_button --%>
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
 										<% if (ldto.getL_price() == 0 || payCheck) { %>
 											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 										</div>
 										<% } else { %>
-<!-- 수강 신청 onCilck 링크 추가 필요 & 결제 내역 확인 후 강의 보기 버튼 추가
+<%-- 수강 신청 onCilck -> 결제page
+
 ssssssssssssssssss orderaction 참조
-	prompt -> 결제page
--->
+--%>
 											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary cartBtn">수강 신청</button>
 										</div>
 											<div class="course_btn_cover">
 												<button class="is_outlined course_sub_btn course_wish_btn wishBtn">
-<!-- 위시리스트 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
 													<span class="wish">
-														<i class="fa fa-heart-o"></i>
-														<span class="wish_cnt"><%= ldto.getL_goods() %></span>
+														<i></i><span class="wish_cnt"><%= wCount %></span>
 													</span>
 													<span class="text">위시</span>
 												</button>
-<!-- 장바구니 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ -->
-												<button class="is_outlined course_sub_btn course_cart_btn cartBtn" onclick="location.href='BasketAdd.ba?num=<%=ldto.getL_number() %>';">
-											    	<i class="fa fa-cart-plus"></i><span class="text"> 수강 바구니</span>
+												<button class="is_outlined course_sub_btn course_cart_btn cartBtn">
+											    	<i></i><span class="text"> 수강 바구니</span>
 											    </button>
 										    </div>
 										<% } %>
 									</div>
-								<!-- SideMenu_button -->
+								<%-- SideMenu_button --%>
 								
 								</div>
 								
-							<!-- SideMenu_info -->
+							<%-- SideMenu_info --%>
 								<div class="course_info_cover">
 									<div class="course_info_row">
-<!-- 강사 페이지 주소 수정 -->
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
@@ -214,24 +206,19 @@ ssssssssssssssssss orderaction 참조
 											else { out.print(total_Min + "분 수업"); }
 										%>
 									</div>
-<!--시청 기간, 수료증, 난이도 삭제 예정
 									<div class="course_info_row">
 										<i class="far fa-clock"></i><span class="has-text-weight-bold">평생</span> 무제한 시청
 									</div>
 									<div class="course_info_row">
-										<i class="fas fa-certificate"></i><span class="has-text-weight-bold">수료증 미발급</span> 강의
+										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold"><%= ldto.getL_level() %></span>
 									</div>
-									<div class="course_info_row">
-										<i class="fas fa-signal"></i>수강 난이도 <span class="has-text-weight-bold">입문</span>
-									</div>
-시청 기간, 수료증, 난이도 삭제 예정  -->
 								</div>
-							<!-- SideMenu_info -->
+							<%-- SideMenu_info --%>
 						
 							</div>
 							<div class="course_relation_cover course_floating_bottom is-hidden-mobile">
 							
-							<!-- SideMenu_another_list -->
+							<%-- SideMenu_another_list --%>
 								<div class="course_relation_tabs">
 									<div class="course_relation_tab divactive" id="course_another_tab">다른 강의</div>
 								</div>
@@ -251,8 +238,7 @@ ssssssssssssssssss orderaction 참조
 											}
 									%>
 										<li>
-<!-- 강의  이미지 등록 주소ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ -->
-											<a href="/Detail.le?num=<%-- <% lectureList.get(i).getL_number() %> --%>">
+											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
 												<div class="el_thumbnail">
 													<img src="./img/main-img/<%= lectureList.get(ja).getL_img().split(",")[0] %>" alt="<%= lectureList.get(ja).getL_title() %>">
 												</div>
@@ -261,9 +247,8 @@ ssssssssssssssssss orderaction 참조
 													<div class="el_subinfo">
 														<div class="el_subtitle">
 															<span>
-															<script type="text/javascript">
-																document.write("￦" + numberFormat(${ lectureList.get(ja).getL_price() }));					
-															</script>
+																<fmt:setLocale value="ko_KR"/>
+																<fmt:formatNumber value="<%= ldto.getL_price() %>" type="currency" />
 															</span>
 														</div>
 														<div class="el_metas">
@@ -284,24 +269,23 @@ ssssssssssssssssss orderaction 참조
 									</div>
 								<% if(lectureList.size() > 2){ %>
 									<div class="course_another_btn course_relation_btn">
-<!-- 강사 페이지 주소 수정 -->
-										<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>">+ 다른 강의 더보기</a>
+										<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">+ 다른 강의 더보기</a>
 									</div>
 								<% } %>
 								</div>
-							<!-- SideMenu_another_list -->
+							<%-- SideMenu_another_list --%>
 									
 							</div>
 						</div>
 					</div>
-				<!-- SideMenu -->
+				<%-- SideMenu --%>
 					
 				</div>
 			</div>
 		</section>
 		<section class="course_description_container">
 		
-		<!-- 강의 상세 Navbar -->
+		<%-- 강의 상세 Navbar --%>
 			<div class="tabs">
 				<ul class="container">
 					<li class="tabs_li description is-active">
@@ -315,7 +299,7 @@ ssssssssssssssssss orderaction 참조
 					</li>
 				</ul>
 			</div>
-		<!-- 강의 상세 Navbar -->
+		<%-- 강의 상세 Navbar --%>
 		
 			<div class="container">
 				<div class="course_description">
@@ -323,17 +307,36 @@ ssssssssssssssssss orderaction 참조
 						<div class="column is-8">
 							<div class="content">
 							
-							<!-- 강의 소개 -->
+							<%-- 강의 소개 --%>
 								<article class="description" id="description">
 								
-								<!-- 강의 소개 1 -->
+								<%-- 강의 소개 1 --%>
 									<div class="course_summary description_sub">
 										<h3 class="sub_heading has-icon">
 											이 강의는 <i class="far fa-lightbulb"></i>
 										</h3>
 
-<!-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 -->	
-	<!-- DB lecture -> content 작성 후 삭제 -->
+<%-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 --%>	
+<%--
+	
+	상세소개 - (이 강의는..) text 
+	
+	이런걸 배울 수 있어요 <li></li>
+	
+	강의 상세 내용 editer
+	~~
+	~~
+	~~
+	
+	이런 분들에게 추천해요 - (도움 되는 분들) <li></li>
+	
+	선수 지식 <li></li>
+
+--%>
+
+
+
+	<%-- DB lecture -> content 작성 후 삭제 --%>
 										대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게
 										돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을
 										거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로
@@ -345,25 +348,28 @@ ssssssssssssssssss orderaction 참조
 										다룹니다. 코딩을 처음 접하는 분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면
 										혼자서 얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력 속으로 풍덩
 										빠져볼까요? :^)
-	<!-- DB lecture -> content 작성 후 삭제 -->
+	<%-- DB lecture -> content 작성 후 삭제 --%>
+										<%= ldto.getL_targets() %>
+										<%= ldto.getL_based() %>
+										<%= ldto.getL_description() %>
 										<%= ldto.getL_content() %>
 									</div>
-								<!-- 강의 소개 1 -->
+								<%-- 강의 소개 1 --%>
 									
-								<!-- 강의 소개 2 -->
+								<%-- 강의 소개 2 --%>
 									<div class="body" itemprop="articleBody">
 										<div>
-	<!-- upload or link 동영상 등록 시 태그 수정 -->
+	<%-- upload or link 동영상 등록 시 태그 수정 --%>
 											<div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
 												<iframe src="https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?rel=0&amp;modestbranding=1&amp;vq=hd720"
 													frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"
 													style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="669956749">
 												</iframe>
 											</div>
-	<!-- upload or link 동영상 등록 시 태그 수정 -->
+	<%-- upload or link 동영상 등록 시 태그 수정 --%>
 										</div>
 										<div>
-	<!-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 -->
+	<%-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 --%>
 											<%= ldto.getL_content() %>
 											<h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>
 											한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 자세한 내용은
@@ -371,13 +377,13 @@ ssssssssssssssssss orderaction 참조
 												[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의
 											</a>
 												에서 확인하실 수	있습니다.=====&nbsp;
-	<!-- upload or link 동영상 등록 시 태그 수정 -->
+	<%-- upload or link 동영상 등록 시 태그 수정 --%>
 												<div class="iframe_container" style="padding:56.25% 0 0 0; position: relative;">
 													<iframe width="100%" height="100%" src="https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;modestbranding=1&amp;vq=hd720" frameborder="0" allowfullscreen="allowfullscreen"
 														style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;" data-gtm-yt-inspected-8964582_7="true" id="830993609">
 													</iframe>
 												</div>
-	<!-- upload or link 동영상 등록 시 태그 수정 -->
+	<%-- upload or link 동영상 등록 시 태그 수정 --%>
 											* 인스타그램 김왼손(<a href="https://www.instagram.com/lefty_khim/">@lefty_khim</a>)을 팔로우하세요!* 미운코딩새끼 전자책 ▶
 											<a href="https://wikidocs.net/book/1421" target="_blank" rel="noopener">https://wikidocs.net/book/1421</a>
 											* 더 많은 무료 강의 ▶ <a href="https://goo.gl/AwAwUT" target="_blank" rel="noopener">https://goo.gl/AwAwUT</a>
@@ -451,34 +457,33 @@ ssssssssssssssssss orderaction 참조
 												</p>
 											</blockquote>
 										</div>
-<!-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 -->
+<%-- 강의 등록 페이지 -> DB 확인 -> 내용 등록 --%>
 
 									</div>
-								<!-- 강의 소개 2 -->
+								<%-- 강의 소개 2 --%>
 
 								</article>
-							<!-- 강의 소개 -->
+							<%-- 강의 소개 --%>
 								
-							<!-- 강사 소개 페이지 -->
+							<%-- 강사 소개 페이지 --%>
 								<article class="course_instructor">
 									<h3 class="sub_heading">지식공유자 소개</h3>
 									<div class="profile">
 										<div class="course_instructor_profile">
 											<figure class="image">
-<!-- DB에 회원 아이콘 등록 후 아래 코드 사용  -->
+<%-- DB에 회원 아이콘 등록 후 아래 코드 사용  --%>
 												<img class="is-rounded" src="./img/main-img/b4.png<%-- <%= mdto.getM_nick() %> --%>">
 											</figure>
 										</div>
 										<h4 class="name">
-<!-- 강사 페이지 주소 수정 -->
-											<a href="/Instructors.le?m_num=<%= ldto.getL_m_email() %>"><%= lmdto.getM_name() %></a>
+											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 										</h4>
 									</div>
 									<p class="introduce"></p>
 								</article>
-							<!-- 강사 소개 페이지 -->
+							<%-- 강사 소개 페이지 --%>
 								
-							<!-- 교육 과정 -->
+							<%-- 교육 과정 --%>
 								<article class="curriculum" id="curriculum">
 									<h3 class="sub_heading">교육과정</h3>
 									<div class="curriculum_accordion unit_section_list">
@@ -494,9 +499,9 @@ ssssssssssssssssss orderaction 참조
 										%>
 											</span>
 										</div>
-									<!-- video count, playtime -->
+									<%-- video count, playtime --%>
 										
-									<!-- section_content -->
+									<%-- section_content --%>
 									<%
 									fileCount = 0;
 									double sec_Total = 0;
@@ -529,10 +534,10 @@ ssssssssssssssssss orderaction 참조
 												</div>
 											</div>
 											
-										<!-- video_play -->
+										<%-- video_play --%>
 											<div class="lecture_cover">
 											
-											<!-- video -->
+											<%-- video --%>
 											<%
 											for(int j=0; j<fileSet.get(i).size(); j++){
 											
@@ -544,7 +549,7 @@ ssssssssssssssssss orderaction 참조
 											
 												if(payCheck){
 											%>
-<!-- 영상 재생 페이지 이동 주소 확인 -->
+<%-- 영상 재생 페이지 이동 주소 확인 --%>
 												<a class="unit_item" href="/lecturePlay.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
@@ -576,35 +581,37 @@ ssssssssssssssssss orderaction 참조
 													</div>
 												</div>
 												<% } %>
-											<!-- video -->
+											<%-- video --%>
 											<% fileCount++; } %>
 										
 											</div>
-										<!-- video_play -->
+										<%-- video_play --%>
 										</div>
 									<% } %>
-									<!-- section_content -->
+									<%-- section_content --%>
 									
 									</div>
 								</article>
-							<!-- 교육 과정 -->
+							<%-- 교육 과정 --%>
 							
-							<!-- 수강 후기 -->
+							<%-- 수강 후기 --%>
 								<article class="course_date">
 									<h4 class="sub_heading">공개 일자</h4>
-<!-- update 날짜 DB추가 후 뒤쪽 날짜 변경 -->	
 									<div>
-										<%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %><span class="last_update_date"> <%= new SimpleDateFormat("yyyy년 M월 d일").format(ldto.getL_reg_date()) %></span>
+										<fmt:formatDate value="<%= ldto.getL_reg_date() %>" type="date" pattern="yyyy년 MM월 dd일"/>
+										<span class="last_update_date">
+										 (마지막 업데이트 일자 : <fmt:formatDate value="<%= ldto.getPct_date() %>" type="date" pattern="yyyy년 MM월 dd일"/>)
+										</span>
 									</div>
 								</article>
 								
-							<!-- 수강 후기 -->
+							<%-- 수강 후기 --%>
 								<article class="reviews" id="reviews">
 									<h4 class="sub_heading">수강 후기</h4>
 									<div class="review_summary">
 									
 									<% if(reviewList.size() != 0){ %>
-									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
+									<%-- (위쪽과 동일) 수강 후기  review 평점  --%>
 										<div class="average">
 											<span class="average_num"><%= ratingList.get(ldto.getL_number()).get("rating_avg") %></span>
 											<span class="average_star">
@@ -617,9 +624,9 @@ ssssssssssssssssss orderaction 참조
 											</span>
 											<h5 class="review_total"><%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평</h5>
 										</div>
-									<!-- (위쪽과 동일) 수강 후기  review 평점  -->
+									<%-- (위쪽과 동일) 수강 후기  review 평점  --%>
 										
-									<!-- 평점 progress_bar -->
+									<%-- 평점 progress_bar --%>
 										<div class="progress_bars">
 										<% for(int i=5; i>0; i--){ %>
 											<div class="review_counting">
@@ -628,7 +635,7 @@ ssssssssssssssssss orderaction 참조
 											</div>
 										<% } %>
 										</div>
-									<!-- 평점 progress_bar -->
+									<%-- 평점 progress_bar --%>
 									
 									<% } else { %>
 										<p class="not_yet_reviews">아직 평가를 충분히 받지 못한 강의 입니다.<br>모두에게 도움이 되는 수강평의 주인공이 되어주세요!😄️️</p>
@@ -636,7 +643,7 @@ ssssssssssssssssss orderaction 참조
 									</div>
 									<div class="review_list">
 									
-								<!-- review_container -->
+								<%-- review_container --%>
 									<%
 									int rSize = 0;
 									if(reviewList.size() >= 2){ rSize = 2; }
@@ -649,7 +656,7 @@ ssssssssssssssssss orderaction 참조
 											<article class="media review_item">
 											
 											<% if(reviewList.get(r_loop).getR_re_lev() == 0){ %>
-											<!-- 회원 아이콘 등록 -->
+											<%-- 회원 아이콘 등록 --%>
 												<figure class="media-left image is-64x64">
 													<img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>
 												</figure>
@@ -657,7 +664,7 @@ ssssssssssssssssss orderaction 참조
 												<div class="media-content">
 													<div class="content">
 													
-													<!-- 회원별 별점 정보 -->
+													<%-- 회원별 별점 정보 --%>
 														<span>
 															<div class='rating_star'>
 																<div class='star_solid'>
@@ -667,22 +674,24 @@ ssssssssssssssssss orderaction 참조
 															</div>
 														</span>
 											
-													<!-- 회원 이름 -->
+													<%-- 회원 이름 --%>
 														<strong><%= reviewList.get(r_loop).getR_writer() %></strong>
 													
-													<!-- 작성 일자 -->
+													<%-- 작성 일자 --%>
 														<small class="review updated_at">
-															<span><%= new SimpleDateFormat("yyyy-MM-dd").format(reviewList.get(r_loop).getR_reg_date()) %></span>
+															<span>
+																<fmt:formatDate value="<%= reviewList.get(r_loop).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
+															</span>
 															<span class="option"></span>
 														</small><br>
 														
-													<!-- 리뷰 내용 -->
+													<%-- 리뷰 내용 --%>
 														<div class="review_body">
 															<%= reviewList.get(r_loop).getR_content() %>
 														</div>
 													
-													<!-- 답글 등록 버튼 -->
-													<% if(mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
+													<%-- 답글 등록 버튼 --%>
+													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
 														<div class="reactions">
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">답글 쓰기</span>
@@ -695,7 +704,7 @@ ssssssssssssssssss orderaction 참조
 											<%
 											if(rSize == 2){
 												if(reviewList.get(r_loop + 1).getR_re_lev() == 1 && reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref()){ %>
-												<!-- review_comment -->
+												<%-- review_comment --%>
 													<div class="review_comments">
 														<div class="article_container">
 															<article class="media comment">
@@ -705,22 +714,24 @@ ssssssssssssssssss orderaction 참조
 																<div class="media-content">
 																	<div class="content">
 																		<p>
-																		<!-- 회원 이름, 작성 일자, 내용 -->
+																		<%-- 회원 이름, 작성 일자, 내용 --%>
 																			<small>
 																				<span class="author"><strong><%= reviewList.get(r_loop).getR_writer() %></strong></span>
-																				<span class="updated_at"><%= new SimpleDateFormat("yyyy-MM-dd").format(reviewList.get(r_loop).getR_reg_date()) %></span>
+																				<span class="updated_at">
+																					<fmt:formatDate value="<%= reviewList.get(r_loop).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
+																				</span>
 																			</small><br>
 																			<span class="article_body">
 																				<%= reviewList.get(r_loop).getR_content() %>
 																			</span>
-																		<!-- 회원 이름, 작성 일자, 내용 -->
+																		<%-- 회원 이름, 작성 일자, 내용 --%>
 																		</p>
 																	</div>
 																</div>
 															</article>
 														</div>
 													</div>
-												<!-- review_comment -->
+												<%-- review_comment --%>
 											<%
 												}
 											 }
@@ -733,11 +744,11 @@ ssssssssssssssssss orderaction 참조
 										} //for(int r_loop=0; r_loop<reviewList.size(); r_loop++)
 									} //if(reviewList.size() != 0)
 									%>
-								<!-- review_container -->
+								<%-- review_container --%>
 										
 									</div>
 								</article>
-							<!-- 수강 후기 -->
+							<%-- 수강 후기 --%>
 							
 							</div>
 						</div>
@@ -751,82 +762,8 @@ ssssssssssssssssss orderaction 참조
 	<script type="text/javascript">
 		
 	$(document).ready(function(){
-		
-	/* 수강평 더 보기 버튼 생성 */
-		var review_cnt = $(".review_list .article_container").length;
-		if(review_cnt < ${ fn:length(reviewList) }){
-			$("<button class='is-fullwidth button is-link e_show_more_review'>다른 수강평 보기</button>").appendTo(".review_list");
-		}
-	/* 수강평 더 보기 버튼 생성 */
-		
-	/* 수강평 로드 */
-		$(".e_show_more_review").click(function(){
-			$.ajax({
-				url      : "/CodeFarm/DetailReview.le",
-				type     : "POST",
-				dataType : "json",
-				data: {
-					l_number : ${ ldto.getL_number() }
-				},
-				success: function (json){
-					var output = "";
-					var pre_count = $(".review_list>.article_container").length;
-					for(var i=pre_count; i<json.length; i++){
-						if(json[i].r_re_lev == 0){
-						output += "<div class='article_container'><article class='media review_item'>"
-								+ "  <figure class='media-left image is-64x64'>"
-								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
-								+ "  </figure>"
-								+ "  <div class='media-content'>"
-								+ "    <div class='content'>"
-								+ "      <span><div class='rating_star'>"
-								+ "        <div class='star_solid'>";
-							for(var innerStar=1; innerStar<json[i].r_rating + 1; innerStar++){
-								output += "<i class='fa fa-star' data-value="+innerStar+"></i>";
-							}
-						output += "          </div>"
-							for(var outerStar=5; outerStar>0; outerStar--){
-								output += "<i class='far fa-star' data-value="+outerStar+"></i>";
-							}
-						output += "      </div></span>"
-								+ "      <strong>" + json[i].r_writer + "</strong>"
-								+ "      <small class='review updated_at'>"
-								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
-								+ "      </small><br>"
-								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
-							if(${ mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
-							output += "      <div class='reactions'>"
-									+ "        <button class='button is-link is-small'>"
-									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
-									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
-									+ "        </button>"
-									+ "      </div>";
-							}
-						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
-							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
-									+ "  <figure class='media-left image is-32x32'>"
-									+ "    <img src='./img/main-img/lect_9.png' alt='" + json[i].r_writer + "'>"
-									+ "  </figure>"
-									+ "  <div class='media-content'><div class='content'><p>"
-									+ "    <small>"
-									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
-									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
-									+ "    </small><br>"
-									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
-									+ "  </p></div></div>"
-									+ "</article></div></div>";
-							}
-						 }
-						output += "  </article></div>";
-					}
-					$(".review_list>.article_container:last").after(output);
-					$("button").remove(".e_show_more_review");
-				}
-			});
-		});
-	/* 수강평 로드 */
 	
-	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
+	<%-- 스크롤 변경시 Navbar_sticky & 주소 변경 --%>
 		var t_Nav   = $(".tabs");
 		var h_Nav   = $("header");
 		var m_Nav   = $("#main");
@@ -880,9 +817,9 @@ ssssssssssssssssss orderaction 참조
 				}
 			}
 		});
-	/* 스크롤 변경시 Navbar_sticky & 주소 변경 */
+	<%-- 스크롤 변경시 Navbar_sticky & 주소 변경 --%>
 	
-	/* 강의 목록 opne */
+	<%-- 강의 목록 opne --%>
 	    $(".section_header").on('click', function () {
 	    	var $this = $(this);
 	    	var checkElement = $this.children();
@@ -895,8 +832,170 @@ ssssssssssssssssss orderaction 참조
 	    		$this.nextAll().css('max-height', 'max-content');
 	    	}
 	    });
-	/* 강의 목록 opne */
+    <%-- 강의 목록 opne --%>
+	
+	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
+		var cIcon = $(".cartBtn > i");
+		var hIcon = $(".wish > i");
 		
+		if(${ wdto != null && wdto.getW_l_num() == ldto.getL_number() }){
+			hIcon.addClass('fa fa-heart');
+			cIcon.addClass('fa fa-shopping-cart');
+			hIcon.removeClass("fa-heart-o");
+			cIcon.removeClass("fa-cart-plus");
+		} else {
+			hIcon.addClass('fa fa-heart-o');
+			cIcon.addClass('fa fa-cart-plus');
+			hIcon.removeClass("fa-heart");
+			cIcon.removeClass("fa-shopping-cart");
+		}
+	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
+		
+	<%-- 위시리스트 --%>
+		$(".wishBtn").click(function(){
+			var w_cnt = $(".wish > span");
+			if(${ mdto != null && mdto.getM_email() != null }){
+				$.ajax({
+					url      : "./WishListReg.wi",
+					type     : "POST",
+					dataType : "json",
+					data: {
+						l_number : ${ ldto.getL_number() },
+						m_email  : "${ mdto.getM_email() }"
+					},
+					success: function(data){
+						if(data.wishCheck == "insert"){
+							hIcon.addClass("fa-heart");
+							hIcon.removeClass("fa-heart-o");
+							w_cnt.text(data.wishCount);
+						} else {
+							hIcon.addClass("fa-heart-o");
+							hIcon.removeClass("fa-heart");
+							w_cnt.text(data.wishCount);
+						}
+					}
+				});
+			} else {
+				$.ajax({
+					url  : "./MemberLogin.me",
+					type : "POST",
+					success : function(data) {
+						$(".login_form").html(data);
+					},
+				});
+			}
+		});
+	<%-- 위시리스트 --%>
+	
+	<%-- 장바구니 --%>
+		$(".cartBtn").click(function(){
+			if(${ mdto != null && mdto.getM_email() != null }){
+				$.ajax({
+					url      : "./BasketReg.ba",
+					type     : "POST",
+					dataType : "text",
+					data: {
+						l_number : ${ ldto.getL_number() },
+						l_price  : ${ ldto.getL_price() },
+						l_title  : "${ ldto.getL_title() }",
+						m_email  : "${ mdto.getM_email() }"
+					},
+					success : function(data){
+						if(data == "insert"){
+							cIcon.addClass("fa-shopping-cart");
+							cIcon.removeClass("fa-cart-plus");
+						} else {
+							cIcon.addClass("fa-cart-plus");
+							cIcon.removeClass("fa-shopping-cart");
+						}
+					}
+				});
+			} else {
+				$.ajax({
+					url  : "./MemberLogin.me",
+					type : "POST",
+					success : function(data) {
+						$(".login_form").html(data);
+					},
+				});
+			}
+		});
+	<%-- 장바구니 --%>
+	
+	<%-- 수강평 더 보기 버튼 생성 --%>
+		var review_cnt = $(".review_list .article_container").length;
+		if(review_cnt < ${ fn:length(reviewList) }){
+			$("<button class='is-fullwidth button is-link e_show_more_review'>다른 수강평 보기</button>").appendTo(".review_list");
+		}
+	<%-- 수강평 더 보기 버튼 생성 --%>
+		
+	<%-- 수강평 로드 --%>
+		$(".e_show_more_review").click(function(){
+			$.ajax({
+				url      : "./DetailReview.le",
+				type     : "POST",
+				dataType : "json",
+				data: {
+					l_number : ${ ldto.getL_number() }
+				},
+				success: function (json){
+					var output = "";
+					var pre_count = $(".review_list>.article_container").length;
+					for(var i=pre_count; i<json.length; i++){
+						if(json[i].r_re_lev == 0){
+						output += "<div class='article_container'><article class='media review_item'>"
+								+ "  <figure class='media-left image is-64x64'>"
+								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
+								+ "  </figure>"
+								+ "  <div class='media-content'>"
+								+ "    <div class='content'>"
+								+ "      <span><div class='rating_star'>"
+								+ "        <div class='star_solid'>";
+							for(var innerStar=1; innerStar<json[i].r_rating + 1; innerStar++){
+								output += "<i class='fa fa-star' data-value=" + innerStar + "></i>";
+							}
+						output += "          </div>"
+							for(var outerStar=5; outerStar>0; outerStar--){
+								output += "<i class='far fa-star' data-value=" + outerStar + "></i>";
+							}
+						output += "      </div></span>"
+								+ "      <strong>" + json[i].r_writer + "</strong>"
+								+ "      <small class='review updated_at'>"
+								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
+								+ "      </small><br>"
+								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
+							if(${ mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
+							output += "      <div class='reactions'>"
+									+ "        <button class='button is-link is-small'>"
+									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
+									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
+									+ "        </button>"
+									+ "      </div>";
+							}
+						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
+							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
+									+ "  <figure class='media-left image is-32x32'>"
+									+ "    <img src='./img/main-img/lect_9.png' alt='" + json[i].r_writer + "'>"
+									+ "  </figure>"
+									+ "  <div class='media-content'><div class='content'><p>"
+									+ "    <small>"
+									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
+									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
+									+ "    </small><br>"
+									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
+									+ "  </p></div></div>"
+									+ "</article></div></div>";
+							}
+						 }
+						output += "  </article></div>";
+					}
+					$(".review_list>.article_container:last").after(output);
+					$("button").remove(".e_show_more_review");
+				}
+			});
+		});
+	<%-- 수강평 로드 --%>
+	
 	});
 	
 	</script>

@@ -96,12 +96,17 @@ public class MemberLoginAction implements Action {
 		
 		MemberDTO mdto =new MemberDAO().getInfo(m_email);
 		String nick = mdto.getM_nick();
-		
 		session.setAttribute("nick", nick);
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.le");
+		
+		String referer = (String)request.getHeader("REFERER");
+		if(referer != null){
+			forward.setPath(referer);
+		} else {
+			forward.setPath("./Main.le");
+		}
 		
 		forward.setRedirect(true);
 		return forward;
