@@ -22,10 +22,8 @@
 <jsp:include page="/include/header.jsp"></jsp:include>
 <%
 String email="";
-String nick="";
 if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
-nick=(String)session.getAttribute("nick");
 
 }
 
@@ -142,8 +140,11 @@ if(check>0){
 	
 	for(int i=0; i<answerList.size(); i++){
 	adto= (AskDTO)answerList.get(i);
+	
+	String writer = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
+	
 	%>
-	<h3><%=adto.getWriter() %></h3>	
+	<h3><%=writer %></h3>	
 	<h3><%=adto.getContent() %></h3>	
 	<hr>	
 	<%
@@ -163,18 +164,18 @@ if(check>0){
 		
 	<!-- 메인콘텐츠  -->
 	</article>
-	
-	<!-- 답글쓰기폼 -->
 <%
-// String id="id";
-// int idx= email.indexOf("@");
-// id= email.substring(0,idx);
-// System.out.print("id"+id);
-%>
+String id="id";
+int idx= email.indexOf("@");
+id= email.substring(0,idx);
+System.out.print("id"+id);
+%>	
+	<!-- 답글쓰기폼 -->
+
 	<div class="answer_form">
 		<form action="AnswerAction.bo?" method="post">
 		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
-		<input type="hidden" name="writer" value="<%=nick%>">
+		<input type="hidden" name="writer" value="<%=email%>">
 		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
 		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
 <%if(check>1){ %>
@@ -183,7 +184,7 @@ if(check>0){
 		<input type="hidden" name="re_seq" value="1">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		
-		[답글] 글쓴이 : <%=nick%><br>
+		[답글] 글쓴이 : <%=id%><br>
 		<textarea name="content" id="summernote">
 		</textarea>
 		<input type="submit" value="글쓰기">
