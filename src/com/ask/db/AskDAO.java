@@ -105,7 +105,7 @@ public class AskDAO {
 		try{
 			con=getConnection();
 			sql="select * from board "
-					+ "where re_lev>0 and re_ref=? " //답글만~
+					+ "where re_ref=? and re_lev>0 " //답글만~
 					+ "order by re_seq asc ";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,num); 
@@ -208,6 +208,30 @@ public class AskDAO {
 		}
 		//insertAnswer(adto)
 		
+		//getAnswerCount()
+		public int getAnswerCount(int num){
+			int check = 0;
+			try {
+				con = getConnection();
+				System.out.print("getAnswerCount() : ");
+				
+				sql = "select * from board where re_ref=? and re_seq>0";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					check = rs.getInt(1);
+				}
+				System.out.println("문답게시판 전체 글 개수 : " + check);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return check;
+		}
+		
+		
 		//C-insertAnswer(ndto)
 		public int insertAnswer(AskDTO adto) {
 			int check=-1;
@@ -235,7 +259,7 @@ public class AskDAO {
 				pstmt.setString(4, adto.getWriter());
 				pstmt.setInt(5, adto.getRe_ref()); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
 				pstmt.setInt(6, adto.getRe_lev()); //re_lev :초기화 => 답글 들여쓰기
-				pstmt.setInt(7, 0); //re_seq :초기화 => 답글 순서
+				pstmt.setInt(7, adto.getRe_seq()); //re_seq :초기화 => 답글 순서
 				check=pstmt.executeUpdate();
 				//4
 				if(check==1){

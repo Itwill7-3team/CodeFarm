@@ -86,15 +86,16 @@ public class OrderDAO {
 				
 			
 				sql ="INSERT INTO orderlist "
-						+ "values("
-						+ "?,?,?,?,?,"
-						+ "?,?,?,?,now(),?)";
+						+ "values( "
+						+ "?,?,?,?,?, "
+						+ "?,?,?,?,now(), "
+						+ "?,?,?,date_add(now(),interval 30 MINUTE))";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, o_num);
 			//pstmt.setString(2,trade_num);
 			pstmt.setString(2, 
-					sdf.format(cal.getTime()).toString()+"-"+o_b_num 
+					sdf.format(cal.getTime()).toString()+"-"+o_num 
 					);
 			// => 20200331-1
 			pstmt.setInt(3, ldto.getL_price());
@@ -108,6 +109,9 @@ public class OrderDAO {
 			//pstmt.setTimestamp(10, oldto.getO_t_date());
 			
 			pstmt.setInt(10, (int)Math.floor(ldto.getL_price()+(ldto.getL_price()*ldto.getL_pct()/100)));
+			pstmt.setInt(11, 0);
+			pstmt.setString(12, oldto.getO_t_b_num());
+			//pstmt.setString(13, oldto.getO_t_b_reg_date());
 			
 
 			pstmt.executeUpdate();
@@ -116,7 +120,7 @@ public class OrderDAO {
 			
 			o_num ++; // 주문 일련번호를 증가
 			
-			}// Model2_order 테이블 INSERT동작 반복(for)
+			}//  테이블 INSERT동작 반복(for)
 			
 			System.out.println(" 장바구니에 있던 모든 상품정보를 주문 완료 ");			
 			
@@ -136,7 +140,8 @@ public class OrderDAO {
 			con = getConnection();
 			
 
-			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer,o_t_date,sum(o_sum_money) as o_sum_money "
+			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer, "
+					+ "o_t_b_reg_date,o_t_b_num,o_status,o_t_date,sum(o_sum_money) as o_sum_money "
 					+ "from orderlist where o_m_id=? "
 					+ "group by o_b_num order by o_b_num desc";
 
@@ -156,6 +161,9 @@ public class OrderDAO {
 				oldto.setO_t_date(rs.getTimestamp("o_t_date"));
 				oldto.setO_t_bank(rs.getString("o_t_bank"));
 				oldto.setO_t_payer(rs.getString("o_t_payer"));
+				oldto.setO_status(rs.getInt("o_status"));
+				oldto.setO_t_b_num(rs.getString("o_t_b_num"));
+				oldto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
 				
 				orderList.add(oldto);
 				
@@ -198,6 +206,9 @@ public class OrderDAO {
 				odto.setO_sum_money(rs.getInt("o_sum_money"));
 				odto.setO_t_type(rs.getString("o_t_type"));
 				odto.setO_t_bank(rs.getString("o_t_bank"));
+				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
+				
 				System.out.println("#######################");
 				
 				orderDetailList.add(odto);

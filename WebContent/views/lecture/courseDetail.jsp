@@ -80,8 +80,40 @@
 		}
 	/* 파일 개수, 시간 계산 */
 	
-	/* DB 추가
-	insert into codefarm.lecture values('2', 'abc@naver.com', '김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)', '파이썬의 기초를 쉽게 배울 수 있습니다./파이썬이 뭔지, 코딩이 뭔지 감을 잡게 됩니다./혼자서도 코딩을 공부할 수 있는 법을 배웁니다./다음 단계를 위한 준비를 할 수 있습니다./컴퓨터처럼 문제를 해결하는 방법을 배웁니다./나도 할 수 있다는 자신감을 얻게 됩니다.', '코딩을 한 번도 해본 적 없는 분/아무리 열심히 해도 코딩이 어려운 분/코딩이라는게 뭔지 맛보고 싶은 분/반복되는 포기로 코딩이 미워지려고 하는 분', 'HTML/CSS/Javascript', '대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을', '<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> <iframe src=\"https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?rel=0&amp;modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen=\"allowfullscreen\" style=\"position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" id=\"669956749\"></iframe></div><div><h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 자세한 내용은 <a href=\"https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-hello-coding/\"> [저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의</a>에서 확인하실 수	있습니다.=====&nbsp;<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> <iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\" style=\"position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" id=\"830993609\"></iframe></div> * 인스타그램 김왼손(<a href=\"https://www.instagram.com/lefty_khim/\">@lefty_khim</a>)을 팔로우하세요!* 미운코딩새끼 전자책 ▶ <a href=\"https://wikidocs.net/book/1421\" target=\"_blank\" rel=\"noopener\">https://wikidocs.net/book/1421</a> * 더 많은 무료 강의 ▶ <a href=\"https://goo.gl/AwAwUT\" target=\"_blank\" rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을 거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한 강의입니다.?파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 코딩을 왜 배워야 하는지, 왜필요한지에 대해서 답을 주지는 않지만?코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을 수?있습니다.코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 대신?가장?중요하고 자주 쓰는 문법만 빠르고 가볍게 다룹니다. 코딩을 처음 접하는?분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력속으로?풍덩?빠져볼까요? :^)', 'IT프로그래밍', '프로그래밍 언어', '', 'lect_8.png', '50000', '0', '0', '1', now(), now(), '12053', NULL, NULL);
+	/* DB에 추가해 주세요
+
+insert into codefarm.lecture
+ values(null, 'abc@naver.com', '김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)',
+ '파이썬의 기초를 쉽게 배울 수 있습니다./파이썬이 뭔지, 코딩이 뭔지 감을 잡게 됩니다./혼자서도 코딩을 공부할 수 있는 법을 배웁니다.
+/다음 단계를 위한 준비를 할 수 있습니다./컴퓨터처럼 문제를 해결하는 방법을 배웁니다./나도 할 수 있다는 자신감을 얻게 됩니다./',
+ '코딩을 한 번도 해본 적 없는 분/아무리 열심히 해도 코딩이 어려운 분/코딩이라는게 뭔지 맛보고 싶은 분/반복되는 포기로 코딩이 미워지려고 하는 분/',
+ 'HTML/CSS/Javascript/', '대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다.
+지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을',
+ '<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
+<iframe src=\"https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?
+rel=0&amp;modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allow=\"autoplay; encrypted-media\"
+allowfullscreen=\"allowfullscreen\" style=\"position: absolute; top: 0px; bottom: 0px; left: 0px;
+right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" id=\"669956749\">
+</iframe></div><div><h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 
+자세한 내용은 <a href=\"https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-hello-coding/\"> 
+[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의</a>에서 확인하실 수	있습니다.=====&nbsp;
+<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
+<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;
+modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\" style=\"position: absolute; 
+top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" 
+id=\"830993609\"></iframe></div> * 인스타그램 김왼손(<a href=\"https://www.instagram.com/lefty_khim/\">@lefty_khim</a>
+)을 팔로우하세요!* 미운코딩새끼 전자책 ▶ <a href=\"https://wikidocs.net/book/1421\" target=\"_blank\" rel=\"noopener\">
+https://wikidocs.net/book/1421</a> * 더 많은 무료 강의 ▶ <a href=\"https://goo.gl/AwAwUT\" target=\"_blank\" 
+rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코딩이 너무 어려웠습니다. 
+잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 
+지금도 저와 같은 고민을 하는 분들이 많을 거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.
+미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한 강의입니다.?파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 
+코딩을 왜 배워야 하는지, 왜필요한지에 대해서 답을 주지는 않지만?코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을 수?있습니다.
+코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 
+대신?가장?중요하고 자주 쓰는 문법만 빠르고 가볍게 다룹니다. 코딩을 처음 접하는?분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 
+얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력속으로?풍덩?빠져볼까요? :^)',
+ 'IT프로그래밍', '프로그래밍 언어', '', 'lect_8.png', '50000', '0', '0', '1', now(), now(), '12053', NULL, NULL);
+
 	*/
 	%>
 	<div id="root">

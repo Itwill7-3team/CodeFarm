@@ -430,7 +430,7 @@ public class MemberDAO {
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
 						mdto.setM_nick(rs.getString("m_nick"));
-						
+						mdto.setM_rank(rs.getString("m_rank"));
 						return mdto;
 					}else {
 						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
