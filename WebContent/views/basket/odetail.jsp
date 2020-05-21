@@ -40,20 +40,30 @@
  	<h4>총 주문금액 : <%=total %> 원</h4>
 
 
-   <span> 주문상태!@!!@status</span>
- <span> <%=odto.getO_t_date() %></span>
+
+<table>
+
+<tr>
+	<td>주문 상태</td>
+	<td><%=odto.getO_status() %></td>
+</tr>
+<tr>
+	<td>주문 시각</td>
+	<td><%=odto.getO_t_date() %></td>
+</tr>
+<%-- 
  <span> <%=odto.getO_t_type() %></span>
  <span>  <%=odto.getO_t_bank() %></span>
  <span> 계좌번호 </span>
     <time>입금기한설정</time>  
  <span> 입금 후 15분 내로 수강권한이 주어집니다  </span>
    <span> 결제 취소 버튼</span>
-  
+   --%>
 <%	
  }
 %>
 
-
+</table>
 
 	<h3> <a href="./OrderList.or">뒤로가기</a> </h3>
 	좋은 지식의 구매는 더 좋은 지식 창출을 위한 바탕으로 쓰입니다.<br>
