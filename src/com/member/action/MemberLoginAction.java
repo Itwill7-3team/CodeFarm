@@ -95,7 +95,7 @@ public class MemberLoginAction implements Action {
 		session.setAttribute("m_email", m_email);
 		
 		MemberDTO mdto =new MemberDAO().getInfo(m_email);
-		String nick = mdto.getM_name();
+		String nick = mdto.getM_nick();
 		session.setAttribute("nick", nick);
 		
 		// 페이지 이동(메인페이지)
