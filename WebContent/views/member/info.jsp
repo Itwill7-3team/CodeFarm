@@ -164,7 +164,7 @@ display: none;
         <div class="right">
           <label for="name" class="label input_label">
             <span>닉네임</span>
-            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_nick() %>" placeholder="변경할 닉네임을 입력해주세요">
+            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_name() %>" placeholder="변경할 닉네임을 입력해주세요">
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>

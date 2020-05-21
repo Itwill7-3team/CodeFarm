@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class MemberDTO {
 
 	private String m_email;		//회원이메일
-	private String m_nick;		//닉네임
 	private String m_pw;		//회원 비밀번호
 	private Timestamp m_regdate;//회원 가입일
 	private String m_name;		//회원 이름
@@ -23,12 +22,6 @@ public class MemberDTO {
 		this.m_email = m_email;
 	}
 	
-	public String getM_nick() {
-		return m_nick;
-	}
-	public void setM_nick(String m_nick) {
-		this.m_nick = m_nick;
-	}
 	public String getM_pw() {
 		return m_pw;
 	}
@@ -83,7 +76,6 @@ public class MemberDTO {
 	public void setM_emailCheck(boolean m_emailCheck) {
 		this.m_emailCheck = m_emailCheck;
 	}
-	//toString
 	@Override
 	public String toString() {
 		return "MemberDTO [m_email=" + m_email + ", m_pw=" + m_pw + ", m_regdate=" + m_regdate + ", m_name=" + m_name

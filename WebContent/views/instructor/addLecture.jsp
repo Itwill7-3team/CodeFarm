@@ -484,17 +484,18 @@ $(document).ready(function() {
 	});
 	//수업 변경 이벤트
 	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
-		$("<div>").dialog ({
-			
+		$("<div id='modal'>").dialog ({
+			closeOnEscape: true,
 			modal:true,
 			open:function() {
 				
 				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라
 				
 			},
-			
-			height:400,
-			width:400,
+			  Cancel : function() {
+	                $(this).dialog("close"); // button 실행을 직접 선언하려면 function안에 기능
+			  },
+			width:1280,
 			//title:"외부파일 창 띄우기"
 				
 		});
