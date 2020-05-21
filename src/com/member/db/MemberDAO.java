@@ -330,7 +330,6 @@ public class MemberDAO {
 						mdto.setM_rank(rs.getString("m_rank"));
 						mdto.setM_addr(rs.getString("m_addr"));
 						mdto.setM_intro(rs.getString("m_intro"));
-						mdto.setM_nick(rs.getString("m_nick"));
 						mdto.setM_name(rs.getString("m_name"));
 						mdto.setM_phone(rs.getString("m_phone"));
 						mdto.setM_pw(rs.getString("m_pw"));
@@ -348,13 +347,13 @@ public class MemberDAO {
 			
 			
 			//자기소개 업데이트
-			public void IntroUpdate(String m_email,String m_intro, String m_nick) {
+			public void IntroUpdate(String m_email,String m_intro, String m_name) {
 				try {
 					con = getConnection();
-					sql = "update member set m_intro =?, m_nick=? where m_email=?";
+					sql = "update member set m_intro =?, m_name=? where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, m_intro);
-					pstmt.setString(2, m_nick);
+					pstmt.setString(2, m_name);
 					pstmt.setString(3, m_email);
 					pstmt.executeUpdate();
 				} catch (Exception e) {
