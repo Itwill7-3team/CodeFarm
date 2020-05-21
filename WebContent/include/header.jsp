@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
 
-
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -361,7 +360,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a  class="navbar-item bold"> <button class="btn bold login_btn">로그인</button></a>
+							<a  class="navbar-item bold"> <button id="login_btn" class="btn bold login_btn">로그인</button></a>
+							
 						</div>
 						<div class="navbar-item">
 							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn bold">회원가입</button></a>

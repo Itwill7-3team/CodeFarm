@@ -26,10 +26,14 @@
 
           
   <label class="atom_ph">
-    <span class="label visually_hidden">전화번호</span>
-    <input class="input phone" type="text" name="m_phone" placeholder="010">-
+  <span class="label visually_hidden">전화번호</span>
+  
+    <div class="ph_input">
+    <input class="input phone1" type="text" name="m_phone" placeholder="010">-
     <input class="input phone" type="text" name="m_phone2" placeholder="1234">-
     <input class="input phone" type="text" name="m_phone3" placeholder="6578">
+    </div>
+    
   </label>
   
   <label class="atom_field">
