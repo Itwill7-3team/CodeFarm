@@ -26,9 +26,13 @@ public class apiLoginAction implements Action{
 		mdto.setM_pw(m_pw);
 		mdto.setM_nick(m_nick);
 		System.out.println("@@@@@@@@@@mdto정보:  "+mdto);
-		mdto = mdao.apiLogin(mdto);
+		mdao.apiLogin(mdto);
+		
+		mdto = mdao.getInfo(m_email);
+		
 		
 		session.setAttribute("m_email", m_email);
+		session.setAttribute("m_rank", mdto.getM_rank());
 		session.setAttribute("nick", mdto.getM_nick());
 		System.out.println("@@@@@@@@@@mdto정보:  "+mdto);
 		ActionForward forward = new ActionForward();

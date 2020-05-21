@@ -96,6 +96,9 @@ border: solid #dbdbdb;
     padding: .5em .75em;
     vertical-align: top;
 }
+table tr{
+	border-bottom: 1px solid;
+}
 .main_img{
 	max-width: 200px;
     min-width: 100px;

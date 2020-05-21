@@ -615,7 +615,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 														</div>
 													
 													<%-- 답글 등록 버튼 --%>
-													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
+													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank()>1){ %>
 														<div class="reactions">
 <!-- #002 답글 등록 버튼 동작 -->
 															<button class="button is-link is-small">
