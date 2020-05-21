@@ -94,17 +94,15 @@ String pageNum=request.getAttribute("pageNum").toString();
 			<!--  -->
 
 		<h1><span class="N">Q.</span><%=bdto.getTitle()%></h1>
-		<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
 		<hr>
+		<!-- 게시물 -->
 		<div class="QnA_content">
 		<p>작성자: <%=bdto.getWriter()%></p>
 		<%=bdto.getContent()%>
 		
 		
-		
-		
 		</div>
-			
+		<!-- 게시물 -->	
 		
 		<div class="content_side">
 		<ul>
@@ -122,33 +120,24 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<button onclick="location.href='#';">수정하기</button>
 		<button onclick="location.href='#';">삭제하기</button>
 		<%}%>
-		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a>	
-		
-		
+		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a>			
 		</div>
 		<br>	
 		<br>	
-		<br>	
-		
-		
+		<br>
 
 	</div>
 
-		
-	 
 		
 	<!-- 메인콘텐츠  -->
 	</article>
 	
 	<!-- 답글쓰기폼 -->
 <%
-
 String id="id";
 int idx= email.indexOf("@");
 id= email.substring(0,idx);
-
 System.out.print("id"+id);
-
 %>
 	<div class="answer_form">
 		<form action="#" method="post">
@@ -158,6 +147,7 @@ System.out.print("id"+id);
 		<input type="submit" value="글쓰기">
 		</form>
 	</div>
+	
 <!-- 컨텐츠 -->
 
 
