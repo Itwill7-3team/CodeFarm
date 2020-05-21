@@ -284,6 +284,11 @@ public class MemberDAO {
 				    	MemberDTO mdto = new MemberDTO();
 				    	mdto.setM_email(rs.getString("m_email"));
 				    	mdto.setM_rank(rs.getInt("m_rank"));
+				    	mdto.setM_nick(rs.getString("m_nick"));
+				    	mdto.setM_addr(rs.getString("m_addr"));
+				    	mdto.setM_intro(rs.getString("m_intro"));
+				    	mdto.setM_phone(rs.getString("m_phone"));
+				    
 				    	//  한사람의 정보를  memberList배열에 한칸으로 저저장
 				    	memberList.add(mdto);
 				    }

@@ -184,7 +184,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!--지식공유 참여  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold">지식공유참여</a>
+						<a href="#" id="tech_request" class="navbar-link bold">지식공유참여</a>
 					</div>
 					<!-- 로그인 했을때 -->
 					<%if(!loginEmail.equals("")){%>
@@ -343,7 +343,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 			success : function(data) {
 
-				$(".login_form").html(data);
+				$(".login_form1").html(data);
 			},
 			error : function(xhr, status, error) {
 				alert("error: " + error);
@@ -364,7 +364,31 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	}
 	
 	});
-	 
+	
+	//강사 신청 폼
+	$("#tech_request").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./TechRequest.me",
+			data : {
+				
+				
+			},
+
+			success : function(data) {
+
+				$(".login_form1").html(data);
+			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+			}
+
+		});
+	});
+
+
+
 	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");
@@ -415,4 +439,4 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 
 </header>
-<div class="login_form"></div> 
+<div class="login_form1"></div> 

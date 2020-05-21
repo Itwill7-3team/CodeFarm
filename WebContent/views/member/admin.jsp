@@ -57,12 +57,22 @@
 	    </tr>
 	    
 	    <%
+	    String rank = "";
 	       for(int i=0;i<memberList.size();i++){
 	    	   MemberDTO mdto = memberList.get(i);
+	    	   if(mdto.getM_rank()==0){
+	    		  rank ="비회원";
+	    	   }else if(mdto.getM_rank()==1){
+	    		   rank ="회원";
+	    	   }else if(mdto.getM_rank()==2){
+	    		   rank ="강사";
+	    	   }else if(mdto.getM_rank()==3){
+	    		   rank ="관리자"; 
+	    	   }
 	    	   %>
 	    	    <tr>
-			      <td><%=mdto.getM_email() %></td>
-			      <td><%=mdto.getM_rank() %></td>
+			      <td><a href="./SerchInfo.me?m_email=<%=mdto.getM_email() %>"><%=mdto.getM_email() %></a></td>
+			      <td><%=rank %></td>
 			      <td><input type="button" value="회원 탈퇴" onclick="location.href='AdminDeleteAction.me?<%=mdto.getM_email() %>'" ></td>
 			    </tr>
 	    	   <%

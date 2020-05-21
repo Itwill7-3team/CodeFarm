@@ -13,40 +13,40 @@
    -->
    <div class="clear">
    <div class="back"></div>
-   <div class="modal"><div class="dimmed"></div>
-      <div class="dimmed"></div>
-      <section class="signin_modal">
-        <header class="header">
-        <img id="icon_brand_logo" class="brand_logo"  src="./img/logo.png">
+   <div class="modal1"><div class="dimmed1"></div>
+      <div class="dimmed1"></div>
+      <section class="signin_modal1">
+        <header class="header1">
+        <img id="icon_brand_logo1" class="brand_logo1"  src="./img/logo.png">
         
         </header>
-        <form class="main_form" action="./MemberLoginAction.me" method="post"> 
+        <form class="main_form1" action="./MemberLoginAction.me" method="post"> 
           
-  		<label class="atom_field">
-   		 <span class="label visually_hidden">이메일</span>
-    		<input class="input email" type="email"  name="m_email" autofocus="true" placeholder="이메일">
+  		<label class="atom_field1">
+   		 <span class="label1 visually_hidden1">이메일</span>
+    		<input class="input1 email1" type="email"  name="m_email" autofocus="true" placeholder="이메일">
   </label>
 
           
-  <label class="atom_field">
-    <span class="label visually_hidden">비밀번호</span>
-    <input class="input pwd" type="password" name="m_pw" placeholder="비밀번호">
+  <label class="atom_field1">
+    <span class="label1 visually_hidden1">비밀번호</span>
+    <input class="input1 pwd1" type="password" name="m_pw" placeholder="비밀번호">
   </label>
 
           
-  <input class="atom_button button signin e-confirm" value="로그인" type="submit">
+  <input class="atom_button1 button signin1 e-confirm1" value="로그인" type="submit">
 
         </form>
-        <div class="sub_form">
+        <div class="sub_form1">
           <p>비밀번호를 잊어버리셨나요?</p>
-          <a class="find_password">비밀번호 찾기</a>
+          <a class="find_password1">비밀번호 찾기</a>
         </div>
 
-       <div class="footer_form">
+       <div class="footer_form1">
        
-          <div class="social">
-          <div class="kakao_btn" id="kakaoLogin"></div>
-          <div class="naver_btn" id="naverIdLogin"></div>
+          <div class="social1">
+          <div class="kakao_btn1" id="kakaoLogin"></div>
+          <div class="naver_btn1" id="naverIdLogin"></div>
           
 
            <!--  <a data-type="facebook" href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=1101702136522636&amp;redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&amp;scope=email" class="button facebook_auth oauth2" rel="noreferrer noopener">
@@ -63,8 +63,8 @@
             </a> -->
           </div>
         </div> 
-        <div class="sub_form">
-          <p>아직 인프런 회원이 아니신가요?</p>
+        <div class="sub_form1">
+          <p>아직 코딩팜 회원이 아니신가요?</p>
           <a href="MemberJoin.me">회원가입하기</a>
         </div>
       </section>
@@ -77,7 +77,7 @@
 
 	$(".back").click(function(){
 		
-		$(".login_form").html(" ");
+		$(".login_form1").html(" ");
 	});
 </script>
 
