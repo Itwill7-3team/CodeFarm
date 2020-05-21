@@ -332,6 +332,43 @@ public class BasketDAO {
 	}	
 	/* Jquery용 basketDelete 메서드 (강의 번호로 지우는 형태) */
 				
-	
+	// basketReg(bdto) Detail_basket
+		public String basketReg(BasketDTO bdto){
+			String basketCheck = "";
+			StringBuffer SQL = new StringBuffer();
+			try {
+				con = getConnection();
+				System.out.print("basketReg() : ");
+				
+				sql = "select * from basket where b_l_num = ? and b_m_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bdto.getB_l_num());
+				pstmt.setString(2, bdto.getB_m_id());
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					SQL.append("delete from basket where b_l_num = ? and b_m_id = ?");
+					basketCheck = "delete";
+					System.out.println("장바구니 삭제 완료");
+				} else {
+					SQL.append("insert into basket(b_l_num, b_m_id, b_l_price, b_l_name) values(?, ?, ?, ?)");
+					basketCheck = "insert";
+					System.out.println("장바구니 저장 완료");
+				}
+				pstmt = con.prepareStatement(SQL.toString());
+				pstmt.setInt(1, bdto.getB_l_num());
+				pstmt.setString(2, bdto.getB_m_id());
+				if(basketCheck.equals("insert")){
+					pstmt.setInt(3, bdto.getB_l_price());
+					pstmt.setString(4, bdto.getB_l_name());
+				}
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return basketCheck;
+		}
+		// basketReg(bdto) Detail_basket
 	
 }
