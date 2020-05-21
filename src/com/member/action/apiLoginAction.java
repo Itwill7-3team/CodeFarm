@@ -33,6 +33,7 @@ public class apiLoginAction implements Action{
 		
 		session.setAttribute("m_email", m_email);
 		session.setAttribute("m_rank", mdto.getM_rank());
+		session.setAttribute("nick", mdto.getM_nick());
 		System.out.println("@@@@@@@@@@mdto정보:  "+mdto);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.le");

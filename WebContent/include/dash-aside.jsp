@@ -15,13 +15,13 @@ if(session.getAttribute("m_email")!=null){
 		    <a href="DashBoard.bo">대시보드</a>
 		  </li>
 		  <li class="menu1">
-		    <a href="#">알람</a>
+<!-- 		    <a href="#">알람</a> -->
 		  </li>
 		  <li class="menu1">
 		    <a href="#">내 학습</a>
 		    <ul>
 		      <li class="menu2 "><a href="MyLecture.bo">수강중인 강의</a></li>
-		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li>
+<!-- 		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li> -->
 		      <li class="menu2 "><a href="#">내 질문</a></li>
 		    </ul>
 		  </li>
