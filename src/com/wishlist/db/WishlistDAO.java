@@ -315,10 +315,12 @@ public class WishlistDAO {
 				
 	// wishListReg(wdto) Detail_wishList
 	public String wishListReg(WishlistDTO wdto){
-		String check = "";
+		String wishCheck = "";
 		StringBuffer SQL = new StringBuffer();
 		try {
 			con = getConnection();
+			System.out.print("wishListReg() : ");
+			
 			sql = "select * from wishlist where w_l_num = ? and w_m_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, wdto.getW_l_num());
@@ -326,10 +328,12 @@ public class WishlistDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				SQL.append("delete from wishlist where w_l_num = ? and w_m_id = ?");
-				check = "delete";
+				wishCheck = "delete";
+				System.out.println("위시 리스트 삭제 완료");
 			} else {
-				SQL.append("insert into wishlist(w_m_id, w_l_num) values(?, ?)");
-				check = "insert";
+				SQL.append("insert into wishlist(w_l_num, w_m_id) values(?, ?)");
+				wishCheck = "insert";
+				System.out.println("위시 리스트 저장 완료");
 			}
 			pstmt = con.prepareStatement(SQL.toString());
 			pstmt.setInt(1, wdto.getW_l_num());
@@ -340,8 +344,31 @@ public class WishlistDAO {
 		} finally {
 			closeDB();
 		}
-		return check;
+		return wishCheck;
 	}
 	// wishListReg(wdto) Detail_wishList
 	
+	// getWishListCount(int l_number) Detail_wishList
+	public int getWishListCount(int l_number){
+		int wishCount = 0;
+		try {
+			con = getConnection();
+			System.out.print("wishListCount() : ");
+			
+			sql = "select count(*) from wishlist where w_l_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, l_number);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				wishCount = rs.getInt(1);
+			}
+			System.out.println("위시 수 저장 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return wishCount;
+	}
+	// getWishListCount(int l_number) Detail_wishList
 }

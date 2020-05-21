@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import com.wishlist.action.WishListRegAction;
+
 
 
 
@@ -100,6 +102,13 @@ public class BasketFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		
+		} else if (command.equals("/BasketReg.ba")) {
+			action = new BasketRegAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

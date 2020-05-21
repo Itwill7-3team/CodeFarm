@@ -1,8 +1,12 @@
 package com.wishlist.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.wishlist.db.WishlistDAO;
 import com.wishlist.db.WishlistDTO;
 
@@ -19,10 +23,16 @@ public class WishListRegAction implements Action {
 		WishlistDTO wdto = new WishlistDTO();
 		wdto.setW_l_num(l_number);
 		wdto.setW_m_id(m_email);
+		
 		WishlistDAO wdao = new WishlistDAO();
-		String check = wdao.wishListReg(wdto);
-
-		response.getWriter().print(check);
+		String wishCheck = wdao.wishListReg(wdto);
+		int wishCount = wdao.getWishListCount(wdto.getW_l_num());
+		
+		Map<String, Object> gsonMap = new HashMap<String, Object>();
+		gsonMap.put("wishCheck", wishCheck);
+		gsonMap.put("wishCount", wishCount);
+		
+		new Gson().toJson(gsonMap, response.getWriter());
 		
 		return null;
 	}
