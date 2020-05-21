@@ -84,12 +84,11 @@ public class OrderDAO {
 				LectureDTO ldto = (LectureDTO)lectureList.get(i);
 						
 				
-			// 18,20번 ?-> now()변경
-			sql ="INSERT INTO orderlist "
-					+ "values("
-					+ "?,?,?,?,?,"
-					+ "?,?,?,?,?,"
-					+ "?,now())";
+			
+				sql ="INSERT INTO orderlist "
+						+ "values("
+						+ "?,?,?,?,?,"
+						+ "?,?,?,?,now(),?)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, o_num);
@@ -98,19 +97,19 @@ public class OrderDAO {
 					sdf.format(cal.getTime()).toString()+"-"+o_b_num 
 					);
 			// => 20200331-1
-			pstmt.setInt(3, bkdto.getB_l_price());
-			pstmt.setInt(4, bkdto.getB_l_num());
-			pstmt.setString(5, ldto.getL_title());
-			pstmt.setString(6, ldto.getL_m_email());	
-			pstmt.setString(8, oldto.getO_t_type());
-			pstmt.setString(9, oldto.getO_t_bank());
-			pstmt.setString(10, oldto.getO_t_payer());
-			pstmt.setInt(11, ldto.getL_price());
+			pstmt.setInt(3, ldto.getL_price());
+			pstmt.setInt(4, ldto.getL_number());
+			pstmt.setString(5, bkdto.getB_l_name());
+			pstmt.setString(6, bkdto.getB_m_id());	
+			pstmt.setString(7, oldto.getO_t_type());
+			pstmt.setString(8, oldto.getO_t_bank());
+			pstmt.setString(9, oldto.getO_t_payer());
+			//10번 함수
+			//pstmt.setTimestamp(10, oldto.getO_t_date());
 			
+			pstmt.setInt(10, (int)Math.floor(ldto.getL_price()+(ldto.getL_price()*ldto.getL_pct()/100)));
 			
-			// 20번 ?는 함수로 사용됨(now())
-			pstmt.setInt(12, 0); // 21번 ? => 주문 상태표시 
-			
+
 			pstmt.executeUpdate();
 			
 			System.out.println(o_num+" 번 구매정보 저장완료 ");
@@ -136,15 +135,11 @@ public class OrderDAO {
 		try {
 			con = getConnection();
 			
-			sql = "select o_b_num,o_l_price, "
-					+ "o_l_name,o_status"
-					+ "o_t_type,o_t_bank, "
-					+ "o_t_payer,o_t_date "
-					+ "sum(o_sum_money) as o_sum_money "
-					+ "from orderlist "
-					+ "where o_m_id=? "
-					+ "group by o_b_num "
-					+ "order by o_b_num desc";
+
+			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer,o_t_date,sum(o_sum_money) as o_sum_money "
+					+ "from orderlist where o_m_id=? "
+					+ "group by o_b_num order by o_b_num desc";
+
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);		
@@ -152,15 +147,15 @@ public class OrderDAO {
 			
 			while(rs.next()) {
 				OrderDTO oldto = new OrderDTO();
-				oldto.setO_b_num(rs.getInt("o_b_num"));
+				oldto.setO_b_num(rs.getString("o_b_num"));
 				oldto.setO_l_name(rs.getString("o_l_name"));
 				oldto.setO_l_price(rs.getInt("o_l_price"));
-				//oldto.setO_l_num(rs.getInt("o_l_num"));
-				oldto.setO_status(rs.getInt("o_status"));
+
 				oldto.setO_t_type(rs.getString("o_t_type"));
 				oldto.setO_sum_money(rs.getInt("o_sum_money"));
-				oldto.setO_t_date(rs.getTimestamp("o_date"));
+				oldto.setO_t_date(rs.getTimestamp("o_t_date"));
 				oldto.setO_t_bank(rs.getString("o_t_bank"));
+				oldto.setO_t_payer(rs.getString("o_t_payer"));
 				
 				orderList.add(oldto);
 				
@@ -172,12 +167,54 @@ public class OrderDAO {
 		} finally {
 			closeDB();
 		}
-		return null;
+		return orderList;
 	}
 	
 	//getOrderList
 	
 	
+	
+	//orderDetail(b_num)
+	public List orderDetail(String trade_num) {
+		
+		List orderDetailList = new ArrayList();
+		
+		try {
+			con = getConnection();
+			
+			sql = "select * from orderlist where o_b_num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, trade_num);
+			rs = pstmt.executeQuery();
+			System.out.println("@@@@@@@@@@@@@@@@@");
+			
+			while(rs.next()){
+				OrderDTO odto = new OrderDTO();
+			
+				odto.setO_b_num(rs.getString("o_b_num"));
+				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_t_date(rs.getTimestamp("o_t_date"));
+				odto.setO_sum_money(rs.getInt("o_sum_money"));
+				odto.setO_t_type(rs.getString("o_t_type"));
+				odto.setO_t_bank(rs.getString("o_t_bank"));
+				System.out.println("#######################");
+				
+				orderDetailList.add(odto);
+				
+			} // while
+			
+			System.out.println("주문 상세정보 저장 완료: "+orderDetailList);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		
+		return orderDetailList;
+	} //orderDetail(b_num)
 	
 	
 	

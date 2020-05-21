@@ -104,12 +104,8 @@
    
 }
 .Wibox{
-<<<<<<< HEAD
-	
-    width: 650px;
-=======
+
     width: 100%;
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
     height: auto;
     padding: 10px 10px 10px 0;
     display: inline-block;
@@ -121,25 +117,12 @@
   max-height: 720px;
   height: 95%;}
 .Wcontent{display: inline-block;
-<<<<<<< HEAD
-    width: 320px;
-    height: auto;
-    margin-left: 30px;}
-    
-    
- a {text-decoration: none;}
 
-.Wamount {text-align: center; width: 100px; float: left; 
- padding-top: 10px; }   
- 
- 
-=======
     margin-left: 30px;
     }
     
 .Wamount {text-align: center; width: 100px; margin-left: auto;
  padding-top: 10px; }    
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 </style>
 
 
@@ -326,7 +309,7 @@
 				<div class="modal-content">
 					<span class="close">&times;</span>
 					<button class="si_btn" id="check_module">카드 결제</button>
-					<button class="si_btn" id="myBtn2">무통장 입금</button>
+					<button class="si_btn" id="myBtn2" name="">무통장 입금</button>
 						<!-- 실행 x -->
 					<button class="si_btn">모바일 결제</button>
 					<button class="si_btn">네이버 페이</button>
@@ -344,17 +327,17 @@
 									<table style="border-collapse: collapse;">
 										<tr>
 											<td>은행 선택</td>
-											<td><select id="bankch">
+											<td><select id="bankch" name="o_t_bank">
 													<option value="bk_ch" selected>은행을 선택해 주세요</option>
-													<option value="hana">하나은행: 135-123456-12345</option>
-													<option value="kakao">카카오뱅크: 3333-00-3333111</option>
-													<option value="shinhan">신한은행: 110-555-899996</option>
-													<option value="sc">sc제일은행: 779-22-220000</option>
+													<option value="하나은행">하나은행: 135-123456-12345</option>
+													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
+													<option value="신한은행">신한은행: 110-555-899996</option>
+													<option value="sc제일은행">sc제일은행: 779-22-220000</option>
 											</select></td>
 										</tr>
 										<tr>
 											<td>입금자명</td>
-											<td><input type="text" placeholder="코딩팜"> <br>
+											<td><input type="text" placeholder="코딩팜" name="o_t_payer"> <br>
 											<br></td>
 										</tr>
 										<tr>

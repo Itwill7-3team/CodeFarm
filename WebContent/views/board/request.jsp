@@ -1,19 +1,19 @@
-<%@page import="com.notice.db.NoticeDTO"%>
-<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="com.quest.db.QuestDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜-공지사항</title>
-<link href="./css/notice.css" rel="stylesheet">
+<title>코딩팜 - 묻고 답하기</title>
+<link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
 
-<jsp:include page="/include/header.jsp"></jsp:include>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<script>
 $(document).ready(function() {
 	
@@ -64,30 +64,11 @@ function timeBefore(timedate){
     return time;
 }
 </script>
-
-<%
-String email="";
-if(session.getAttribute("m_email")!=null){
-email=(String)session.getAttribute("m_email");
-}
-
-//페이징 정보
-String pageNum=(String)request.getAttribute("pageNum");
-int count = (Integer)request.getAttribute("count");
-int pageCount=(Integer)request.getAttribute("pageCount");
-int pageBlock=(int)request.getAttribute("pageBlock");
-int startPage=(int)request.getAttribute("startPage");
-int endPage=(int)request.getAttribute("endPage");
-
-
-
-%>
-
-<section class="community_header">
+	<section class="community_header">
 	<div class="container">
-		<h2>공지사항</h2>
+		<h2>기능 요청</h2>
 		<p>
-			공지사항
+			기능요청~ <br> 기능요청
 		</p>
 	</div>
 	</section>
@@ -104,104 +85,73 @@ int endPage=(int)request.getAttribute("endPage");
 			<li><a href=""><i class="far fa-comments"></i> 강의.기능 요청</a></li>
 		</ul>
 	</div>
-	</aside>
-	 <!-- 메인콘텐츠  -->
-	 	<div class="columns">
+	</aside> <!--메인콘텐츠  -->
+	<div class="columns">
 		<div class="main_content">
-		<%
-		if(count < 1){
-			System.out.println("공지없음");
-		%>
-		
-		<h1>등록된 공지사항이 없습니다 :-D</h1>
-		<span class="file-cta">
-        <img class="thumbnail_image" 
-				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.5;"> <!-- 당근이미지 -->
-        </span>
-        <div class="notice_list">
-		<%	
-		}else{
-		%>
+			<!-- 컨트롤러 -->
+			<div class="main_controler">
+				<div class="selector">
+					<select class="Q-sel controle_btn" name="solution">
+						<option value="해결/미해결">해결/미해결</option>
+						<option value="해결">해결</option>
+						<option value="미해결">미해결</option>
+					</select>
+				</div>
+				<div class="selector ">
+					<select class="Q-sel controle_btn" name="cls">
+						<option value="최신순">최신순</option>
+						<option value="최근답변순">최근답변순</option>
+						<option value="미답변순">미답변순</option>
+						<option value="추천순">추천순</option>
+					</select>
+				</div>
+				<div class="search">
+					<input type="text" name="search" class="controle_btn input"><i
+						class="fas fa-search"></i>
+				</div>
+			</div>
 			<!--  -->
 			<div class="content">
-				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
-				for(int i=0; i<noticeList.size();i++){
-					NoticeDTO ndto=noticeList.get(i);
-			%>
-				<div class="notice_list_item">
+				<%
+					String pageNum=request.getAttribute("pageNum").toString();
+					ArrayList<QuestDTO> boardList=(ArrayList<QuestDTO>)request.getAttribute("boardList");
+					for(QuestDTO bdto: boardList){
+				%>
+				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
-						<span class="N">N.</span>
-			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
-						<span><%=ndto.getN_title()%></span>
-			</a>
+						<span class="Q">Rq.</span>
+						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
 					</div>
 					<p class="post_metas">
+						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
 						<span class="post_time">시간 : 
-						<script>var time=timeBefore("<%=ndto.getReg_date()%>");
+						<script>var time=timeBefore("<%=bdto.getQ_reg_date()%>");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_writer">작성자 : <%=ndto.getN_writer()%></span>
+						<span class="post_locuter"><%=bdto.getQ_l_num() %></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-
+					<span>답변 1개 </span></div>
+					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
+					<div class="comment_link right_item"><input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
-				</div>
 				<%} %>
-				
 			</div>
 		</div>
-			<!--  -->
-			<div class="pageNation">
-						<%
-						if(startPage > pageBlock){
-							//페이지 [이전]
-						%>
-							<a href="./notice.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
-						<%
-						}
-						%>
-						<%
-						if(count != 0){
-							for(int i=startPage;i<=endPage;i++){
-							//페이지 숫자 뿌리기
-							%>
-							<a href="./notice.bo?pageNum=<%=i%>"><%=i %></a>
-							<%
-							}
-						}
-						%>
-						<%
-						if(endPage < pageCount){
-							//페이지 [다음]
-						%>
-							<a href="./notice.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
-						<%
-						}
-						%>
-						
-						<%if(email.equals("admin@naver.com")){%>
-						<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
-						<%}
-						
-						}%>
-					
-			</div>	
-			<!--  -->
-	</div>
-</div>
-
-	
-	 
+		<div class="content_side">
 		
-	
-	<!-- 메인콘텐츠  -->
-	</article>
-<jsp:include page="/include/footer.jsp"></jsp:include>
+		</div>
+		</div>
+		
+	</div>
 
+
+	</article>
+	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

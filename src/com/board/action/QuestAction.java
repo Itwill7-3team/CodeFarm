@@ -5,30 +5,26 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ask.db.AskDAO;
-import com.ask.db.AskDTO;
-import com.notice.db.NoticeDAO;
-import com.notice.db.NoticeDTO;
+import com.quest.db.QuestDAO;
+import com.quest.db.QuestDTO;
 
-public class NoticeAction implements Action {
+
+
+public class QuestAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//int num=Integer.parseInt(request.getParameter("num"));
 		ActionForward forward= new ActionForward();
-		System.out.println("@@@@@@NoticeAction_execute()실행");
+		QuestDAO bdao= new QuestDAO();
+		
 
-		//세션처리
-		
-		NoticeDAO ndao= new NoticeDAO();
-		
 		//게시글 유,무 체크
-		int check = ndao.getNoticeCount();
+		int check = bdao.getQuestCount();
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////		
 //페이징 처리
 //한페이지에 보여질 글 개수
-int pageSize=5;
+int pageSize=10;
 //현 페이지가 몇 페이지인지를 확인		
 String pageNum=null;
 pageNum = request.getParameter("pageNum");		
@@ -62,9 +58,9 @@ endPage=pageCount;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-ArrayList<NoticeDTO> noticeList=null;
+ArrayList<QuestDTO> boardList=null;
 		if(check != 0){ //글이 존재한다
-				noticeList= ndao.getNoticeList(startRow,pageSize);
+				boardList= bdao.getBoardList(startRow,pageSize);
 		}
 		
 		/// 페이징 처리 정보 저장
@@ -75,12 +71,13 @@ ArrayList<NoticeDTO> noticeList=null;
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 
-		request.setAttribute("noticeList", noticeList);
 		
-		//페이지 이동
-		forward.setPath("./views/board/notice.jsp");
+		System.out.println("QuestAction 실행");
+		request.setAttribute("boardList", boardList);
+		forward.setPath("./views/board/request.jsp");
 		forward.setRedirect(false);
 		
+		System.out.println("QuestAction 종료");
 		return forward;
 	}
 

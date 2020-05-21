@@ -72,6 +72,16 @@
     padding: 15px 0px;
     flex:1;
 }
+.Q{
+	font-size: 28px;
+    font-weight: 600;
+	color: #00c471;
+}
+.content a{
+    font-size: 24px;
+    font-weight: 500;
+    color: #000000;
+}
 .content_side{
 	width: 25%;
     float: left;

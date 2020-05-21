@@ -15,7 +15,6 @@ public class addLectureAction implements Action {
 		LectureDTO ldto= new LectureDTO();
 		
 		String id="";
-		System.out.println(request.getParameter("id"));
 		if(request.getParameter("id")!=null)
 			id=request.getParameter("id");
 		String title="";
@@ -49,7 +48,8 @@ public class addLectureAction implements Action {
     	if(request.getParameter("img")!=null)
     	img=request.getParameter("img");
     	int price=0;
-    	if(request.getParameter("price")!=null)
+    	System.out.println(request.getParameter("price"));
+    	if(request.getParameter("price")!=null && request.getParameter("price")!="")
     	price=Integer.parseInt(request.getParameter("price"));
 		ldto.setL_m_email(id);
     	ldto.setL_title(title);

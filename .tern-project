@@ -1,31 +1,21 @@
 {
-
   "ecmaVersion": 5,
-  "plugins": {
-    "guess-types": {
-      
-    },
-    "outline": {
-      
-
-    },
-    "node": {
-      
-
-
-    }
-  },
-  "libs": [
-    "browser",
-    "jquery"
-  ],
   "plugins": {
     "browser-extension": {
       
     },
     "jquery-extension": {
       
+    },
+    "guess-types": {
+      
+    },
+    "outline": {
+      
     }
   },
-  "ecmaVersion": 6
+  "libs": [
+    "browser",
+    "jquery"
+  ]
 }

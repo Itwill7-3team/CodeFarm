@@ -1,4 +1,4 @@
-<%@page import="com.question.db.QuestionDTO"%>
+<%@page import="com.ask.db.AskDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -113,30 +113,31 @@ function timeBefore(timedate){
 			<!--  -->
 			<div class="content">
 				<%
-					ArrayList<QuestionDTO> boardList=(ArrayList<QuestionDTO>)request.getAttribute("boardList");
-					for(QuestionDTO qdto: boardList){
+					String pageNum=request.getAttribute("pageNum").toString();
+					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
+					for(AskDTO bdto: boardList){
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
 					<div class="post_title">
-						<i class="fab fa-quora">.</i>
-						<span><%=qdto.getQ_title()%></span>
+						<span class="Q">Q.</span>
+						<span><a href="askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>"><%=bdto.getTitle()%></a></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">작성자 : <%=qdto.getQ_writer()%></span>
+						<span class="post_writer">작성자 : <%=bdto.getWriter()%></span>
 						<span class="post_time">시간 : 
-						<script>var time=timeBefore("<%=qdto.getQ_reg_date()%>");
+						<script>var time=timeBefore("<%=bdto.getReg_date()%>");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_locuter"><%=qdto.getQ_l_name() %></span>
+						<span class="post_locuter"><%=bdto.getL_num() %></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
 					<span>답변 1개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=qdto.getQ_num()%>'"></div>
+					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
 				<%} %>
