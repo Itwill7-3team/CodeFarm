@@ -1,3 +1,4 @@
+<%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,7 +13,7 @@
 
 
 
-	
+	<% LectureDTO ldto=(LectureDTO)request.getAttribute("ldto"); %>
 
 	
 </head>
@@ -79,7 +80,7 @@
 						<label class="menu_label">강의 제목</label>
 						<div class="input_box">
 							<input class="box_input" name="title" placeholder="제목을 입력해주세요"
-								autocomplete="off">
+								autocomplete="off" value="<%=ldto.getL_title() %>${ldto.l_title}">
 						</div>
 					</div>
 				</div>
@@ -88,10 +89,19 @@
 						<label class="menu_label">이런걸 배울수 있어요 <span class="tip">Tip<i
 								class="fas fa-angle-right"></i></span></label>
 					</div>
-						<input class="box_input" name="title" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
+						<input class="box_input" name="abilities" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
 						<button class="addInput button" data-name="abilities" value="1">추가하기</button>
 					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ul class="boxes abilities">
+						<%
+						String[] abilities=ldto.getL_abilities().split("/");
+						for(int i=0;i<abilities.length;i++){ %>
+			<li class="dynamic_box" data-content="<%= abilities[i] %>">
+			<div class="content_box"><%=abilities[i] %></div>
+			<div class="btns">
+				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
+				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
+						<%} %>
 						</ul>
 				</div>
 				<div class="field">
@@ -103,6 +113,15 @@
 						<button class="addInput button" data-name="targets" value="1">추가하기</button>
 						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ul class="boxes targets">
+						<%
+						String[] targets=ldto.getL_targets().split("/");
+						for(int i=0;i<targets.length;i++){ %>
+			<li class="dynamic_box" data-content="<%=targets[i] %>">
+			<div class="content_box"><%=targets[i] %></div>
+			<div class="btns">
+				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
+				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
+						<%} %>
 						</ul>
 				</div>
 				<div class="field">
@@ -114,6 +133,15 @@
 						<button class="addInput button" data-name="based" value="1">추가하기</button>
 						
 						<ul class="boxes based">
+						<%
+						String[] based=ldto.getL_based().split("/");
+						for(int i=0;i<based.length;i++){ %>
+			<li class="dynamic_box" data-content="<%=based[i] %>">
+			<div class="content_box"><%=based[i] %></div>
+			<div class="btns">
+				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
+				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
+						<%} %>
 						</ul>
 				</div>
 					<div class="field">
@@ -497,15 +525,15 @@ $(document).ready(function() {
 		});
 	});
 	//수업 추가 이벤트
-	$(".ui-sortable").on("click",".add_lecture_btn",function(){
+	$(".curriculum_list").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");
 		if(data==null){return;}
 		for(var i=Number($(this).parents("li").index()+1);i<=$(this).parents("ul").children().size();i++){
 				console.log(i);	
 				console.log("시작값:"+Number($(this).parents("li").index()+1)+"끝 값:"+$(this).parents("ul").children().size());
-			if($(".ui-sortable>li").eq(i).attr("class")=="unit unit_section ui-sortable-handle" || !$(".ui-sortable>li").eq(i) || $(this).parents("ul").children().size()==i ){
+			if($(".curriculum_list>li").eq(i).attr("class")=="unit unit_section ui-sortable-handle" || !$(".ui-sortable>li").eq(i) || $(this).parents("ul").children().size()==i ){
 					console.log("실행"+i);				
-				$(".ui-sortable>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
+				$(".curriculum_list>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
 						+'<div class="box unit_box">'
 						      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
 						      +'<div class="unit_btns">'
@@ -560,7 +588,7 @@ $(document).ready(function() {
 	 //정렬 이벤트
 	function reorder() {
 		var index=0;
-	    $(".ui-sortable").children("li").each(function(i, box) {
+	    $(".curriculum_list").children("li").each(function(i, box) {
 	    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
 	    		index++;
 	    	}else{
@@ -578,9 +606,9 @@ $(document).ready(function() {
 	        $(box).find(".unit_label").html("세션  "+i+" :");
 
 	    });
-			$(".ui-sortable").children("li").css("border-top","none");
-		if($(".ui-sortable").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
-			$(".ui-sortable").children().first().css("border-top","1px solid #5eceb3");
+			$(".curriculum_list").children("li").css("border-top","none");
+		if($(".curriculum_list").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
+			$(".curriculum_list").children().first().css("border-top","1px solid #5eceb3");
 	 }
 	 //가격 기본값 천원단위이하 짜름
 	 $(".box_input.price").on("change",function(){
