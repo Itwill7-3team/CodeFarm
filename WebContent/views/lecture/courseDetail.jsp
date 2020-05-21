@@ -50,7 +50,7 @@
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
 					payCheck = true;
-					return;
+					break;
 				}
 			}
 		}
