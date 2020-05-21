@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.basket.db.BasketDAO;
+import com.wishlist.db.WishlistDAO;
+import com.wishlist.db.WishlistDTO;
 
 
 public class BasketListAction implements Action {
@@ -36,14 +38,23 @@ public class BasketListAction implements Action {
 		// 장바구 리스트 가져와서 저장 
 		Vector vec = bkdao.getBasketList(id);
 
+		
+		//위시리스트 객체생성
+		WishlistDAO wdao= new WishlistDAO();
+		//위시리스트 객체 가져와서 저장
+		Vector vec1 = wdao.getWishList(id);
+		
 		// 해당정보 request 저장
 		ArrayList basketList = (ArrayList)vec.get(0);
 		ArrayList lectureList = (ArrayList)vec.get(1);
-		ArrayList wishlistList = (ArrayList)vec.get(2);
 		
+		ArrayList wishlistList = (ArrayList)vec1.get(0);
+		ArrayList wishLectureList = (ArrayList)vec1.get(1);
+				
 		request.setAttribute("basketList", basketList);
 		request.setAttribute("lectureList", lectureList);
 		request.setAttribute("wishlistList", wishlistList);
+		request.setAttribute("wishLectureList", wishLectureList);
 		
 		//request.setAttribute("basketList", vec.get(0));
 		
