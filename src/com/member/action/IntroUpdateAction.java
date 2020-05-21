@@ -12,6 +12,7 @@ public class IntroUpdateAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8"); 
 		HttpSession session = request.getSession();
 		String m_email = (String)session.getAttribute("m_email");
 		
@@ -28,10 +29,16 @@ public class IntroUpdateAction implements Action {
 			return null;
 		}
 		MemberDAO mdao = new MemberDAO();
+		PrintWriter out = response.getWriter();
 		mdao.IntroUpdate(m_email,m_intro,m_nick);
-		ActionForward forward = new ActionForward();
-		forward.setPath("./MemberInfo.me");
-		forward.setRedirect(true);
-		return forward;
+		out.println("<script>");
+		out.println("alert('회원정보 변경 완료');");
+		out.println("location.href='MemberInfo.me';");
+		out.println("</script>");
+		out.close();
+		
+		
+		
+		return null;
 	}
 }
