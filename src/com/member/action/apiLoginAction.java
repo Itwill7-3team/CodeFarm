@@ -24,10 +24,11 @@ public class apiLoginAction implements Action{
 		mdto.setM_email(m_email);
 		mdto.setM_pw(m_pw);
 		mdto.setM_nick(m_nick);
-		
+		System.out.println("@@@@@@@@@@mdto정보:  "+mdto);
 		mdao.apiLogin(mdto);
 		
 		session.setAttribute("m_email", m_email);
+		System.out.println("@@@@@@@@@@mdto정보:  "+mdto);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.le");
 		forward.setRedirect(true);

@@ -431,7 +431,7 @@ public class MemberDAO {
 						
 					}else {
 						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
-								+ "m_emailCheck) values (?,?,?,'회원',true)";
+								+ "m_regdate, m_emailCheck) values (?,?,?,'회원',now(),true)";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, mdto.getM_email());
 						pstmt.setString(2, mdto.getM_pw());

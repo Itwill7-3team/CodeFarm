@@ -13,6 +13,7 @@ public class MemberDTO {
 	private String m_rank;		//회원 등급
 	private String m_intro;		//회원 소개
 	private String m_emailHash;	//인증해시 코드
+	private String m_nick;		//닉네임
 	private boolean m_emailCheck;//이메일 인증 여부
 	//setter getter
 	public String getM_email() {
@@ -75,6 +76,13 @@ public class MemberDTO {
 	}
 	public void setM_emailCheck(boolean m_emailCheck) {
 		this.m_emailCheck = m_emailCheck;
+	}
+	
+	public String getM_nick() {
+		return m_nick;
+	}
+	public void setM_nick(String m_nick) {
+		this.m_nick = m_nick;
 	}
 	@Override
 	public String toString() {
