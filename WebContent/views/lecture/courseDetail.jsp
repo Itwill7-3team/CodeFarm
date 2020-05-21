@@ -134,7 +134,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 						<%-- lecture thumbnail --%>
 							<div class="column is-4-tablet thumbnail_container ">
 								<div class="image is_thumbnail">
-									<img src="./img/main-img/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>">
+									<img src="./upload/<%= ldto.getL_img() %>" alt="<%= ldto.getL_title() %>">
 								</div>
 							</div>
 						<%-- lecture thumbnail --%>
@@ -196,7 +196,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
 										</div>
 										<% } else { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary" onclick="location.href='BasketIn.ba?num=<%=ldto.getL_number() %>'">수강 신청</button>
+											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary">수강 신청</button>
 										</div>
 											<div class="course_btn_cover">
 												<button class="is_outlined course_sub_btn course_wish_btn wishBtn">
@@ -218,7 +218,8 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							<%-- SideMenu_info --%>
 								<div class="course_info_cover">
 									<div class="course_info_row">
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
+<!-- #004 강사 페이지 & 주소 변경 -->
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/DashBoard.bo?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
@@ -258,9 +259,10 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											}
 								%>
 										<li>
+<!-- #004 강사 페이지 & 주소 변경 -->
 											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
 												<div class="el_thumbnail">
-													<img src="./img/main-img/<%= lectureList.get(ja).getL_img().split(",")[0] %>" alt="<%= lectureList.get(ja).getL_title() %>">
+													<img src="./upload/<%= lectureList.get(ja).getL_img() %>" alt="<%= lectureList.get(ja).getL_title() %>">
 												</div>
 												<div class="el_info">
 													<div class="el_title"><%= lectureList.get(ja).getL_title() %></div>
@@ -268,7 +270,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 														<div class="el_subtitle">
 															<span>
 																<fmt:setLocale value="ko_KR"/>
-																<fmt:formatNumber value="<%= ldto.getL_price() %>" type="currency" />
+																<fmt:formatNumber value="<%= lectureList.get(ja).getL_price() %>" type="currency" />
 															</span>
 														</div>
 														<div class="el_metas">
@@ -289,6 +291,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 									</div>
 								<% if(lectureList.size() > 2){ %>
 									<div class="course_another_btn course_relation_btn">
+<!-- #004 강사 페이지 & 주소 변경 -->
 										<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">+ 다른 강의 더보기</a>
 									</div>
 								<% } %>
@@ -317,9 +320,11 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 					<li class="tabs_li reviews ">
 						<a href="#reviews">수강후기</a>
 					</li>
+				<% if(mdto != null && ldto.getL_m_email().equals(mdto.getM_email())){ %>
 					<li class="tabs_li reviews ">
 						<a href="addLecture.in?num=<%=ldto.getL_number()%>">수정하기</a>
 					</li>
+				<% } %>
 				</ul>
 			</div>
 		<%-- 강의 상세 Navbar --%>
@@ -334,7 +339,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 								<article class="description" id="description">
 								
 						<!-- l_description -->
-							<% if(!ldto.getL_description().equals(null)){ %>
+							<% if(!(ldto.getL_description().equals(null) || ldto.getL_description() == "")){ %>
 								<div class="course_summary description_sub">
 									<h3 class="sub_heading has-icon">이 강의는 <i class="far fa-lightbulb"></i></h3>
 									<%= ldto.getL_description() %>
@@ -343,7 +348,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							
 						<!-- l_abilities -->
 							<%
-								if(!ldto.getL_abilities().equals(null)){
+								if(!(ldto.getL_abilities().equals(null) || ldto.getL_abilities() == "")){
 									out.println("<div class='can_do description_sub'><h3 class='sub_heading has-icon'>이런 걸 배울 수 있어요 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_abilities().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_abilities().split("/")[i] + "</li>");
@@ -353,7 +358,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							%>
 		
 						<!-- l_content -->
-							<% if(!ldto.getL_content().equals(null)){ %>
+							<% if(!(ldto.getL_content().equals(null) || ldto.getL_content() == "")){ %>
 								<div class="body" itemprop="articleBody">
 									<%= ldto.getL_content() %>
 								</div>
@@ -361,7 +366,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							
 						<!-- l_targets -->
 							<%
-								if(!ldto.getL_targets().equals(null)){
+								if(!(ldto.getL_targets().equals(null) || ldto.getL_targets() == "")){
 									out.println("<div class='student_target description_sub'><h3 class='sub_heading has-icon'>도움 되는 분들 <i class='fa fa-smile-o'></i></h3><ul>");
 									//String[] targetSize = ldto.getL_targets().split("/");
 									for(int i=0; i<ldto.getL_targets().split("/").length; i++){
@@ -373,7 +378,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							
 						<!-- l_based -->
 							<%
-								if(!ldto.getL_based().equals(null)){
+								if(!(ldto.getL_based().equals(null) || ldto.getL_based() == "")){
 									out.println("<div class='prerequisite description_sub'><h3 class='sub_heading has-icon'>선수 지식 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_based().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_based().split("/")[i] + "</li>");
@@ -391,11 +396,12 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 									<div class="profile">
 										<div class="course_instructor_profile">
 											<figure class="image">
-<%-- DB에 회원 아이콘 등록 후 아래 코드 사용  --%>
-												<img class="is-rounded" src="./img/main-img/b4.png<%-- <%= mdto.getM_nick() %> --%>">
+<!-- #006 강사 회원 이미지 DB추가 & 주소 변경 -->
+												<img class="is-rounded" src="./upload/<%= lmdto.getM_nick() %>">
 											</figure>
 										</div>
 										<h4 class="name">
+<!-- #004 강사 페이지 & 주소 변경 -->
 											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 										</h4>
 									</div>
@@ -469,7 +475,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											
 												if(payCheck){
 											%>
-<%-- 영상 재생 페이지 이동 주소 확인 --%>
+<%-- #005 영상 재생 페이지 이동 주소 확인 --%>
 												<a class="unit_item" href="/lecturePlay.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
@@ -572,7 +578,11 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											<% if(reviewList.get(r_loop).getR_re_lev() == 0){ %>
 											<%-- 회원 아이콘 등록 --%>
 												<figure class="media-left image is-64x64">
-													<img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>
+<!--
+	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
+	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
+ -->
+													<img src='./img/main-img/lect_10.png' class='is-rounded' alt='<%= reviewList.get(r_loop).getR_writer() %>'>
 												</figure>
 											
 												<div class="media-content">
@@ -607,6 +617,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 													<%-- 답글 등록 버튼 --%>
 													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사")){ %>
 														<div class="reactions">
+<!-- #002 답글 등록 버튼 동작 -->
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">답글 쓰기</span>
 																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
@@ -623,6 +634,10 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 														<div class="article_container">
 															<article class="media comment">
 																<figure class="media-left image is-32x32">
+<!--
+	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
+	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
+ -->
 																	<img src="./img/main-img/lect_9.png" alt="<%= reviewList.get(r_loop).getR_writer() %>">
 																</figure>
 																<div class="media-content">
@@ -753,15 +768,11 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 		var hIcon = $(".wish > i");
 		
 		if(${ wdto != null && wdto.getW_l_num() == ldto.getL_number() }){
-			hIcon.addClass('fa fa-heart');
-			cIcon.addClass('fa fa-shopping-cart');
-			hIcon.removeClass("fa-heart-o");
-			cIcon.removeClass("fa-cart-plus");
+			hIcon.addClass('fa fa-heart').removeClass("fa-heart-o");
+			cIcon.addClass('fa fa-shopping-cart').removeClass("fa-cart-plus");
 		} else {
-			hIcon.addClass('fa fa-heart-o');
-			cIcon.addClass('fa fa-cart-plus');
-			hIcon.removeClass("fa-heart");
-			cIcon.removeClass("fa-shopping-cart");
+			hIcon.addClass('fa fa-heart-o').removeClass("fa-heart");
+			cIcon.addClass('fa fa-cart-plus').removeClass("fa-shopping-cart");
 		}
 	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
 		
@@ -779,12 +790,10 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 					},
 					success: function(data){
 						if(data.wishCheck == "insert"){
-							hIcon.addClass("fa-heart");
-							hIcon.removeClass("fa-heart-o");
+							hIcon.addClass("fa-heart").removeClass("fa-heart-o");
 							w_cnt.text(data.wishCount);
 						} else {
-							hIcon.addClass("fa-heart-o");
-							hIcon.removeClass("fa-heart");
+							hIcon.addClass("fa-heart-o").removeClass("fa-heart");
 							w_cnt.text(data.wishCount);
 						}
 					}
@@ -816,11 +825,9 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 					},
 					success : function(data){
 						if(data == "insert"){
-							cIcon.addClass("fa-shopping-cart");
-							cIcon.removeClass("fa-cart-plus");
+							cIcon.addClass("fa-shopping-cart").removeClass("fa-cart-plus");
 						} else {
-							cIcon.addClass("fa-cart-plus");
-							cIcon.removeClass("fa-shopping-cart");
+							cIcon.addClass("fa-cart-plus").removeClass("fa-shopping-cart");
 						}
 					}
 				});
@@ -835,6 +842,26 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 			}
 		});
 	<%-- 장바구니 --%>
+	
+	<%-- 수강신청 --%>
+	$(".learn_btn.purchase_btn").click(function(){
+		if(${ mdto == null }){
+			$.ajax({
+				url  : "./MemberLogin.me",
+				type : "POST",
+				data : { },
+				success : function(data) {
+					$(".login_form").html(data);
+				},
+				error : function(xhr, status, error) {
+					alert("error: " + error);
+				}
+			});
+		} else {
+			location.href = "BasketIn.ba?num=<%=ldto.getL_number() %>";
+		}
+	});
+	<%-- 수강신청 --%>
 	
 	<%-- 수강평 더 보기 버튼 생성 --%>
 		var review_cnt = $(".review_list .article_container").length;
@@ -859,7 +886,11 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 						if(json[i].r_re_lev == 0){
 						output += "<div class='article_container'><article class='media review_item'>"
 								+ "  <figure class='media-left image is-64x64'>"
-								+ "    <img src='./img/main-img/lect_10.png' class='swiper-lazy is-rounded' alt='default_profile.png'>"
+<%--
+	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
+	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
+--%>
+								+ "    <img src='./img/main-img/lect_10.png' class='is-rounded' alt='default_profile.png'>"
 								+ "  </figure>"
 								+ "  <div class='media-content'>"
 								+ "    <div class='content'>"
@@ -889,7 +920,8 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
 							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
 									+ "  <figure class='media-left image is-32x32'>"
-									+ "    <img src='./img/main-img/lect_9.png' alt='" + json[i].r_writer + "'>"
+<%-- #006 강사 회원 이미지 DB추가 & 주소 변경 --%>
+									+ "    <img src='./upload/" +  ${ lmdto.getM_nick() } + "' alt='" + json[i].r_writer + "'>"
 									+ "  </figure>"
 									+ "  <div class='media-content'><div class='content'><p>"
 									+ "    <small>"
