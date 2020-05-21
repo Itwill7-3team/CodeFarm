@@ -115,7 +115,8 @@
 .Wbox{float: left;}
 .Wmodal-content{max-width: 920px;
   max-height: 720px;
-  height: 95%;}
+  height: 95%;
+  overflow: auto;}
 .Wcontent{display: inline-block;
 
     margin-left: 30px;
