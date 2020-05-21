@@ -302,7 +302,7 @@
 								<article class="description" id="description">
 								
 						<!-- l_description -->
-							<% if(ldto.getL_description().equals(null)){ %>
+							<% if(!ldto.getL_description().equals(null)){ %>
 								<div class="course_summary description_sub">
 									<h3 class="sub_heading has-icon">이 강의는 <i class="far fa-lightbulb"></i></h3>
 									<%= ldto.getL_description() %>
@@ -311,7 +311,7 @@
 							
 						<!-- l_abilities -->
 							<%
-								if(ldto.getL_abilities().equals(null)){
+								if(!ldto.getL_abilities().equals(null)){
 									out.println("<div class='can_do description_sub'><h3 class='sub_heading has-icon'>이런 걸 배울 수 있어요 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_abilities().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_abilities().split("/")[i] + "</li>");
@@ -321,7 +321,7 @@
 							%>
 		
 						<!-- l_content -->
-							<% if(ldto.getL_content().equals(null)){ %>
+							<% if(!ldto.getL_content().equals(null)){ %>
 								<div class="body" itemprop="articleBody">
 									<%= ldto.getL_content() %>
 								</div>
@@ -329,7 +329,7 @@
 							
 						<!-- l_targets -->
 							<%
-								if(ldto.getL_targets().equals(null)){
+								if(!ldto.getL_targets().equals(null)){
 									out.println("<div class='student_target description_sub'><h3 class='sub_heading has-icon'>도움 되는 분들 <i class='fa fa-smile-o'></i></h3><ul>");
 									//String[] targetSize = ldto.getL_targets().split("/");
 									for(int i=0; i<ldto.getL_targets().split("/").length; i++){
@@ -341,7 +341,7 @@
 							
 						<!-- l_based -->
 							<%
-								if(ldto.getL_based().equals(null)){
+								if(!ldto.getL_based().equals(null)){
 									out.println("<div class='prerequisite description_sub'><h3 class='sub_heading has-icon'>선수 지식 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_based().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_based().split("/")[i] + "</li>");
