@@ -15,11 +15,13 @@ initial-scale=1.0, maximum-scale=3.0"/>
 <%
 	String loginEmail="";
 	String nick="";
-	String rank="";
+	int rank=0;
 	if(session.getAttribute("m_email")!=null){
 	 loginEmail=(String)session.getAttribute("m_email");
 	 nick=(String)session.getAttribute("nick");
-	 rank=(String)session.getAttribute("m_rank");
+	 if(session.getAttribute("m_rank")!=null){
+	 rank=(int)session.getAttribute("m_rank");
+	 }
 	}
 %>
 <jsp:include page="nav-footer.jsp" />
@@ -231,25 +233,30 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											</div>
 											<div class="right_content">
 											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
-											<span class="rank">학생<!-- 회원 등급 --></span>
+											<%if(rank>1) {%><span class="rank">학생<!-- 회원 등급 --></span><%} %>
 											</div>
 										</div>
 									</div>
 									<div class="profile_modal_menu">
 									<div class="tab_content">
-										<span class="tab_item active">학생<!-- 회원 등급  --></span>
-										<span class="tab_item">지식공유<!-- 회원 등급  --></span>
+										<span class="tab_item isActive" data-type="students_list">학생<!-- 회원 등급  --></span>
+										<span class="tab_item" data-type="instructor_list">지식공유<!-- 회원 등급  --></span>
 									</div>
 									<div class="list_content">
-										<ul>
+										<ul class="students_list">
 											<a href="#"><li class="list_item">이어서 학습하기</li></a>
 											<a href="#"><li class="list_item">수강중인 강의</li></a>
 											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
 											<a href="#"><li class="list_item">내 질문 답변</li></a>
 											<a href="#"><li class="list_item">구매내역</li></a>
+											
+										</ul>
+										<%if(rank>1){ %>
+										<ul class="instructor_list" style="display:none;">
 											<a href="addLecture.in"><li class="list_item">강의등록하기</li></a>
 											<a href="addLectureList.in"><li class="list_item">강의목록</li></a>
 										</ul>
+										<%} %>
 									</div>
 									</div>
 									<div class="profile_modal_footer">
@@ -342,8 +349,19 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 		});
 	});
-
+	//profile 학생 지식공유자 선택
+	$(".profile_modal_menu").on("click",".tab_item",function(){
+		$(".tab_item").removeClass("isActive");		
+		$(this).addClass("isActive");
+	if($(this).attr("data-type")=="students_list"){
+			$(".students_list").show();
+			$(".instructor_list").hide();
+	}else{
+		$(".students_list").hide();
+		$(".instructor_list").show();
+	}
 	
+	});
 	 
 	
 	function getCarts(){
