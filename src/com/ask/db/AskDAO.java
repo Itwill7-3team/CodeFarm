@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.notice.db.NoticeDTO;
+
 
 public class AskDAO {
 	Connection con= null;
@@ -69,6 +71,7 @@ public class AskDAO {
 		try{
 			con=getConnection();
 			sql="select * from board "
+					+ "where re_lev=0 " //질문만 보이게~
 					+ "order by re_ref desc, re_seq asc "
 					+ "limit ?,?";
 			pstmt=con.prepareStatement(sql);
@@ -76,6 +79,38 @@ public class AskDAO {
 			pstmt.setInt(2, pageSize); //가져갈 글의 개수
 			
 			rs=pstmt.executeQuery();
+			while(rs.next()){
+				AskDTO adto=new AskDTO();
+				adto.setNum(rs.getInt("num"));
+				adto.setL_num(rs.getInt("l_num"));
+				adto.setType(rs.getString("type"));
+				adto.setTitle(rs.getString("title"));
+				adto.setContent(rs.getString("content"));
+				adto.setWriter(rs.getString("writer"));
+				adto.setRe_lev(rs.getInt("re_lev"));
+				adto.setRe_ref(rs.getInt("re_ref"));
+				adto.setRe_seq(rs.getInt("re_seq"));
+				adto.setReg_date(rs.getTimestamp("reg_date"));
+				boardList.add(adto);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return boardList;
+	}
+	public ArrayList<AskDTO> getAnswerList(int num){
+		ArrayList<AskDTO> boardList= new ArrayList<AskDTO>();
+		try{
+			con=getConnection();
+			sql="select * from board "
+					+ "where re_lev>0 and re_ref=? " //답글만~
+					+ "order by re_seq asc ";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,num); 
+			rs=pstmt.executeQuery();
+			
 			while(rs.next()){
 				AskDTO adto=new AskDTO();
 				adto.setNum(rs.getInt("num"));
@@ -130,6 +165,93 @@ public class AskDAO {
 		return adto;
 	}
 	
+	//C-insertAnswer(ndto)
+		public int insertQuestion(AskDTO adto) {
+			int check=-1;
+			int num=0;
+			//1: 성공/ -1: 실패
+			
+			try {
+				//1,2
+				con=getConnection();
+				
+				//3 글번호 => 오토인크리먼트
+				sql="select max(num) from board";
+				pstmt= con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					num=rs.getInt("max(num)")+1;
+				}
+				System.out.println("글번호:"+num);
+				//3 글작성메서드
+//				sql="insert into board (content,writer,re_ref,re_lev,re_seq) values(?,?,?,?,?)";
+//				pstmt=con.prepareStatement(sql);
+//				pstmt.setString(1, adto.getContent());
+//				pstmt.setString(2, adto.getWriter());
+//				pstmt.setInt(3, adto.getRe_ref()); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
+//				pstmt.setInt(4, adto.getRe_lev()); //re_lev :초기화 => 답글 들여쓰기
+//				pstmt.setInt(5, 0); //re_seq :초기화 => 답글 순서
+//				check=pstmt.executeUpdate();
+				//4
+				if(check==1){
+					System.out.println("글쓰기 성공"+check);
+				}else{
+					System.out.println("글쓰기 실패"+check);
+				}					
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return check;
+		}
+		//insertAnswer(adto)
+		
+		//C-insertAnswer(ndto)
+		public int insertAnswer(AskDTO adto) {
+			int check=-1;
+			int num=0;
+			//1: 성공/ -1: 실패
+			
+			try {
+				//1,2
+				con=getConnection();
+				
+				//3 글번호 => 오토인크리먼트
+				sql="select max(num) from board";
+				pstmt= con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					num=rs.getInt("max(num)")+1;
+				}
+				System.out.println("글번호:"+num);
+				//3 글작성메서드
+				sql="insert into board (type,title,content,writer,re_ref,re_lev,re_seq) values(?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, adto.getType());
+				pstmt.setString(2, adto.getTitle());
+				pstmt.setString(3, adto.getContent());
+				pstmt.setString(4, adto.getWriter());
+				pstmt.setInt(5, adto.getRe_ref()); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
+				pstmt.setInt(6, adto.getRe_lev()); //re_lev :초기화 => 답글 들여쓰기
+				pstmt.setInt(7, 0); //re_seq :초기화 => 답글 순서
+				check=pstmt.executeUpdate();
+				//4
+				if(check==1){
+					System.out.println("글쓰기 성공"+check);
+				}else{
+					System.out.println("글쓰기 실패"+check);
+				}					
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return check;
+		}
+		//insertAnswer(adto)
 	
 	
 }

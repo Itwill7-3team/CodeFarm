@@ -23,9 +23,9 @@
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "n1A2gvk1H0li6JGsisBI",
-				callbackUrl: "http://localhost:8090/CodeFarm/Main.le",
+				callbackUrl: "http://localhost:8090/CodeFarm/test.me",
 				isPopup: false,
-				callbackHandle: true
+				callbackHandle: false
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
 			}
 		);
@@ -45,8 +45,9 @@
 						naverLogin.reprompt();
 						return;
 					}
-
-					window.location.replace("http://localhost:8090/CodeFarm/Main.le");
+						console.log(status);
+					
+					window.location.replace("http://localhost:8090/CodeFarm/naverLoginAction.me");
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}

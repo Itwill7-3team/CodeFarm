@@ -86,10 +86,11 @@ public class MemberDTO {
 	//toString
 	@Override
 	public String toString() {
-		return "MemberDTO [m_email=" + m_email + ", m_pw=" + m_pw + ", m_regdate=" + m_regdate + ", m_name=" + m_name
-				+ ", m_phone=" + m_phone + ", m_addr=" + m_addr + ", m_rank=" + m_rank + ", m_intro=" + m_intro
-				+ ", m_emailHash=" + m_emailHash + ", m_emailCheck=" + m_emailCheck + "]";
+		return "MemberDTO [m_email=" + m_email + ", m_nick=" + m_nick + ", m_pw=" + m_pw + ", m_regdate=" + m_regdate
+				+ ", m_name=" + m_name + ", m_phone=" + m_phone + ", m_addr=" + m_addr + ", m_rank=" + m_rank
+				+ ", m_intro=" + m_intro + ", m_emailHash=" + m_emailHash + ", m_emailCheck=" + m_emailCheck + "]";
 	}
+	
 	
 	
 

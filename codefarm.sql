@@ -32,7 +32,7 @@ CREATE TABLE `basket` (
   `b_l_price` int(11) NOT NULL DEFAULT '0',
   `b_l_name` varchar(45) NOT NULL,
   PRIMARY KEY (`b_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
-INSERT INTO `basket` VALUES (3,'test',4,'2020-05-09 12:17:09',50000,'vue.js'),(4,'test',5,'2020-05-09 12:32:06',50000,'react'),(5,'qsz78547@naver.com',2,'2020-05-18 01:48:10',50000,'Nodejs');
+INSERT INTO `basket` VALUES (3,'test',4,'2020-05-09 12:17:09',50000,'vue.js'),(4,'test',5,'2020-05-09 12:32:06',50000,'react'),(5,'admin@naver.com',4,'2020-05-20 01:11:03',50000,'vue.js');
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `board` (
   `re_ref` int(11) DEFAULT '0',
   `re_seq` int(11) DEFAULT '0',
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `l_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `l_num` int(11) DEFAULT NULL,
   PRIMARY KEY (`num`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -73,7 +73,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,'askAnswer','제목1','내용1','작성자1',0,0,0,'2020-05-05 06:54:59','Vue.js 완벽 가이드 - 실습과 리팩토링으로 배우는 실전 개념'),(2,'askAnswer','제목2','내용2','작성자2',0,0,0,'2020-05-05 06:54:59','프로그래밍 시작하기 : 파이썬 입문 (Inflearn Original)'),(3,'askss','제목3','내용3','작성자3',0,0,0,'2020-05-05 06:55:27','따라하며 배우는 노드, 리액트 시리즈 - 기본 강의');
+INSERT INTO `board` VALUES (1,'askAnswer','제목1','내용1','작성자1',0,0,0,'2020-05-05 06:54:59',1),(2,'askAnswer','제목2','내용2','작성자2',0,0,0,'2020-05-05 06:54:59',2),(3,'askss','제목3','내용3','작성자3',0,0,0,'2020-05-05 06:55:27',3);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `lecture` (
   `start_msg` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `end_msg` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`l_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `lecture` (
 
 LOCK TABLES `lecture` WRITE;
 /*!40000 ALTER TABLE `lecture` DISABLE KEYS */;
-INSERT INTO `lecture` VALUES (1,'admin@naver.com','SpringFrameWork','lee','','','','SpringFrameWork','웹개발','웹개발','','lect_64.png,null,null,null',50000,0,0,1,'2020-05-09 09:32:04','2020-05-09 09:32:04',0,NULL,NULL),(2,'admin@naver.com','Nodejs','lee','','','','Nodejs','웹개발','웹개발','','lect_71.png,null,null,null',50000,0,0,1,'2020-05-09 09:36:49','2020-05-09 09:36:49',0,NULL,NULL),(3,'admin@naver.com','Phython','lee','','','','Phython','웹개발','웹개발','','lect_81.png,null,null,null',50000,0,0,1,'2020-05-09 09:42:57','2020-05-09 09:42:57',0,NULL,NULL),(4,'admin@naver.com','vue.js','lee','','','','vue.js','웹개발','웹개발','','lect_91.png,null,null,null',50000,0,0,1,'2020-05-09 09:43:13','2020-05-09 09:43:13',0,NULL,NULL),(5,'admin@naver.com','react','lee','','','','react','웹개발','웹개발','','lect_101.png,null,null,null',50000,0,0,1,'2020-05-09 09:43:29','2020-05-09 09:43:29',0,NULL,NULL),(6,'admin@naver.com','Java','lee','','','','Java','웹개발','웹개발','','lect_11.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:03','2020-05-09 09:45:03',0,NULL,NULL),(7,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_21.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:23','2020-05-09 09:45:23',0,NULL,NULL),(8,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_31.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:33','2020-05-09 09:45:33',0,NULL,NULL),(9,'admin@naver.com','html&css3','lee','','','','html&css3','웹개발','웹개발','','lect_41.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:54','2020-05-09 09:45:54',0,NULL,NULL),(10,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_51.png,null,null,null',50000,0,0,1,'2020-05-09 09:46:14','2020-05-09 09:46:14',0,NULL,NULL),(11,'admin@naver.com','알고리즘','lee','','','','알고리즘','알고리즘','알고리즘','','inf_11.png,null,null,null',50000,0,0,1,'2020-05-09 09:46:57','2020-05-09 09:46:57',0,NULL,NULL),(12,'admin@naver.com','머신러닝','lee','','','','머신러닝','머신러닝','머신러닝','','inf_21.png,null,null,null',50000,0,0,1,'2020-05-09 09:47:24','2020-05-09 09:47:24',0,NULL,NULL),(13,'admin@naver.com','포토샵','lee','','','','포토샵','포토샵','포토샵','','inf_31.png,null,null,null',50000,0,0,1,'2020-05-09 13:05:20','2020-05-09 13:05:20',0,NULL,NULL),(14,'admin@naver.com','C언어','lee','','','','C언어','C','C','','inf_41.png,null,null,null',50000,0,0,1,'2020-05-09 13:05:52','2020-05-09 13:05:52',0,NULL,NULL),(15,'admin@naver.com','자바스크립트','lee','','','','자바스크립트','웹개발','웹개발','','inf_51.png,null,null,null',50000,0,0,1,'2020-05-09 13:06:25','2020-05-09 13:06:25',0,NULL,NULL),(19,'qsz78547@naver.com','asdasd','asdasd/','asdasd/','asdas/','asdasd','<p>asdasd</p>','IT프로그래밍','','입문','stainsort.png',3000,0,0,0,'2020-05-19 09:11:31','2020-05-19 09:11:31',0,NULL,NULL);
+INSERT INTO `lecture` VALUES (1,'admin@naver.com','SpringFrameWork','lee','','','','SpringFrameWork','웹개발','웹개발','','lect_64.png,null,null,null',50000,0,0,1,'2020-05-09 09:32:04','2020-05-09 09:32:04',0,NULL,NULL),(2,'admin@naver.com','Nodejs','lee','','','','Nodejs','웹개발','웹개발','','lect_71.png,null,null,null',50000,0,0,1,'2020-05-09 09:36:49','2020-05-09 09:36:49',0,NULL,NULL),(3,'admin@naver.com','Phython','lee','','','','Phython','웹개발','웹개발','','lect_81.png,null,null,null',50000,0,0,1,'2020-05-09 09:42:57','2020-05-09 09:42:57',0,NULL,NULL),(4,'admin@naver.com','vue.js','lee','','','','vue.js','웹개발','웹개발','','lect_91.png,null,null,null',50000,0,0,1,'2020-05-09 09:43:13','2020-05-09 09:43:13',0,NULL,NULL),(5,'admin@naver.com','react','lee','','','','react','웹개발','웹개발','','lect_101.png,null,null,null',50000,0,0,1,'2020-05-09 09:43:29','2020-05-09 09:43:29',0,NULL,NULL),(6,'admin@naver.com','Java','lee','','','','Java','웹개발','웹개발','','lect_11.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:03','2020-05-09 09:45:03',0,NULL,NULL),(7,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_21.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:23','2020-05-09 09:45:23',0,NULL,NULL),(8,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_31.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:33','2020-05-09 09:45:33',0,NULL,NULL),(9,'admin@naver.com','html&css3','lee','','','','html&css3','웹개발','웹개발','','lect_41.png,null,null,null',50000,0,0,1,'2020-05-09 09:45:54','2020-05-09 09:45:54',0,NULL,NULL),(10,'admin@naver.com','lecture','lee','','','','lecture','웹개발','웹개발','','lect_51.png,null,null,null',50000,0,0,1,'2020-05-09 09:46:14','2020-05-09 09:46:14',0,NULL,NULL),(11,'admin@naver.com','알고리즘','lee','','','','알고리즘','알고리즘','알고리즘','','inf_11.png,null,null,null',50000,0,0,1,'2020-05-09 09:46:57','2020-05-09 09:46:57',0,NULL,NULL),(12,'admin@naver.com','머신러닝','lee','','','','머신러닝','머신러닝','머신러닝','','inf_21.png,null,null,null',50000,0,0,1,'2020-05-09 09:47:24','2020-05-09 09:47:24',0,NULL,NULL),(13,'admin@naver.com','포토샵','lee','','','','포토샵','포토샵','포토샵','','inf_31.png,null,null,null',50000,0,0,1,'2020-05-09 13:05:20','2020-05-09 13:05:20',0,NULL,NULL),(14,'admin@naver.com','C언어','lee','','','','C언어','C','C','','inf_41.png,null,null,null',50000,0,0,1,'2020-05-09 13:05:52','2020-05-09 13:05:52',0,NULL,NULL),(15,'admin@naver.com','자바스크립트','lee','','','','자바스크립트','웹개발','웹개발','','inf_51.png,null,null,null',50000,0,0,1,'2020-05-09 13:06:25','2020-05-09 13:06:25',0,NULL,NULL),(19,'qsz78547@naver.com','asdasd','asdasd/','asdasd/','asdas/','asdasd','<p>asdasd</p>','IT프로그래밍','','입문','stainsort.png',3000,0,0,0,'2020-05-19 09:11:31','2020-05-19 09:11:31',0,NULL,NULL),(20,'qsz78547@naver.com','','','','','','<p><br></p>','undefined','','입문','업로드 할 파일을 선택해주세요',0,0,0,0,'2020-05-20 00:24:27','2020-05-20 00:24:27',0,NULL,NULL);
 /*!40000 ALTER TABLE `lecture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,6 +191,7 @@ CREATE TABLE `member` (
   `m_pw` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `m_regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `m_name` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `m_nick` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `m_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `m_addr` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `m_rank` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '비회원',
@@ -207,7 +208,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('admin@naver.com','cjswo15935778','2020-05-10 08:25:09',NULL,NULL,NULL,'정회원',NULL,'4f96c32aaa821492',1),('mimimido12@naver.com','1234','2020-05-11 02:07:51',NULL,NULL,NULL,'비회원',NULL,'1e5653d53da40af7',1),('qsz78547@naver.com','1234','2020-05-10 08:25:09',NULL,NULL,NULL,'정회원',NULL,'4f96c32aaa821492',1);
+INSERT INTO `member` VALUES ('admin@naver.com','cjswo15935778','2020-05-10 08:25:09','admin',NULL,NULL,NULL,'정회원',NULL,'4f96c32aaa821492',1),('mimimido12@naver.com','1234','2020-05-11 02:07:51','민수','mimimido12',NULL,NULL,'비회원',NULL,'1e5653d53da40af7',1),('qsz78547@naver.com','1234','2020-05-10 08:25:09','변재정','까군',NULL,NULL,'정회원','자신을 소개를 해주세요.\r\n            	','4f96c32aaa821492',1);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,40 +243,6 @@ INSERT INTO `n_board` VALUES (1,'라즈베리파이4 초보자라서요..현재 
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
-  `o_num` int(11) NOT NULL AUTO_INCREMENT,
-  `o_b_num` varchar(45) DEFAULT NULL,
-  `o_l_price` int(11) NOT NULL,
-  `o_l_num` int(11) NOT NULL,
-  `o_l_name` varchar(45) NOT NULL,
-  `o_m_id` varchar(45) NOT NULL,
-  `o_t_type` varchar(45) NOT NULL,
-  `o_t_bank` varchar(45) NOT NULL,
-  `o_t_payer` varchar(45) NOT NULL,
-  `o_t_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `o_sum_money` int(11) NOT NULL,
-  `o_status` int(11) NOT NULL DEFAULT '0',
-  `orderlistcol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`o_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `orderlist`
 --
 
@@ -294,8 +261,11 @@ CREATE TABLE `orderlist` (
   `o_t_payer` varchar(45) NOT NULL,
   `o_t_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `o_sum_money` int(11) NOT NULL,
+  `o_t_b_num` varchar(45) DEFAULT NULL,
+  `o_status` varchar(45) NOT NULL DEFAULT '입금대기',
+  `o_t_b_reg_date` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`o_num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,6 +274,7 @@ CREATE TABLE `orderlist` (
 
 LOCK TABLES `orderlist` WRITE;
 /*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
+INSERT INTO `orderlist` VALUES (1,'20200520-1',50000,1,'SpringFrameWork','qsz78547@naver.com','무통장 입금','kakao','브즈즈','2020-05-20 07:41:55',0,NULL,'입금대기',NULL),(2,'20200520-1',50000,4,'vue.js','qsz78547@naver.com','무통장 입금','kakao','브즈즈','2020-05-20 07:41:55',0,NULL,'입금대기',NULL),(3,'20200520-1',50000,2,'Nodejs','qsz78547@naver.com','무통장 입금','kakao','브즈즈','2020-05-20 07:41:55',0,NULL,'입금대기',NULL),(4,'20200520-4',50000,2,'Nodejs','qsz78547@naver.com','무통장 입금','hana','브즈즈','2020-05-20 07:44:30',0,NULL,'입금대기',NULL),(5,'20200520-4',50000,1,'SpringFrameWork','qsz78547@naver.com','무통장 입금','hana','브즈즈','2020-05-20 07:44:30',0,NULL,'입금대기',NULL),(6,'20200520-4',50000,4,'vue.js','qsz78547@naver.com','무통장 입금','hana','브즈즈','2020-05-20 07:44:30',0,NULL,'입금대기',NULL),(7,'20200520-4',50000,13,'포토샵','qsz78547@naver.com','무통장 입금','hana','브즈즈','2020-05-20 07:44:30',0,NULL,'입금대기',NULL),(8,'20200520-8',50000,3,'Phython','qsz78547@naver.com','무통장 입금','shinhan','조수아','2020-05-20 08:23:07',50000,NULL,'입금대기',NULL),(9,'20200520-8',50000,2,'Nodejs','qsz78547@naver.com','무통장 입금','shinhan','조수아','2020-05-20 08:23:07',50000,NULL,'입금대기',NULL);
 /*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,7 +376,7 @@ CREATE TABLE `wishlist` (
   `w_l_num` int(11) NOT NULL,
   `w_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`w_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -414,7 +385,7 @@ CREATE TABLE `wishlist` (
 
 LOCK TABLES `wishlist` WRITE;
 /*!40000 ALTER TABLE `wishlist` DISABLE KEYS */;
-INSERT INTO `wishlist` VALUES (2,'test',2,'2020-05-09 11:55:58'),(3,'test',3,'2020-05-11 03:56:53'),(4,'qsz78547@naver.com',1,'2020-05-18 01:47:54');
+INSERT INTO `wishlist` VALUES (9,'qsz78547@naver.com',4,'2020-05-20 03:07:22'),(10,'qsz78547@naver.com',3,'2020-05-20 03:07:23'),(11,'qsz78547@naver.com',2,'2020-05-20 08:31:02'),(12,'qsz78547@naver.com',1,'2020-05-20 08:42:12');
 /*!40000 ALTER TABLE `wishlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,4 +406,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-19 19:05:59
+-- Dump completed on 2020-05-21 12:20:42
