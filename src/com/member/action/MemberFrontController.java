@@ -214,6 +214,44 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/MemberTechRequestAction.me")) {
+			action = new TechRequestAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/test.me")){
+			// 회원가입 처리페이지 (/MemberJoin.me)
+			// 회원가입처리 페이지로 바로 이동
+			System.out.println("/MemberJoin.me 주소요청 ");
+			
+			// ActionForward 객체 생성
+			forward = new ActionForward();
+			forward.setPath("./views/member/test.jsp");
+			forward.setRedirect(false);		
+			
+		}else if(command.equals("/naverLogin.me")){
+			// 회원가입 처리페이지 (/MemberJoin.me)
+			// 회원가입처리 페이지로 바로 이동
+			System.out.println("/MemberJoin.me 주소요청 ");
+			
+			// ActionForward 객체 생성
+			forward = new ActionForward();
+			forward.setPath("./views/member/naver_login.jsp");
+			forward.setRedirect(false);		
+			
+		}else if(command.equals("/apiLoginAction.me")){
+			System.out.println("apiLoginAction.me호출");	
+
+			action = new apiLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		

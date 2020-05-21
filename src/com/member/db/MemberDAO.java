@@ -330,6 +330,7 @@ public class MemberDAO {
 						mdto.setM_rank(rs.getString("m_rank"));
 						mdto.setM_addr(rs.getString("m_addr"));
 						mdto.setM_intro(rs.getString("m_intro"));
+						mdto.setM_nick(rs.getString("m_nick"));
 						mdto.setM_name(rs.getString("m_name"));
 						mdto.setM_phone(rs.getString("m_phone"));
 						mdto.setM_pw(rs.getString("m_pw"));
@@ -347,13 +348,13 @@ public class MemberDAO {
 			
 			
 			//자기소개 업데이트
-			public void IntroUpdate(String m_email,String m_intro, String m_name) {
+			public void IntroUpdate(String m_email,String m_intro, String m_nick) {
 				try {
 					con = getConnection();
-					sql = "update member set m_intro =?, m_name=? where m_email=?";
+					sql = "update member set m_intro =?, m_nick=? where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, m_intro);
-					pstmt.setString(2, m_name);
+					pstmt.setString(2, m_nick);
 					pstmt.setString(3, m_email);
 					pstmt.executeUpdate();
 				} catch (Exception e) {
@@ -396,6 +397,57 @@ public class MemberDAO {
 					closeDB();
 				}
 				
+			}
+			public void techRequest(MemberDTO mdto) {
+				try {
+					con = getConnection();
+					sql = "update member set m_name=?, m_intro=?, m_phone=?,"
+							+ "m_rank='강사',m_addr=? where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mdto.getM_name() );
+					pstmt.setString(2, mdto.getM_intro());
+					pstmt.setString(3, mdto.getM_phone());
+					pstmt.setString(4, mdto.getM_addr());
+					pstmt.setString(5, mdto.getM_email());
+					pstmt.executeUpdate();
+					
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					closeDB();
+				}
+			}
+			
+			public void apiLogin(MemberDTO mdto) {
+				
+				try {
+					con = getConnection();
+					sql = "select m_email from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, mdto.getM_email());
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						
+					}else {
+						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
+								+ "m_emailCheck) values (?,?,?,'회원',true)";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, mdto.getM_email());
+						pstmt.setString(2, mdto.getM_pw());
+						pstmt.setString(3, mdto.getM_nick());
+						pstmt.executeUpdate();
+						
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					closeDB();
+				}
+			
 			}
 	}
 	
