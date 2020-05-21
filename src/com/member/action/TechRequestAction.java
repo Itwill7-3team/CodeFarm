@@ -12,6 +12,8 @@ import com.member.db.MemberDTO;
 public class TechRequestAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		response.setContentType("text/html; charset=UTF-8"); 
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String m_email = (String)session.getAttribute("m_email");
 		String m_name = (String)request.getParameter("m_name");
@@ -19,6 +21,7 @@ public class TechRequestAction implements Action{
 		String m_phone = (String)request.getParameter("m_phone") +"-"+(String)request.getParameter("m_phone2")
 		+"-"+(String)request.getParameter("m_phone3");
 		String m_intro = (String)request.getParameter("M_intro");
+		
 		if(m_email == null ) {
 			PrintWriter out = response.getWriter();
 			out.print("<script>");
@@ -26,13 +29,26 @@ public class TechRequestAction implements Action{
 			out.print("location.href = 'Main.le';");
 			out.print("</script>");
 			out.close();
+			return null;
 		}
+		
+		
+		
+		
 		
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO mdto = new MemberDTO();
-		//mdao.techRequest(mdto);
+		mdto.setM_email(m_email);
+		mdto.setM_name(m_name);
+		mdto.setM_intro(m_intro);
+		mdto.setM_phone(m_phone);
+		mdto.setM_addr(m_addr);
+		mdao.techRequest(mdto);
 		
-		return null;
+		ActionForward forward = new ActionForward();
+		forward.setPath("./Main.le");
+		forward.setRedirect(true);
+		return forward;
 	}
 
 }
