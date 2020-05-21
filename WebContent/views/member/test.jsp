@@ -3,15 +3,21 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name = "google-signin-client_id"content = "82824441748-b31f99jjaemf8p813v0qgd9igdtmcul7.apps.googleusercontent.com">
 <script type="text/javascript">
 Kakao.init('c95ddde2f236e0f76a1f9ee16378769a');
-
+gapi.auth2.init (
+		{
+			client_id : '82824441748-b31f99jjaemf8p813v0qgd9igdtmcul7.apps.googleusercontent.com'
+		});
 </script>
 </head>
 <body>
 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 <div id="naverIdLogin"></div>
-
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
 <div id="kakaoLogin"></div>
 <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 
@@ -89,5 +95,15 @@ naverLogin.getLoginStatus(function (status) {
 });
 </script>
 <!-- // 네이버아이디로로그인 초기화 Script -->
+
+<script type="text/javascript">
+function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+</script>
 </body>
 </html>

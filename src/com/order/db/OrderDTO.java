@@ -15,13 +15,26 @@ public class OrderDTO {
 	private String o_t_payer;	//입금자명
 	private Timestamp o_t_date;	//결제시간
 	private int o_sum_money;	//결제 가격
-	private String o_status; // 주문 상태(무통장)
-
+	private int o_status; // 주문 상태(무통장)
+	private String o_t_b_reg_date;
+	private String o_t_b_num;
 	
-	public String getO_status() {
+	public String getO_t_b_num() {
+		return o_t_b_num;
+	}
+	public void setO_t_b_num(String o_t_b_num) {
+		this.o_t_b_num = o_t_b_num;
+	}
+	public String getO_t_b_reg_date() {
+		return o_t_b_reg_date;
+	}
+	public void setO_t_b_reg_date(String o_t_b_reg_date) {
+		this.o_t_b_reg_date = o_t_b_reg_date;
+	}
+	public int getO_status() {
 		return o_status;
 	}
-	public void setO_status(String o_status) {
+	public void setO_status(int o_status) {
 		this.o_status = o_status;
 	}
 	public int getO_num() {
@@ -95,7 +108,7 @@ public class OrderDTO {
 		return "OrderDTO [o_num=" + o_num + ", o_b_num=" + o_b_num + ", o_l_price=" + o_l_price + ", o_l_num=" + o_l_num
 				+ ", o_l_name=" + o_l_name + ", o_m_id=" + o_m_id + ", o_t_type=" + o_t_type + ", o_t_bank=" + o_t_bank
 				+ ", o_t_payer=" + o_t_payer + ", o_t_date=" + o_t_date + ", o_sum_money=" + o_sum_money + ", o_status="
-				+ o_status + "]";
+				+ o_status + ", o_t_b_reg_date=" + o_t_b_reg_date + ", o_t_b_num=" + o_t_b_num + "]";
 	}
 	
 

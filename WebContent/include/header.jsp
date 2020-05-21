@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
@@ -390,7 +392,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
-
+	
 </script>
 
 
