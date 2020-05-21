@@ -101,7 +101,13 @@ public class MemberLoginAction implements Action {
 		
 		// 페이지 이동(메인페이지)
 		ActionForward forward = new ActionForward();
-		forward.setPath("./Main.le");
+		
+		String referer = (String)request.getHeader("REFERER");
+		if(referer != null){
+			forward.setPath(referer);
+		} else {
+			forward.setPath("./Main.le");
+		}
 		
 		forward.setRedirect(true);
 		return forward;
