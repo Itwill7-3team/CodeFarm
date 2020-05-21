@@ -6,7 +6,7 @@
 	
 }
 p{
-	margin: 0 !important;
+	margin: 0;
 	align-self:center;
 }
 body{
@@ -46,13 +46,14 @@ h3{
 	min-height: 768px;
 }
 .content{
-	height: 768px;
+	height: 100%;
     width: 100%;
     display: flex;
     position: relative;
     margin: 0 auto;
     box-sizing: border-box;
     max-width: 1180px;
+    min-height: 768px;
    
 }
 .aside{
@@ -65,7 +66,7 @@ h3{
 }
 /* 기본설정  끝*/
 
-.menu-label{
+.menu_label{
 color: #cfcfcf;
     font-size: .75em;
     letter-spacing: .1em;
@@ -73,4 +74,36 @@ color: #cfcfcf;
 }
 .menu_container{
 	padding: 8px;
+}
+.menu_label:not(:last-child){
+	margin-bottom: 1em;
+}
+.menu_label:not(:first-child){
+	margin-top: 1em;
+}
+.menu_container li{
+	padding: 8px 12px;
+	cursor: pointer;
+	font-weight: 400;
+}
+.menu_container li.active{
+	font-weight: 700;
+    color: #1dc078;
+}
+table li,table th{
+border: solid #dbdbdb;
+    border-width: 0 0 1px;
+    padding: .5em .75em;
+    vertical-align: top;
+}
+.main_img{
+	max-width: 200px;
+    min-width: 100px;
+}
+.main_img>img{
+	height: 65.81px;
+    width: 100%;
+}
+a{
+	color: black;
 }

@@ -318,7 +318,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 						<a href="#reviews">수강후기</a>
 					</li>
 					<li class="tabs_li reviews ">
-						<a href="#reviews">수정하기</a>
+						<a href="addLecture.in?num=<%=ldto.getL_number()%>">수정하기</a>
 					</li>
 				</ul>
 			</div>
