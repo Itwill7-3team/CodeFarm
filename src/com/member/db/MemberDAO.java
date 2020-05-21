@@ -47,7 +47,7 @@ public class MemberDAO {
 	//이메일 체크  업데이트
 		public int update_emailcheck(String m_email) {
 			int check=-1;
-			sql = "update member set m_emailCheck = true, m_rank='회원' where m_email=? ";
+			sql = "update member set m_emailCheck = true, m_rank=1 where m_email=? ";
 			try {
 				con=getConnection();
 				pstmt = con.prepareStatement(sql);
@@ -283,7 +283,7 @@ public class MemberDAO {
 				    while(rs.next()){
 				    	MemberDTO mdto = new MemberDTO();
 				    	mdto.setM_email(rs.getString("m_email"));
-				    	mdto.setM_rank(rs.getString("m_rank"));
+				    	mdto.setM_rank(rs.getInt("m_rank"));
 				    	//  한사람의 정보를  memberList배열에 한칸으로 저저장
 				    	memberList.add(mdto);
 				    }
@@ -327,7 +327,7 @@ public class MemberDAO {
 					rs = pstmt.executeQuery();
 					if(rs.next()) {
 						mdto.setM_email(rs.getString("m_email"));
-						mdto.setM_rank(rs.getString("m_rank"));
+						mdto.setM_rank(rs.getInt("m_rank"));
 						mdto.setM_addr(rs.getString("m_addr"));
 						mdto.setM_intro(rs.getString("m_intro"));
 						mdto.setM_nick(rs.getString("m_nick"));
@@ -402,7 +402,7 @@ public class MemberDAO {
 				try {
 					con = getConnection();
 					sql = "update member set m_name=?, m_intro=?, m_phone=?,"
-							+ "m_rank='강사',m_addr=? where m_email=?";
+							+ "m_rank=2,m_addr=? where m_email=?";
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, mdto.getM_name() );
 					pstmt.setString(2, mdto.getM_intro());
@@ -434,7 +434,7 @@ public class MemberDAO {
 						return mdto;
 					}else {
 						sql = "insert into member (m_email, m_pw, m_nick, m_rank,"
-								+ "m_regdate, m_emailCheck) values (?,?,?,'회원',now(),true)";
+								+ "m_regdate, m_emailCheck) values (?,?,?,1,now(),true)";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, mdto.getM_email());
 						pstmt.setString(2, mdto.getM_pw());
