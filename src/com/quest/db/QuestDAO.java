@@ -1,4 +1,4 @@
-package com.question.db;
+package com.quest.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import com.review.db.ReviewDTO;
 
-public class QuestionDAO {
+public class QuestDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
@@ -44,11 +44,11 @@ public class QuestionDAO {
 	}//자원 해제
 	
 	//getQuestionCount()
-	public int getQuestionCount(){
+	public int getQuestCount(){
 		int check = 0;
 		try {
 			con = getConnection();
-			System.out.print("getQuestionCount() : ");
+			System.out.print("getQuestCount() : ");
 			
 			sql = "select count(*) from q_board";
 			pstmt = con.prepareStatement(sql);
@@ -65,8 +65,8 @@ public class QuestionDAO {
 		return check;
 	}
 	
-	public ArrayList<QuestionDTO> getBoardList(int startRow, int pageSize){
-		ArrayList<QuestionDTO> boardList= new ArrayList<QuestionDTO>();
+	public ArrayList<QuestDTO> getBoardList(int startRow, int pageSize){
+		ArrayList<QuestDTO> boardList= new ArrayList<QuestDTO>();
 		try{
 			con=getConnection();
 			sql="select * from q_board "
@@ -78,7 +78,7 @@ public class QuestionDAO {
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				QuestionDTO qdto=new QuestionDTO();
+				QuestDTO qdto=new QuestDTO();
 				qdto.setQ_num(rs.getInt("q_num"));
 				qdto.setQ_l_num(rs.getInt("q_l_num"));
 				qdto.setQ_title(rs.getString("q_title"));
@@ -99,8 +99,8 @@ public class QuestionDAO {
 	}
 	
 	
-	public QuestionDTO getBoard(int num){
-		QuestionDTO qdto= new QuestionDTO();
+	public QuestDTO getBoard(int num){
+		QuestDTO qdto= new QuestDTO();
 		try{
 			con=getConnection();
 			sql="select * from q_board where q_num = ?";

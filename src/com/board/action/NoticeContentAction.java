@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ask.db.AskDAO;
+import com.ask.db.AskDTO;
 import com.notice.db.NoticeDAO;
 import com.notice.db.NoticeDTO;
-import com.question.db.QuestionDAO;
-import com.question.db.QuestionDTO;
 
 public class NoticeContentAction implements Action {
 

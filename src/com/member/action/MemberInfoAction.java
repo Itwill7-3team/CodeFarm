@@ -30,6 +30,7 @@ public class MemberInfoAction implements Action{
 		
 		mdto = mdao.getInfo(m_email);
 		request.setAttribute("mdto", mdto);
+		session.setAttribute("nick", mdto.getM_nick());
 		ActionForward forward = new  ActionForward();
 		forward.setPath("./views/member/info.jsp");
 		forward.setRedirect(false);

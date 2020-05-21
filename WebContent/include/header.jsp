@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <link href="./css/header.css" rel="stylesheet">
 
-
 <script src="https://kit.fontawesome.com/2441771e3f.js"
 	crossorigin="anonymous"></script>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -265,7 +264,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 로그인 했을때  -->
 					<!-- 로그인 안했을때  -->
 						<div class="navbar-item">
-							<a  class="navbar-item bold"> <button class="btn bold login_btn">로그인</button></a>
+							<a  class="navbar-item bold"> <button id="login_btn" class="btn bold login_btn">로그인</button></a>
+							
 						</div>
 						<div class="navbar-item">
 							<a href="MemberJoin.me" class="navbar-item bold"> <button class="btn bold">회원가입</button></a>
@@ -360,7 +360,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
 						+"<div class='item_content'>"
 						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"
-						+"<p class='item_price'>"+data[i].lecturedata.l_price+"</p>"
+						+"<p class='item_price'>"+numberWithCommas(data[i].lecturedata.l_price)+"</p>"
 						+"</div>"
 						+"</a>" ; 
 				}
@@ -382,6 +382,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	$(".profile_hover").mouseout(function(){
 		$(".profile_modal_cover").removeClass("active");
 	});
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+
 </script>
 
 

@@ -1,5 +1,5 @@
+<%@page import="com.ask.db.AskDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
-<%@page import="com.question.db.QuestionDTO"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,10 +25,45 @@ if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
 }
 
-QuestionDTO bdto=(QuestionDTO)request.getAttribute("bdto");
+AskDTO bdto=(AskDTO)request.getAttribute("bdto");
 LectureDTO ldto= (LectureDTO)request.getAttribute("ldto");
 String pageNum=request.getAttribute("pageNum").toString();
 %>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+<script type="text/javascript">
+
+(function($){
+  // 여기에 코드를 작성
+	$(document).ready(function() {
+		  $('#summernote').summernote({
+			  height: 200,                 // set editor height
+			  minHeight: null,             // set minimum height of editor
+		      maxHeight: null,             // set maximum height of editor
+		      focus: true,                  // set focus to editable area after initializing summernote
+		      lang: "ko-KR",					// 한글 설정
+				placeholder: '답글을 입력하세요 :-D',	//placeholder 설정
+
+		  });
+		});
+
+		/* 이미지.. */
+		$('#summernote').summernote('insertImage', url, function ($image) {
+			  $image.css('width', $image.width() / 3);
+			  $image.attr('data-filename', 'retriever');
+			});
+})(jQuery);
+
+
+</script>
 
 <section class="community_header">
 	<div class="container">
@@ -58,12 +93,12 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<div class="main_content">
 			<!--  -->
 
-		<h1><span class="N">Q.</span><%=bdto.getQ_title()%></h1>
+		<h1><span class="N">Q.</span><%=bdto.getTitle()%></h1>
 		<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
 		<hr>
 		<div class="QnA_content">
-		<p>작성자: <%=bdto.getQ_writer() %></p>
-		<%=bdto.getQ_content() %>
+		<p>작성자: <%=bdto.getWriter()%></p>
+		<%=bdto.getContent()%>
 		
 		
 		
@@ -73,22 +108,19 @@ String pageNum=request.getAttribute("pageNum").toString();
 		
 		<div class="content_side">
 		<ul>
-		<h4>연관 강의</h4>
-<%-- 			<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList"); --%>
-<!--  				for(int i=0; i<noticeList.size();i++){ -->
-<!--  					bdto=noticeList.get(i); -->
-					
-<%-- 			%> --%>
+		<h4>해당 강의</h4>
+		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><img src="./upload/<%=ldto.getL_img().split(",")[0]%>" style="width: 85%;"></a></li>
 		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><p><%=ldto.getL_title()%></p></a></li>
-<%-- 		<%} %> --%>
+
+		<h4>연관 강의</h4>
+
 		
 		</ul>
 		</div>
-<!-- 		<!-- 관리자제어 -->
-		<%if(email.equals(bdto.getQ_writer())){%>
-<%-- 		<button onclick="location.href='askAnswerUpdate.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>';">수정하기</button> --%>
-<%-- 		<button onclick="location.href='askAnswerDeleteAction.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>';">삭제하기</button> --%>
-		
+<!--  -->
+		<%if(email.equals(bdto.getWriter())){%>
+		<button onclick="location.href='#';">수정하기</button>
+		<button onclick="location.href='#';">삭제하기</button>
 		<%}%>
 		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a>	
 		
@@ -97,17 +129,38 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<br>	
 		<br>	
 		<br>	
+		
+		
 
 	</div>
-	 
-		
+
 		
 	 
 		
 	<!-- 메인콘텐츠  -->
 	</article>
+	
+	<!-- 답글쓰기폼 -->
+<%
 
+String id="id";
+int idx= email.indexOf("@");
+id= email.substring(0,idx);
+
+System.out.print("id"+id);
+
+%>
+	<div class="answer_form">
+		<form action="#" method="post">
+		[답글] 글쓴이 : <%=id%><br>
+		<textarea name="n_content" id="summernote">
+		</textarea>
+		<input type="submit" value="글쓰기">
+		</form>
+	</div>
 <!-- 컨텐츠 -->
+
+
 <!-- 푸터 -->
 <jsp:include page="/include/footer.jsp"></jsp:include>
 <!-- 푸터 -->

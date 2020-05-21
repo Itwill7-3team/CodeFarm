@@ -132,8 +132,10 @@
 	display:block;
     width: 76%;
     box-sizing: border-box;
-    padding: 15px 0px;
+/*     border-bottom: 1px #929292 solid; */
+/*     padding: 15px 0px; */
     flex:1;
+/*     margin-bottom: 2em; */
     position: relative;
 }
 
@@ -143,9 +145,9 @@
 
 .QnA_content{
 /* 	border: 1px red solid; */
-	width: 70%;
-	min-height: 500px;
-	padding: 2em;
+	width: 80%;
+    min-height: 500px;
+    padding: 0.5em 1em;
 	display: inline-block;
 	border-bottom: 1px solid #929292;
 
@@ -222,4 +224,9 @@ hr{
 	color: #ffffff;
     background-color: #00c471;
     
+}
+
+.answer_form{
+    width: 36%;
+    margin: 0 auto;
 }

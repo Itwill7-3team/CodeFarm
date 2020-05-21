@@ -144,3 +144,19 @@ a {
     top: 0;
     opacity: 0.5;
 }
+
+.atom_ph{
+	display: gride;
+	 color: #929292;
+}
+
+.phone1{
+	display: inline-block;
+	width: 30px; 
+	text-align: center;
+}
+.phone{
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}

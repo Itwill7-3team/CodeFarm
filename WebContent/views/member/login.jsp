@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<html lang="ko">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <link rel="stylesheet" href="./css/login.css">
    <!-- 
      로그인 페이지 
@@ -38,9 +41,14 @@
           <a class="find_password">비밀번호 찾기</a>
         </div>
 
-        <!-- <div class="footer_form">
+       <div class="footer_form">
+       
           <div class="social">
-            <a data-type="facebook" href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=1101702136522636&amp;redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&amp;scope=email" class="button facebook_auth oauth2" rel="noreferrer noopener">
+          <div id="kakaoLogin"></div>
+          <div id="naverIdLogin"></div>
+          
+
+           <!--  <a data-type="facebook" href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=1101702136522636&amp;redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Ffacebook&amp;scope=email" class="button facebook_auth oauth2" rel="noreferrer noopener">
               <i class="fab fa-facebook-f"></i>
               <span>페이스북 로그인</span>
             </a>
@@ -51,9 +59,9 @@
             <a data-type="github" href="https://github.com/login/oauth/authorize?response_type=code&amp;client_id=5fd8e44b142806d9cbea&amp;redirect_uri=https%3A%2F%2Fwww.inflearn.com%2Fauth%2Fgithub&amp;scope=user%3Aemail" class="button github_auth" rel="noreferrer noopener">
               <i class="fab fa-github"></i>
               <span>깃허브 로그인</span>
-            </a>
+            </a> -->
           </div>
-        </div> -->
+        </div> 
         <div class="sub_form">
           <p>아직 인프런 회원이 아니신가요?</p>
           <a href="MemberJoin.me">회원가입하기</a>
@@ -64,8 +72,108 @@
 
 
 <script type="text/javascript">
+	
+
 	$(".back").click(function(){
 		
 		$(".clear").html(" ");
 	});
 </script>
+
+<form class="apiAction" action="./apiLoginAction.me" method="post">
+<input type="hidden" id="m_email" name="m_email" value="a">
+<input type="hidden" id="m_pw" name="m_pw" value="a">
+<input type="hidden" id="m_nick" name="m_nick" value="a">
+</form>
+<script type="text/javascript">
+Kakao.init('c95ddde2f236e0f76a1f9ee16378769a');
+
+Kakao.Auth.createLoginButton({
+	  container: '#kakaoLogin',
+	  success: function(response) {
+	  
+	    Kakao.API.request({
+	        url: '/v2/user/me',
+	        success: function(response) {
+	            console.log(response);
+	            alert(response.kakao_account.email);
+	            $('#m_email').val(response.kakao_account.email);
+	            $('#m_pw').val(response.id);
+	            $('#m_nick').val(response.properties.nickname);
+	            $('.apiAction').submit();
+	            
+	        },
+	        fail: function(error) {
+	            console.log(error);
+	        }
+	    });
+	  },
+	  fail: function(error) {
+	    console.log(error);
+	  },
+	});
+
+
+
+
+	</script>
+<!-- <script>
+		
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "n1A2gvk1H0li6JGsisBI",
+				callbackUrl: "http://localhost:8090/CodeFarm/Main.le",
+				isPopup: false,
+				loginButton: {color: "green", type: 3, height: 60}
+			}
+		);
+		/* (4) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
+		naverLogin.init();
+		
+		/* (4-1) 임의의 링크를 설정해줄 필요가 있는 경우 */
+		$("#gnbLogin").attr("href", naverLogin.generateAuthorizeUrl());
+
+		/* (5) 현재 로그인 상태를 확인 */
+		window.addEventListener('load', function () {
+			naverLogin.getLoginStatus(function (status) {
+				if (status) {
+					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+					setLoginStatus();
+				}
+			});
+		});
+
+		/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
+		function setLoginStatus() {
+			var profileImage = naverLogin.user.getProfileImage();
+			var nickName = naverLogin.user.getNickName();
+			$("#login_btn").html('<br><br><img src="' + profileImage + '" height=50 /> <p>' + nickName + '님 반갑습니다.</p>');
+			$("#gnbLogin").html("Logout");
+			$("#gnbLogin").attr("href", "#");
+			/* (7) 로그아웃 버튼을 설정하고 동작을 정의합니다. */
+			$("#gnbLogin").click(function () {
+				naverLogin.logout();
+				location.reload();
+			});
+		}
+	</script> -->
+<!--  <script type="text/javascript">
+	 
+
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "n1A2gvk1H0li6JGsisBI",
+			callbackUrl: "http://localhost:8090/CodeFarm/Main.le",
+			isPopup: false, /* 팝업을 통한 연동처리 여부 */
+			loginButton: {color: "green", type: 3, height: 45} /* 로그인 버튼의 타입을 지정 */
+		}
+	);
+	
+	/* 설정정보를 초기화하고 연동을 준비 */
+	$(document).ready(function(){
+		
+	naverLogin.init();
+	});
+	
+</script> -->
+
