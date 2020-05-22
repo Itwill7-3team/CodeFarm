@@ -89,7 +89,7 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/lectureVideo.le")){
+		}else if(command.equals("/LectureVideo.le")){
 			action = new LectureVideoAction();
 			try {
 				forward = action.execute(request, response);

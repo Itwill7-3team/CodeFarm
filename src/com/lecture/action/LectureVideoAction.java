@@ -21,7 +21,7 @@ public class LectureVideoAction implements Action{
 		
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./views/lecture/lectureVide.jsp");
+		forward.setPath("./views/lecture/lectureVideo.jsp");
 		forward.setRedirect(false);		
 	
 		return forward;
