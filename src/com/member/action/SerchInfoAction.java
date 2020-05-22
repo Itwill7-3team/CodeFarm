@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.member.db.MemberDAO;
 import com.member.db.MemberDTO;
 
-public class SerchInfo implements Action {
+public class SerchInfoAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String m_email = request.getParameter("m_email");
@@ -25,13 +25,13 @@ public class SerchInfo implements Action {
 			return null;
 		}
 		MemberDAO mdao = new MemberDAO();
-		List<MemberDTO> memberList = mdao.getMemberList();
+		MemberDTO mdto = mdao.getInfo(m_email);
 
 		// request 영역에 저장
-		request.setAttribute("memberList", memberList);
+		request.setAttribute("mdto",mdto );
 		
 		ActionForward forward = new ActionForward();
-		// 페이지 이동 (./member/memberList.jsp)
+		
 		forward.setPath("./views/member/serch_info.jsp");
 		forward.setRedirect(false);
 		return forward;

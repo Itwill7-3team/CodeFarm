@@ -265,7 +265,7 @@ public class MemberFrontController extends HttpServlet{
 		}else if(command.equals("/SerchInfo.me")) {
 			//관리자 회원정보 검색
 			System.out.println("/SerchInfo.me 주소 요청");
-			action = new SerchInfo();
+			action = new SerchInfoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
