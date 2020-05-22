@@ -73,7 +73,7 @@
 	    	    <tr>
 			      <td><a href="./SerchInfo.me?m_email=<%=mdto.getM_email() %>"><%=mdto.getM_email() %></a></td>
 			      <td><%=rank %></td>
-			      <td><input type="button" value="회원 탈퇴" onclick="location.href='AdminDeleteAction.me?<%=mdto.getM_email() %>'" ></td>
+			      <td><input type="button" value="회원 탈퇴" onclick="del('<%=mdto.getM_email() %>')" ></td>
 			    </tr>
 	    	   <%
 	       }
@@ -101,5 +101,11 @@
 
 
 </body>
-
+<script type="text/javascript">
+function del(m_email){
+	if(confirm("정말 회원을 탈퇴 시키겠습니까?")){
+	location.href='AdminDeleteAction.me?m_email='+m_email;
+}
+}
+</script>
 </html>

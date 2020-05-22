@@ -17,7 +17,7 @@
     box-sizing: inherit;
 }
 
-article, aside, figure, footer, header, hgroup, section {
+aside, footer, header, section {
     display: block;
 }
 
@@ -48,7 +48,7 @@ article, aside, figure, footer, header, hgroup, section {
     color: #929292;
 }
 
-.atom_field .input {
+.atom_field .login_input {
     background: #f6f6f6;
     height: 44px;
     border-radius: 3px;
@@ -124,7 +124,7 @@ a {
 .modal>.signin_modal .sub_form {
     margin-top: 16px;
     font-size: .8rem;
-    color: grey;
+    color:grey;
     text-align: center;
 }
 

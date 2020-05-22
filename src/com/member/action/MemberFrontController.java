@@ -272,6 +272,15 @@ public class MemberFrontController extends HttpServlet{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AdminDeleteAction.me")) {
+			System.out.println("/AdminDeleteAction.me 주소 요청");
+			action = new AdminDeleteAcion();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 CREATE DATABASE  IF NOT EXISTS `codefarm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `codefarm`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
@@ -482,4 +482,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-05-21 18:38:59
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
+
