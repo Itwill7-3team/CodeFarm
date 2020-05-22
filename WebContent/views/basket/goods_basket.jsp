@@ -164,7 +164,7 @@
           <div class="Wibox">
           <div class="Wbox" style="display: inline-block;">
            <a href="Detail.le?num=<%=wldto.getL_number() %>">
- 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img().split(",")[0]%>" alt="">
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img()%>" alt="">
 				</a>
          
           <div class="Wcolumn Wcontent">
@@ -187,7 +187,7 @@
 			</div>
 	 		<% BasketDTO bdto = new BasketDTO(); { %>
 			<button class="d_btn d_btn2" type="button"
-				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
+				onclick="location.href ='./WishToBasket.wi?num=<%=widto.getW_num()%>&number=<%=widto.getW_l_num()%>'">
 				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
 			</button>   
 			<%} %> 

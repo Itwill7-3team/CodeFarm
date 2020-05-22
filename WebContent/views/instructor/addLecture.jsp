@@ -1,780 +1,97 @@
-<%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="https://kit.fontawesome.com/2441771e3f.js"
-	crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜-강의만들기</title>
-<link href="./css/addLecture.css" rel="stylesheet">
-
-
-
-	<% LectureDTO ldto=(LectureDTO)request.getAttribute("ldto"); %>
-
-	
+<title>코딩팜-강의 만들기</title>
 </head>
 <body>
-	<jsp:include page="/include/header.jsp" />
-	<!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<jsp:include page="/include/header.jsp" />
+<link href="./css/addLecture.css" rel="stylesheet">
+<div class="main">
+<main id="main">
+<section class="pre_course_root">
+  
+<div class="pre_course_card">
+  <div class="carousel_container">
+    <div class="content step1 left">
+      <p class="slogan"><span class="bold">"나의 지식"</span>에</p>
+      <p class="slogan"><span class="bold">"가치"</span>를 부여하세요!</p>
+      <div class="wrap_svg">
+        
+  <!--?xml version="1.0" encoding="UTF-8"?-->
+  <svg class="svg_star_icon" enable-background="new 0 0 93 94.71" version="1.1" viewBox="0 0 93 94.71" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" width="100">
+    <style type="text/css">
+      .st0 {
+        fill: #e6e7e8;
+      }
+      .st1 {
+        fill: #8af01e;
+      }
+      .st2 {
+        fill: #6dd400;
+      }
+      .st3 {
+        fill: #3a2c60;
+      }
+    </style>
+    <path class="st0" d="m67.08 34.23c0.02 0.38 0.32 0.69 0.71 0.7 1.41 0.07 2.56 0.9 3.44 2.47 0.67 1.21 0.92 2.42 0.92 2.43 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.04-1.65 1.3-2.88 2.35-3.62 1.17-0.82 2.35-1.25 2.36-1.25 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-3.26-0.19-4.49-4.59-4.5-4.63-0.09-0.32-0.38-0.55-0.72-0.55h-0.06c-0.36 0.03-0.64 0.32-0.67 0.68-0.33 3.87-4.3 4.54-4.47 4.57-0.38 0.04-0.65 0.38-0.63 0.76z"></path>
+    <path class="st0" d="m60.73 39.66c0.92 0.04 1.68 0.6 2.26 1.64 0.45 0.81 0.62 1.63 0.62 1.64 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.05-2.12 3.15-3.23 3.19-3.24 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-2.14-0.13-2.98-3.09-2.99-3.12-0.09-0.32-0.38-0.55-0.72-0.55h-0.06c-0.36 0.03-0.65 0.32-0.68 0.68-0.22 2.56-2.86 3.01-2.98 3.03-0.38 0.06-0.65 0.39-0.63 0.77 0.03 0.39 0.34 0.7 0.72 0.71z"></path>
+    <path class="st0" d="m60.73 29.49c0.92 0.04 1.68 0.6 2.26 1.64 0.45 0.81 0.62 1.63 0.62 1.64 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.05-2.12 3.15-3.23 3.19-3.24 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-2.14-0.13-2.98-3.09-2.99-3.12-0.08-0.33-0.38-0.55-0.71-0.55h-0.06c-0.36 0.03-0.64 0.32-0.67 0.68-0.22 2.57-2.86 3.01-2.98 3.03-0.38 0.06-0.65 0.39-0.63 0.77 0.01 0.39 0.32 0.69 0.7 0.71z"></path>
+    <path class="st0" d="m92.24 73.38c0.69-0.68 0.94-1.67 0.64-2.59s-1.08-1.58-2.04-1.72l-10.26-1.49c-0.34-0.05-0.63-0.26-0.78-0.57l-4.59-9.3c-0.43-0.87-1.3-1.41-2.27-1.41s-1.84 0.54-2.27 1.41l-4.59 9.3c-0.15 0.31-0.44 0.52-0.78 0.57l-10.26 1.49c-0.96 0.14-1.74 0.8-2.04 1.72s-0.05 1.91 0.64 2.59l7.42 7.24c0.25 0.24 0.36 0.58 0.3 0.92l-0.4 2.31c-0.03 0.2 0.01 0.39 0.13 0.55 0.11 0.16 0.29 0.27 0.48 0.3l-0.69 4.02c-0.04-0.01-0.08-0.01-0.12-0.01-0.36 0-0.67 0.26-0.73 0.62l-0.42 2.42c-0.16 0.95 0.22 1.9 1 2.47 0.44 0.32 0.95 0.49 1.48 0.49 0.41 0 0.81-0.1 1.18-0.29l9.18-4.82c0.15-0.08 0.32-0.12 0.48-0.12 0.17 0 0.34 0.04 0.48 0.12l9.18 4.82c0.36 0.19 0.77 0.29 1.18 0.29 0.53 0 1.05-0.17 1.48-0.48 0.78-0.57 1.17-1.52 1.01-2.47l-1.75-10.22c-0.06-0.34 0.05-0.68 0.3-0.92l7.43-7.24z"></path>
+    <path class="st0" d="m4.2 22.84c-0.14-0.14-0.33-0.22-0.53-0.22s-0.39 0.08-0.53 0.22-0.22 0.33-0.22 0.53 0.08 0.39 0.22 0.53l34.62 34.62c0.14 0.14 0.33 0.22 0.53 0.22s0.39-0.08 0.53-0.22 0.22-0.33 0.22-0.53-0.08-0.39-0.22-0.53l-34.62-34.62z"></path>
+    <path class="st0" d="m49.43 60.81c0.2 0 0.39-0.08 0.53-0.22 0.29-0.29 0.29-0.76 0-1.05l-46.43-46.43c-0.14-0.14-0.33-0.22-0.53-0.22s-0.39 0.08-0.53 0.22-0.22 0.33-0.22 0.53 0.08 0.39 0.22 0.53l46.43 46.43c0.15 0.13 0.33 0.21 0.53 0.21z"></path>
+    <path class="st0" d="m58.44 60.76c0.2 0 0.38-0.08 0.53-0.22 0.14-0.14 0.22-0.33 0.22-0.53s-0.08-0.39-0.22-0.53l-57.28-57.27c-0.14-0.14-0.33-0.21-0.52-0.21-0.2 0-0.39 0.08-0.53 0.22-0.14 0.13-0.22 0.32-0.22 0.52s0.08 0.39 0.22 0.53l57.28 57.28c0.14 0.13 0.32 0.21 0.52 0.21z"></path>
+    <path class="st0" d="m57.96 51.53c0.14 0.14 0.33 0.22 0.53 0.22s0.39-0.08 0.53-0.22c0.29-0.29 0.29-0.76 0-1.05l-46.43-46.43c-0.14-0.14-0.33-0.22-0.53-0.22s-0.39 0.08-0.53 0.22-0.22 0.33-0.22 0.53 0.08 0.39 0.22 0.53l46.43 46.42z"></path>
+    <path class="st0" d="m54.09 38.6c0.14 0.14 0.33 0.22 0.53 0.22s0.39-0.08 0.53-0.22 0.22-0.33 0.22-0.53-0.08-0.39-0.22-0.53l-32.83-32.81c-0.14-0.14-0.33-0.22-0.53-0.22s-0.39 0.08-0.53 0.22-0.22 0.33-0.22 0.53 0.08 0.39 0.22 0.53l32.83 32.81z"></path>
+    <path class="st1" d="m90.18 70.34c1.06-1.03 0.47-2.83-0.99-3.04l-10.26-1.49c-0.58-0.08-1.08-0.45-1.34-0.98l-4.59-9.29c-0.65-1.32-2.54-1.32-3.2 0l-4.59 9.3c-0.26 0.53-0.76 0.89-1.34 0.98l-10.26 1.48c-1.46 0.21-2.05 2.01-0.99 3.04l7.42 7.24c0.42 0.41 0.61 1 0.51 1.58l-0.4 2.31-0.94 5.49-0.42 2.42c-0.25 1.46 1.28 2.57 2.59 1.88l9.18-4.82c0.52-0.27 1.14-0.27 1.66 0l9.18 4.82c1.31 0.69 2.84-0.42 2.59-1.88l-1.75-10.22c-0.1-0.58 0.09-1.17 0.51-1.58l7.43-7.24z"></path>
+    <path class="st2" d="m89.77 69.92c0.33-0.32 0.45-0.78 0.3-1.22-0.14-0.45-0.5-0.75-0.97-0.81l-10.26-1.49c-0.77-0.11-1.44-0.59-1.78-1.29l-4.58-9.3c-0.21-0.41-0.61-0.67-1.08-0.67s-0.86 0.25-1.07 0.67l-2.06 4.17 2.53 5.13c0.35 0.7 1.01 1.19 1.78 1.29l10.26 1.49c0.46 0.07 0.82 0.37 0.97 0.81 0.14 0.44 0.03 0.9-0.3 1.22l-7.42 7.24c-0.56 0.54-0.81 1.33-0.68 2.1l1.54 8.99 4.73 2.49c0.41 0.22 0.88 0.18 1.26-0.09s0.56-0.71 0.48-1.17l-1.75-10.22c-0.13-0.77 0.12-1.55 0.68-2.1l7.42-7.24z"></path>
+    <path class="st1" d="m72.1 27.88c-0.38 4.52-5.1 5.24-5.1 5.24 4.05 0.19 5.06 5.5 5.06 5.5 0.09-3.79 5.21-5.56 5.21-5.56-3.84-0.23-5.17-5.18-5.17-5.18z"></path>
+    <path class="st1" d="m63.61 34.52c-0.27 3.2-3.6 3.7-3.6 3.7 2.86 0.13 3.58 3.89 3.58 3.89 0.06-2.68 3.69-3.93 3.69-3.93-2.72-0.16-3.67-3.66-3.67-3.66z"></path>
+    <path class="st1" d="m63.61 24.09c-0.27 3.2-3.6 3.7-3.6 3.7 2.86 0.13 3.58 3.89 3.58 3.89 0.06-2.68 3.69-3.93 3.69-3.93-2.72-0.16-3.67-3.66-3.67-3.66z"></path>
+    <path class="st3" d="m66.27 33.15c0.02 0.38 0.32 0.69 0.71 0.7 1.41 0.07 2.56 0.9 3.44 2.47 0.67 1.21 0.92 2.42 0.92 2.43 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.04-1.65 1.3-2.88 2.35-3.62 1.17-0.82 2.35-1.25 2.36-1.25 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-3.26-0.19-4.49-4.59-4.5-4.63-0.09-0.32-0.38-0.55-0.72-0.55h-0.06c-0.36 0.03-0.64 0.32-0.67 0.68-0.33 3.87-4.3 4.54-4.47 4.57-0.38 0.05-0.65 0.38-0.63 0.76zm3.1-0.1c0.99-0.52 2.18-1.41 2.88-2.88 0.58 1.06 1.52 2.34 2.91 3.06-1.07 0.62-2.37 1.58-3.15 2.93-0.49-1.05-1.33-2.34-2.64-3.11z"></path>
+    <path class="st3" d="m59.98 38.97c0.92 0.04 1.68 0.6 2.26 1.64 0.45 0.81 0.62 1.63 0.62 1.64 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.05-2.12 3.15-3.23 3.19-3.24 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-2.14-0.13-2.98-3.09-2.99-3.12-0.09-0.32-0.38-0.55-0.72-0.55h-0.06c-0.36 0.03-0.65 0.32-0.68 0.68-0.22 2.56-2.86 3.01-2.98 3.03-0.38 0.06-0.65 0.39-0.63 0.77 0.03 0.39 0.33 0.69 0.72 0.71zm2.13-0.77c0.68-0.42 1.23-0.98 1.62-1.62 0.46 0.75 1.01 1.33 1.63 1.73-0.76 0.48-1.36 1.03-1.78 1.63-0.41-0.74-0.9-1.32-1.47-1.74z"></path>
+    <path class="st3" d="m59.98 28.54c0.92 0.04 1.68 0.6 2.26 1.64 0.45 0.81 0.62 1.63 0.62 1.64 0.07 0.35 0.37 0.6 0.73 0.6h0.06c0.38-0.03 0.67-0.34 0.68-0.72 0.05-2.12 3.15-3.23 3.19-3.24 0.33-0.12 0.54-0.45 0.49-0.8s-0.34-0.62-0.69-0.64c-2.14-0.13-2.98-3.09-2.99-3.12-0.09-0.32-0.38-0.55-0.72-0.55h-0.06c-0.36 0.03-0.64 0.32-0.67 0.68-0.22 2.57-2.86 3.01-2.98 3.03-0.38 0.06-0.65 0.39-0.63 0.77 0.02 0.39 0.32 0.69 0.71 0.71zm2.13-0.77c0.68-0.42 1.23-0.98 1.62-1.62 0.46 0.75 1.01 1.33 1.63 1.73-0.76 0.48-1.36 1.03-1.78 1.63-0.41-0.74-0.9-1.32-1.47-1.74z"></path>
+    <path class="st3" d="m90.74 70.91c0.71-0.69 0.96-1.71 0.65-2.65s-1.11-1.62-2.09-1.76l-10.26-1.49c-0.32-0.05-0.6-0.25-0.74-0.54l-4.59-9.3c-0.44-0.89-1.33-1.44-2.32-1.44s-1.88 0.55-2.32 1.44l-4.59 9.3c-0.14 0.29-0.42 0.49-0.74 0.54l-10.24 1.49c-0.98 0.14-1.78 0.82-2.09 1.76s-0.06 1.96 0.65 2.65l7.42 7.24c0.23 0.23 0.34 0.55 0.28 0.87l-0.4 2.31c-0.04 0.21 0.01 0.42 0.14 0.6 0.12 0.17 0.31 0.29 0.52 0.33 0.04 0.01 0.09 0.01 0.14 0.01 0.39 0 0.72-0.28 0.79-0.67l0.4-2.31c0.14-0.84-0.13-1.69-0.74-2.29l-7.42-7.24c-0.27-0.27-0.37-0.64-0.25-1.01 0.12-0.36 0.41-0.61 0.79-0.67l10.26-1.49c0.84-0.12 1.57-0.65 1.95-1.41l4.59-9.3c0.17-0.34 0.5-0.55 0.88-0.55s0.71 0.2 0.88 0.55l4.59 9.3c0.38 0.76 1.1 1.29 1.95 1.41l10.26 1.49c0.38 0.05 0.67 0.3 0.79 0.67 0.12 0.36 0.03 0.74-0.25 1.01l-7.43 7.24c-0.61 0.59-0.89 1.45-0.74 2.29l1.75 10.22c0.06 0.38-0.08 0.74-0.39 0.96-0.17 0.13-0.37 0.19-0.57 0.19-0.16 0-0.31-0.04-0.46-0.12l-9.18-4.82c-0.37-0.19-0.79-0.3-1.2-0.3s-0.83 0.1-1.2 0.3l-9.18 4.82c-0.15 0.08-0.3 0.12-0.46 0.12-0.2 0-0.4-0.07-0.57-0.19-0.31-0.22-0.45-0.58-0.39-0.96l0.42-2.42c0.07-0.44-0.22-0.85-0.65-0.93-0.04-0.01-0.09-0.01-0.13-0.01-0.39 0-0.72 0.28-0.79 0.67l-0.42 2.42c-0.17 0.98 0.23 1.95 1.03 2.53 0.45 0.32 0.97 0.5 1.52 0.5 0.42 0 0.83-0.1 1.21-0.3l9.18-4.82c0.14-0.07 0.3-0.11 0.46-0.11s0.32 0.04 0.46 0.11l9.18 4.82c0.37 0.2 0.79 0.3 1.2 0.3 0.55 0 1.07-0.17 1.52-0.5 0.8-0.58 1.2-1.55 1.03-2.53l-1.75-10.22c-0.05-0.32 0.05-0.64 0.28-0.87l7.38-7.24z"></path>
+    <path class="st3" d="m3.88 21.07c-0.15-0.15-0.35-0.23-0.57-0.23-0.21 0-0.42 0.08-0.57 0.23s-0.23 0.35-0.23 0.57c0 0.21 0.08 0.42 0.24 0.57l34.62 34.62c0.15 0.15 0.35 0.23 0.57 0.23 0.21 0 0.42-0.08 0.57-0.23s0.23-0.35 0.23-0.57c0-0.21-0.08-0.42-0.24-0.57l-34.62-34.62z"></path>
+    <path class="st3" d="m49.07 59.13c0.21 0 0.42-0.08 0.57-0.23 0.31-0.31 0.31-0.82 0-1.13l-46.43-46.43c-0.15-0.15-0.35-0.23-0.57-0.23-0.21 0-0.42 0.08-0.57 0.23s-0.23 0.35-0.23 0.57c0 0.21 0.08 0.42 0.24 0.57l46.42 46.42c0.15 0.15 0.36 0.23 0.57 0.23z"></path>
+    <path class="st3" d="m58.08 59.09c0.21 0 0.42-0.08 0.57-0.23s0.23-0.35 0.23-0.57c0-0.21-0.08-0.42-0.24-0.57l-57.27-57.28c-0.15-0.15-0.35-0.23-0.57-0.23s-0.41 0.08-0.57 0.23c-0.15 0.15-0.23 0.36-0.23 0.57s0.08 0.42 0.24 0.57l57.28 57.28c0.14 0.14 0.34 0.23 0.56 0.23z"></path>
+    <path class="st3" d="m57.56 49.84c0.15 0.15 0.35 0.23 0.57 0.23 0.21 0 0.42-0.08 0.57-0.23 0.31-0.31 0.31-0.82 0-1.13l-46.44-46.43c-0.15-0.15-0.35-0.23-0.57-0.23-0.21 0-0.42 0.08-0.57 0.23s-0.22 0.35-0.22 0.57c0 0.21 0.08 0.42 0.24 0.57l46.42 46.42z"></path>
+    <path class="st3" d="m53.68 36.91c0.15 0.15 0.35 0.24 0.57 0.24 0.21 0 0.42-0.08 0.57-0.24 0.15-0.15 0.23-0.35 0.23-0.57 0-0.21-0.08-0.42-0.23-0.57l-32.83-32.82c-0.15-0.15-0.35-0.23-0.57-0.23-0.21 0-0.42 0.08-0.57 0.23s-0.23 0.35-0.23 0.57c0 0.21 0.08 0.42 0.24 0.57l32.82 32.82z"></path>
+  </svg>
 
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-
-	<div class="header">
-		<div class="header_center">
-			<span class="header_title">내 강의 만들기</span>
-			<div class="header_right">
-				<button class="right_btn">강의보기</button>
-				<button class="right_btn save">저장</button>
-			</div>
-		</div>
-	</div>
-	<div class="content_cover">
-		<div class="content">
-			<aside class="sidebar">
-			<div class="side_menu">
-				<div class="side_title">강의제작</div>
-				<div class="side_items">
-					<div class="side_item active" data-type="information">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">강의정보</span>
-					</div>
-					<div class="side_item " data-type="introduction">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">상세소개</span>
-					</div>
-					<div class="side_item" data-type="curriculum">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">커리큘럼</span>
-					</div>
-					<div class="side_item" data-type="cover-img">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">커버이미지</span>
-					</div>
-				</div>
-
-			</div>
-			<div class="side_menu">
-				<div class="side_title">설정</div>
-				<div class="side_items">
-					<div class="side_item" data-type="course_setting">
-						<i class="fas fa-check-circle"></i><span class="item_title mouse">강의설정</span>
-					</div>
-					
-				</div>
-
-			</div>
-			<div class="submit_button">
-				<button class="button submit">제출하기</button>
-			</div>
-			</aside>
-			<div class="main_content_cover">
-				<h4 class="title_heading">강의제작</h4>
-				<h4 class="title_sub_heading">강의 정보</h4>
-				<div class="main_content" id="information">
-				<div class="field">
-					<div class="title input_item">
-						<label class="menu_label">강의 제목</label>
-						<div class="input_box">
-							<input class="box_input" name="title" placeholder="제목을 입력해주세요"
-								autocomplete="off" value="${ldto.l_title}">
-						</div>
-					</div>
-				</div>
-				<div class="field">
-					<div class="label_box">
-						<label class="menu_label">이런걸 배울수 있어요 <span class="tip">Tip<i
-								class="fas fa-angle-right"></i></span></label>
-					</div>
-						<input class="box_input" name="abilities" placeholder="ex)리엑트 네이티브 개발" autocomplete="off">
-						<button class="addInput button" data-name="abilities" value="1">추가하기</button>
-					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
-						<ul class="boxes abilities">
-						<%
-						String[] abilities=ldto.getL_abilities().split("/");
-						for(int i=0;i<abilities.length;i++){ %>
-			<li class="dynamic_box" data-content="<%= abilities[i] %>">
-			<div class="content_box"><%=abilities[i] %></div>
-			<div class="btns">
-				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
-				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
-						</ul>
-				</div>
-				<div class="field">
-					<div class="label_box">
-						<label class="menu_label">이런 분들에게 추천해요 <span class="tip">Tip
-						<i class="fas fa-angle-right"></i></span></label>
-					</div>
-						<input class="box_input" name="title" placeholder="ex)코딩 처음 접하는 사람" autocomplete="off">
-						<button class="addInput button" data-name="targets" value="1">추가하기</button>
-						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
-						<ul class="boxes targets">
-						<%
-						String[] targets=ldto.getL_targets().split("/");
-						for(int i=0;i<targets.length;i++){ %>
-			<li class="dynamic_box" data-content="<%=targets[i] %>">
-			<div class="content_box"><%=targets[i] %></div>
-			<div class="btns">
-				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
-				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
-						</ul>
-				</div>
-				<div class="field">
-					<div class="label_box">
-						<label class="menu_label">선수 지식이 필요하다면 무엇인가요? <span
-							class="select">(선택)</span></label>
-					</div>
-						<input class="box_input" name="title" placeholder="ex)C언어" autocomplete="off">
-						<button class="addInput button" data-name="based" value="1">추가하기</button>
-						
-						<ul class="boxes based">
-						<%
-						String[] based=ldto.getL_based().split("/");
-						for(int i=0;i<based.length;i++){ %>
-			<li class="dynamic_box" data-content="<%=based[i] %>">
-			<div class="content_box"><%=based[i] %></div>
-			<div class="btns">
-				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
-				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
-						</ul>
-				</div>
-					<div class="field">
-						<div class="label_box">
-							<label class="menu_label">카테고리 </label>
-							<div class="button_box categoryBox1">
-								<button class="button category1" value="IT프로그래밍">IT프로그래밍</button>
-								<button class="button category1" value="크리에이티브">크리에이티브</button>
-								<button class="button category1" value="업무스킬">업무스킬</button>
-								<button class="button category1" value="그외">그외</button>
-							</div>
-							<label class="menu_label"> 2차 분류 </label>
-							<div class="button_box categoryBox2">
-								
-							</div>
-						</div>
-					</div>
-					<div class="field">
-						<div class="title button_item">
-							<label class="menu_label">강의수준</label>
-							<div class="button_box">
-								<button class="button level" value="입문">입문</button>
-								<button class="button level" value="초급">초급</button>
-								<button class="button level" value="중급">중급</button>
-								<button class="button level" value="고급">고급</button>
-							</div>
-							<input type="hidden">
-						</div>
-					</div>
-				</div>
-				<div class="main_content" id="introduction">
-					<div class="title textarea_item">
-						<label class="menu_label">강의 두줄 요약 </label>
-						<textarea class="textarea description" name="title"
-							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">${ldto.l_description}</textarea>
-					</div>
-					<hr>
-					<div class="notification">
-						<h3 class="bold">소개글을 충실히 작성해 주세요</h3>
-						<p>
-							강의 소개글은 강의 수강신청 및 판매율에 결정적인 영향을 끼칩니다.<br> 최소 7줄 이상의 소개를
-							부탁드려요!<br> 강의 소개글 분량이 모자란 경우, 제출 후 반려될 수 있습니다.
-						</p>
-						<br> 
-						<h3 class="bold">매력적인 소개글</h3>
-						<p>
-							학생들이 강의 소개를 볼 때 수강하고 싶도록 마음껏 내 강의의 매력을 어필해 보세요.<br> <span
-								class="bold">사진, 그래프, 영상</span>등 설득될만한 자료를 꼭 첨부해 주세요!
-						</p>
-						<br> 
-						<p>
-							혹시 강의 소개 작성이 막막한 분들을 위해 가이드를 준비했어요<br> 가이드를 보고 싶은 분들은 <a
-								href="#">이곳</a> 을 클릭!!
-						</p>
-					</div>
-					<div class="body textarea_item">
-						<label class="menu_label">강의 상세 내용(해당내용은 강의 상세페이지에서
-							보여집니다.)</label>
-						<!-- 에디터 넣는자리  시작 -->
-						<div id="summernote2">${ldto.l_content}</div>
-						<!-- 에디터 넣는자리 끝  -->
-					</div>
-				</div>
-				<div class="main_content" id="curriculum">
-					<div class="notification">
-						<h3 class="bold">영상 등록</h3>
-						<p>
-							강의의 커리큘럼을 모두 작성한 뒤 수업마다 영상을 연결해 주셨나요?<br> 일부 영상에 재생 에러가 발생할
-							경우, 파일명을 바꿔서 재업로드해주세요.<br> 강의 커리큘럼이 확정되지 않으면 강의를 오픈할 수 없습니다.
-						</p>
-						<br>
-						<h3 class="bold">무료공개 수업 최소 1개 이상!</h3>
-						<p>
-							무료공개 수업을 최소 한 개 이상 설정해주세요.<br> 강의를 잘 표현 할 수 있는 좋은 수업을 보여준다면
-							수강신청률이 올라갑니다.
-						</p>
-						<br>
-						<h3 class="bold">여러개의 섹션으로 나눠주세요</h3>
-						<p>
-							수업들을 여러 섹션으로 잘게 묶어 놓으면 학생들이 훨씬 효과적으로 학습할 수 있습니다.<br> 보통 1개
-							섹션당 4~6개의 수업으로 구성하면 좋아요!
-						</p>
-					</div>
-					<div class="add_unit_button_wrapper">
-						<button class="button4 add_unit_btn add_section_btn" value="1"><i class="fas fa-plus-circle"></i> 섹션 추가하기</button>
-					</div>
-					<ul class="curriculum_list ui-sortable">
-						<li class="unit unit_section">
-							<div class="box unit_box">
-								<h3 class="section_title">
-									<span class="unit_label">섹션 0 : </span>
-									<span>첫번째 섹션의 제목을 입력해주세요.</span>
-								</h3>
-								<div class="unit_btns">
-									<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle"></i> 수업추가하기</button>
-									<button class="button4 section_mod_btn"><i class="fas fa-pen"></i></button>
-									<button class="button4 unit_del_btn"><i class="fas fa-trash-alt"></i></button>
-								</div>
-							</div>
-						</li>
-						<li class="unit unit_lecture">
-							<div class="box unit_box">
-							      <p><span class="unit_label">수업 1 : </span><span>값을 입력해주세요.</span></p>
-							      <div class="unit_btns">
-							        <div>
-							        	<button type="button" class="button4 lecture_mod_btn" >
-							        		<i class="fas fa-pen"></i>
-							  			</button>
-							          	<button type="button" class="button4 unit_del_btn" >
-							    			<i class="fas fa-trash-alt"></i>
-							  		 	</button>
-							        </div>
-							     </div>
-							 </div>
-						</li>
-						
-					
-					</ul>
-					<!-- <div class="section_cover">
-						<div class="section input_item">
-							<label class="menu_label">섹션 0</label> <input type="text"
-								class="box_input" placeholder="섹션제목을 적어주세요" autocomplete="off">
-							<input class="addvideo button" value="영상추가하기" type="file">영상
-							추가하기
-							</button>
-						</div>
-					</div> -->
-					
-				</div>
-				<div class="main_content" id="cover-img">
-						<div class="notification">
-						<h3 class="bold">커버 이미지 - 썸네일 및 홍보영상 등록</h3>
-						<p>
-							강의 커버 이미지(썸네일)를 직접 제작하실 경우, 이미지 규정에 맞춰 주세요.<br>
-							이미지가 규정에 맞지 않을 경우, 운영팀 판단하에 임의로 변경될 수 있습니다.<br>
-							홍보동영상 등록에 홍보동영상이나 강의 첫번째 영상(무료공개)을 등록해주세요.
-						</p>
-						</div>
-					<hr>
-						<div class="img_upload">
-							<img class="tumnail">
-							<div class="uploader">
-							<p>
-							          강의를 대표하는 이미지 
-							  <a data-id="10" class="show_guide_modal ">
-							    <span class="icon is-small">
-							      <i class="far fa-question-circle"></i>
-							    </span>
-							  </a><br>
-							          <small>
-							          이미지 크기: 768 × 500(px), 확장자: jpg, jpeg, png, 이미지에 한글을 포함할 수 없습니다.
-							     </small>
-							 </p>
-							 <form id="component_file_form" class="control" data-id="">
-   							 <input id="image_file_upload" class="hidden_input" type="file" name="file" accept=".jpg, .jpeg, .png">
-    							<div class="file_info">업로드 할 파일을 선택해주세요</div>
-   								<div style="font-size: 0; margin-top: 5px; text-align: right;">
-      							<button type="button" class="button2 add" onclick="getFile();">파일 선택</button>
-							    <button type="button" class="button2 upload" disabled="">업로드</button>
-						  </div>
-					 <div class="downloadable">
-      
-						    </div>
-						  </form>
-						</div>
-							<!--uploader 끝  -->
-						</div>
-						<!-- img_upload 끝 -->
-				</div>
-				<div class="main_content" id="course_setting">
-					<div class="notification">
-						<h3 class="bold">강의 설정 - 가격 및 수강 기한</h3>
-						<p>
-							설정해 주신 강의 가격은 부가세 미포함 가격입니다.<br>
-							수강 기한에 제한을 두실 경우 반드시 개월 단위로 표기해주세요.<br>
-						</p>
-						<br> 
-						<h3 class="bold">강의 계약정보 체크</h3>
-						<p>
-						유료 강의의 경우, 체크해주신 계약정보 동의 여부에 따라 계약서가 발송됩니다.<br>
-						오픈 전, 계약정보 수정을 원하시면 인프런 운영팀으로 문의 주세요.<br>
-						</p>
-					</div>
-					<hr>
-					<div class="field" >
-						<div class="label">가격 설정</div>
-						<div class="control">
-							<input class="box_input price" type="number" name="price" placeholder="가격을 설정해주세요" min="0" step="1000" max="1000000">
-							<span>₩</span>
-						</div>
-						<div class="notice">
-							<p>
-								1. 가격 설정 후 제출하신 후에는, 가격 변경이 되지 않아요! 바꾸고 싶은 경우에는 운영팀에 문의해주세요 :)<br>
-								2. 입력하신 가격은 부가세 미포함 가격입니다. 실제 수강생에는 부가세 10% 합산된 가격으로 보입니다.<br>
-								3. 가격은 무료의 경우 0원으로 유료의 경우 10,000원 이상 1,000원 단위로 설정할 수 있습니다.
-							</p>
-						</div>
-						<!-- 사용 안함  -->
-						<!-- <div class="field">
-							<div class="label">공개설정</div>
-							<div class="buttons">
-								<button class="button3 isActive" data-content="1">코딩팜 공개</button>
-								<button class="button3" data-content="0">URL 로만 접근</button>
-							</div>
-						</div>
-						<div class="field">
-							<div class="label">수강 기한</div>
-							<div class="buttons">
-								<button  class="button3 isActive">무제한</button>
-								<button  class="button3">제한</button>
-							</div>
-						</div> -->
-						<div class="field">
-							<div class="label">시작 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea start-msg" name="start-msg"
-							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
-						</div>
-						<div class="field">
-							<div class="label">완강 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea end-msg" name="end-msg" placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script>
-	
-	
-	
-	
-//태그 다완성되면 시작됨
-$(document).ready(function() {
-	
-	$("header").removeClass("sticky");
-	//시작할때 하나 화면출력
-	$("#information").css("display", "block");
-	 //에디터
-
-	$('#summernote2').summernote({
-			  height: 500,                 // set editor height
-			  minHeight: null,             // set minimum height of editor
-		      maxHeight: null,             // set maximum height of editor
-		      focus: true,                  // set focus to editable area after initializing summernote
-		      lang: "ko-KR",					// 한글 설정
-				placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
-
-		  });
-	
-
-	//에디터 끝 
-	$(".button_box.categoryBox1").on("click","button",function(){
-		console.log($(this).val());
-		var itprograming=["웹개발","모바일앱","게임 개발","데이터 사이언스","보안","인공지능","알고리즘","교양",
-			"수학","서버","자동화","데이터베이스","개발도구","프레임워크 및 라이브러리","프로그래밍 언어",
-			"서비스 개발","인프라","사물인터넷","블록체인"];
-		var creative=["3D 모델링","그래픽 디자인","영 상 편집", "유튜브","영화 그래픽",
-			"웹앱 디자인","게임 디자인","UX/UI","Sound","AR/VR"];
-		var businessskill=["MS-OFFICE","마케팅","금융 주식 투자","데이터 분석","업무 자동화",
-			"회계 재무","경영지식","기획 프로젝트 관리","글쓰기","자기 계발","외국어"];
-		$(".button_box.categoryBox2").empty();
-			
-		if($(this).val()=="IT프로그래밍"){
-			$.each(itprograming,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
-			});
-		}
-		if($(this).val()=="크리에이티브"){
-			$.each(creative,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
-			});
-		}
-		if($(this).val()=="업무스킬"){
-			$.each(businessskill,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
-			});
-		}
-	});
-	
-	//클릭하면 display 나옴
-	$(".side_item").click(function() {
-		$(".side_item.active").addClass("final");
-		$(".side_item").removeClass("active");
-		$(this).addClass("active");
-		var active = $(this).attr("data-type");
-		$(".main_content").css("display", "none");
-		$('#' + active).css("display","block");
-		$(".title_sub_heading").html(
-		$(this).children("span").html());
-	});
-	//btn클릭시  active클래스 추가
-	$(".level").click(function() {
-		$(".level").removeClass("active");
-		$(this).addClass("active");
-	});
-	$(".category1").click(function() {
-		$(".category1").removeClass("active");
-		$(this).addClass("active");
-	});
-	$(".categoryBox2").on("click","button",function() {
-		$(".category2").removeClass("active");
-		$(this).addClass("active");
-	});
-	//input버튼 새로 추가하는 액션
-	$(".addInput").click(function() {
-		var type=$(this).attr("data-name");
-		var name = $(this).prev("input:first").attr("name");
-		var placeholder = $(this).prev("input:first").attr("placeholder");
-		var value=$(this).prev("input:first").val();
-		if($(this).prev("input:first").val()){
-		$(this).siblings(".boxes").append(
-		'<li class="dynamic_box" data-content='+value+'>'
-			+'<div class="content_box">'+value+"</div>"
-			+'<div class="btns">'
-				+'<a class="btn_icon del">'+'<i class="fas fa-trash-alt"></i>'+'</a>'
-				+'<span class="btn_icon handle">'+'<i class="fas fa-grip-lines"></i>'+'</span>'
-			+'</div>'
-		+'</li>');
-		$(this).prev("input:first").val("");
-		}
-		 
-	});
-	
-	//box slide UI method
-		 $(".boxes").sortable({
-			 	containment : 'parent',
-		        cursor:"move",
-		        forcePlaceholderSize: true,
-		        opacity: 0.5,
-		        placeholder: "sortable-placeholder",
-		        handle:".btn_icon.handle",
-		        start: function(event, ui) {
-
-		            ui.item.data('start_pos', ui.item.index());
-		        },
-
-		        stop: function(event, ui) {
-		            var spos = ui.item.data('start_pos');
-		            var epos = ui.item.index();
-
-		        }
-		    }); 
-		 $(".boxes").disableSelection();
-		 //list  움직이는 이벤트
-		$(".ui-sortable").sortable({
-			containment : 'parent',
-	        cursor:"move",
-	        forcePlaceholderSize: true,
-	        opacity: 0.5,
-			 start: function(event, ui) {
-		            ui.item.data('start_pos', ui.item.index());
-		        },
-
-		        stop: function(event, ui) {
-		            var spos = ui.item.data('start_pos');
-		            var epos = ui.item.index();
-		            reorder();
-		        }
-		});
-
-	//input 으로 추가한 ol태그 삭제
-
-	$(".field").on("click",(".btn_icon.del"),function(){
-		$(this).parents(".dynamic_box").remove();
-	});
-	//input으로 추가한 ol태그 위치변경
-	$(".field").on("click",(".btn_icon.handle"),function(){
-	});
-	//수업 변경 이벤트
-	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
-		$("<div id='modal'>").dialog ({
-			modal:true,
-			open:function() {
-				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라
-			},
-			width:1280,
-			//title:"외부파일 창 띄우기"
-				
-		});
-	});
-	//수업 추가 이벤트
-	$(".curriculum_list").on("click",".add_lecture_btn",function(){
-		var data=prompt("값을 입력해주세요", "");
-		if(data==null){return;}
-		for(var i=Number($(this).parents("li").index()+1);i<=$(this).parents("ul").children().size();i++){
-				console.log(i);	
-				console.log("시작값:"+Number($(this).parents("li").index()+1)+"끝 값:"+$(this).parents("ul").children().size());
-			if($(".curriculum_list>li").eq(i).attr("class")=="unit unit_section ui-sortable-handle" || !$(".ui-sortable>li").eq(i) || $(this).parents("ul").children().size()==i ){
-					console.log("실행"+i);				
-				$(".curriculum_list>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
-						+'<div class="box unit_box">'
-						      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
-						      +'<div class="unit_btns">'
-						        +'<div>'
-						        	+'<button type="button" class="button4 lecture_mod_btn" >'
-						        		+'<i class="fas fa-pen"></i>'
-						  			+'</button>'
-						          	+'<button type="button" class="button4 unit_del_btn" >'
-						    			+'<i class="fas fa-trash-alt"></i>'
-						  		 	+'</button>'
-						        +'</div>'
-						     +'</div>'
-						 +'</div>'
-					+'</li>'		
-				);
-				break;
-			}
-		
-		}
-		 reorder();
-	});
-	//섹션추가 이벤트
-	$(".add_section_btn").on("click",function(){
-		$(".curriculum_list").append(
-				'<li class="unit unit_section ui-sortable-handle" style="opacity: 1;">'
-				+'<div class="box unit_box">'
-					+'<h3 class="section_title">'
-						+'<span class="unit_label"></span>'
-						+'<span></span>'
-					+'</h3>'
-					+'<div class="unit_btns">'
-						+'<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle" aria-hidden="true"></i> 수업추가하기</button>'
-						+'<button class="button4 section_mod_btn"><i class="fas fa-pen" aria-hidden="true"></i></button>'
-						+'<button class="button4 unit_del_btn"><i class="fas fa-trash-alt" aria-hidden="true"></i></button>'
-					+'</div>'
-				+'</div>'
-			+'</li>'		
-		);
-		 reorder();
-	});
-	//섹션 강의 지우기
-	$(".curriculum_list").on("click",".button4.unit_del_btn",function(){
-		$(this).parents("li").remove();
-		reorder();
-	});
-	//섹션 강의 지우기
-	$(".curriculum_list").on("click",".button4.section_mod_btn",function(){
-		var input = prompt('바뀔 이름을 입력해주세요');
-		$(this).parents(".box.unit_box").find("span").eq(1).html(input);
-	});
-	
-	 //정렬 이벤트
-	function reorder() {
-		var index=0;
-	    $(".curriculum_list").children("li").each(function(i, box) {
-	    	if($(box).attr("class")=="unit unit_lecture ui-sortable-handle"){
-	    		index++;
-	    	}else{
-	    		index=0;
-	    	}
-	        $(box).find(".unit_label").html("수업  "+index+" :");
-			if($(this).next().length==0 || $(this).next().attr("class")=="unit unit_section ui-sortable-handle")
-				 $(this).css("border-bottom","1px solid #5eceb3");
-			else
-				 $(this).css("border-bottom","none");
-			
-	        
-	    });
-	    $(".unit_section").each(function(i, box) {
-	        $(box).find(".unit_label").html("세션  "+i+" :");
-
-	    });
-			$(".curriculum_list").children("li").css("border-top","none");
-		if($(".curriculum_list").children().first().attr("class")=="unit unit_lecture ui-sortable-handle")
-			$(".curriculum_list").children().first().css("border-top","1px solid #5eceb3");
-	 }
-	 //가격 기본값 천원단위이하 짜름
-	 $(".box_input.price").on("change",function(){
-		 if($(".box_input.price").val()!=0 && $(".box_input.price").val()<10000){
-			 $(".box_input.price").val(10000);
-		 }	
-		 $(".box_input.price").val(Math.floor($(".box_input.price").val()/1000)*1000);
-	 });
-	//textarea 자동으로 세로너비 증가
-	$(".textarea").on("keydown keyup change",function(){
-		 $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
-	});
-
-	//제출하기 버튼 누르면 발생하는 이벤트
-	$(".button.submit").click(
-	function() {
-	var title = $(".title.input_item").val();
-	var content = $(".course_summary.input_item").children(".input_box").children(".input");
-	});
-	//저장하기 버튼 누르면 저장하는 이벤트
-	$(".save").on("click",function(){
-		//강의 제목
-		var title=$("input[name=title]").val();
-		//이런걸 배울수 있어요
-		var abilities="";
-		for(var i=0;i<$(".boxes.abilities").children().size();i++)
-			abilities+=$(".boxes.abilities").children().eq(i).attr("data-content")+"/";
-		//이런 분들에게 추천해요
-		var targets="";
-		for(var i=0;i<$(".boxes.targets").children().size();i++)
-			targets+=$(".boxes.targets").children().eq(i).attr("data-content")+"/";
-		//선수 지식이 필요하다면 무엇인가요?
-		var based="";
-		for(var i=0;i<$(".boxes.based").children().size();i++)
-			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
-		//카테고리
-		var category=$(".button.category1.active").attr("value")+"/"+$(".button.category2.active").attr("value");
-		//강의수준
-		var level=$(".button.level").attr("value");
-		/* 1페이지 끝 */
-		//강의 두줄 요약
-		var description=$(".textarea.description").val();
-		//강의 상세 내용(해당내용은 강의 상세페이지에서 보여집니다.)
-		var body=$(".note-editable").html();
-		/* 2페이지 끝 */
-		
-		/* 3페이지  끝 */
-		var img=$("#image_file_upload").val();
-		
-		/* 4페이지 끝  */
-		//가격정보
-		var price= $(".box_input.price").val();
-		console.log(price);
-		if($(".textarea.end-msg").val()){
-			var start_msg= processText($(".textarea.start-msg").val());
-		}else{
-			var start_msg="";
-		}
-		if($(".textarea.end-msg").val()){
-			var end_msg= processText($(".textarea.end-msg").val());
-		}else{
-			var end_msg="";
-		}
-	
-		/* 5페이지 끝 */
-		//data 처리 끝
-		//ajax 처리(Data저장)
-		 $.ajax({
-			 type: "POST",
-	            //enctype: 'multipart/form-data',
-	            url: "./updateLectureAction.in",
-	            data: {
-					num: <%=Integer.parseInt(request.getParameter("num"))%>,    	
-					id: "${m_email}",            	
-	            	title: title,
-	            	abilities:abilities,
-	            	targets:targets,
-	            	based:based,
-	            	category:category,
-	            	level:level,
-	            	description:description,
-	            	body:body,
-	            	img:img,
-	            	price:price,
-	            	start_msg:start_msg,
-	            	end_msg:end_msg
-	            },
-
-	            success:function(data){
-	            	alert("데이터 전송 성공");
-	            },
-	            error: function (data) {
-	            	alert("저장실패!");
-	            }
-	        });
-	});
-	$(".hidden_input").on("change", function() {
-		if($(this).val()){
-		$(".file_info").html($(".hidden_input").val().split("\\fakepath\\")[1]);
-			$(".button2.upload").removeAttr("disabled");
-			$(".button2.upload").css("opacity",1);
-		}else{
-			$(".file_info").html("업로드 할 파일을 선택해주세요");
-			$(".button2.upload").attr("disabled","true")
-			$(".button2.upload").css("opacity",0.7);
-		}
-	});
-	$(".button2.upload").on("click",function(){
-		var form=$("#component_file_form")[0];
-		var data = new FormData(form);
-		 $.ajax({
-			 type: "POST",
-	            enctype: 'multipart/form-data',
-	            url: "./addLectureImg.in",
-	            data: data,
-	            
-	            processData: false,
-	            contentType: false,
-	            cache: false,
-	            timeout: 600000,
-	            success:function(data){
-	            	$(".tumnail").attr("src","./upload/"+data);
-	            },
-	            error: function (data) {
-	            	alert("fail");
-	            }
-	        });
-	});
-	reorder();
-	//데이터 불러오는 처리
-	$(".categoryBox1").children('button[value="${ldto.l_type}"]').trigger("click");
-	
-	$(".categoryBox2").children('button[value="${ldto.l_type2}"]').trigger("click"); 
-	$(".button_box").children('button[value="${ldto.l_level}"]').trigger("click");
-	$(".tumnail").attr("src","./upload/${ldto.l_img}");
-	$(".file_info").html("${ldto.l_img}");
-	$(".box_input.price").attr("value","${ldto.l_price}");
-	$(".start-msg").html(returnText("${ldto.start_msg}"));
-	$(".end-msg").html(returnText("${ldto.end_msg}"));
-	
-	if($(".file_info").html()==""){
-		$(".file_info").html("업로드 할 파일을 선택해주세요");
-	}
-});
-	function getFile(){
-		$(".hidden_input").click();
-	}
-	//textarea 태그로 변경
-	function processText(data) {
-		 var lines = data.split("\n");
-
-		 // generate HTML version of text
-		 var resultString  = "<p>";
-		 for (var i = 0; i < lines.length; i++) {
-		   resultString += lines[i] + "<br />";
-		 }
-		 resultString += "</p>";
-
-		 // print out to page
-		return resultString;
-		}
-	//태그->textarea
-	function returnText(data){
-		var lines=data.replace("<p>"," ").replace("</p>"," ").replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
-		return lines;
-	}
-	</script>
-
+      </div>
+    </div>
+    <div class="content step1 right">
+      <p class="desc_header">
+        <span class="bold">반갑습니다. 변재정님</span>
+      </p>
+      <p class="desc_content">
+        인프런에 지식공유 의사를 밝혀주셔서<br class="m">
+        정말 감사드려요 :)<br class="d"><br class="m">
+        강의 여는 순서를 간단히 안내 드리겠습니다.<br class="d"><br class="m">
+        지식공유자만의 살아있는 지식을 나눠주세요!
+      </p>
+      <button type="button" class="step" data-step="5">
+        이미 모두 숙지했어요. 강의를 빨리 제작하고 싶어요
+      </button>
+    </div>
+  </div>
+  
+<div class="step_indicator">
+  <div class="indicator active"></div>
+  <div class="indicator "></div>
+  <div class="indicator "></div>
+  <div class="indicator "></div>
+  <div class="indicator "></div>
+</div>
+  <div class="buttons">
+    <button type="button" class="button next step" data-step="2">다음</button>
+  </div>
+</div>
+</section></main>
+</div>
 </body>
 </html>
