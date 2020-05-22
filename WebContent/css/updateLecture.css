@@ -228,6 +228,9 @@ h3{
 .field{
 	margin-top: 24px;
 }
+.field>.label{
+	color: #929292;
+}
 .warn_wrap{
 	text-align: right;
     max-width: 450px;

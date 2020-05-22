@@ -12,7 +12,7 @@
 
 
 
-	<% LectureDTO ldto=(LectureDTO)request.getAttribute("ldto"); %>
+	<% LectureDTO ldto=(LectureDTO)request.getAttribute("ldto");System.out.println("작동"); %>
 
 	
 </head>
@@ -93,14 +93,16 @@
 					<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ul class="boxes abilities">
 						<%
+						if(ldto.getL_abilities()!=null){
 						String[] abilities=ldto.getL_abilities().split("/");
 						for(int i=0;i<abilities.length;i++){ %>
+					
 			<li class="dynamic_box" data-content="<%= abilities[i] %>">
 			<div class="content_box"><%=abilities[i] %></div>
 			<div class="btns">
 				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
 				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
+						<%}} %>
 						</ul>
 				</div>
 				<div class="field">
@@ -113,6 +115,7 @@
 						<div class="warn_wrap"><span>두개이상 넣어주세요</span></div>
 						<ul class="boxes targets">
 						<%
+						if(ldto.getL_targets()!=null){
 						String[] targets=ldto.getL_targets().split("/");
 						for(int i=0;i<targets.length;i++){ %>
 			<li class="dynamic_box" data-content="<%=targets[i] %>">
@@ -120,7 +123,7 @@
 			<div class="btns">
 				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
 				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
+						<%}} %>
 						</ul>
 				</div>
 				<div class="field">
@@ -133,6 +136,7 @@
 						
 						<ul class="boxes based">
 						<%
+						if(ldto.getL_based()!=null){
 						String[] based=ldto.getL_based().split("/");
 						for(int i=0;i<based.length;i++){ %>
 			<li class="dynamic_box" data-content="<%=based[i] %>">
@@ -140,7 +144,7 @@
 			<div class="btns">
 				<a class="btn_icon del"><i class="fas fa-trash-alt"></i></a>
 				<span class="btn_icon handle"><i class="fas fa-grip-lines"></i></span></div></li>
-						<%} %>
+						<%}} %>
 						</ul>
 				</div>
 					<div class="field">
@@ -356,11 +360,11 @@
 						<div class="field">
 							<div class="label">시작 메시지 <span>(수정가능)</span></div>
 							<textarea class="textarea start-msg" name="start-msg"
-							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
+							placeholder="시작 메세지를 적어주세요" autocomplete="off"></textarea>
 						</div>
 						<div class="field">
 							<div class="label">완강 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea end-msg" name="end-msg" placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
+							<textarea class="textarea end-msg" name="end-msg" placeholder="완강 메세지를 적어주세요" autocomplete="off"></textarea>
 						</div>
 						
 					</div>

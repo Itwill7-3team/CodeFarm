@@ -61,6 +61,7 @@ public class InstructorFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+			//데이터 들고 업데이트로 감
 		}else if(command.equals("/InstructorLecturelist.in")){
 			System.out.println("/InstrucotrLectureList.in 페이지처리(Model->view)");
 			
@@ -105,6 +106,13 @@ public class InstructorFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("./views/instructor/addLecture.jsp");
 			forward.setRedirect(false);
+		}else if(command.equals("/insertInstructor.in")){
+			action=new insertLectureAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

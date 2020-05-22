@@ -444,6 +444,31 @@ public class LectureDAO {
 		return lectureList;
 	}
 	// getLectureList(String l_m_email) // 강사별 강의 목록
+	public int createLecture(String email,String title) {
+		int check=0;
+		try{
+			con =getConnection();
+			sql="select max(l_number) from lecture";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				check=rs.getInt(1)+1;
+			}
+			sql="insert into lecture(l_number,l_title,l_m_email) values(?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, check);
+			pstmt.setString(2, title);
+			pstmt.setString(3, email);
+			
+			pstmt.executeUpdate();
+			System.out.println("정상작동"+check);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return check;
+	}
 	
 	
 }

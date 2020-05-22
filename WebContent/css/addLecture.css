@@ -1,4 +1,7 @@
 @CHARSET "UTF-8";
+*{
+	box-sizing: border-box;
+}
 #main{
 	min-height: 800px;
 }
@@ -13,7 +16,7 @@
     padding: 75px 20px;
     position: relative;
 }
-#main pre_course_card{
+#main .pre_course_card{
 	display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,10 +44,61 @@
     display: block;
     right: 727px;
 }
-.content>button{
-	padding: 0;
-    border: 0;
-    background-color: white;
-    text-decoration: underline;
-    font-size: 1em;
+.content.step5{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    height: 100%;
+    width: 100%;
 }
+.content input{
+	width: 450px;
+    height: 50px;
+    box-shadow: none;
+    background: #f6f6f6;
+    color: #5f5f5f;
+    border: 1px solid transparent;
+    font-size: 18px;
+    padding: 0px 20px;
+    
+}
+#main .buttons{
+	align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    box-sizing: inherit;
+}
+#main .button{
+	color: #fff;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.24);
+    background-color: #1dc078;
+    border: 1px solid #1dc078;
+    margin-top: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+/* step 위치 표시 */
+.step_indicator{
+	display: flex;
+}
+.indicator {
+	width: 8px;
+    height: 8px;
+    background: #dedede;
+    border-radius: 50%;
+}
+.indicator.active{
+	background: #1dc078;
+}
+.indicator:NOT(:FIRST-CHILD) {
+	margin-left: 10px;
+}
+#main h3{
+	text-align: center;
+}
+/* step 위치 표시 끝 */
