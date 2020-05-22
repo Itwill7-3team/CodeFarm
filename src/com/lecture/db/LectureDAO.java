@@ -469,6 +469,24 @@ public class LectureDAO {
 		}
 		return check;
 	}
+	public void removeInstructor(int l_num) {
+		try{
+			con=getConnection();
+			sql="delete *  from lecture  where l_number=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, l_num);
+			
+			pstmt.executeUpdate();
+			
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+	}
 	
 	
 }

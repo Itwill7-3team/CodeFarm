@@ -183,9 +183,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<input type="text" class=""><i class="fas fa-search"></i>
 					</div>
 					<!--지식공유 참여  -->
+					<%if(rank<2) {%>
 					<div class="navbar-item">
 						<a href="#" id="tech_request" class="navbar-link bold">지식공유참여</a>
 					</div>
+					<%} %>
 					<!-- 로그인 했을때 -->
 					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
@@ -247,10 +249,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									<div class="list_content">
 										<ul class="students_list">
 											<a href="#"><li class="list_item">이어서 학습하기</li></a>
-											<a href="#"><li class="list_item">수강중인 강의</li></a>
+											<a href="MyLecture.bo"><li class="list_item">수강중인 강의</li></a>
 											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
 											<a href="#"><li class="list_item">내 질문 답변</li></a>
-											<a href="#"><li class="list_item">구매내역</li></a>
+											<a href="OrderList.or"><li class="list_item">구매내역</li></a>
 											
 										</ul>
 										<%if(rank>1){ %>
