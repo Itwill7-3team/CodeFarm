@@ -1,3 +1,4 @@
+<%@page import="com.member.db.MemberDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="com.basket.db.BasketDTO"%>
 <%@page import="com.order.db.OrderDTO"%>
@@ -177,8 +178,10 @@ flex: none;
 
 	<%
 	List orderDetailList = (List)request.getAttribute("orderDetailList");
-	List basketList = (List)request.getAttribute("basketList");
 	List lectureList = (List)request.getAttribute("lectureList");
+	MemberDTO MemberDTO =(MemberDTO) request.getAttribute("memberDTO");
+
+    System.out.println("%%%$##$$$정보:"+orderDetailList+lectureList);
 	%>
 
 
@@ -205,7 +208,6 @@ flex: none;
 	  int total = 0;
 	   for(int i=0;i<orderDetailList.size();i++){
 		   OrderDTO odto = (OrderDTO)orderDetailList.get(i);
-		   BasketDTO bdto = (BasketDTO)basketList.get(i);
 		   LectureDTO ldto = (LectureDTO)lectureList.get(i);
 		   total += (odto.getO_sum_money());
 	 %>
