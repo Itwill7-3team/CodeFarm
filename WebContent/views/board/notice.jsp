@@ -81,6 +81,7 @@ int endPage=(int)request.getAttribute("endPage");
 
 
 
+
 %>
 
 <section class="community_header">
@@ -117,6 +118,12 @@ int endPage=(int)request.getAttribute("endPage");
 				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
 				for(int i=0; i<noticeList.size();i++){
 					NoticeDTO ndto=noticeList.get(i);
+					
+					String id="id";
+					int idx= ndto.getN_writer().indexOf("@");
+					id= ndto.getN_writer().substring(0,idx);
+
+					System.out.print("id"+id);
 			%>
 				<div class="notice_list_item">
 					<div class="item_content">
@@ -132,7 +139,7 @@ int endPage=(int)request.getAttribute("endPage");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_writer">작성자 : <%=ndto.getN_writer()%></span>
+						<span class="post_writer">작성자 : <%=id%></span>
 					</p>
 					</div>
 					<div class="item_right">
