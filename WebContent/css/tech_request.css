@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.signin_modal {
+.request_modal>.signin_modal {
     width: 364px;
     height: 611px;
     background: #fff;
@@ -11,15 +11,13 @@
     left: 0;
     bottom: 0;
     margin: auto;
-    box-sizing: border-box;
     padding: 32px;
-    font-size: 12px;
 }
 *, :after, :before {
     box-sizing: inherit;
 }
 
-article, aside, figure, footer, header, hgroup, section {
+ aside, footer, header,  section {
     display: block;
 }
 
@@ -69,7 +67,7 @@ article, aside, figure, footer, header, hgroup, section {
     
 }
 
-.clear .button {
+.button {
     background-color: #fff;
     border-color: #dbdbdb;
     border-width: 1px;
