@@ -212,6 +212,7 @@ public class OrderDAO {
 				OrderDTO odto = new OrderDTO();	
 				odto.setO_b_num(rs.getString("o_b_num"));
 				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_l_num(rs.getInt("o_l_num"));
 				odto.setO_t_date(rs.getTimestamp("o_t_date"));
 				odto.setO_sum_money(rs.getInt("o_sum_money"));
 				odto.setO_t_type(rs.getString("o_t_type"));
