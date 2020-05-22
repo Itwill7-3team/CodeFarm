@@ -9,16 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜 - 묻고 답하기</title>
-<link href="./css/request.css" rel="stylesheet">
-
-<style type="text/css">
-ol li{
-list-style: upper-alpha;
-}
-
-
-</style>
-
+<link href="./css/askAnswer.css" rel="stylesheet">
 </head>
 <body>
 
@@ -86,81 +77,62 @@ function timeBefore(timedate){
 	<jsp:include page="/include/board-aside.jsp"></jsp:include>
 	</aside> <!--메인콘텐츠  -->
 	<div class="columns">
-<div class="main_content">
-
-<div id="main" class="">
-	<ol>
-		<li><a href="#A">새로운 강좌 요청</a></li>
-		<li><a href="#B">새로운 기능 요청</a></li>
-		<li><a href="#C">개선 사항</a></li>
-		<li><a href="#D">기타의견</a></li>
-		<li><a href="#E">영상 관련 </a></li>
-	</ol>
-</div>
-		<!-- A -->
-<div id="A" class="req">
-	<ol>
-		<li><a href="#A-1">프로그래밍</a></li>
-		<li><a href="#A-1">데이터과학 or 인공지능</a></li>
-		<li><a href="#A-1">디자인 or 크리에이티브</a></li>
-		<li><a href="#A-1">사무기술, 마케팅</a></li>
-		<li><a href="#A-1">수학, 과학 </a></li>
-		<li><a href="#A-1">기타 </a></li>
-	</ol>
-</div>
-<div id="A-1" class="req">
-<form action="">
-개설되었으면 하는 강좌에 대해 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-		<!-- A -->
-		<!-- B -->
-<div id="B" class="req">
-<form action="">
-추가되었으면 하는 기능에 대해 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-		<!-- B -->
-		<!-- C -->
-<div id="C" class="req">
-<form action="">
-개선 되었으면 하는 기능에 대해 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-		<!-- C -->
-		<!-- D -->
-<div id="D" class="req">
-<form action="">
-기타 의견을 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-		<!-- D -->
-		<!-- E -->
-<div id="E" class="req">
-<form action="">
-해당 강좌명을 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-		<!-- E -->		
-</div>
-		<!-- 컨트롤러 -->
-	
+		<div class="main_content">
+			<!-- 컨트롤러 -->
+			<div class="main_controler">
+				<div class="selector">
+					<select class="Q-sel controle_btn" name="solution">
+						<option value="해결/미해결">해결/미해결</option>
+						<option value="해결">해결</option>
+						<option value="미해결">미해결</option>
+					</select>
+				</div>
+				<div class="selector ">
+					<select class="Q-sel controle_btn" name="cls">
+						<option value="최신순">최신순</option>
+						<option value="최근답변순">최근답변순</option>
+						<option value="미답변순">미답변순</option>
+						<option value="추천순">추천순</option>
+					</select>
+				</div>
+				<div class="search">
+					<input type="text" name="search" class="controle_btn input"><i
+						class="fas fa-search"></i>
+				</div>
+			</div>
 			<!--  -->
+			<div class="content">
+				<%
+					String pageNum=request.getAttribute("pageNum").toString();
+					ArrayList<QuestDTO> boardList=(ArrayList<QuestDTO>)request.getAttribute("boardList");
+					for(QuestDTO bdto: boardList){
+				%>
+				<div class="quest_list_item">
+					<div class="item_content">
+					<div class="post_title">
+						<span class="Q">Rq.</span>
+						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
+					</div>
+					<p class="post_metas">
+						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
+						<span class="post_time">시간 : 
+						<script>var time=timeBefore("<%=bdto.getQ_reg_date()%>");
+							document.write(time);//sss
+						</script>
+						</span>	
+						<span class="post_locuter"><%=bdto.getQ_l_num() %></span>
+					</p>
+					</div>
+					<div class="item_right">
+					<div class="comment_cnt right_item">
+					<span>답변 1개 </span></div>
+					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
+					<div class="comment_link right_item"><input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
+					</div>
+				</div>
+				<%} %>
+			</div>
+		</div>
 		<div class="content_side">
 		
 		</div>
