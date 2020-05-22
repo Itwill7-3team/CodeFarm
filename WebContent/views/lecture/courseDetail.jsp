@@ -863,6 +863,58 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 	});
 	<%-- 수강신청 --%>
 	
+	<%-- 댓글 작성 폼 --%>
+	<%--
+		<form action='./insertCommentAction.le' method='post'>
+	    <div id="comment_box">
+	        <img id="title_comment" src="img/title_comment.gif">
+	        <textarea name="boardCommentContent"></textarea>
+	        <%
+	            if(session.getAttribute("loginInfo") != null){
+	                if(countList < 5) {
+	        %>
+	                    <input type="image" id="ok_ripple" src="img/ok_ripple.gif"><br>
+	        <%
+	                } else {
+	        %>
+	                    <img src="img/comment_limit_5.jpg" id="ok_ripple2">
+	        <%
+	                }
+	            } else {
+	        %>
+	                <img src="img/first_login.jpg" id="ok_ripple2">
+	        <%                                
+	            }
+	        %>    
+		        <input type="hidden" name="boardNo" value="<%=sendBoardNo %>"><br>
+		        <input type="hidden" name="loginInfo" value="<%=session.getAttribute("loginInfo")%>">
+		    </div>
+		</form>
+		--%>
+	<%-- 댓글 작성 폼 --%>
+	
+	<%-- 댓글 작성 --%>
+		$().click(function(){
+			$ajax({
+				url      : "./ReviewComment.bo",
+				type     : "POST",
+				dataType : "json",
+				data : {
+					r_l_num : ,
+					r_content : ,
+					r_writer : ,
+					r_rating : 0,
+					r_re_lev : ,
+					r_re_ref : ,
+					r_re_seq : 
+				},
+				success : function(json){
+					
+				}
+			});
+		});
+	<%-- 댓글 작성 --%>
+	
 	<%-- 수강평 더 보기 버튼 생성 --%>
 		var review_cnt = $(".review_list .article_container").length;
 		if(review_cnt < ${ fn:length(reviewList) }){
