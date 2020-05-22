@@ -1,16 +1,27 @@
+<%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="./css/lecture.css" rel="stylesheet">
+<title>코딩팜 - ${ldto.l_tile }</title>
 <script src="https://kit.fontawesome.com/2441771e3f.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta name="viewport" content="width=device-width, user-scalable=yes,initial-scale=1.0, maximum-scale=3.0"/>
+
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<link href="./css/lecture.css" rel="stylesheet">
 </head>
 <body>
+<%
+LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
+
+%>
+
 	<div id="root">
 		<main id ="main">
 			<section class="lecture_container">
