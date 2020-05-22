@@ -35,16 +35,20 @@ public class OrderDetailAction implements Action {
 		String trade_num = request.getParameter("trade_num");
 		
 		OrderDAO odao = new OrderDAO();
-		List orderDetailList = odao.orderDetail(trade_num);
+		Vector vec = odao.orderDetail("trade_num");
+		//List orderDetailList = odao.orderDetail(trade_num);
 		
-		BasketDAO bkdao = new BasketDAO();
-		Vector vec = bkdao.getBasketList(id);
-		ArrayList basketList = (ArrayList)vec.get(0);
+		//lecture 객체 생성
+		//LectureDAO ldao = new LectureDAO();
+		ArrayList orderDetailList = (ArrayList)vec.get(0);
 		ArrayList lectureList = (ArrayList)vec.get(1);
+		//List lectureList = ldao.getLectureList("l_m_email");
+		/*BasketDAO bkdao = new BasketDAO();
+		Vector vec = bkdao.getBasketList(id);
+		ArrayList lectureList = (ArrayList)vec.get(1);*/
 		
 		// 저장영역
 		request.setAttribute("orderDetailList", orderDetailList);
-		request.setAttribute("basketList", basketList);
 		request.setAttribute("lectureList", lectureList);
 		
 		// 페이지 이동

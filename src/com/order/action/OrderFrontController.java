@@ -67,11 +67,13 @@ public class OrderFrontController extends HttpServlet{
 			
 		}else if(command.equals("/OrderDetail.or")){
 			System.out.println("/OrderDetail.or 처리 (model -> view)");
+			// OrderDetailAction() 객체 생성
 			action = new OrderDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				// TODO: handle exception
+				
 				e.printStackTrace();
 			}
 		}
