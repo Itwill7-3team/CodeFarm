@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.ask.db.AskDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.Map"%>
@@ -23,6 +24,7 @@
 String email="";
 if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
+
 }
 
 AskDTO bdto=(AskDTO)request.getAttribute("bdto");
@@ -94,17 +96,15 @@ String pageNum=request.getAttribute("pageNum").toString();
 			<!--  -->
 
 		<h1><span class="N">Q.</span><%=bdto.getTitle()%></h1>
-		<%-- 작성자 :<%=ndto.getN_writer()%><br> --%>
 		<hr>
+		<!-- 게시물 -->
 		<div class="QnA_content">
 		<p>작성자: <%=bdto.getWriter()%></p>
 		<%=bdto.getContent()%>
 		
 		
-		
-		
 		</div>
-			
+		<!-- 게시물 -->	
 		
 		<div class="content_side">
 		<ul>
@@ -122,42 +122,75 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<button onclick="location.href='#';">수정하기</button>
 		<button onclick="location.href='#';">삭제하기</button>
 		<%}%>
-		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a>	
+		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button>
 		
+		
+		
+	<!-- 답글목록 -->
+<div class="A_content">
+
+
+<%
+//답글 카운트가 있으면 나오도록 조건설정
+int check=(int)request.getAttribute("check");
+AskDTO adto= null;
+if(check>0){
+
+	List<AskDTO> answerList= (ArrayList)request.getAttribute("answerList");
+	
+	for(int i=0; i<answerList.size(); i++){
+	adto= (AskDTO)answerList.get(i);
+	
+	String writer = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
+	
+	%>
+	<h3><%=writer %></h3>	
+	<h3><%=adto.getContent() %></h3>	
+	<hr>	
+	<%
+	}
+}
+%>
+</div>
+	<!-- 답글목록 -->
 		
 		</div>
 		<br>	
 		<br>	
-		<br>	
-		
-		
+		<br>
 
 	</div>
 
 		
-	 
-		
 	<!-- 메인콘텐츠  -->
 	</article>
-	
-	<!-- 답글쓰기폼 -->
 <%
-
 String id="id";
 int idx= email.indexOf("@");
 id= email.substring(0,idx);
-
 System.out.print("id"+id);
+%>	
+	<!-- 답글쓰기폼 -->
 
-%>
 	<div class="answer_form">
-		<form action="#" method="post">
+		<form action="AnswerAction.bo?" method="post">
+		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
+		<input type="hidden" name="writer" value="<%=email%>">
+		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
+		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
+<%if(check>1){ %>
+		<input type="hidden" name="re_seq" value="<%=adto.getRe_seq()+1%>">
+<%} %>
+		<input type="hidden" name="re_seq" value="1">
+		<input type="hidden" name="pageNum" value="<%=pageNum%>">
+		
 		[답글] 글쓴이 : <%=id%><br>
-		<textarea name="n_content" id="summernote">
+		<textarea name="content" id="summernote">
 		</textarea>
 		<input type="submit" value="글쓰기">
 		</form>
 	</div>
+	
 <!-- 컨텐츠 -->
 
 

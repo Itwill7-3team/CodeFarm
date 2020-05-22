@@ -42,7 +42,7 @@ public class BoardFrontController extends HttpServlet{
 		System.out.println("----------------------페이지구분(view/model)--------------------");
 ////////문답
 		if(command.equals("/askAnswer.bo")){
-			action=new AskAnswerAction();
+	//		action=new AskAnswerAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {
@@ -51,6 +51,13 @@ public class BoardFrontController extends HttpServlet{
 			
 		}else if(command.equals("/askView.bo")){
 				action=new AskViewAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AnswerAction.bo")){
+			action=new AnswerAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {

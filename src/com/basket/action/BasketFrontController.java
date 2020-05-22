@@ -12,6 +12,7 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 
 
 
+
 public class BasketFrontController extends HttpServlet{
 
 	@Override
@@ -100,6 +101,29 @@ public class BasketFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		
+
+		}else if(command.equals("/BasketToWi.ba")) {
+			System.out.println("#############/BasketToWi.ba");
+			action = new BasketToWiAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/BasketReg.ba")) {
+			action = new BasketRegAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/BasketIn.ba")) {
+			action = new BasketInAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

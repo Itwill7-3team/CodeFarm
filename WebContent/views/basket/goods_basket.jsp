@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜</title>
+<title>코딩팜 - 수강 바구니 | 온라인 강의 플랫폼</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,6 +39,8 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+
 
 /* Modal Content */
 .Wmodal-content {
@@ -115,7 +117,8 @@
 .Wbox{float: left;}
 .Wmodal-content{max-width: 920px;
   max-height: 720px;
-  height: 95%;}
+  height: 95%;
+  overflow: auto;}
 .Wcontent{display: inline-block;
 
     margin-left: 30px;
@@ -132,13 +135,14 @@
 		List basketList = (List) request.getAttribute("basketList");
 		List lectureList = (List) request.getAttribute("lectureList");
 		List wishList = (List)request.getAttribute("wishlistList");
+		List wishLectureList = (List)request.getAttribute("wishLectureList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
 
 	<section id="alll"> <!-- 위시 수정 -->
 
 	<h3 class="boxh3">
-		바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">위시리스트</a>
+		수강 바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">내 위시리스트 <i class='far fa-heart'></i> > </a> 
 	</h3>
 	<!-- The Modal -->
 <div id="WmyModal" class="Wmodal">
@@ -152,26 +156,26 @@
           <%
            for (int i = 0; i < wishList.size(); i++) {
         	  WishlistDTO widto = (WishlistDTO) wishList.get(i);
-          	  LectureDTO ldto = (LectureDTO) lectureList.get(i);
+          	  LectureDTO wldto = (LectureDTO) wishLectureList.get(i);
           	  %>
           	  <div class="Wrow">
        <div class="Wcolumn"> 
         <div class="Wcard">
           <div class="Wibox">
           <div class="Wbox" style="display: inline-block;">
-           <a href="Detail.le?num=<%=ldto.getL_number() %>">
- 			 <img style="width: 130px; height: auto;" src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+           <a href="Detail.le?num=<%=wldto.getL_number() %>">
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img().split(",")[0]%>" alt="">
 				</a>
          
           <div class="Wcolumn Wcontent">
-				<a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title()%></a>
+				<a href="Detail.le?num=<%=wldto.getL_number()%>"><%=wldto.getL_title()%></a>
 				<p style="font-size: 12px;">
-					<%=ldto.getL_m_email()%></p>
+					<%=wldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			  </div>
 			 </div> 
 			 <div class="Wamount">
-			<c:set var="price" value="<%=ldto.getL_price()%>" />
+			<c:set var="price" value="<%=wldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />
@@ -217,6 +221,7 @@
 		for (int i = 0; i < basketList.size(); i++) {
 			BasketDTO bdto = (BasketDTO) basketList.get(i);
 			LectureDTO ldto = (LectureDTO) lectureList.get(i);
+			WishlistDTO widto = (WishlistDTO) wishList.get(i);
 	%>
 	<div class="boxx">
 		<div class="clearfix">
@@ -244,7 +249,7 @@
 				</a><br>
 			</div>
 			<button class="d_btn d_btn2" type="button"
-				onclick="location.href ='./BasketDelete.ba?b_num=<%=bdto.getB_num()%>'">
+				onclick="location.href ='./BasketToWi.ba?b_num=<%=bdto.getB_num()%>&number=<%=ldto.getL_number() %>'">
 				위시리스트 <i class='fas fa-heart' style='color: black;'></i>
 			</button>
 		</div>
@@ -280,8 +285,8 @@
 
 
 				<li class="myCheckli"
-					style="list-style-type: none; font-size: 12px;"><input
-					type="checkbox" id="myCheck" onclick="myFunction()" checked>
+					style="list-style-type: none; font-size: 12px;">
+					<input type="checkbox" id="myCheck" required onclick="myFunction()">
 					(필수) 구매조건 및 개인정보취급방침 동의
 					<button class="Vbtn"
 						onclick="document.getElementById('id01').style.display='block'">[보기]</button>
@@ -296,7 +301,7 @@
 						</form>
 					</div> <br>
 						<!-- 체크 해제 시 보이기 -->
-					<p id="text" style="display: none; color: red">구매조건 및 결제대행 서비스
+					<p id="text" style="color: red">구매조건 및 결제대행 서비스
 						약관 동의하여야 합니다.</p></li>
 			</ul>
 			<button id="myBtn" class="si_btn" type="button">
@@ -326,13 +331,13 @@
 									<hr>
 									<table style="border-collapse: collapse;">
 										<tr>
-											<td>은행 선택</td>
+											<td>은행 선택</td> 
 											<td><select id="bankch" name="o_t_bank">
 													<option value="bk_ch" selected>은행을 선택해 주세요</option>
-													<option value="하나은행">하나은행: 135-123456-12345</option>
-													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
+													<option value="하나은행">하나은행: 135-123456-12345 </option>
+													<option value="카카오뱅크">카카오뱅크: 3333-00-3333111 </option>
 													<option value="신한은행">신한은행: 110-555-899996</option>
-													<option value="sc제일은행">sc제일은행: 779-22-220000</option>
+													<option value="sc제일은행">sc제일은행: 779-22-220000 </option>
 											</select></td>
 										</tr>
 										<tr>
@@ -421,9 +426,9 @@
 			location.href = "./BasketList.ba";
 		});
 	});
-		</script>
+
 	<!-- modal -->
-	<script>
+
 		// Get the modal
 		var modal = document.getElementById("myModal");
 
@@ -449,9 +454,9 @@
 				modal.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- modal2 -->
-	<script>
+
 		// Get the modal
 		var modal2 = document.getElementById("myModal2");
 	
@@ -477,9 +482,9 @@
 				modal2.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- 약관 -->
-	<script>
+
 		// Get the modal
 		var Vmodal = document.getElementById('id01');
 
@@ -489,9 +494,11 @@
 				Vmodal.style.display = "none";
 			}
 		}
-	</script>
+
 	<!-- 약관 숨기기  -->
-	<script type="text/javascript">
+
+	
+		
 		function myFunction() {
 			var checkBox = document.getElementById("myCheck");
 			var text = document.getElementById("text");
@@ -501,9 +508,11 @@
 				text.style.display = "none";
 			}
 		}
-	</script>
+		
+		
+
 	<!-- 무통장 결제 체크 -->
-	<script type="text/javascript">
+
 		function CheckForm(Join) {
 
 			//체크박스 체크여부 확인 [하나]
@@ -514,10 +523,10 @@
 				return false;
 			}
 		}
-	</script>
+
 
 <!-- 위시리스트 모달 -->
-<script>
+
 // Get the modal
 var Wmodal = document.getElementById("WmyModal");
 
@@ -543,6 +552,7 @@ window.onclick = function(event) {
     Wmodal.style.display = "none";
   }
 }
+
 </script>
 
 

@@ -1,43 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<html>
 <head>
-
 <style type="text/css">
-*, :after, :before{
+#modal *,#modal :after,#modal :before{
 	box-sizing: inherit;
 	font-size: 16px !important;
 }
-.modal, .modal .dimmed{
+#modal .video.modal,#modal .modal .dimmed{
 	top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 }
-.modal{
+#modal .video.modal{
 	
-    z-index: 80;
+    /* z-index: 80; */
     position: fixed;
-    display: inherit;}
-.dimmed{
+     display: inherit; 
+    } 
+#modal .dimmed{
     position: absolute;
     background: rgba(11,19,30,.37);
     }
-.modal .modal_content.modify_lecture_modal_content{
+.video.modal .modal_content.modify_lecture_modal_content{
 overflow-y: auto;
     min-width: 938px;
     max-height: 800px;
     padding: 0;
     display: block;
 }
-.modal section.modal-card{
+#modal .video.modal section.modal-card{
 	top: 0;
     bottom: 0;
     height: 95%;
     max-width: 920px;
     max-height: 720px;
     z-index: 80;}
-    .modal .modal_content{
+    #modal .video.modal .modal_content{
     border-radius: 3px;
     background: #fff;
     max-width: 920px;
@@ -50,22 +50,22 @@ overflow-y: auto;
     margin: auto;
     padding: 16px;
     }
-    .modal section{
+    .video.modal section{
         position: absolute;
     width: 90%;
     left: 0;
     right: 0;
     margin: auto;
     }
-    .modal .modal_content.modify_lecture_modal_content .modal-card-head{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .modal-card-head{
    	    padding-bottom: 1rem;
     }
-    .modal-card-head{
+    #modal .modal-card-head{
     border-bottom: 1px solid #dbdbdb;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     }
-    .modal-card-foot, .modal-card-head{
+    #modal .modal-card-foot,#modal .modal-card-head{
     align-items: center;
     background-color: #fff;
     display: flex;
@@ -75,7 +75,7 @@ overflow-y: auto;
     position: relative;
     height: auto !important;
     }
-    .control{
+    #modal .control{
         box-sizing: border-box;
     clear: both;
     font-size: 1rem;
@@ -83,12 +83,12 @@ overflow-y: auto;
     text-align: left;
     width: 100%;
     }
-    .modal .modal_content .control input{
+    #modal .video.modal .modal_content .control input{
 	   	margin-top: 8px;
 	    background: #f5f5f5;
 	    height: 40px;
     }
-    .input{
+    #modal .input{
    	border-radius: 3px;
     box-shadow: none;
     background: #f6f6f6;
@@ -96,41 +96,42 @@ overflow-y: auto;
     border: 1px solid transparent;
     width: 100%;
     }
-    .modal .modal_content.modify_lecture_modal_content .modal-card-head .x_btn_wrapper{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .modal-card-head .x_btn_wrapper{
 	    position: absolute;
 	    top: 1rem;
 	    right: 1rem;
     }
-    .modal-card-body{
+   #modal .modal-card-body{
    		background-color: #fff;
     	flex-grow: 1;
    	    flex-shrink: 1;
     	overflow: auto;
     	padding: 20px;
     	padding-bottom:0;
+    	z-index:80;
     }
-    .modal .modal_content.modify_lecture_modal_content .label_divider{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .label_divider{
 	    display: block;
 	    margin-top: 1rem;
 	    font-size: 1.2rem;
 	    font-weight: 400;
     }
-    .modal .modal_content.modify_lecture_modal_content .upload_video_control .selected_video{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .upload_video_control .selected_video{
     	margin-top: 8px;
     }
-    .has-text-info{
+    #modal .has-text-info{
    		color:#3298dc!important;
     }
-    .modal .modal_content.modify_lecture_modal_content .upload_video_control .buttons{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .upload_video_control .buttons{
     	margin: 8px 0 4px;
     }
-    .buttons .button:not(:last-child):not(.is-fullwidth){
+    #modal .buttons .button:not(:last-child):not(.is-fullwidth){
     margin-right: .5rem;
     }
-    .buttons .button{
+    #modal .buttons .button{
     	margin-bottom: .5rem;
     }
-    .button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea{
+    #modal .button5, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea{
     	-webkit-appearance: none;
 	    align-items: center !important;
 	    border: 1px solid transparent !important;
@@ -145,7 +146,7 @@ overflow-y: auto;
 	    position: relative !important;
 	    vertical-align: top !important;
     }
-    .button{
+    #modal .button5{
 	  	background-color: #fff !important;
 	    border-color: #dbdbdb !important;
 	    border-width: 1px !important;
@@ -157,15 +158,15 @@ overflow-y: auto;
 	    white-space: nowrap !important;
 	    width: auto !important;
     }
-    .buttons{
+    #modal .buttons{
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;}
-    .modal .modal_content.modify_lecture_modal_content .video_selectors{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .video_selectors{
     	    max-width: 500px;
     }
-    .modal .modal_content.modify_lecture_modal_content .video_selectors select.lecture_video{
+    #modal .video.modal .modal_content.modify_lecture_modal_content .video_selectors select.lecture_video{
 	    width: 100%;
 	    max-width: 403px;
 	    height: 36px;
@@ -177,25 +178,25 @@ overflow-y: auto;
 	    font-size: 1rem;
 	    padding: 0 8px 0 1rem;
     }
-    .is-hidden{
+    #modal .is-hidden{
     	    display: none!important;
     }
-    .file.is-right{
+    #modal .file.is-right{
     	ustify-content: flex-end;
     }
-    .file{
+    #modal .file{
 	    align-items: stretch;
 	    display: flex;
 	    justify-content: flex-start;
 	    position: relative;
     }
-    label{
+    #modal label{
     	width: 100%;
     }
-    .file.is-fullwidth .file-label{
+    #modal .file.is-fullwidth .file-label{
         width: 100%;
     }
-    .file-label{
+    #modal .file-label{
     	align-items: stretch;
 	    display: flex;
 	    cursor: pointer;
@@ -203,15 +204,15 @@ overflow-y: auto;
 	    overflow: hidden;
 	    position: relative;
     }
-   #component_file_form{
+   #modal #component_file_form{
 	   	display: flex;
 	    flex-direction: column;
 	    align-items: flex-end;
    }
-   .modal .modal_content .control{
+   #modal .video.modal .modal_content .control{
    		margin-top: 1rem;
    }
-   #component_file_form .hidden_input{
+   #modal #component_file_form .hidden_input{
 	   	width: .1px;
 	    height: .1px;
 	    opacity: 0;
@@ -219,12 +220,12 @@ overflow-y: auto;
 	    position: absolute;
 	    z-index: -1;
    }
-   .modal .modal_content .control input{
+   #modal .video.modal .modal_content .control input{
 	   	margin-top: 8px;
 	    background: #f5f5f5;
 	    height: 40px;
    }
-   #component_file_form .file_info{
+   #modal #component_file_form .file_info{
 	   	display: inline-block;
 	    margin-top: 0;
 	    width: 100%;
@@ -237,7 +238,7 @@ overflow-y: auto;
 	    border: 1px solid #979797;
 	    border-radius: 0;
    }
-   #component_file_form .button{
+   #modal #component_file_form .button5{
 	   	height: 50px;
 	    width: 85px;
 	    margin-left: -5px;
@@ -246,26 +247,26 @@ overflow-y: auto;
 	    background: #747474;
 	    color: #fff;
    }
-   #component_file_form .button.upload{
+   #modal #component_file_form .button5.upload{
 	   	margin-left: 0;
 	    background: #1dc078;
    }
-   .button.is-primary.is-hovered, .button.is-primary{
+   #modal .button5.is-primary.is-hovered, .button5.is-primary{
    		background-color: #ff6d5a;
 	    border-color: transparent;
 	    color: #fff;
    }
-   .radios{
+   #modal .radios{
    	display: flex;
    }
-   .modal .modal_content.modify_lecture_modal_content .radios .radio_label{
+   #modal .video.modal .modal_content.modify_lecture_modal_content .radios .radio_label{
        display: inline-block;
    	   margin-right: 5px;
    }
 </style>
 </head>
-<body>
-<div class="modal ">
+
+<div class="video modal ">
             <div class="dimmed"></div>
             <section class="modal-card content modal_content modify_lecture_modal_content">
               <header class="modal-card-head">
@@ -283,10 +284,10 @@ overflow-y: auto;
                 <div class="upload_video_control">
                   <div class="selected_video"><span class="has-text-danger">수업과 연결된 영상이 없습니다.</span></div>
                   <div class="buttons">
-                    <button class="button new_file_uploader">
+                    <button class="button5 new_file_uploader">
                       새 파일 업로드
                     </button>
-                    <button class="button show_library">
+                    <button class="button5 show_library">
                       라이브러리에서 선택
                     </button>
                   </div>
@@ -321,8 +322,8 @@ overflow-y: auto;
     <input id="attach_file_input" class="hidden_input" type="file" name="file" accept="*">
     <div class="file_info">파일을 선택하세요</div>
     <div style="font-size: 0; margin-top: 5px;">
-      <button type="button" class="button add">파일 선택</button>
-      <button type="button" class="button upload" disabled="">업로드</button>
+      <button type="button" class="button5 add">파일 선택</button>
+      <button type="button" class="button5 upload" disabled="">업로드</button>
     </div>
     <div class="downloadable">
       
@@ -331,14 +332,15 @@ overflow-y: auto;
               </div>
               <div class="modal-card-foot">
                 <div class="buttons">
-                  <button type="button" class="button cancel_btn">취소</button>
-                  <button type="button" class="button add_btn is-primary">
+                  <button type="button" class="button5 cancel_btn">취소</button>
+                  <button type="button" class="button5 add_btn is-primary">
                     저장
                   </button>
                 </div>
               </div>
             </section>
           </div>
+          </html>
 <script>
 //에디터
 
@@ -352,6 +354,10 @@ $('#summernote').summernote({
 		
 
 	  });
-
-
+ $('.x_btn').click(function(){
+	removeModal();
+}); 
+	 function removeModal(){
+		$("#modal").remove();
+	} 
 </script>

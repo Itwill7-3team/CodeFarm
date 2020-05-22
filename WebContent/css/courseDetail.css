@@ -262,7 +262,7 @@ article.media span.option span {
 }
 
 .course_detail section.course_description_container .container .course_description .body li{
-	list-style: initial;
+	list-style: none;
 }
 
 .course_detail section.course_description_container .container .course_description .body blockquote ul{
@@ -537,7 +537,7 @@ article.media span.option span {
 		margin-left: 1rem;
 	}
 	.course_detail section.course_description_container .container .course_description .body ul li{
-		list-style: circle;
+		list-style: none;
 	}
 	.course_detail section.course_description_container .container .course_description .course_instructor{
 		margin-top: 64px;

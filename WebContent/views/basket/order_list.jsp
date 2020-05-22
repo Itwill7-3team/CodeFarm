@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<title>코딩팜-주문목록</title>
+<title>코딩팜 - 구매 내역 | 온라인 강의 플랫폼</title>
 
 <jsp:include page="/include/header.jsp"/>
 <style type="text/css">
@@ -77,16 +77,16 @@ width: 1000px;
 		<fmt:formatNumber type="currency" value="${total}" /> 원</td>
 	    
 	    <!-- status 수정 -->
-	     <td>하늘나라</td>
-	     
-	    <%--  <%
+	    
+
+ <%
 	     String msg = "";
 
 	     
 	     switch(odto.getO_status()){
 	     
 	     case 0:
-	    	 msg="대기중";
+	    	 msg="입금대기";
 	    	 break;
 	     case 1:
 	    	 msg="결제완료";
@@ -96,7 +96,8 @@ width: 1000px;
 	     }
 	     
 	     %>	     
-	     <td><%=msg %></td> --%>
+
+	     <td><%=msg %></td> 
 	     
 	     <td><%=odto.getO_t_date() %></td>
 	   

@@ -14,7 +14,7 @@ public class LectureReviewListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("LectureDetailAction_execute()");
+		System.out.println("LectureReviewListAction_execute()");
 		// courseDetail.jsp -> review load ajax용 Action
 		
 		int l_number = Integer.parseInt(request.getParameter("l_number"));
