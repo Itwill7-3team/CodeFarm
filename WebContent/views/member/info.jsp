@@ -204,7 +204,7 @@ display: none;
 </form>
       <div class="secession">
         <div class="label_wrap">
-          <label class="label input_label"><span>탈퇴
+          <label class="Dlabel input_label"><span>탈퇴
             <i class="fas fa-minus-circle"></i>
           </span></label><!-- 토글  -->
         </div>
@@ -237,7 +237,7 @@ display: none;
 </div>
 </div>
 <script type="text/javascript">
-$(".secession").click(function(){
+$(".Dlabel").click(function(){
   $(".optional").toggle();
 });
 </script>

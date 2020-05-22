@@ -11,7 +11,7 @@ public class AdminDeleteAcion implements Action{
 		System.out.println("AdminDeleteAcion_execute 호출!!");
 		String m_email = (String)request.getParameter("m_email");
 		MemberDAO mdao = new MemberDAO();
-		
+		System.out.println(m_email);
 		mdao.AdminDelete(m_email);
 		
 		ActionForward forward = new ActionForward();

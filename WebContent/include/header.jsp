@@ -171,7 +171,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 로드맵  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold"> <span>로드맵 보기</span> <!-- <img alt="로드맵 보기" src="./../img/include-img/below.png"> -->
+<!-- 						<a href="#" class="navbar-link bold"> <span>로드맵 보기</span> <img alt="로드맵 보기" src="./../img/include-img/below.png"> -->
 						</a>
 					</div>
 				</div>
@@ -215,7 +215,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 위시리스트 종료 -->
 					<!-- 알림 -->
 					<div class="navbar-item">
-						<a href="#"><i class="fas fa-bell"></i> </a>
+<!-- 						<a href="#"><i class="fas fa-bell"></i> </a> -->
 					</div>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
