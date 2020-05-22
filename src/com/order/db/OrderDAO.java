@@ -59,7 +59,7 @@ public class OrderDAO {
 		// TODO Auto-generated method stub
 		
 		int o_num = 0;	// 주문 일렬번호
-		int o_b_num = 0;	// 주문 번호
+		int b_num = 0;	// 주문 번호
 		
 		// 주문번호 변경을 하기위한 객체
 		Calendar cal = Calendar.getInstance();
@@ -79,9 +79,9 @@ public class OrderDAO {
 				o_num = rs.getInt(1)+1;
 			}
 			
-			o_b_num = o_num;
+			b_num = o_num;
 			
-			System.out.println(" 주문 일련번호 : "+o_num+", 주문번호 : "+o_b_num);
+			System.out.println(" 주문 일련번호 : "+o_num+", 주문번호 : "+b_num);
 			
 			for(int i=0;i<basketList.size();i++){
 				BasketDTO bkdto = (BasketDTO)basketList.get(i);
@@ -99,7 +99,7 @@ public class OrderDAO {
 			pstmt.setInt(1, o_num);
 			//pstmt.setString(2,trade_num);
 			pstmt.setString(2, 
-					sdf.format(cal.getTime()).toString()+"-"+o_num 
+					sdf.format(cal.getTime()).toString()+"-"+b_num 
 					);
 			// => 20200331-1
 			pstmt.setInt(3, ldto.getL_price());

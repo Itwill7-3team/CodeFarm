@@ -86,6 +86,7 @@ System.out.print("id"+id);
 <form action="./noticeWriteAction.bo" method="post">
 글쓴이 : <%=id%><br>
 제목 : <input type="text" name="n_title"><br>
+<input type="hidden" name="n_writer" value="<%=email%>">
 내용<br>
 <textarea name="n_content" id="summernote">
 </textarea>
