@@ -80,7 +80,7 @@
 						<label class="menu_label">강의 제목</label>
 						<div class="input_box">
 							<input class="box_input" name="title" placeholder="제목을 입력해주세요"
-								autocomplete="off" value="<%=ldto.getL_title() %>${ldto.l_title}">
+								autocomplete="off" value="${ldto.l_title}">
 						</div>
 					</div>
 				</div>
@@ -176,7 +176,7 @@
 					<div class="title textarea_item">
 						<label class="menu_label">강의 두줄 요약 </label>
 						<textarea class="textarea description" name="title"
-							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
+							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">${ldto.l_description}</textarea>
 					</div>
 					<hr>
 					<div class="notification">
@@ -201,7 +201,7 @@
 						<label class="menu_label">강의 상세 내용(해당내용은 강의 상세페이지에서
 							보여집니다.)</label>
 						<!-- 에디터 넣는자리  시작 -->
-						<div id="summernote2"></div>
+						<div id="summernote2">${ldto.l_content}</div>
 						<!-- 에디터 넣는자리 끝  -->
 					</div>
 				</div>
@@ -376,8 +376,13 @@
 		</div>
 	</div>
 	<script>
+	
+	
+	
+	
 //태그 다완성되면 시작됨
 $(document).ready(function() {
+	
 	$("header").removeClass("sticky");
 	//시작할때 하나 화면출력
 	$("#information").css("display", "block");
@@ -728,6 +733,32 @@ $(document).ready(function() {
 	        });
 	});
 	reorder();
+	
+	$(".categoryBox1").children('button[value="${ldto.l_type}"]').trigger("click");
+	
+	$(".categoryBox2").children('button[value="${ldto.l_type2}"]').trigger("click"); 
+	$(".button_box").children('button[value="${ldto.l_level}"]').trigger("click");
+	$(".tumnail").attr("src","./upload/${ldto.l_img}");
+	$(".file_info").html("${ldto.l_img}");
+	$(".box_input price").attr("value","${ldto.l_price}");
+	 if("${ldto.start_msg}"==""){
+	$(".textarea.start-msg").html("안녕하세요. 👋\n"
+					+"백문이 불여일견! 학습이 곧 시작됩니다.\n" 
+					+"궁금한 점은 [질문 답변] 을 이용해주세요 :)");
+	}else{
+	$(".textarea.start-msg").html("${ldto.start_msg}");
+	}
+	if("${ldto.end_msg}"==""){
+	$(".textarea.end-msg").html("수고하셨습니다. 💌 강의는 어떠셨나요?\n"
+					+"학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!\n"
+					+"여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)");
+	}else{
+	$(".textarea.end-msg").html("${ldto.end_msg}"); 
+	}
+	
+	if($(".file_info").html()==""){
+		$(".file_info").html("업로드 할 파일을 선택해주세요");
+	}
 });
 	function getFile(){
 		$(".hidden_input").click();
