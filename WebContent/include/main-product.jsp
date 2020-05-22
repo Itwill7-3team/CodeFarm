@@ -283,7 +283,7 @@ for(int i=0;i<freeList.size();i++){
 
 <div class="card-c">
 <a href="#">
-  <img src="./img/main-img/lect_2.png" alt="" style="width:100%">
+  <img src="./img/main-img/d.png" alt="" style="width:100%">
     <h2>Blog1</h2>
 </a>
   	<div class="text-in">
@@ -298,7 +298,7 @@ for(int i=0;i<freeList.size();i++){
 
 <div class="card-c">
 <a href="#">
-  <img src="./img/main-img/lect_3.png" alt="" style="width:100%">
+  <img src="./img/main-img/e.jpg" alt="" style="width:100%">
     <h2>Blog2</h2>
 </a>    
 		<div class="text-in">
@@ -313,7 +313,7 @@ for(int i=0;i<freeList.size();i++){
 
 <div class="card-c">
 <a href="#">
-  <img src="./img/main-img/lect_4.png" alt="" style="width:100%">
+  <img src="./img/main-img/f.jpg" alt="" style="width:100%">
     <h2>Blog3</h2>
 </a>    
 		<div class="text-in">
