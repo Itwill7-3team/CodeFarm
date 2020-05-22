@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -23,6 +24,7 @@ public class OrderDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
+	ResultSet rs2=null;
 	String sql="";
 	
 	
@@ -42,9 +44,11 @@ public class OrderDAO {
 	
 	public void closeDB(){
 		try {
+			if(rs2 !=null) rs2.close();
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,9 +187,16 @@ public class OrderDAO {
 	
 	
 	//orderDetail(b_num)
-	public List orderDetail(String trade_num) {
+	public Vector orderDetail(String trade_num) {
 		
-		List orderDetailList = new ArrayList();
+		Vector vec = new Vector();
+		
+		ArrayList orderDetailList = new ArrayList();
+		ArrayList lectureList = new ArrayList();
+				
+		/*List orderDetailList = new ArrayList();
+		ArrayList lectureList = new ArrayList();*/
+		//ArrayList basketList = new ArrayList();
 		
 		try {
 			con = getConnection();
@@ -195,11 +206,10 @@ public class OrderDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, trade_num);
 			rs = pstmt.executeQuery();
-			System.out.println("@@@@@@@@@@@@@@@@@");
+			System.out.println("@%$%$%$%$%trade_num 실행하나여");
 			
 			while(rs.next()){
-				OrderDTO odto = new OrderDTO();
-			
+				OrderDTO odto = new OrderDTO();	
 				odto.setO_b_num(rs.getString("o_b_num"));
 				odto.setO_l_name(rs.getString("o_l_name"));
 				odto.setO_t_date(rs.getTimestamp("o_t_date"));
@@ -208,14 +218,36 @@ public class OrderDAO {
 				odto.setO_t_bank(rs.getString("o_t_bank"));
 				odto.setO_status(rs.getInt("o_status"));
 				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
-				
-				System.out.println("#######################");
-				
+				System.out.println("$$$$$$$$$$$$$orderDTO############");
 				orderDetailList.add(odto);
+				
+				sql = "SELECT * FROM lecture WHERE l_number=?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, odto.getO_l_num());
+				rs2 = pstmt.executeQuery();
+				System.out.println("%$$$$$$%%%llilil ");
+				
+				if(rs2.next()) {
+					LectureDTO ldto = new LectureDTO();
+					
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_m_email("l_m_email");
+					ldto.setL_img(rs2.getString("l_img"));
+					ldto.setL_title(rs2.getString("l_title"));
+					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					System.out.println("$$$$$$$##%%ldto%%###$$$");
+					lectureList.add(ldto);
+				}
 				
 			} // while
 			
-			System.out.println("주문 상세정보 저장 완료: "+orderDetailList);
+			vec.add(0, orderDetailList);
+			vec.add(1, lectureList);
+			
+			System.out.println("주문 상세정보 저장 완료: "+vec);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -224,7 +256,7 @@ public class OrderDAO {
 			closeDB();
 		}
 		
-		return orderDetailList;
+		return vec;
 	} //orderDetail(b_num)
 	
 	
