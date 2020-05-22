@@ -146,11 +146,12 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<!-- 이미지 -->
 		<!-- 게시물 -->
 		<div class="QnA_content">
-		<p>작성자: <%=bdto.getWriter()%>
-		<script>var time=timeBefore("<%=bdto.getReg_date()%>");
+		<p class="a_Info">
+		<span>[질문] <%=bdto.getWriter()%></span>
+		<span><script>var time=timeBefore("<%=bdto.getReg_date()%>");
 							document.write(time);//sss
-		</script></p>
-		<br>				
+		</script></span>
+		</p>	
 		<%=bdto.getContent()%>
 		
 		
@@ -201,10 +202,12 @@ if(check>0){
 	</div>
 	<!-- 이미지 -->
 	<div class="A_content">
-	<p><%=writer %> 	
-	<script>var time=timeBefore("<%=adto.getReg_date()%>");
+	<p class="a_Info">
+	<span>[답글 <%=i+1%>] <%=writer %></span>
+	<span><script>var time=timeBefore("<%=adto.getReg_date()%>");
 							document.write(time);//sss
-	</script></p>
+	</script></span>
+	</p>
 	<p><%=adto.getContent() %></p>	
 <!-- 	<hr> -->
 	</div>

@@ -158,7 +158,7 @@ public class BasketDAO {
 					LectureDTO ldto = new LectureDTO();
 					
 					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_email("l_m_email");
+					ldto.setL_m_email(rs2.getString("l_m_email"));
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					ldto.setL_content(rs2.getString("l_content"));
