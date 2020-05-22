@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lecture.action.LectureReviewListAction;
+
 
 public class BoardFrontController extends HttpServlet{
 
@@ -167,9 +169,16 @@ public class BoardFrontController extends HttpServlet{
 			forward=action.execute(request, response);
 		}catch (Exception e) {
 			e.printStackTrace();
+		} 
+		}else if(command.equals("/ReviewComment.bo")) {
+			action = new ReviewCommentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-	}
-		
+	
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
 		// 페이지 이동정보가 있을때만 페이지 이동

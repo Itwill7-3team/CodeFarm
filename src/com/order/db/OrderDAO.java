@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 
 import com.basket.db.BasketDTO;
 import com.lecture.db.LectureDTO;
+import com.order.action.OrderListAction;
 
 
 
@@ -227,6 +228,42 @@ public class OrderDAO {
 		return orderDetailList;
 	} //orderDetail(b_num)
 	
-	
+	//getOrderDetail
+	public List<OrderDTO> getOrderDetail(String id) {
+		List<OrderDTO> orderList = new ArrayList<OrderDTO>();
+		try {
+			con = getConnection();
+			System.out.print("getOrderDetail() : ");
+			
+			sql = "select * from orderlist where o_m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);		
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				OrderDTO odto = new OrderDTO();
+				odto.setO_num(rs.getInt("o_num"));
+				odto.setO_b_num(rs.getString("o_b_num"));
+				odto.setO_l_price(rs.getInt("o_l_price"));
+				odto.setO_l_num(rs.getInt("o_l_num"));
+				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_t_type(rs.getString("o_t_type"));
+				odto.setO_t_bank(rs.getString("o_t_bank"));
+				odto.setO_t_payer(rs.getString("o_t_payer"));
+				odto.setO_t_date(rs.getTimestamp("o_t_date"));
+				odto.setO_sum_money(rs.getInt("o_sum_money"));
+				odto.setO_t_b_num(rs.getString("o_t_b_num"));
+				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
+				orderList.add(odto);
+			}
+			System.out.println(" 주문 정보 저장 완료 ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return orderList;
+	}
+	//getOrderDetail
 	
 	}

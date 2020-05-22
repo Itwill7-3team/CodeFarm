@@ -16,7 +16,7 @@ public class LectureReviewListAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("LectureReviewListAction_execute()");
 		// courseDetail.jsp -> review load ajax용 Action
-		
+		response.setCharacterEncoding("UTF-8");
 		int l_number = Integer.parseInt(request.getParameter("l_number"));
 		
 		ReviewDAO rdao = new ReviewDAO();
