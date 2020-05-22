@@ -476,7 +476,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 												if(payCheck){
 											%>
 <%-- #005 영상 재생 페이지 이동 주소 확인 --%>
-												<a class="unit_item" href="/lecturePlay.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
+												<a class="unit_item" href="/lectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
 													</div>
@@ -617,6 +617,10 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 													<%-- 답글 등록 버튼 --%>
 													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank()>1){ %>
 														<div class="reactions">
+												<%-- 		<input hi
+														<%= reviewList.get(r_loop).getR_re_lev() %>
+														<%= reviewList.get(r_loop).getR_re_ref() %>
+														<%= reviewList.get(r_loop).getR_re_seq() %> --%>
 <!-- #002 답글 등록 버튼 동작 -->
 															<button class="button is-link is-small">
 																<span class="is-hidden-mobile">답글 쓰기</span>
@@ -747,6 +751,21 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 			}
 		});
 	<%-- 스크롤 변경시 Navbar_sticky & 주소 변경 --%>
+	
+	<%-- 영상 링크 사용시 style변경 --%>
+		$('iframe').removeAttr('width').removeAttr('height').css({
+			position : 'absolute',
+			top      : '0',
+			width    : '100%',
+			height   : '100%'
+	 	});
+		$('iframe').parent().addClass('iframe_container').css({
+			padding  : '56.25% 0 0 0',
+			position : 'relative',
+			margin   : '20px 0',
+			height   : '0'
+		});
+	<%-- 영상 링크 사용시 style변경 --%>
 	
 	<%-- 강의 목록 opne --%>
 	    $(".section_header").on('click', function () {
@@ -894,7 +913,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 	<%-- 댓글 작성 폼 --%>
 	
 	<%-- 댓글 작성 --%>
-		$().click(function(){
+	<%--		$().click(function(){
 			$ajax({
 				url      : "./ReviewComment.bo",
 				type     : "POST",
@@ -906,13 +925,13 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 					r_rating : 0,
 					r_re_lev : ,
 					r_re_ref : ,
-					r_re_seq : 
+					r_re_seq : reviewList.get()getR_re_seq()
 				},
 				success : function(json){
 					
 				}
 			});
-		});
+		});--%>
 	<%-- 댓글 작성 --%>
 	
 	<%-- 수강평 더 보기 버튼 생성 --%>
