@@ -186,6 +186,8 @@ public class OrderDAO {
 	public List orderDetail(String trade_num) {
 		
 		List orderDetailList = new ArrayList();
+		ArrayList lectureList = new ArrayList();
+		ArrayList basketList = new ArrayList();
 		
 		try {
 			con = getConnection();

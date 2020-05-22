@@ -1,11 +1,15 @@
 package com.order.action;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basket.db.BasketDAO;
+import com.lecture.db.LectureDAO;
 import com.order.db.OrderDAO;
 
 public class OrderDetailAction implements Action {
@@ -33,8 +37,15 @@ public class OrderDetailAction implements Action {
 		OrderDAO odao = new OrderDAO();
 		List orderDetailList = odao.orderDetail(trade_num);
 		
+		BasketDAO bkdao = new BasketDAO();
+		Vector vec = bkdao.getBasketList(id);
+		ArrayList basketList = (ArrayList)vec.get(0);
+		ArrayList lectureList = (ArrayList)vec.get(1);
+		
 		// 저장영역
 		request.setAttribute("orderDetailList", orderDetailList);
+		request.setAttribute("basketList", basketList);
+		request.setAttribute("lectureList", lectureList);
 		
 		// 페이지 이동
 		forward.setPath("./views/basket/odetail.jsp");
