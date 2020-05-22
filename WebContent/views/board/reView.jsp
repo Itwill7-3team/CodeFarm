@@ -18,6 +18,59 @@
 <body>
 
 <jsp:include page="/include/header.jsp"></jsp:include>
+
+<script>
+$(document).ready(function() {
+	
+});
+function timeBefore(timedate){
+    //현재시간
+    var now = new Date(); 
+    console.log(now);
+    //글쓴 시간 
+    var writeDay = new Date(timedate);
+    var minus;
+    var time;
+    if(now.getFullYear() > writeDay.getFullYear()){
+        minus= now.getFullYear()-writeDay.getFullYear();
+        time = minus+"년 전";
+        console.log(minus+"년 전");
+    }else if(now.getMonth() > writeDay.getMonth()){
+        minus= now.getMonth()-writeDay.getMonth();
+        time = minus+"달 전";
+        console.log(minus+"달 전");
+    }else if(now.getDate() > writeDay.getDate()){
+        minus= now.getDate()-writeDay.getDate();
+        time = minus+"일 전";
+        console.log(minus+"일 전");
+    }else if(now.getDate() == writeDay.getDate()){
+        var nowTime = now.getTime();
+        var writeTime = writeDay.getTime();
+        if(nowTime>writeTime){
+            sec =parseInt(nowTime - writeTime) / 1000;
+            day  = parseInt(sec/60/60/24);
+            sec = (sec - (day * 60 * 60 * 24));
+            hour = parseInt(sec/60/60);
+            sec = (sec - (hour*60*60));
+            min = parseInt(sec/60);
+            sec = parseInt(sec-(min*60));
+            if(hour>0){
+            	time = hour+"시간 전";
+                console.log(hour+"시간 전");
+            }else if(min>0){
+            	time = min+"분 전";
+                console.log(min+"분 전");
+            }else if(sec>0){
+            	time = sec+"초 전";
+                console.log(sec+"초 전");
+            }
+        }
+    }
+    return time;
+}
+</script>
+
+
 <section class="community_header">
 	<div class="container">
 		<h2>수강평(총 0개 ,만족도 0%)</h2>
@@ -26,19 +79,9 @@
 		</p>
 	</div>
 	</section>
-	<article class="community_content"> <aside>
-	<div class="side_container">
-		<p class="small_tag">함께 공부해요</p>
-		<ul>
-			<li><a href=""><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-			<li><a href=""><i class="fas fa-star"></i> 수강평 모아보기</a></li>
-		</ul>
-		<p class="small_tag">코드팜</p>
-		<ul>
-			<li><a href=""><i class="fas fa-bullhorn"></i> 공지사항</a></li>
-			<li><a href=""><i class="far fa-comments"></i> 강의.기능 요청</a></li>
-		</ul>
-	</div>
+	<article class="community_content"> 
+	<aside>
+	<jsp:include page="/include/board-aside.jsp"></jsp:include>
 	</aside>
 	 <!-- 메인콘텐츠  -->
 	 <div class="columns">
@@ -51,7 +94,8 @@
 					ReviewDTO rdto=(ReviewDTO)map.get("rdto");
 			%>
 				<div class="review_list_item">
-					<div class="review_left_item">
+				
+						<div class="left">
 					<div class="star_item">
 					<div class="rating_star">
 					<div class="star_solid" style="width: <%=rdto.getR_rating()*20 %>%">
@@ -62,14 +106,21 @@
 					</div>
 					<div class="content_item"><%=rdto.getR_content() %></div>
 					<div class="post_metas">
-						<div class="goods"><%=ldto.getL_goods() %></div>
-						<div class="writer"><%=rdto.getR_writer() %></div>
-						<div class="reg_date"><%=rdto.getR_reg_date() %></div>
-						<div class="lecture_title"><%=ldto.getL_title() %></div>
+							<span class="goods">좋아요:<%=ldto.getL_goods() %></span>
+							<span class="writer">작성자:<%=rdto.getR_writer() %></span>
+<%-- 							<span class="reg_date">등록일자:<%=rdto.getR_reg_date() %></span> --%>
+							<span class="reg_date">
+								<script>var time=timeBefore("<%=rdto.getR_reg_date()%>");
+									document.write(time);//sss
+								</script>
+							</span>
+							<span class="lecture_title">강의명:<%=ldto.getL_title() %></span>
 					</div>
 					</div>
 					<div class="review_right">
-						<div class="img_item"></div>
+						<div class="img_item">
+							<img src="./upload/<%=ldto.getL_img().split(",")[0]%>" alt="">
+						</div>
 					</div>
 				</div>
 				<%} %>
@@ -77,16 +128,10 @@
 		</div>
 		
 		<div class="content_side">
-		<div class="best_kingKnowledge">
-			<h2>이달의 지식왕  <i class="fas fa-crown"></i></h2>
+		<div class="best_Lecture">
+			<h2>최근 Hot한 강의들 </h2>
 			<div class="best_list">
-			<h4 class="best_name">이소영</h4>
-			<h4 class="best_name">정민수</h4>
-			<h4 class="best_name">김홍준</h4>
-			<h4 class="best_name">박유준</h4>
-			<h4 class="best_name">변재정</h4>
-			<h4 class="best_name">최우영</h4>
-			<h4 class="best_name">조수아</h4>
+			<h4 class="best_l">Spring</h4>
 			</div>
 		</div>
 		</div>

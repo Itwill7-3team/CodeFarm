@@ -93,7 +93,7 @@
 }
 
 .content_side{
-	border:1px #929292 solid;
+	border:1px #ccc solid;
 	width: 18%;
     float: right;
     min-height: 500px;
@@ -170,4 +170,19 @@ hr{
     box-sizing: border-box;
     padding: 8px 16px;
 
+}
+
+.content{
+width: 100%;
+margin: 0 auto;
+min-height: 700px;
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  width: 100%;
 }

@@ -20,7 +20,9 @@ gapi.auth2.init (
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 <div id="kakaoLogin"></div>
 <!-- //네이버아이디로로그인 버튼 노출 영역 -->
-
+<a data-type="google" href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&amp;prompt=consent&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&amp;response_type=code&amp;client_id=887875630717-ror9t8ig4obhvokdij07eoochpqbu5kf.apps.googleusercontent.com&amp;redirect_uri=https%3A%2F%2Flocalhost:8090/CodeFarm/test.me%2Fauth%2Fgoogle" class="button google_auth oauth2" rel="noreferrer noopener">
+              <i class="fab fa-google"></i>
+              <span>구글 로그인</span>
 <form class="apiAction" action="./apiLoginAction.me" method="post">
 <input type="hidden" id="m_email" name="m_email" value="a">
 <input type="hidden" id="m_pw" name="m_pw" value="a">

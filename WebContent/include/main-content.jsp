@@ -17,21 +17,22 @@
 
 
 <section id="more">
-<h1 class="title">관심사<a href="#">&#10095;</a></h1> 
+<h1 class="title">관심사</h1> 
+<!-- <a href="#">&#10095;</a> -->
 <div class="interest">
-<a href="#">  <img src="./img/main-img/ic1.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic2.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic3.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic4.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic5.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic6.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic7.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic8.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic9.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic10.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic11.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic12.png" alt="" > </a>
-<a href="#">  <img src="./img/main-img/ic13.png" alt="" > </a>
+<a href="#">  <img src="./img/main-img/ic1.png" alt="웹개발" > </a>
+<a href="#">  <img src="./img/main-img/ic2.png" alt="앱개발" > </a>
+<a href="#">  <img src="./img/main-img/ic3.png" alt="통계" > </a>
+<a href="#">  <img src="./img/main-img/ic4.png" alt="엑셀" > </a>
+<a href="#">  <img src="./img/main-img/ic5.png" alt="게임" > </a>
+<a href="#">  <img src="./img/main-img/ic6.png" alt="리액트" > </a>
+<a href="#">  <img src="./img/main-img/ic7.png" alt="보안" > </a>
+<a href="#">  <img src="./img/main-img/ic8.png" alt="자바" > </a>
+<a href="#">  <img src="./img/main-img/ic9.png" alt="알고리즘" > </a>
+<a href="#">  <img src="./img/main-img/ic10.png" alt="수학" > </a>
+<a href="#">  <img src="./img/main-img/ic11.png" alt="파이썬" > </a>
+<a href="#">  <img src="./img/main-img/ic12.png" alt="자바스크립트" > </a>
+<a href="#">  <img src="./img/main-img/ic13.png" alt="더보기" > </a>
 </div>
 
 
@@ -39,8 +40,8 @@
 
 
 <section id="blg">
-<h1 class="title">블로그<a href="#">&#10095;</a></h1> 
-
+<h1 class="title">블로그</h1> 
+<!-- <a href="#">&#10095;</a> -->
 
 <div class="card-c">
 <a href="#">
@@ -89,7 +90,7 @@
 </section>
 
 <!--  카드 2번째줄 -->
-
+<!-- 
 <section id="rdm">
 <h1 class="title">로드맵<a href="#">&#10095;</a></h1>
 <div class="card-c">
@@ -147,7 +148,7 @@
 			<p>Some text about the .</p> 
 		</div>
 </div>
-</section>
+</section> -->
 
 </article>
 

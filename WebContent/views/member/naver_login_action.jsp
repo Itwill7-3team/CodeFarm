@@ -33,7 +33,7 @@ naverLogin.getLoginStatus(function (status) {
 		var name = naverLogin.user.getName();
 	
 		var uniqId = naverLogin.user.getId();
-		alert(name);
+
 		 $('#m_email').val(email);
          $('#m_pw').val(uniqId);
          $('#m_nick').val(name);

@@ -170,7 +170,7 @@ display: none;
             <span>자기소개</span>
             <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" placeholder="자기소개를 해주세요"><%
             if(mdto.getM_intro() == null){
-            	%>자신을 소개를 해주세요.
+            	%>자신을 소개해주세요.
             	<%
             }else if(mdto.getM_intro() != null){
             	out.print(mdto.getM_intro());
@@ -204,7 +204,7 @@ display: none;
 </form>
       <div class="secession">
         <div class="label_wrap">
-          <label class="label input_label"><span>탈퇴
+          <label class="Dlabel input_label"><span>탈퇴
             <i class="fas fa-minus-circle"></i>
           </span></label><!-- 토글  -->
         </div>
@@ -237,7 +237,7 @@ display: none;
 </div>
 </div>
 <script type="text/javascript">
-$(".secession").click(function(){
+$(".Dlabel").click(function(){
   $(".optional").toggle();
 });
 </script>

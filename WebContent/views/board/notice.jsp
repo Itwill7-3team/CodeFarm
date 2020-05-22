@@ -81,6 +81,7 @@ int endPage=(int)request.getAttribute("endPage");
 
 
 
+
 %>
 
 <section class="community_header">
@@ -91,19 +92,9 @@ int endPage=(int)request.getAttribute("endPage");
 		</p>
 	</div>
 	</section>
-	<article class="community_content"> <aside>
-	<div class="side_container">
-		<p class="small_tag">함께 공부해요</p>
-		<ul>
-			<li><a href=""><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-			<li><a href=""><i class="fas fa-star"></i> 수강평 모아보기</a></li>
-		</ul>
-		<p class="small_tag">코드팜</p>
-		<ul>
-			<li><a href=""><i class="fas fa-bullhorn"></i> 공지사항</a></li>
-			<li><a href=""><i class="far fa-comments"></i> 강의.기능 요청</a></li>
-		</ul>
-	</div>
+	<article class="community_content"> 
+	<aside>
+	<jsp:include page="/include/board-aside.jsp"></jsp:include>
 	</aside>
 	 <!-- 메인콘텐츠  -->
 	 	<div class="columns">
@@ -127,6 +118,12 @@ int endPage=(int)request.getAttribute("endPage");
 				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
 				for(int i=0; i<noticeList.size();i++){
 					NoticeDTO ndto=noticeList.get(i);
+					
+					String id="id";
+					int idx= ndto.getN_writer().indexOf("@");
+					id= ndto.getN_writer().substring(0,idx);
+
+					System.out.print("id"+id);
 			%>
 				<div class="notice_list_item">
 					<div class="item_content">
@@ -142,7 +139,7 @@ int endPage=(int)request.getAttribute("endPage");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_writer">작성자 : <%=ndto.getN_writer()%></span>
+						<span class="post_writer">작성자 : <%=id%></span>
 					</p>
 					</div>
 					<div class="item_right">

@@ -11,20 +11,6 @@
 <title>코딩팜-공지</title>
 <link href="./css/notice.css" rel="stylesheet">
 <style type="text/css">
-.content{
-width: 50%;
-margin: 0 auto;
-min-height: 700px;
-}
-
-textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  width: 100%;
-}
 
 </style>
 
@@ -51,19 +37,9 @@ String pageNum=request.getAttribute("pageNum").toString();
 		</p>
 	</div>
 	</section>
-	<article class="community_content"> <aside>
-	<div class="side_container">
-		<p class="small_tag">함께 공부해요</p>
-		<ul>
-			<li><a href=""><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-			<li><a href=""><i class="fas fa-star"></i> 수강평 모아보기</a></li>
-		</ul>
-		<p class="small_tag">코드팜</p>
-		<ul>
-			<li><a href=""><i class="fas fa-bullhorn"></i> 공지사항</a></li>
-			<li><a href=""><i class="far fa-comments"></i> 강의.기능 요청</a></li>
-		</ul>
-	</div>
+	<article class="community_content"> 
+	<aside>
+	<jsp:include page="/include/board-aside.jsp"></jsp:include>
 	</aside>
 	 <!-- 메인콘텐츠  -->
 	<div class="columns">
@@ -80,12 +56,14 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<div class="content_side">
 		<ul>
 		<h4>최근 소식</h4>
-			<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
+			<% 
+			NoticeDTO ndto1=null;
+			ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
 				for(int i=0; i<noticeList.size();i++){
-					ndto=noticeList.get(i);
+					ndto1=noticeList.get(i);
 					
 			%>
-		<li><a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>"><p><%=ndto.getN_title()%></p></a></li>
+		<li><a href="noticeContent.bo?num=<%=ndto1.getN_num()%>&pageNum=<%=pageNum%>"><p><%=ndto1.getN_title()%></p></a></li>
 		<%} %>
 		
 		</ul>

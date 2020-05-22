@@ -2,17 +2,17 @@
     pageEncoding="UTF-8"%>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="./css/tech_request.css">
+<link rel="stylesheet" href="./css/tech_request.css?ver=1">
    <!-- 
      로그인 페이지 
      ID,PW를 입력받아서 전달페이지 
    -->
    <div class="clear">
    <div class="back"></div>
-   <div class="modal"><div class="dimmed"></div>
+   <div class="request_modal"><div class="dimmed"></div>
       <div class="dimmed"></div>
       <section class="signin_modal">
-        <header class="header">
+        <header class="request_header">
         <img id="icon_brand_logo" class="brand_logo"  src="./img/logo.png">
         
         </header>
@@ -20,31 +20,31 @@
         
           
   		<label class="atom_field">
-   		 <span class="label visually_hidden">이름(실명)</span>
+   		 <span class="modal_label visually_hidden">이름(실명)</span>
     		<input class="input name" type="text"  name="m_name" autofocus="true" placeholder="이름">
   </label>
 
           
   <label class="atom_ph">
-  <span class="label visually_hidden">전화번호</span>
+  <span class="modal_label visually_hidden">전화번호</span>
   
     <div class="ph_input">
-    <input class="input phone1" type="text" name="m_phone" placeholder="010">-
-    <input class="input phone" type="text" name="m_phone2" placeholder="1234">-
-    <input class="input phone" type="text" name="m_phone3" placeholder="6578">
+    <input class="modal_input phone1" type="text" name="m_phone" placeholder="010">-
+    <input class="modal_input phone" type="text" name="m_phone2" placeholder="0000">-
+    <input class="modal_input phone" type="text" name="m_phone3" placeholder="0000">
     </div>
     
   </label>
   
   <label class="atom_field">
-    <span class="label visually_hidden">깃,블로그 주소</span>
-    <input class="input addr" type="text" name="m_addr" placeholder="ex) asdf@naver.com, asd@github.com">
+    <span class="modal_label visually_hidden">깃,블로그 주소</span>
+    <input class="modal_input addr" type="text" name="m_addr" placeholder="ex) asdf@naver.com, asd@github.com">
   
   </label>
   
   <label class="atom_field">
-    <span class="label visually_hidden">자기소개</span>
-	<textarea rows="20" cols="10" placeholder="간단한 자기소개를 해주세요."></textarea>  
+    <span class="modal_label visually_hidden">자기소개</span>
+	<textarea rows="15" cols="10" placeholder="간단한 자기소개를 해주세요."></textarea>  
   </label>
 
           

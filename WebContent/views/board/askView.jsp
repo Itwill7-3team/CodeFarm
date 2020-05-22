@@ -20,6 +20,57 @@
 <body>
 
 <jsp:include page="/include/header.jsp"></jsp:include>
+	<script>
+$(document).ready(function() {
+	
+});
+function timeBefore(timedate){
+    //현재시간
+    var now = new Date(); 
+    console.log(now);
+    //글쓴 시간 
+    var writeDay = new Date(timedate);
+    var minus;
+    var time;
+    if(now.getFullYear() > writeDay.getFullYear()){
+        minus= now.getFullYear()-writeDay.getFullYear();
+        time = minus+"년 전";
+        console.log(minus+"년 전");
+    }else if(now.getMonth() > writeDay.getMonth()){
+        minus= now.getMonth()-writeDay.getMonth();
+        time = minus+"달 전";
+        console.log(minus+"달 전");
+    }else if(now.getDate() > writeDay.getDate()){
+        minus= now.getDate()-writeDay.getDate();
+        time = minus+"일 전";
+        console.log(minus+"일 전");
+    }else if(now.getDate() == writeDay.getDate()){
+        var nowTime = now.getTime();
+        var writeTime = writeDay.getTime();
+        if(nowTime>writeTime){
+            sec =parseInt(nowTime - writeTime) / 1000;
+            day  = parseInt(sec/60/60/24);
+            sec = (sec - (day * 60 * 60 * 24));
+            hour = parseInt(sec/60/60);
+            sec = (sec - (hour*60*60));
+            min = parseInt(sec/60);
+            sec = parseInt(sec-(min*60));
+            if(hour>0){
+            	time = hour+"시간 전";
+                console.log(hour+"시간 전");
+            }else if(min>0){
+            	time = min+"분 전";
+                console.log(min+"분 전");
+            }else if(sec>0){
+            	time = sec+"초 전";
+                console.log(sec+"초 전");
+            }
+        }
+    }
+    return time;
+}
+</script>
+
 <%
 String email="";
 if(session.getAttribute("m_email")!=null){
@@ -76,19 +127,9 @@ String pageNum=request.getAttribute("pageNum").toString();
 		</p>
 	</div>
 	</section>
-	<article class="community_content"> <aside>
-	<div class="side_container">
-		<p class="small_tag">함께 공부해요</p>
-		<ul>
-			<li><a href=""><i class="fas fa-edit"></i> 묻고 답하기</a></li>
-			<li><a href=""><i class="fas fa-star"></i> 수강평 모아보기</a></li>
-		</ul>
-		<p class="small_tag">코드팜</p>
-		<ul>
-			<li><a href=""><i class="fas fa-bullhorn"></i> 공지사항</a></li>
-			<li><a href=""><i class="far fa-comments"></i> 강의.기능 요청</a></li>
-		</ul>
-	</div>
+	<article class="community_content"> 
+	<aside>
+	<jsp:include page="/include/board-aside.jsp"></jsp:include>
 	</aside>
 	 <!-- 메인콘텐츠  -->
 	<div class="columns">
@@ -97,15 +138,26 @@ String pageNum=request.getAttribute("pageNum").toString();
 
 		<h1><span class="N">Q.</span><%=bdto.getTitle()%></h1>
 		<hr>
+		<!-- 이미지 -->
+		<div class="img_side">
+		<img alt="" src="./img/flower.png" style="width: 100%">
+		
+		</div>
+		<!-- 이미지 -->
 		<!-- 게시물 -->
 		<div class="QnA_content">
-		<p>작성자: <%=bdto.getWriter()%></p>
+		<p class="a_Info">
+		<span>[질문] <%=bdto.getWriter()%></span>
+		<span><script>var time=timeBefore("<%=bdto.getReg_date()%>");
+							document.write(time);//sss
+		</script></span>
+		</p>	
 		<%=bdto.getContent()%>
 		
 		
 		</div>
 		<!-- 게시물 -->	
-		
+		<!-- 사이드 -->
 		<div class="content_side">
 		<ul>
 		<h4>해당 강의</h4>
@@ -117,17 +169,16 @@ String pageNum=request.getAttribute("pageNum").toString();
 		
 		</ul>
 		</div>
-<!--  -->
+		<!-- 사이드 -->
 		<%if(email.equals(bdto.getWriter())){%>
 		<button onclick="location.href='#';">수정하기</button>
 		<button onclick="location.href='#';">삭제하기</button>
 		<%}%>
-		<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button>
 		
 		
 		
 	<!-- 답글목록 -->
-<div class="A_content">
+<div class="answer_container">
 
 
 <%
@@ -144,9 +195,22 @@ if(check>0){
 	String writer = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
 	
 	%>
-	<h3><%=writer %></h3>	
-	<h3><%=adto.getContent() %></h3>	
-	<hr>	
+	<!-- 이미지 -->
+	<div class="img_side asw">
+	<img alt="" src="./img/bee.png" style="width: 100%">
+	
+	</div>
+	<!-- 이미지 -->
+	<div class="A_content">
+	<p class="a_Info">
+	<span>[답글 <%=i+1%>] <%=writer %></span>
+	<span><script>var time=timeBefore("<%=adto.getReg_date()%>");
+							document.write(time);//sss
+	</script></span>
+	</p>
+	<p><%=adto.getContent() %></p>	
+<!-- 	<hr> -->
+	</div>
 	<%
 	}
 }
@@ -164,6 +228,7 @@ if(check>0){
 		
 	<!-- 메인콘텐츠  -->
 	</article>
+<%-- 	<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button> --%>
 <%
 String id="id";
 int idx= email.indexOf("@");

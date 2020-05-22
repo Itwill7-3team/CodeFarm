@@ -164,7 +164,7 @@
           <div class="Wibox">
           <div class="Wbox" style="display: inline-block;">
            <a href="Detail.le?num=<%=wldto.getL_number() %>">
- 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img().split(",")[0]%>" alt="">
+ 			 <img style="width: 130px; height: auto;" src="./upload/<%=wldto.getL_img()%>" alt="">
 				</a>
          
           <div class="Wcolumn Wcontent">
@@ -187,7 +187,7 @@
 			</div>
 	 		<% BasketDTO bdto = new BasketDTO(); { %>
 			<button class="d_btn d_btn2" type="button"
-				onclick="location.href ='./BasketAdd.ba?b_num=<%=bdto.getB_num()%>'">
+				onclick="location.href ='./WishToBasket.wi?num=<%=widto.getW_num()%>&number=<%=widto.getW_l_num()%>'">
 				장바구니 <i class='fa fa-cart-plus' style='color: black;'></i>
 			</button>   
 			<%} %> 
@@ -219,14 +219,14 @@
 		int total = 0;
 		int stotal = 0;
 		for (int i = 0; i < basketList.size(); i++) {
-			BasketDTO bdto = (BasketDTO) basketList.get(i);
-			LectureDTO ldto = (LectureDTO) lectureList.get(i);
-			WishlistDTO widto = (WishlistDTO) wishList.get(i);
+			 BasketDTO bdto = (BasketDTO) basketList.get(i);
+			 LectureDTO ldto = (LectureDTO) lectureList.get(i);
+			
 	%>
 	<div class="boxx">
 		<div class="clearfix">
 			<div class="column menu">
-				<img class="image" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
+				<img class="image" src="./upload/<%=ldto.getL_img()%>">
 			</div>
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>
