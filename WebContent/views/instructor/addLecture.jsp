@@ -357,17 +357,11 @@
 						<div class="field">
 							<div class="label">시작 메시지 <span>(수정가능)</span></div>
 							<textarea class="textarea start-msg" name="start-msg"
-							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off">안녕하세요. 👋
-백문이 불여일견! 학습이 곧 시작됩니다. 
-궁금한 점은 [질문 답변] 을 이용해주세요 :)
-							</textarea>
+							placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
 						</div>
 						<div class="field">
 							<div class="label">완강 메시지 <span>(수정가능)</span></div>
-							<textarea class="textarea end-msg" name="end-msg" valueplaceholder="주제에 대한 설명을 적어주세요" autocomplete="off">수고하셨습니다. 💌
-강의는 어떠셨나요? 학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!
-여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)
-							</textarea>
+							<textarea class="textarea end-msg" name="end-msg" placeholder="주제에 대한 설명을 적어주세요" autocomplete="off"></textarea>
 						</div>
 						
 					</div>
@@ -667,29 +661,39 @@ $(document).ready(function() {
 		//가격정보
 		var price= $(".box_input.price").val();
 		console.log(price);
-		var start_msg=$(".textarea.start-msg").val();
-		var end_msg=$(".textarea.end-msg").val();
+		if($(".textarea.end-msg").val()){
+			var start_msg= processText($(".textarea.start-msg").val());
+		}else{
+			var start_msg="";
+		}
+		if($(".textarea.end-msg").val()){
+			var end_msg= processText($(".textarea.end-msg").val());
+		}else{
+			var end_msg="";
+		}
+	
 		/* 5페이지 끝 */
 		//data 처리 끝
 		//ajax 처리(Data저장)
 		 $.ajax({
 			 type: "POST",
 	            //enctype: 'multipart/form-data',
-	            url: "./addLectureAction.in",
+	            url: "./updateLectureAction.in",
 	            data: {
-					"id": "${m_email}",            	
-	            	"title": title,
-	            	"abilities":abilities,
-	            	"targets":targets,
-	            	"based":based,
-	            	"category":category,
-	            	"level":level,
-	            	"description":description,
-	            	"body":body,
-	            	"img":img,
-	            	"price":price,
-	            	"start-msg":start_msg,
-	            	"end-msg":end_msg
+					num: <%=Integer.parseInt(request.getParameter("num"))%>,    	
+					id: "${m_email}",            	
+	            	title: title,
+	            	abilities:abilities,
+	            	targets:targets,
+	            	based:based,
+	            	category:category,
+	            	level:level,
+	            	description:description,
+	            	body:body,
+	            	img:img,
+	            	price:price,
+	            	start_msg:start_msg,
+	            	end_msg:end_msg
 	            },
 
 	            success:function(data){
@@ -733,28 +737,16 @@ $(document).ready(function() {
 	        });
 	});
 	reorder();
-	
+	//데이터 불러오는 처리
 	$(".categoryBox1").children('button[value="${ldto.l_type}"]').trigger("click");
 	
 	$(".categoryBox2").children('button[value="${ldto.l_type2}"]').trigger("click"); 
 	$(".button_box").children('button[value="${ldto.l_level}"]').trigger("click");
 	$(".tumnail").attr("src","./upload/${ldto.l_img}");
 	$(".file_info").html("${ldto.l_img}");
-	$(".box_input price").attr("value","${ldto.l_price}");
-	 if("${ldto.start_msg}"==""){
-	$(".textarea.start-msg").html("안녕하세요. 👋\n"
-					+"백문이 불여일견! 학습이 곧 시작됩니다.\n" 
-					+"궁금한 점은 [질문 답변] 을 이용해주세요 :)");
-	}else{
-	$(".textarea.start-msg").html("${ldto.start_msg}");
-	}
-	if("${ldto.end_msg}"==""){
-	$(".textarea.end-msg").html("수고하셨습니다. 💌 강의는 어떠셨나요?\n"
-					+"학습하면서 느꼈던 솔직한 감상을 수강평에 남겨주세요!\n"
-					+"여러분의 수강평은 지식공유자에게 큰 힘이 됩니다. :)");
-	}else{
-	$(".textarea.end-msg").html("${ldto.end_msg}"); 
-	}
+	$(".box_input.price").attr("value","${ldto.l_price}");
+	$(".start-msg").html(returnText("${ldto.start_msg}"));
+	$(".end-msg").html(returnText("${ldto.end_msg}"));
 	
 	if($(".file_info").html()==""){
 		$(".file_info").html("업로드 할 파일을 선택해주세요");
@@ -762,6 +754,25 @@ $(document).ready(function() {
 });
 	function getFile(){
 		$(".hidden_input").click();
+	}
+	//textarea 태그로 변경
+	function processText(data) {
+		 var lines = data.split("\n");
+
+		 // generate HTML version of text
+		 var resultString  = "<p>";
+		 for (var i = 0; i < lines.length; i++) {
+		   resultString += lines[i] + "<br />";
+		 }
+		 resultString += "</p>";
+
+		 // print out to page
+		return resultString;
+		}
+	//태그->textarea
+	function returnText(data){
+		var lines=data.replace("<p>"," ").replace("</p>"," ").replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+		return lines;
 	}
 	</script>
 
