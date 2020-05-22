@@ -190,33 +190,33 @@ flex: none;
 
 	<section id = jall>
 	
-	<%
+ 	<%
 	for(int i=0;i<orderDetailList.size();i++){
-		OrderDTO orderDTO = (OrderDTO)orderDetailList.get(i); %>
+		OrderDTO orderDTO = (OrderDTO)orderDetailList.get(i); %> 
 	
 	<div class="saythx" >   
-	  <h1>구매 상세 내역 <small> (주문 번호: <%=orderDTO.getO_b_num() %>)</small></h1></div>
+	  <h1>구매 상세 내역 <small> (주문 번호:  <%=orderDTO.getO_b_num() %> )</small></h1></div>
 	  
-	 <%} %>
+	 <%} %> 
 	 
 	 
 	 
 	 <!--  -->
 	<div class="all1"> 
-
+ 
 	 <%
 	  int total = 0;
 	   for(int i=0;i<orderDetailList.size();i++){
 		   OrderDTO odto = (OrderDTO)orderDetailList.get(i);
 		   LectureDTO ldto = (LectureDTO)lectureList.get(i);
 		   total += (odto.getO_sum_money());
-	 %>
+	 %> 
 		
 	  
 	   
 	<!--[all2 aa] orderlist -->
 	<div class="all2 aa">
-	<div class="all2 aa-a">
+	 <div class="all2 aa-a">
 			<div class="all2 aa-img">
 				<img class="image" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
 			</div>
@@ -225,17 +225,17 @@ flex: none;
 				<p style="font-size: 12px;">
 					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
-			</div>
+			</div> 
 		</div>
 		
-	<div class="all2 aa-price">
+ 	<div class="all2 aa-price">
 			<c:set var="price" value="<%=ldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />
 			</span>
 
-		</div>
+		</div> 
 	</div>
 	
 	
@@ -247,13 +247,13 @@ flex: none;
 	<div class="sacard-content">
 	<div class="total_amount_con">
 			<div class="total_a">
-			<c:set var="total" value="<%=total%>" />
+ 			<c:set var="total" value="<%=total%>" />
 		 	<h2>총 주문금액 <span><fmt:setLocale value="ko_KR"/>
 							<fmt:formatNumber type="currency" value="${total}"/></span></h2>
 			</div> <!-- total_a -->
 	<table class="detable bordered">
 		<tbody>
-		<%
+	 	<%
 		     String msg = "";
 	
 		     
