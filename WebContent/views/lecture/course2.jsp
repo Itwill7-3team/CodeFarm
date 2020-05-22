@@ -182,6 +182,7 @@ for(int i=0;i<lectureList.size();i++){
 											<div class="card_content">
 												<div class= "l_m_id" style="display: none;"><%=ldto.getL_m_email() %></div>
 												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
+												<div class= "l_reg_date" style="display:none;"><%=ldto.getL_reg_date()%></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
 												<div class="course_instructor">instructor(구현중)</div>
 												<!-- <div class="course_data columns is-multiline"> -->
@@ -199,7 +200,9 @@ for(int i=0;i<lectureList.size();i++){
 													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
 													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
 													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">tag(구현중)</span>
+														<span class="tag" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
+														<span class="tag" style="background-color: hsl(321,63%,90%);">할인중</span>
+														<span class="tag" style="background-color: hsl(182,75%,94%);">신규강의</span>
 													</div>
 												<!-- </div> --><!-- course_data -->
 											</div>
@@ -255,7 +258,9 @@ for(int i=0;i<lectureList.size();i++){
 											<a href=""class="course-info">
 												<h2 href="#" class="course-title"><%=ldto.getL_title() %></h2>
 												<div class="tags">
-													<span class="tag">tag(구현중)</span>
+													<span class="tag" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
+													<span class="tag" style="background-color: hsl(321,63%,90%);">할인중</span>
+													<span class="tag" style="background-color: hsl(182,75%,94%);">신규강의</span>
 												</div>
 												<div class="rating">
 													<div class="rating-star">
@@ -633,29 +638,19 @@ $(function(){
 		}
 	});
 /* view switcher */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 });
+
+/* tags */
+$( ".flip-card" ).load(function() {
+	 console.log($( this ).find(".l_reg_date").attr());
+	
+  /* if ( $( this ).find(".l_reg_date").attr()) {
+    $( this ).addClass( "bigImg" );
+  } */
+});
+/* tags */
+
+
 </script>
 </body>
 </html>
