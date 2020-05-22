@@ -235,14 +235,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											</div>
 											<div class="right_content">
 											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
-											<%if(rank>1) {%><span class="rank">학생<!-- 회원 등급 --></span><%} %>
+											 <span class="rank">학생<!-- 회원 등급 --></span>
 											</div>
 										</div>
 									</div>
 									<div class="profile_modal_menu">
 									<div class="tab_content">
 										<span class="tab_item isActive" data-type="students_list">학생<!-- 회원 등급  --></span>
-										<span class="tab_item" data-type="instructor_list">지식공유<!-- 회원 등급  --></span>
+										<%if(rank>1){%><span class="tab_item" data-type="instructor_list">지식공유<!-- 회원 등급  --></span><%} %>
 									</div>
 									<div class="list_content">
 										<ul class="students_list">

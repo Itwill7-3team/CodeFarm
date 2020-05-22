@@ -30,9 +30,6 @@ public class LectureDetailAction implements Action {
 		
 		HttpSession session = request.getSession();
 
-		// main또는 search 에서 강의이미지 클릭=> num 파라미터를 넘겨 받습니다.
-		
-		//int l_number = 2; // 테스트용_테스트 후 아래 코드 사용
 		int l_number = Integer.parseInt(request.getParameter("num"));
 		String m_email = (String)session.getAttribute("m_email");
 		
