@@ -336,22 +336,37 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		$.ajax({
 			type : "POST",
 			url : "./MemberLogin.me",
-			data : {
-
-			},
 			success : function(data) {
 
 				$(".login_form").html(data);
 			},
 			error : function(xhr, status, error) {
 				alert("error: " + error);
-				alert("xhr: " + xhr);
-				alert("status: " + status);
 				
 			}
 
 		});
 	});
+	
+	//강사 신청 폼
+	$("#tech_request").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./TechRequest.me",
+
+			success : function(data) {
+
+				$(".login_form").html(data);
+			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+			}
+
+		});
+	});
+
+
 	//profile 학생 지식공유자 선택
 	$(".profile_modal_menu").on("click",".tab_item",function(){
 		$(".tab_item").removeClass("isActive");		
@@ -366,29 +381,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	
 	});
 	
-	//강사 신청 폼
-	$("#tech_request").click(function(){
 	
-		$.ajax({
-			type : "POST",
-			url : "./TechRequest.me",
-			data : {
-				
-				
-			},
-
-			success : function(data) {
-
-				$(".login_form1").html(data);
-			},
-			error : function(xhr, status, error) {
-				alert("error: " + error);
-			}
-
-		});
-	});
-
-
 
 	
 	function getCarts(){
