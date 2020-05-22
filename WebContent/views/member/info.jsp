@@ -170,7 +170,7 @@ display: none;
             <span>자기소개</span>
             <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" placeholder="자기소개를 해주세요"><%
             if(mdto.getM_intro() == null){
-            	%>자신을 소개를 해주세요.
+            	%>자신을 소개해주세요.
             	<%
             }else if(mdto.getM_intro() != null){
             	out.print(mdto.getM_intro());

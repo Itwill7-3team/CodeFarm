@@ -55,7 +55,6 @@ if(session.getAttribute("m_email")!=null){
 		    <a href="#">관리자</a>
 		    <ul>
 		      <li class="menu2 "><a href="MemberAdmin.me">회원 관리</a></li>
-		      <li class="menu2 "><a href="#">강사 신청</a></li>
 		      <li class="menu2 "><a href="#">설정</a></li>
 		    </ul>
 		  </li>

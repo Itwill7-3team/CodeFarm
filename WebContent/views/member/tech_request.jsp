@@ -9,10 +9,10 @@
    -->
    <div class="clear">
    <div class="back"></div>
-   <div class="modal"><div class="dimmed"></div>
+   <div class="request_modal"><div class="dimmed"></div>
       <div class="dimmed"></div>
       <section class="signin_modal">
-        <header class="header">
+        <header class="request_header">
         <img id="icon_brand_logo" class="brand_logo"  src="./img/logo.png">
         
         </header>
@@ -30,8 +30,8 @@
   
     <div class="ph_input">
     <input class="input phone1" type="text" name="m_phone" placeholder="010">-
-    <input class="input phone" type="text" name="m_phone2" placeholder="1234">-
-    <input class="input phone" type="text" name="m_phone3" placeholder="6578">
+    <input class="input phone" type="text" name="m_phone2" placeholder="0000">-
+    <input class="input phone" type="text" name="m_phone3" placeholder="0000">
     </div>
     
   </label>
@@ -44,7 +44,7 @@
   
   <label class="atom_field">
     <span class="label visually_hidden">자기소개</span>
-	<textarea rows="20" cols="10" placeholder="간단한 자기소개를 해주세요."></textarea>  
+	<textarea rows="15" cols="10" placeholder="간단한 자기소개를 해주세요."></textarea>  
   </label>
 
           

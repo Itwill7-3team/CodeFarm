@@ -184,7 +184,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!--지식공유 참여  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold">지식공유참여</a>
+						<a href="#" id="tech_request" class="navbar-link bold">지식공유참여</a>
 					</div>
 					<!-- 로그인 했을때 -->
 					<%if(!loginEmail.equals("")){%>
@@ -332,14 +332,28 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	
 	
 	$(".login_btn").click(function(){
-	
+		
 		$.ajax({
 			type : "POST",
 			url : "./MemberLogin.me",
-			data : {
-				
-				
+			success : function(data) {
+
+				$(".login_form").html(data);
 			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+				
+			}
+
+		});
+	});
+	
+	//강사 신청 폼
+	$("#tech_request").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./TechRequest.me",
 
 			success : function(data) {
 
@@ -351,6 +365,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 		});
 	});
+
+
 	//profile 학생 지식공유자 선택
 	$(".profile_modal_menu").on("click",".tab_item",function(){
 		$(".tab_item").removeClass("isActive");		
@@ -364,7 +380,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	}
 	
 	});
-	 
+	
+	
+
 	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");
