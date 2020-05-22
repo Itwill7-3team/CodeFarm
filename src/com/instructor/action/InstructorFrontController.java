@@ -87,8 +87,8 @@ public class InstructorFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/addLectureAction.in")){
-			action=new addLectureAction();
+		}else if(command.equals("/updateLectureAction.in")){
+			action=new updateLectureAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {

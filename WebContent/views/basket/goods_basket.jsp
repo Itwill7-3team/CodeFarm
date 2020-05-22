@@ -219,14 +219,14 @@
 		int total = 0;
 		int stotal = 0;
 		for (int i = 0; i < basketList.size(); i++) {
-			BasketDTO bdto = (BasketDTO) basketList.get(i);
-			LectureDTO ldto = (LectureDTO) lectureList.get(i);
-			WishlistDTO widto = (WishlistDTO) wishList.get(i);
+			 BasketDTO bdto = (BasketDTO) basketList.get(i);
+			 LectureDTO ldto = (LectureDTO) lectureList.get(i);
+			
 	%>
 	<div class="boxx">
 		<div class="clearfix">
 			<div class="column menu">
-				<img class="image" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
+				<img class="image" src="./upload/<%=ldto.getL_img()%>">
 			</div>
 			<div class="column content">
 				<a href="#"><%=ldto.getL_title()%></a>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
-.modal>.signin_modal {
+.request_modal>.signin_modal {
     width: 300px;
-    height: 700px;
+    height: 547px;
     background: #fff;
     position: fixed;
     border-radius: 3px;
@@ -23,15 +23,15 @@ article, aside, figure, footer, header, hgroup, section {
 
 
 
-.modal>.signin_modal .header {
+.request_modal>.signin_modal .request_header {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.modal>.signin_modal .main_form {
-    margin-top: 32px;
+.request_modal>.signin_modal .main_form {
+
     display: grid;
     grid-template-rows: repeat(1,1fr);
     grid-row-gap: 1rem;
@@ -58,7 +58,7 @@ article, aside, figure, footer, header, hgroup, section {
     border: 0;
 }
 
-.modal>.signin_modal .main_form .signin {
+.request_modal>.signin_modal .main_form .signin {
     border-radius: 3px;
     border: none;
     background: #1dc078;
@@ -81,7 +81,7 @@ article, aside, figure, footer, header, hgroup, section {
     
 }
 
-.modal>.signin_modal .sub_form {
+.request_modal>.signin_modal .sub_form {
     margin-top: 16px;
     font-size: .8rem;
     color: grey;
@@ -94,7 +94,7 @@ p {
     line-height: 1.6;
 }
 
-.modal>.signin_modal .sub_form>a {
+.request_modal>.signin_modal .sub_form>a {
     display: inline-block;
     margin-top: 4px;
     -webkit-text-decoration-line: underline;
@@ -107,12 +107,12 @@ a {
     cursor: pointer;
 }
 
-.modal>.signin_modal .footer_form {
+.request_modal>.signin_modal .footer_form {
     margin-top: 16px;
     text-align: center;
 }
 
-.modal>.signin_modal .footer_form>.social {
+.request_modal>.signin_modal .footer_form>.social {
     margin-top: 8px;
     display: grid;
     height: 72px;
@@ -121,14 +121,14 @@ a {
     grid-column-gap: 9px;
 }
 
-.modal>.signin_modal .sub_form {
+.request_modal>.signin_modal .sub_form {
     margin-top: 16px;
     font-size: .8rem;
     color: grey;
     text-align: center;
 }
 
-.modal>.signin_modal .sub_form>a {
+.request_modal>.signin_modal .sub_form>a {
     display: inline-block;
     margin-top: 4px;
     -webkit-text-decoration-line: underline;

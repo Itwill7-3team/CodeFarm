@@ -64,7 +64,7 @@
           </div>
         </div> 
         <div class="sub_form">
-          <p>아직 인프런 회원이 아니신가요?</p>
+          <p>아직 코딩팜 회원이 아니신가요?</p>
           <a href="MemberJoin.me">회원가입하기</a>
         </div>
       </section>

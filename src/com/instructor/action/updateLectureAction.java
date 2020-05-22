@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
 
-public class addLectureAction implements Action {
+public class updateLectureAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -51,6 +51,13 @@ public class addLectureAction implements Action {
     	System.out.println(request.getParameter("price"));
     	if(request.getParameter("price")!=null && request.getParameter("price")!="")
     	price=Integer.parseInt(request.getParameter("price"));
+    	String start_msg="";
+    	if(request.getParameter("start_msg")!=null && request.getParameter("start_msg")!="")
+    		start_msg=(String)request.getParameter("start_msg").replace("/n", "<br>");
+    	String end_msg="";
+    	if(request.getParameter("end_msg")!=null && request.getParameter("end_msg")!="")
+    		end_msg=(String)request.getParameter("end_msg").replace("/n", "<br>");
+    	int l_number=Integer.parseInt(request.getParameter("num"));
 		ldto.setL_m_email(id);
     	ldto.setL_title(title);
     	ldto.setL_abilities(abilities);
@@ -63,9 +70,12 @@ public class addLectureAction implements Action {
     	ldto.setL_level(level);
     	ldto.setL_img(img);
     	ldto.setL_price(price);
+    	ldto.setStart_msg(start_msg);
+    	ldto.setEnd_msg(end_msg);
+    	ldto.setL_number(l_number);
     	System.out.println(ldto.toString());
     	LectureDAO ldao= new LectureDAO();
-		ldao.insertLecture(ldto);
+		ldao.updateLecture(ldto);
     	System.out.println("성공적으로 종료");
     	
 		return null;
