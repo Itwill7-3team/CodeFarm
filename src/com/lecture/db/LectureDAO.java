@@ -41,16 +41,16 @@ public class LectureDAO {
 		}
 	}//자원 해제
 	
-	public void insertLecture(LectureDTO ldto){
+	public void updateLecture(LectureDTO ldto){
 		try{
 			con=getConnection();
-			sql="insert into lecture ("
-					+ "l_m_email,l_title,l_abilities,"
-					+ "l_targets,l_based,l_description,"
-					+ "l_content,l_type,l_type2,l_level,"
-					+ "l_img,l_price) "
-					+ "values(?,?,?,?,?,?,?,?,?,?,"
-					+ "?,?)";
+			sql="update lecture set "
+					+ "l_m_email=?,l_title=?,l_abilities=?,"
+					+ "l_targets=?,l_based=?,l_description=?,"
+					+ "l_content=?,l_type=?,l_type2=?,l_level=?,"
+					+ "l_img=?,l_price=?,start_msg=?,end_msg=? "
+					+ "where l_number =?";
+					
 			pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, ldto.getL_m_email());
 				pstmt.setString(2, ldto.getL_title());
@@ -64,7 +64,9 @@ public class LectureDAO {
 				pstmt.setString(10, ldto.getL_level());
 				pstmt.setString(11, ldto.getL_img());
 				pstmt.setInt(12, ldto.getL_price());
-				
+				pstmt.setString(13, ldto.getStart_msg());
+				pstmt.setString(14, ldto.getEnd_msg());
+				pstmt.setInt(15, ldto.getL_number());
 				pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -105,7 +107,7 @@ public class LectureDAO {
 				ldto.setL_reg_date(rs.getTimestamp("l_reg_date"));
 				ldto.setPct_date(rs.getTimestamp("pct_date"));
 				ldto.setPay_count(rs.getInt("pay_count"));
-			//	ldto.setStart_msg(rs.getString("start_msg"));
+				ldto.setStart_msg(rs.getString("start_msg"));
 				ldto.setEnd_msg(rs.getString("end_msg"));
 			}
 			System.out.println("강의 상세정보 저장 완료");
