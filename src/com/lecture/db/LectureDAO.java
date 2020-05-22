@@ -445,5 +445,4 @@ public class LectureDAO {
 	}
 	// getLectureList(String l_m_email) // 강사별 강의 목록
 	
-	
 }

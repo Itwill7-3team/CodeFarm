@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.lecture.db.FileDTO"%>
+<%@page import="com.lecture.db.LectureDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>코딩팜 - ${ldto.l_tile }</title>
+<title>코딩팜 - ${ ldto.l_title }</title>
 <script src="https://kit.fontawesome.com/2441771e3f.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta name="viewport" content="width=device-width, user-scalable=yes,initial-scale=1.0, maximum-scale=3.0"/>
@@ -18,7 +22,36 @@
 </head>
 <body>
 <%
+String m_email = (String)session.getAttribute("m_email");
+int l_number = Integer.parseInt(request.getParameter("l_number"));
+int f_num = Integer.parseInt(request.getParameter("f_num"));
+
 LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
+List<List<FileDTO>> fileSet     = (List<List<FileDTO>>)request.getAttribute("fileSet");
+
+/* 파일 개수, 시간 계산 */
+int fileCount = 0;
+double totalTime = 0;
+int total_Hour = 0;
+int total_Min = 0;
+ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
+
+for(int i=0; i<fileSet.size(); i++){
+	for(int j=0; j<fileSet.get(i).size(); j++){
+		fileList.add(fileSet.get(i).get(j));
+		totalTime += fileList.get(fileCount).getF_playtime();
+		fileCount++;
+	}
+}
+
+if(totalTime >= 3600){
+	total_Hour = (int)(totalTime / 3600);
+	total_Min = (int)((totalTime - (total_Hour * 3600)) / 60);
+}else{
+	total_Hour = 0;
+	total_Min = (int)(totalTime / 60);
+}
+/* 파일 개수, 시간 계산 */
 
 %>
 
@@ -29,14 +62,14 @@ LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
 				<aside class="lecture_nav_left" id="mySidenavL">
 					<a href="javascript:void(0)" class="closebtn" onclick="closeNavL()">&times;</a>
 					<div class="lecture_nav_left_header">
-						<h5>웹 게임을 만들며 배우는 React</h5>
+						<h5>${ ldto.l_title }</h5>
 						<P>
 							<span class="period">기간 : </span>
 							 무제한
 						</P>
 						<div class="progress_container">
 							<div class="farm_progress">
-								<label for="farm_mv">진도율 : 0강/64강 (0%) | 시간 : 0분/764분</label>
+								<label for="farm_mv">진도율 : 0강/<%= fileCount %>강 (0%) | 시간 : 0분/<%=total_Min %>분</label>
 								<progress class="progress" id="farm_mv" value="0" max="100">0%</progress>
 							</div>
 						</div>
@@ -135,7 +168,7 @@ LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
 							<h1> 1-1. 리액트를 왜 쓰는가</h1>
 						</div>
 						<div class="right_buttons">
-							<button class="button go_out_course">
+							<button class="button go_out_course" onclick="location.href='Detail.le?num=<%=l_number%>';">
 								<span>
 									<i class="fas fa-door-open"></i>
 								</span>
@@ -185,7 +218,7 @@ LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
 							</button>
 						</div>
 						<div class="navbar_item">
-							<button class="button is_no_border">
+							<button class="button is_no_border" onclick="location.href='LectureVideo.le?l_number=<%=l_number %>&f_num=<%=f_num+1%>';">
 								<i class="fas fa-step-forward"></i>
 								다음강의
 							</button>
