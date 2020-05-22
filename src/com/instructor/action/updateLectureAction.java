@@ -2,6 +2,7 @@ package com.instructor.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
@@ -13,10 +14,10 @@ public class updateLectureAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("Action페이지 진입");
 		LectureDTO ldto= new LectureDTO();
+		HttpSession session=request.getSession();
 		
-		String id="";
-		if(request.getParameter("id")!=null)
-			id=request.getParameter("id");
+		String id=(String)session.getAttribute("m_email");
+		
 		String title="";
 		if(request.getParameter("title")!=null)
 		title= request.getParameter("title");

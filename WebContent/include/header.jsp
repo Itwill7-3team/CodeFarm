@@ -398,7 +398,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				var tag="";
 				for (var i = 0; i <data.length; i++) 
 					{
-					tag+=" <a class='list_el' href=num?'"+data[i].lecturedata.l_number+"'>"
+					tag+=" <a class='list_el' href='Detail.le?num="+data[i].lecturedata.l_number+"'>"
 						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
 						+"<div class='item_content'>"
 						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"
