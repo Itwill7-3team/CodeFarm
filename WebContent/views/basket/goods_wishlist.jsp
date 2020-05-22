@@ -73,15 +73,15 @@ for(int i=0;i<wishList.size();i++){
 </a>
 	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
-		<span class="fa fa-star checked"></span><!-- 찬하트 -->
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>
-		<span class="far fa-star checked"></span><!--빈하트  -->
+		<span class="fa fa-star checked"></span>
+		<span class="far fa-star checked"></span>
 		<span class="review_cnt">(0)</span> 
 		
 		<span class="mg-l50">
-		<a href="WishListDelete.wi?num=<%=wdto.getW_num() %>"><i class="fa fa-heart-o"></i></a><!-- 위시리스트 삭제 -->
+		<a href="WishListDelete.wi?num=<%=wdto.getW_num() %>"><i class="fa fa-heart"></i></a><!-- 위시리스트 삭제 -->
 		<a href="WishToBasket.wi?num=<%=wdto.getW_num() %>&number=<%=ldto.getL_number() %>"><i class="fa fa-cart-plus"></i></a><!-- wish to basket -->
 		</span>
 	
@@ -99,57 +99,6 @@ for(int i=0;i<wishList.size();i++){
 
 </section> 
    
-   
-   
-   
-   
-<%--   <section id="alll" >			<!-- 위시 수정 -->
-   <h3 class="boxh3">위시리스트><a href="BasketList.ba" style="font-size: 16px;">장바구니</a></h3>
-  <%
-  int total=0;
-  for(int i=0;i<wishList.size();i++){
-	  WishlistDTO wdto = (WishlistDTO)wishList.get(i);
-	  LectureDTO ldto = (LectureDTO)lectureList.get(i);
-	  %>
-		<div class="boxx" >
-			<div class="clearfix">
-  	      <div class="column menu">
-		      <img class="image" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
-		         <!--  width="249" height="162" -->
-		         </div>
-		  <div class="column content"> 
-		  <a href="#" ><%=ldto.getL_title() %></a>
-		  <p style="font-size: 12px;"><%=ldto.getL_m_name() %></p>
-		  </div>
-		  
-		   <div class="amount">
-		  <c:set var="price" value="<%=ldto.getL_price() %>"/>
-		   <span style="text-align: center;">
-		  <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /><%=ldto.getL_price() %> 원
-		   </span>
-		   
-		  		   
-		   <div class="tooltip">
-		   <a href ="./WishListDelete.wi?w_num=<%=wdto.getW_num()%>">
-		   <i class="fa fa-close"></i>    <span class="tooltiptext">위시리스트 삭제</span> </a><br>
-		   </div>
-		    <button class="d_btn d_btn2" type="button" onclick="location.href ='./WishToBasketAction.wi?w_num=<%=wdto.getW_num()%>&num=<%=wdto.getW_l_num()%>&name=<%=ldto.getL_title()%>&price=<%=ldto.getL_price() %>'">
-		    장바구니 <i class='fas fa-heart'style='color:black;'></i></button>
-		  </div>
-		  
-		  </div>
-		  
-		 
-		  
-	</div>
-		
-		  
-<% 
-  }  
-  %>
-
-</section> --%>
-
 </div> 
 </body>
 <!-- footer -->
