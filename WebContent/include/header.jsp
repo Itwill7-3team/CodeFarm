@@ -332,21 +332,22 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	
 	
 	$(".login_btn").click(function(){
-	
+		
 		$.ajax({
 			type : "POST",
 			url : "./MemberLogin.me",
 			data : {
-				
-				
-			},
 
+			},
 			success : function(data) {
 
-				$(".login_form1").html(data);
+				$(".login_form").html(data);
 			},
 			error : function(xhr, status, error) {
 				alert("error: " + error);
+				alert("xhr: " + xhr);
+				alert("status: " + status);
+				
 			}
 
 		});
@@ -439,4 +440,4 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 
 </header>
-<div class="login_form1"></div> 
+<div class="login_form"></div> 
