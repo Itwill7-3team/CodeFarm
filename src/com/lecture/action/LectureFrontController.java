@@ -75,17 +75,7 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Search/business.le")){
-			System.out.println("/Search.le/it-programming 처리 model->view");
-			
-			action = new LectureListAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if (command.equals("/Detail.le")) {
+		}else if (command.equals("/Detail.le")) {
 			action = new LectureDetailAction();
 			try {
 				forward = action.execute(request, response);
@@ -94,6 +84,13 @@ public class LectureFrontController extends HttpServlet{
 			}
 		} else if(command.equals("/DetailReview.le")) {
 			action = new LectureReviewListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/lectureVideo.le")){
+			action = new LectureVideoAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
