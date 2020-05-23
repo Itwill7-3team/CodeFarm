@@ -73,8 +73,7 @@ if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
 }
 String id="id";
-int idx= email.indexOf("@");
-id= email.substring(0,idx);
+id= email.substring(0,email.indexOf("@"));
 
 System.out.print("id"+id);
 
