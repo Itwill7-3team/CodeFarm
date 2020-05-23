@@ -11,6 +11,12 @@
 	src: url(./fonts/NotoSansCJKkr-Regular.otf) format('truetype')
 	}
 #clause{font-family: NotoSansCJKkr-Regular;}
+#clause h1,h3,h4,h5 {font-family: NotoSansCJKkr-Regular !important;}
+#clause h4{font-size: 1.5rem;}
+#clause h3{font-size: 1.75rem;
+border-bottom: none;}
+#clause p {font-size: 16px;}
+#clause table {width: 100%; padding: .5em .75em;}
 
 .line {
 	border-bottom: 1px solid gray;
@@ -315,9 +321,9 @@
 	</p>
 	<table>
 		<tr>
-			<td class="line1">제공받은 자</td>
-			<td class="line1">제공하는 목적</td>
-			<td class="line1">제공하는 개인정보 항목</td>
+			<th class="line1">제공받은 자</th>
+			<th class="line1">제공하는 목적</th>
+			<th class="line1">제공하는 개인정보 항목</th>
 		</tr>
 		<tr>
 			<td class="line">LGCNS</td>

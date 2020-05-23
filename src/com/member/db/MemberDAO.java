@@ -456,6 +456,26 @@ public class MemberDAO {
 				}
 				return mdto;
 			}
+			
+			public int getRank(String m_email) {
+				int check = 0;
+				try {
+					con = getConnection();
+					sql = "select m_rank from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_email);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						check = rs.getInt("m_rank");
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return check;
+			}
 	}
 	
 

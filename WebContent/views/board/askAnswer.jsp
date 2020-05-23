@@ -16,10 +16,10 @@
 
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	<script>
-$(document).ready(function() {
+	$(document).ready(function() {
 	
-});
-function timeBefore(timedate){
+	});
+	function timeBefore(timedate){
     //현재시간
     var now = new Date(); 
     console.log(now);
