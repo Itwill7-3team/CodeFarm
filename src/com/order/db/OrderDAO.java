@@ -299,4 +299,30 @@ public class OrderDAO {
 	}
 	//getOrderDetail
 	
+	
+	
+	//OrderDelete
+	public void OrderDelete(String trade_num) {
+		try {
+			con = getConnection();
+			System.out.print("OrderDelete()");
+			
+			sql = "DELETE FROM orderlist "
+					+ "WHERE o_b_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, trade_num);
+			
+			pstmt.executeUpdate();
+			
+			System.out.println(trade_num+"-> 주문 삭제 완료");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			   closeDB();	
+			}
+	}
+	//OrderDelete
+	
 	}
