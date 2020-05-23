@@ -78,6 +78,20 @@ display: inline-block;}
 	}
 }
 
+@font-face{
+	font-family: 'NotoSansCJKkr-Regular';
+	src: url(./fonts/NotoSansCJKkr-Regular.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Light';
+	src: url(./fonts/NotoSansCJKkr-Light.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Bold';
+	src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
+	}
+
+
 </style>
 
 
@@ -103,9 +117,11 @@ display: inline-block;}
 
   <!-- Modal content -->
   <div class="Wmodal-content">
+   <div class="Wmodal-head">
     <span class="Wclose">&times;</span>
-    <h2>위시리스트</h2>
-    <hr>
+    <span class="Wmodal-title" style="font-family: 'NotoSansCJKkr-Bold';">내 위시리스트</span>
+    </div>
+    
     
           <%
            for (int i = 0; i < wishList.size(); i++) {
@@ -134,9 +150,9 @@ display: inline-block;}
 					value="ko_KR" />
 				<fmt:formatNumber type="currency" value="${price}" />
 			</span>
-			<div class="tooltip">
+			<div class="Wtooltip">
 				<a href="./WishListDelete.wi?b_num=<%=widto.getW_num()%>"> <i
-					class="fa fa-close"></i> <span class="tooltiptext">위시리스트 삭제</span>
+					class="fa fa-close"></i> <span class="Wtooltiptext">위시리스트 삭제</span>
 				</a><br>
 			</div>
 	 		<% BasketDTO bdto = new BasketDTO(); { %>
@@ -197,9 +213,9 @@ display: inline-block;}
 				<fmt:formatNumber type="currency" value="${price}" />
 			</span>
 
-			<div class="tooltip">
+			<div class="Btooltip">
 				<a href="./BasketDelete.ba?b_num=<%=bdto.getB_num()%>"> <i
-					class="fa fa-close"></i> <span class="tooltiptext">장바구니 삭제</span>
+					class="fa fa-close"></i> <span class="Btooltiptext">장바구니 삭제</span>
 				</a><br>
 			</div>
 			<button class="d_btn d_btn2" type="button"
