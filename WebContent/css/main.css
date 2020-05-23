@@ -153,6 +153,15 @@ height: 320px;
 .price {
     margin-left: 68% !important;
 }
+
+#more,#blg {
+width: 90% !important;
+margin: 1rem !important;
+}
+
+.Bwrap,.interest{
+margin-left: 0 !important;
+}
 	
 }
 @media screen and (max-width: 480px) {
@@ -190,11 +199,11 @@ height: 320px;
 
 #more,#blg {
 width: 90% !important;
-margin: 0 !important;
+margin: 1rem !important;
 }
 
-.Bwrap{
-	margin-left: 0 !important;
+.Bwrap,.interest{
+margin-left: 0 !important;
 }
 
 }
