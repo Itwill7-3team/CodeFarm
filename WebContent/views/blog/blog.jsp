@@ -100,12 +100,9 @@ int endPage=(int)request.getAttribute("endPage");
 					
 					String id="id";
 					if(bdto.getB_writer().indexOf("@")>-1){
-					int idx= bdto.getB_writer().indexOf("@");
-					id= bdto.getB_writer().substring(0,idx);}
-					else{
-					id= bdto.getB_writer();
-					}
-					System.out.print("id:"+id);
+					id= bdto.getB_writer().substring(0,bdto.getB_writer().indexOf("@"));}
+					else{ id= bdto.getB_writer();}
+
 			%>
 	<div class="blog-c">
 	<a href="blogContent.bl?num=<%=bdto.getB_num()%>&pageNum=<%=pageNum%>">

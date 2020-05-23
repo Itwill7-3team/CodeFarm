@@ -23,8 +23,8 @@ public class NoticeUpdateAction implements Action {
 
 		String id =(String) session.getAttribute("m_email");
 		
-		if(id == null && !id.equals("admin@naver.com")){
-			forward.setPath("./MemberLogin.me");
+		if(id == null || !id.equals("admin@naver.com")){
+			forward.setPath("./Main.le");
 			forward.setRedirect(true);
 			return forward;
 		}

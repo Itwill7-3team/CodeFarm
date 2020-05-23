@@ -28,6 +28,11 @@ email=(String)session.getAttribute("m_email");
 BlogDTO bdto=(BlogDTO)request.getAttribute("bdto");
 String pageNum=request.getAttribute("pageNum").toString();
 
+String id="id";
+if(bdto.getB_writer().indexOf("@")>-1){
+id= bdto.getB_writer().substring(0,bdto.getB_writer().indexOf("@"));}
+else{ id= bdto.getB_writer(); }
+
 %>
 
 
@@ -47,7 +52,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 <!--  -->
 
 		<h1><span class="Blg">Blg.</span><%=bdto.getB_title()%></h1>
-		작성자 :<%=bdto.getB_writer()%><br>
+		작성자 :<%=id%><br>
 		<hr>
 		<div class="blg_content">
 		<%=bdto.getB_content() %>

@@ -231,9 +231,9 @@ if(check>0){
 <%-- 	<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button> --%>
 <%
 String id="id";
-int idx= email.indexOf("@");
-id= email.substring(0,idx);
-System.out.print("id"+id);
+if(email.indexOf("@")>-1){ id= email.substring(0,email.indexOf("@"));}
+else{	id=email; }
+System.out.print("id:"+id);
 %>	
 	<!-- 답글쓰기폼 -->
 
