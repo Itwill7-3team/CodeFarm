@@ -10,6 +10,14 @@
 <title>코딩팜</title>
 <style type="text/css">
 
+@media screen and (max-width: 1085px) {
+
+.main_container {
+    margin-left: 2em !important; 
+}
+
+}
+
 .profile_aside {
     display: inline-block;
     width: 15%;
@@ -32,6 +40,7 @@
     height: 100%;
     margin: 0 auto;
     margin-top: 60px;
+/*     margin-left: 3em !important; */
     /* border: 1px solid red; */
 }
 
@@ -87,11 +96,16 @@ margin: 0 0.5em;
 .profile_edit_container,.password_edit,.secession{
     clear: both;
     max-width:280px;
-    margin: 2em;
+    margin: 2em auto;
     padding: 2em;
     border: 5px pink dotted;
 /*     border: 1px solid; */
 }
+
+.password_edit{
+    padding: 2em 2em 13em 2em;
+}
+
 .button.is-primary {
    width: 200px;
    text-align: center;
@@ -104,6 +118,8 @@ display: none;
 
  .profile_setting{
 /* border: 1px pink solid; */
+    min-width: 570px;
+    max-width: 600px;
 } 
 .body{
 display:flex;
@@ -114,10 +130,16 @@ flex:1;
 }
 
 .secession{
-/*     border: 1px pink solid; */
-	margin-top:11em;
+    border: 5px #f5e0e0 dotted !important;
+    padding: 1em 2em !important; 
+/* 	margin-top:11em; */
     line-height: 3;
 }
+
+.notice{
+    font-size: 12px;
+}
+
 .email_pwd_container{
     flex: 1;
 /*     border: 1px solid; */
