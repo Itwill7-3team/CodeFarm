@@ -180,10 +180,6 @@ flex:1;
 </small>
         <h6>계정 설정</h6>
           <div class="tabs">
-<!--             <ul> -->
-<!--               <li class="is-active"><a href="#">프로필 설정</a></li> -->
-<!--               <li><a href="#">알림 설정</a></li> -->
-<!--             </ul> -->
           </div>
         <div class="tab_content">
 <section class="hero profile_setting">
@@ -194,10 +190,9 @@ flex:1;
         <form class="field profile_upload">
           <div class="file is-boxed">
             <label class="file-label">
-<!--               <input type="file" class="file-input" name="profile_image"> -->
               <span class="file-cta">
                 <img class="thumbnail_image" 
-				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.8;" alt="@@@님의 프로필"> <!-- 당근이미지 -->
+				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.8;" alt="<%=mdto.getM_nick() %>님의 프로필"> <!-- 당근이미지 -->
               </span>
             </label>
           </div>
@@ -208,18 +203,13 @@ flex:1;
         <div class="right">
           <label for="name" class="label input_label">
             <span>닉네임</span>
-            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_nick() %>" placeholder="변경할 닉네임을 입력해주세요">
+            <input id="name" type="text" name="m_nick" class="input" placeholder="닉네임을 입력해주세요"<%if(mdto.getM_nick() != null){%>value="<%=mdto.getM_nick() %>"<%} %> >
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>
-            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" placeholder="자기소개를 해주세요"><%
-            if(mdto.getM_intro() == null){
-            	%>자신을 소개해주세요.
-            	<%
-            }else if(mdto.getM_intro() != null){
-            	out.print(mdto.getM_intro());
-            }
-            %></textarea>
+            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" 
+            <%if(mdto.getM_intro() == null){%>
+            placeholder="자기소개를 해주세요"<%}%>><%if(mdto.getM_intro() != null){%><%=mdto.getM_intro()%><%}%></textarea>
 		
 		  </label>
         </div>
