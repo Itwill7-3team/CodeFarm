@@ -197,7 +197,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
-						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
+<!-- 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a> -->
+						<div class="profile_hover">
+							<span><img src="./img/cart.png"></span>
+						</div>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
 							<div class="top_content">

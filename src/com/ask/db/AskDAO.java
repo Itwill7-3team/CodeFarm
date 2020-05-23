@@ -166,7 +166,7 @@ public class AskDAO {
 	}
 	
 	//C-insertAnswer(ndto)
-		public int insertQuestion(AskDTO adto) {
+		public int insertAsk(AskDTO adto) {
 			int check=-1;
 			int num=0;
 			//1: 성공/ -1: 실패
@@ -184,14 +184,17 @@ public class AskDAO {
 				}
 				System.out.println("글번호:"+num);
 				//3 글작성메서드
-//				sql="insert into board (content,writer,re_ref,re_lev,re_seq) values(?,?,?,?,?)";
-//				pstmt=con.prepareStatement(sql);
-//				pstmt.setString(1, adto.getContent());
-//				pstmt.setString(2, adto.getWriter());
-//				pstmt.setInt(3, adto.getRe_ref()); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
-//				pstmt.setInt(4, adto.getRe_lev()); //re_lev :초기화 => 답글 들여쓰기
-//				pstmt.setInt(5, 0); //re_seq :초기화 => 답글 순서
-//				check=pstmt.executeUpdate();
+				sql="insert into board (type,title,content,writer,re_ref,re_lev,re_seq,l_num) values(?,?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, adto.getType());
+				pstmt.setString(2, adto.getTitle());
+				pstmt.setString(3, adto.getContent());
+				pstmt.setString(4, adto.getWriter());
+				pstmt.setInt(5, num); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
+				pstmt.setInt(6, 0); //re_lev :초기화 => 답글 들여쓰기
+				pstmt.setInt(7, 0); //re_seq :초기화 => 답글 순서
+				pstmt.setInt(8, adto.getL_num()); //강의 번호
+				check=pstmt.executeUpdate();
 				//4
 				if(check==1){
 					System.out.println("글쓰기 성공"+check);

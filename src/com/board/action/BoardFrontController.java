@@ -58,6 +58,13 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/AskAction.bo")){
+			action=new AskAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/AnswerAction.bo")){
 			action=new AnswerAction();
 			try{

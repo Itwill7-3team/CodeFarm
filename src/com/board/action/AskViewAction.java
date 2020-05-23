@@ -34,7 +34,7 @@ public class AskViewAction implements Action {
 		int num=Integer.parseInt(request.getParameter("num"));
 		String pageNum=request.getParameter("pageNum");
 
-		//해당 글 내용 ㅇ불러오기
+		//해당 글 내용 불러오기
 		AskDAO bdao =new AskDAO();
 		AskDTO bdto=bdao.getBoard(num);
 		
