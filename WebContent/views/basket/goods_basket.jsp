@@ -399,9 +399,16 @@ display: inline-block;}
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
-			modal.style.display = "block";
+			var checkBox = document.getElementById("myCheck");
+		
+			if (checkBox.checked == true) {
+				modal.style.display = "block";
+			} else {
+				alert("필수항목을 체크해주세요");
+			}
 		}
-
+			
+	
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function() {
 			modal.style.display = "none";
