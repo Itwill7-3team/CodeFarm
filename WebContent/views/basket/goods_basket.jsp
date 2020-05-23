@@ -215,16 +215,17 @@ display: inline-block;}
 
 				<li class="myCheckli"
 					style="list-style-type: none; font-size: 12px;">
-					<input type="checkbox" id="myCheck" required onclick="myFunction()">
+					<!-- required << 적용 안 됨 >> -->
+					<input type="checkbox" id="myCheck" onclick="myFunction()" required>
 					(필수) 구매조건 및 개인정보취급방침 동의
 					<button class="Vbtn"
 						onclick="document.getElementById('id01').style.display='block'">[보기]</button>
 					<div id="id01" class="Vmodal">
-						<span
-							onclick="document.getElementById('id01').style.display='none'"
-							class="Vclose" title="VClose Modal">×</span>
 						<form class="Vmodal-content" action="/action_page.php">
 							<div class="Vcontainer">
+							<span
+							onclick="document.getElementById('id01').style.display='none'"
+							class="Vclose" title="Vclose Vmodal">×</span>
 								<jsp:include page="../../include/clause.jsp" />
 							</div>
 						</form>
@@ -490,7 +491,10 @@ window.onclick = function(event) {
 
 </section>
 
-</body>
+
+
+
 <!-- footer -->
 <jsp:include page="/include/footer.jsp"></jsp:include>
+</body>
 </html>
