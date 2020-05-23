@@ -22,7 +22,7 @@ if(session.getAttribute("m_email")!=null){
 		    <ul>
 		      <li class="menu2 "><a href="MyLecture.bo">수강중인 강의</a></li>
 <!-- 		      <li class="menu2 "><a href="#">참여중인 로드맵</a></li> -->
-		      <li class="menu2 "><a href="#">내 질문</a></li>
+		      <li class="menu2 "><a href="MyaskAction.bo">내 질문</a></li>
 		    </ul>
 		  </li>
 		  <li class="menu1">

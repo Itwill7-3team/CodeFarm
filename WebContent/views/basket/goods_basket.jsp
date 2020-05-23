@@ -52,7 +52,32 @@ display: inline-block;}
 .Bwrap{
     width: 70%;
     margin: 0 auto;
+    display: flex;
 }
+
+@media screen and (max-width: 1085px) {
+
+	/* 모바일   */
+	.profile_aside{
+	display: none !important;
+	}
+	
+}
+
+@media screen and (max-width: 1360px) {
+	
+
+	.profile_aside>ul{
+	padding: 0 0 0 1em;
+	}
+	.Bwrap{
+	width: 100% !important;
+	}
+	#alll{
+	margin: 4em 1em !important;
+	}
+}
+
 </style>
 
 
@@ -308,7 +333,10 @@ display: inline-block;}
 			String email = (String) request.getAttribute("email");
 		%>
 		
+	</div>		
 </div>		
+</section>
+	
 	<!-- 카드 결제 -->
 	<script>
 	$("#check_module").click(function () {
@@ -372,9 +400,16 @@ display: inline-block;}
 
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
-			modal.style.display = "block";
+			var checkBox = document.getElementById("myCheck");
+		
+			if (checkBox.checked == true) {
+				modal.style.display = "block";
+			} else {
+				alert("필수항목을 체크해주세요");
+			}
 		}
-
+			
+	
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function() {
 			modal.style.display = "none";
@@ -489,7 +524,6 @@ window.onclick = function(event) {
 
 
 
-</section>
 
 
 
