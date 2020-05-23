@@ -57,7 +57,33 @@ aside.profile_aside .menu-list .is-active>a {
 .Owrap{
     width: 70%;
     margin: 0 auto;
+    display: flex;
+    min-height: 500px;
 }
+
+@media screen and (max-width: 1085px) {
+
+	/* 모바일   */
+	.profile_aside{
+	display: none !important;
+	}
+	
+}
+
+@media screen and (max-width: 1360px) {
+	
+
+	.profile_aside>ul{
+	padding: 0 0 0 1em;
+	}
+	.Owrap{
+	width: 100% !important;
+	}
+	#alll{
+	margin: 4em 1em !important;
+	}
+}
+
 </style>
 </head>
 <body>

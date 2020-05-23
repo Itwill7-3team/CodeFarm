@@ -28,7 +28,7 @@
     
 .main_container {
     display: inline-block;
-    width: 50% !important;
+    width: 55% !important;
     height: 100%;
     margin: 0 auto;
     margin-top: 60px;
@@ -86,8 +86,10 @@ margin: 0 0.5em;
 }
 .profile_edit_container,.password_edit,.secession{
     clear: both;
+    max-width:280px;
     margin: 2em;
-    padding: 1em 6em;
+    padding: 2em;
+    border: 5px pink dotted;
 /*     border: 1px solid; */
 }
 .button.is-primary {
@@ -100,6 +102,26 @@ margin: 0 0.5em;
 display: none;
 }
 
+ .profile_setting{
+/* border: 1px pink solid; */
+} 
+.body{
+display:flex;
+}
+.profile_edit_container{
+flex:1;
+/* border: 1px pink solid; */
+}
+
+.secession{
+/*     border: 1px pink solid; */
+	margin-top:11em;
+    line-height: 3;
+}
+.email_pwd_container{
+    flex: 1;
+/*     border: 1px solid; */
+}
 </style>
 
 
