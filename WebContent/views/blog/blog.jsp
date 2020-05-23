@@ -6,12 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <!-- Font Awesome Icon Library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/blog.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<style>
+
+<link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
+<title>코딩팜-블로그</title>
+<style type="text/css">
+
 
 </style>
 </head>

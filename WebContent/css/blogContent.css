@@ -2,14 +2,14 @@
 /* 보드 템플릿 */
 @media print,screen and (max-width: 1250px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
-	.content_side{
-	display: none;
-	}
+/* 	.content_side{ */
+/* 	display: none; */
+/* 	} */
 }
 @media print,screen and (max-width: 1000px) {
    /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
-	.community_content aside{
-	display: none !important;}
+/* 	.community_content aside{ */
+/* 	display: none !important;} */
 }
 
 
@@ -23,15 +23,17 @@
 .community_content{
 /*     border: 1px pink solid; */
 /* 	display: flex; */
+	min-width:415px;
 	width:40%;
 	max-width:1180px;
 	margin: 0 auto;
 	min-height: 500px;
 }
-.community_content aside{
+/* .community_content  */
+aside{
 	float: left;
     width: 7%;
-    min-height: 700px;
+/*     min-height: 700px; */
     display: flex;
     flex: 2;
 }
@@ -40,10 +42,12 @@
 /* 	float: left; */
 /*     width: 76%; */
 /*     flex:1; */
+	width:100%;
+/* 	min-width:700px; */
 	margin-top: 1em;
 	display:block;
     box-sizing: border-box;
-    padding: 15px 0px;
+/*     padding: 15px 0px; */
     position: relative;
     box-shadow: 0 12px 18px 0 rgba(0,0,0,.08);
     border: 1px #ccc solid;
@@ -53,9 +57,9 @@
 .blg_content{
 /* 	border: 1px red solid; */
 /* 	border-bottom: 1px solid #929292; */
-	width: 80%;
+	width: 100%;
 	min-height: 500px;
-	padding: 1em;
+/* 	padding: 1em; */
 	display: inline-block;
 
 }
@@ -68,16 +72,19 @@
 
 
 hr{
-	width: 40rem;
+	width: 100%;
     margin-left: 0;
 	
 }
 
 .main_content h1{
-	padding-left: 50px;
-	display: block;
+/* 	padding-left: 50px; */
+/* 	display: block; */
 	font-size: 28px;
 	font-weight: 400;
+	width: 400px;
+    padding-right: 63%;
+    display: inline-block;
 }
 
 .pageNation {
@@ -109,7 +116,6 @@ hr{
 }
 
 .blg_btn{
-	margin-left: 0.3rem;
 	padding: 0 1em;
     height: 30px;
     margin-top: 3em;
@@ -118,4 +124,27 @@ hr{
     border-radius: 5px;
     color: #00c471;
     z-index: 99;
+}
+
+.Bwriter{
+    display: inline-block;
+    text-align: right;
+    right: 0;
+    font-size: 14px;
+}
+.Bcontent{
+	display:inline-block;
+	width: 100%;
+}
+
+.Bcontent>img{
+	width: 100% !important;
+}
+
+.B_img{
+	overflow:hidden;
+	border-radius: 15px 15px 0 0;
+}
+.B_ctc{
+	padding: 1rem;
 }

@@ -1,3 +1,4 @@
+<%@page import="com.blog.db.BlogDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,10 +17,13 @@
 List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
 List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
 List<LectureDTO> freeList = (List<LectureDTO>) request.getAttribute("freeList");
+List<BlogDTO> blogList = (List<BlogDTO>) request.getAttribute("blogList");
 
-System.out.println("@@@@@@@@@@@@@@lectureList:"+bestList);
-System.out.println("@@@@@@@@@@@@@@lectureList:"+newList);
-System.out.println("@@@@@@@@@@@@@@lectureList:"+freeList);
+
+System.out.println("@@@ best lectureList:"+bestList);
+System.out.println("@@@ new lectureList:"+newList);
+System.out.println("@@@ free lectureList:"+freeList);
+System.out.println("@@@ blog List:"+blogList);
 
 %>
 <script>
@@ -278,52 +282,26 @@ for(int i=0;i<freeList.size();i++){
 
 
 <section id="blg">
-<h1 class="title">블로그</h1> 
-<!-- <a href="#">&#10095;</a> -->
+<h1 class="title">읽어보기</h1> 
+
+<div class="Bwrap">
+<%
+for(int i=0;i<blogList.size();i++){ 
+	BlogDTO bdto = blogList.get(i);
+%>
 
 <div class="card-c">
-<a href="#">
-  <img src="./img/main-img/d.png" alt="" style="width:100%">
-    <h2>Blog1</h2>
+<a href="blogContent.bl?num=<%=bdto.getB_num()%>&pageNum=1">
+  <img src="./upload/<%=bdto.getB_img() %>" alt="" style="width:100%">
+    <h2><%=bdto.getB_title() %></h2>
 </a>
   	<div class="text-in">
 		<p>
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		Some text about the .
+		<%=bdto.getB_content() %>
 		</p>  
 	</div>
 </div>
-
-<div class="card-c">
-<a href="#">
-  <img src="./img/main-img/e.jpg" alt="" style="width:100%">
-    <h2>Blog2</h2>
-</a>    
-		<div class="text-in">
-		<p>
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		</p> 
-		</div>
-</div>
-
-<div class="card-c">
-<a href="#">
-  <img src="./img/main-img/f.jpg" alt="" style="width:100%">
-    <h2>Blog3</h2>
-</a>    
-		<div class="text-in">
-		<p>
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		Some text about the .
-		</p> 
-		</div>
+<%} %>
 </div>
 </section>
 

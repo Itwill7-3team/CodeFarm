@@ -49,7 +49,7 @@ public class BlogDAO {
 	}//자원 해제
 	
 	public ArrayList<BlogDTO> getBlogList(int startRow, int pageSize){
-		//공지 게시판 리스트 가져오는 메서드
+		//블로그 리스트 가져오는 메서드
 		ArrayList<BlogDTO> blogList=new ArrayList<BlogDTO>();
 		try{
 			con=getConnection();
@@ -62,6 +62,38 @@ public class BlogDAO {
 			pstmt.setInt(2, pageSize); //가져갈 글의 개수
 			
 			rs=pstmt.executeQuery();
+			while(rs.next()){
+				BlogDTO bdto =new BlogDTO();
+				bdto.setB_num(rs.getInt("b_num"));
+				bdto.setB_title(rs.getString("b_title"));
+				bdto.setB_img(rs.getString("b_img"));
+				bdto.setB_content(rs.getString("b_content"));
+				bdto.setB_writer(rs.getString("b_writer"));
+				bdto.setB_reg_date(rs.getTimestamp("b_reg_date"));
+				bdto.setB_ip(rs.getString("b_ip"));
+				
+				blogList.add(bdto);	
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return blogList;
+	}
+
+	public ArrayList<BlogDTO> getBlogMainList(){
+		//블로그 리스트 가져오는 메서드
+		ArrayList<BlogDTO> blogList=new ArrayList<BlogDTO>();
+		try{
+			con=getConnection();
+			
+			sql="select * from blog "
+					+ "order by b_reg_date desc "
+					+ "limit 0,3";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
 			while(rs.next()){
 				BlogDTO bdto =new BlogDTO();
 				bdto.setB_num(rs.getInt("b_num"));

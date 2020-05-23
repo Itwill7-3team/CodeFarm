@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜-공지</title>
+<title>코딩팜-블로그</title>
 <link href="./css/blogContent.css" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <style type="text/css">
@@ -41,21 +41,26 @@ else{ id= bdto.getB_writer(); }
 <!-- <!-- 컨테이너 내용 --> 
 <!-- 	</div> -->
 <!-- 	</section> -->
-	<article class="community_content"> 
 	<aside>
 	<button class="blg_btn" onclick="history.back();"><i class='fas fa-arrow-left'></i>
 	</button>
 	</aside>
+	<article class="community_content"> 
 <!-- 메인콘텐츠  -->
 <!-- 	<div class="columns"> -->
 		<div class="main_content">
 <!--  -->
-
-		<h1><span class="Blg">Blg.</span><%=bdto.getB_title()%></h1>
-		작성자 :<%=id%><br>
-		<hr>
 		<div class="blg_content">
-		<%=bdto.getB_content() %>
+			<div class="B_img">
+				<img src="./upload/<%=bdto.getB_img() %>" style="width: 100%;">
+			</div>
+			<div class="B_ctc">
+				<h1><span class="Blg">Blg.</span><%=bdto.getB_title()%></h1>
+				<p class="Bwriter">작성자 :<%=id%></p>
+				<hr>
+				<p class="Bcontent"><%=bdto.getB_content() %>
+			</div>
+	
 		</div>
 		
 	
