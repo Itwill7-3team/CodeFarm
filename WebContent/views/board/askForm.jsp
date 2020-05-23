@@ -31,7 +31,7 @@
 											      maxHeight: null,             // set maximum height of editor
 											      focus: true,                  // set focus to editable area after initializing summernote
 											      lang: "ko-KR",					// 한글 설정
-													placeholder: '답글을 입력하세요 :-D',	//placeholder 설정
+													placeholder: '질문을 입력하세요 :-D',	//placeholder 설정
 									
 											  });
 											});
@@ -45,12 +45,20 @@
 									
 									
 									</script>
+													
+<%
+String email="";
+if(session.getAttribute("m_email")!=null){
+email=(String)session.getAttribute("m_email");
+}
+
+%>
 																									
 									<div class="ask_form">
 										<form action="AskAction.bo" method="post">
 										<input type="hidden" name="num" value="1"> <!-- lecture num test값 -->
-										<input type="hidden" name="writer" value="admin"> <!-- 작성자 test값 -->
-										제목 : <input type="text" name="title">
+										<input type="hidden" name="writer" value="<%=email%>">
+										제목 : <input type="text" name="title" style="width: 90%;">
 										<textarea name="content" id="summernote">
 										</textarea>
 										<input type="submit" value="글쓰기">
