@@ -12,102 +12,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title> 코딩팜 - 구매 상세 내역 | 온라인 강의 플랫폼 </title>
-<link rel="stylesheet" href="./css/basket.css">
+<link href="./css/odetail.css" rel="stylesheet">
 </head>
 <style>
-
-
-
-.saythx {
-	color: #595959;
-	padding: .5rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-align: center!important; 
-	
-}
-h1,h2{font-size: 2.25rem;
-    margin: 0;
-    font-size: 100%;
-    font-weight: 400;}
-   
-p{
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-size: 16px;
-    margin: 0;
-    line-height: 1.6;}
+@font-face{
+	font-family: 'NotoSansCJKkr-Regular';
+	src: url(./fonts/NotoSansCJKkr-Regular.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Light';
+	src: url(./fonts/NotoSansCJKkr-Light.otf) format('truetype')
+	}
     
-
-.detable {
-	width: 100%;
-	background-color: #fff;
-    color: #363636;
-     border-collapse: collapse;
-    /*border-spacing: 0; */
-    }
-
-    
-.sacard-content{
-    padding: 1.5rem;
-    background-color: transparent; }
- 
-    }  
-
-   
-    
-.canbtn{
-	background-color: #fff;
-    border-color: #dbdbdb;
-    border-width: 1px;
-    color: #363636;
-    cursor: pointer;
-    justify-content: center;
-    padding: calc(.375em - 1px) .75em;
-    text-align: center;
-    white-space: nowrap;
-   }
-
- 
-.detable.bordered td, .detable.bordered th {
-    border: 1px solid #ccc;
-    color: #363636;
-    text-align: left;
-    padding: .5em .75em;
-}
-
-.canbtn {
-	padding: 10px;
-	border-radius: 4px; 
-	align-items: center;
-	border: 1px solid transparent;
-	font-size: 1rem;
-	background-color: #fff;
-	border-color: #dbdbdb;
-	col:h   	border-width: 1px;
-
-}
-.canbtn:HOVER {
-	border-color: #b5b5b5;
-    color: #363636;
-    
-}
-.text-info{color: #3298dc!important;}
-
-
-.all2 bb {
-width: 41.66667%;
-}
-
-
 </style>
 
 
 <body>
  <jsp:include page="/include/header.jsp"/>
-
+<main id="mainee">
 
 	<%
 	List orderDetailList = (List)request.getAttribute("orderDetailList");
@@ -121,22 +43,22 @@ width: 41.66667%;
 
 
 
-	<section id = alll>
+	<section id ="allle">
 	<div class="all1"> <!-- container -->
  	<%
 		OrderDTO orderDTO = (OrderDTO)orderDetailList.get(0);{ %> 
 	
 	<div class="saythx" >   
-	  <h1>구매 상세 내역 <small> (주문 번호:  <%=orderDTO.getO_b_num() %> )</small></h1></div>
+	  <h1>구매 상세 내역 <small style="font-size: 12px;"> (주문 번호:  <%=orderDTO.getO_b_num() %> )</small></h1></div>
 	  
-	<div class="Ocolumns"> <!-- columns --> 
+	
 	 
-	 
+	     
 	 
 	 <!--  -->
 	<!--[all2 aa] orderlist -->
  <!-- <div class="all2 aa">  column is-7 -->
-	 <div class="boxx" > <!-- box product_item_list -->
+	 <div class="Ocolumns" > <!-- columns --> 
 	 <%
 	  int total = 0;
 	   for(int i=0;i<orderDetailList.size();i++){
@@ -144,20 +66,20 @@ width: 41.66667%;
 		   LectureDTO ldto = (LectureDTO)lectureList.get(i);
 		   total += (odto.getO_sum_money());
 	 %> 
-	 	
+	 	<div class="boxx1" style=" display: inline-block;" > <!-- box product_item_list -->
 			<div class="clearfix" >
-				<div class="column menu">
-				<img class="img" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
+				<div class="column menu" >
+				<img class="img" style="float: left;" src="./upload/<%=ldto.getL_img().split(",")[0]%>">
 			</div>
 			
-			<div class="column content">
-				<a href="#"><%=ldto.getL_title()%></a>
+			<div class="column content" >
+				<a href="Detail.le?num=<%=ldto.getL_number() %>"><%=ldto.getL_title()%></a>
 				<p style="font-size: 12px;">
 					<%=ldto.getL_m_email()%></p>
 				<!-- basketDAO 추가 설정 -->
 			</div> 
-			</div> 
-		
+			 
+		<!--  style="clear: both;" -->
  	<div class="amount">
 			<c:set var="price" value="<%=ldto.getL_price()%>" />
 			<span style="text-align: center;"> <fmt:setLocale
@@ -167,23 +89,25 @@ width: 41.66667%;
 		</div>
 		</div> 
 	 
-	
+	</div>
 	
 	<%} %>
 	
 	</div> <!-- box product_item_list -->
-	</div> <!--column is-7  -->
+	
 
 	
 	
-	<div class="all2 bb">	 
+	<div class="all2-bb">	 
 	<div class="sacard">  
-	<div class="sacard-content">
+	<div class="sacard-content" >
 	<div class="total_amount_con">
 			<div class="total_a">
- 			<c:set var="total" value="<%=total%>" />
-		 	<h2>총 주문금액 <span><fmt:setLocale value="ko_KR"/>
-							<fmt:formatNumber type="currency" value="${total}"/></span></h2>
+	 			<c:set var="total" value="<%=total%>" />
+			 	<h2 style="font-size: 1.3rem; margin: 0;  color: #454545;">
+			 	총 주문금액 
+			 	<span style="float: right;"><fmt:setLocale value="ko_KR"/>
+				<fmt:formatNumber type="currency" value="${total}"/></span></h2>
 			</div> <!-- total_a -->
 	<table class="detable bordered">
 		<tbody>
@@ -235,7 +159,7 @@ width: 41.66667%;
 		</tr>
 	
 		<tr>
-		<td colspan="2" style="border: none;"><button type="button" class="canbtn" style="width: 100%;"> 결제 취소 </button></td>
+		<td colspan="2" style="border: none;"><button type="button" class="canbtn"> 결제 취소 </button></td>
 		</tr>
 			</tbody>
 		</table>
@@ -246,15 +170,53 @@ width: 41.66667%;
 </div> <!-- total_amount_con -->
 </div> <!-- sacard-content -->
 </div> <!-- sacard -->
-</div> <!-- all3 -->
+
  <%} %> 
+ </div> <!-- all bb -->
 </div> <!-- columns -->
 			<!-- <h3> <a href="./OrderList.or">뒤로가기</a> </h3> -->
-			<div class="saythx"><p>좋은 지식의 구매는 더 좋은 지식 창출을 위한 바탕으로 쓰입니다.<br>
+			<div class="saythx"><p style="padding-top: 3%;">좋은 지식의 구매는 더 좋은 지식 창출을 위한 바탕으로 쓰입니다.<br>
 		함께해 주셔서 감사합니다. 🙇🏻‍♀️🙇🏻‍♂️</p></div>
 
-</div>  <!-- all1 -->
+
 </section>
+
+</main>
+
+
+<section class="apply_section">
+ <div class="apply_wrapper">
+	<div class="apply_card">
+		<div class="apply_title">
+			지식공유자 되기
+		</div>
+		<div class="apply_desc">
+			많은 사람들에게 배움의 기회를 주고,
+			<br>
+			경제적 보상을 받아보세요
+		</div>
+		<a class="apply_btn" href="#">지식공유참여</a>
+	</div>
+
+	<div class="apply_card">
+		<div class="apply_title">
+			기업 교육을 위한 코딩팜
+		</div>
+		<div class="apply_desc">
+			"코딩팜 비즈니스"를 통해 모든 팀원이
+			코딩팜의 강의들을
+			<br>
+			자유롭게 학습하는 환경을 제공하세요!
+		</div>
+		<a class="apply_btn" href="#">코딩팜 비즈니스</a>
+	</div>
+ </div>
+</section>
+
+
+
+
+
 
 
 
