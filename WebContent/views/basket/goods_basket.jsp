@@ -26,7 +26,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
+aside.profile_aside .menu-list .is-active>a {
+    background: none;
+    color: #1dc078;
+    font-weight: 700;
+}
+.profile_aside {
+    display: inline-block;
+    width: 15%;
+    min-width: 230px;
+    height: 900px;
+    padding: 3em 0;
+    vertical-align: top;
+    /* border: 1px solid; */
+}
+.menu-list a {
+    border-radius: 2px;
+    color: #454545;
+    display: block;
+    padding: .5em .75em;
+}
+#alll{
+display: inline-block;}
 
+.Bwrap{
+    width: 70%;
+    margin: 0 auto;
+}
 </style>
 
 
@@ -39,9 +65,11 @@
 		List wishLectureList = (List)request.getAttribute("wishLectureList");
 		MemberDTO MemberDTO = (MemberDTO) request.getAttribute("memberDTO");
 	%>
-
+<div class="Bwrap">
+<!-- aside 영역 -->
+<jsp:include page="/include/dash-aside.jsp"/>
+<!-- aside 영역 -->   
 	<section id="alll"> <!-- 위시 수정 -->
-
 	<h3 class="boxh3">
 		수강 바구니 > <a id="Wabtn" style="font-size: 16px; cursor: pointer;">내 위시리스트 <i class='far fa-heart'></i> > </a> 
 	</h3>
@@ -278,6 +306,8 @@
 			String name = (String) request.getAttribute("name");
 			String email = (String) request.getAttribute("email");
 		%>
+		
+</div>		
 	<!-- 카드 결제 -->
 	<script>
 	$("#check_module").click(function () {
