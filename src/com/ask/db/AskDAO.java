@@ -280,5 +280,65 @@ public class AskDAO {
 		}
 		//insertAnswer(adto)
 	
-	
+		//getMyQuestionCount()
+		public int getMyAskCount(String m_email){
+			int check = 0;
+			try {
+				con = getConnection();
+				System.out.print("getAskCount() : ");
+				
+				sql = "select count(*) from board where writer=? and re_lev=0";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, m_email);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					check = rs.getInt(1);
+				}
+				System.out.println("내가한 질문 글 개수 : " + check);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return check;
+		}
+		
+		//getMyQuestionCount()
+		
+		
+		public ArrayList<AskDTO> getMyAskList(int startRow, int pageSize,String m_email){
+			ArrayList<AskDTO> boardList= new ArrayList<AskDTO>();
+			try{
+				con=getConnection();
+				sql="select * from board "
+						+ "where re_lev=0 and writer=?" //질문만 보이게~
+						+ "order by re_ref desc, re_seq asc "
+						+ "limit ?,?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, m_email ); //시작행-1
+				pstmt.setInt(2, startRow-1); //가져갈 글의 개수
+				pstmt.setInt(3, pageSize); //가져갈 글의 개수
+				
+				rs=pstmt.executeQuery();
+				while(rs.next()){
+					AskDTO adto=new AskDTO();
+					adto.setNum(rs.getInt("num"));
+					adto.setL_num(rs.getInt("l_num"));
+					adto.setType(rs.getString("type"));
+					adto.setTitle(rs.getString("title"));
+					adto.setContent(rs.getString("content"));
+					adto.setWriter(rs.getString("writer"));
+					adto.setRe_lev(rs.getInt("re_lev"));
+					adto.setRe_ref(rs.getInt("re_ref"));
+					adto.setRe_seq(rs.getInt("re_seq"));
+					adto.setReg_date(rs.getTimestamp("reg_date"));
+					boardList.add(adto);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return boardList;
+		}
 }

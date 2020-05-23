@@ -9,8 +9,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜 - 묻고 답하기</title>
+<title>코딩팜 - 내 질문</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
+<link href="./css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 
@@ -65,17 +66,10 @@
     return time;
 }
 </script>
-	<section class="community_header">
-	<div class="container">
-		<h2>묻고 답해요</h2>
-		<p>
-			질문하고 답변해요~ <br> 모르면 질문하고 ,서로서로 해답을 찾아봐요
-		</p>
-	</div>
-	</section>
+	
 	<article class="community_content"> 
 	<aside>
-	<jsp:include page="/include/board-aside.jsp"></jsp:include>
+	<jsp:include page="/include/dash-aside.jsp"></jsp:include>
 	</aside> <!--메인콘텐츠  -->
 	<div class="columns">
 		<div class="main_content">
@@ -139,20 +133,7 @@
 				<%} %>
 			</div>
 		</div>
-		<div class="content_side">
-		<div class="best_kingKnowledge">
-			<h2>이달의 지식왕  <i class="fas fa-crown"></i></h2>
-			<div class="best_list">
-			<h4 class="best_name">이소영</h4>
-			<h4 class="best_name">정민수</h4>
-			<h4 class="best_name">김홍준</h4>
-			<h4 class="best_name">박유준</h4>
-			<h4 class="best_name">변재정</h4>
-			<h4 class="best_name">최우영</h4>
-			<h4 class="best_name">조수아</h4>
-			</div>
-		</div>
-		</div>
+
 		
 	</div>
 
