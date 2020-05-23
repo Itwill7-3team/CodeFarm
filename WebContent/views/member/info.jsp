@@ -103,7 +103,7 @@ margin: 0 0.5em;
 }
 
 .password_edit{
-    padding: 2em 2em 13em 2em;
+    padding: 2em 2em 3em 2em;
 }
 
 .button.is-primary {
@@ -131,7 +131,7 @@ flex:1;
 
 .secession{
     border: 5px #f5e0e0 dotted !important;
-    padding: 1em 2em !important; 
+    padding: 1em 2em 12em 2em !important; 
 /* 	margin-top:11em; */
     line-height: 3;
 }
