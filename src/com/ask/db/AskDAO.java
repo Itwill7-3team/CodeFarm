@@ -165,7 +165,7 @@ public class AskDAO {
 		return adto;
 	}
 	
-	//C-insertAnswer(ndto)
+	//C-insertAsk(ndto)
 		public int insertAsk(AskDTO adto) {
 			int check=-1;
 			int num=0;
@@ -209,14 +209,14 @@ public class AskDAO {
 			}
 			return check;
 		}
-		//insertAnswer(adto)
+		//insertAsk(adto)
 		
 		//getAnswerCount()
 		public int getAnswerCount(int num){
 			int check = 0;
 			try {
 				con = getConnection();
-				System.out.print("getAnswerCount() : ");
+//				System.out.print("getAnswerCount() : ");
 				
 				sql = "select count(*) from board where re_ref=? and re_seq>0";
 				pstmt = con.prepareStatement(sql);
@@ -225,7 +225,7 @@ public class AskDAO {
 				if(rs.next()){
 					check = rs.getInt(1);
 				}
-				System.out.println("문답게시판 전체 글 개수 : " + check);
+//				System.out.println("답변 개수 : " + check);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {

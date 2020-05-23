@@ -129,7 +129,7 @@ function timeBefore(timedate){
 					<%
 					//답글유무 체크
 					int check = new AskDAO().getAnswerCount(bdto.getNum());
-					System.out.println("check:"+check); 
+// 					System.out.println("check:"+check); 
 					%>
 					<span>답변 <%=check %>개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>

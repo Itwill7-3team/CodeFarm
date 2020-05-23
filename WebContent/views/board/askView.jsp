@@ -243,7 +243,7 @@ System.out.print("id"+id);
 		<input type="hidden" name="writer" value="<%=email%>">
 		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
 		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
-<%if(check>1){ %>
+<%if(check>0){ %>
 		<input type="hidden" name="re_seq" value="<%=adto.getRe_seq()+1%>">
 <%} %>
 		<input type="hidden" name="re_seq" value="1">

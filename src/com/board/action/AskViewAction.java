@@ -44,7 +44,7 @@ public class AskViewAction implements Action {
 		
 		//답글유무 체크
 		int check = new AskDAO().getAnswerCount(num);
-		System.out.println("check:"+check);
+//		System.out.println("check:"+check);
 		
 		//답글 리스트
 		List<AskDTO> answerList =new AskDAO().getAnswerList(num);		
