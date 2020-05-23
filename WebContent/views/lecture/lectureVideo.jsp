@@ -191,12 +191,12 @@
 									<input type="text" class=input placeholder="질문검색">
 									<i class="fas fa-search"></i>
 								</div>
-								<div class="buttons">
+								<div class="buttons askBtn">
 									<input type="button" value="질문하기">								
 								</div>
 								<!-- askForm -->
-								<div class="editor">
-								<iframe src="./views/board/askForm.jsp"></iframe><!-- 아이프레임 폼! 위의 질문하기 버튼 누르면 나오도록 토글해주세요~ -->
+								<div class="editor" style="display: none;">
+								<iframe src="AskWrite.bo" name="askF"></iframe>
 								</div>
 								<!-- askForm -->
 							</div>
@@ -209,6 +209,12 @@
 			</section><!-- lecture_container -->
 		</main><!-- main -->
 	</div><!-- root -->
+<script type="text/javascript">
+$(".askBtn").click(function(){
+  $(".editor").toggle();
+});
+</script>
+	
 	
 <script>
 function openNavL() {

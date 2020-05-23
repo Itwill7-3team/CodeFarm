@@ -47,7 +47,7 @@
 									</script>
 																									
 									<div class="ask_form">
-										<form action="AskAction.bo?" method="post">
+										<form action="AskAction.bo" method="post">
 										<input type="hidden" name="num" value="1"> <!-- lecture num test값 -->
 										<input type="hidden" name="writer" value="admin"> <!-- 작성자 test값 -->
 										제목 : <input type="text" name="title">

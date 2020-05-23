@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.lecture.action.LectureReviewListAction;
 
 
 public class BoardFrontController extends HttpServlet{
@@ -50,14 +49,11 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-		}else if(command.equals("/askView.bo")){
-				action=new AskViewAction();
-			try{
-				forward=action.execute(request, response);
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
+		}else if(command.equals("/AskWrite.bo")){
+			forward= new ActionForward();
+			//글쓰기 뷰
+			forward.setPath("/views/board/askForm.jsp");
+			forward.setRedirect(false);
 		}else if(command.equals("/AskAction.bo")){
 			action=new AskAction();
 			try{
@@ -72,8 +68,14 @@ public class BoardFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-	
-			
+		}else if(command.equals("/askView.bo")){
+			action=new AskViewAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		
 ////////리뷰
 		}else if(command.equals("/reView.bo")){
 			action=new ReViewAction();
@@ -104,7 +106,7 @@ public class BoardFrontController extends HttpServlet{
 			forward= new ActionForward();
 			
 			if(id == null || !id.equals("admin@naver.com")){
-				forward.setPath("./notice.bo");
+				forward.setPath("/notice.bo");
 				forward.setRedirect(true);
 				
 			}else{
