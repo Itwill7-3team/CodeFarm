@@ -52,7 +52,32 @@ display: inline-block;}
 .Bwrap{
     width: 70%;
     margin: 0 auto;
+    display: flex;
 }
+
+@media screen and (max-width: 1085px) {
+
+	/* 모바일   */
+	.profile_aside{
+	display: none !important;
+	}
+	
+}
+
+@media screen and (max-width: 1360px) {
+	
+
+	.profile_aside>ul{
+	padding: 0 0 0 1em;
+	}
+	.Bwrap{
+	width: 100% !important;
+	}
+	#alll{
+	margin: 4em 1em !important;
+	}
+}
+
 </style>
 
 
@@ -307,7 +332,10 @@ display: inline-block;}
 			String email = (String) request.getAttribute("email");
 		%>
 		
+	</div>		
 </div>		
+</section>
+	
 	<!-- 카드 결제 -->
 	<script>
 	$("#check_module").click(function () {
@@ -488,7 +516,6 @@ window.onclick = function(event) {
 
 
 
-</section>
 
 </body>
 <!-- footer -->
