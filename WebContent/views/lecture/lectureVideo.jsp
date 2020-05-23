@@ -237,7 +237,7 @@
 										<form action="AskAction.bo?" method="post">
 										<input type="hidden" name="num" value="1"> <!-- test값 -->
 										<input type="hidden" name="writer" value="admin"> <!-- test값 -->
-										<input type="hidden" name="title" value="test"> <!-- test값 -->
+										제목 : <input type="text" name="title">
 										<textarea name="content" id="summernote">
 										</textarea>
 										<input type="submit" value="글쓰기">
