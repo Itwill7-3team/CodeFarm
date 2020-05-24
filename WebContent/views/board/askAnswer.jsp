@@ -11,6 +11,33 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜 - 묻고 답하기</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
+
+<style type="text/css">
+body{
+position: relative;
+}
+
+.pageNation{
+position: absolute;
+bottom: 5em;
+left: 40%;
+text-align: center;
+width:300px;
+}
+.pageNation a{
+border: 1px #ccc solid;
+padding: 0.5em;
+color: #00c471;
+border-radius: 5px;
+}
+
+.pageNation a:HOVER{
+background-color: #00c471;
+color: #ffff;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -104,7 +131,20 @@
 			<!--  -->
 			<div class="content">
 				<%
-					String pageNum=request.getAttribute("pageNum").toString();
+				
+				
+				
+
+				//페이징 정보
+				String pageNum=(String)request.getAttribute("pageNum");
+				int count = (Integer)request.getAttribute("count");
+				int pageCount=(Integer)request.getAttribute("pageCount");
+				int pageBlock=(int)request.getAttribute("pageBlock");
+				int startPage=(int)request.getAttribute("startPage");
+				int endPage=(int)request.getAttribute("endPage");
+
+
+// 					String pageNum=request.getAttribute("pageNum").toString();
 					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
 					for(AskDTO bdto: boardList){
 						
@@ -166,10 +206,49 @@
 		</div>
 		</div>
 		
+		
+		
 	</div>
 
 
 	</article>
+			<!--  -->
+		<div class="pageNation" style="">
+						<%
+						if(startPage > pageBlock){
+							//페이지 [이전]
+						%>
+							<a href="./askAnswer.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+						<%
+						}
+						%>
+						<%
+						if(count != 0){
+							for(int i=startPage;i<=endPage;i++){
+							//페이지 숫자 뿌리기
+							%>
+							<a href="./askAnswer.bo?pageNum=<%=i%>"><%=i %></a>
+							<%
+							}
+						}
+						%>
+						<%
+						if(endPage < pageCount){
+							//페이지 [다음]
+						%>
+							<a href="./askAnswer.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+						<%
+						}
+						%>
+						
+<%-- 						<%if(email.equals("admin@naver.com")){%> --%>
+<!-- 						<button onclick="location.href='noticeWrite.bo';">글쓰기</button> -->
+<%-- 						<% --%>
+						
+<%-- 						}%> --%>
+					
+		</div>	
+		<!--  -->
 	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>
