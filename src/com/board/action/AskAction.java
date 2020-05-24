@@ -63,7 +63,7 @@ public class AskAction implements Action{
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('글쓰기 성공!')");
-			out.println("location.href='askAnswer.bo'");
+			//out.println("location.href='askAnswer.bo'");
 			out.println("</script>");
 			out.close();
 		}
