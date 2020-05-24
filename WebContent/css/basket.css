@@ -32,7 +32,7 @@ height: auto;
 font-family: 'NotoSansCJKkr-Light';}
 
 .boxx{float:left; 
-border-bottom:1px solid #ff6d5a; 
+border-bottom:1px solid #ccc; 
 width: 650px; height: auto;  
 padding: 10px 10px 20px 0;
 
@@ -399,7 +399,6 @@ input[type=text] {
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid #ff6d5a;
 }
 
 

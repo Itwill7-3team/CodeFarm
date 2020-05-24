@@ -10,64 +10,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <title>코딩팜 - 구매 내역 | 온라인 강의 플랫폼</title>
-
+<link rel="stylesheet" href="./css/orderlist.css">
 <jsp:include page="/include/header.jsp"/>
 <style type="text/css">
 
-#alll{
-margin: 5% auto 20% auto; 
 
-width: 1000px; height: auto;
- box-sizing: inherit;
- font-size: 15px;
- display: inline-block;
- }
- 
-.list-title{
-font-family: 'NotoSansCJKkr-Bold';
-font-size: 1.3em;
-}
-
-
-table {
-margin-top: 1%;
-border-collapse: collapse;
-border-top: 1px solid #ff6d5a;;
-width: 1000px;
-
-}  
-
- th, td {
-    
-    padding: 15px;
-  } 
-  
-aside.profile_aside .menu-list .is-active>a {
-    background: none;
-    color: #1dc078;
-    font-weight: 700;
-}
-.profile_aside {
-    display: inline-block;
-    width: 15%;
-    min-width: 230px;
-    height: 900px;
-    padding: 3em 0;
-    vertical-align: top;
-    /* border: 1px solid; */
-}
-.menu-list a {
-    border-radius: 2px;
-    color: #454545;
-    display: block;
-    padding: .5em .75em;
-}
-.Owrap{
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    min-height: 500px;
-}
 
 @media screen and (max-width: 1085px) {
 

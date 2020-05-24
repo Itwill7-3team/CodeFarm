@@ -151,7 +151,7 @@ src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
 		</tr>
 		<tr>
 			<th>계좌번호</th>
-			<td>0000</td>
+			<td><%=orderDTO.getO_t_b_num() %></td>
 		</tr>
 		<tr>
 			<th>입금기한</th>
@@ -200,20 +200,20 @@ src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
 			<br>
 			경제적 보상을 받아보세요
 		</div>
-		<a class="apply_btn" href="#">지식공유참여</a>
+		<a class="apply_btn" href="#" id="fot_tech">지식공유참여</a>
 	</div>
 
 	<div class="apply_card">
 		<div class="apply_title">
-			기업 교육을 위한 코딩팜
+			소통을 위한 코딩팜
 		</div>
 		<div class="apply_desc">
-			"코딩팜 비즈니스"를 통해 모든 팀원이
+			"코딩팜 블로그"를 통해 모든 사용자들과
 			코딩팜의 강의들을
 			<br>
-			자유롭게 학습하는 환경을 제공하세요!
+			자유롭게 학습하고 토론하는 환경을 경험하세요!
 		</div>
-		<a class="apply_btn" href="#">코딩팜 비즈니스</a>
+		<a class="apply_btn" href="blog.bl">코딩팜 블로그</a>
 	</div>
  </div>
 </section>
@@ -229,7 +229,26 @@ src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
 }
 
 </script>
+<script type="text/javascript">
+//강사 신청 폼
+	$("#fot_tech").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./TechRequest.me",
 
+			success : function(data) {
+
+				$(".login_form").html(data);
+			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+			}
+
+		});
+	});
+	
+	</script>
 
 
 

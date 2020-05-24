@@ -1,3 +1,5 @@
+<%@page import="com.coupon.db.CouponDTO"%>
+<%@page import="com.coupon.db.CouponDAO"%>
 <%@page import="com.wishlist.db.WishlistDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="com.basket.db.BasketDTO"%>
@@ -151,7 +153,7 @@ aside.profile_aside .menu-list .is-active>a {
 				<div id="pc_coupon_infos">
 					<div class="bbox coupon_item_list is-hidden-mobile">
 						<div class="coupon_item_list_header">
-							수강 바구니에서 적용가능한 쿠폰 : 1개
+							수강 바구니에서 적용가능한 쿠폰 : 0개
 							<button class="more_coupons e_show_more_coupons">
 								<i class='fas fa-sort-down' style='font-size:1.5em; color:#1dc078;'></i>
 							</button>
@@ -162,7 +164,7 @@ aside.profile_aside .menu-list .is-active>a {
 								<div class="bcolumns is-multiline is-mobile">
 									<div class="bcolumn is-3 coupon_sel">
 										<div class="coupon_item_container">
-											<div class="coupon_item coupon_item_vertical_2">
+											<!-- <div class="coupon_item coupon_item_vertical_2">
 												<div class="discount_price">
 													<small> 최대 </small> ￦5,000원
 												</div>
@@ -178,7 +180,7 @@ aside.profile_aside .menu-list .is-active>a {
 													</div>
 												</div>
 												<div class="applicable_courses is-hidden">적용 가능한 강의</div>
-											</div>
+											</div> -->
 										</div>
 									</div>
 								</div>
@@ -338,10 +340,11 @@ aside.profile_aside .menu-list .is-active>a {
 			<div class="si_columns">
 				<ul class="price">
 					<!-- 쿠폰 수정 -->
-					<li style="border-bottom: 1px solid pink; padding-bottom: 15px;">
+					
+					<li style="border-bottom: 1px solid #ccc; padding-bottom: 15px;">
 						쿠폰: <select id="cars">
 							<option value="cho" selected>쿠폰을 선택해 주세요.</option>
-							<!-- <option value="volvo">Volvo</option>
+						<!--	 <option value="volvo"></option>
 						<option value="saab">Saab</option>
 						<option value="vw">VW</option>
 						<option value="audi">Audi</option> -->
@@ -405,7 +408,7 @@ aside.profile_aside .menu-list .is-active>a {
 											<tr>
 												<td>은행 선택</td>
 												<td><select id="bankch" name="o_t_bank">
-														<option value="bk_ch" selected>은행을 선택해 주세요</option>
+														<option value="bk_ch"  selected>은행을 선택해 주세요</option>
 														<option value="하나은행">하나은행: 135-123456-12345</option>
 														<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
 														<option value="신한은행">신한은행: 110-555-899996</option>
@@ -430,8 +433,8 @@ aside.profile_aside .menu-list .is-active>a {
 										</table>
 										<hr style="padding-bottom: 0px;">
 										<input type="checkbox" name="U_checkAgreement1"
-											id="U_checkAgreement1"> 상기 결제 내용을 확인하였습니다. <br>
-										<input type="submit" value="결제">
+											id="U_checkAgreement1"  > 상기 결제 내용을 확인하였습니다. <br>
+										<input type="submit" value="결제" class="si_btn" style="margin-top: 3%;">
 									</div>
 								</div>
 							</form>

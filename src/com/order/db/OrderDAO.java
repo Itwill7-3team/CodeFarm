@@ -219,6 +219,7 @@ public class OrderDAO {
 				odto.setO_t_type(rs.getString("o_t_type"));
 				odto.setO_t_bank(rs.getString("o_t_bank"));
 				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_num(rs.getString("o_t_b_num"));
 				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
 				System.out.println("$$$$$$$$$$$$$orderDTO############");
 				orderDetailList.add(odto);
