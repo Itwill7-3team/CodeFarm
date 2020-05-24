@@ -29,7 +29,7 @@
        <div class="menu_list">
           <div class="list_title">신청하기</div>
           <div class="menu_sublist">
-            <a href="#" id="tech_request" class="list_link">지식공유참여</a>
+            <a href="#" id="fot_tech" class="list_link">지식공유참여</a>
 
            
           </div>
@@ -81,7 +81,7 @@
 </div>
 <script type="text/javascript">
 //강사 신청 폼
-	$("#tech_request").click(function(){
+	$("#fot_tech").click(function(){
 	
 		$.ajax({
 			type : "POST",
