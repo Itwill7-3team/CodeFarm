@@ -66,10 +66,8 @@ function timeBefore(timedate){
 </script>
 	<section class="community_header">
 	<div class="container">
-		<h2>기능 요청</h2>
-		<p>
-			기능요청~ <br> 기능요청
-		</p>
+		<h2>회원 요청 사항 보기</h2>
+		<p></p>
 	</div>
 	</section>
 	<article class="community_content"> 
@@ -111,23 +109,26 @@ function timeBefore(timedate){
 					<div class="item_content">
 					<div class="post_title">
 						<span class="Q">Rq.</span>
-						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
+						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_content()%></a></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
+						<span class="post_writer">타입 : <%=bdto.getQ_type()%></span>
 						<span class="post_time">시간 : 
 						<script>var time=timeBefore("<%=bdto.getQ_reg_date()%>");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_locuter"><%=bdto.getQ_l_num() %></span>
+						<span class="post_locuter"><%-- <%=bdto.getQ_l_num() %> --%></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-					<span>답변 1개 </span></div>
-					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
+<!-- 					<span>답변 1개 </span> -->
+					</div>
+					<div class="cooment_goods right_item"><!-- <i class="far fa-heart"> 0</i> -->
+					</div>
+					<div class="comment_link right_item"><%-- <input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"> --%>
+					</div>
 					</div>
 				</div>
 				<%} %>

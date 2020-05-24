@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜 - 묻고 답하기</title>
+<title>코딩팜 - 기능 요청</title>
 <link href="./css/request.css?ver=2" rel="stylesheet">
 
 <style type="text/css">
@@ -26,7 +26,7 @@ list-style: upper-alpha;
 	<div class="container">
 		<h2>기능 요청</h2>
 		<p>
-			기능요청~ <br> 기능요청
+			필요한 기능을 요청하세요!
 		</p>
 	</div>
 	</section>
