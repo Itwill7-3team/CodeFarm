@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+ String m_email = (String)session.getAttribute("m_email");
+if(m_email == null){
+	%>
+	<script type="text/javascript">
+		alert("로그인 후 이용해주세요.");
+		location.reload(true);
+		location.href = location.href;
+		history.go(0);
+	
+	</script>
+	<%
+}
+%>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="./css/tech_request.css?ver=1">
    <!-- 
