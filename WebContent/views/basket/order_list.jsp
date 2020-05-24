@@ -16,15 +16,23 @@
 
 #alll{
 margin: 5% auto 20% auto; 
+
 width: 1000px; height: auto;
  box-sizing: inherit;
  font-size: 15px;
  display: inline-block;
  }
+ 
+.list-title{
+font-family: 'NotoSansCJKkr-Bold';
+font-size: 1.3em;
+}
+
 
 table {
+margin-top: 1%;
 border-collapse: collapse;
-border-top: 1px solid pink;
+border-top: 1px solid #ff6d5a;;
 width: 1000px;
 
 }  
@@ -83,6 +91,18 @@ aside.profile_aside .menu-list .is-active>a {
 	margin: 4em 1em !important;
 	}
 }
+@font-face{
+	font-family: 'NotoSansCJKkr-Regular';
+	src: url(./fonts/NotoSansCJKkr-Regular.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Light';
+	src: url(./fonts/NotoSansCJKkr-Light.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Bold';
+	src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
+	}
 
 </style>
 </head>
@@ -98,7 +118,7 @@ aside.profile_aside .menu-list .is-active>a {
 	
 	%>
 	<section id="alll" >
-	<h2> 구매 내역 </h2>
+	<span class="list-title"> 내 구매 내역 </span>
 	
 	<table>
 
@@ -130,7 +150,7 @@ aside.profile_aside .menu-list .is-active>a {
 	     <%-- <td><%=odto.getO_sum_money() %></td> --%> 
 	   <td> <c:set var="total" value="<%=total%>" />
 	     <fmt:setLocale value="ko_KR" />
-		<fmt:formatNumber type="currency" value="${total}" /> 원</td>
+		<fmt:formatNumber type="currency" value="${total}" /></td>
 	    
 	    <!-- status 수정 -->
 	    

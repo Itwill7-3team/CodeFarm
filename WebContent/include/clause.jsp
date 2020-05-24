@@ -31,7 +31,7 @@ border-bottom: none;}
 </head>
 <body>
 <section id="clause">
-	<h1 style=color:#1dc078;>구매조건 및 개인정보취급방침</h1>
+	<h1 style="color: #1dc078; font-size: 1.5rem;">구매조건 및 개인정보취급방침</h1>
 	<hr>
 	<div>
 	<h4>제 3장. 유료 서비스</h4>

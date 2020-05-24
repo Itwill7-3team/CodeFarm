@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
 
+@media screen and (max-width: 980px) {
+
+	/* 화면사이즈 줄면   */
+	.sacard-content {
+	    margin-top: 1rem;
+	    width: 470px;
+	}
+	
+}
+
 
 
 /* 구매상세내역/감사합니다 글 */
@@ -83,7 +93,7 @@ p{
 
 #mainee h1 {
  font-weight: 700;
- 
+ font-family: 'NotoSansCJKkr-Bold';
  margin-top: 0px;
  padding: 1.5rem .5rem .5rem .5rem;
  font-size: 1.2rem;}
@@ -101,7 +111,8 @@ p{
 	
 /* DB로 보여지는 주문내역 */	       
 .Ocolumns{
-width: 58.33333%;
+ min-width:560px;
+ width: 58.33333%;
  box-shadow: 0 2px 3px rgba(0,10,18,.1), 0 0 0 1px rgba(0,10,18,.1);
  background-color: #fff !important;
  float: left;
@@ -121,6 +132,7 @@ display: flex;
 width: 41.66667%;
 } 
 .sacard{
+ min-width:340px;
  margin-left: 20px;
  max-width: 100%;
  width: 100%;

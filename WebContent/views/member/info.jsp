@@ -10,6 +10,14 @@
 <title>코딩팜</title>
 <style type="text/css">
 
+@media screen and (max-width: 1085px) {
+
+.main_container {
+    margin-left: 2em !important; 
+}
+
+}
+
 .profile_aside {
     display: inline-block;
     width: 15%;
@@ -32,6 +40,7 @@
     height: 100%;
     margin: 0 auto;
     margin-top: 60px;
+/*     margin-left: 3em !important; */
     /* border: 1px solid red; */
 }
 
@@ -87,11 +96,16 @@ margin: 0 0.5em;
 .profile_edit_container,.password_edit,.secession{
     clear: both;
     max-width:280px;
-    margin: 2em;
+    margin: 2em auto;
     padding: 2em;
     border: 5px pink dotted;
 /*     border: 1px solid; */
 }
+
+.password_edit{
+    padding: 2em 2em 3em 2em;
+}
+
 .button.is-primary {
    width: 200px;
    text-align: center;
@@ -104,6 +118,8 @@ display: none;
 
  .profile_setting{
 /* border: 1px pink solid; */
+    min-width: 570px;
+    max-width: 600px;
 } 
 .body{
 display:flex;
@@ -114,10 +130,16 @@ flex:1;
 }
 
 .secession{
-/*     border: 1px pink solid; */
-	margin-top:11em;
+    border: 5px #f5e0e0 dotted !important;
+    padding: 1em 2em 12em 2em !important; 
+/* 	margin-top:11em; */
     line-height: 3;
 }
+
+.notice{
+    font-size: 12px;
+}
+
 .email_pwd_container{
     flex: 1;
 /*     border: 1px solid; */
@@ -158,10 +180,6 @@ flex:1;
 </small>
         <h6>계정 설정</h6>
           <div class="tabs">
-<!--             <ul> -->
-<!--               <li class="is-active"><a href="#">프로필 설정</a></li> -->
-<!--               <li><a href="#">알림 설정</a></li> -->
-<!--             </ul> -->
           </div>
         <div class="tab_content">
 <section class="hero profile_setting">
@@ -172,10 +190,9 @@ flex:1;
         <form class="field profile_upload">
           <div class="file is-boxed">
             <label class="file-label">
-<!--               <input type="file" class="file-input" name="profile_image"> -->
               <span class="file-cta">
                 <img class="thumbnail_image" 
-				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.8;" alt="@@@님의 프로필"> <!-- 당근이미지 -->
+				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.8;" alt="<%=mdto.getM_nick() %>님의 프로필"> <!-- 당근이미지 -->
               </span>
             </label>
           </div>
@@ -186,18 +203,13 @@ flex:1;
         <div class="right">
           <label for="name" class="label input_label">
             <span>닉네임</span>
-            <input id="name" type="text" name="m_nick" class="input" value="<%=mdto.getM_nick() %>" placeholder="변경할 닉네임을 입력해주세요">
+            <input id="name" type="text" name="m_nick" class="input" placeholder="닉네임을 입력해주세요"<%if(mdto.getM_nick() != null){%>value="<%=mdto.getM_nick() %>"<%} %> >
           </label>
           <label for="introduce" class="label input_label">
             <span>자기소개</span>
-            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" placeholder="자기소개를 해주세요"><%
-            if(mdto.getM_intro() == null){
-            	%>자신을 소개해주세요.
-            	<%
-            }else if(mdto.getM_intro() != null){
-            	out.print(mdto.getM_intro());
-            }
-            %></textarea>
+            <textarea name="m_intro" class="tinymce" id="mce_0" aria-hidden="true" cols="25" rows="8" 
+            <%if(mdto.getM_intro() == null){%>
+            placeholder="자기소개를 해주세요"<%}%>><%if(mdto.getM_intro() != null){%><%=mdto.getM_intro()%><%}%></textarea>
 		
 		  </label>
         </div>

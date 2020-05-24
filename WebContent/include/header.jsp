@@ -236,12 +236,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											<div class="left_content">
 												<div class="img_content">
 												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
-												<a href="#">설정</a>
+												<a href="MemberInfo.me">설정</a>
 												</div>
 											</div>
 											<div class="right_content">
 											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
-											 <span class="rank">학생<!-- 회원 등급 --></span>
+											 <span class="rank">
+											 <%if(rank>1){%> 강사<%}else{%>학생<%}%>
+											 <!-- 회원 등급 --></span>
 											</div>
 										</div>
 									</div>
@@ -252,10 +254,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									</div>
 									<div class="list_content">
 										<ul class="students_list">
-											<a href="#"><li class="list_item">이어서 학습하기</li></a>
+											<a href="LectureVideo.le"><li class="list_item">이어서 학습하기</li></a>
 											<a href="MyLecture.bo"><li class="list_item">수강중인 강의</li></a>
-											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
-											<a href="#"><li class="list_item">내 질문 답변</li></a>
+<!-- 											<a href="#"><li class="list_item">참여중인 로드맵</li></a> -->
+											<a href="MyaskAction.bo"><li class="list_item">내 질문 답변</li></a>
 											<a href="OrderList.or"><li class="list_item">구매내역</li></a>
 											
 										</ul>

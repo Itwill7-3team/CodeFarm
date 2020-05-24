@@ -23,7 +23,10 @@
 	font-family: 'NotoSansCJKkr-Light';
 	src: url(./fonts/NotoSansCJKkr-Light.otf) format('truetype')
 	}
-    
+ @font-face{
+font-family: 'NotoSansCJKkr-Bold';
+src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
+}  
 </style>
 
 
@@ -159,7 +162,9 @@
 		</tr>
 	
 		<tr>
-		<td colspan="2" style="border: none;"><button type="button" class="canbtn"> 결제 취소 </button></td>
+		<td colspan="2" style="border: none;"><button type="button" class="canbtn"
+		onclick="canbtnfunction()"> 결제 취소 </button></td>
+<%-- 		onclick="location.href='./OrderDelete.or?trade_num=<%=orderDTO.getO_b_num()%>'"> 결제 취소 </button></td> --%>
 		</tr>
 			</tbody>
 		</table>
@@ -213,12 +218,17 @@
  </div>
 </section>
 
+<script type="text/javascript">
 
+ function canbtnfunction() {
+	if(confirm("구매를 취소하시겠습니까?") == true){
+		location.href="./OrderDelete.or?trade_num=<%=orderDTO.getO_b_num()%>";
+	}else{
+		return;
+	}
+}
 
-
-
-
-
+</script>
 
 
 
