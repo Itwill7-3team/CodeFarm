@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="com.ask.db.AskDAO"%>
 <%@page import="com.ask.db.AskDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -98,6 +99,12 @@
 			<!--  -->
 			<div class="content">
 				<%
+				int Askcount = (int)request.getAttribute("count");
+				
+				if(Askcount<1){%>
+				<h1>질문이 없습니다. 등록해주세요~</h1>
+				<%	
+				}else{
 					String pageNum=request.getAttribute("pageNum").toString();
 					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
 					for(AskDTO bdto: boardList){
@@ -130,7 +137,10 @@
 					<div class="comment_link right_item"><input type="button" value="질문으로 가기" onclick="location.href='./askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>'"></div>
 					</div>
 				</div>
-				<%} %>
+				<%
+					}
+				}
+				%>
 			</div>
 		</div>
 
