@@ -147,10 +147,17 @@ public class WishlistDAO {
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
-
+					//@이하 처리
+					String M=rs2.getString("l_m_email");
+					if(M.indexOf("@")>-1){
+						id=M.substring(0,M.indexOf("@"));
+					}else{id=M;}
+					//
 					ldto.setL_content(rs2.getString("l_content"));
 					ldto.setL_goods(rs2.getInt("l_goods"));
-					ldto.setL_m_email(rs2.getString("l_m_email"));
+					
+					ldto.setL_m_email(id);
+					
 					ldto.setL_number(rs2.getInt("l_number"));
 					ldto.setL_pct(rs2.getInt("l_pct"));
 					ldto.setL_price(rs2.getInt("l_price"));
