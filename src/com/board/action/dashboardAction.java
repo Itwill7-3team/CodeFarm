@@ -18,7 +18,7 @@ public class dashboardAction implements Action {
 				//id="test";//////////아이디 임의지정
 				ActionForward forward = new ActionForward();
 				if(id == null){
-					forward.setPath("./MemberLogin.me");
+					forward.setPath("./Main.le");
 					forward.setRedirect(true);
 					return forward;
 				}

@@ -169,9 +169,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>
 					</div>
-					<!-- 로드맵  -->
+					<!-- 블로그  -->
 					<div class="navbar-item">
-<!-- 						<a href="#" class="navbar-link bold"> <span>로드맵 보기</span> <img alt="로드맵 보기" src="./../img/include-img/below.png"> -->
+						<a href="blog.bl" class="navbar-link bold"> <span>블로그</span>
+						<!-- <i class="fas fa-angle-down"></i> --> <!-- <img alt="블로그 보기" src="./../img/include-img/below.png"> -->
 						</a>
 					</div>
 				</div>

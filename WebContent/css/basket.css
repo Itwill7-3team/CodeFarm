@@ -277,11 +277,10 @@ hr {
 /* The Modal Close Button (x) */
 .Vclose {
   position: absolute;
-  right: 35px;
-  top: 15px;
+  right: 27%;
   font-size: 40px;
   font-weight: bold;
-  color: #f1f1f1;
+  color: #ccc;
 }
 
 .Vclose:hover,

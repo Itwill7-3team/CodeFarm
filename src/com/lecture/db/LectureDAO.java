@@ -258,7 +258,7 @@ public class LectureDAO {
 						SQL.append(" where record=1 order by l_goods desc limit 0,5 ");
 					}
 					else if(item.equals("new")){
-						SQL.append(" where record=1 order by l_reg_date desc limit 0,5 "); //신규 5개
+						SQL.append(" where record=1 and l_price!=0 order by l_reg_date desc limit 0,5 "); //신규 5개
 					}
 					else if(item.equals("free")){
 						SQL.append(" where l_price=0 and record=1 order by l_reg_date desc limit 0,5");
