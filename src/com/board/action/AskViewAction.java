@@ -21,11 +21,7 @@ public class AskViewAction implements Action {
 
 		String id =(String) session.getAttribute("m_email");
 		
-		if(id == null){
-			forward.setPath("./Main.le");
-			forward.setRedirect(true);
-			return forward;
-		}
+	
 				
 		//한글처리
 		request.setCharacterEncoding("utf-8");

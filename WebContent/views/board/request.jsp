@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜 - 묻고 답하기</title>
+<title>코딩팜 - 기능 요청</title>
 <link href="./css/request.css?ver=2" rel="stylesheet">
 
 <style type="text/css">
@@ -21,73 +21,20 @@ list-style: upper-alpha;
 
 </head>
 <body>
-
 	<jsp:include page="/include/header.jsp"></jsp:include>
-	<script>
-/*  $(document).ready(function() {
-	
-}); */
-/* function timeBefore(timedate){
-    //현재시간
-    var now = new Date(); 
-    console.log(now);
-    //글쓴 시간 
-    var writeDay = new Date(timedate);
-    var minus;
-    var time;
-    if(now.getFullYear() > writeDay.getFullYear()){
-        minus= now.getFullYear()-writeDay.getFullYear();
-        time = minus+"년 전";
-        console.log(minus+"년 전");
-    }else if(now.getMonth() > writeDay.getMonth()){
-        minus= now.getMonth()-writeDay.getMonth();
-        time = minus+"달 전";
-        console.log(minus+"달 전");
-    }else if(now.getDate() > writeDay.getDate()){
-        minus= now.getDate()-writeDay.getDate();
-        time = minus+"일 전";
-        console.log(minus+"일 전");
-    }else if(now.getDate() == writeDay.getDate()){
-        var nowTime = now.getTime();
-        var writeTime = writeDay.getTime();
-        if(nowTime>writeTime){
-            sec =parseInt(nowTime - writeTime) / 1000;
-            day  = parseInt(sec/60/60/24);
-            sec = (sec - (day * 60 * 60 * 24));
-            hour = parseInt(sec/60/60);
-            sec = (sec - (hour*60*60));
-            min = parseInt(sec/60);
-            sec = parseInt(sec-(min*60));
-            if(hour>0){
-            	time = hour+"시간 전";
-                console.log(hour+"시간 전");
-            }else if(min>0){
-            	time = min+"분 전";
-                console.log(min+"분 전");
-            }else if(sec>0){
-            	time = sec+"초 전";
-                console.log(sec+"초 전");
-            }
-        }
-    }
-    return time;
-}  */
-</script>
 	<section class="community_header">
 	<div class="container">
 		<h2>기능 요청</h2>
 		<p>
-			기능요청~ <br> 기능요청
+			필요한 기능을 요청하세요!
 		</p>
 	</div>
 	</section>
-	<article class="community_content"> 
-	<aside>
-	<jsp:include page="/include/board-aside.jsp"></jsp:include>
-	</aside> <!--메인콘텐츠  -->
+	<article class="community_content"> <aside> <jsp:include
+		page="/include/board-aside.jsp"></jsp:include> </aside> <!--메인콘텐츠  -->
 	<div class="columns">
-<div class="main_content">
-
+		<div class="main_content">
+			<form method="post" id="requestForm">
 <div id="first" class="content" step="1">
 	<p>
 		<h1>코드팜에 어떤것을 요청하고 싶으신가요??*</h1>
@@ -106,10 +53,19 @@ list-style: upper-alpha;
 <div id="last" class="content" step="3">
 
 </div>
+</form>
 <div id="buttons">
 	<button class="pointer_btn up_btn" onclick="down_btn();"><i class="fas fa-angle-up" aria-hidden="true"></i></button>
 	<button class="pointer_btn down_btn right" onclick="up_btn();"><i class="fas fa-angle-down" aria-hidden="true"></i></button>
 </div>
+
+
+
+</div>
+</div>
+
+	</article>
+	<jsp:include page="/include/footer.jsp"></jsp:include>
 <script>
 	var max_value=1;
 	var view=1;
@@ -148,35 +104,47 @@ list-style: upper-alpha;
 			var data =$(this).attr("data-type");//클릭한 데이터값을 찾음
 			//바뀔 내용작성
 			var A="<p>"	
-			+"<h3>개설 되었으면 하는 강좌의 분야를 알려주세요.이 질문은 필수입니다 *</h3>"
-			+"<ol class='second_select'>"
-			+"<li class='select_item' data-type='A'>IT프로그래밍</li>"
-			+"<li class='select_item' data-type='B'>크리에이티브</li>"
-			+"<li class='select_item' data-type='C'>업무스킬</li>"
-			+"<li class='select_item' data-type='D'>기타</li>"
-			+"</ol>";
+				+"<h3>개설 되었으면 하는 강좌의 분야를 알려주세요.*</h3>"
+				+"<ol class='second_select'>"
+				+"<li class='select_item' data-type='A'>IT프로그래밍</li>"
+				+"<li class='select_item' data-type='B'>크리에이티브</li>"
+				+"<li class='select_item' data-type='C'>업무스킬</li>"
+				+"<li class='select_item' data-type='D'>기타</li>"
+				+"</ol>";
 			var B="<p>"
-			+"<h3>코드팜에 어떤것을 요청하고 싶으신가요??*</h3>"
-			+"<h4>문의사항은 화면 우측하단의 문의하기 잎사귀 버튼을 눌러주세요</h4>"
-			+"</p>"
-			+"<textarea autocomplete='off' name='confirm' placeholder='여기에 답변을 입력해주세요'></textarea>"
-			+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>";
+				+"<h3>코드팜에 어떤것을 요청하고 싶으신가요??*</h3>"
+				+"<h4>문의사항은 화면 우측하단의 문의하기 잎사귀 버튼을 눌러주세요</h4>"
+				+"</p>"
+				+"<textarea autocomplete='off' name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
+				+"<div class='submit'>"
+				+"<button type='button' id='submit'>제출</button>"
+				+"</div>";
 			var C="<p>"
-				+"<h3>개선, 추가 되었으면 하는 기능에 대해 이야기 해주세요!이 질문은 필수입니다 *</h3>"
+				+"<h3>개선, 추가 되었으면 하는 기능에 대해 이야기 해주세요!*</h3>"
 				+"<h4>의견을 남겨주시면 의견을 토대로 더 좋은 서비스를 만들겠습니다!</h4>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요'></textarea>"
-				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>";
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
+				+"<div class='submit'>"
+				+"<button type='button' id='submit'>제출</button>"
+				+"</div>";
 			var D="<p>"
 				+"<h3>저희에게 남기고 싶은 이야기를 해주세요. *</h3>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요'></textarea>"
-				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>";
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
+				+"<div class='submit'>"
+				+"<button type='button' id='submit'>제출</button>"
+				+"</div>";
 			var E="<p>"
 				+"<h3>강의명을 적어주시면 영상을 개선토록 하겠습니다!</h3>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요'></textarea>"
-				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>";
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
+				+"<div class='submit'>"
+				+"<button type='button' id='submit'>제출</button>"
+				+"</div>";
 				$("#first").children(".select_item").removeClass("select");
 				$(this).addClass("select");
 				$("#second").html(eval(data)); //문자열을 변수로 실행하게 만들어줌
@@ -187,16 +155,18 @@ list-style: upper-alpha;
 				disable_btn();
 		});
 		
-		$("second").on("click",".select_item",function(){
+		$("#second").on("click",".select_item",function(){
 			$("#second").children(".select_item").removeClass("select");
 			$(this).addClass("select");
 			var data="<p>"
-				+"<h2>개설되었으면 하는 강좌에 대해 알려주세요.이 질문은 필수입니다 *</h2>"
-				+"<h3>구체적인 주제와 참고할만한 주소(url)를 알려주시면 저희좋은 강좌를 만들겠습니다.</h3>"
+				+"<h3>개설되었으면 하는 강좌에 대해 알려주세요. *</h3>"
+				+"<h4>구체적인 주제와 참고할만한 주소(url)를 알려주시면 저희좋은 강좌를 만들겠습니다.</h4>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요'></textarea>"
-				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>";
-			
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
+				+"<div class='submit'>"
+				+"<button type='button' id='submit'>제출</button>"
+				+"</div>";
 			$("#last").html(data);
 			
 			max_value=3;
@@ -209,20 +179,30 @@ list-style: upper-alpha;
 			 $(this).height(1).height( $(this).prop('scrollHeight') );	
 		});
 	});
+	$(".columns").on("click","#submit", function() {
+		var main_select= $(".main_select").children(".select_item.select").html();
+		var sub_select=$(".second_select").children(".select_item.select").html();
+		var content=$("#confirm").val();
+		
+		 $.ajax({
+		    url: "./requestAction.bo",
+		    method: 'POST',
+		    async : true,
+		    data : { type : main_select+"/"+sub_select,
+		    	content : content 
+		    	},
+		    dataType : 'html',
+		    success : function (res) {
+		       alert("좋은 의견 주셔서 감사합니다. 좋은 지식으로 만날 수 있길 바라요 :)");
+		 		location.href="request.bo";
+		    },
+		    error: function (xhr) {
+		        alert("fail");
+		    }
+		}); 
+		
+	});
+</script>	
 	
-</script>
-
-<div id="A-1" class="req">
-<form action="">
-개설되었으면 하는 강좌에 대해 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
-	
-
-	</article>
-	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

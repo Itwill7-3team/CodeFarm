@@ -21,9 +21,9 @@
 
 <jsp:include page="/include/header.jsp"></jsp:include>
 	<script>
-$(document).ready(function() {
+/* $(document).ready(function() {
 	
-});
+}); */
 function timeBefore(timedate){
     //현재시간
     var now = new Date(); 
@@ -81,6 +81,7 @@ email=(String)session.getAttribute("m_email");
 AskDTO bdto=(AskDTO)request.getAttribute("bdto");
 LectureDTO ldto= (LectureDTO)request.getAttribute("ldto");
 String pageNum=request.getAttribute("pageNum").toString();
+String askW = bdto.getWriter().substring(0,bdto.getWriter().indexOf("@"));
 %>
 
 <!-- include libraries(jQuery, bootstrap) -->
@@ -147,7 +148,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<!-- 게시물 -->
 		<div class="QnA_content">
 		<p class="a_Info">
-		<span>[질문] <%=bdto.getWriter()%></span>
+		<span>[질문] <%=askW %></span>
 		<span><script>var time=timeBefore("<%=bdto.getReg_date()%>");
 							document.write(time);//sss
 		</script></span>
@@ -192,7 +193,7 @@ if(check>0){
 	for(int i=0; i<answerList.size(); i++){
 	adto= (AskDTO)answerList.get(i);
 	
-	String writer = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
+	String answerW = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
 	
 	%>
 	<!-- 이미지 -->
@@ -203,7 +204,7 @@ if(check>0){
 	<!-- 이미지 -->
 	<div class="A_content">
 	<p class="a_Info">
-	<span>[답글 <%=i+1%>] <%=writer %></span>
+	<span>[답글 <%=i+1%>] <%=answerW %></span>
 	<span><script>var time=timeBefore("<%=adto.getReg_date()%>");
 							document.write(time);//sss
 	</script></span>
@@ -229,7 +230,7 @@ if(check>0){
 	<!-- 메인콘텐츠  -->
 	</article>
 <%-- 	<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button> --%>
-<%
+<%if(email!=""){
 String id="id";
 if(email.indexOf("@")>-1){ id= email.substring(0,email.indexOf("@"));}
 else{	id=email; }
@@ -241,11 +242,11 @@ System.out.print("id:"+id);
 		<form action="AnswerAction.bo?" method="post">
 		<input type="hidden" name="num" value="<%=bdto.getNum()%>">
 		<input type="hidden" name="writer" value="<%=email%>">
-		<input type="hidden" name="title" value="<%=bdto.getTitle()%>">
+		<input type="hidden" name="title" value="<%=bdto.getTitle()%>[답글]">
 		<input type="hidden" name="re_lev" value="<%=bdto.getRe_lev()%>">
-<%if(check>0){ %>
+<%if(check>0){ //기존 답글이 있으면 seq+1%>
 		<input type="hidden" name="re_seq" value="<%=adto.getRe_seq()+1%>">
-<%} %>
+<%} //기존 답글 없으면 seq=1%>
 		<input type="hidden" name="re_seq" value="1">
 		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		
@@ -257,7 +258,7 @@ System.out.print("id:"+id);
 	</div>
 	
 <!-- 컨텐츠 -->
-
+<%} %>
 
 <!-- 푸터 -->
 <jsp:include page="/include/footer.jsp"></jsp:include>
