@@ -21,9 +21,9 @@
 
 <jsp:include page="/include/header.jsp"></jsp:include>
 	<script>
-$(document).ready(function() {
+/* $(document).ready(function() {
 	
-});
+}); */
 function timeBefore(timedate){
     //현재시간
     var now = new Date(); 
@@ -229,7 +229,7 @@ if(check>0){
 	<!-- 메인콘텐츠  -->
 	</article>
 <%-- 	<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button> --%>
-<%
+<%if(email!=""){
 String id="id";
 if(email.indexOf("@")>-1){ id= email.substring(0,email.indexOf("@"));}
 else{	id=email; }
@@ -257,7 +257,7 @@ System.out.print("id:"+id);
 	</div>
 	
 <!-- 컨텐츠 -->
-
+<%} %>
 
 <!-- 푸터 -->
 <jsp:include page="/include/footer.jsp"></jsp:include>
