@@ -153,13 +153,14 @@
 		</div>
 		<div class="content_side">
 		<div class="best_kingKnowledge">
-			<h2>이달의 지식왕  <i class="fas fa-crown"></i></h2>
+		<img src="./img/king.png" width="45px" height="45px" style="margin-left: 5em;'">
+			<h2 style="margin-top: 0;">이달의 지식왕</h2>
 			<div class="best_list">
+			<h4 class="best_name">조수아</h4>
 			<h4 class="best_name">변재정</h4>
 			<h4 class="best_name">최우영</h4>
 			<h4 class="best_name">김홍준</h4>
 			<h4 class="best_name">정민수</h4>
-			<h4 class="best_name">조수아</h4>
 			<h4 class="best_name">이소영</h4>
 			</div>
 		</div>
