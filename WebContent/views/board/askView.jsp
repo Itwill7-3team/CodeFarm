@@ -81,7 +81,7 @@ email=(String)session.getAttribute("m_email");
 AskDTO bdto=(AskDTO)request.getAttribute("bdto");
 LectureDTO ldto= (LectureDTO)request.getAttribute("ldto");
 String pageNum=request.getAttribute("pageNum").toString();
-String askW = bdto.getWriter().substring(0,bdto.getWriter().indexOf("@"));
+//String askW = bdto.getWriter().substring(0,bdto.getWriter().indexOf("@"));
 %>
 
 <!-- include libraries(jQuery, bootstrap) -->
@@ -148,7 +148,7 @@ String askW = bdto.getWriter().substring(0,bdto.getWriter().indexOf("@"));
 		<!-- 게시물 -->
 		<div class="QnA_content">
 		<p class="a_Info">
-		<span>[질문] <%=askW %></span>
+		<span>[질문] <%=bdto.getWriter() %></span>
 		<span><script>var time=timeBefore("<%=bdto.getReg_date()%>");
 							document.write(time);//sss
 		</script></span>
@@ -193,7 +193,7 @@ if(check>0){
 	for(int i=0; i<answerList.size(); i++){
 	adto= (AskDTO)answerList.get(i);
 	
-	String answerW = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
+//	String answerW = adto.getWriter().substring(0,adto.getWriter().indexOf("@"));
 	
 	%>
 	<!-- 이미지 -->
@@ -204,7 +204,7 @@ if(check>0){
 	<!-- 이미지 -->
 	<div class="A_content">
 	<p class="a_Info">
-	<span>[답글 <%=i+1%>] <%=answerW %></span>
+	<span>[답글 <%=i+1%>] <%=adto.getWriter() %></span>
 	<span><script>var time=timeBefore("<%=adto.getReg_date()%>");
 							document.write(time);//sss
 	</script></span>
@@ -230,7 +230,8 @@ if(check>0){
 	<!-- 메인콘텐츠  -->
 	</article>
 <%-- 	<button onclick="location.href='askAnswer.bo?pageNum=<%=pageNum%>';">목록보기</a></button> --%>
-<%if(email!=""){
+<%
+if(email!=""){
 String id="id";
 if(email.indexOf("@")>-1){ id= email.substring(0,email.indexOf("@"));}
 else{	id=email; }
@@ -258,7 +259,9 @@ System.out.print("id:"+id);
 	</div>
 	
 <!-- 컨텐츠 -->
-<%} %>
+<%
+} 
+%>
 
 <!-- 푸터 -->
 <jsp:include page="/include/footer.jsp"></jsp:include>

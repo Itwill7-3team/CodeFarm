@@ -148,17 +148,6 @@ color: #ffff;
 					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
 					for(AskDTO bdto: boardList){
 						
-						String id="id";
-						if(bdto.getWriter().indexOf("@")>-1){
-						int idx= bdto.getWriter().indexOf("@");
-						id= bdto.getWriter().substring(0,idx);}
-						else{
-						id= bdto.getWriter();
-						}
-						System.out.print("id:"+id);
-						
-						
-						
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
@@ -167,7 +156,7 @@ color: #ffff;
 						<span><a href="askView.bo?num=<%=bdto.getNum()%>&pageNum=<%=pageNum%>"><%=bdto.getTitle()%></a></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">작성자 : <%=id%></span>
+						<span class="post_writer">작성자 : <%=bdto.getWriter()%></span>
 						<span class="post_time">시간 : 
 						<script>var time=timeBefore("<%=bdto.getReg_date()%>");
 							document.write(time);//sss

@@ -242,10 +242,20 @@ for(int i=0;i<freeList.size();i++){
 		
 	<div class="mg-t10">
 		<span class="tags tag"><%=ldto.getL_type() %></span>
-	
 		<c:set var="price" value="<%=ldto.getL_price() %>"/>
 		<span class="price">
-		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></span>
+	<%
+	if(ldto.getL_price()==0){
+	%>
+	무료
+	<%
+	}else{
+	%>
+		<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" />
+	<%
+	}
+	%>
+	</span>
 	</div>		
 
 	</div>

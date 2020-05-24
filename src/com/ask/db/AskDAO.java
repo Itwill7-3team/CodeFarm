@@ -81,12 +81,18 @@ public class AskDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				AskDTO adto=new AskDTO();
+				//화면에 출력될 메일주소에서 @ 제거
+				String id= null;
+				if(rs.getString("writer").indexOf("@")>-1){
+					id=rs.getString("writer").substring(0,rs.getString("writer").indexOf("@"));
+				}else{id=rs.getString("writer");}
+				//
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);				
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -113,12 +119,19 @@ public class AskDAO {
 			
 			while(rs.next()){
 				AskDTO adto=new AskDTO();
+				//화면에 출력될 메일주소에서 @ 제거
+				String id= null;
+				if(rs.getString("writer").indexOf("@")>-1){
+					id=rs.getString("writer").substring(0,rs.getString("writer").indexOf("@"));
+				}else{
+					id=rs.getString("writer");
+				}
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -144,13 +157,20 @@ public class AskDAO {
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()){
+				//@이하 처리
+				String M =rs.getString("writer");
+				String id=null;
+				if(M.indexOf("@")>-1){
+					id= M.substring(0,M.indexOf("@"));
+				}else{id=M;}
+				//
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 //				adto.setQ_l_name(rs.getString("q_l_name"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -322,12 +342,21 @@ public class AskDAO {
 				rs=pstmt.executeQuery();
 				while(rs.next()){
 					AskDTO adto=new AskDTO();
+					//@이하 처리
+					String M=rs.getString("writer");
+					String id=null;
+					if(M.indexOf("@")>-1){
+						id=M.substring(0,M.indexOf("@"));
+					}else{id=M;}
+					//
 					adto.setNum(rs.getInt("num"));
 					adto.setL_num(rs.getInt("l_num"));
 					adto.setType(rs.getString("type"));
 					adto.setTitle(rs.getString("title"));
 					adto.setContent(rs.getString("content"));
-					adto.setWriter(rs.getString("writer"));
+					
+					adto.setWriter(id);
+					
 					adto.setRe_lev(rs.getInt("re_lev"));
 					adto.setRe_ref(rs.getInt("re_ref"));
 					adto.setRe_seq(rs.getInt("re_seq"));
