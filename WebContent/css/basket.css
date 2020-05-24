@@ -1,5 +1,17 @@
 @CHARSET "UTF-8";
 
+@media screen and (max-width: 1775px) {
+
+	/* 화면사이즈 줄면   */
+	.boxx2 {
+	    min-width: 600px;
+	}
+
+}
+
+
+
+
 body {margin: 0; width: 100%;}
 
 .Bcontainer {max-width: 1000px;
@@ -522,6 +534,7 @@ padding-bottom: 1rem;
     flex-shrink: 1;
     padding: .75rem;
     width: 60%;
+    min-width: 640px;
 }
 .bcolumn .bbox.coupon_item_list {
     height: 10rem;
@@ -566,7 +579,8 @@ padding-bottom: 1rem;
 }
  .coupon_item_container {
     position: relative;
-    overflow: hidden;
+/*     overflow: hidden; */
+    min-width: 140px;
 }
 .coupon_item_container .coupon_item_vertical_2 {
     position: relative;
@@ -577,6 +591,7 @@ padding-bottom: 1rem;
     border-radius: 6px;
     background-color: #fff;
     cursor: pointer;
+    min-width: 140px;
 }
  .coupon_item_container .coupon_item_vertical_2 .discount_price {
     width: 100%;
@@ -593,6 +608,7 @@ padding-bottom: 1rem;
 .bcolumns.is-mobile>.bcolumn.is-3 {
     flex: none;
     width: 25%;
+    min-width: 140px;
 }
 .coupon_item_container .coupon_item_vertical_2 .coupon_info_container {
     border-top: 2px dashed #dedede;
