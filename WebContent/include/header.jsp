@@ -334,7 +334,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		$(this).addClass("active");
 		getCarts();
 	});
-	$(".profile_hover").mouseover(function() {
+	$(".carts").mouseover(function() {
 		getCarts();
 	});
 	

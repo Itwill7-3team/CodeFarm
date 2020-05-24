@@ -28,8 +28,14 @@
     color: white;
     padding: 3px;
 }
+.select_item{
+	font-size: 22px;
+    margin-bottom: 5px;
+}
 
-
+.content{
+	padding:0 70px;
+}
 
 .community_content{
 	width:100%;
@@ -68,10 +74,11 @@
 .main_content{
 	float: left;
     width: 75%;
-    min-height:900px;
+    max-width:600px;
     box-sizing: border-box;
-    padding: 15px 0px;
+    padding: 15px 20px;
     flex:1;
+	position: relative;
 }
 .Q{
 	font-size: 28px;
@@ -83,6 +90,18 @@
     font-weight: 500;
     color: #000000;
 }
+.fas.fa-angle-down,.fas.fa-angle-up{
+	font-size: 20px;
+}
+#buttons{
+	text-align: right;
+    position: absolute;
+    bottom: 200px;
+    right: 20px;
+}
+.pointer_btn.right{
+	margin-left: -5px;
+}
 .content_side{
 	width: 25%;
     float: left;
@@ -90,9 +109,24 @@
     min-height: 500px;
    
 }
-
+.select_item{
+	cursor: pointer;
+}
 
 .req{
 	height: 500px;
 	display: none;
+}
+textarea{
+	overflow-x: hidden;
+    overflow-wrap: break-word;
+    height: 32px;
+    width: 100%;
+    font-size: 30px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid;
+    display: block;
+    overflow-y: hidden;
+    resize: none;
 }
