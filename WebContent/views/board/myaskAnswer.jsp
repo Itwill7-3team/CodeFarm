@@ -73,7 +73,7 @@
 	<jsp:include page="/include/dash-aside.jsp"></jsp:include>
 	</aside> <!--메인콘텐츠  -->
 	<div class="columns">
-		<div class="main_content">
+		<div class="main_content" style="padding-top: 60px;">
 			<!-- 컨트롤러 -->
 			<div class="main_controler">
 				<div class="selector">
