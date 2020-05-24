@@ -34,7 +34,7 @@ list-style: upper-alpha;
 		page="/include/board-aside.jsp"></jsp:include> </aside> <!--메인콘텐츠  -->
 	<div class="columns">
 		<div class="main_content">
-			<form	id="">
+			<form method="post" id="requestForm">
 <div id="first" class="content" step="1">
 	<p>
 		<h1>코드팜에 어떤것을 요청하고 싶으신가요??*</h1>
@@ -60,14 +60,7 @@ list-style: upper-alpha;
 </div>
 
 
-<div id="A-1" class="req">
-<form action="">
-개설되었으면 하는 강좌에 대해 알려주세요
-<br>
-	<textarea rows="5" cols="40">
-	</textarea>
-</form>
-</div>
+
 </div>
 </div>
 
