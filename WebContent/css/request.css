@@ -5,12 +5,20 @@
 	.content_side{
 	display: none;
 	}
+	.community_content{
+		min-height: calc(100vh - 243px) !important;
+	}
 }
 @media print,screen and (max-width: 1000px) {
-   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+   /* 모바일에서 사용될 스타일을 여기에 작성합니다. */
 	.community_content aside{
 	display: none !important;}
+	.community_content{
+		min-height: calc(100vh - 243px) !important;
+	}
 }
+	
+
 .container>h2{
 	font-size:2em;
 	margin: 0;
@@ -34,15 +42,16 @@
 }
 
 .content{
-	padding:0 70px;
+	padding:0 50px;
 }
 
 .community_content{
 	width:100%;
 	max-width:1180px;
 	margin: 0 auto;
-	min-height: 500px;
+	min-height: calc(100vh - 179px);
 	display: flex;
+	
 }
 .community_content aside{
 	float: left;
@@ -95,9 +104,9 @@
 }
 #buttons{
 	text-align: right;
-    position: absolute;
-    bottom: 200px;
+    bottom: 10px;
     right: 20px;
+    position: absolute;
 }
 .pointer_btn.right{
 	margin-left: -5px;
@@ -117,12 +126,32 @@
 	height: 500px;
 	display: none;
 }
+.submit{
+	text-align: center;
+}
+.submit>button{
+	box-sizing: border-box;
+    padding: 4px;
+    width: 70px;
+    background-color: #00c471;
+    font-size: 22px;
+    border: 2px solid #00c471;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+.main_content>form{
+	position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
 textarea{
 	overflow-x: hidden;
     overflow-wrap: break-word;
     height: 32px;
     width: 100%;
-    font-size: 30px;
+    font-size: 24px;
     margin: 0 auto;
     border: none;
     border-bottom: 1px solid;
