@@ -44,7 +44,7 @@ public class QuestDAO {
 	}//자원 해제
 	
 	//getQuestionCount()
-	public int getQuestCount(){
+	/*public int getQuestCount(){
 		int check = 0;
 		try {
 			con = getConnection();
@@ -127,8 +127,24 @@ public class QuestDAO {
 		}
 		
 		return qdto;
-	}
+	}*/
 	
+	public void insertQuest(QuestDTO qdto){
+		try{
+			con=getConnection();
+			sql="insert into q_board (q_type,q_content) values(?,?)";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, qdto.getQ_type());
+			pstmt.setString(2, qdto.getQ_content());
+			
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+	}
 	
 	
 }

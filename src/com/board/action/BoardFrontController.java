@@ -156,13 +156,17 @@ public class BoardFrontController extends HttpServlet{
 			
 /////////리퀘스트			
 		}else if(command.equals("/request.bo")){
-			action=new QuestAction();
-			try{
+			forward=new ActionForward();
+			forward.setPath("./views/board/request.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/requestAction.bo")){
+			action=new requestAction();
+			try {
 				forward=action.execute(request, response);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+		
 /////////대시보드			
 		}else if(command.equals("/DashBoard.bo")){
 		action=new dashboardAction();

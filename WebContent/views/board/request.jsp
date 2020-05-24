@@ -104,7 +104,7 @@ list-style: upper-alpha;
 			var data =$(this).attr("data-type");//클릭한 데이터값을 찾음
 			//바뀔 내용작성
 			var A="<p>"	
-				+"<h3>개설 되었으면 하는 강좌의 분야를 알려주세요.이 질문은 필수입니다 *</h3>"
+				+"<h3>개설 되었으면 하는 강좌의 분야를 알려주세요.*</h3>"
 				+"<ol class='second_select'>"
 				+"<li class='select_item' data-type='A'>IT프로그래밍</li>"
 				+"<li class='select_item' data-type='B'>크리에이티브</li>"
@@ -115,35 +115,35 @@ list-style: upper-alpha;
 				+"<h3>코드팜에 어떤것을 요청하고 싶으신가요??*</h3>"
 				+"<h4>문의사항은 화면 우측하단의 문의하기 잎사귀 버튼을 눌러주세요</h4>"
 				+"</p>"
-				+"<textarea autocomplete='off' name='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<textarea autocomplete='off' name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
 				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
 				+"<div class='submit'>"
-				+"<button type='submit'>제출</button>"
+				+"<button type='button' id='submit'>제출</button>"
 				+"</div>";
 			var C="<p>"
-				+"<h3>개선, 추가 되었으면 하는 기능에 대해 이야기 해주세요!이 질문은 필수입니다 *</h3>"
+				+"<h3>개선, 추가 되었으면 하는 기능에 대해 이야기 해주세요!*</h3>"
 				+"<h4>의견을 남겨주시면 의견을 토대로 더 좋은 서비스를 만들겠습니다!</h4>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
 				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
 				+"<div class='submit'>"
-				+"<button type='submit'>제출</button>"
+				+"<button type='button' id='submit'>제출</button>"
 				+"</div>";
 			var D="<p>"
 				+"<h3>저희에게 남기고 싶은 이야기를 해주세요. *</h3>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
 				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
 				+"<div class='submit'>"
-				+"<button type='submit'>제출</button>"
+				+"<button type='button' id='submit'>제출</button>"
 				+"</div>";
 			var E="<p>"
 				+"<h3>강의명을 적어주시면 영상을 개선토록 하겠습니다!</h3>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
 				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
 				+"<div class='submit'>"
-				+"<button type='submit'>제출</button>"
+				+"<button type='button' id='submit'>제출</button>"
 				+"</div>";
 				$("#first").children(".select_item").removeClass("select");
 				$(this).addClass("select");
@@ -159,13 +159,13 @@ list-style: upper-alpha;
 			$("#second").children(".select_item").removeClass("select");
 			$(this).addClass("select");
 			var data="<p>"
-				+"<h2>개설되었으면 하는 강좌에 대해 알려주세요.이 질문은 필수입니다 *</h2>"
-				+"<h3>구체적인 주제와 참고할만한 주소(url)를 알려주시면 저희좋은 강좌를 만들겠습니다.</h3>"
+				+"<h3>개설되었으면 하는 강좌에 대해 알려주세요. *</h3>"
+				+"<h4>구체적인 주제와 참고할만한 주소(url)를 알려주시면 저희좋은 강좌를 만들겠습니다.</h4>"
 				+"</p>"
-				+"<textarea name='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
+				+"<textarea name='confirm' id='confirm' placeholder='여기에 답변을 입력해주세요..'></textarea>"
 				+"<span>단락을 추가하려면 shift+Enter를 누릅니다.</span>"
 				+"<div class='submit'>"
-				+"<button type='submit'>제출</button>"
+				+"<button type='button' id='submit'>제출</button>"
 				+"</div>";
 			$("#last").html(data);
 			
@@ -179,9 +179,27 @@ list-style: upper-alpha;
 			 $(this).height(1).height( $(this).prop('scrollHeight') );	
 		});
 	});
-	$(".columns").on("click","button[type=submit]", function() {
+	$(".columns").on("click","#submit", function() {
 		var main_select= $(".main_select").children(".select_item.select").html();
 		var sub_select=$(".second_select").children(".select_item.select").html();
+		var content=$("#confirm").val();
+		
+		 $.ajax({
+		    url: "./requestAction.bo",
+		    method: 'POST',
+		    async : true,
+		    data : { type : main_select+"/"+sub_select,
+		    	content : content 
+		    	},
+		    dataType : 'html',
+		    success : function (res) {
+		       alert("좋은 의견 주셔서 감사합니다. 좋은 지식으로 만날 수 있길 바라요 :)");
+		 		location.href="request.bo";
+		    },
+		    error: function (xhr) {
+		        alert("fail");
+		    }
+		}); 
 		
 	});
 </script>	
