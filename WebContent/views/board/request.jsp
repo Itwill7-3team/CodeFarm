@@ -8,7 +8,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<title>코딩팜 - 묻고 답하기</title>
+<title>코딩팜 - 강의.기능 요청</title>
 <link href="./css/request.css?ver=2" rel="stylesheet">
 
 <style type="text/css">
