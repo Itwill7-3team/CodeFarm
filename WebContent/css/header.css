@@ -345,7 +345,9 @@ header .nav-container .accors .acco_ctt {
     height: 50px;
     padding: 0;
 }
-
+.fas.fa-angle-down{
+	font-size: 20px;
+}
 /* 오버레이 */
  #overlay {
   position: fixed;
