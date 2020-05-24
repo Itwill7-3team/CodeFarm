@@ -17,7 +17,7 @@ public class QuestAction implements Action{
 		ActionForward forward= new ActionForward();
 		QuestDAO bdao= new QuestDAO();
 		
-/*
+
 		//게시글 유,무 체크
 		int check = bdao.getQuestCount();
 		
@@ -74,10 +74,10 @@ ArrayList<QuestDTO> boardList=null;
 		
 		System.out.println("QuestAction 실행");
 		request.setAttribute("boardList", boardList);
-		forward.setPath("./views/board/request.jsp");
+		forward.setPath("./views/board/requestView.jsp");
 		forward.setRedirect(false);
 		
-		System.out.println("QuestAction 종료");*/
+		System.out.println("QuestAction 종료");
 		return forward;
 	}
 

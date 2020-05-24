@@ -63,10 +63,18 @@ public class NoticeDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				NoticeDTO ndto =new NoticeDTO();
+				//화면에 출력될 메일주소에서 @ 제거
+				String id=null;
+				if(rs.getString("n_writer").indexOf("@")>-1){
+					id=rs.getString("n_writer").substring(0,rs.getString("n_writer").indexOf("@"));
+				}else{id=rs.getString("n_writer");}
+				//
 				ndto.setN_num(rs.getInt("n_num"));
 				ndto.setN_title(rs.getString("n_title"));
 				ndto.setN_content(rs.getString("n_content"));
-				ndto.setN_writer(rs.getString("n_writer"));
+				
+				ndto.setN_writer(id);
+				
 				ndto.setN_re_lev(rs.getInt("n_re_lev"));
 				ndto.setN_re_ref(rs.getInt("n_re_ref"));
 				ndto.setN_re_seq(rs.getInt("n_re_seq"));

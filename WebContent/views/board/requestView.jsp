@@ -10,6 +10,34 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜 - 묻고 답하기</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
+
+<style type="text/css">
+body{
+position: relative;
+}
+
+.pageNation{
+position: absolute;
+bottom: 5em;
+left: 40%;
+text-align: center;
+width:300px;
+}
+.pageNation a{
+border: 1px #ccc solid;
+padding: 0.5em;
+color: #00c471;
+border-radius: 5px;
+}
+
+.pageNation a:HOVER{
+background-color: #00c471;
+color: #ffff;
+}
+
+</style>
+
+
 </head>
 <body>
 
@@ -66,10 +94,8 @@ function timeBefore(timedate){
 </script>
 	<section class="community_header">
 	<div class="container">
-		<h2>기능 요청</h2>
-		<p>
-			기능요청~ <br> 기능요청
-		</p>
+		<h2>회원 요청 사항 보기</h2>
+		<p></p>
 	</div>
 	</section>
 	<article class="community_content"> 
@@ -87,7 +113,7 @@ function timeBefore(timedate){
 						<option value="미해결">미해결</option>
 					</select>
 				</div>
-				<div class="selector ">
+				<!-- <div class="selector ">
 					<select class="Q-sel controle_btn" name="cls">
 						<option value="최신순">최신순</option>
 						<option value="최근답변순">최근답변순</option>
@@ -98,12 +124,21 @@ function timeBefore(timedate){
 				<div class="search">
 					<input type="text" name="search" class="controle_btn input"><i
 						class="fas fa-search"></i>
-				</div>
+				</div> -->
 			</div>
 			<!--  -->
 			<div class="content">
 				<%
-					String pageNum=request.getAttribute("pageNum").toString();
+				//페이징 정보
+				String pageNum=(String)request.getAttribute("pageNum");
+				int count = (Integer)request.getAttribute("count");
+				int pageCount=(Integer)request.getAttribute("pageCount");
+				int pageBlock=(int)request.getAttribute("pageBlock");
+				int startPage=(int)request.getAttribute("startPage");
+				int endPage=(int)request.getAttribute("endPage");
+
+				
+//					String pageNum=request.getAttribute("pageNum").toString();
 					ArrayList<QuestDTO> boardList=(ArrayList<QuestDTO>)request.getAttribute("boardList");
 					for(QuestDTO bdto: boardList){
 				%>
@@ -111,23 +146,26 @@ function timeBefore(timedate){
 					<div class="item_content">
 					<div class="post_title">
 						<span class="Q">Rq.</span>
-						<span><a href="request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>"><%=bdto.getQ_title()%></a></span>
+						<span><a href="#"><%=bdto.getQ_content()%></a></span>
 					</div>
 					<p class="post_metas">
-						<span class="post_writer">작성자 : <%=bdto.getQ_writer()%></span>
+						<span class="post_writer">타입 : <%=bdto.getQ_type()%></span>
 						<span class="post_time">시간 : 
 						<script>var time=timeBefore("<%=bdto.getQ_reg_date()%>");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_locuter"><%=bdto.getQ_l_num() %></span>
+						<span class="post_locuter"><%--  --%></span>
 					</p>
 					</div>
 					<div class="item_right">
 					<div class="comment_cnt right_item">
-					<span>답변 1개 </span></div>
-					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
-					<div class="comment_link right_item"><input type="button" value="요청 상세보기" onclick="location.href='./request.bo?num=<%=bdto.getQ_num()%>&pageNum=<%=pageNum%>'"></div>
+<!-- 					<span> </span> -->
+					</div>
+					<div class="cooment_goods right_item"><!--  -->
+					</div>
+					<div class="comment_link right_item"><%--  --%>
+					</div>
 					</div>
 				</div>
 				<%} %>
@@ -142,6 +180,40 @@ function timeBefore(timedate){
 
 
 	</article>
+	
+				<!--  -->
+		<div class="pageNation" style="">
+						<%
+						if(startPage > pageBlock){
+							//페이지 [이전]
+						%>
+							<a href="./requestView.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+						<%
+						}
+						%>
+						<%
+						if(count != 0){
+							for(int i=startPage;i<=endPage;i++){
+							//페이지 숫자 뿌리기
+							%>
+							<a href="./requestView.bo?pageNum=<%=i%>"><%=i %></a>
+							<%
+							}
+						}
+						%>
+						<%
+						if(endPage < pageCount){
+							//페이지 [다음]
+						%>
+							<a href="./requestView.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+						<%
+						}
+						%>
+
+					
+		</div>	
+		<!--  -->
+	
 	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>
