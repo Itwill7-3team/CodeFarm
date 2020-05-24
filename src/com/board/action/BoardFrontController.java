@@ -166,6 +166,13 @@ public class BoardFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/requestView.bo")){
+			action=new QuestAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 /////////대시보드			
 		}else if(command.equals("/DashBoard.bo")){

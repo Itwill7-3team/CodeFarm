@@ -26,7 +26,7 @@ list-style: upper-alpha;
 	<div class="container">
 		<h2>기능 요청</h2>
 		<p>
-			기능요청~ <br> 기능요청
+			필요한 기능을 요청하세요!
 		</p>
 	</div>
 	</section>

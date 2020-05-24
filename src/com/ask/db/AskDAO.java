@@ -51,7 +51,7 @@ public class AskDAO {
 			con = getConnection();
 			System.out.print("getAskCount() : ");
 			
-			sql = "select count(*) from board";
+			sql = "select count(*) from board where re_lev=0";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){

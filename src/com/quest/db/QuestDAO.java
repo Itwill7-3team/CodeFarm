@@ -44,7 +44,7 @@ public class QuestDAO {
 	}//자원 해제
 	
 	//getQuestionCount()
-	/*public int getQuestCount(){
+	public int getQuestCount(){
 		int check = 0;
 		try {
 			con = getConnection();
@@ -70,7 +70,7 @@ public class QuestDAO {
 		try{
 			con=getConnection();
 			sql="select * from q_board "
-					+ "order by q_re_ref desc, q_re_seq asc "
+					//+ "order by q_re_ref desc, q_re_seq asc "
 					+ "limit ?,?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow-1); //시작행-1
@@ -80,13 +80,13 @@ public class QuestDAO {
 			while(rs.next()){
 				QuestDTO qdto=new QuestDTO();
 				qdto.setQ_num(rs.getInt("q_num"));
-				qdto.setQ_l_num(rs.getInt("q_l_num"));
-				qdto.setQ_title(rs.getString("q_title"));
+				//qdto.setQ_l_num(rs.getInt("q_l_num"));
+				qdto.setQ_type(rs.getString("q_type"));
 				qdto.setQ_content(rs.getString("q_content"));
-				qdto.setQ_writer(rs.getString("q_writer"));
-				qdto.setQ_re_lev(rs.getInt("q_re_lev"));
-				qdto.setQ_re_ref(rs.getInt("q_re_ref"));
-				qdto.setQ_re_seq(rs.getInt("q_re_seq"));
+				//qdto.setQ_writer(rs.getString("q_writer"));
+				//qdto.setQ_re_lev(rs.getInt("q_re_lev"));
+				//qdto.setQ_re_ref(rs.getInt("q_re_ref"));
+				//qdto.setQ_re_seq(rs.getInt("q_re_seq"));
 				qdto.setQ_reg_date(rs.getTimestamp("q_reg_date"));
 				boardList.add(qdto);
 			}
@@ -99,7 +99,7 @@ public class QuestDAO {
 	}
 	
 	
-	public QuestDTO getBoard(int num){
+	/*public QuestDTO getBoard(int num){
 		QuestDTO qdto= new QuestDTO();
 		try{
 			con=getConnection();
@@ -110,14 +110,14 @@ public class QuestDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				qdto.setQ_num(rs.getInt("q_num"));
-				qdto.setQ_l_num(rs.getInt("q_l_num"));
+				//qdto.setQ_l_num(rs.getInt("q_l_num"));
 //				qdto.setQ_l_name(rs.getString("q_l_name"));
-				qdto.setQ_title(rs.getString("q_title"));
+				//qdto.setQ_title(rs.getString("q_title"));
 				qdto.setQ_content(rs.getString("q_content"));
-				qdto.setQ_writer(rs.getString("q_writer"));
-				qdto.setQ_re_lev(rs.getInt("q_re_lev"));
-				qdto.setQ_re_ref(rs.getInt("q_re_ref"));
-				qdto.setQ_re_seq(rs.getInt("q_re_seq"));
+				//qdto.setQ_writer(rs.getString("q_writer"));
+				//qdto.setQ_re_lev(rs.getInt("q_re_lev"));
+				//qdto.setQ_re_ref(rs.getInt("q_re_ref"));
+				//qdto.setQ_re_seq(rs.getInt("q_re_seq"));
 				qdto.setQ_reg_date(rs.getTimestamp("q_reg_date"));
 			}
 		}catch (Exception e) {
