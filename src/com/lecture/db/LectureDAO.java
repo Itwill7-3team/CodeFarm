@@ -478,7 +478,7 @@ public class LectureDAO {
 	public void removeInstructor(int l_num) {
 		try{
 			con=getConnection();
-			sql="delete *  from lecture  where l_number=?";
+			sql="delete from lecture where l_number=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, l_num);
 			

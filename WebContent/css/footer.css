@@ -7,7 +7,7 @@ footer{
     color: white;
     float: left;
 }
-.menu_sublist{
+footer .menu_sublist{
 	display: grid;
 }
 footer .container{
@@ -20,31 +20,31 @@ footer .container{
 	padding: 5px 0px
 }
 
-.menu_list_cover{
+footer .menu_list_cover{
 	display: -webkit-inline-box;
 	
 	
 }
-.menu_list{
+footer .menu_list{
 	padding: 32px 150px 0px 0px;
 }
 
-.foot_logo{
+footer .foot_logo{
 	display: inline;
 	width: 75px;
 }
 
-.foot_info{
+footer .foot_info{
 	color: #c0c0c0;
 }
-.footer_info_bottom{
+footer .footer_info_bottom{
 	color: #c0c0c0;
 	font-size: 12px;
 }
 
-.center{
+footer .center{
 	padding: 10px 0;
 }
-.first{
+footer .first{
 	padding: 10px 0 0 0;
 }

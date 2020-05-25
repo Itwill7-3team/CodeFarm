@@ -165,7 +165,7 @@
 					<div class="field">
 						<div class="title button_item">
 							<label class="menu_label">강의수준</label>
-							<div class="button_box">
+							<div class="button_box level">
 								<button class="button level" value="입문">입문</button>
 								<button class="button level" value="초급">초급</button>
 								<button class="button level" value="중급">중급</button>
@@ -427,7 +427,7 @@ $(document).ready(function() {
 	
 	//클릭하면 display 나옴
 	$(".side_item").click(function() {
-		$(".side_item.active").addClass("final");
+		
 		$(".side_item").removeClass("active");
 		$(this).addClass("active");
 		var active = $(this).attr("data-type");
@@ -437,8 +437,8 @@ $(document).ready(function() {
 		$(this).children("span").html());
 	});
 	//btn클릭시  active클래스 추가
-	$(".level").click(function() {
-		$(".level").removeClass("active");
+	$(".button.level").click(function() {
+		$(".button.level").removeClass("active");
 		$(this).addClass("active");
 	});
 	$(".category1").click(function() {
@@ -627,8 +627,28 @@ $(document).ready(function() {
 	//제출하기 버튼 누르면 발생하는 이벤트
 	$(".button.submit").click(
 	function() {
-	var title = $(".title.input_item").val();
-	var content = $(".course_summary.input_item").children(".input_box").children(".input");
+		var side_item_check=$(".side_item.final").size()==4?true:false;
+		if(side_item_check){
+			 $.ajax({
+				 type: "POST",
+		            //enctype: 'multipart/form-data',
+		            url: "./recordUpdate.in",
+		            data: {
+						num: <%=Integer.parseInt(request.getParameter("num"))%>,    	
+						id: "${m_email}",            	
+		            },
+
+		            success:function(data){
+		            	alert("데이터 전송 성공");
+		            },
+		            error: function (data) {
+		            	alert("저장실패!");
+		            }
+		        });
+		}else{
+			alert("필수요소들을 더입력해주세요.");
+		}
+		
 	});
 	//저장하기 버튼 누르면 저장하는 이벤트
 	$(".save").on("click",function(){
@@ -732,7 +752,9 @@ $(document).ready(function() {
 	            cache: false,
 	            timeout: 600000,
 	            success:function(data){
+	            	
 	            	$(".tumnail").attr("src","./upload/"+data);
+	            	
 	            },
 	            error: function (data) {
 	            	alert("fail");
@@ -745,7 +767,11 @@ $(document).ready(function() {
 	
 	$(".categoryBox2").children('button[value="${ldto.l_type2}"]').trigger("click"); 
 	$(".button_box").children('button[value="${ldto.l_level}"]').trigger("click");
-	$(".tumnail").attr("src","./upload/${ldto.l_img}");
+
+	$(".tumnail").attr("src","./upload/+${ldto.l_img}");
+	if($(".tumnail").attr("src")=="./upload/+"){
+		$(".tumnail").attr("src","./img/logo.png");
+	}
 	$(".file_info").html("${ldto.l_img}");
 	$(".box_input.price").attr("value","${ldto.l_price}");
 	$(".start-msg").html(returnText("${ldto.start_msg}"));
@@ -754,6 +780,37 @@ $(document).ready(function() {
 	if($(".file_info").html()==""){
 		$(".file_info").html("업로드 할 파일을 선택해주세요");
 	}
+	$(".side_item").on("click",function(){
+		//페이지 완료 체킹
+	var abilities_check=$(".boxes.abilities>li").size()>1?true:false;
+	var targets_check=$(".boxes.targets>li").size()>1?true:false;
+	var category_check=$(".button_box.categoryBox1").children(".active").size()!=0?true:false;
+	var category2_check=$(".button_box.categoryBox2").children(".active").size()!=0?true:false;
+	var level_check=$(".button_box.level").children(".active").size()!=0?true:false;
+	var page1_check=abilities_check&&targets_check&&category_check&&category2_check&&level_check;
+	if(page1_check){
+		$("div[data-type=information]").addClass("final");
+	}
+	//페이지 1 체크 완료 
+	var description_check=$(".textarea.description").val().length>0?true:false;
+	var body_check=$("#summernote2").html().length>0?true:false;
+	var page2_check=description_check&&body_check;
+	if(page2_check){
+		$("div[data-type=introduction]").addClass("final");
+	}
+	var page4_check=$(".tumnail").attr("src")!="./img/logo.png"?true:false;
+	if(page4_check){
+		$("div[data-type=cover-img]").addClass("final");
+	}
+	var price_check=$(".box_input.price").val()?true:false;
+	var start_msg_check=$(".textarea.start-msg").val()?true:false;
+	var end_msg_check=$("textarea.end-msg").val()?true:false;
+	var page5_check=price_check&&start_msg_check&&end_msg_check;
+	if(page5_check){
+		$("div[data-type=course_setting]").addClass("final");
+	}
+	console.log(page1_check+page2_check+page4_check+page5_check);
+	});
 });
 	function getFile(){
 		$(".hidden_input").click();
@@ -777,6 +834,7 @@ $(document).ready(function() {
 		var lines=data.replace("<p>"," ").replace("</p>"," ").replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
 		return lines;
 	}
+	
 	</script>
 
 </body>
