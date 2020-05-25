@@ -27,7 +27,7 @@ int l_number = Integer.parseInt(request.getParameter("l_number"));
 int f_num = Integer.parseInt(request.getParameter("f_num"));
 
 LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");
-List<List<FileDTO>> fileSet     = (List<List<FileDTO>>)request.getAttribute("fileSet");
+List<List<FileDTO>> fileSet = (List<List<FileDTO>>)request.getAttribute("fileSet");
 
 /* 파일 개수, 시간 계산 */
 int fileCount = 0;
@@ -76,10 +76,30 @@ if(totalTime >= 3600){
 					</div>
 					<div class="curriculum">
 						<ul>
+<%
+fileCount = 0;
+for(int i=0; i<fileSet.size(); i++){
+	List<FileDTO> fdto = fileSet.get(i);
+%>
+							<li class="list unit unit_section">
+								<span class="list_item unit_title">섹션 <%= i %>.<%= fdto.get(fileCount).getF_sec_name() %></span>
+							</li>
+<%
+for(int j=0; j<fileSet.get(i).size(); j++){
+%>						
+							
+							<li class="list unit unit_lecture" href="./LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fdto.get(j).getF_num() %>">
+								<span class="list_item unit_title"><%= fdto.get(j).getF_col_name() %></span>
+								<span class="unit_checked icon">
+									<i class="far fa-check-square" ></i>
+								</span>
+							</li>
+<% }} %>
+
 							<li class="list unit unit_section">
 								<span class="list_item unit_title">구구단</span>
 							</li>
-							<li class="list unit unit_lecture is_now">
+							<li class="list unit unit_lecture">
 								<span class="list_item unit_title">1-1. 리액트를 왜 쓰는가</span>
 								<span class="unit_checked icon">
 									<i class="far fa-check-square"></i>
@@ -278,7 +298,28 @@ $(function(){
 	$(".closebtn.toggle_right").click(function(){
 		$(".content_container").removeClass("right_opend");
 	});
-});	
+});
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+function is_now(){
+	var f_num = getParameterByName("f_num");
+	var unit = document.getElementByClass(".unit_lecture").href
+	var loc = window.location.href
+	console.log("F"+f_num+"U"+unit+"L"+loc);
+	if(document.getElementById(".unit_lecture").href == window.location.href){
+		$(".unit_lecture").addClass("is_now");
+	}
+}
+
+$(".unit_lecture").click(function(){
+	is_now();
+	document.location.href = $(this).attr("href");
+});
+
 
 </script>
 </body>
