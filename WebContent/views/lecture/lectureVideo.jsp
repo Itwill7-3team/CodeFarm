@@ -214,12 +214,14 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 									<div class="playjs">
 										<div class="playjs2">
 										
-								 <iframe width="100%" height="100%"
+								 <!-- <iframe width="100%" height="100%"
   										src="https://www.youtube.com/embed/60ctvQsY7ws?rel=0&amp;modestbranding=1&amp;vq=hd720&amp;autoplay=1&amp;enablejsapi=1" 
   										frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen" 
   										data-gtm-yt-inspected-8964582_7="true" id="212470628">
-								</iframe>
-
+								</iframe> -->
+										<video src="./css/Pasta-33256.mp4" controls autoplay frameborder="0">
+										
+										</video>
 										<!-- <iframe src="./css/Pasta-33256.mp4"
 										frameborder="0" allow="autoplay; encrypted-media" x-webkit-airplay="allow" preload="none" allowfullscreen="allowfullscreen" id="iframe_1">
 										</iframe> -->
