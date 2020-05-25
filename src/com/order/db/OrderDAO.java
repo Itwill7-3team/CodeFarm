@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
 
 import com.basket.db.BasketDTO;
 import com.lecture.db.LectureDTO;
+import com.order.action.OrderListAction;
 
 
 
@@ -23,6 +25,7 @@ public class OrderDAO {
 	Connection con= null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
+	ResultSet rs2=null;
 	String sql="";
 	
 	
@@ -42,9 +45,11 @@ public class OrderDAO {
 	
 	public void closeDB(){
 		try {
+			if(rs2 !=null) rs2.close();
 			if(rs !=null) rs.close();
 			if(pstmt !=null) pstmt.close();
 			if(con !=null) con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +60,7 @@ public class OrderDAO {
 		// TODO Auto-generated method stub
 		
 		int o_num = 0;	// 주문 일렬번호
-		int o_b_num = 0;	// 주문 번호
+		int b_num = 0;	// 주문 번호
 		
 		// 주문번호 변경을 하기위한 객체
 		Calendar cal = Calendar.getInstance();
@@ -75,9 +80,9 @@ public class OrderDAO {
 				o_num = rs.getInt(1)+1;
 			}
 			
-			o_b_num = o_num;
+			b_num = o_num;
 			
-			System.out.println(" 주문 일련번호 : "+o_num+", 주문번호 : "+o_b_num);
+			System.out.println(" 주문 일련번호 : "+o_num+", 주문번호 : "+b_num);
 			
 			for(int i=0;i<basketList.size();i++){
 				BasketDTO bkdto = (BasketDTO)basketList.get(i);
@@ -95,7 +100,7 @@ public class OrderDAO {
 			pstmt.setInt(1, o_num);
 			//pstmt.setString(2,trade_num);
 			pstmt.setString(2, 
-					sdf.format(cal.getTime()).toString()+"-"+o_num 
+					sdf.format(cal.getTime()).toString()+"-"+b_num 
 					);
 			// => 20200331-1
 			pstmt.setInt(3, ldto.getL_price());
@@ -183,9 +188,16 @@ public class OrderDAO {
 	
 	
 	//orderDetail(b_num)
-	public List orderDetail(String trade_num) {
+	public Vector orderDetail(String trade_num) {
 		
-		List orderDetailList = new ArrayList();
+		Vector vec = new Vector();
+		
+		ArrayList orderDetailList = new ArrayList();
+		ArrayList lectureList = new ArrayList();
+				
+		/*List orderDetailList = new ArrayList();
+		ArrayList lectureList = new ArrayList();*/
+		//ArrayList basketList = new ArrayList();
 		
 		try {
 			con = getConnection();
@@ -195,27 +207,56 @@ public class OrderDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, trade_num);
 			rs = pstmt.executeQuery();
-			System.out.println("@@@@@@@@@@@@@@@@@");
+			System.out.println("@%$%$%$%$%trade_num 실행하나여");
 			
 			while(rs.next()){
-				OrderDTO odto = new OrderDTO();
-			
+				OrderDTO odto = new OrderDTO();	
 				odto.setO_b_num(rs.getString("o_b_num"));
 				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_l_num(rs.getInt("o_l_num"));
 				odto.setO_t_date(rs.getTimestamp("o_t_date"));
 				odto.setO_sum_money(rs.getInt("o_sum_money"));
 				odto.setO_t_type(rs.getString("o_t_type"));
 				odto.setO_t_bank(rs.getString("o_t_bank"));
 				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_num(rs.getString("o_t_b_num"));
 				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
-				
-				System.out.println("#######################");
-				
+				System.out.println("$$$$$$$$$$$$$orderDTO############");
 				orderDetailList.add(odto);
+				
+				sql = "SELECT * FROM lecture WHERE l_number=?";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, odto.getO_l_num());
+				rs2 = pstmt.executeQuery();
+				System.out.println("%$$$$$$%%%llilil ");
+				
+				if(rs2.next()) {
+					LectureDTO ldto = new LectureDTO();
+					//@처리
+					String M=rs2.getString("l_m_email");
+					String id=null;
+					if(M.indexOf("@")>-1){
+						id=M.substring(0,M.indexOf("@"));
+					}else{id=M;}
+					//
+					ldto.setL_number(rs2.getInt("l_number"));
+					ldto.setL_m_email(id);
+					ldto.setL_img(rs2.getString("l_img"));
+					ldto.setL_title(rs2.getString("l_title"));
+					ldto.setL_content(rs2.getString("l_content"));
+					ldto.setL_price(rs2.getInt("l_price"));
+					ldto.setL_pct(rs2.getInt("l_pct"));
+					System.out.println("$$$$$$$##%%ldto%%###$$$");
+					lectureList.add(ldto);
+				}
 				
 			} // while
 			
-			System.out.println("주문 상세정보 저장 완료: "+orderDetailList);
+			vec.add(0, orderDetailList);
+			vec.add(1, lectureList);
+			
+			System.out.println("주문 상세정보 저장 완료: "+vec);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -224,9 +265,71 @@ public class OrderDAO {
 			closeDB();
 		}
 		
-		return orderDetailList;
+		return vec;
 	} //orderDetail(b_num)
 	
+	//getOrderDetail
+	public List<OrderDTO> getOrderDetail(String id) {
+		List<OrderDTO> orderList = new ArrayList<OrderDTO>();
+		try {
+			con = getConnection();
+			System.out.print("getOrderDetail() : ");
+			
+			sql = "select * from orderlist where o_m_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);		
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				OrderDTO odto = new OrderDTO();
+				odto.setO_num(rs.getInt("o_num"));
+				odto.setO_b_num(rs.getString("o_b_num"));
+				odto.setO_l_price(rs.getInt("o_l_price"));
+				odto.setO_l_num(rs.getInt("o_l_num"));
+				odto.setO_l_name(rs.getString("o_l_name"));
+				odto.setO_t_type(rs.getString("o_t_type"));
+				odto.setO_t_bank(rs.getString("o_t_bank"));
+				odto.setO_t_payer(rs.getString("o_t_payer"));
+				odto.setO_t_date(rs.getTimestamp("o_t_date"));
+				odto.setO_sum_money(rs.getInt("o_sum_money"));
+				odto.setO_t_b_num(rs.getString("o_t_b_num"));
+				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
+				orderList.add(odto);
+			}
+			System.out.println(" 주문 정보 저장 완료 ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return orderList;
+	}
+	//getOrderDetail
 	
+	
+	
+	//OrderDelete
+	public void OrderDelete(String trade_num) {
+		try {
+			con = getConnection();
+			System.out.print("OrderDelete()");
+			
+			sql = "DELETE FROM orderlist "
+					+ "WHERE o_b_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, trade_num);
+			
+			pstmt.executeUpdate();
+			
+			System.out.println(trade_num+"-> 주문 삭제 완료");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			   closeDB();	
+			}
+	}
+	//OrderDelete
 	
 	}

@@ -74,7 +74,7 @@ ArrayList<QuestDTO> boardList=null;
 		
 		System.out.println("QuestAction 실행");
 		request.setAttribute("boardList", boardList);
-		forward.setPath("./views/board/request.jsp");
+		forward.setPath("./views/board/requestView.jsp");
 		forward.setRedirect(false);
 		
 		System.out.println("QuestAction 종료");

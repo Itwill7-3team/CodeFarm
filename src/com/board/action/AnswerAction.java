@@ -36,7 +36,7 @@ public class AnswerAction implements Action{
 		String num=request.getParameter("num");
 		String pageNum=request.getParameter("pageNum");
 		String type= "answer";
-		int lev=Integer.parseInt(request.getParameter("re_lev"));
+		
 		
 		//정보받기 (글쓴이, 내용, re_ref, re_lev+1)
 		AskDTO bdto= new AskDTO();
@@ -46,7 +46,7 @@ public class AnswerAction implements Action{
 		bdto.setContent(request.getParameter("content"));
 		bdto.setRe_ref(Integer.parseInt(request.getParameter("num")));
 		bdto.setRe_seq(Integer.parseInt(request.getParameter("re_seq")));
-		bdto.setRe_lev(lev+1);
+		bdto.setRe_lev(Integer.parseInt(request.getParameter("re_lev"))+1);
 		
 		AskDAO bdao= new AskDAO();
 		

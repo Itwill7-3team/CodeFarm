@@ -29,7 +29,7 @@ public class InstructorLectureListAction implements Action {
 		LectureDTO ldto=ldao.getLectureDetail(num);
 		request.setAttribute("ldto", ldto);
 		ActionForward forward= new ActionForward();
-		forward.setPath("./views/instructor/addLecture.jsp");
+		forward.setPath("./views/instructor/updateLecture.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

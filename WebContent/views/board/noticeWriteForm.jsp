@@ -73,8 +73,7 @@ if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
 }
 String id="id";
-int idx= email.indexOf("@");
-id= email.substring(0,idx);
+id= email.substring(0,email.indexOf("@"));
 
 System.out.print("id"+id);
 
@@ -86,6 +85,7 @@ System.out.print("id"+id);
 <form action="./noticeWriteAction.bo" method="post">
 글쓴이 : <%=id%><br>
 제목 : <input type="text" name="n_title"><br>
+<input type="hidden" name="n_writer" value="<%=email%>">
 내용<br>
 <textarea name="n_content" id="summernote">
 </textarea>

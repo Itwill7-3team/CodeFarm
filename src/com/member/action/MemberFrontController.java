@@ -262,6 +262,25 @@ public class MemberFrontController extends HttpServlet{
 			forward.setPath("./views/member/naver_login_action.jsp");
 			forward.setRedirect(false);		
 			
+		}else if(command.equals("/SerchInfo.me")) {
+			//관리자 회원정보 검색
+			System.out.println("/SerchInfo.me 주소 요청");
+			action = new SerchInfoAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(command.equals("/AdminDeleteAction.me")) {
+			System.out.println("/AdminDeleteAction.me 주소 요청");
+			action = new AdminDeleteAcion();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		

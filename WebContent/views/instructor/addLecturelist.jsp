@@ -41,11 +41,11 @@
 					</ul>
 					<p class="menu_label">강의관리</p>
 					<ul class="menu_list">
-						<li><i class="fas fa-chalkboard"></i> 강의관리</li>
+						<li class="active"><i class="fas fa-chalkboard"></i> 강의관리</li>
 					</ul>
 					<p class="menu_label">강의만들기</p>
 					<ul class="menu_list">
-						<li><i class="fas fa-magic"></i> 강의 만들기</li>
+						<li onclick="location.href='addLecture.in'"><i class="fas fa-magic"></i> 강의 만들기</li>
 					</ul>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 							임시저장
 							<%} %>
 						</td>
-						<td class="course_btn"><button class="remove_btn">❌삭제</button></td>
+						<td class="course_btn"><button class="remove_btn" step=<%=ldto.getL_number() %>>❌삭제</button></td>
 					</tr>
 					<%} %>
 				</table>
@@ -89,6 +89,9 @@
 	$(".menu_container li").on("click",function(){
 		$(".menu_container li").removeClass("active");
 		$(this).addClass("active");
+	});
+	$(".remove_btn").on("click",function(){
+		location.href="removeInstructor.in?num="+$(this).attr("step");
 	});
 </script>
 

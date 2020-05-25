@@ -53,12 +53,11 @@
 <br>
 
 <jsp:include page="/include/main-product.jsp"/>
-<jsp:include page="/include/main-content.jsp"/>
 
 
 <jsp:include page="/include/footer.jsp"/>
 
-
+<jsp:include page="/include/chat.jsp"></jsp:include>
 
 <script>
 var slideIndex = 0;

@@ -133,18 +133,18 @@ height: 320px;
 	font-size: 13px;}
 .card img {
 	width: 100%!important; 
-	height: 47%!important; 
+/* 	height: 47%!important;  */
 	margin: 0;}
 .card-in {
 	width: 100%!important; 
 	height: 20%!important; 
 	margin: 0;}
 .card h2 {
-    font-size: 1rem !important;
+/*     font-size: 1rem !important; */
     text-align: left;
     margin-left: 0.5rem;
     margin-bottom: 0.2rem;
-    height: 2.8rem;
+/*     height: 2.8rem; */
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -152,6 +152,15 @@ height: 320px;
 }
 .price {
     margin-left: 68% !important;
+}
+
+#more,#blg {
+width: 90% !important;
+margin: 1rem !important;
+}
+
+.Bwrap,.interest{
+margin-left: 0 !important;
 }
 	
 }
@@ -186,6 +195,15 @@ height: 320px;
 .title {
     width: 100% !important;
     font-size: 22px !important;
+}
+
+#more,#blg {
+width: 90% !important;
+margin: 1rem !important;
+}
+
+.Bwrap,.interest{
+margin-left: 0 !important;
 }
 
 }
@@ -237,7 +255,7 @@ height: 165px;
 color:#454545;
 font-size: 1.1rem;
 text-align: left;
-margin: 0.3rem 0.8rem;
+margin: 1rem 0.8rem;
 overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box;
@@ -310,8 +328,9 @@ margin: 0;
 }
 
 #more,#blg,#rdm {
+width: 70%;
 margin: 3rem auto;
-text-align: center;
+text-align: left;
 }
 
 .title>a{
@@ -319,21 +338,22 @@ color: 3B3B38;
 }
 
 .card-c {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
-  max-width: 280px;			
-  height:300px;
-  margin: 0.5rem;
-  text-align: center;
-  vertical-align: top;
-  font-family: arial;
-  display: inline-block;
-  overflow: hidden;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    height: 330px;
+    margin: 1.5rem;
+    text-align: center;
+    vertical-align: top;
+    font-family: arial;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .card-c img{
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-width:280px;
-height: 180px;
+/* width:280px; */
+min-width :350px;
+height: 230px;
 }
 
 .card-c h2{
@@ -347,11 +367,12 @@ margin-left: 0.8rem;
 .text-in{
 /* padding: 1rem 0.8rem; */
 text-align: left;
+ padding: 0 1rem;
 }
 
 .interest img{
-width:70px;
-height: 50px;
+width:65px;
+height: 45px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 margin: 5px;
 text-align: center;
@@ -361,3 +382,10 @@ display: inline-block;
 border-radius: 15px;
 }
 
+.Bwrap{
+	margin-left: 4%;
+}
+
+.interest{
+	margin-left: 9%;
+}

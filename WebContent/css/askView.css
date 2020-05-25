@@ -263,3 +263,11 @@ hr{
 	clear: both;
 	margin: 1em 0.3em 1em 0;
 }
+
+.a_Info{
+	font-weight: 600;
+	margin-bottom: 1.2em;
+}
+.a_Info span{
+	margin-right: 0.5em;
+}

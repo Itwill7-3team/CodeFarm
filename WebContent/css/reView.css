@@ -107,3 +107,32 @@
     overflow-y: hidden;
 }
 /* 별 만들기 */
+
+
+.review_right,.left{
+/* 	border: 1px red solid; */
+	display: inline-block;
+}
+.review_list_item{
+/* 	border: 1px blue solid; */
+	border-bottom: 1px #ccc solid;
+	width: 650px;
+	margin-bottom: 1em;
+}
+
+.img_item>img{
+	width: 110px;/* 65% */
+	height: 70px;
+}
+
+.left{
+	width: 500px;
+}
+.post_metas>span{
+	margin-right: 1em;
+	font-size: 12px;
+}
+
+.content_item{
+	font-size: 1.5em;
+}

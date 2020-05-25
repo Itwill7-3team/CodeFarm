@@ -13,6 +13,10 @@
 <body>
 <%
  request.setCharacterEncoding("UTF-8");
+ String m_email = (String)session.getAttribute("m_email");
+ if(m_email != null){
+	response.sendRedirect("./Main.le");
+ }
 %>
 <jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="main">

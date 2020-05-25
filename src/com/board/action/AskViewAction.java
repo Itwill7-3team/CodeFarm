@@ -21,11 +21,7 @@ public class AskViewAction implements Action {
 
 		String id =(String) session.getAttribute("m_email");
 		
-		if(id == null){
-			forward.setPath("./Main.le");
-			forward.setRedirect(true);
-			return forward;
-		}
+	
 				
 		//한글처리
 		request.setCharacterEncoding("utf-8");
@@ -34,7 +30,7 @@ public class AskViewAction implements Action {
 		int num=Integer.parseInt(request.getParameter("num"));
 		String pageNum=request.getParameter("pageNum");
 
-		//해당 글 내용 ㅇ불러오기
+		//해당 글 내용 불러오기
 		AskDAO bdao =new AskDAO();
 		AskDTO bdto=bdao.getBoard(num);
 		
@@ -44,7 +40,7 @@ public class AskViewAction implements Action {
 		
 		//답글유무 체크
 		int check = new AskDAO().getAnswerCount(num);
-		System.out.println("check:"+check);
+//		System.out.println("check:"+check);
 		
 		//답글 리스트
 		List<AskDTO> answerList =new AskDAO().getAnswerList(num);		

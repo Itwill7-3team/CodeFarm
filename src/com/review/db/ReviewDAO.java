@@ -209,4 +209,70 @@ public class ReviewDAO {
 			return reviewList;
 		}
 		// getBoardList(l_number);
+		
+		// addReComment(rdto)
+		public ReviewDTO addReComment(ReviewDTO rdto){
+			ReviewDTO rcdto = new ReviewDTO();
+			int num = 0;
+			try {
+				con = getConnection();
+				System.out.print("insertBoard() : ");
+				
+				// 글 번호 증가
+				sql = "select max(r_num) from r_board";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					num = rs.getInt(1) + 1;
+				}
+				
+				// 답글 정렬
+				sql = "update r_board set r_re_seq = r_re_seq + 1 "
+						+ "where r_re_ref = ? and r_re_seq > ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, rdto.getR_re_ref());
+				pstmt.setInt(2, rdto.getR_re_seq());
+				pstmt.executeUpdate();
+				
+				sql = "insert into r_board("
+						+ " r_num,     r_l_num,   r_content,  r_writer,   r_rating, "
+						+ " r_re_lev,  r_re_ref,  r_re_seq,   r_reg_date) "
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, now())";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setInt(2, rdto.getR_l_num());
+				pstmt.setString(3, rdto.getR_content());
+				pstmt.setString(4, rdto.getR_writer());
+				pstmt.setInt(5, rdto.getR_rating());
+				pstmt.setInt(6, rdto.getR_re_lev() + 1); // lev 0 - 일반, 1 - 답변...
+				pstmt.setInt(7, rdto.getR_re_ref());     // ref 일반글 번호와 동일
+				pstmt.setInt(8, rdto.getR_re_seq() + 1); // seq 글 순서
+				pstmt.executeUpdate();
+				System.out.print("comment 저장 완료, ");
+				
+				sql = "select * from r_board where r_num = ? and r_writer = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, rdto.getR_writer());
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					rcdto.setR_num(rs.getInt("r_num"));
+					rcdto.setR_l_num(rs.getInt("r_l_num"));
+					rcdto.setR_content(rs.getString("r_content"));
+					rcdto.setR_writer(rs.getString("r_writer"));
+					rcdto.setR_rating(rs.getInt("r_rating"));
+					rcdto.setR_re_lev(rs.getInt("r_re_lev"));
+					rcdto.setR_re_ref(rs.getInt("r_re_ref"));
+					rcdto.setR_re_seq(rs.getInt("r_re_seq"));
+					rcdto.setR_reg_date(rs.getTimestamp("r_reg_date"));
+				}
+				System.out.println("dto 저장 완료");
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return rcdto;
+		}
+		// addReComment(rdto)
 }

@@ -169,9 +169,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>
 					</div>
-					<!-- 로드맵  -->
+					<!-- 블로그  -->
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold"> <span>로드맵 보기</span> <!-- <img alt="로드맵 보기" src="./../img/include-img/below.png"> -->
+						<a href="blog.bl" class="navbar-link bold"> <span>블로그</span>
+						<!-- <i class="fas fa-angle-down"></i> --> <!-- <img alt="블로그 보기" src="./../img/include-img/below.png"> -->
 						</a>
 					</div>
 				</div>
@@ -183,9 +184,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<input type="text" class=""><i class="fas fa-search"></i>
 					</div>
 					<!--지식공유 참여  -->
+					<%if(rank<2) {%>
 					<div class="navbar-item">
-						<a href="#" class="navbar-link bold">지식공유참여</a>
+						<a href="#" id="tech_request" class="navbar-link bold">지식공유참여</a>
 					</div>
+					<%} %>
 					<!-- 로그인 했을때 -->
 					<%if(!loginEmail.equals("")){%>
 					<!-- 대시보드 -->
@@ -195,7 +198,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
-						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
+<!-- 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a> -->
+						<div class="profile_hover">
+							<span><img src="./img/cart.png"></span>
+						</div>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
 							<div class="top_content">
@@ -215,7 +221,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 위시리스트 종료 -->
 					<!-- 알림 -->
 					<div class="navbar-item">
-						<a href="#"><i class="fas fa-bell"></i> </a>
+<!-- 						<a href="#"><i class="fas fa-bell"></i> </a> -->
 					</div>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
@@ -230,12 +236,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											<div class="left_content">
 												<div class="img_content">
 												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
-												<a href="#">설정</a>
+												<a href="MemberInfo.me">설정</a>
 												</div>
 											</div>
 											<div class="right_content">
 											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
-											 <span class="rank">학생<!-- 회원 등급 --></span>
+											 <span class="rank">
+											 <%if(rank>1){%> 강사<%}else{%>학생<%}%>
+											 <!-- 회원 등급 --></span>
 											</div>
 										</div>
 									</div>
@@ -246,11 +254,11 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									</div>
 									<div class="list_content">
 										<ul class="students_list">
-											<a href="#"><li class="list_item">이어서 학습하기</li></a>
-											<a href="#"><li class="list_item">수강중인 강의</li></a>
-											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
-											<a href="#"><li class="list_item">내 질문 답변</li></a>
-											<a href="#"><li class="list_item">구매내역</li></a>
+											<a href="LectureVideo.le"><li class="list_item">이어서 학습하기</li></a>
+											<a href="MyLecture.bo"><li class="list_item">수강중인 강의</li></a>
+<!-- 											<a href="#"><li class="list_item">참여중인 로드맵</li></a> -->
+											<a href="MyaskAction.bo"><li class="list_item">내 질문 답변</li></a>
+											<a href="OrderList.or"><li class="list_item">구매내역</li></a>
 											
 										</ul>
 										<%if(rank>1){ %>
@@ -326,20 +334,34 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		$(this).addClass("active");
 		getCarts();
 	});
-	$(".cart").mouseover(function() {
+	$(".carts").mouseover(function() {
 		getCarts();
 	});
 	
 	
 	$(".login_btn").click(function(){
-	
+		
 		$.ajax({
 			type : "POST",
 			url : "./MemberLogin.me",
-			data : {
-				
-				
+			success : function(data) {
+
+				$(".login_form").html(data);
 			},
+			error : function(xhr, status, error) {
+				alert("error: " + error);
+				
+			}
+
+		});
+	});
+	
+	//강사 신청 폼
+	$("#tech_request").click(function(){
+	
+		$.ajax({
+			type : "POST",
+			url : "./TechRequest.me",
 
 			success : function(data) {
 
@@ -351,6 +373,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 		});
 	});
+
+
 	//profile 학생 지식공유자 선택
 	$(".profile_modal_menu").on("click",".tab_item",function(){
 		$(".tab_item").removeClass("isActive");		
@@ -364,7 +388,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	}
 	
 	});
-	 
+	
+	
+
 	
 	function getCarts(){
 		var type = $(".tab_menu.active").attr("data-type");
@@ -380,7 +406,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				var tag="";
 				for (var i = 0; i <data.length; i++) 
 					{
-					tag+=" <a class='list_el' href=num?'"+data[i].lecturedata.l_number+"'>"
+					tag+=" <a class='list_el' href='Detail.le?num="+data[i].lecturedata.l_number+"'>"
 						+"<div class='img_content'><img src='./upload/"+data[i].lecturedata.l_img.split(",")[0]+"'></div>"
 						+"<div class='item_content'>"
 						+"<p class='item_title'>"+data[i].lecturedata.l_title+"</p>"

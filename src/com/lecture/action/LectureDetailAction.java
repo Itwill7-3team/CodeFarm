@@ -40,7 +40,7 @@ public class LectureDetailAction implements Action {
 			request.setAttribute("mdto", mdto);
 			
 			OrderDAO odao = new OrderDAO();
-			List<OrderDTO> orderList = odao.getOrderList(m_email); // 회원 주문 확인
+			List<OrderDTO> orderList = odao.getOrderDetail(m_email); // 회원 주문 확인
 			request.setAttribute("orderList", orderList);
 			
 			Vector vec = wdao.getWishList(m_email); // 회원별 위시 확인
@@ -68,6 +68,7 @@ public class LectureDetailAction implements Action {
 		
 		ReviewDAO rdao = new ReviewDAO();
 		List<ReviewDTO> reviewList = rdao.getReviewList(l_number); // 강의별 리뷰 목록
+		
 		Map<Integer, Map<String, Object>> ratingList = rdao.getAvgrating(l_numList); // 강의별 리뷰 전체 별점
 		
 		for(int i=0; i<l_numList.size(); i++){ // 별점 없는 강의 별점 초기화

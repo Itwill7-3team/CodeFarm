@@ -284,6 +284,11 @@ public class MemberDAO {
 				    	MemberDTO mdto = new MemberDTO();
 				    	mdto.setM_email(rs.getString("m_email"));
 				    	mdto.setM_rank(rs.getInt("m_rank"));
+				    	mdto.setM_nick(rs.getString("m_nick"));
+				    	mdto.setM_addr(rs.getString("m_addr"));
+				    	mdto.setM_intro(rs.getString("m_intro"));
+				    	mdto.setM_phone(rs.getString("m_phone"));
+				    
 				    	//  한사람의 정보를  memberList배열에 한칸으로 저저장
 				    	memberList.add(mdto);
 				    }
@@ -450,6 +455,26 @@ public class MemberDAO {
 					closeDB();
 				}
 				return mdto;
+			}
+			
+			public int getRank(String m_email) {
+				int check = 0;
+				try {
+					con = getConnection();
+					sql = "select m_rank from member where m_email=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, m_email);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						check = rs.getInt("m_rank");
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return check;
 			}
 	}
 	

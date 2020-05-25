@@ -68,7 +68,8 @@ nav ul{
 	
 }
 
-h3{padding: 0 1rem;}
+h3{padding: 0 1rem;
+clear: both;}
 
 .container{
 /* 	border: 1px solid blue; */
@@ -222,7 +223,9 @@ min-width: 490px;
     box-shadow: none;
     background: #f6f6f6;
     color: #5f5f5f;
-    border: 1px solid transparent;
+/*     border: 1px solid transparent; */
+border: none !important;
+
 }
 
 .field.has-addons .control .button:not([disabled]).is-hovered, .field.has-addons .control .button:not([disabled]):hover, .field.has-addons .control .input:not([disabled]).is-hovered, .field.has-addons .control .input:not([disabled]):hover, .field.has-addons .control .select select:not([disabled]).is-hovered, .field.has-addons .control .select select:not([disabled]):hover {
@@ -256,7 +259,7 @@ min-width: 490px;
 .button, .file-cta, .file-name, .input, .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous, .select select, .textarea {
     -webkit-appearance: none;
     align-items: center;
-    border: 1px solid transparent;
+/*     border: 1px solid transparent; */
     border-radius: 4px;
     box-shadow: none;
     height: 2.25em;
@@ -372,7 +375,10 @@ height: 190px;
     display: inline-block;
 border:1px #dbdbdb solid;
 }
-
+.breadcrumb li {
+    float: left;
+    margin-right: 1em;
+}
 
 </style>
 
