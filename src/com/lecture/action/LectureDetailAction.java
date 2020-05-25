@@ -31,7 +31,14 @@ public class LectureDetailAction implements Action {
 		System.out.println("LectureDetailAction_execute()");
 		
 		HttpSession session = request.getSession();
-
+		
+		if(request.getParameter("num") == null || request.getParameter("num").equals(null)){
+			ActionForward forward = new ActionForward();
+			forward.setPath("./Main.le");
+			forward.setRedirect(true);
+			return forward;
+		}
+		
 		int l_number = Integer.parseInt(request.getParameter("num"));
 		String m_email = (String)session.getAttribute("m_email");
 		
