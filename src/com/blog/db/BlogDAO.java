@@ -102,7 +102,7 @@ public class BlogDAO {
 				bdto.setB_title(rs.getString("b_title"));
 				bdto.setB_img(rs.getString("b_img"));
 				//메인에서 태그 빼는 정규식
-				bdto.setB_content(rs.getString("b_content").replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+				bdto.setB_content(rs.getString("b_content").replaceAll("<(/)?([a-zA-Z1-9]*)(\\s[a-zA-Z1-9]*=[^>]*)?(\\s)*(/)?>", ""));
 				bdto.setB_writer(rs.getString("b_writer"));
 				bdto.setB_reg_date(rs.getTimestamp("b_reg_date"));
 				bdto.setB_ip(rs.getString("b_ip"));
@@ -223,7 +223,7 @@ public class BlogDAO {
 		
 		//U-updateBlog(num,bdto)
 		public int updateBlog(BlogDTO bdto) {
-			int check=-1;
+			int check=0;
 			
 			try {
 				//1,2
@@ -238,13 +238,12 @@ public class BlogDAO {
 				//5
 				if(rs.next()){//글있음
 						//3
-						sql="update blog set b_title=?,b_img=?,b_content=?,b_ip=? where b_num=?";
+						sql="update blog set b_title=?, b_img=?, b_content=?, b_ip=?";
 						pstmt=con.prepareStatement(sql);
 						pstmt.setString(1, bdto.getB_title());
 						pstmt.setString(2, bdto.getB_img());
 						pstmt.setString(3, bdto.getB_content());
-						pstmt.setInt(4, bdto.getB_num());
-						pstmt.setString(5, bdto.getB_ip());
+						pstmt.setString(4, bdto.getB_ip());
 						
 						//4
 						pstmt.executeUpdate();
