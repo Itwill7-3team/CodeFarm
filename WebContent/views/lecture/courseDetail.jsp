@@ -543,7 +543,6 @@
 												r_loop += 1;
 											}
 											if(reviewList.get(r_loop).getR_re_lev() == 0){
-												System.out.println(reviewList.get(r_loop).getR_re_lev());
 										%>
 											<%-- 회원 아이콘 등록 --%>
 												<figure class="media-left image is-64x64">
@@ -661,6 +660,7 @@
 		</section>
 		</main>
 	</div>
+	<div style="height:66px;"></div>
 	
 	<script type="text/javascript">
 		
@@ -752,6 +752,7 @@
 	    });
     <%-- 강의 목록 opne --%>
 	
+<%-- 000basketdto@@@@sssssssssss --%>
 	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
 		var cIcon = $(".cartBtn > i");
 		var hIcon = $(".wish > i");
