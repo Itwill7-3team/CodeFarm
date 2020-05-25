@@ -41,7 +41,8 @@ public class LectureDAO {
 		}
 	}//자원 해제
 	
-	public void updateLecture(LectureDTO ldto){
+	public int updateLecture(LectureDTO ldto){
+		int check=0;
 		try{
 			con=getConnection();
 			sql="update lecture set "
@@ -67,12 +68,13 @@ public class LectureDAO {
 				pstmt.setString(13, ldto.getStart_msg());
 				pstmt.setString(14, ldto.getEnd_msg());
 				pstmt.setInt(15, ldto.getL_number());
-				pstmt.executeUpdate();
+				check=pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeDB();
 		}
+		return check;
 	}
 	
 	
