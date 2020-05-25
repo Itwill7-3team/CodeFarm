@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.blog.db.BlogDAO;
+import com.blog.db.BlogDTO;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
 
@@ -37,10 +39,13 @@ public class LectureMainListAction implements Action{
 		
 		request.setAttribute("freeList", freeList);
 		
+		List<BlogDTO> blogList= new BlogDAO().getBlogMainList();
+		request.setAttribute("blogList", blogList);
 		
-		System.out.println("@@@@@@@@@@@ lectureList:"+bestList);
-		System.out.println("@@@@@@@@@@@ lectureList:"+newList);
-		System.out.println("@@@@@@@@@@@ lectureList:"+freeList);
+		System.out.println("@@ best lectureList:"+bestList);
+		System.out.println("@@ new lectureList:"+newList);
+		System.out.println("@@ free lectureList:"+freeList);
+		System.out.println("@@ blog List:"+blogList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/main/main.jsp");
 		forward.setRedirect(false);		

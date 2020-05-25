@@ -219,6 +219,7 @@ public class OrderDAO {
 				odto.setO_t_type(rs.getString("o_t_type"));
 				odto.setO_t_bank(rs.getString("o_t_bank"));
 				odto.setO_status(rs.getInt("o_status"));
+				odto.setO_t_b_num(rs.getString("o_t_b_num"));
 				odto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
 				System.out.println("$$$$$$$$$$$$$orderDTO############");
 				orderDetailList.add(odto);
@@ -298,5 +299,31 @@ public class OrderDAO {
 		return orderList;
 	}
 	//getOrderDetail
+	
+	
+	
+	//OrderDelete
+	public void OrderDelete(String trade_num) {
+		try {
+			con = getConnection();
+			System.out.print("OrderDelete()");
+			
+			sql = "DELETE FROM orderlist "
+					+ "WHERE o_b_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, trade_num);
+			
+			pstmt.executeUpdate();
+			
+			System.out.println(trade_num+"-> 주문 삭제 완료");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			   closeDB();	
+			}
+	}
+	//OrderDelete
 	
 	}

@@ -51,7 +51,7 @@ public class AskDAO {
 			con = getConnection();
 			System.out.print("getAskCount() : ");
 			
-			sql = "select count(*) from board";
+			sql = "select count(*) from board where re_lev=0";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -81,12 +81,18 @@ public class AskDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				AskDTO adto=new AskDTO();
+				//화면에 출력될 메일주소에서 @ 제거
+				String id= null;
+				if(rs.getString("writer").indexOf("@")>-1){
+					id=rs.getString("writer").substring(0,rs.getString("writer").indexOf("@"));
+				}else{id=rs.getString("writer");}
+				//
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);				
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -113,12 +119,19 @@ public class AskDAO {
 			
 			while(rs.next()){
 				AskDTO adto=new AskDTO();
+				//화면에 출력될 메일주소에서 @ 제거
+				String id= null;
+				if(rs.getString("writer").indexOf("@")>-1){
+					id=rs.getString("writer").substring(0,rs.getString("writer").indexOf("@"));
+				}else{
+					id=rs.getString("writer");
+				}
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -144,13 +157,20 @@ public class AskDAO {
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()){
+				//@이하 처리
+				String M =rs.getString("writer");
+				String id=null;
+				if(M.indexOf("@")>-1){
+					id= M.substring(0,M.indexOf("@"));
+				}else{id=M;}
+				//
 				adto.setNum(rs.getInt("num"));
 				adto.setL_num(rs.getInt("l_num"));
 //				adto.setQ_l_name(rs.getString("q_l_name"));
 				adto.setType(rs.getString("type"));
 				adto.setTitle(rs.getString("title"));
 				adto.setContent(rs.getString("content"));
-				adto.setWriter(rs.getString("writer"));
+				adto.setWriter(id);
 				adto.setRe_lev(rs.getInt("re_lev"));
 				adto.setRe_ref(rs.getInt("re_ref"));
 				adto.setRe_seq(rs.getInt("re_seq"));
@@ -165,8 +185,8 @@ public class AskDAO {
 		return adto;
 	}
 	
-	//C-insertAnswer(ndto)
-		public int insertQuestion(AskDTO adto) {
+	//C-insertAsk(ndto)
+		public int insertAsk(AskDTO adto) {
 			int check=-1;
 			int num=0;
 			//1: 성공/ -1: 실패
@@ -184,14 +204,17 @@ public class AskDAO {
 				}
 				System.out.println("글번호:"+num);
 				//3 글작성메서드
-//				sql="insert into board (content,writer,re_ref,re_lev,re_seq) values(?,?,?,?,?)";
-//				pstmt=con.prepareStatement(sql);
-//				pstmt.setString(1, adto.getContent());
-//				pstmt.setString(2, adto.getWriter());
-//				pstmt.setInt(3, adto.getRe_ref()); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
-//				pstmt.setInt(4, adto.getRe_lev()); //re_lev :초기화 => 답글 들여쓰기
-//				pstmt.setInt(5, 0); //re_seq :초기화 => 답글 순서
-//				check=pstmt.executeUpdate();
+				sql="insert into board (type,title,content,writer,re_ref,re_lev,re_seq,l_num) values(?,?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, adto.getType());
+				pstmt.setString(2, adto.getTitle());
+				pstmt.setString(3, adto.getContent());
+				pstmt.setString(4, adto.getWriter());
+				pstmt.setInt(5, num); //re_ref : 답글그룹 ( 일반글 번호와 동일 )
+				pstmt.setInt(6, 0); //re_lev :초기화 => 답글 들여쓰기
+				pstmt.setInt(7, 0); //re_seq :초기화 => 답글 순서
+				pstmt.setInt(8, adto.getL_num()); //강의 번호
+				check=pstmt.executeUpdate();
 				//4
 				if(check==1){
 					System.out.println("글쓰기 성공"+check);
@@ -206,14 +229,14 @@ public class AskDAO {
 			}
 			return check;
 		}
-		//insertAnswer(adto)
+		//insertAsk(adto)
 		
 		//getAnswerCount()
 		public int getAnswerCount(int num){
 			int check = 0;
 			try {
 				con = getConnection();
-				System.out.print("getAnswerCount() : ");
+//				System.out.print("getAnswerCount() : ");
 				
 				sql = "select count(*) from board where re_ref=? and re_seq>0";
 				pstmt = con.prepareStatement(sql);
@@ -222,7 +245,7 @@ public class AskDAO {
 				if(rs.next()){
 					check = rs.getInt(1);
 				}
-				System.out.println("문답게시판 전체 글 개수 : " + check);
+//				System.out.println("답변 개수 : " + check);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -277,5 +300,74 @@ public class AskDAO {
 		}
 		//insertAnswer(adto)
 	
-	
+		//getMyQuestionCount()
+		public int getMyAskCount(String m_email){
+			int check = 0;
+			try {
+				con = getConnection();
+				System.out.print("getAskCount() : ");
+				
+				sql = "select count(*) from board where writer=? and re_lev=0";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, m_email);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					check = rs.getInt(1);
+				}
+				System.out.println("내가한 질문 글 개수 : " + check);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeDB();
+			}
+			return check;
+		}
+		
+		//getMyQuestionCount()
+		
+		
+		public ArrayList<AskDTO> getMyAskList(int startRow, int pageSize,String m_email){
+			ArrayList<AskDTO> boardList= new ArrayList<AskDTO>();
+			try{
+				con=getConnection();
+				sql="select * from board "
+						+ "where re_lev=0 and writer=?" //질문만 보이게~
+						+ "order by re_ref desc, re_seq asc "
+						+ "limit ?,?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, m_email ); //시작행-1
+				pstmt.setInt(2, startRow-1); //가져갈 글의 개수
+				pstmt.setInt(3, pageSize); //가져갈 글의 개수
+				
+				rs=pstmt.executeQuery();
+				while(rs.next()){
+					AskDTO adto=new AskDTO();
+					//@이하 처리
+					String M=rs.getString("writer");
+					String id=null;
+					if(M.indexOf("@")>-1){
+						id=M.substring(0,M.indexOf("@"));
+					}else{id=M;}
+					//
+					adto.setNum(rs.getInt("num"));
+					adto.setL_num(rs.getInt("l_num"));
+					adto.setType(rs.getString("type"));
+					adto.setTitle(rs.getString("title"));
+					adto.setContent(rs.getString("content"));
+					
+					adto.setWriter(id);
+					
+					adto.setRe_lev(rs.getInt("re_lev"));
+					adto.setRe_ref(rs.getInt("re_ref"));
+					adto.setRe_seq(rs.getInt("re_seq"));
+					adto.setReg_date(rs.getTimestamp("reg_date"));
+					boardList.add(adto);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeDB();
+			}
+			return boardList;
+		}
 }

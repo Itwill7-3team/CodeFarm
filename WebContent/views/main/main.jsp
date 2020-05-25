@@ -57,7 +57,7 @@
 
 <jsp:include page="/include/footer.jsp"/>
 
-
+<jsp:include page="/include/chat.jsp"></jsp:include>
 
 <script>
 var slideIndex = 0;

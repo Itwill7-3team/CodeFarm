@@ -169,9 +169,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 							<li><a href="request.bo" class="navbar-item"><i class="far fa-comments"></i> 강의 기능 요청</a></li>
 						</ul>
 					</div>
-					<!-- 로드맵  -->
+					<!-- 블로그  -->
 					<div class="navbar-item">
-<!-- 						<a href="#" class="navbar-link bold"> <span>로드맵 보기</span> <img alt="로드맵 보기" src="./../img/include-img/below.png"> -->
+						<a href="blog.bl" class="navbar-link bold"> <span>블로그</span>
+						<!-- <i class="fas fa-angle-down"></i> --> <!-- <img alt="블로그 보기" src="./../img/include-img/below.png"> -->
 						</a>
 					</div>
 				</div>
@@ -197,7 +198,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					</div>
 					<!-- 위시리스트  -->
 					<div class="navbar-item carts">
-						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a>
+<!-- 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a> -->
+						<div class="profile_hover">
+							<span><img src="./img/cart.png"></span>
+						</div>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
 							<div class="top_content">
@@ -232,12 +236,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 											<div class="left_content">
 												<div class="img_content">
 												<img src="./img/carrotIcon.png" alt="@@@님의 프로필"><!-- 코드팜 배너 -->
-												<a href="#">설정</a>
+												<a href="MemberInfo.me">설정</a>
 												</div>
 											</div>
 											<div class="right_content">
 											<a href="#"><span class="name"><%= nick %><!-- 회원이름  --></span></a>
-											 <span class="rank">학생<!-- 회원 등급 --></span>
+											 <span class="rank">
+											 <%if(rank>1){%> 강사<%}else{%>학생<%}%>
+											 <!-- 회원 등급 --></span>
 											</div>
 										</div>
 									</div>
@@ -248,10 +254,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 									</div>
 									<div class="list_content">
 										<ul class="students_list">
-											<a href="#"><li class="list_item">이어서 학습하기</li></a>
+											<a href="LectureVideo.le"><li class="list_item">이어서 학습하기</li></a>
 											<a href="MyLecture.bo"><li class="list_item">수강중인 강의</li></a>
-											<a href="#"><li class="list_item">참여중인 로드맵</li></a>
-											<a href="#"><li class="list_item">내 질문 답변</li></a>
+<!-- 											<a href="#"><li class="list_item">참여중인 로드맵</li></a> -->
+											<a href="MyaskAction.bo"><li class="list_item">내 질문 답변</li></a>
 											<a href="OrderList.or"><li class="list_item">구매내역</li></a>
 											
 										</ul>
@@ -328,7 +334,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		$(this).addClass("active");
 		getCarts();
 	});
-	$(".cart").mouseover(function() {
+	$(".carts").mouseover(function() {
 		getCarts();
 	});
 	

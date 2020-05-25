@@ -74,5 +74,15 @@
     <url-pattern>*.wi</url-pattern>
   </servlet-mapping>
   <!-- 위시리스트 -->
+  <!-- 블로그 -->
+  <servlet>
+    <servlet-name>BlogFrontController</servlet-name>
+    <servlet-class>com.blog.action.BlogFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BlogFrontController</servlet-name>
+    <url-pattern>*.bl</url-pattern>
+  </servlet-mapping>
+  <!-- 블로그 -->
   
 </web-app>

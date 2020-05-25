@@ -118,20 +118,14 @@ int endPage=(int)request.getAttribute("endPage");
 				<% ArrayList<NoticeDTO> noticeList= (ArrayList<NoticeDTO>)request.getAttribute("noticeList");
 				for(int i=0; i<noticeList.size();i++){
 					NoticeDTO ndto=noticeList.get(i);
-					
-					String id="id";
-					int idx= ndto.getN_writer().indexOf("@");
-					id= ndto.getN_writer().substring(0,idx);
-
-					System.out.print("id"+id);
 			%>
 				<div class="notice_list_item">
 					<div class="item_content">
 					<div class="post_title">
 						<span class="N">N.</span>
-			<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
-						<span><%=ndto.getN_title()%></span>
-			</a>
+						<a href="noticeContent.bo?num=<%=ndto.getN_num()%>&pageNum=<%=pageNum%>">
+									<span><%=ndto.getN_title()%></span>
+						</a>
 					</div>
 					<p class="post_metas">
 						<span class="post_time">시간 : 
@@ -139,21 +133,20 @@ int endPage=(int)request.getAttribute("endPage");
 							document.write(time);//sss
 						</script>
 						</span>	
-						<span class="post_writer">작성자 : <%=id%></span>
+						<span class="post_writer">작성자 : <%=ndto.getN_writer()%></span>
 					</p>
 					</div>
 					<div class="item_right">
-					<div class="comment_cnt right_item">
+						<div class="comment_cnt right_item">
 
+						</div>
 					</div>
-				</div>
 				</div>
 				<%} %>
 				
 			</div>
-		</div>
-			<!--  -->
-			<div class="pageNation">
+		<!--  -->
+		<div class="pageNation">
 						<%
 						if(startPage > pageBlock){
 							//페이지 [이전]
@@ -187,8 +180,9 @@ int endPage=(int)request.getAttribute("endPage");
 						
 						}%>
 					
-			</div>	
-			<!--  -->
+		</div>	
+		<!--  -->
+		</div>
 	</div>
 </div>
 

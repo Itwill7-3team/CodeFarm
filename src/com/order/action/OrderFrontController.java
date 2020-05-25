@@ -76,6 +76,15 @@ public class OrderFrontController extends HttpServlet{
 				
 				e.printStackTrace();
 			}
+		}else if(command.equals("/OrderDelete.or")) {
+			System.out.println("/OrderDelete.or 처리");
+			// OrderDeleteAction 객체 생성
+			action = new OrderDeleteAction();
+		}try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 		
 		

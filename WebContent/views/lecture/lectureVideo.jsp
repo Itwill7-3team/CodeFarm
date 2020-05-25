@@ -191,8 +191,14 @@
 									<input type="text" class=input placeholder="질문검색">
 									<i class="fas fa-search"></i>
 								</div>
-								<div class="buttons"></div>
-								<div class="editor"></div>
+								<div class="buttons askBtn">
+									<input type="button" value="질문하기">								
+								</div>
+								<!-- askForm -->
+								<div class="editor" style="display: none;">
+								<iframe src="AskWrite.bo" name="askF"></iframe>
+								</div>
+								<!-- askForm -->
 							</div>
 						</div>
 						<div class="unit_post_list">
@@ -203,6 +209,12 @@
 			</section><!-- lecture_container -->
 		</main><!-- main -->
 	</div><!-- root -->
+<script type="text/javascript">
+$(".askBtn").click(function(){
+  $(".editor").toggle();
+});
+</script>
+	
 	
 <script>
 function openNavL() {

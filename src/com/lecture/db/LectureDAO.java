@@ -258,7 +258,7 @@ public class LectureDAO {
 						SQL.append(" where record=1 order by l_goods desc limit 0,5 ");
 					}
 					else if(item.equals("new")){
-						SQL.append(" where record=1 order by l_reg_date desc limit 0,5 "); //신규 5개
+						SQL.append(" where record=1 and l_price!=0 order by l_reg_date desc limit 0,5 "); //신규 5개
 					}
 					else if(item.equals("free")){
 						SQL.append(" where l_price=0 and record=1 order by l_reg_date desc limit 0,5");
@@ -269,9 +269,15 @@ public class LectureDAO {
 					rs=pstmt.executeQuery();
 					while(rs.next()){
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
+						//화면에 출력될 메일주소에서 @ 제거
+						String id=null;
+						if(rs.getString("l_m_email").indexOf("@")>-1){
+							id=rs.getString("l_m_email").substring(0,rs.getString("l_m_email").indexOf("@"));
+						}else{id=rs.getString("l_m_email");}
+						//
 						ldto.setL_content(rs.getString("l_content"));
 						ldto.setL_goods(rs.getInt("l_goods"));
-						ldto.setL_m_email(rs.getString("l_m_email"));
+						ldto.setL_m_email(id);
 						ldto.setL_number(rs.getInt("l_number"));
 						ldto.setL_pct(rs.getInt("l_pct"));
 						ldto.setL_price(rs.getInt("l_price"));

@@ -82,7 +82,7 @@
   </div>
 <div class="buttons bottom_right">
   <a href="MyLecture.bo" class="button is-link">내 모든 강의</a>
-  <a class="button is-primary" href="#">이어서 학습하기</a>
+  <a class="button is-primary" href="LectureVideo.le">이어서 학습하기</a>
 </div></div>
             </div>
           </div>
