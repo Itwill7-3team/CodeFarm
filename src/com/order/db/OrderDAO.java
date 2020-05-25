@@ -233,9 +233,15 @@ public class OrderDAO {
 				
 				if(rs2.next()) {
 					LectureDTO ldto = new LectureDTO();
-					
+					//@처리
+					String M=rs2.getString("l_m_email");
+					String id=null;
+					if(M.indexOf("@")>-1){
+						id=M.substring(0,M.indexOf("@"));
+					}else{id=M;}
+					//
 					ldto.setL_number(rs2.getInt("l_number"));
-					ldto.setL_m_email("l_m_email");
+					ldto.setL_m_email(id);
 					ldto.setL_img(rs2.getString("l_img"));
 					ldto.setL_title(rs2.getString("l_title"));
 					ldto.setL_content(rs2.getString("l_content"));

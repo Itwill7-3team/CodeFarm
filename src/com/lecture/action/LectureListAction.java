@@ -1,6 +1,9 @@
 package com.lecture.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
 import com.lecture.db.PagingDTO;
+import com.review.db.ReviewDAO;
+import com.review.db.ReviewDTO;
 
 public class LectureListAction implements Action{
 
@@ -71,6 +76,26 @@ public class LectureListAction implements Action{
 		/* search-bar */
 		
 	/* 분류를 위한 방법  */
+	
+		/*List<Integer> l_numList = new ArrayList<Integer>();
+		ReviewDAO rdao = new ReviewDAO();
+		Map<Integer, Map<String, Object>> ratingList = rdao.getAvgrating(l_numList); // 강의별 리뷰 전체 별점
+		
+		for(int i=0; i<l_numList.size(); i++){ // 별점 없는 강의 별점 초기화
+			if(ratingList.get(l_numList.get(i)) == null){
+				Map<String, Object> review_rating = new HashMap<String, Object>();
+				review_rating.put("r_l_num", l_numList.get(i));
+				review_rating.put("reviewAll", 0);
+				review_rating.put("rating_avg", 0.0);
+				review_rating.put("rating_5", 0);
+				review_rating.put("rating_4", 0);
+				review_rating.put("rating_3", 0);
+				review_rating.put("rating_2", 0);
+				review_rating.put("rating_1", 0);
+				ratingList.put(l_numList.get(i), review_rating);
+			}
+		}*/
+		
 		
 		System.out.println("LectureListAction_execute() 11 호출");
 		
@@ -78,6 +103,7 @@ public class LectureListAction implements Action{
 		System.out.println("beginPage : "+page);
 		request.setAttribute("lectureList", lectureList);
 		request.setAttribute("paging", paging);
+		/*request.setAttribute("ratingList", ratingList);*/
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/lecture/course2.jsp");

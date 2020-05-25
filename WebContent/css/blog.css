@@ -31,6 +31,7 @@ article{
 }
 
 #blg {
+min-height: 900px;
 margin: 3rem auto;
 text-align: left;
 width: 57%;

@@ -48,6 +48,8 @@ public class BlogDAO {
 		}
 	}//자원 해제
 	
+
+	
 	public ArrayList<BlogDTO> getBlogList(int startRow, int pageSize){
 		//블로그 리스트 가져오는 메서드
 		ArrayList<BlogDTO> blogList=new ArrayList<BlogDTO>();
@@ -99,7 +101,8 @@ public class BlogDAO {
 				bdto.setB_num(rs.getInt("b_num"));
 				bdto.setB_title(rs.getString("b_title"));
 				bdto.setB_img(rs.getString("b_img"));
-				bdto.setB_content(rs.getString("b_content"));
+				//메인에서 태그 빼는 정규식
+				bdto.setB_content(rs.getString("b_content").replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
 				bdto.setB_writer(rs.getString("b_writer"));
 				bdto.setB_reg_date(rs.getTimestamp("b_reg_date"));
 				bdto.setB_ip(rs.getString("b_ip"));
@@ -297,4 +300,5 @@ public class BlogDAO {
 		}
 		//D-deleteBlog(num)
 	
+		
 }

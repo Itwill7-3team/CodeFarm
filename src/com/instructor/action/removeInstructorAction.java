@@ -11,11 +11,13 @@ public class removeInstructorAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("removeInstructorAction 실행~!");
-		String num=request.getParameter("num");
+		int num=Integer.parseInt(request.getParameter("num"));
 		LectureDAO ldao =new LectureDAO();
-		//ldao.removeInstructor();
-		
-		return null;
+		ldao.removeInstructor(num);
+		ActionForward forward= new ActionForward();
+		forward.setPath("./addLectureList.in");
+		forward.setRedirect(true);
+		return forward;
 	}
 
 }

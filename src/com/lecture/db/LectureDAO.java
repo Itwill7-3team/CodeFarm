@@ -255,7 +255,7 @@ public class LectureDAO {
 						SQL.append(" where record=1");
 					}
 					else if(item.equals("best")){
-						SQL.append(" where record=1 order by l_goods desc limit 0,5 ");
+						SQL.append(" where record=1 and l_price!=0 order by l_goods desc limit 0,5 ");
 					}
 					else if(item.equals("new")){
 						SQL.append(" where record=1 and l_price!=0 order by l_reg_date desc limit 0,5 "); //신규 5개
@@ -478,7 +478,7 @@ public class LectureDAO {
 	public void removeInstructor(int l_num) {
 		try{
 			con=getConnection();
-			sql="delete *  from lecture  where l_number=?";
+			sql="delete from lecture where l_number=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, l_num);
 			
@@ -493,6 +493,5 @@ public class LectureDAO {
 		}
 		
 	}
-	
 	
 }
