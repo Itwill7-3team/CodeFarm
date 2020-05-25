@@ -533,7 +533,6 @@ body .lecture_container {
 .content_container.center>.content .player_cover .video_container{
 	margin: auto;
 	width:100%;
-	padding-left: 50px;
 }
 iframe {
     max-height: none!important;
@@ -549,9 +548,30 @@ iframe {
     width: 100%;
     height: 100%;
     border: 0px;
-    pointer-events: none;
-   
+    /* pointer-events: none; */ 
 }
+@media screen and (min-width: 1440px){
+.content_container.center>.content .player_cover .video_container .playjs {
+    max-width: 1440px;
+    margin: 0 auto;
+}}
+.content_container.center>.content .player_cover .video_container .playjs{
+	width: 100%;
+    padding: 0px;
+    word-spacing: normal;
+    position: relative;
+    text-align: left;
+    user-select: none;
+    overflow: hidden;
+    font-family: sans-serif;
+    min-height: 15px;
+    font-size: 14px;
+    line-height: 1em;
+    direction: ltr;
+    height: 746.438px;
+    box-sizing: content-box !important;
+}
+
 
 .editor>iframe {
     pointer-events: auto !important ;

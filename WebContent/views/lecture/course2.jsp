@@ -1,3 +1,5 @@
+<%@page import="com.review.db.ReviewDTO"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.basket.db.BasketDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
@@ -22,6 +24,8 @@ m_id = "test"; */
 request.setCharacterEncoding("UTF-8");
 List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureList");
 List<BasketDTO> basketList = (List<BasketDTO>) request.getAttribute("basketList");
+Map<Integer, Map<String, Object>> ratingList = (Map<Integer, Map<String, Object>>)request.getAttribute("ratingList");
+
 String m_email = (String)session.getAttribute("m_email");
 String item = "seq";
 String s = "";
@@ -188,14 +192,13 @@ for(int i=0;i<lectureList.size();i++){
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="rating_star">
-															<div class="star_solid" style="width:0%"></div>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
-															<i class="far fa-star"></i>
+															<div class="star_solid" style="width:<%--  <%= (double)ratingList.get(ldto.getL_number()).get("rating_avg") * 20 %>% --%>"></div>
+															<%-- <% for(int k=1; k<6; k++){ %><i class="fa fa-star"  data-value="<%= k %>"></i><% } %>
+															</div>
+															<% for(int k=5; k>0; k--){ %><i class="far fa-star" data-value="<%= k %>"></i><% } %> --%>
+
 														</div><!-- rating star -->
-														<span class="review_cnt">(0)</span> 
+														<span class="review_cnt"><%--  (<%= ratingList.get(ldto.getL_number()).get("reviewAll") %>개의 수강평)  --%></span> 
 													</div>
 													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
 													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
@@ -209,7 +212,7 @@ for(int i=0;i<lectureList.size();i++){
 										</a>
 										<div class="flip-card-back course_card_back" >
 											<a href="Detail.le?num=<%=ldto.getL_number()%>">
-												<p class="course_decription"><%=ldto.getL_content() %></p>
+												<p class="course_decription"><%=ldto.getL_description() %></p>
 												<div class="back_course_data">
 													<div class="course_level">
 														<span>
