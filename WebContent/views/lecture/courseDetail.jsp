@@ -44,7 +44,7 @@
 	/* 받아오는 값 */
 	
 	/* 현 강의 결제 유무 */
-		boolean payCheck = true;
+		boolean payCheck = false;
 		if(mdto != null && mdto.getM_email() != null && orderList != null){
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
@@ -331,7 +331,6 @@
 							<%
 								if(!(ldto.getL_targets().equals(null) || ldto.getL_targets() == "")){
 									out.println("<div class='student_target description_sub'><h3 class='sub_heading has-icon'>도움 되는 분들 <i class='fa fa-smile-o'></i></h3><ul>");
-									//String[] targetSize = ldto.getL_targets().split("/");
 									for(int i=0; i<ldto.getL_targets().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_targets().split("/")[i] + "</li>");
 									}
@@ -438,13 +437,7 @@
 											
 												if(payCheck){
 											%>
-<<<<<<< HEAD
-<%-- #005 영상 재생 페이지 이동 주소 확인 --%>
 												<a class="unit_item" href="./LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
-=======
-<%-- #004 영상 재생 페이지 이동 주소 확인 --%>
-												<a class="unit_item" href="/LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
->>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
 													</div>
