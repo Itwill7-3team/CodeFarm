@@ -68,6 +68,7 @@ public class LectureDetailAction implements Action {
 		
 		ReviewDAO rdao = new ReviewDAO();
 		List<ReviewDTO> reviewList = rdao.getReviewList(l_number); // 강의별 리뷰 목록
+		
 		Map<Integer, Map<String, Object>> ratingList = rdao.getAvgrating(l_numList); // 강의별 리뷰 전체 별점
 		
 		for(int i=0; i<l_numList.size(); i++){ // 별점 없는 강의 별점 초기화
