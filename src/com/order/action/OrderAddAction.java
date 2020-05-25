@@ -40,7 +40,8 @@ public class OrderAddAction implements Action{
 		oldto.setO_m_id(id);
 		oldto.setO_t_type("무통장 입금");
 		oldto.setO_t_payer(request.getParameter("o_t_payer"));
-		oldto.setO_t_bank(request.getParameter("o_t_bank"));
+		oldto.setO_t_bank(request.getParameter("o_t_bank").split("/")[0]);
+		oldto.setO_t_b_num(request.getParameter("o_t_bank").split("/")[1]);
 		//oldto.setO_status(request.getParameter());
 	//	oldto.setO_t_b_reg_date(request.getParameter("o_t_b_reg_date"));
 		
