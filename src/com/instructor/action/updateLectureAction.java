@@ -1,5 +1,7 @@
 package com.instructor.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -76,10 +78,21 @@ public class updateLectureAction implements Action {
     	ldto.setL_number(l_number);
     	System.out.println(ldto.toString());
     	LectureDAO ldao= new LectureDAO();
-		ldao.updateLecture(ldto);
-    	System.out.println("성공적으로 종료");
+		int check=ldao.updateLecture(ldto);
+		if(check==0){
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out= response.getWriter();
+			out.write("데이터 저장 실패!(아이콘텍스트 +이미지 변경시 이름긴것 사용불가!!)");
+			out.close();
+			return null;
+		}else{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out= response.getWriter();
+			out.write("데이터 저장 성공!");
+			out.close();
+			return null;
+		}
     	
-		return null;
 	}
 
 }

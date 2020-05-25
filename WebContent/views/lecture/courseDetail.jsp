@@ -1,10 +1,9 @@
 <%@page import="com.wishlist.db.WishlistDTO"%>
-<%@page import="com.order.db.OrderDTO"%>
-<%@page import="com.order.action.OrderListAction"%>
+<%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="com.review.db.ReviewDTO"%>
 <%@page import="com.member.db.MemberDTO"%>
 <%@page import="com.lecture.db.FileDTO"%>
-<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="com.order.db.OrderDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Arrays"%>
@@ -13,8 +12,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html lang="ko-KR">
 <head>
@@ -25,16 +24,16 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="./css/courseDetail.css">
 <link rel="stylesheet" href="./css/bulma.css">
-
 </head>
 
 <body class="course_detail">
 	<%
 	/* 받아오는 값 */
-		int wCount = (int)request.getAttribute("wCount");
-		LectureDTO ldto  = (LectureDTO)request.getAttribute("ldto");  // 강의 정보
-		MemberDTO  mdto  = (MemberDTO)request.getAttribute("mdto");   // 회원 정보
-		MemberDTO lmdto  = (MemberDTO)request.getAttribute("lmdto");  // 강사 정보
+		int wCount = (int)request.getAttribute("wCount"); // 위시 수
+		int bCheck = (int)request.getAttribute("bCheck"); // 장바구니 여부
+		LectureDTO  ldto = (LectureDTO)request.getAttribute("ldto");  // 강의 정보
+		MemberDTO   mdto = (MemberDTO)request.getAttribute("mdto");   // 회원 정보
+		MemberDTO  lmdto = (MemberDTO)request.getAttribute("lmdto");  // 강사 정보
 		WishlistDTO wdto = (WishlistDTO)request.getAttribute("wdto"); // 위시 정보 
 		
 		List<LectureDTO>    lectureList = (List<LectureDTO>)request.getAttribute("lectureList"); // 강사의 전체 강의 정보
@@ -45,7 +44,7 @@
 	/* 받아오는 값 */
 	
 	/* 현 강의 결제 유무 */
-		boolean payCheck = true;
+		boolean payCheck = false;
 		if(mdto != null && mdto.getM_email() != null && orderList != null){
 			for(int i=0; i<orderList.size(); i++){
 				if(orderList.get(i).getO_l_num() == ldto.getL_number()){
@@ -73,7 +72,7 @@
 		
 		if(totalTime >= 3600){
 			total_Hour = (int)(totalTime / 3600);
-			total_Min = (int)((totalTime - (total_Hour * 3600)) / 60);
+			total_Min  = (int)((totalTime - (total_Hour * 3600)) / 60);
 		}else{
 			total_Hour = 0;
 			total_Min = (int)(totalTime / 60);
@@ -303,7 +302,7 @@
 								<article class="description" id="description">
 								
 						<!-- l_description -->
-							<% if(!(ldto.getL_description().equals(null) || ldto.getL_description() == "")){ %>
+							<% if(!(ldto.getL_description()==null || ldto.getL_description().equals(""))){ %>
 								<div class="course_summary description_sub">
 									<h3 class="sub_heading has-icon">이 강의는 <i class="far fa-lightbulb"></i></h3>
 									<%= ldto.getL_description() %>
@@ -312,7 +311,7 @@
 							
 						<!-- l_abilities -->
 							<%
-								if(!(ldto.getL_abilities().equals(null) || ldto.getL_abilities() == "")){
+								if(!(ldto.getL_abilities()==null || ldto.getL_abilities().equals(""))){
 									out.println("<div class='can_do description_sub'><h3 class='sub_heading has-icon'>이런 걸 배울 수 있어요 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_abilities().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_abilities().split("/")[i] + "</li>");
@@ -322,7 +321,7 @@
 							%>
 		
 						<!-- l_content -->
-							<% if(!(ldto.getL_content().equals(null) || ldto.getL_content() == "")){ %>
+							<% if(!(ldto.getL_content()==null || ldto.getL_content() == "")){ %>
 								<div class="body" itemprop="articleBody">
 									<%= ldto.getL_content() %>
 								</div>
@@ -330,9 +329,8 @@
 							
 						<!-- l_targets -->
 							<%
-								if(!(ldto.getL_targets().equals(null) || ldto.getL_targets() == "")){
+								if(!(ldto.getL_targets()==null || ldto.getL_targets() == "")){
 									out.println("<div class='student_target description_sub'><h3 class='sub_heading has-icon'>도움 되는 분들 <i class='fa fa-smile-o'></i></h3><ul>");
-									//String[] targetSize = ldto.getL_targets().split("/");
 									for(int i=0; i<ldto.getL_targets().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_targets().split("/")[i] + "</li>");
 									}
@@ -342,7 +340,7 @@
 							
 						<!-- l_based -->
 							<%
-								if(!(ldto.getL_based().equals(null) || ldto.getL_based() == "")){
+								if(!(ldto.getL_based()==null || ldto.getL_based().equals(""))){
 									out.println("<div class='prerequisite description_sub'><h3 class='sub_heading has-icon'>선수 지식 <i class='fa fa-smile-o'></i></h3><ul>");
 									for(int i=0; i<ldto.getL_based().split("/").length; i++){
 										out.println("<li><i class='fa fa-check'></i> " + ldto.getL_based().split("/")[i] + "</li>");
@@ -439,9 +437,13 @@
 											
 												if(payCheck){
 											%>
+<<<<<<< HEAD
 <%-- #004 영상 재생 페이지 이동 주소 확인 --%>
 												<a class="unit_item" href="./LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
 
+=======
+												<a class="unit_item" href="./LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
 													</div>
@@ -544,7 +546,6 @@
 												r_loop += 1;
 											}
 											if(reviewList.get(r_loop).getR_re_lev() == 0){
-												System.out.println(reviewList.get(r_loop).getR_re_lev());
 										%>
 											<%-- 회원 아이콘 등록 --%>
 												<figure class="media-left image is-64x64">
@@ -662,6 +663,7 @@
 		</section>
 		</main>
 	</div>
+	<div style="height:66px;"></div>
 	
 	<script type="text/javascript">
 		
@@ -754,14 +756,18 @@
     <%-- 강의 목록 opne --%>
 	
 	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
-		var cIcon = $(".cartBtn > i");
 		var hIcon = $(".wish > i");
+		var cIcon = $(".cartBtn > i");
 		
 		if(${ wdto != null && wdto.getW_l_num() == ldto.getL_number() }){
 			hIcon.addClass('fa fa-heart').removeClass("fa-heart-o");
-			cIcon.addClass('fa fa-shopping-cart').removeClass("fa-cart-plus");
 		} else {
 			hIcon.addClass('fa fa-heart-o').removeClass("fa-heart");
+		}
+		
+		if(${ bCheck != 0 }){
+			cIcon.addClass('fa fa-shopping-cart').removeClass("fa-cart-plus");
+		} else {
 			cIcon.addClass('fa fa-cart-plus').removeClass("fa-shopping-cart");
 		}
 	<%-- 위시리스트 & 수강바구니 아이콘 로드 --%>
