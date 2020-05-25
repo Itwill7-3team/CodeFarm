@@ -218,10 +218,12 @@ $(".askBtn").click(function(){
 	
 <script>
 function openNavL() {
+	$("#mySidenavL").animate({'left':0},'slow');
 	document.getElementById("mySidenavL").style.width = "330px";
 	}
 function closeNavL() {
-	document.getElementById("mySidenavL").style.width = "0";
+	$("#mySidenavL").animate({'left':'-330px'},'slow');
+	
 	}
 function openNavR() {
 	document.getElementById("mySidenavR").style.width = "420px";
