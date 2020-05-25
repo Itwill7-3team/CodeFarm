@@ -1,5 +1,3 @@
-<%@page import="com.coupon.db.CouponDTO"%>
-<%@page import="com.coupon.db.CouponDAO"%>
 <%@page import="com.wishlist.db.WishlistDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="com.basket.db.BasketDTO"%>
