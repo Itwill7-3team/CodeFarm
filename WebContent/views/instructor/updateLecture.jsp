@@ -687,7 +687,7 @@ $(document).ready(function() {
 		/* 2페이지 끝 */
 		
 		/* 3페이지  끝 */
-		var img=$("#image_file_upload").val();
+		var img=$("#image_file_upload").val().replace("C:\\fakepath\\","");
 		
 		/* 4페이지 끝  */
 		//가격정보
