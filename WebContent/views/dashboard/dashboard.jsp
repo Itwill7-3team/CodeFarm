@@ -56,7 +56,7 @@
                       <img src="./img/carrotIcon.png" alt="@@@님의 프로필">
                   </div>
                   <div class="media-content">
-                    <h5> <%=nick %>님, 편안한 밤시간 되세요 🌟</h5> <!-- 인사말 -->
+                    <h5> <%=nick %>님, 즐거운 하루 보내세요 🌟</h5> <!-- 인사말 -->
                     <span>닉네임:<%=nick %> </span><br> <!-- 유저 닉네임 -->
                     <span>이메일:<%=loginEmail %></span><br> <!-- 유저 이메일 -->
                   </div>
@@ -77,8 +77,8 @@
 <p class="course_title">자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!!</p> <!-- 강의제목 -->
 
   <div class="inf_progress">
-    <label>진도율 : 9강/29강 (31.03%)</label> <!-- 진도율 -->
-    <progress class="progress is-link" value="31.03" max="100">31.03%</progress> <!-- 프로그래스바 -->
+<!--     <label>진도율 : 9강/29강 (31.03%)</label> 진도율
+    <progress class="progress is-link" value="31.03" max="100">31.03%</progress>  --><!-- 프로그래스바 -->
   </div>
 <div class="buttons bottom_right">
   <a href="MyLecture.bo" class="button is-link">내 모든 강의</a>
@@ -97,21 +97,21 @@
                 
                   <div class="stat">
                     <div class="status_value">
-                      <span>1</span>				 <!-- 데이터 -->
+                      <span>0</span>				 <!-- 데이터 -->
                     </div>
                     <div class="status_label">완료 강의수</div>
                   </div>
                   
                   <div class="stat">
                     <div class="status_value">
-                      <span>35</span>				<!-- 데이터 -->
+                      <span>0</span>				<!-- 데이터 -->
                     </div>
                     <div class="status_label">완료 수업수</div>
                   </div>
                   
                   <div class="stat">
                     <div class="status_value">
-                      <span>1</span> 				<!-- 데이터 -->
+                      <span>0</span> 				<!-- 데이터 -->
                     </div>
                     <div class="status_label">획득 수료증</div>
                   </div>
@@ -190,8 +190,8 @@
                 <div class="courses_container">
                   
                   <a href="#" class="course_item"> <!-- 링크주소  -->
-                    <div class="course_title">자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!!</div> <!-- 타이틀 -->
-                    <time class="finished_time" datetime="Sun Apr 26 2020 23:39:27 GMT+0900 (GMT+09:00)">13일 전</time> <!-- 수강시간 -->
+                    <div class="course_title"><!-- 자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!! --></div> <!-- 타이틀 -->
+                    <time class="finished_time" datetime="Sun Apr 26 2020 23:39:27 GMT+0900 (GMT+09:00)"><!-- 13일 전 --></time> <!-- 수강시간 -->
                   </a>
                
                 </div>         
@@ -210,8 +210,8 @@
                 <div class="courses_container">
                   
                   <a href="#" class="course_item"><!-- 링크주소 -->
-                    <div class="course_title">실전 JSP (renew ver.) - 신입 프로그래머를 위한 강좌</div><!-- 타이틀 -->
-                    <time class="finished_time" datetime="Sun Apr 26 2020 20:16:14 GMT+0900 (GMT+09:00)">13일 전</time> <!-- 수강시간 -->
+                    <div class="course_title"><!-- 실전 JSP (renew ver.) - 신입 프로그래머를 위한 강좌 --></div><!-- 타이틀 -->
+                    <time class="finished_time" datetime="Sun Apr 26 2020 20:16:14 GMT+0900 (GMT+09:00)"><!-- 13일 전 --></time> <!-- 수강시간 -->
                   </a>
                 </div>
                 <a class="bottom_right" href="#">내강의 전체보기</a>
