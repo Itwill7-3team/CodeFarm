@@ -82,6 +82,7 @@ email=(String)session.getAttribute("m_email");
 }
 
 //페이징 정보
+
 String pageNum=(String)request.getAttribute("pageNum");
 int count = (Integer)request.getAttribute("count");
 int pageCount=(Integer)request.getAttribute("pageCount");
@@ -99,7 +100,13 @@ int endPage=(int)request.getAttribute("endPage");
 	<section id="blg">
 	<h1 class="title Blg">Blog</h1> 
 	
-	<% ArrayList<BlogDTO> blogList= (ArrayList<BlogDTO>)request.getAttribute("blogList");
+	<%
+	if(count < 1){ %>
+	<h1>블로그 글이 없습니다! 새로운 글을 등록해주세요~</h1>
+	<%
+	}else{
+	
+	ArrayList<BlogDTO> blogList= (ArrayList<BlogDTO>)request.getAttribute("blogList");
 				for(int i=0; i<blogList.size();i++){
 					BlogDTO bdto=blogList.get(i);
 					
@@ -126,7 +133,7 @@ int endPage=(int)request.getAttribute("endPage");
 		</p>  
 		</div>
 	</div>
-	<%} %>
+	<%}} %>
 	
 	</section>
 	
