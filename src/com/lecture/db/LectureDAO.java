@@ -150,8 +150,8 @@ public class LectureDAO {
 	
 	// getLectureList()
 	public Map<String, Object> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
-		Map<String, Object> map=new HashMap<String,Object>();
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
+		Map<String, Object> map=new HashMap<String,Object>();
 		List<Double> starList=new ArrayList<Double>();
 		List<Integer> starCount= new ArrayList<Integer>();
 		StringBuffer SQL = new StringBuffer();
@@ -276,8 +276,10 @@ public class LectureDAO {
 
 	
 	//getLectureSelectList()
-			public List<LectureDTO> getLectureSelectList(String item){
-				
+			public Map<String, Object> getLectureSelectList(String item){
+				Map<String, Object> map=new HashMap<String,Object>();
+				List<Double> starList=new ArrayList<Double>();
+				List<Integer> starCount= new ArrayList<Integer>();
 				List<LectureDTO> lectureList= new ArrayList<LectureDTO>();
 					
 				StringBuffer SQL= new StringBuffer();
@@ -327,18 +329,44 @@ public class LectureDAO {
 						ldto.setPct_date(rs.getTimestamp("pct_date"));
 						ldto.setL_img(rs.getString("l_img"));
 						ldto.setL_title(rs.getString("l_title"));
+						sql="select avg(r_rating) from r_board group by r_l_num having r_l_num=?";
+						pstmt=con.prepareStatement(sql);
+						
+						pstmt.setInt(1, rs.getInt("l_number"));
+						
+						rs2=pstmt.executeQuery();
+						if(rs2.next()){
+							starList.add(rs2.getDouble(1));
+							
+						}else{
+							starList.add(0.0);
+							
+						}
+						sql="select count(*) from r_board where r_l_num=?";
+						pstmt=con.prepareStatement(sql);
+						
+						pstmt.setInt(1, rs.getInt("l_number"));
+						
+						rs2=pstmt.executeQuery();
+						if(rs2.next()){
+							starCount.add(rs2.getInt(1));
+						}else{
+							starCount.add(0);
+						}
 						
 						lectureList.add(ldto);
 					}
 					System.out.println("상품목록 저장완료:"+lectureList.size());
-					
+					map.put("lectureList", lectureList);
+					map.put("starList", starList);
+					map.put("starCount", starCount);
 				} catch (Exception e) {
 					System.out.println("상품정보조회 실패");
 					e.printStackTrace();
 				} finally {
 					closeDB();
 				}
-				return lectureList;
+				return map;
 			}
 	//getLectureSelectList()
 			/*public void insertlectures(LectureDTO ldto) {

@@ -1,6 +1,7 @@
 package com.lecture.action;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,31 +21,34 @@ public class LectureMainListAction implements Action{
 		
 		String item = "best";
 		
-		List<LectureDTO> bestList = ldao.getLectureSelectList(item);
+		Map<String, Object> bestMap = ldao.getLectureSelectList(item);
 		
-		request.setAttribute("bestList", bestList);
-		
-		LectureDAO ldao2 = new LectureDAO();
+		request.setAttribute("bestList", bestMap.get("LectureList"));
+		request.setAttribute("beststarList", bestMap.get("starList"));
+		request.setAttribute("beststarCount", bestMap.get("starCount"));
 		
 		item = "new";
-		List<LectureDTO> newList = ldao2.getLectureSelectList(item);
+		Map<String, Object> newMap = ldao.getLectureSelectList(item);
 				
-		request.setAttribute("newList", newList);
+		request.setAttribute("newList", newMap.get("LectureList"));
+		request.setAttribute("newstarList", newMap.get("starList"));
+		request.setAttribute("newstarCount", newMap.get("starCount"));
 		
 		
-		LectureDAO ldao3 = new LectureDAO();
 		
 		item = "free";
-		List<LectureDTO> freeList = ldao3.getLectureSelectList(item);
+		Map<String, Object> freeMap = ldao.getLectureSelectList(item);
 		
-		request.setAttribute("freeList", freeList);
+		request.setAttribute("freeList", freeMap.get("LectureList"));
+		request.setAttribute("freestarList", freeMap.get("starList"));
+		request.setAttribute("freestarCount", freeMap.get("starCount"));
 		
 		List<BlogDTO> blogList= new BlogDAO().getBlogMainList();
 		request.setAttribute("blogList", blogList);
 		
-		System.out.println("@@ best lectureList:"+bestList);
+		/*System.out.println("@@ best lectureList:"+bestList);
 		System.out.println("@@ new lectureList:"+newList);
-		System.out.println("@@ free lectureList:"+freeList);
+		System.out.println("@@ free lectureList:"+freeList);*/
 		System.out.println("@@ blog List:"+blogList);
 		ActionForward forward = new ActionForward();
 		forward.setPath("./views/main/main.jsp");

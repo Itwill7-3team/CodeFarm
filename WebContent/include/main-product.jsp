@@ -15,8 +15,14 @@
 <body>
 <%
 List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
-List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
+List<Double> beststarList=(List<Double>) request.getAttribute("beststarList");
+List<Integer> beststarCount=(List<Integer>) request.getAttribute("beststarCount");
 List<LectureDTO> freeList = (List<LectureDTO>) request.getAttribute("freeList");
+List<Double> freestarList=(List<Double>) request.getAttribute("freestarList");
+List<Integer> freestarCount=(List<Integer>) request.getAttribute("freestarCount");
+List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
+List<Double> newstarList=(List<Double>) request.getAttribute("newstarList");
+List<Integer> newstarCount=(List<Integer>) request.getAttribute("newstarCount");
 List<BlogDTO> blogList = (List<BlogDTO>) request.getAttribute("blogList");
 
 
@@ -145,12 +151,13 @@ for(int i=0;i<bestList.size();i++){
 </a>
 	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
-		<span class="fa fa-star checked"></span><!-- 찬하트 -->
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="far fa-star checked"></span><!--빈하트  -->
-		<span class="review_cnt">(0)</span> 
+		<div class="rating_star">
+					<div class="star_solid" style="width: <%-- <%=beststarList.get(i)*20 %> --%>%">
+					<i class="fa fa-star" data-value="1" aria-hidden="true"></i><i class="fa fa-star" data-value="2" aria-hidden="true"></i><i class="fa fa-star" data-value="3" aria-hidden="true"></i><i class="fa fa-star" data-value="4" aria-hidden="true"></i><i class="fa fa-star" data-value="5" aria-hidden="true"></i>
+					</div>
+					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
+					</div>
+		<span class="review_cnt"><%-- <%=beststarCount.get(i)%> --%></span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
