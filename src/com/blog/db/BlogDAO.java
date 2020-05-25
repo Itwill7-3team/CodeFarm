@@ -238,12 +238,13 @@ public class BlogDAO {
 				//5
 				if(rs.next()){//글있음
 						//3
-						sql="update blog set b_title=?, b_img=?, b_content=?, b_ip=?";
+						sql="update blog set b_title=?, b_img=?, b_content=?, b_ip=? where b_num=?";
 						pstmt=con.prepareStatement(sql);
 						pstmt.setString(1, bdto.getB_title());
 						pstmt.setString(2, bdto.getB_img());
 						pstmt.setString(3, bdto.getB_content());
 						pstmt.setString(4, bdto.getB_ip());
+						pstmt.setInt(5, bdto.getB_num());
 						
 						//4
 						pstmt.executeUpdate();
