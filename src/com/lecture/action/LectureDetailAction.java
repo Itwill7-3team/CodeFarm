@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.basket.db.BasketDAO;
+import com.basket.db.BasketDTO;
 import com.lecture.db.FileDTO;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
@@ -35,6 +37,7 @@ public class LectureDetailAction implements Action {
 		
 		MemberDAO mdao = new MemberDAO();
 		WishlistDAO wdao = new WishlistDAO();
+		int bCheck = 0;
 		if(m_email != null){
 			MemberDTO mdto = mdao.getInfo(m_email); // 회원 정보
 			request.setAttribute("mdto", mdto);
@@ -48,10 +51,15 @@ public class LectureDetailAction implements Action {
 			for(int i=0; i<wishList.size(); i++){
 				if(wishList.get(i).getW_l_num() == l_number){
 					WishlistDTO wdto = wishList.get(i);
-					request.setAttribute("wdto", wdto);
-					//break;
+					break;
 				}
 			}
+			
+			BasketDAO bdao = new BasketDAO();  // 회원별 장바구니 체크
+			BasketDTO bdto = new BasketDTO();
+			bdto.setB_l_num(l_number);
+			bdto.setB_m_id(m_email);
+			bCheck = bdao.checkGoods(bdto);
 		}
 		int wCount = wdao.getWishListCount(l_number); // 강의 위시 수
 		
@@ -88,6 +96,7 @@ public class LectureDetailAction implements Action {
 		
 		request.setAttribute("ldto", ldto);
 		request.setAttribute("lmdto", lmdto);
+		request.setAttribute("bCheck", bCheck);
 		request.setAttribute("wCount", wCount);
 		request.setAttribute("fileSet", fileSet);
 		request.setAttribute("reviewList", reviewList);

@@ -402,25 +402,33 @@ $(document).ready(function() {
 		var itprograming=["웹개발","모바일앱","게임 개발","데이터 사이언스","보안","인공지능","알고리즘","교양",
 			"수학","서버","자동화","데이터베이스","개발도구","프레임워크 및 라이브러리","프로그래밍 언어",
 			"서비스 개발","인프라","사물인터넷","블록체인"];
-		var creative=["3D 모델링","그래픽 디자인","영 상 편집", "유튜브","영화 그래픽",
+		var itprograming_eng=["web-dev","mobile-app","game_dev","data-science","security","artificaial-intelligence","algorithm","culture",
+			"math","server-dev","automation","database-dev","programming-tool",
+			"framework-library","programming-lang","service-dev","infra","iot","blockchain"];
+		var creative=["3D 모델링","그래픽 디자인","영 상 편집,유튜브","영화 그래픽",
 			"웹앱 디자인","게임 디자인","UX/UI","Sound","AR/VR"];
+		var creative_eng=["3d_modeling","graphic-design","youtube","movie-graphic","webapp-design","game-design",
+			"ux-ui","sound","ar-vr"];
 		var businessskill=["MS-OFFICE","마케팅","금융 주식 투자","데이터 분석","업무 자동화",
 			"회계 재무","경영지식","기획 프로젝트 관리","글쓰기","자기 계발","외국어"];
+		var businessskill_eng=["office","marketing","finace","data-analysis","task-automation","accounting","management",
+			"project-manage","writing","self-dev","foreign_language"];
+		
 		$(".button_box.categoryBox2").empty();
 			
 		if($(this).val()=="IT프로그래밍"){
 			$.each(itprograming,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+itprograming_eng[i]+'">'+element+'</button>');
 			});
 		}
 		if($(this).val()=="크리에이티브"){
 			$.each(creative,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+creative_eng[i]+'">'+element+'</button>');
 			});
 		}
 		if($(this).val()=="업무스킬"){
 			$.each(businessskill,function(i, element) {
-				$(".button_box.categoryBox2").append('<button class="button category2" value="'+element+'">'+element+'</button>');
+				$(".button_box.categoryBox2").append('<button class="button category2" value="'+businessskill_eng[i]+'">'+element+'</button>');
 			});
 		}
 	});
@@ -455,6 +463,7 @@ $(document).ready(function() {
 		var name = $(this).prev("input:first").attr("name");
 		var placeholder = $(this).prev("input:first").attr("placeholder");
 		var value=$(this).prev("input:first").val();
+		console.log(value);
 		if($(this).prev("input:first").val()){
 		$(this).siblings(".boxes").append(
 		'<li class="dynamic_box" data-content='+value+'>'
@@ -657,15 +666,15 @@ $(document).ready(function() {
 		//이런걸 배울수 있어요
 		var abilities="";
 		for(var i=0;i<$(".boxes.abilities").children().size();i++)
-			abilities+=$(".boxes.abilities").children().eq(i).attr("data-content")+"/";
+			abilities+=$(".boxes.abilities").children().eq(i).children(".content_box").html()+"/";
 		//이런 분들에게 추천해요
 		var targets="";
 		for(var i=0;i<$(".boxes.targets").children().size();i++)
-			targets+=$(".boxes.targets").children().eq(i).attr("data-content")+"/";
+			targets+=$(".boxes.targets").children().eq(i).children(".content_box").html()+"/";
 		//선수 지식이 필요하다면 무엇인가요?
 		var based="";
 		for(var i=0;i<$(".boxes.based").children().size();i++)
-			based+=$(".boxes.based").children().eq(i).attr("data-content")+"/";
+			based+=$(".boxes.based").children().eq(i).children(".content_box").html()+"/";
 		//카테고리
 		var category=$(".button.category1.active").attr("value")+"/"+$(".button.category2.active").attr("value");
 		//강의수준
@@ -720,7 +729,7 @@ $(document).ready(function() {
 	            },
 
 	            success:function(data){
-	            	alert("데이터 전송 성공");
+	            	alert(data);
 	            },
 	            error: function (data) {
 	            	alert("저장실패!");
