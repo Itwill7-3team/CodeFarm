@@ -23,14 +23,14 @@ public class LectureMainListAction implements Action{
 		
 		Map<String, Object> bestMap = ldao.getLectureSelectList(item);
 		
-		request.setAttribute("bestList", bestMap.get("LectureList"));
+		request.setAttribute("bestList", bestMap.get("lectureList"));
 		request.setAttribute("beststarList", bestMap.get("starList"));
 		request.setAttribute("beststarCount", bestMap.get("starCount"));
 		
 		item = "new";
 		Map<String, Object> newMap = ldao.getLectureSelectList(item);
 				
-		request.setAttribute("newList", newMap.get("LectureList"));
+		request.setAttribute("newList", newMap.get("lectureList"));
 		request.setAttribute("newstarList", newMap.get("starList"));
 		request.setAttribute("newstarCount", newMap.get("starCount"));
 		
@@ -39,7 +39,7 @@ public class LectureMainListAction implements Action{
 		item = "free";
 		Map<String, Object> freeMap = ldao.getLectureSelectList(item);
 		
-		request.setAttribute("freeList", freeMap.get("LectureList"));
+		request.setAttribute("freeList", freeMap.get("lectureList"));
 		request.setAttribute("freestarList", freeMap.get("starList"));
 		request.setAttribute("freestarCount", freeMap.get("starCount"));
 		

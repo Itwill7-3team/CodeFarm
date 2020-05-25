@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.blog.db.BlogDTO"%>
 <%@page import="com.lecture.db.LectureDTO"%>
 <%@page import="java.util.List"%>
@@ -14,16 +15,16 @@
 </head>
 <body>
 <%
-List<LectureDTO> bestList = (List<LectureDTO>) request.getAttribute("bestList");
-List<Double> beststarList=(List<Double>) request.getAttribute("beststarList");
-List<Integer> beststarCount=(List<Integer>) request.getAttribute("beststarCount");
-List<LectureDTO> freeList = (List<LectureDTO>) request.getAttribute("freeList");
-List<Double> freestarList=(List<Double>) request.getAttribute("freestarList");
-List<Integer> freestarCount=(List<Integer>) request.getAttribute("freestarCount");
-List<LectureDTO> newList = (List<LectureDTO>) request.getAttribute("newList");
-List<Double> newstarList=(List<Double>) request.getAttribute("newstarList");
-List<Integer> newstarCount=(List<Integer>) request.getAttribute("newstarCount");
-List<BlogDTO> blogList = (List<BlogDTO>) request.getAttribute("blogList");
+ArrayList<LectureDTO> bestList = (ArrayList<LectureDTO>)request.getAttribute("bestList");
+ArrayList<Double> beststarList=(ArrayList<Double>) request.getAttribute("beststarList");
+ArrayList<Integer> beststarCount=(ArrayList<Integer>) request.getAttribute("beststarCount");
+ArrayList<LectureDTO> freeList = (ArrayList<LectureDTO>) request.getAttribute("freeList");
+ArrayList<Double> freestarList=(ArrayList<Double>) request.getAttribute("freestarList");
+ArrayList<Integer> freestarCount=(ArrayList<Integer>) request.getAttribute("freestarCount");
+ArrayList<LectureDTO> newList = (ArrayList<LectureDTO>) request.getAttribute("newList");
+ArrayList<Double> newstarList=(ArrayList<Double>) request.getAttribute("newstarList");
+ArrayList<Integer> newstarCount=(ArrayList<Integer>) request.getAttribute("newstarCount");
+ArrayList<BlogDTO> blogList = (ArrayList<BlogDTO>) request.getAttribute("blogList");
 
 
 System.out.println("@@@ best lectureList:"+bestList);
@@ -157,7 +158,7 @@ for(int i=0;i<bestList.size();i++){
 					</div>
 					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
 					</div>
-		<span class="review_cnt"><%-- <%=beststarCount.get(i)%> --%></span> 
+		<span class="review_cnt"><%=beststarCount.get(i)%></span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
@@ -194,12 +195,13 @@ for(int i=0;i<newList.size();i++){
 </a>
 	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="review_cnt">(0)</span> 
+		<div class="rating_star">
+					<div class="star_solid" style="width: <%=newstarList.get(i)*20 %>%">
+					<i class="fa fa-star" data-value="1" aria-hidden="true"></i><i class="fa fa-star" data-value="2" aria-hidden="true"></i><i class="fa fa-star" data-value="3" aria-hidden="true"></i><i class="fa fa-star" data-value="4" aria-hidden="true"></i><i class="fa fa-star" data-value="5" aria-hidden="true"></i>
+					</div>
+					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
+					</div>
+		<span class="review_cnt"><%=newstarCount.get(i)%></span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
@@ -235,12 +237,13 @@ for(int i=0;i<freeList.size();i++){
 </a>
 	<p><%=ldto.getL_m_email() %></p> 
 	<div class="card-in">
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="review_cnt">(0)</span> 
+		<div class="rating_star">
+					<div class="star_solid" style="width: <%=freestarList.get(i)*20 %>%">
+					<i class="fa fa-star" data-value="1" aria-hidden="true"></i><i class="fa fa-star" data-value="2" aria-hidden="true"></i><i class="fa fa-star" data-value="3" aria-hidden="true"></i><i class="fa fa-star" data-value="4" aria-hidden="true"></i><i class="fa fa-star" data-value="5" aria-hidden="true"></i>
+					</div>
+					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
+					</div>
+		<span class="review_cnt"><%=freestarCount.get(i)%></span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>

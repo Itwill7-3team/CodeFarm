@@ -7,7 +7,32 @@ img{
 display: block;
 margin: 0 auto;
 }
-
+/* 별만들기  */
+.rating_star{
+	position: relative;
+    width: 110px;
+    display: inline-block;
+    font-size: 0em;
+}
+.star_solid{
+	display: inline;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+}
+.rating_star svg, .rating_star i {
+	font-family: "Font Awesome 5 Free";
+	color: #fdcc11;
+    width: 1rem;
+    height: 1rem;
+    font-size: 20px;
+    display: inline;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+/* 별 만들기 */
 /* Slideshow container */
 .slideshow-container {
   width: 100%; /* 1077*320 */ /*1287*192*/
@@ -280,7 +305,7 @@ margin-left: 0.8rem;
 }
 
 
-.card i {
+.mg-l50 i {
 color: #FD8E6A;
 font-size: 20px;
 text-decoration: none;
