@@ -7,7 +7,32 @@ img{
 display: block;
 margin: 0 auto;
 }
-
+/* 별만들기  */
+.rating_star{
+	position: relative;
+    width: 115px;
+    display: inline-block;
+    font-size: 0em;
+}
+.star_solid{
+	display: inline;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+}
+.rating_star svg, .rating_star i {
+	font-family: "Font Awesome 5 Free";
+	color: #fdcc11;
+    width: 1rem;
+    height: 1rem;
+    font-size: 20px;
+    display: inline;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+/* 별 만들기 */
 /* Slideshow container */
 .slideshow-container {
   width: 100%; /* 1077*320 */ /*1287*192*/
@@ -235,6 +260,7 @@ font-weight: normal;
 }
 
 .card {
+  position:relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 250px;			
   height:350px;
@@ -273,13 +299,13 @@ margin-left: 0.8rem;
   font-weight: 700;
   color: #175cbe;
   font-size: 16px;
-  margin-right: 0.5em;
+/*   margin-right: 0.5em; */
   position: absolute;
   right: 0;
 }
 
 
-.card i {
+.mg-l50 i {
 color: #FD8E6A;
 font-size: 20px;
 text-decoration: none;
@@ -289,12 +315,14 @@ text-decoration: none;
 }
 
 .card-in{
+position: absolute;
+bottom: 10px;
 padding: 0.5rem 0.8rem;
 text-align: left;
 }
 
 .mg-l50{
-margin-left: 50px;
+margin-left: 40px;
 }
 .mg-t10{
 margin-top: 10px;

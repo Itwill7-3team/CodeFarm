@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -41,7 +44,8 @@ public class LectureDAO {
 		}
 	}//자원 해제
 	
-	public void updateLecture(LectureDTO ldto){
+	public int updateLecture(LectureDTO ldto){
+		int check=0;
 		try{
 			con=getConnection();
 			sql="update lecture set "
@@ -67,12 +71,13 @@ public class LectureDAO {
 				pstmt.setString(13, ldto.getStart_msg());
 				pstmt.setString(14, ldto.getEnd_msg());
 				pstmt.setInt(15, ldto.getL_number());
-				pstmt.executeUpdate();
+				check=pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeDB();
 		}
+		return check;
 	}
 	
 	
@@ -144,8 +149,11 @@ public class LectureDAO {
 	//getAllCount()
 	
 	// getLectureList()
-	public List<LectureDTO> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
+	public Map<String, Object> getLecutreList(String s, String item, PagingDTO paging, String t1, String t2){
 		List<LectureDTO> lectureList = new ArrayList<LectureDTO>();
+		Map<String, Object> map=new HashMap<String,Object>();
+		List<Double> starList=new ArrayList<Double>();
+		List<Integer> starCount= new ArrayList<Integer>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
@@ -220,26 +228,58 @@ public class LectureDAO {
 			ldto.setPct_date(rs.getTimestamp("pct_date"));
 			ldto.setL_img(rs.getString("l_img"));
 			ldto.setL_title(rs.getString("l_title"));
+			ldto.setL_abilities(rs.getString("l_abilities"));
+			ldto.setL_based(rs.getString("l_based"));
+			ldto.setL_description(rs.getString("l_description"));
+			sql="select avg(r_rating) from r_board group by r_l_num having r_l_num=?";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, rs.getInt("l_number"));
+			
+			rs2=pstmt.executeQuery();
+			if(rs2.next()){
+				starList.add(rs2.getDouble(1));
+				
+			}else{
+				starList.add(0.0);
+				
+			}
+			sql="select count(*) from r_board where r_l_num=?";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, rs.getInt("l_number"));
+			
+			rs2=pstmt.executeQuery();
+			if(rs2.next()){
+				starCount.add(rs2.getInt(1));
+			}else{
+				starCount.add(0);
+			}
 			
 			lectureList.add(ldto);
+			
 		}	
 		System.out.println("사용자 강의 목록 저장완료");
 		System.out.println("내용"+lectureList);
-			
+			map.put("lectureList", lectureList);
+			map.put("starList", starList);
+			map.put("starCount", starCount);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			closeDB();
 		}
 		
-		return lectureList;
+		return map;
 	}
 	// getLectureList()
 
 	
 	//getLectureSelectList()
-			public List<LectureDTO> getLectureSelectList(String item){
-				
+			public Map<String, Object> getLectureSelectList(String item){
+				Map<String, Object> map=new HashMap<String,Object>();
+				List<Double> starList=new ArrayList<Double>();
+				List<Integer> starCount= new ArrayList<Integer>();
 				List<LectureDTO> lectureList= new ArrayList<LectureDTO>();
 					
 				StringBuffer SQL= new StringBuffer();
@@ -289,18 +329,44 @@ public class LectureDAO {
 						ldto.setPct_date(rs.getTimestamp("pct_date"));
 						ldto.setL_img(rs.getString("l_img"));
 						ldto.setL_title(rs.getString("l_title"));
+						sql="select avg(r_rating) from r_board group by r_l_num having r_l_num=?";
+						pstmt=con.prepareStatement(sql);
+						
+						pstmt.setInt(1, rs.getInt("l_number"));
+						
+						rs2=pstmt.executeQuery();
+						if(rs2.next()){
+							starList.add(rs2.getDouble(1));
+							
+						}else{
+							starList.add(0.0);
+							
+						}
+						sql="select count(*) from r_board where r_l_num=?";
+						pstmt=con.prepareStatement(sql);
+						
+						pstmt.setInt(1, rs.getInt("l_number"));
+						
+						rs2=pstmt.executeQuery();
+						if(rs2.next()){
+							starCount.add(rs2.getInt(1));
+						}else{
+							starCount.add(0);
+						}
 						
 						lectureList.add(ldto);
 					}
 					System.out.println("상품목록 저장완료:"+lectureList.size());
-					
+					map.put("lectureList", lectureList);
+					map.put("starList", starList);
+					map.put("starCount", starCount);
 				} catch (Exception e) {
 					System.out.println("상품정보조회 실패");
 					e.printStackTrace();
 				} finally {
 					closeDB();
 				}
-				return lectureList;
+				return map;
 			}
 	//getLectureSelectList()
 			/*public void insertlectures(LectureDTO ldto) {
