@@ -88,10 +88,11 @@ String pageNum=request.getAttribute("pageNum").toString();
 글쓴이 : <%=bdto.getB_writer()%><br>
 제목 : <input type="text" name="b_title" value="<%=bdto.getB_title()%>"><br>
 <input type="file" name="b_img">
+<input type="hidden" name="b_num" value="<%=bdto.getB_num()%>">
 내용<br>
 <textarea name="b_content" id="summernote">
 <%=bdto.getB_content() %></textarea>
-<input type="submit" value="글쓰기">
+<input type="submit" value="수정하기">
 </form>
 
 <h2><a href="blog.bl">블로그 글 목록보기</a></h2>

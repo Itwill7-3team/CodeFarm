@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.blog.db.BlogDAO;
 import com.blog.db.BlogDTO;
-import com.notice.db.NoticeDAO;
-import com.notice.db.NoticeDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -60,16 +58,14 @@ public class BlogUpdateAction implements Action {
 						new DefaultFileRenamePolicy()
 						);
 				System.out.println("@multi~file 이름 확인 :"+multi.getFilesystemName("b_img"));
-				
-				String image =multi.getFilesystemName("b_img");
-		
-		
-		bdto.setB_img(image);
-		//request.getParameter("b_num"); -> DAO에서 계산할것임
-		bdto.setB_title(multi.getParameter("b_title"));
-		bdto.setB_content(multi.getParameter("b_content"));
-		bdto.setB_writer(multi.getParameter("b_writer"));
-		bdto.setB_ip(request.getRemoteAddr());
+
+				bdto.setB_num(Integer.parseInt(multi.getParameter("b_num")));
+				bdto.setB_img(multi.getFilesystemName("b_img"));
+				//request.getParameter("b_num"); -> DAO에서 계산할것임
+				bdto.setB_title(multi.getParameter("b_title"));
+				bdto.setB_content(multi.getParameter("b_content"));
+				bdto.setB_writer(multi.getParameter("b_writer"));
+				bdto.setB_ip(request.getRemoteAddr());
 
 		//NoticeDAO 객체생성, 글쓰기 메서드실행, 글 작성 (글작성 성공/실패 alert)후 페이지이동
 		int check=new BlogDAO().updateBlog(bdto);

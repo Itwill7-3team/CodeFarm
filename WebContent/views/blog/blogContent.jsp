@@ -67,8 +67,8 @@ else{ id= bdto.getB_writer(); }
 		<!-- 글수정/삭제 -->
 		<%if(email.equals(bdto.getB_writer())){%>
  		<button onclick="location.href='blogUpdate.bl?num=<%=bdto.getB_num()%>&pageNum=<%=pageNum%>';">수정하기</button>
-<%--		<button onclick="location.href='blogDeleteAction.bl?num=<%=bdto.getB_num()%>&pageNum=<%=pageNum%>';">삭제하기</button>
-		<button onclick="location.href='blog.bl?pageNum=<%=pageNum%>';">목록보기</a> --%>	
+		<button onclick="location.href='blogDeleteAction.bl?num=<%=bdto.getB_num()%>&pageNum=<%=pageNum%>';">삭제하기</button>
+		<button onclick="location.href='blog.bl?pageNum=<%=pageNum%>';">목록보기</a> 	
 		<%}%>
 		
 		

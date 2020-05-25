@@ -92,8 +92,7 @@ public class BlogFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		/*else if(command.equals("/noticeUpdateAction.bo")){
+		}else if(command.equals("/blogUpdateAction.bl")){
 			//게시글 읽기(모델-뷰)
 			action=new BlogUpdateAction();
 			try{
@@ -101,7 +100,7 @@ public class BlogFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/noticeDeleteAction.bo")){
+		}else if(command.equals("/blogDeleteAction.bl")){
 			//게시글 삭제(모델)
 			action=new BlogDeleteAction();
 			try{
@@ -109,7 +108,7 @@ public class BlogFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	*/
+		}
 	
 		
 		System.out.println("-----------페이지 이동(redirect(true)/forward(false))---------------");
