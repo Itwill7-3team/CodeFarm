@@ -114,8 +114,8 @@ public class OrderDAO {
 			//pstmt.setTimestamp(10, oldto.getO_t_date());
 			
 			pstmt.setInt(10, (int)Math.floor(ldto.getL_price()+(ldto.getL_price()*ldto.getL_pct()/100)));
-			pstmt.setInt(11, 0);
-			pstmt.setString(12, oldto.getO_t_b_num());
+			pstmt.setString(11, oldto.getO_t_b_num());
+			pstmt.setInt(12, 0);
 			//pstmt.setString(13, oldto.getO_t_b_reg_date());
 			
 
