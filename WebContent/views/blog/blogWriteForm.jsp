@@ -45,7 +45,7 @@ textarea {
 		      maxHeight: null,             // set maximum height of editor
 		      focus: true,                  // set focus to editable area after initializing summernote
 		      lang: "ko-KR",					// 한글 설정
-				placeholder: '내용을 입력하세요 :-D',	//placeholder 설정
+				placeholder: '내용을 입력하세요 :-D (사진은 파일선택 버튼을 눌러 등록해주세요!)',	//placeholder 설정
 
 		  });
 		});
@@ -83,9 +83,10 @@ System.out.print("id"+id);
 
 <fieldset class="content">
 <legend>blog</legend>
-<form action="./blogWriteAction.bl" method="post">
+<form action="./blogWriteAction.bl" method="post" enctype="multipart/form-data">
 글쓴이 : <%=id%><br>
 제목 : <input type="text" name="b_title"><br>
+<input type="file" name="b_img">
 <input type="hidden" name="b_writer" value="<%=email%>">
 내용<br>
 <textarea name="b_content" id="summernote">
