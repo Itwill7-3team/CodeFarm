@@ -24,13 +24,13 @@
           
   		<label class="atom_field">
    		 <span class="label visually_hidden">이메일</span>
-    		<input class="input email" type="email"  name="m_email" autofocus="true" placeholder="이메일">
+    		<input class="login_input email" type="email"  name="m_email" autofocus="true" placeholder="이메일">
   </label>
 
           
   <label class="atom_field">
     <span class="label visually_hidden">비밀번호</span>
-    <input class="input pwd" type="password" name="m_pw" placeholder="비밀번호">
+    <input class="login_input pwd" type="password" name="m_pw" placeholder="비밀번호">
   </label>
 
           
@@ -64,7 +64,7 @@
           </div>
         </div> 
         <div class="sub_form">
-          <p>아직 인프런 회원이 아니신가요?</p>
+          <p>아직 코딩팜 회원이 아니신가요?</p>
           <a href="MemberJoin.me">회원가입하기</a>
         </div>
       </section>
@@ -98,7 +98,7 @@ Kakao.Auth.createLoginButton({
 	        url: '/v2/user/me',
 	        success: function(response) {
 	            console.log(response);
-	            alert(response.kakao_account.email);
+	         
 	            $('#m_email').val(response.kakao_account.email);
 	            $('#m_pw').val(response.id);
 	            $('#m_nick').val(response.properties.nickname);

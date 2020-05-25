@@ -7,7 +7,44 @@ footer{
     color: white;
     float: left;
 }
+footer .menu_sublist{
+	display: grid;
+}
 footer .container{
 	width:1180px;
 	margin: 0 auto;
+}
+
+.list_link{
+	color: #c0c0c0;
+	padding: 5px 0px
+}
+
+footer .menu_list_cover{
+	display: -webkit-inline-box;
+	
+	
+}
+footer .menu_list{
+	padding: 32px 150px 0px 0px;
+}
+
+footer .foot_logo{
+	display: inline;
+	width: 75px;
+}
+
+footer .foot_info{
+	color: #c0c0c0;
+}
+footer .footer_info_bottom{
+	color: #c0c0c0;
+	font-size: 12px;
+}
+
+footer .center{
+	padding: 10px 0;
+}
+footer .first{
+	padding: 10px 0 0 0;
 }

@@ -43,7 +43,11 @@ public class TechRequestAction implements Action{
 		mdto.setM_intro(m_intro);
 		mdto.setM_phone(m_phone);
 		mdto.setM_addr(m_addr);
+		
 		mdao.techRequest(mdto);
+		
+		int rank = mdao.getRank(m_email);
+		session.setAttribute("m_rank", rank);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Main.le");

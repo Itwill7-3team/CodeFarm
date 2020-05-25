@@ -79,42 +79,6 @@
 			total_Min = (int)(totalTime / 60);
 		}
 	/* 파일 개수, 시간 계산 */
-	
-	/* DB에 추가해 주세요
-
-insert into codefarm.lecture
- values(null, 'abc@naver.com', '김왼손의 미운코딩새끼: 4시간만에 끝내는 파이썬 기초 (전자책 포함)',
- '파이썬의 기초를 쉽게 배울 수 있습니다./파이썬이 뭔지, 코딩이 뭔지 감을 잡게 됩니다./혼자서도 코딩을 공부할 수 있는 법을 배웁니다.
-/다음 단계를 위한 준비를 할 수 있습니다./컴퓨터처럼 문제를 해결하는 방법을 배웁니다./나도 할 수 있다는 자신감을 얻게 됩니다./',
- '코딩을 한 번도 해본 적 없는 분/아무리 열심히 해도 코딩이 어려운 분/코딩이라는게 뭔지 맛보고 싶은 분/반복되는 포기로 코딩이 미워지려고 하는 분/',
- 'HTML/CSS/Javascript/', '대학 새내기 시절 코딩이 너무 어려웠습니다. 잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다.
-지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 지금도 저와 같은 고민을 하는 분들이 많을',
- '<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
-<iframe src=\"https://www.youtube.com/embed/UrwFkNRzzT4?list=PLGPF8gvWLYyontH0PECIUFFUdvATXWQEL?
-rel=0&amp;modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allow=\"autoplay; encrypted-media\"
-allowfullscreen=\"allowfullscreen\" style=\"position: absolute; top: 0px; bottom: 0px; left: 0px;
-right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" id=\"669956749\">
-</iframe></div><div><h2>김왼손의 한입에 쏙 파이썬 - 파이썬 입문</h2>한입에 쏙 파이썬은 미운코딩새끼의 업그레이드 버전 강의입니다. 
-자세한 내용은 <a href=\"https://www.inflearn.com/course/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8-hello-coding/\"> 
-[저자직강]	Hello Coding 한입에 쏙 파이썬: 크리에이터 김왼손의 쉽고 빠른 파이썬 강의</a>에서 확인하실 수	있습니다.=====&nbsp;
-<div class=\"iframe_container\" style=\"padding:56.25% 0 0 0; position: relative;\"> 
-<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/c2mpe9Xcp0I?rel=0&amp;
-modestbranding=1&amp;vq=hd720\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\" style=\"position: absolute; 
-top: 0px; bottom: 0px; left: 0px; right: 0px; height: 100%; width: 100%;\" data-gtm-yt-inspected-8964582_7=\"true\" 
-id=\"830993609\"></iframe></div> * 인스타그램 김왼손(<a href=\"https://www.instagram.com/lefty_khim/\">@lefty_khim</a>
-)을 팔로우하세요!* 미운코딩새끼 전자책 ▶ <a href=\"https://wikidocs.net/book/1421\" target=\"_blank\" rel=\"noopener\">
-https://wikidocs.net/book/1421</a> * 더 많은 무료 강의 ▶ <a href=\"https://goo.gl/AwAwUT\" target=\"_blank\" 
-rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코딩이 너무 어려웠습니다. 
-잘해보려 아등바등 노력해 봤지만 매번 실패하다가 결국 미워하게돼버렸습니다. 지금 돌아보면 그렇게 미워할 정도는 아니었는데 말이죠. 
-지금도 저와 같은 고민을 하는 분들이 많을 거라고 생각합니다. 그 때 그 시절 이런 강의가 있었으면 어땠을까 하는 마음으로 만든 강의가 바로미운코딩새끼입니다.
-미운코딩새끼는 코딩이 너무 어려워 포기한 분, 또는 코딩을 처음 접하는 분을 위한 강의입니다.?파이썬이라는 프로그래밍 언어의 기초 문법을 쉽게 배울 수 있습니다. 
-코딩을 왜 배워야 하는지, 왜필요한지에 대해서 답을 주지는 않지만?코딩이란 이런 거구나, 파이썬이란 이런 거구나 하는 정도의 감을 잡을 수?있습니다.
-코딩은 쉽지 않습니다. 그렇기 때문에 처음 시작하는 분들에게는 정말 쉬운 강의가 필요합니다.미운코딩새끼는 파이썬의 모든 것을 가르쳐 주지 않습니다. 
-대신?가장?중요하고 자주 쓰는 문법만 빠르고 가볍게 다룹니다. 코딩을 처음 접하는?분들도 단숨에 끝낼 수 있습니다. 과정 후 파이썬을 더 공부할 마음이 든다면혼자서 
-얼마든지 공부할 수 있습니다.자, 그럼 이제 잉끼유튜버 김왼손과 함께 파이썬의 매력속으로?풍덩?빠져볼까요? :^)',
- 'IT프로그래밍', '프로그래밍 언어', '', 'lect_8.png', '50000', '0', '0', '1', now(), now(), '12053', NULL, NULL);
-
-	*/
 	%>
 	<div id="root">
 	
@@ -198,6 +162,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 										<% } else { %>
 											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary">수강 신청</button>
 										</div>
+										<% } %>
 											<div class="course_btn_cover">
 												<button class="is_outlined course_sub_btn course_wish_btn wishBtn">
 													<span class="wish">
@@ -209,7 +174,6 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											    	<i></i><span class="text"> 수강 바구니</span>
 											    </button>
 										    </div>
-										<% } %>
 									</div>
 								<%-- SideMenu_button --%>
 								
@@ -218,7 +182,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 							<%-- SideMenu_info --%>
 								<div class="course_info_cover">
 									<div class="course_info_row">
-<!-- #004 강사 페이지 & 주소 변경 -->
+<%-- #003 강사 페이지 & 주소 변경 --%>
 										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/DashBoard.bo?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
@@ -259,7 +223,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											}
 								%>
 										<li>
-<!-- #004 강사 페이지 & 주소 변경 -->
+<%-- #003 강사 페이지 & 주소 변경 --%>
 											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
 												<div class="el_thumbnail">
 													<img src="./upload/<%= lectureList.get(ja).getL_img() %>" alt="<%= lectureList.get(ja).getL_title() %>">
@@ -291,7 +255,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 									</div>
 								<% if(lectureList.size() > 2){ %>
 									<div class="course_another_btn course_relation_btn">
-<!-- #004 강사 페이지 & 주소 변경 -->
+<%-- #003 강사 페이지 & 주소 변경 --%>
 										<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">+ 다른 강의 더보기</a>
 									</div>
 								<% } %>
@@ -321,8 +285,8 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 						<a href="#reviews">수강후기</a>
 					</li>
 				<% if(mdto != null && ldto.getL_m_email().equals(mdto.getM_email())){ %>
-					<li class="tabs_li reviews ">
-						<a href="addLecture.in?num=<%=ldto.getL_number()%>">수정하기</a>
+					<li class="tabs_li modify ">
+						<a href="updateLecture.in?num=<%=ldto.getL_number()%>">수정하기</a>
 					</li>
 				<% } %>
 				</ul>
@@ -396,12 +360,12 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 									<div class="profile">
 										<div class="course_instructor_profile">
 											<figure class="image">
-<!-- #006 강사 회원 이미지 DB추가 & 주소 변경 -->
-												<img class="is-rounded" src="./upload/<%= lmdto.getM_nick() %>">
+								<%-- #002 강사 아이콘 --%>
+												<img class="is-rounded" src="./img/sunny.png">
 											</figure>
 										</div>
 										<h4 class="name">
-<!-- #004 강사 페이지 & 주소 변경 -->
+<%-- #003 강사 페이지 & 주소 변경 --%>
 											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
 										</h4>
 									</div>
@@ -475,8 +439,13 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 											
 												if(payCheck){
 											%>
+<<<<<<< HEAD
 <%-- #005 영상 재생 페이지 이동 주소 확인 --%>
 												<a class="unit_item" href="./LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
+=======
+<%-- #004 영상 재생 페이지 이동 주소 확인 --%>
+												<a class="unit_item" href="/LectureVideo.le?l_number=<%= ldto.getL_number() %>&f_num=<%= fileList.get(j).getF_num() %>">
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 													<div class="unit_item_left">
 														<i class="fa fa-play-circle-o"></i><span class="unit_title"><%= fileList.get(j).getF_col_name() %></span>
 													</div>
@@ -574,15 +543,17 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 									%>
 										<div class="article_container">
 											<article class="media review_item">
-											
-											<% if(reviewList.get(r_loop).getR_re_lev() == 0){ %>
+										<% 
+											if(rSize == 2 && reviewList.get(r_loop).getR_re_lev() == 1){
+												r_loop += 1;
+											}
+											if(reviewList.get(r_loop).getR_re_lev() == 0){
+												System.out.println(reviewList.get(r_loop).getR_re_lev());
+										%>
 											<%-- 회원 아이콘 등록 --%>
 												<figure class="media-left image is-64x64">
-<!--
-	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
-	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
- -->
-													<img src='./img/main-img/lect_10.png' class='is-rounded' alt='<%= reviewList.get(r_loop).getR_writer() %>'>
+											<%-- #001 회원 아이콘 --%>
+													<img src='./img/carrotIcon.png' class='is-rounded' alt='<%= reviewList.get(r_loop).getR_writer() %>'>
 												</figure>
 											
 												<div class="media-content">
@@ -615,43 +586,51 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 														</div>
 													
 													<%-- 답글 등록 버튼 --%>
-													<% if(mdto != null && mdto.getM_email() != null && mdto.getM_rank()>1){ %>
+													<% if(mdto != null && (mdto.getM_email().equals(lmdto.getM_email()) || mdto.getM_rank() >= 3)){ %>
+														<% if(!(r_loop + 1 >= reviewList.size())){ %>
+															<% if(!(reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref())){ %>
 														<div class="reactions">
-<!-- #002 답글 등록 버튼 동작 -->
-															<button class="button is-link is-small">
+														<input type="hidden" class="r_re_lev" value="<%= reviewList.get(r_loop).getR_re_lev() %>">
+														<input type="hidden" class="r_re_ref" value="<%= reviewList.get(r_loop).getR_re_ref() %>">
+														<input type="hidden" class="r_re_seq" value="<%= reviewList.get(r_loop).getR_re_seq() %>">
+														<textarea class='comment_area' style="display: none"></textarea>
+															<button class="button is-link is-small commentBtn">
+																<span class="is-hidden-mobile">답글 쓰기</span>
+																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
+															</button>
+															<button class="button is-link is-small sendComment" style="display: none">
 																<span class="is-hidden-mobile">답글 쓰기</span>
 																<span class="is-hidden-tablet"><i class="fa fa-commenting-o"></i></span>
 															</button>
 														</div>
+															<%  } %>
+														<%  } %>
 													<%  } %>
 													
 													</div>
 											<%
-											if(rSize == 2 && reviewList.get(r_loop).getR_re_lev() == 1){
+											if(!(r_loop + 1 >= reviewList.size())){
 												if(reviewList.get(r_loop + 1).getR_re_lev() == 1 && reviewList.get(r_loop).getR_re_ref() == reviewList.get(r_loop + 1).getR_re_ref()){ %>
 												<%-- review_comment --%>
 													<div class="review_comments">
 														<div class="article_container">
 															<article class="media comment">
 																<figure class="media-left image is-32x32">
-<!--
-	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
-	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
- -->
-																	<img src="./img/main-img/lect_9.png" alt="<%= reviewList.get(r_loop).getR_writer() %>">
+															<%-- #002 강사 아이콘 --%>
+																	<img src="./img/sunny.png" alt="<%= reviewList.get(r_loop + 1).getR_writer() %>">
 																</figure>
 																<div class="media-content">
 																	<div class="content">
 																		<p>
 																		<%-- 회원 이름, 작성 일자, 내용 --%>
 																			<small>
-																				<span class="author"><strong><%= reviewList.get(r_loop).getR_writer() %></strong></span>
+																				<span class="author"><strong><%= reviewList.get(r_loop + 1).getR_writer() %></strong></span>
 																				<span class="updated_at">
-																					<fmt:formatDate value="<%= reviewList.get(r_loop).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
+																					<fmt:formatDate value="<%= reviewList.get(r_loop + 1).getR_reg_date() %>" type="date" pattern="yyyy-MM-dd"/>
 																				</span>
 																			</small><br>
 																			<span class="article_body">
-																				<%= reviewList.get(r_loop).getR_content() %>
+																				<%= reviewList.get(r_loop + 1).getR_content() %>
 																			</span>
 																		<%-- 회원 이름, 작성 일자, 내용 --%>
 																		</p>
@@ -747,6 +726,21 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 			}
 		});
 	<%-- 스크롤 변경시 Navbar_sticky & 주소 변경 --%>
+	
+	<%-- 영상 링크 사용시 style변경 --%>
+		$('iframe').removeAttr('width').removeAttr('height').css({
+			position : 'absolute',
+			top      : '0',
+			width    : '100%',
+			height   : '100%'
+	 	});
+		$('iframe').parent().addClass('iframe_container').css({
+			padding  : '56.25% 0 0 0',
+			position : 'relative',
+			margin   : '20px 0',
+			height   : '0'
+		});
+	<%-- 영상 링크 사용시 style변경 --%>
 	
 	<%-- 강의 목록 opne --%>
 	    $(".section_header").on('click', function () {
@@ -863,6 +857,65 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 	});
 	<%-- 수강신청 --%>
 	
+	<%-- 댓글 작성 폼 --%>
+		$(document).on("click", ".reactions > .commentBtn", function(){
+			$(this).css('display', 'none');
+			$(this).parent().css('margin-top', '15px');
+			$(this).nextAll(".sendComment").removeAttr('style');
+			$(this).prevAll(".comment_area").removeAttr('style');
+		});
+	<%-- 댓글 작성 폼 --%>
+	
+	<%-- 댓글 작성 --%>
+		$(document).on("click", ".reactions > .sendComment", function(){
+			var lev    = $(this).prevAll('.r_re_lev');
+			var ref    = $(this).prevAll('.r_re_ref');
+			var seq    = $(this).prevAll('.r_re_seq');
+			var area   = $(this).prevAll('.comment_area');
+			var addCom = $(this).parents('.media-content').children().last();
+			if(area.val().trim() == null || area.val().trim() == ""){
+				alert("내용을 입력하세요");
+				return;
+			}
+			$(this).css('display', 'none');
+			$(this).parent().removeAttr('style');
+			$(this).prevAll(".commentBtn").removeAttr('style');
+			$(this).prevAll(".comment_area").css('display', 'none');
+			$.ajax({
+				url      : "./ReviewComment.bo",
+				type     : "POST",
+				dataType : "json",
+				data : {
+					r_l_num   : ${ ldto.getL_number() },
+					r_content : area.val(),
+					r_writer  : "${ lmdto.getM_nick() }",
+					r_rating  : 0,
+					r_re_lev  : lev.val(),
+					r_re_ref  : ref.val(),
+					r_re_seq  : seq.val()
+				},
+				success : function(json){
+					var addComment = "";
+					addComment += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
+									+ "  <figure class='media-left image is-32x32'>"
+						<%-- #002 강사 아이콘 --%>
+									+ "    <img src='./img/sunny.png' alt='" + json.r_writer + "'>"
+									+ "  </figure>"
+									+ "  <div class='media-content'><div class='content'><p>"
+									+ "    <small>"
+									+ "      <span class='author'><strong>" + json.r_writer + "</strong></span>"
+									+ "      <span class='updated_at'>" + json.r_reg_date + "</span>"
+									+ "    </small><br>"
+									+ "    <span class='article_body'>" + json.r_content + "</span>"
+									+ "  </p></div></div>"
+									+ "</article></div></div>";
+					addCom.after(addComment);
+					$(this).prevAll(".commentBtn").css('display', 'none');
+				}
+			});
+		});
+	<%-- 댓글 작성 --%>
+	
 	<%-- 수강평 더 보기 버튼 생성 --%>
 		var review_cnt = $(".review_list .article_container").length;
 		if(review_cnt < ${ fn:length(reviewList) }){
@@ -871,7 +924,7 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 	<%-- 수강평 더 보기 버튼 생성 --%>
 		
 	<%-- 수강평 로드 --%>
-		$(".e_show_more_review").click(function(){
+		$(document).on('click', '.e_show_more_review', function(){
 			$.ajax({
 				url      : "./DetailReview.le",
 				type     : "POST",
@@ -880,17 +933,15 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 					l_number : ${ ldto.getL_number() }
 				},
 				success: function (json){
+					console.log(json);
 					var output = "";
 					var pre_count = $(".review_list>.article_container").length;
 					for(var i=pre_count; i<json.length; i++){
 						if(json[i].r_re_lev == 0){
 						output += "<div class='article_container'><article class='media review_item'>"
 								+ "  <figure class='media-left image is-64x64'>"
-<%--
-	#003 회원 이미지 DB추가 & 주소 변경 "/upload" 회원 memberdto
-	리뷰 -> 회원 정보 조회 -> 이미지 가져오기
---%>
-								+ "    <img src='./img/main-img/lect_10.png' class='is-rounded' alt='default_profile.png'>"
+					<%-- #001 회원 아이콘 --%>
+								+ "    <img src='./img/carrotIcon.png' class='is-rounded' alt='default_profile.png'>"
 								+ "  </figure>"
 								+ "  <div class='media-content'>"
 								+ "    <div class='content'>"
@@ -909,26 +960,38 @@ rel=\"noopener\">https://goo.gl/AwAwUT</a><h3></h3> 대학 새내기 시절 코�
 								+ "        <span>" + json[i].r_reg_date + "</span><span class='option'></span>"
 								+ "      </small><br>"
 								+ "      <div class='review_body'>" + json[i].r_content + "</div>";
-							if(${ mdto != null && mdto.getM_email() != null && mdto.getM_rank().equals("강사") }){
+							if(${ mdto != null && mdto.getM_email() != null && mdto.getM_rank() == 2 }){
+								if(!(i + 1 >= json.length)){
+									if(!(json[i].r_re_ref == json[i + 1].r_re_ref)){
 							output += "      <div class='reactions'>"
-									+ "        <button class='button is-link is-small'>"
+									+ "        <input type='hidden' class='r_re_lev' value='" + json[i].r_re_lev + "'>"
+									+ "        <input type='hidden' class='r_re_ref' value='" + json[i].r_re_ref + "'>"
+									+ "        <input type='hidden' class='r_re_seq' value='" + json[i].r_re_seq + "'>"
+									+ "        <textarea class='comment_area' style='display: none'></textarea>"
+									+ "        <button class='button is-link is-small commentBtn'>"
 									+ "          <span class='is-hidden-mobile'>답글 쓰기</span>"
 									+ "          <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
 									+ "        </button>"
+									+ "	       <button class='button is-link is-small sendComment' style='display: none'>"
+									+ "	         <span class='is-hidden-mobile'>답글 쓰기</span>"
+									+ "	         <span class='is-hidden-tablet'><i class='fa fa-commenting-o'></i></span>"
+									+ "        </button>"
 									+ "      </div>";
+									}
+								}
 							}
-						 	if(json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
+						 	if(i<json.length - 1 && json[i + 1].r_re_lev == 1 && json[i].r_re_ref == json[i + 1].r_re_ref) {
 							output += "<div class='review_comments'><div class='article_container'><article class='media comment'>"
 									+ "  <figure class='media-left image is-32x32'>"
-<%-- #006 강사 회원 이미지 DB추가 & 주소 변경 --%>
-									+ "    <img src='./upload/" +  ${ lmdto.getM_nick() } + "' alt='" + json[i].r_writer + "'>"
+					<%-- #002 강사 아이콘 --%>
+									+ "    <img src='./img/sunny.png' alt='" + json[i + 1].r_writer + "'>"
 									+ "  </figure>"
 									+ "  <div class='media-content'><div class='content'><p>"
 									+ "    <small>"
-									+ "      <span class='author'><strong>" + json[i].r_writer + "</strong></span>"
-									+ "      <span class='updated_at'>" + json[i].r_reg_date + "</span>"
+									+ "      <span class='author'><strong>" + json[i + 1].r_writer + "</strong></span>"
+									+ "      <span class='updated_at'>" + json[i + 1].r_reg_date + "</span>"
 									+ "    </small><br>"
-									+ "    <span class='article_body'>" + json[i].r_content + "</span>"
+									+ "    <span class='article_body'>" + json[i + 1].r_content + "</span>"
 									+ "  </p></div></div>"
 									+ "</article></div></div>";
 							}

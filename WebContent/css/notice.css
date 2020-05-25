@@ -145,20 +145,21 @@ hr{
 	font-weight: 400;
 }
 
-.pageNation{
-	text-align: center;
-	position: absolute;
-	bottom: 15em;
-	left: 50%;
+.pageNation {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10em;
 }
 
 .pageNation a {
     border: 1px #b5b5b5 solid;
+    border-radius:5px;
     color: #00c471;
-    margin: 0.8em;
-    padding: 0.1em 0.4em;
+    margin: 0.2em;
+    padding: 0.2em 0.4em;
 }
-.pageNation a:ACTIVE {
+.pageNation a:HOVER {
 	color: #ffffff;
     background-color: #00c471;
 }

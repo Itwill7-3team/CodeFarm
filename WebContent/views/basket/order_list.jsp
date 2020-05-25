@@ -10,31 +10,54 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <title>코딩팜 - 구매 내역 | 온라인 강의 플랫폼</title>
-
+<link rel="stylesheet" href="./css/orderlist.css">
 <jsp:include page="/include/header.jsp"/>
 <style type="text/css">
 
-#alll{
-margin: 5% auto 20% auto; 
-width: 1000px; height: auto;
- box-sizing: inherit;
- font-size: 15px;
- }
 
-table {
-border-collapse: collapse;
-border-top: 1px solid pink;
-width: 1000px;
 
-}  
+@media screen and (max-width: 1085px) {
 
- th, td {
-    
-    padding: 15px;
-  }   
+	/* 모바일   */
+	.profile_aside{
+	display: none !important;
+	}
+	
+}
+
+@media screen and (max-width: 1360px) {
+	
+
+	.profile_aside>ul{
+	padding: 0 0 0 1em;
+	}
+	.Owrap{
+	width: 100% !important;
+	}
+	#alll{
+	margin: 4em 1em !important;
+	}
+}
+@font-face{
+	font-family: 'NotoSansCJKkr-Regular';
+	src: url(./fonts/NotoSansCJKkr-Regular.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Light';
+	src: url(./fonts/NotoSansCJKkr-Light.otf) format('truetype')
+	}
+@font-face{
+	font-family: 'NotoSansCJKkr-Bold';
+	src: url(./fonts/NotoSansCJKkr-Bold.otf) format('truetype')
+	}
+
 </style>
 </head>
 <body>
+<div class="Owrap">
+<!-- aside 영역 -->
+<jsp:include page="/include/dash-aside.jsp"/>
+<!-- aside 영역 -->   
 
 	<%
 	  ArrayList orderList 
@@ -42,7 +65,7 @@ width: 1000px;
 	
 	%>
 	<section id="alll" >
-	<h2> 구매 내역 </h2>
+	<span class="list-title"> 내 구매 내역 </span>
 	
 	<table>
 
@@ -74,7 +97,7 @@ width: 1000px;
 	     <%-- <td><%=odto.getO_sum_money() %></td> --%> 
 	   <td> <c:set var="total" value="<%=total%>" />
 	     <fmt:setLocale value="ko_KR" />
-		<fmt:formatNumber type="currency" value="${total}" /> 원</td>
+		<fmt:formatNumber type="currency" value="${total}" /></td>
 	    
 	    <!-- status 수정 -->
 	    
@@ -109,7 +132,7 @@ width: 1000px;
 	</table>
 
 </section>
-
+</div>
 <jsp:include page="/include/footer.jsp"/>
 
 

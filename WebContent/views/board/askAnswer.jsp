@@ -11,15 +11,42 @@
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜 - 묻고 답하기</title>
 <link href="./css/askAnswer.css" rel="stylesheet">
+
+<style type="text/css">
+body{
+position: relative;
+}
+
+.pageNation{
+position: absolute;
+bottom: 5em;
+left: 40%;
+text-align: center;
+width:300px;
+}
+.pageNation a{
+border: 1px #ccc solid;
+padding: 0.5em;
+color: #00c471;
+border-radius: 5px;
+}
+
+.pageNation a:HOVER{
+background-color: #00c471;
+color: #ffff;
+}
+
+</style>
+
 </head>
 <body>
 
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	<script>
-$(document).ready(function() {
+	$(document).ready(function() {
 	
-});
-function timeBefore(timedate){
+	});
+	function timeBefore(timedate){
     //현재시간
     var now = new Date(); 
     console.log(now);
@@ -104,9 +131,23 @@ function timeBefore(timedate){
 			<!--  -->
 			<div class="content">
 				<%
-					String pageNum=request.getAttribute("pageNum").toString();
+				
+				
+				
+
+				//페이징 정보
+				String pageNum=(String)request.getAttribute("pageNum");
+				int count = (Integer)request.getAttribute("count");
+				int pageCount=(Integer)request.getAttribute("pageCount");
+				int pageBlock=(int)request.getAttribute("pageBlock");
+				int startPage=(int)request.getAttribute("startPage");
+				int endPage=(int)request.getAttribute("endPage");
+
+
+// 					String pageNum=request.getAttribute("pageNum").toString();
 					ArrayList<AskDTO> boardList=(ArrayList<AskDTO>)request.getAttribute("boardList");
 					for(AskDTO bdto: boardList){
+						
 				%>
 				<div class="quest_list_item">
 					<div class="item_content">
@@ -129,7 +170,7 @@ function timeBefore(timedate){
 					<%
 					//답글유무 체크
 					int check = new AskDAO().getAnswerCount(bdto.getNum());
-					System.out.println("check:"+check); 
+// 					System.out.println("check:"+check); 
 					%>
 					<span>답변 <%=check %>개 </span></div>
 					<div class="cooment_goods right_item"><i class="far fa-heart"> 0</i></div>
@@ -141,23 +182,62 @@ function timeBefore(timedate){
 		</div>
 		<div class="content_side">
 		<div class="best_kingKnowledge">
-			<h2>이달의 지식왕  <i class="fas fa-crown"></i></h2>
+		<img src="./img/king.png" width="45px" height="45px" style="margin-left: 5em;'">
+			<h2 style="margin-top: 0;">이달의 지식왕</h2>
 			<div class="best_list">
-			<h4 class="best_name">이소영</h4>
-			<h4 class="best_name">정민수</h4>
-			<h4 class="best_name">김홍준</h4>
-			<h4 class="best_name">박유준</h4>
+			<h4 class="best_name">조수아</h4>
 			<h4 class="best_name">변재정</h4>
 			<h4 class="best_name">최우영</h4>
-			<h4 class="best_name">조수아</h4>
+			<h4 class="best_name">김홍준</h4>
+			<h4 class="best_name">정민수</h4>
+			<h4 class="best_name">이소영</h4>
 			</div>
 		</div>
 		</div>
+		
+		
 		
 	</div>
 
 
 	</article>
+			<!--  -->
+		<div class="pageNation" style="">
+						<%
+						if(startPage > pageBlock){
+							//페이지 [이전]
+						%>
+							<a href="./askAnswer.bo?pageNum=<%=startPage-pageBlock%>">[이전]</a>
+						<%
+						}
+						%>
+						<%
+						if(count != 0){
+							for(int i=startPage;i<=endPage;i++){
+							//페이지 숫자 뿌리기
+							%>
+							<a href="./askAnswer.bo?pageNum=<%=i%>"><%=i %></a>
+							<%
+							}
+						}
+						%>
+						<%
+						if(endPage < pageCount){
+							//페이지 [다음]
+						%>
+							<a href="./askAnswer.bo?pageNum=<%=startPage+pageBlock%>">[다음]</a>
+						<%
+						}
+						%>
+						
+<%-- 						<%if(email.equals("admin@naver.com")){%> --%>
+<!-- 						<button onclick="location.href='noticeWrite.bo';">글쓰기</button> -->
+<%-- 						<% --%>
+						
+<%-- 						}%> --%>
+					
+		</div>	
+		<!--  -->
 	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
 </html>

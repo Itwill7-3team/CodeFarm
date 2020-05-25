@@ -1,0 +1,161 @@
+@CHARSET "UTF-8";
+
+@media print,screen and (max-width: 1250px) {
+   /* 데스크탑에서 사용될 스타일을 여기에 작성합니다. */
+	.content_side{
+	display: none;
+	}
+	.community_content{
+		min-height: calc(100vh - 243px) !important;
+	}
+}
+@media print,screen and (max-width: 1000px) {
+   /* 모바일에서 사용될 스타일을 여기에 작성합니다. */
+	.community_content aside{
+	display: none !important;}
+	.community_content{
+		min-height: calc(100vh - 243px) !important;
+	}
+}
+	
+
+.container>h2{
+	font-size:2em;
+	margin: 0;
+}
+.container>p{
+	margin: 0;
+}
+.container{
+	width:100%;
+	max-width: 1180px;
+	margin: 12px auto;
+}
+.community_header{
+	background-color: #333b3d;
+    color: white;
+    padding: 3px;
+}
+.select_item{
+	font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.content{
+	padding:0 50px;
+}
+
+.community_content{
+	width:100%;
+	max-width:1180px;
+	margin: 0 auto;
+	min-height: calc(100vh - 179px);
+	display: flex;
+	
+}
+.community_content aside{
+	float: left;
+    width: 17%;
+    min-height: 700px;
+    display: flex;
+    flex: 2;
+}
+.side_container a{
+	color: black;
+}
+.side_container li{
+	padding: 6px 0px;
+}
+.side_container{
+	box-sizing: border-box;
+    padding: 8px;
+}
+.small_tag{
+	font-size: 10px;
+    color: #86898c;
+}
+.columns{
+	float: left;
+    display: flex;
+    flex: 8;
+    box-sizing: border-box;
+}
+.main_content{
+	float: left;
+    width: 75%;
+    max-width:600px;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    flex:1;
+	position: relative;
+}
+.Q{
+	font-size: 28px;
+    font-weight: 600;
+	color: #00c471;
+}
+.content a{
+    font-size: 24px;
+    font-weight: 500;
+    color: #000000;
+}
+.fas.fa-angle-down,.fas.fa-angle-up{
+	font-size: 20px;
+}
+#buttons{
+	text-align: right;
+    bottom: 10px;
+    right: 20px;
+    position: absolute;
+}
+.pointer_btn.right{
+	margin-left: -5px;
+}
+.content_side{
+	width: 25%;
+    float: left;
+    box-sizing: border-box;
+    min-height: 500px;
+   
+}
+.select_item{
+	cursor: pointer;
+}
+
+.req{
+	height: 500px;
+	display: none;
+}
+.submit{
+	text-align: center;
+}
+.submit>button{
+	box-sizing: border-box;
+    padding: 4px;
+    width: 70px;
+    background-color: #00c471;
+    font-size: 22px;
+    border: 2px solid #00c471;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+.main_content>form{
+	position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+textarea{
+	overflow-x: hidden;
+    overflow-wrap: break-word;
+    height: 32px;
+    width: 100%;
+    font-size: 24px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid;
+    display: block;
+    overflow-y: hidden;
+    resize: none;
+}

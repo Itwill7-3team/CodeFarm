@@ -573,3 +573,9 @@ iframe {
 }
 
 
+.editor>iframe {
+    pointer-events: auto !important ;
+   
+}
+
+

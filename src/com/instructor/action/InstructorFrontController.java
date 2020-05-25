@@ -61,6 +61,7 @@ public class InstructorFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
+			//데이터 들고 업데이트로 감
 		}else if(command.equals("/InstructorLecturelist.in")){
 			System.out.println("/InstrucotrLectureList.in 페이지처리(Model->view)");
 			
@@ -73,7 +74,7 @@ public class InstructorFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(command.equals("/addLecture.in")){
+		}else if(command.equals("/updateLecture.in")){
 			action=new InstructorLectureListAction();
 			try{
 				forward=action.execute(request, response);
@@ -96,6 +97,31 @@ public class InstructorFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/addLectureList.in")){
 			action = new InstructorGetListAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/addLecture.in")){
+			forward=new ActionForward();
+			forward.setPath("./views/instructor/addLecture.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/insertInstructor.in")){
+			action=new insertLectureAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/removeInstructor.in")){
+			action=new removeInstructorAction();
+			try{
+				forward=action.execute(request, response);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/recordUpdate.in")){
+			action =new RecordUpdateAction();
 			try{
 				forward=action.execute(request, response);
 			}catch (Exception e) {

@@ -65,7 +65,7 @@ public class WishToBasketAction implements Action {
 		
 		
 		// 페이지 이동 (장바구니 목록 페이지)
-		forward.setPath("./WishList.wi");
+		forward.setPath("./BasketList.ba");
 		forward.setRedirect(true);	
 		return forward;
 	

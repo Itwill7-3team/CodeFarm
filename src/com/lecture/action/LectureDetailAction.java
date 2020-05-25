@@ -40,7 +40,7 @@ public class LectureDetailAction implements Action {
 			request.setAttribute("mdto", mdto);
 			
 			OrderDAO odao = new OrderDAO();
-			List<OrderDTO> orderList = odao.getOrderList(m_email); // 회원 주문 확인
+			List<OrderDTO> orderList = odao.getOrderDetail(m_email); // 회원 주문 확인
 			request.setAttribute("orderList", orderList);
 			
 			Vector vec = wdao.getWishList(m_email); // 회원별 위시 확인

@@ -258,7 +258,7 @@ public class LectureDAO {
 						SQL.append(" where record=1 order by l_goods desc limit 0,5 ");
 					}
 					else if(item.equals("new")){
-						SQL.append(" where record=1 order by l_reg_date desc limit 0,5 "); //신규 5개
+						SQL.append(" where record=1 and l_price!=0 order by l_reg_date desc limit 0,5 "); //신규 5개
 					}
 					else if(item.equals("free")){
 						SQL.append(" where l_price=0 and record=1 order by l_reg_date desc limit 0,5");
@@ -269,9 +269,15 @@ public class LectureDAO {
 					rs=pstmt.executeQuery();
 					while(rs.next()){
 						LectureDTO ldto=new LectureDTO();	//while안에 dto만들어야함.밖에만드니까 리스트에 똑같은 품목(마지막것)만 계속 나옴
+						//화면에 출력될 메일주소에서 @ 제거
+						String id=null;
+						if(rs.getString("l_m_email").indexOf("@")>-1){
+							id=rs.getString("l_m_email").substring(0,rs.getString("l_m_email").indexOf("@"));
+						}else{id=rs.getString("l_m_email");}
+						//
 						ldto.setL_content(rs.getString("l_content"));
 						ldto.setL_goods(rs.getInt("l_goods"));
-						ldto.setL_m_email(rs.getString("l_m_email"));
+						ldto.setL_m_email(id);
 						ldto.setL_number(rs.getInt("l_number"));
 						ldto.setL_pct(rs.getInt("l_pct"));
 						ldto.setL_price(rs.getInt("l_price"));
@@ -444,5 +450,48 @@ public class LectureDAO {
 		return lectureList;
 	}
 	// getLectureList(String l_m_email) // 강사별 강의 목록
+	public int createLecture(String email,String title) {
+		int check=0;
+		try{
+			con =getConnection();
+			sql="select max(l_number) from lecture";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				check=rs.getInt(1)+1;
+			}
+			sql="insert into lecture(l_number,l_title,l_m_email) values(?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, check);
+			pstmt.setString(2, title);
+			pstmt.setString(3, email);
+			
+			pstmt.executeUpdate();
+			System.out.println("정상작동"+check);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return check;
+	}
+	public void removeInstructor(int l_num) {
+		try{
+			con=getConnection();
+			sql="delete from lecture where l_number=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, l_num);
+			
+			pstmt.executeUpdate();
+			
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		
+	}
 	
 }

@@ -259,8 +259,14 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 									<input type="text" class=input placeholder="질문검색">
 									<i class="fas fa-search"></i>
 								</div>
-								<div class="buttons"></div>
-								<div class="editor"></div>
+								<div class="buttons askBtn">
+									<input type="button" value="질문하기">								
+								</div>
+								<!-- askForm -->
+								<div class="editor" style="display: none;">
+								<iframe src="AskWrite.bo" name="askF"></iframe>
+								</div>
+								<!-- askForm -->
 							</div>
 						</div>
 						<div class="unit_post_list">
@@ -271,13 +277,21 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 			</section><!-- lecture_container -->
 		</main><!-- main -->
 	</div><!-- root -->
+<script type="text/javascript">
+$(".askBtn").click(function(){
+  $(".editor").toggle();
+});
+</script>
+	
 	
 <script>
 function openNavL() {
+	$("#mySidenavL").animate({'left':0},'slow');
 	document.getElementById("mySidenavL").style.width = "330px";
 	}
 function closeNavL() {
-	document.getElementById("mySidenavL").style.width = "0";
+	$("#mySidenavL").animate({'left':'-330px'},'slow');
+	
 	}
 function openNavR() {
 	document.getElementById("mySidenavR").style.width = "420px";

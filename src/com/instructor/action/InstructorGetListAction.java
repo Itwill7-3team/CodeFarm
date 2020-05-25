@@ -23,8 +23,7 @@ public class InstructorGetListAction implements Action{
 		if(session.getAttribute("m_email")==null){
 			PrintWriter out= response.getWriter();
 			out.write("<script>");
-			out.write("alert('로그인후 이용해주세요');");
-			out.write("location.href='main.le'");
+			out.write("location.href='Main.le'");
 			out.write("</script>");
 			out.close();
 		}
@@ -32,7 +31,7 @@ public class InstructorGetListAction implements Action{
 		 *  강사인지 확인후 아니면 권한이 없다고 출력후 Main으로 
 		 *  
 		 * if(session.getAttribute("m_email")==null){
-			PrintWriter out= response.getWriter();
+			PrintWriter out= response.g	etWriter();
 			out.write("<script>");
 			out.write("alert('접근 권한이 없습니다.');");
 			out.write("location.href='main.le'");

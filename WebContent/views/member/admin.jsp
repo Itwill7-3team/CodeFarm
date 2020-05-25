@@ -57,13 +57,23 @@
 	    </tr>
 	    
 	    <%
+	    String rank = "";
 	       for(int i=0;i<memberList.size();i++){
 	    	   MemberDTO mdto = memberList.get(i);
+	    	   if(mdto.getM_rank()==0){
+	    		  rank ="비회원";
+	    	   }else if(mdto.getM_rank()==1){
+	    		   rank ="회원";
+	    	   }else if(mdto.getM_rank()==2){
+	    		   rank ="강사";
+	    	   }else if(mdto.getM_rank()==3){
+	    		   rank ="관리자"; 
+	    	   }
 	    	   %>
 	    	    <tr>
-			      <td><%=mdto.getM_email() %></td>
-			      <td><%=mdto.getM_rank() %></td>
-			      <td><input type="button" value="회원 탈퇴" onclick="location.href='AdminDeleteAction.me?<%=mdto.getM_email() %>'" ></td>
+			      <td><a href="./SerchInfo.me?m_email=<%=mdto.getM_email() %>"><%=mdto.getM_email() %></a></td>
+			      <td><%=rank %></td>
+			      <td><input type="button" value="회원 탈퇴" onclick="del('<%=mdto.getM_email() %>')" ></td>
 			    </tr>
 	    	   <%
 	       }
@@ -91,5 +101,11 @@
 
 
 </body>
-
+<script type="text/javascript">
+function del(m_email){
+	if(confirm("정말 회원을 탈퇴 시키겠습니까?")){
+	location.href='AdminDeleteAction.me?m_email='+m_email;
+}
+}
+</script>
 </html>
