@@ -102,7 +102,7 @@ public class BlogDAO {
 				bdto.setB_title(rs.getString("b_title"));
 				bdto.setB_img(rs.getString("b_img"));
 				//메인에서 태그 빼는 정규식
-				bdto.setB_content(rs.getString("b_content").replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+				bdto.setB_content(rs.getString("b_content").replaceAll("<(/)?([a-zA-Z1-9]*)(\\s[a-zA-Z1-9]*=[^>]*)?(\\s)*(/)?>", ""));
 				bdto.setB_writer(rs.getString("b_writer"));
 				bdto.setB_reg_date(rs.getTimestamp("b_reg_date"));
 				bdto.setB_ip(rs.getString("b_ip"));

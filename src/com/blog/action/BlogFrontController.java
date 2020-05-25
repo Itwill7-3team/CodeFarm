@@ -84,8 +84,7 @@ public class BlogFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-	 /* else if(command.equals("/noticeUpdate.bo")){
+		}else if(command.equals("/blogUpdate.bl")){
 			//게시글 읽기(모델-뷰)
 			action=new BlogUpdate();
 			try{
@@ -93,7 +92,8 @@ public class BlogFrontController extends HttpServlet{
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/noticeUpdateAction.bo")){
+		}
+		/*else if(command.equals("/noticeUpdateAction.bo")){
 			//게시글 읽기(모델-뷰)
 			action=new BlogUpdateAction();
 			try{
