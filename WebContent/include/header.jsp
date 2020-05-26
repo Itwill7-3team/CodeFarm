@@ -324,8 +324,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<%}else{ %>
 				<div class="login">
 					<div class="basket"><img alt="logo" src="./img/cart.png" onclick="location.href='BasketList.ba'"></div>
+					
+					<div class="status"><img alt="logo" src="./img/sunny.png" ></div>
 					</div>
-					<div class="status"><img alt="logo" src="./img/sunny.png" onclick="location.href='DashBoard.bo'"></div>
 				</div>
 				<%} %>
 			</div>
