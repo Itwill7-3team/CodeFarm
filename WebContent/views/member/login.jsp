@@ -126,7 +126,7 @@ Kakao.Auth.createLoginButton({
 var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "n1A2gvk1H0li6JGsisBI",
-			callbackUrl: "http://localhost:8090/CodeFarm/naverLogin.me",
+			callbackUrl: "http://192.168.7.21:8088/CodeFarm/naverLogin.me",
 			isPopup: false, /* 팝업을 통한 연동처리 여부 */
 			loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
 		}
