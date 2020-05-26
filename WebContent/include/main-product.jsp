@@ -282,19 +282,19 @@ for(int i=0;i<freeList.size();i++){
 <h1 class="title">관심사</h1> 
 <!-- <a href="#">&#10095;</a> -->
 <div class="interest">
-<a href="#">  <img src="./img/main-img/ic1.png" alt="웹개발" > </a>
-<a href="#">  <img src="./img/main-img/ic2.png" alt="앱개발" > </a>
-<a href="#">  <img src="./img/main-img/ic3.png" alt="통계" > </a>
-<a href="#">  <img src="./img/main-img/ic4.png" alt="엑셀" > </a>
-<a href="#">  <img src="./img/main-img/ic5.png" alt="게임" > </a>
-<a href="#">  <img src="./img/main-img/ic6.png" alt="리액트" > </a>
-<a href="#">  <img src="./img/main-img/ic7.png" alt="보안" > </a>
-<a href="#">  <img src="./img/main-img/ic8.png" alt="자바" > </a>
-<a href="#">  <img src="./img/main-img/ic9.png" alt="알고리즘" > </a>
-<a href="#">  <img src="./img/main-img/ic10.png" alt="수학" > </a>
-<a href="#">  <img src="./img/main-img/ic11.png" alt="파이썬" > </a>
-<a href="#">  <img src="./img/main-img/ic12.png" alt="자바스크립트" > </a>
-<a href="#">  <img src="./img/main-img/ic13.png" alt="더보기" > </a>
+<a href="./Search.le?t1=it-programming&t2=web-dev">  <img src="./img/main-img/ic1.png" alt="웹개발" > </a>
+<a href="./Search.le?t1=it-programming&t2=mobile-app">  <img src="./img/main-img/ic2.png" alt="앱개발" > </a>
+<a href="./Search.le?t1=it-programming&t2=data-analysis">  <img src="./img/main-img/ic3.png" alt="통계" > </a>
+<a href="./Search.le?t1=business&t2=office">  <img src="./img/main-img/ic4.png" alt="엑셀" > </a>
+<a href="./Search.le?t1=it-programming&t2=game-dev">  <img src="./img/main-img/ic5.png" alt="게임" > </a>
+<!-- <a href="#">  <img src="./img/main-img/ic6.png" alt="리액트" > </a> -->
+<a href="./Search.le?t1=it-programming&t2=security">  <img src="./img/main-img/ic7.png" alt="보안" > </a>
+<a href="./Search.le?t1=it-programming&t2=programming-lang">  <img src="./img/main-img/ic8.png" alt="자바" > </a>
+<a href="./Search.le?t1=it-programming&t2=algorithm">  <img src="./img/main-img/ic9.png" alt="알고리즘" > </a>
+<a href="./Search.le?t1=it-programming&t2=math">  <img src="./img/main-img/ic10.png" alt="수학" > </a>
+<!-- <a href="#">  <img src="./img/main-img/ic11.png" alt="파이썬" > </a> -->
+<!-- <a href="#">  <img src="./img/main-img/ic12.png" alt="자바스크립트" > </a> -->
+<a href="./Search.le">  <img src="./img/main-img/ic13.png" alt="더보기" > </a>
 </div>
 
 
