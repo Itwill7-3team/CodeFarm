@@ -266,13 +266,25 @@ overflow-y: auto;
 </style>
 </head>
 
+<%--
+	int f_l_num = Integer.parseInt(request.getParameter("f_l_num"));
+	String f_m_email = request.getParameter("f_m_email");
+	int f_sec_list = Integer.parseInt(request.getParameter("f_sec_list"));
+	String f_sec_name = request.getParameter("f_sec_name");
+	int f_col_list = Integer.parseInt(request.getParameter("f_col_list"));
+	String f_col_name = request.getParameter("f_col_name");
+	String f_name = request.getParameter("f_name");
+--%>
+
 <div class="video modal ">
             <div class="dimmed"></div>
             <section class="modal-card content modal_content modify_lecture_modal_content">
               <header class="modal-card-head">
                 <div class="control">
                   <label>
-                    수업 제목<input type="text" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요." value="${id}">
+                  
+<%-- f_col_name parameter 받아오기 -> readonly  sssssssssssssss --%>
+                    수업 제목<input type="text" name="title" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요.">
                   </label>
                 </div>
                 <div class="x_btn_wrapper">

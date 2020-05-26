@@ -214,12 +214,14 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 									<div class="playjs">
 										<div class="playjs2">
 										
-								 <iframe width="100%" height="100%"
+								 <!-- <iframe width="100%" height="100%"
   										src="https://www.youtube.com/embed/60ctvQsY7ws?rel=0&amp;modestbranding=1&amp;vq=hd720&amp;autoplay=1&amp;enablejsapi=1" 
   										frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen" 
   										data-gtm-yt-inspected-8964582_7="true" id="212470628">
-								</iframe>
-
+								</iframe> -->
+										<video src="./css/Pasta-33256.mp4" controls autoplay frameborder="0">
+										
+										</video>
 										<!-- <iframe src="./css/Pasta-33256.mp4"
 										frameborder="0" allow="autoplay; encrypted-media" x-webkit-airplay="allow" preload="none" allowfullscreen="allowfullscreen" id="iframe_1">
 										</iframe> -->
@@ -260,7 +262,7 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 									<i class="fas fa-search"></i>
 								</div>
 								<div class="buttons askBtn">
-									<input type="button" value="질문하기">								
+									<input type="button" class="button" value="직접입력">								
 								</div>
 								<!-- askForm -->
 								<div class="editor" style="display: none;">
@@ -323,10 +325,14 @@ function getParameterByName(name) {
             results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
-function is_now(){
+
+
+
+/* function is_now(){
 	var f_num = getParameterByName("f_num");
+	var unit = document.getElementByClass(".unit_lecture").href */
 	/* var unit = document.getElementByClass(".unit_lecture").href */
-	var loc = window.location.href
+/* 	var loc = window.location.href
 	console.log("F"+f_num+"U"+unit+"L"+loc);
 	if(document.getElementById(".unit_lecture").href == window.location.href){
 		$(".unit_lecture").addClass("is_now");
@@ -336,7 +342,7 @@ function is_now(){
 $(".unit_lecture").click(function(){
 	is_now();
 	document.location.href = $(this).attr("href");
-});
+}); */
 
 
 </script>
