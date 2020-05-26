@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link href="./css/nav-footer.css" rel="stylesheet">
+
+
 <script>
 $(document).ready(function(){
 	var data=document.location.href.split("/CodeFarm/");
@@ -13,6 +15,8 @@ $(document).ready(function(){
 });
 
 </script>
+<jsp:include page="./footer_aside.jsp"/><!-- 사이드바 -->
+
 <div class="nav_content">
 <a href="Main.le" class="mg_auto">
 	<div class="home nav_btn">
@@ -44,5 +48,39 @@ $(document).ready(function(){
 		<span class="name">더보기</span>
 	</div>
 </a>
+
+
+
+<!-- 오버레이 켜기/끄기 -->
+<script>
+$(document).ready(function(){
+	$(".etc").click(function (){
+		$("#f_overlay").toggle();
+	});
+});
+ 
+</script>
+
+
+
+<!-- accordion -->
+<script>
+/* var acc = document.getElementsByClassName("nav-accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+} */
+</script>
+
+
 
 </div>

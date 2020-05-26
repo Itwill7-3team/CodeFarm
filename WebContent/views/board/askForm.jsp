@@ -51,7 +51,9 @@ height: 50%;}
 									
 									</script>
 													
+									
 <%
+
 String email="";
 if(session.getAttribute("m_email")!=null){
 email=(String)session.getAttribute("m_email");
@@ -61,7 +63,7 @@ email=(String)session.getAttribute("m_email");
 																									
 									<div class="ask_form">
 										<form action="AskAction.bo" method="post">
-										<input type="hidden" name="num" value="1"> <!-- lecture num test값 -->
+										<input type="hidden" name="num" value=""> <!-- lecture num test값 -->
 										<input type="hidden" name="writer" value="<%=email%>">
 										제목 : <input type="text" name="title" style="width: 95%;">
 										<textarea name="content" id="summernote">
@@ -70,6 +72,13 @@ email=(String)session.getAttribute("m_email");
 										</form>
 									</div>
 									
+									<script>
+										var lNum = parent.document.all["lNum"].value;
+										//alert(lNum);
+										$(".ask_form").find("input[name='num']").attr("value",lNum);
+									
+										
+									</script>
 
 
 </body>
