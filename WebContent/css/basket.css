@@ -1,14 +1,17 @@
 @CHARSET "UTF-8";
 
-@media screen and (max-width: 1775px) {
+@media screen and (min-width:992px) {
 
 	/* 화면사이즈 줄면   */
 	.boxx2 {
-	    min-width: 600px;
+	 
 	}
-
 }
+@media screen and (min-width:992px){
+.boxx {
 
+	}
+}
 
 
 
@@ -33,14 +36,16 @@ font-family: 'NotoSansCJKkr-Light';}
 
 .boxx{float:left; 
 border-bottom:1px solid #ccc; 
-width: 650px; height: auto;  
+width: 100% height: auto;  
 padding: 10px 10px 20px 0;
+max-width: 650px;
 
 }
 
 .boxx2{display: inline-block;
-width:320px; height:auto; 
+width:100% height:auto; 
 margin-left: 30px;
+max-width: 320px;
 
 }
 
@@ -532,7 +537,7 @@ padding-bottom: 1rem;
     flex-grow: 1;
     flex-shrink: 1;
     padding: .75rem;
-    width: 60%;
+    width: 100%;
     min-width: 640px;
 }
 .bcolumn .bbox.coupon_item_list {
@@ -647,9 +652,6 @@ padding-bottom: 1rem;
 .is-hidden {
     display: none!important;
 }
-
-
-
 
 
 
