@@ -525,7 +525,7 @@ $(document).ready(function() {
 	});
 	
 	
-	//수업 변경 이벤트 ssssssssssssss
+	//수업 변경 이벤트 
 	$(document).on("click",".lecture_mod_btn",function(){
 		var f_l_num     = ${ ldto.l_number };
 		var f_m_email   = "${ ldto.l_m_email }";
