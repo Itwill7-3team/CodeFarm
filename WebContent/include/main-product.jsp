@@ -158,7 +158,7 @@ for(int i=0;i<bestList.size();i++){
 					</div>
 					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
 					</div>
-		<span class="review_cnt"><%=beststarCount.get(i)%></span> 
+		<span class="review_cnt">(<%=beststarCount.get(i)%>)</span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
@@ -201,7 +201,7 @@ for(int i=0;i<newList.size();i++){
 					</div>
 					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
 					</div>
-		<span class="review_cnt"><%=newstarCount.get(i)%></span> 
+		<span class="review_cnt">(<%=newstarCount.get(i)%>)</span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>
@@ -243,7 +243,7 @@ for(int i=0;i<freeList.size();i++){
 					</div>
 					<i class="far fa-star" data-value="5" aria-hidden="true"></i><i class="far fa-star" data-value="4" aria-hidden="true"></i><i class="far fa-star" data-value="3" aria-hidden="true"></i><i class="far fa-star" data-value="2" aria-hidden="true"></i><i class="far fa-star" data-value="1" aria-hidden="true"></i>
 					</div>
-		<span class="review_cnt"><%=freestarCount.get(i)%></span> 
+		<span class="review_cnt">(<%=freestarCount.get(i)%>)</span> 
 		
 		<span class="mg-l50">
 		<a class="addwish_btn"><i class="fa fa-heart-o"></i></a>

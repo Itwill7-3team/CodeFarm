@@ -143,12 +143,12 @@ height: 320px;
 
 @media screen and (max-width: 760px) {
 #lec {
-    width: 85%!important;}
+    width: 90%!important;}
 .card{
 	margin: 0 auto;}
 
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 630px) {
 	/* 웹 가장작은 사이즈, 카드2장 나오도록 */
 #lec {
     width: 100%!important;}
@@ -157,13 +157,10 @@ height: 320px;
 	margin: 0;
 	font-size: 13px;}
 .card img {
-	width: 100%!important; 
+	width: 100% !important; 
 /* 	height: 47%!important;  */
 	margin: 0;}
-.card-in {
-	width: 100%!important; 
-	height: 20%!important; 
-	margin: 0;}
+
 .card h2 {
 /*     font-size: 1rem !important; */
     text-align: left;
@@ -200,13 +197,10 @@ margin-left: 0 !important;
     height: 50%; 
 	font-size: 13px;}
 .card img {
-	width: 100%!important; 
-	height: 50%!important; 
+	width: 100% !important; 
+	height: 50% !important; 
 	}
-.card-in {
-	width: 100%!important; 
-	height: 20%!important; 
-	}
+
 .card h2 {
     font-size: 1rem !important;
     text-align: left;
@@ -319,10 +313,12 @@ position: absolute;
 bottom: 10px;
 padding: 0.5rem 0.8rem;
 text-align: left;
+width: 100%;
 }
 
 .mg-l50{
-margin-left: 40px;
+right: 10px;
+position: absolute;
 }
 .mg-t10{
 margin-top: 10px;
