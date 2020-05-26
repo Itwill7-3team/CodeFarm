@@ -44,6 +44,7 @@ margin-bottom: 10px;
     text-align: left;
 }
 .main_container ul{ padding: 0;}
+.main_container a{ color: black;}
 
 #lec{
 	display: inline-block;
