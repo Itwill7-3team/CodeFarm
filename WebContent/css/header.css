@@ -656,6 +656,22 @@ header .cover{
 header .tab_item.isActive{
 	border-bottom:2px solid #00c471;
 	}
+	
+header .mobile_right {
+	display: inline-flex;
+	margin-top: 15px;
+    line-height: 1.5;
+    max-width: 100%;
+}
+header .basket img{
+	cursor: pointer;
+	max-width: 44px;
+}	
+header .status img{
+	margin-left: 13px;
+	max-width: 44px;
+}
+	
 /* user_modal 끝 */
 
 .adminstyle a{
