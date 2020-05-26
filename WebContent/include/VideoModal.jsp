@@ -369,10 +369,49 @@ $('#summernote').summernote({
  $('.x_btn').click(function(){
 	removeModal();
 }); 
- var id=$("#modal").data("id");
- var id2=$("#modal").data("id2");
- $(".modify_lecture_title_input").attr("value",id+id2);
-	 function removeModal(){
-		$("#modal").remove();
-	} 
+	 
+// file 저장
+ $(document).ready(function() {
+ 	$(".add_btn").on("click",function(){
+ 		var f_l_num     = $("#modal").data("f_l_num");
+ 		var f_m_email   = $("#modal").data("f_m_email");
+ 		var f_sec_list  = $("#modal").data("f_sec_list");
+ 		var f_sec_name  = $("#modal").data("f_sec_name");
+ 		var f_col_list  = $("#modal").data("f_col_list");
+ 		var f_name      = $(this).parents(".modal-card-foot").prevAll(".modal-card-body").children(".note-editor").children(".note-editing-area").children(".note-editable").html();
+ 		
+ 		if($("#modal").data("f_col_name") == "값을 입력해주세요."){
+ 			if($(".modify_lecture_title_input").val() == ""){
+ 				var f_col_name = "수업 " + f_col_list;
+ 			} else {
+	 			var f_col_name = $(".modify_lecture_title_input").val();
+ 			}
+ 		} else {
+	 		var f_col_name = $("#modal").data("f_col_name");
+ 		}
+ 		console.log(f_col_name);
+ 		
+ 		$.ajax({
+ 			//enctype: 'multipart/form-data',
+ 			url  : "./sectionLectureAction.in",
+ 			type : "POST",
+ 			data : {
+ 				f_l_num    : f_l_num,
+ 				f_m_email  : f_m_email,  	
+ 				f_sec_list : f_sec_list,
+ 				f_sec_name : f_sec_name,
+ 				f_col_list : f_col_list,
+ 				f_col_name : f_col_name,
+ 				f_name     : f_name
+ 			},
+ 			success:function(data){
+ 				alert(data);
+ 			},
+ 			error: function (data) {
+ 				alert("저장실패!");
+ 			}
+ 		});
+ 	});
+ });
+ 
 </script>

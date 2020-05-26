@@ -525,11 +525,11 @@ $(document).ready(function() {
 	});
 	
 	
-	//수업 변경 이벤트
-	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
+	//수업 변경 이벤트 
+	$(document).on("click",".lecture_mod_btn",function(){
 		var f_l_num     = ${ ldto.l_number };
 		var f_m_email   = "${ ldto.l_m_email }";
-		var f_section   = $(this).parents("li").prev("li:first").find(".section_title");
+		var f_section   = $(this).parents("li").prevAll("li.unit_section:first").find(".section_title");
 		var f_sec_list  = f_section.children(".unit_label").html().split(" ")[2];
 		var f_sec_name  = f_section.children(".sec_name").html();
 		var f_column    = $(this).parents(".unit_box").children("p");
@@ -537,7 +537,6 @@ $(document).ready(function() {
 		var f_col_name  = f_column.children(".col_name").html();
 		
 		$("<div id='modal'>").dialog ({
-			
 			width : 1280,
 			modal : true,
 			open  : function(e) {
@@ -552,6 +551,7 @@ $(document).ready(function() {
 			f_col_name : f_col_name
 		});
 	});
+	
 	//수업 추가 이벤트
 	$(".curriculum_list").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");
@@ -563,7 +563,7 @@ $(document).ready(function() {
 					console.log("실행"+i);				
 				$(".curriculum_list>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
 						+'<div class="box unit_box">'
-						      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
+						      +'<p><span class="unit_label">수업   1 : </span><span class="col_name">'+data+'</span></p>'
 						      +'<div class="unit_btns">'
 						        +'<div>'
 						        	+'<button type="button" class="button4 lecture_mod_btn" >'

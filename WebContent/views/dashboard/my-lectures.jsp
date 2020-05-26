@@ -468,7 +468,7 @@ for(int i=0;i<lectureList.size();i++){
 									
 
 								<a class="course_card_front"
-									href="LectureVideo.le?l_number=<%=ldto.getL_number() %>&f_num=3">
+									href="Detail.le?num=<%=ldto.getL_number() %>">
 									
 									
 									<div class="card-image">

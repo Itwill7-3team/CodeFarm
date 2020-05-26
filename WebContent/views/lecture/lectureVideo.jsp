@@ -210,7 +210,7 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 								 <!-- <iframe src="https://www.youtube.com/embed/60ctvQsY7ws?rel=0&amp;modestbranding=1&amp;vq=hd720&amp;autoplay=1&amp;enablejsapi=1"
 								x-webkit-airplay="allow" preload="none" style="width: 100%; height: 100%; object-fit: contain; transition: filter 0.2s linear 0s; min-height: auto; max-height: none; min-width: auto; max-width: none;"
 								></iframe>  -->
-												z				
+																
 									<div class="playjs">
 										<div class="playjs2">
 										
@@ -266,6 +266,9 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 								</div>
 								<!-- askForm -->
 								<div class="editor" style="display: none;">
+								
+								<input type="hidden" name="lNum" value="<%=l_number %>">
+								
 								<iframe src="AskWrite.bo" name="askF"></iframe>
 								</div>
 								<!-- askForm -->
