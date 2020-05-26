@@ -14,10 +14,12 @@
     z-index: 80;
 }
 #right-nav_menu{
+	
 	width: 300px;
     height: 100%;
     position: fixed;
-    right: 0;
+    right: -300px;
     z-index: 99;
     background-color: white;
+     transition: right 0.5s;
 }
