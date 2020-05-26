@@ -51,9 +51,7 @@ height: 50%;}
 									
 									</script>
 													
-									<script>
-									var sName = parent.document.all["NAME"].value;
-									</script>
+									
 <%
 
 String email="";
@@ -65,9 +63,8 @@ email=(String)session.getAttribute("m_email");
 																									
 									<div class="ask_form">
 										<form action="AskAction.bo" method="post">
-										<input type="hidden" name="num" value="1"> <!-- lecture num test값 -->
+										<input type="hidden" name="num" value=""> <!-- lecture num test값 -->
 										<input type="hidden" name="writer" value="<%=email%>">
-										<input type="hidden" name="NAME" value=""><!--sName  -->
 										제목 : <input type="text" name="title" style="width: 95%;">
 										<textarea name="content" id="summernote">
 										</textarea>
@@ -75,6 +72,13 @@ email=(String)session.getAttribute("m_email");
 										</form>
 									</div>
 									
+									<script>
+										var lNum = parent.document.all["lNum"].value;
+										//alert(lNum);
+										$(".ask_form").find("input[name='num']").attr("value",lNum);
+									
+										
+									</script>
 
 
 </body>

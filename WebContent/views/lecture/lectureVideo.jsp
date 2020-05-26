@@ -264,7 +264,9 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 								</div>
 								<!-- askForm -->
 								<div class="editor" style="display: none;">
-								<input type="hidden" name="NAME" value="<%=l_number %>">
+								
+								<input type="hidden" name="lNum" value="<%=l_number %>">
+								
 								<iframe src="AskWrite.bo" name="askF"></iframe>
 								</div>
 								<!-- askForm -->
