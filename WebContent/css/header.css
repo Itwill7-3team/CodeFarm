@@ -172,7 +172,8 @@ header .descktop_content .fa-shopping-cart,.descktop_content .fa-bell{
 	text-align: center;
 	line-height:64px;
 	font-size:32px;
-	color:black
+	color:black;
+	
 }
 header .fas:HOVER {
 opacity: 0.6;
@@ -379,6 +380,7 @@ header .btn:HOVER{
 	opacity: 0.6;
     background-color: white;
     color: #00c471;
+    cursor: pointer;
 }
 #m-side-menu{ /* 사이드메뉴들어감 */
   position: absolute;
@@ -528,6 +530,7 @@ header .tab_btn{
 	display: none;
 	font-size: 16px;
 	border: 1px solid;
+	cursor: pointer;
 }
 header .tab_btn.active{
 	display: block;
@@ -549,6 +552,7 @@ header .profile_hover{
     line-height: 1.5;
     align-items: center;
     margin-left: 5px;
+    cursor: pointer;
 }
 header .profile_hover>span{
 	display: contents;
@@ -652,6 +656,32 @@ header .cover{
 header .tab_item.isActive{
 	border-bottom:2px solid #00c471;
 	}
+	
+header .mobile_right {
+	display: inline-block;
+    line-height: 1.5;
+    max-width: 100%;   
+}
+header .login {
+    float: right;
+}
+header .mobile_right img{
+	margin-top: 15px;
+}
+
+header .basket, header .status {
+	float: left;
+}
+header .basket img{
+	cursor: pointer;
+	max-width: 44px;
+	
+}	
+header .status img{
+	margin-left: 13px;
+	max-width: 44px;
+	cursor: pointer;
+}
 /* user_modal 끝 */
 
 .adminstyle a{

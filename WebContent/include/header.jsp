@@ -200,7 +200,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<div class="navbar-item carts">
 <!-- 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a> -->
 						<div class="profile_hover">
-							<span><img src="./img/cart.png"></span>
+							<span><img src="./img/cart.png" onclick="location.href='BasketList.ba'"></span>
 						</div>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
@@ -226,7 +226,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
 						<div class="profile_hover">
-							<span><img src="./img/sunny.png"></span>
+							<span><img src="./img/sunny.png" onclick="location.href='DashBoard.bo'"></span>
 						</div>
 							<span class="profile_icon"></span>
 							<div class="profile_modal_cover">
@@ -323,10 +323,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				</div>
 				<%}else{ %>
 				<div class="login">
-					<div class="basket">
-						
+					<div class="basket"><img alt="logo" src="./img/cart.png" onclick="location.href='BasketList.ba'"></div>
+					
+					<div class="status"><img alt="logo" src="./img/sunny.png" ></div>
 					</div>
-					<div class="status"></div>
 				</div>
 				<%} %>
 			</div>
