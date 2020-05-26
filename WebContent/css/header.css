@@ -671,7 +671,6 @@ header .mobile_right img{
 
 header .basket, header .status {
 	float: left;
-
 }
 header .basket img{
 	cursor: pointer;
@@ -681,9 +680,8 @@ header .basket img{
 header .status img{
 	margin-left: 13px;
 	max-width: 44px;
-	
+	cursor: pointer;
 }
-	
 /* user_modal 끝 */
 
 .adminstyle a{
