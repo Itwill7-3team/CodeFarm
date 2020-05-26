@@ -52,6 +52,7 @@ height: 50px;
 padding:0.8em;
 border-radius: 50%;
 margin: 1em auto 0.2em;
+box-sizing: border-box;
 }
 
 
@@ -78,13 +79,13 @@ font-size: 12px;
 
 
 
-<div id="f_overlay" onclick="off();"><!-- 오버레이 영역 -->
+<div id="f_overlay" onclick="f_overlay_off();"><!-- 오버레이 영역 -->
 
 <div id="f_more">
 <!-- f_more<br> -->
 
 <div class="f_more_box">
-<span class="f_box">
+<span class="f_box" onclick="location.href=''">
 <div class="f_icon">
 <i class='far fa-question-circle'></i>
 </div>
@@ -120,11 +121,11 @@ font-size: 12px;
 
 <!-- 오버레이 켜기/끄기 -->
 <script>
-function on() {
+function f_overlay_on() {
   document.getElementById("f_overlay").style.display = "block";
 }
 
-function off() {
+function f_overlay_off() {
   document.getElementById("f_overlay").style.display = "none";
 }
 </script>

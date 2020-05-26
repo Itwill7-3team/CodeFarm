@@ -12,6 +12,9 @@
    .nav_content{
    	display: none !important;
    }
+   #f_overlay{
+   	display: none !important;
+   }
 }
 
 
@@ -30,6 +33,7 @@
 	#ch-plugin{
 	display: none !important;
 	}
+	
 }
 body{
 	margin: 0;
