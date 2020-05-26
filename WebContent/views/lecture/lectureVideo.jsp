@@ -213,7 +213,18 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 																
 									<div class="playjs">
 										<div class="playjs2">
-										
+										<%
+fileCount = 0;
+for(int i=0; i<fileSet.size(); i++){
+	List<FileDTO> fdto = fileSet.get(i);
+%>
+							
+<%
+for(int j=0; j<fileSet.get(i).size(); j++){
+%>						
+							<%= fdto.get(j).getF_name()%>
+							
+<% }} %>
 								 <!-- <iframe width="100%" height="100%"
   										src="https://www.youtube.com/embed/60ctvQsY7ws?rel=0&amp;modestbranding=1&amp;vq=hd720&amp;autoplay=1&amp;enablejsapi=1" 
   										frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen" 
