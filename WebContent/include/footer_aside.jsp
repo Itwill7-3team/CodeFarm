@@ -16,7 +16,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    z-index: 74;
+    z-index: 50;
     cursor: pointer;
 }
 
@@ -52,6 +52,7 @@ height: 50px;
 padding:0.8em;
 border-radius: 50%;
 margin: 1em auto 0.2em;
+box-sizing: border-box;
 }
 
 
@@ -78,34 +79,34 @@ font-size: 12px;
 
 
 
-<div id="f_overlay" onclick="off();"><!-- 오버레이 영역 -->
+<div id="f_overlay" onclick="f_overlay_off();"><!-- 오버레이 영역 -->
 
 <div id="f_more">
 <!-- f_more<br> -->
 
 <div class="f_more_box">
-<span class="f_box">
+<span class="f_box" onclick="location.href='./askAnswer.bo'">
 <div class="f_icon">
 <i class='far fa-question-circle'></i>
 </div>
 <p>묻고답하기</p>
 </span>
 
-<span class="f_box">
+<span class="f_box" onclick="location.href='./notice.bo'">
 <div class="f_icon">
 <i class="fas fa-leaf"></i>
 <!-- <i class="fas fa-bullhorn"></i> -->
 </div>
 <p>공지사항</p>
 </span>
-<span class="f_box">
+<span class="f_box" onclick="location.href='./request.bo'">
 <div class="f_icon">
 <i class="fab fa-gripfire"></i>
 <!-- <i class="fab fa-medapps"></i> -->
 </div>
 <p>기능요청</p>
 </span>
-<span class="f_box">
+<span class="f_box" onclick="location.href='./blog.bl'">
 <div class="f_icon">
 <i class="fas fa-pen-fancy"></i>
 </div>
@@ -120,11 +121,11 @@ font-size: 12px;
 
 <!-- 오버레이 켜기/끄기 -->
 <script>
-function on() {
+function f_overlay_on() {
   document.getElementById("f_overlay").style.display = "block";
 }
 
-function off() {
+function f_overlay_off() {
   document.getElementById("f_overlay").style.display = "none";
 }
 </script>

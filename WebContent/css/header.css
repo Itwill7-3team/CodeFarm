@@ -12,6 +12,9 @@
    .nav_content{
    	display: none !important;
    }
+   #f_overlay{
+   	display: none !important;
+   }
 }
 
 
@@ -30,6 +33,7 @@
 	#ch-plugin{
 	display: none !important;
 	}
+	
 }
 body{
 	margin: 0;
@@ -44,7 +48,7 @@ header
 	top: 0;
     left: 0;
     right: 0;
-    z-index: 72;}
+    z-index: 30;}
 ul,li{list-style: none;}
 header .descktop_content,header .mobile_content{
 	display: flex;
@@ -456,7 +460,7 @@ header .tab_menu.active{
     border-bottom: 2px solid #00c471;
     font-weight: 600;
 }
-header .left_content a{
+ header .user_content .left_content a{
 	display: block;
     width: 100%;
     text-align: center;
@@ -466,7 +470,7 @@ header .left_content a{
     position: absolute;
     bottom: 0;
     
-}
+} 
 header .cart_modal .list_content{
 	overflow-y: auto;
 }
@@ -597,12 +601,12 @@ header .user_content{
     width: 100%;
     margin-bottom: 16px;
 }
-header .left_content{
+ header .user_content .left_content{
 	width: 48px;
     height: 48px;
     margin-right: 8px;
     flex-shrink: 0;
-}
+} */
 header .right_content{
 	display: flex;
     flex-direction: column;
