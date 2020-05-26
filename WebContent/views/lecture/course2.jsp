@@ -1,3 +1,4 @@
+<%@page import="com.member.db.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.review.db.ReviewDTO"%>
 <%@page import="java.util.Map"%>
@@ -27,6 +28,8 @@ List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureL
 List<BasketDTO> basketList = (List<BasketDTO>) request.getAttribute("basketList");
 ArrayList<Double> starList= (ArrayList<Double>)request.getAttribute("starList");
 ArrayList<Integer> starCount=(ArrayList<Integer>)request.getAttribute("starCount");
+/* ArrayList<String> memberList=(ArrayList<String>)request.getAttribute("memberList"); */
+
 String m_email = (String)session.getAttribute("m_email");
 String item = "seq";
 String s = "";
@@ -141,7 +144,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 					<main id="courses_main">
 						<nav class="breadcrumb">
 							<ul>
-								<li><a href="search.le" class="category_link">전체</a></li>
+								<li><a href="./Search.le" class="category_link">전체</a></li>
 							</ul>
 							<!--<button></button> für sidebar_left?? -->
 							<div class="buttons select_view_button">
@@ -189,7 +192,7 @@ for(int i=0;i<lectureList.size();i++){
 												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
 												<div class= "l_reg_date" style="display:none;"><%=ldto.getL_reg_date()%></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
-												<div class="course_instructor">instructor(구현중)</div>
+												<div class="course_instructor">Instructor</div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="star_solid" style="width: <%=starList.get(i)*20 %>%">
@@ -278,7 +281,8 @@ for(int i=0;i<lectureList.size();i++){
 															<c:forEach step="1" begin="1" end="5" var="i">
 															<i class="far fa-star" data-value="${6-i}" aria-hidden="true"></i>
 															</c:forEach>
-													<span><%=starCount.get(i) %></span>
+													<span class="review_cnt"> (<%= starCount.get(i) %>개의 수강평) </span>
+													</div>
 												</div>
 											</a>
 											<div class="course-price">
@@ -303,6 +307,7 @@ for(int i=0;i<lectureList.size();i++){
 									</div><!-- course-list-item -->
 								</div><!-- course-list-body -->
 <%
+
  	}
 } 
 %>								

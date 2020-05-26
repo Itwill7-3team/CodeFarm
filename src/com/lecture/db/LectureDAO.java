@@ -154,6 +154,7 @@ public class LectureDAO {
 		Map<String, Object> map=new HashMap<String,Object>();
 		List<Double> starList=new ArrayList<Double>();
 		List<Integer> starCount= new ArrayList<Integer>();
+		List<String> memberList = new ArrayList<String>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
 		int endNum = paging.getEndNnum();
@@ -231,6 +232,7 @@ public class LectureDAO {
 			ldto.setL_abilities(rs.getString("l_abilities"));
 			ldto.setL_based(rs.getString("l_based"));
 			ldto.setL_description(rs.getString("l_description"));
+			
 			sql="select avg(r_rating) from r_board group by r_l_num having r_l_num=?";
 			pstmt=con.prepareStatement(sql);
 			
@@ -256,6 +258,16 @@ public class LectureDAO {
 				starCount.add(0);
 			}
 			
+			sql = "select m_nick from member where m_email=?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, rs.getString("l_m_email"));
+			rs2 = pstmt.executeQuery();
+			if(rs.next()) {
+				memberList.add(rs2.getString(1));
+			}
+			
+			
 			lectureList.add(ldto);
 			
 		}	
@@ -264,6 +276,9 @@ public class LectureDAO {
 			map.put("lectureList", lectureList);
 			map.put("starList", starList);
 			map.put("starCount", starCount);
+			map.put("memberList", memberList);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{

@@ -262,7 +262,7 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 									<i class="fas fa-search"></i>
 								</div>
 								<div class="buttons askBtn">
-									<input type="button" value="질문하기">								
+									<input type="button" class="button" value="직접입력">								
 								</div>
 								<!-- askForm -->
 								<div class="editor" style="display: none;">
@@ -325,14 +325,14 @@ function getParameterByName(name) {
             results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
-function is_now(){
+
+
+
+/* function is_now(){
 	var f_num = getParameterByName("f_num");
-<<<<<<< HEAD
-	var unit = document.getElementByClass(".unit_lecture").href
-=======
+	var unit = document.getElementByClass(".unit_lecture").href */
 	/* var unit = document.getElementByClass(".unit_lecture").href */
->>>>>>> branch 'bhong1' of https://github.com/Itwill7-3team/CodeFarm.git
-	var loc = window.location.href
+/* 	var loc = window.location.href
 	console.log("F"+f_num+"U"+unit+"L"+loc);
 	if(document.getElementById(".unit_lecture").href == window.location.href){
 		$(".unit_lecture").addClass("is_now");
@@ -342,7 +342,7 @@ function is_now(){
 $(".unit_lecture").click(function(){
 	is_now();
 	document.location.href = $(this).attr("href");
-});
+}); */
 
 
 </script>
