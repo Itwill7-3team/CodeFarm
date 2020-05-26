@@ -6,12 +6,17 @@ public class PagingDTO {
 	private int totalCount;
 	private int beginPage;
 	private int endPage;
-	private int displayRow = 24;
+	private int displayRow = 3;
 	private int displayPage = 10;
+	/*private int displayRow = 24;
+	private int displayPage = 10;*/
 	boolean prev;
 	boolean next;
 	private int startNum;
 	private int endNum;
+	
+	
+	
 	
 	private String[] item = {"seq","popular","recent","rating","famous"};
 	
@@ -21,7 +26,7 @@ public class PagingDTO {
 	public void setItem(String[] item) {
 		this.item = item;
 	}
-	public int getEndNum() {
+	/*public int getEndNum() {
 		return endNum;
 	}
 	public void setEndNum(int endNum) {
@@ -29,7 +34,9 @@ public class PagingDTO {
 	}
 	public void setStartNum(int startNum) {
 		this.startNum = startNum;
-	}
+	}*/
+
+	
 	public int getPage() {
 		return page;
 	}
@@ -70,14 +77,8 @@ public class PagingDTO {
 	public boolean isPrev() {
 		return prev;
 	}
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
 	public boolean isNext() {
 		return next;
-	}
-	public void setNext(boolean next) {
-		this.next = next;
 	}
 	
 	private void paging() {
@@ -89,7 +90,9 @@ public class PagingDTO {
 		int totalPage = (int)Math.ceil(totalCount/(double)displayRow);
 		if(totalPage<endPage) {
 			endPage = totalPage;
-			next = false;
+		
+		/*next = endPage * 10 < totalPage?false:true;*/
+		next = false;
 		}else {
 			next = true;
 		}
@@ -101,9 +104,20 @@ public class PagingDTO {
 		startNum = (page-1)*displayRow+1;
 		return startNum;
 	}
-	public int getEndNnum() {
+	public int getEndNum() {
 		endNum = page*displayRow;
 		return endNum;
 	}
+	
+	
+
+	
+	/*public int getStartNum() {
+		return startNum;
+	}
+	public int getEndNnum() {
+	endNum = page*displayRow;
+		return endNum;
+	}*/
 	
 }

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 *, :after, :before{
-	margin: 0;
-	padding: 0;
 	box-sizing: inherit;
 }
 /* 별만들기  */
@@ -66,8 +64,8 @@
 /* 플립카드 시작 */
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 340px;
+  /* width: 300px; */
+  /* height: 340px; */
   perspective: 1000px;
 }
 
@@ -86,7 +84,7 @@
 }
 
 .flip-card-front, .flip-card-back {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
@@ -709,7 +707,7 @@ nav.breadcrumb ul {
 @media print, screen and (min-width: 769px){
 .column.is-4-tablet {
     flex: none;
-   /*  width: 33.33333%; */
+    width: 33.33333%;
 }}
 @media screen and (min-width: 1200px){
 .column.is-4-tablet {
@@ -762,11 +760,11 @@ a:hover {
     color: #454545;
 }
 .card_content {
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
 }
 .card_content {
 	background-color: transparent;
-	padding: .75rem;
+	padding: .5rem;
 }
 .course_title {
     margin-bottom: 3.75rem;
@@ -875,7 +873,8 @@ a:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(68, 141, 33, 0.8);
+    /* background-color: rgba(68, 141, 33, 0.8); */
+    background-color: rgba(68, 141, 33);
     color: #fff;
     font-size: 13px;
     padding: 8px;
@@ -1053,3 +1052,18 @@ div.list-action .cart-btn-controller>div.tooltip .tooltiptext{
 div.list-action .cart-btn-controller>div.tooltip .tooltiptext::after{
     display: none;
 }
+@media screen and (max-width: 768px){
+.column.is-4-tablet {
+    flex: none;
+    width: 50%;
+}
+.courses_container>.columns>.column {
+    padding: .5rem;
+    margin: auto;
+}}
+@media print, screen and (min-width: 769px){
+.columns:not(.is-desktop) {
+    display: flex;
+}}
+
+

@@ -266,13 +266,24 @@ overflow-y: auto;
 </style>
 </head>
 
+<%--
+	int f_l_num = Integer.parseInt(request.getParameter("f_l_num"));
+	String f_m_email = request.getParameter("f_m_email");
+	int f_sec_list = Integer.parseInt(request.getParameter("f_sec_list"));
+	String f_sec_name = request.getParameter("f_sec_name");
+	int f_col_list = Integer.parseInt(request.getParameter("f_col_list"));
+	String f_col_name = request.getParameter("f_col_name");
+	String f_name = request.getParameter("f_name");
+--%>
+
 <div class="video modal ">
             <div class="dimmed"></div>
             <section class="modal-card content modal_content modify_lecture_modal_content">
               <header class="modal-card-head">
                 <div class="control">
                   <label>
-                    수업 제목<input type="text" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요." value="ㅁㄴㅇ">
+<%-- f_col_name parameter 받아오기 -> readonly  sssssssssssssss --%>
+                    수업 제목<input type="text" name="title" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요.">
                   </label>
                 </div>
                 <div class="x_btn_wrapper">
@@ -360,4 +371,40 @@ $('#summernote').summernote({
 	 function removeModal(){
 		$("#modal").remove();
 	} 
+	 
+
+// file 저장
+$(document).ready(function() {
+	$(".add_btn").on("click",function(){
+		var f_l_num     = $("#modal").data("f_l_num");
+		var f_m_email   = $("#modal").data("f_m_email");
+		var f_sec_list  = $("#modal").data("f_sec_list");
+		var f_sec_name  = $("#modal").data("f_sec_name");
+		var f_col_list  = $("#modal").data("f_col_list");
+		var f_col_name  = $("#modal").data("f_col_name");
+		var f_name      = $(".note-editable").html();
+		
+		$.ajax({
+			//enctype: 'multipart/form-data',
+			url  : "./sectionLectureAction.in",
+			type : "POST",
+			data : {
+				f_l_num    : f_l_num,
+				f_m_email  : f_m_email,  	
+				f_sec_list : f_sec_list,
+				f_sec_name : f_sec_name,
+				f_col_list : f_col_list,
+				f_col_name : f_col_name,
+				f_name     : f_name
+			},
+			success:function(data){
+				alert(data);
+			},
+			error: function (data) {
+				alert("저장실패!");
+			}
+		});
+	});
+});
+	
 </script>

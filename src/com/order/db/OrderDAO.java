@@ -186,54 +186,76 @@ public class OrderDAO {
 	//getOrderList
 	
 //////////////////	만드는중 Status 1 = 입금완료 조건추가
-	//getOrderList
-	public ArrayList getPaidOrderList(String id) {
-		ArrayList orderList = new ArrayList();
-		
-		try {
-			con = getConnection();
+	public Vector getPaidOrderList(String id) {
 			
+			Vector vec = new Vector();
 			
-			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer, "
-					+ "o_t_b_reg_date,o_t_b_num,o_status,o_t_date,sum(o_sum_money) as o_sum_money "
-					+ "from orderlist where o_m_id=? and o_status=1 "
-					+ "group by o_b_num order by o_b_num desc";
-			
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);		
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				OrderDTO oldto = new OrderDTO();
-				oldto.setO_b_num(rs.getString("o_b_num"));
-				oldto.setO_l_name(rs.getString("o_l_name"));
-				oldto.setO_l_price(rs.getInt("o_l_price"));
+			ArrayList orderDetailList = new ArrayList();
+			ArrayList lectureList = new ArrayList();
+
+			try {
+				con = getConnection();
 				
-				oldto.setO_t_type(rs.getString("o_t_type"));
-				oldto.setO_sum_money(rs.getInt("o_sum_money"));
-				oldto.setO_t_date(rs.getTimestamp("o_t_date"));
-				oldto.setO_t_bank(rs.getString("o_t_bank"));
-				oldto.setO_t_payer(rs.getString("o_t_payer"));
-				oldto.setO_status(rs.getInt("o_status"));
-				oldto.setO_t_b_num(rs.getString("o_t_b_num"));
-				oldto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
+				sql = "select * from orderlist where o_m_id=? and o_status=1";
 				
-				orderList.add(oldto);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				System.out.println("@구매한 리스트 정보 ");
 				
+				while(rs.next()){
+					OrderDTO odto = new OrderDTO();	
+					odto.setO_b_num(rs.getString("o_b_num"));
+					odto.setO_l_num(rs.getInt("o_l_num"));
+					odto.setO_status(rs.getInt("o_status"));
+
+					System.out.println("$$$$$$$$$$$$$orderDTO############");
+					orderDetailList.add(odto);
+					
+					sql = "SELECT * FROM lecture WHERE l_number=?";
+					pstmt = con.prepareStatement(sql);
+					
+					pstmt.setInt(1, odto.getO_l_num());
+					rs2 = pstmt.executeQuery();
+					System.out.println("%$$$$$$%%%llilil ");
+					
+					if(rs2.next()) {
+						LectureDTO ldto = new LectureDTO();
+						//@처리
+						String M=rs2.getString("l_m_email");
+						String mid=null;
+						if(M.indexOf("@")>-1){
+							mid=M.substring(0,M.indexOf("@"));
+						}else{mid=M;}
+						//
+						ldto.setL_number(rs2.getInt("l_number"));
+						ldto.setL_m_email(mid);
+						ldto.setL_img(rs2.getString("l_img"));
+						ldto.setL_title(rs2.getString("l_title"));
+						ldto.setL_content(rs2.getString("l_content"));
+						ldto.setL_price(rs2.getInt("l_price"));
+						ldto.setL_pct(rs2.getInt("l_pct"));
+						System.out.println("$$$$$$$##%%ldto%%###$$$");
+						lectureList.add(ldto);
+					}
+					
+				} // while
+				
+				vec.add(0, orderDetailList);
+				vec.add(1, lectureList);
+				
+				System.out.println("주문 상세정보 저장 완료: "+vec);
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				closeDB();
 			}
-			System.out.println(" 주문정보 저장 완료 : "+orderList);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			closeDB();
-		}
-		return orderList;
-	}
-	
-	//getOrderList
-	
+			
+			return vec;
+		} 
+///////////////////////	
 	
 	
 	//orderDetail(b_num)

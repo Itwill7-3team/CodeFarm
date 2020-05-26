@@ -200,7 +200,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<div class="navbar-item carts">
 <!-- 						<a href="BasketList.ba"><i class="fas fa-shopping-cart cart"></i></a> -->
 						<div class="profile_hover">
-							<span><img src="./img/cart.png"></span>
+							<span><img src="./img/cart.png" onclick="location.href='BasketList.ba'"></span>
 						</div>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
@@ -226,7 +226,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<!-- 사용자 정보 -->
 					<div class="navbar-item profile">
 						<div class="profile_hover">
-							<span><img src="./img/sunny.png"></span>
+							<span><img src="./img/sunny.png" onclick="location.href='DashBoard.bo'"></span>
 						</div>
 							<span class="profile_icon"></span>
 							<div class="profile_modal_cover">
@@ -309,26 +309,33 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo"><img alt="logo" src="./img/logo.png"></div>
+			<div class="logo"><a href="Main.le" class="logo"><img alt="logo" src="./img/logo.png"></a></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
+			<%if(loginEmail==null || loginEmail.equals("")){%>
 				<div class="noLogin">
-					<a href="MemberLogin.me">로그인</a>
-					<a href="MemberJoin.me">회원가입</a>
-				
-				</div>
-				<div class="login">
-					<div class="basket">
-						
+					<div class="login_cover cover">
+					<a class="btn bold login_btn" >로그인</a>
 					</div>
-					<div class="status"></div>
+					<div class="memberjoin_cover cover">
+					<a class="btn bold " href="MemberJoin.me">회원가입</a>
+					</div>
 				</div>
+				<%}else{ %>
+				<div class="login">
+					<div class="basket"><img alt="logo" src="./img/cart.png" onclick="location.href='BasketList.ba'"></div>
+					
+					<div class="status"><img alt="logo" src="./img/sunny.png" ></div>
+					</div>
+				</div>
+				<%} %>
 			</div>
 		</div>
 		<!--모바일끝  -->
 	</nav>
 	
 <script>
+
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
 		$(this).addClass("active");
@@ -440,6 +447,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 </script>
 
 <script>
+	//문의하기
   (function() {
     var w = window;
     if (w.ChannelIO) {

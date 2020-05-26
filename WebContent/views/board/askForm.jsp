@@ -5,7 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<style type="text/css">
+.ask_form{
+width: 90%;
+margin: 0 auto;
+height: 50%;}
+</style>
 
 <!-- 									include libraries(jQuery, bootstrap) -->
 									<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -37,10 +42,10 @@
 											});
 									
 											/* 이미지.. */
-											$('#summernote').summernote('insertImage', url, function ($image) {
+											/* $('#summernote').summernote('insertImage', url, function ($image) {
 												  $image.css('width', $image.width() / 3);
 												  $image.attr('data-filename', 'retriever');
-												});
+												}); */
 									})(jQuery);
 									
 									
@@ -58,7 +63,7 @@ email=(String)session.getAttribute("m_email");
 										<form action="AskAction.bo" method="post">
 										<input type="hidden" name="num" value="1"> <!-- lecture num test값 -->
 										<input type="hidden" name="writer" value="<%=email%>">
-										제목 : <input type="text" name="title" style="width: 90%;">
+										제목 : <input type="text" name="title" style="width: 95%;">
 										<textarea name="content" id="summernote">
 										</textarea>
 										<input type="submit" value="글쓰기">

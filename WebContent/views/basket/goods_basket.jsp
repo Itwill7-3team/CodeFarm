@@ -416,7 +416,7 @@ aside.profile_aside .menu-list .is-active>a {
 											<tr>
 												<td>입금자명</td>
 												<td><input type="text" placeholder="코딩팜"
-													name="o_t_payer"> <br> <br></td>
+													name="o_t_payer" style="border-bottom: 2px solid #ccc;"> <br> <br></td>
 											</tr>
 											<tr>
 												<td rowspan="2">현금영수증</td>
@@ -424,7 +424,7 @@ aside.profile_aside .menu-list .is-active>a {
 													소득공제용 <input type="radio" name="creceipt" value="ji">
 													지출증빙용 <input type="radio" name="creceipt" value="no">
 													미발행<br> <!-- <input type="text" readonly value="휴대 전화 번호" style="width:35%"> -->
-													<input type="text" placeholder="휴대 전화 번호(-없이 숫자만)"></td>
+													<input type="text" style="border-bottom: 2px solid #ccc;" placeholder="휴대 전화 번호(-없이 숫자만)"></td>
 											</tr>
 											<!-- 이메일 수정 -->
 											<%-- <tr><td>이메일<input type="text"><%=MemberDTO.getM_email() %></td></tr> --%>
