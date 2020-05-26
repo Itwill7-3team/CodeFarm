@@ -27,6 +27,9 @@
 	.nav_content{
 	display: flex !important;
 	}
+	#ch-plugin{
+	display: none !important;
+	}
 }
 body{
 	margin: 0;
@@ -225,7 +228,6 @@ header .noLogin{
 	align-items: center;
     height: 100%;
     display: flex;
-    display:none;
 }
 .sticky{
   position: -webkit-sticky; /* Safari */
@@ -637,6 +639,15 @@ header .tab_item{
 	flex:1;
 	border-bottom: 2px solid #e9ecef;
 	cursor: pointer;
+}
+header .noLogin,header .login{
+	float: right;
+}
+header .mobile_right a{
+	font-size: 0.75em;
+}
+header .cover{
+	margin-right: 5px;
 }
 header .tab_item.isActive{
 	border-bottom:2px solid #00c471;
