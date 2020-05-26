@@ -525,7 +525,7 @@ $(document).ready(function() {
 	});
 	
 	
-	//수업 변경 이벤트 ssssssssssssss
+	//수업 변경 이벤트
 	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
 		var f_l_num     = ${ ldto.l_number };
 		var f_m_email   = "${ ldto.l_m_email }";
@@ -537,6 +537,7 @@ $(document).ready(function() {
 		var f_col_name  = f_column.children(".col_name").html();
 		
 		$("<div id='modal'>").dialog ({
+			
 			width : 1280,
 			modal : true,
 			open  : function(e) {
@@ -551,7 +552,6 @@ $(document).ready(function() {
 			f_col_name : f_col_name
 		});
 	});
-	
 	//수업 추가 이벤트
 	$(".curriculum_list").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");
@@ -590,7 +590,7 @@ $(document).ready(function() {
 				+'<div class="box unit_box">'
 					+'<h3 class="section_title">'
 						+'<span class="unit_label"></span>'
-						+'<span></span>'
+						+'<span class="col_name"></span>'
 					+'</h3>'
 					+'<div class="unit_btns">'
 						+'<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle" aria-hidden="true"></i> 수업추가하기</button>'

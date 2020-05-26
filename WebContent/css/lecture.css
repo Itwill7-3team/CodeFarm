@@ -128,7 +128,7 @@ li {
     line-height: 1;
 }
 @media screen and (min-width: 769px){
-.navbar, .navbar-end, .navbar-menu, .navbar-start {
+.navbar {
     align-items: stretch;
     display: flex;
 }}
@@ -253,7 +253,7 @@ body .lecture_container {
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 0 auto 100px;
+    margin: 60px auto 40px;
 }
 .navbar {
     background-color: #fff;
@@ -387,7 +387,7 @@ body .lecture_container {
 }
 .lecture_container .lecture_nav.lecture_nav_right .unit_post_list{
 	padding: 0 0 8rem;
-	height: calc(100% - 140px);	
+	height: calc(100% - 176px);	
 }
 .lecture_container .lecture_nav.lecture_nav_right .unit_post_list ul{
 	margin-bottom: 50px;
@@ -568,14 +568,44 @@ iframe {
     font-size: 14px;
     line-height: 1em;
     direction: ltr;
-    height: 746.438px;
+    height: 635px;
     box-sizing: content-box !important;
 }
-
-
-.editor>iframe {
-    pointer-events: auto !important ;
-   
+.content_container.center>.content .player_cover .video_container .playjs2{
+	position: absolute;
+    box-sizing: content-box !important;
+    background-color: #171717;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    font-size: 14px;
+    line-height: 1em;
+    cursor: default;
 }
-
+.content_container.center>.content .player_cover .video_container video{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+    transition: filter 0.2s linear 0s;
+    min-height: auto;
+    max-height: none;
+    min-width: auto;
+    overflow: hidden;
+}
+@media screen and (max-width: 769px){
+.unit_title h1{
+    display: none;
+}
+.toggle_right>.is_no_border:first-child{
+	display: none;
+}
+.is_checked{
+	display: none;
+}
+.navbar_item>.is_no_border:first-child{
+	width: 100%;
+}
+}
 
