@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 import com.basket.db.BasketDTO;
 import com.lecture.db.LectureDTO;
+import com.member.db.MemberDTO;
 import com.order.action.OrderListAction;
 
 
@@ -402,5 +403,47 @@ public class OrderDAO {
 			}
 	}
 	//OrderDelete
+	
+	// addFreeOrder
+	public void addFreeOrder(LectureDTO ldto, MemberDTO mdto){
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		int num = 0;
+		try {
+			con = getConnection();
+			System.out.print("addFreeOrder() : ");
+			
+			sql = "select max(o_num) from orderlist";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt(1) + 1;
+				sql = "insert into orderlist values(?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?, ?, now())";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setInt(1, num);
+				pstmt.setString(2, sdf.format(cal.getTime()).toString() + "-" + num);
+				pstmt.setInt(3, 0);
+				pstmt.setInt(4, ldto.getL_number());
+				pstmt.setString(5, ldto.getL_title());
+				pstmt.setString(6, mdto.getM_email());
+				pstmt.setString(7, "무료강의");
+				pstmt.setString(8, "무료강의");
+				pstmt.setString(9, mdto.getM_name());
+				//pstmt.setTimestamp(10, oldto.getO_t_date()); now()
+				pstmt.setInt(10, 0);
+				pstmt.setString(11, "무료강의");
+				pstmt.setInt(12, 1);
+				//pstmt.setString(14, oldto.getO_t_b_reg_date()); now()
+				pstmt.executeUpdate();
+			}
+			System.out.println("무료 강의 결제 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+	// addFreeOrder
 	
 	}

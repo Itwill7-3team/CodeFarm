@@ -61,7 +61,7 @@ aside.profile_aside .menu-list .is-active>a {
 	display: flex;
 }
 
-@media screen and (max-width: 1138px) {
+@media screen and (max-width: 1370px) {
 	/* 모바일   */
 	.profile_aside {
 		display: none !important;
