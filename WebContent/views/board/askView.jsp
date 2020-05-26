@@ -162,7 +162,7 @@ String pageNum=request.getAttribute("pageNum").toString();
 		<div class="content_side">
 		<ul>
 		<h4>해당 강의</h4>
-		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><img src="./upload/<%=ldto.getL_img().split(",")[0]%>" style="width: 85%;"></a></li>
+		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><img src="./upload/<%=ldto.getL_img()%>" style="width: 85%;"></a></li>
 		<li><a href="Detail.le?num=<%=ldto.getL_number()%>"><p><%=ldto.getL_title()%></p></a></li>
 
 		<h4>연관 강의</h4>
