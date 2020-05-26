@@ -378,7 +378,7 @@ $('#summernote').summernote({
  		var f_sec_list  = $("#modal").data("f_sec_list");
  		var f_sec_name  = $("#modal").data("f_sec_name");
  		var f_col_list  = $("#modal").data("f_col_list");
- 		var f_name      = $(".note-editable").html();
+ 		var f_name      = $(this).parents(".modal-card-foot").prevAll(".modal-card-body").children(".note-editor").children(".note-editing-area").children(".note-editable").html();
  		
  		if($("#modal").data("f_col_name") == "값을 입력해주세요."){
  			if($(".modify_lecture_title_input").val() == ""){
