@@ -367,7 +367,7 @@ $('#summernote').summernote({
 
 	  });
  $('.x_btn').click(function(){
-	removeModal();
+	$("div[role='dialog']").remove();
 }); 
 	 
 // file 저장

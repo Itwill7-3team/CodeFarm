@@ -16,14 +16,14 @@
 </form>
 
 <script type="text/javascript">
-var naverLogin = new naver.LoginWithNaverId(
+ var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "n1A2gvk1H0li6JGsisBI",
-			callbackUrl: "http://localhost:8090/CodeFarm/MemberLogin.me",
+			callbackUrl: "./MemberLogin.me",
 			isPopup: false,
 			callbackHandle: false
 		}
-	);
+	); 
 
 
 	
