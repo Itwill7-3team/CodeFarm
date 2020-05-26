@@ -63,8 +63,8 @@ public class LectureSearchListAction implements Action{
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		PagingDTO paging = new PagingDTO();
-		paging.setTotalCount(count);
-		paging.setPage(page);
+		paging.setTotalCount(1);
+		paging.setPage(1);
 		/* 페이징 처리 */
 		
 		 /* 5번째 search-bar 파라미터 */
@@ -99,7 +99,7 @@ public class LectureSearchListAction implements Action{
 		
 		System.out.println("LectureListAction_execute() 11 호출");
 		
-		Map<String, Object> map = ldao.getLecutreList(s,item,paging,t1,t2);
+		Map<String, Object> map = ldao.getLecutreSearchList(s);
 		ArrayList<LectureDTO> lectureList=(ArrayList<LectureDTO>)map.get("lectureList");
 		ArrayList<Double> starList=(ArrayList<Double>)map.get("starList");
 		ArrayList<Integer> starCount=(ArrayList<Integer>)map.get("starCount");
