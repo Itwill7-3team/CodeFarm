@@ -532,9 +532,12 @@ $(document).ready(function() {
 			},
 			width:1280,
 			//title:"외부파일 창 띄우기"
+		}).data({"id": "냠냠","id2":"냠냠냠"});
+		$("#modal").on("ready",function(){
+			alert("hi");
 		});
-		console.log($("#modal").)
-		$("#modal").children(".dimmed").attr("value","ddd");
+	
+		$("#modal .modify_lecture_title_input").attr("value","ddd");
 		console.log($(this).parents(".box.unit_box").children("span:eq(2)").val());
 	});
 	//수업 추가 이벤트

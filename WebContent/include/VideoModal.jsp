@@ -272,7 +272,7 @@ overflow-y: auto;
               <header class="modal-card-head">
                 <div class="control">
                   <label>
-                    수업 제목<input type="text" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요." value="ㅁㄴㅇ">
+                    수업 제목<input type="text" class="input modify_lecture_title_input" placeholder="제목을 입력해주세요." value="${id}">
                   </label>
                 </div>
                 <div class="x_btn_wrapper">
@@ -357,6 +357,9 @@ $('#summernote').summernote({
  $('.x_btn').click(function(){
 	removeModal();
 }); 
+ var id=$("#modal").data("id");
+ var id2=$("#modal").data("id2");
+ $(".modify_lecture_title_input").attr("value",id+id2);
 	 function removeModal(){
 		$("#modal").remove();
 	} 
