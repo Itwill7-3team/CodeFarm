@@ -19,7 +19,7 @@ public class BasketDeleteAction implements Action{
 		//id="test";
 		ActionForward forward = new ActionForward();
 		if(id == null){
-			forward.setPath("./MemberLogin.me");
+			forward.setPath("./Main.le");
 			forward.setRedirect(true);
 			return forward;
 		}
