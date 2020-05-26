@@ -182,7 +182,7 @@
 								<div class="course_info_cover">
 									<div class="course_info_row">
 <%-- #003 강사 페이지 & 주소 변경 --%>
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/DashBoard.bo?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="./getMemberLecture.le?s=<%= lmdto.getM_email() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
