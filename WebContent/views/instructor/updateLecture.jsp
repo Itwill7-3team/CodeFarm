@@ -532,8 +532,10 @@ $(document).ready(function() {
 			},
 			width:1280,
 			//title:"외부파일 창 띄우기"
-				
 		});
+		console.log($("#modal").)
+		$("#modal").children(".dimmed").attr("value","ddd");
+		console.log($(this).parents(".box.unit_box").children("span:eq(2)").val());
 	});
 	//수업 추가 이벤트
 	$(".curriculum_list").on("click",".add_lecture_btn",function(){
