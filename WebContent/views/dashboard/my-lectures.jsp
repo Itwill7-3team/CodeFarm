@@ -1,3 +1,5 @@
+<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -450,57 +452,64 @@ border:1px #dbdbdb solid;
 				</div>
 </div>
 		
+		
 				<div class="my-lecture">
 					<div class="columns is-mobile courses_card_list_body is-multiline">
-						<div
-							class="column is-3-fullhd is-3-widescreen is-4-desktop is-4-tablet is-6-mobile">
+<%
+ArrayList lectureList = (ArrayList)request.getAttribute("lectureList");
+
+
+for(int i=0;i<lectureList.size();i++){ 
+	  LectureDTO ldto = (LectureDTO)lectureList.get(i);
+%>									
+						<div class="column is-3-fullhd is-3-widescreen is-4-desktop is-4-tablet is-6-mobile">
+							
 							<div class="card course my_course">
+									
 
 								<a class="course_card_front"
-									href="#">
+									href="LectureVideo.le?l_number=<%=ldto.getL_number() %>&f_num=3">
+									
+									
 									<div class="card-image">
 										<figure class="image is_thumbnail"> 
-										<img src="https://cdn.inflearn.com/wp-content/uploads/git-3.jpg"
-											alt="git과 github"> </figure>
+										<img src="./upload/<%=ldto.getL_img() %>"
+											alt="<%=ldto.getL_title() %>"> </figure>
 									</div>
 
 									<div class="card-content">
-										<div class="course_title">git과 github</div>
+										<div class="course_title"><%=ldto.getL_title() %></div>
 										<div class="course_meta">
-											<div class="inf_progress">
+											<!-- <div class="inf_progress">
 												<label>진도율 : 6강/14강 (42.86%)</label>
 												<progress class="progress is-link" value="42.86" max="100">42.86%</progress>
-											</div>
-											<span class="prgress"> <span class="is-hidden-mobile">진행률:42.86%
-													| </span> 기한: 무제한
-											</span>
+												</div> -->
+											<!-- <span class="prgress"> <span class="is-hidden-mobile">진행률:42.86% 
+													|  </span> 기한: 무제한
+												</span>-->
+								<div class="dashboard_button_container is-hidden-mobile">
+									<a href="LectureVideo.le?l_number=<%=ldto.getL_number() %>&f_num=3"
+										class="button is-small has-icon is-link"><i class='fas fa-pencil-alt'></i>바로학습	</a>
+								</div>
 										</div>
 									</div>
 								</a>
 
-								<div class="dashboard_button_container is-hidden-mobile">
-									<a href="#"
-										class="button is-small has-icon is-link"> 
-										<!-- <i class="far fa-pencil"></i> -->바로학습
-									</a>
-								</div>
-
-								<div
-									class="archive_icon_container tooltip is-tooltip-warning is-tooltip-left e_add_archive_course"
-									data-tooltip="강의 숨기기">
-									<!-- <i class="fal fa-archive"></i> -->
-								</div>
 							</div>
 						</div>
-						<!-- 강의카드 추가 -->
-						<!-- 강의카드 추가 -->
-						<!-- 강의카드 추가 -->
+<%} %>
 						
+<!-- 								<div class="archive_icon_container tooltip is-tooltip-warning is-tooltip-left e_add_archive_course"
+									data-tooltip="강의 숨기기">
+									<i class='fas fa-border-none' style='font-size:24px'></i>
+								</div>
 						</div>
 						<div class="archive_btn_container">
-							<a href="#" class="button"> <!-- <i class="far fa-boxes"></i> --> <span>숨긴 강의 보기</span></a>
+							<a href="#" class="button"> <i class="far fa-boxes"></i> <span>숨긴 강의 보기</span></a>
 						</div>
-					</div><!-- #my-lecture -->
+						
+ -->					
+ </div><!-- #my-lecture -->
 
 
 			
