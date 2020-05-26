@@ -60,6 +60,10 @@
 		double totalTime = 0;
 		int total_Hour = 0;
 		int total_Min = 0;
+		int f_num1 = 0;
+		if(fileSet.size() != 0){
+			f_num1 = fileSet.get(0).get(0).getF_num();
+		}
 		ArrayList<FileDTO> fileList = new ArrayList<FileDTO>();
 		
 		for(int i=0; i<fileSet.size(); i++){
@@ -156,7 +160,7 @@
 									<div class="course_btn_section">
 										<div class="course_btn_cover">
 										<% if (ldto.getL_price() == 0 || payCheck) { %>
-											<button class="lecbtn is_fullwidth course_btn learn_btn is_primary">바로 학습하기</button>
+											<button class="lecbtn is_fullwidth course_btn learn_btn freepur_btn is_primary">바로 학습하기</button>
 										</div>
 										<% } else { %>
 											<button class="lecbtn is_fullwidth course_btn learn_btn purchase_btn is_primary">수강 신청</button>
@@ -853,6 +857,28 @@
 			});
 		} else {
 			location.href = "BasketIn.ba?num=<%=ldto.getL_number() %>";
+		}
+	});
+	
+	$(".learn_btn.freepur_btn").click(function(){
+		if(${ mdto == null }){
+			$.ajax({
+				url  : "./MemberLogin.me",
+				type : "POST",
+				data : { },
+				success : function(data) {
+					$(".login_form").html(data);
+				},
+				error : function(xhr, status, error) {
+					alert("error: " + error);
+				}
+			});
+		} else {
+			if(${!empty fileSet}){
+				location.href = "./freeAdd.bo?l_number=${ ldto.l_number }&m_email=${ mdto.m_email }";
+			} else {
+				alert("등록된 강의가 없습니다.");
+			}
 		}
 	});
 	<%-- 수강신청 --%>
