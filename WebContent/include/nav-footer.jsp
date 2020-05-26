@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 <!-- accordion -->
 <script>
-/* var acc = document.getElementsByClassName("nav-accordion");
+var acc = document.getElementsByClassName("nav-accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -78,7 +78,7 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
     } 
   });
-} */
+} 
 </script>
 
 
