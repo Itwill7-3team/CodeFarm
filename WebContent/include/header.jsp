@@ -312,6 +312,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 			<div class="logo"><a href="Main.le" class="logo"><img alt="logo" src="./img/logo.png"></a></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
+			<%if(loginEmail==null || loginEmail.equals("")){%>
 				<div class="noLogin">
 					<div class="login_cover cover">
 					<a class="btn bold login_btn" >로그인</a>
@@ -319,14 +320,15 @@ initial-scale=1.0, maximum-scale=3.0"/>
 					<div class="memberjoin_cover cover">
 					<a class="btn bold " href="MemberJoin.me">회원가입</a>
 					</div>
-				
 				</div>
+				<%}else{ %>
 				<div class="login">
 					<div class="basket">
 						
 					</div>
 					<div class="status"></div>
 				</div>
+				<%} %>
 			</div>
 		</div>
 		<!--모바일끝  -->
