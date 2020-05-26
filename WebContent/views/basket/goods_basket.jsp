@@ -292,6 +292,7 @@ aside.profile_aside .menu-list .is-active>a {
 				BasketDTO bdto = (BasketDTO) basketList.get(i);
 				LectureDTO ldto = (LectureDTO) lectureList.get(i);
 		%>
+		<div class="tq">
 		<div class="boxx">
 			<div class="clearfix">
 				<div class="column menu">
@@ -373,7 +374,7 @@ aside.profile_aside .menu-list .is-active>a {
 							</form>
 						</div> <br> <!-- 체크 해제 시 보이기 -->
 						<p id="textee"
-							style="color: red; font-size: 12px; line-height: 0;">구매조건 및
+							style="color: red; font-size: 12px; line-height: 1;">구매조건 및
 							결제대행 서비스 약관 동의하여야 합니다.</p>
 					</li>
 				</ul>
