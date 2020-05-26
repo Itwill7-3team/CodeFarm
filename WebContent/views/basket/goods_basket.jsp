@@ -407,16 +407,16 @@ aside.profile_aside .menu-list .is-active>a {
 												<td>은행 선택</td>
 												<td><select id="bankch" name="o_t_bank">
 														<option value="bk_ch"  selected>은행을 선택해 주세요</option>
-														<option value="하나은행">하나은행: 135-123456-12345</option>
-														<option value="카카오뱅크">카카오뱅크: 3333-00-3333111</option>
-														<option value="신한은행">신한은행: 110-555-899996</option>
-														<option value="sc제일은행">sc제일은행: 779-22-220000</option>
+														<option value="하나은행/135-123456-12345">하나은행: 135-123456-12345</option>
+														<option value="카카오뱅크/3333-00-3333111">카카오뱅크: 3333-00-3333111</option>
+														<option value="신한은행/110-555-899996">신한은행: 110-555-899996</option>
+														<option value="sc제일은행/779-22-220000">sc제일은행: 779-22-220000</option>
 												</select></td>
 											</tr>
 											<tr>
 												<td>입금자명</td>
 												<td><input type="text" placeholder="코딩팜"
-													name="o_t_payer"> <br> <br></td>
+													name="o_t_payer" style="border-bottom: 2px solid #ccc;"> <br> <br></td>
 											</tr>
 											<tr>
 												<td rowspan="2">현금영수증</td>
@@ -424,7 +424,7 @@ aside.profile_aside .menu-list .is-active>a {
 													소득공제용 <input type="radio" name="creceipt" value="ji">
 													지출증빙용 <input type="radio" name="creceipt" value="no">
 													미발행<br> <!-- <input type="text" readonly value="휴대 전화 번호" style="width:35%"> -->
-													<input type="text" placeholder="휴대 전화 번호(-없이 숫자만)"></td>
+													<input type="text" style="border-bottom: 2px solid #ccc;" placeholder="휴대 전화 번호(-없이 숫자만)"></td>
 											</tr>
 											<!-- 이메일 수정 -->
 											<%-- <tr><td>이메일<input type="text"><%=MemberDTO.getM_email() %></td></tr> --%>

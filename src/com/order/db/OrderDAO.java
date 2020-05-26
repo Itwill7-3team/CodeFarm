@@ -114,8 +114,8 @@ public class OrderDAO {
 			//pstmt.setTimestamp(10, oldto.getO_t_date());
 			
 			pstmt.setInt(10, (int)Math.floor(ldto.getL_price()+(ldto.getL_price()*ldto.getL_pct()/100)));
-			pstmt.setInt(11, 0);
-			pstmt.setString(12, oldto.getO_t_b_num());
+			pstmt.setString(11, oldto.getO_t_b_num());
+			pstmt.setInt(12, 0);
 			//pstmt.setString(13, oldto.getO_t_b_reg_date());
 			
 
@@ -161,6 +161,55 @@ public class OrderDAO {
 				oldto.setO_l_name(rs.getString("o_l_name"));
 				oldto.setO_l_price(rs.getInt("o_l_price"));
 
+				oldto.setO_t_type(rs.getString("o_t_type"));
+				oldto.setO_sum_money(rs.getInt("o_sum_money"));
+				oldto.setO_t_date(rs.getTimestamp("o_t_date"));
+				oldto.setO_t_bank(rs.getString("o_t_bank"));
+				oldto.setO_t_payer(rs.getString("o_t_payer"));
+				oldto.setO_status(rs.getInt("o_status"));
+				oldto.setO_t_b_num(rs.getString("o_t_b_num"));
+				oldto.setO_t_b_reg_date(rs.getString("o_t_b_reg_date"));
+				
+				orderList.add(oldto);
+				
+			}
+			System.out.println(" 주문정보 저장 완료 : "+orderList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return orderList;
+	}
+	
+	//getOrderList
+	
+//////////////////	만드는중 Status 1 = 입금완료 조건추가
+	//getOrderList
+	public ArrayList getPaidOrderList(String id) {
+		ArrayList orderList = new ArrayList();
+		
+		try {
+			con = getConnection();
+			
+			
+			sql = "select o_b_num,o_l_price,o_l_name,o_t_type,o_t_bank,o_t_payer, "
+					+ "o_t_b_reg_date,o_t_b_num,o_status,o_t_date,sum(o_sum_money) as o_sum_money "
+					+ "from orderlist where o_m_id=? and o_status=1 "
+					+ "group by o_b_num order by o_b_num desc";
+			
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);		
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderDTO oldto = new OrderDTO();
+				oldto.setO_b_num(rs.getString("o_b_num"));
+				oldto.setO_l_name(rs.getString("o_l_name"));
+				oldto.setO_l_price(rs.getInt("o_l_price"));
+				
 				oldto.setO_t_type(rs.getString("o_t_type"));
 				oldto.setO_sum_money(rs.getInt("o_sum_money"));
 				oldto.setO_t_date(rs.getTimestamp("o_t_date"));

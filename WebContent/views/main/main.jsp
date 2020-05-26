@@ -6,7 +6,7 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/main.css?ver=1">
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
 <title>코딩팜</title>
 <style>
@@ -57,7 +57,7 @@
 
 <jsp:include page="/include/footer.jsp"/>
 
-<jsp:include page="/include/chat.jsp"></jsp:include>
+
 
 <script>
 var slideIndex = 0;

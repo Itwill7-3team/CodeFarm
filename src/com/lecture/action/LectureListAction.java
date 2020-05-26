@@ -99,10 +99,15 @@ public class LectureListAction implements Action{
 		
 		System.out.println("LectureListAction_execute() 11 호출");
 		
-		List<LectureDTO> lectureList = ldao.getLecutreList(s,item,paging,t1,t2);
+		Map<String, Object> map = ldao.getLecutreList(s,item,paging,t1,t2);
+		ArrayList<LectureDTO> lectureList=(ArrayList<LectureDTO>)map.get("lectureList");
+		ArrayList<Double> starList=(ArrayList<Double>)map.get("starList");
+		ArrayList<Integer> starCount=(ArrayList<Integer>)map.get("starCount");
 		System.out.println("beginPage : "+page);
 		request.setAttribute("lectureList", lectureList);
 		request.setAttribute("paging", paging);
+		request.setAttribute("starList", starList);
+		request.setAttribute("starCount", starCount);
 		/*request.setAttribute("ratingList", ratingList);*/
 		
 		ActionForward forward = new ActionForward();
