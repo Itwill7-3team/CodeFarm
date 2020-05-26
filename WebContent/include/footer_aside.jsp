@@ -85,28 +85,28 @@ font-size: 12px;
 <!-- f_more<br> -->
 
 <div class="f_more_box">
-<span class="f_box" onclick="location.href=''">
+<span class="f_box" onclick="location.href='./askAnswer.bo'">
 <div class="f_icon">
 <i class='far fa-question-circle'></i>
 </div>
 <p>묻고답하기</p>
 </span>
 
-<span class="f_box">
+<span class="f_box" onclick="location.href='./notice.bo'">
 <div class="f_icon">
 <i class="fas fa-leaf"></i>
 <!-- <i class="fas fa-bullhorn"></i> -->
 </div>
 <p>공지사항</p>
 </span>
-<span class="f_box">
+<span class="f_box" onclick="location.href='./request.bo'">
 <div class="f_icon">
 <i class="fab fa-gripfire"></i>
 <!-- <i class="fab fa-medapps"></i> -->
 </div>
 <p>기능요청</p>
 </span>
-<span class="f_box">
+<span class="f_box" onclick="location.href='./blog.bl'">
 <div class="f_icon">
 <i class="fas fa-pen-fancy"></i>
 </div>
