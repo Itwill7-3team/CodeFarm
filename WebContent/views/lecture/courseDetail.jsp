@@ -182,7 +182,7 @@
 								<div class="course_info_cover">
 									<div class="course_info_row">
 <%-- #003 강사 페이지 & 주소 변경 --%>
-										<i class="fas fa-user-tie"></i>지식공유자 · <a href="/DashBoard.bo?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
+										<i class="fas fa-user-tie"></i>지식공유자 · <a href="./getMemberLecture.le?s=<%= lmdto.getM_email() %>"><%= lmdto.getM_nick() %></a>
 									</div>
 									<div class="course_info_row">
 										<i class="far fa-play-circle"></i><%
@@ -223,7 +223,7 @@
 								%>
 										<li>
 <%-- #003 강사 페이지 & 주소 변경 --%>
-											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
+											<a href="./Detail.le?num=<%= lectureList.get(ja).getL_number() %>">
 												<div class="el_thumbnail">
 													<img src="./upload/<%= lectureList.get(ja).getL_img() %>" alt="<%= lectureList.get(ja).getL_title() %>">
 												</div>
