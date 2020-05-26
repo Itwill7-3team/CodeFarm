@@ -49,6 +49,15 @@
 #right-nav_menu .tab_list{
 	display: none;
 }
+#right-nav_menu .img_content{
+	width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+}
 #right-nav_menu .tab_list.active{
 	display: block;
 	background-color: white;
@@ -69,4 +78,7 @@
 }
 #right-nav_menu a{
 	color: black;
+}
+#right-nav-menu .icon{
+	font-size: 1em;
 }

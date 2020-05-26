@@ -18,9 +18,9 @@
      <div class="info_content">
       <div class="user_content">
         <div class="left_content">
-          <div class="thumbnail">
-            <img >
-            <a href="/settings/account">설정</a>
+          <div class="img_content">
+            <img src="./img/carrotIcon.png" alt="@@@님의 프로필">
+           <a href="MemberInfo.me">설정</a>
           </div>
         </div>
         <div class="right_content">
