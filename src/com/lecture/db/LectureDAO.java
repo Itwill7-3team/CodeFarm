@@ -560,4 +560,44 @@ public class LectureDAO {
 		
 	}
 	
+	// addFile
+	public int addFile(FileDTO fdto){
+		int check=0;
+		try{
+			con = getConnection();
+			
+			sql = "select * from file where f_l_num = ? and f_sec_list = ? and f_col_list = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, fdto.getF_l_num());
+			pstmt.setInt(2, fdto.getF_sec_list());
+			pstmt.setInt(3, fdto.getF_col_list());
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check = 0;
+			} else {
+				sql = "insert into file("
+						+ "f_l_num, f_sec_list, f_sec_name, f_col_list, f_col_name, "
+						+ "f_name,  f_o_name,   f_playtime, f_reg_date, f_m_email) "
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, now(), ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, fdto.getF_l_num());
+				pstmt.setInt(2, fdto.getF_sec_list());
+				pstmt.setString(3, fdto.getF_sec_name());
+				pstmt.setInt(4, fdto.getF_col_list());
+				pstmt.setString(5, fdto.getF_col_name());
+				pstmt.setString(6, fdto.getF_name());
+				pstmt.setString(7, fdto.getF_name());
+				pstmt.setDouble(8, fdto.getF_playtime());
+				pstmt.setString(9, fdto.getF_m_email());
+				check = pstmt.executeUpdate();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeDB();
+		}
+		return check;
+	}
+	// addFile
+	
 }

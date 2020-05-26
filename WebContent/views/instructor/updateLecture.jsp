@@ -236,7 +236,7 @@
 							<div class="box unit_box">
 								<h3 class="section_title">
 									<span class="unit_label">섹션 0 : </span>
-									<span>첫번째 섹션의 제목을 입력해주세요.</span>
+									<span class="sec_name">첫번째 섹션의 제목을 입력해주세요.</span>
 								</h3>
 								<div class="unit_btns">
 									<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle"></i> 수업추가하기</button>
@@ -247,7 +247,7 @@
 						</li>
 						<li class="unit unit_lecture">
 							<div class="box unit_box">
-							      <p><span class="unit_label">수업 1 : </span><span>값을 입력해주세요.</span></p>
+							      <p><span class="unit_label">수업 1 : </span><span class="col_name">값을 입력해주세요.</span></p>
 							      <div class="unit_btns">
 							        <div>
 							        	<button type="button" class="button4 lecture_mod_btn" >
@@ -523,18 +523,35 @@ $(document).ready(function() {
 	//input으로 추가한 ol태그 위치변경
 	$(".field").on("click",(".btn_icon.handle"),function(){
 	});
-	//수업 변경 이벤트
-	$(".curriculum_list").on("click",".lecture_mod_btn",function(){
+	
+	
+	//수업 변경 이벤트 
+	$(document).on("click",".lecture_mod_btn",function(){
+		var f_l_num     = ${ ldto.l_number };
+		var f_m_email   = "${ ldto.l_m_email }";
+		var f_section   = $(this).parents("li").prevAll("li.unit_section:first").find(".section_title");
+		var f_sec_list  = f_section.children(".unit_label").html().split(" ")[2];
+		var f_sec_name  = f_section.children(".sec_name").html();
+		var f_column    = $(this).parents(".unit_box").children("p");
+		var f_col_list  = f_column.children(".unit_label").html().split(" ")[2];
+		var f_col_name  = f_column.children(".col_name").html();
+		
 		$("<div id='modal'>").dialog ({
-			modal:true,
-			open:function() {
-				$(this).load("./include/VideoModal.jsp"); // 자기 자신(this) 앞에다가 ex.jsp를 띄워라
-			},
-			width:1280,
-			//title:"외부파일 창 띄우기"
-				
+			width : 1280,
+			modal : true,
+			open  : function(e) {
+				$(this).load("./include/VideoModal.jsp");
+			}
+		}).data({
+			f_l_num    : f_l_num,
+			f_m_email  : f_m_email,
+			f_sec_list : f_sec_list,
+			f_sec_name : f_sec_name,
+			f_col_list : f_col_list,
+			f_col_name : f_col_name
 		});
 	});
+	
 	//수업 추가 이벤트
 	$(".curriculum_list").on("click",".add_lecture_btn",function(){
 		var data=prompt("값을 입력해주세요", "");
@@ -546,7 +563,7 @@ $(document).ready(function() {
 					console.log("실행"+i);				
 				$(".curriculum_list>li").eq(i-1).after('<li class="unit unit_lecture ui-sortable-handle">'
 						+'<div class="box unit_box">'
-						      +'<p><span class="unit_label">수업 1 : </span><span>'+data+'</span></p>'
+						      +'<p><span class="unit_label">수업   1 : </span><span class="col_name">'+data+'</span></p>'
 						      +'<div class="unit_btns">'
 						        +'<div>'
 						        	+'<button type="button" class="button4 lecture_mod_btn" >'
@@ -573,7 +590,7 @@ $(document).ready(function() {
 				+'<div class="box unit_box">'
 					+'<h3 class="section_title">'
 						+'<span class="unit_label"></span>'
-						+'<span></span>'
+						+'<span class="col_name"></span>'
 					+'</h3>'
 					+'<div class="unit_btns">'
 						+'<button class="button4 add_unit_btn add_lecture_btn"><i class="fas fa-plus-circle" aria-hidden="true"></i> 수업추가하기</button>'

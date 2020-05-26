@@ -181,7 +181,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<div class="navbar-right">
 					<!--검색 메뉴  -->
 					<div class="search_bar">
-						<input type="text" class=""><i class="fas fa-search"></i>
+						<input type="text" class=".input"><i class="fas fa-search"></i>
 					</div>
 					<!--지식공유 참여  -->
 					<%if(rank<2) {%>
@@ -300,6 +300,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
 		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
+		<jsp:include page="./nav-rightsideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">
@@ -324,8 +325,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<%}else{ %>
 				<div class="login">
 					<div class="basket"><img alt="logo" src="./img/cart.png" onclick="location.href='BasketList.ba'"></div>
+					
+					<div class="status"><img alt="logo" src="./img/sunny.png" ></div>
 					</div>
-					<div class="status"><img alt="logo" src="./img/sunny.png" onclick="location.href='DashBoard.bo'"></div>
 				</div>
 				<%} %>
 			</div>
@@ -334,7 +336,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	</nav>
 	
 <script>
-
+	$(".status").on("click",function(){
+		r_menu_on();
+	});
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
 		$(this).addClass("active");
@@ -446,6 +450,24 @@ initial-scale=1.0, maximum-scale=3.0"/>
 </script>
 
 <script>
+/* search */
+$(".fa-search").on("click",function(){
+	alert($(".input").val());
+	var search = $(".input").val();
+	var orderSelect1 = $("#courses_order_select option:selected").val();
+	var t1 = getParameterByName('t1');
+	var t2 = getParameterByName('t2');
+	var view = getParameterByName('view');
+	var page = getParameterByName('page');
+	/* var itime = getParameterByName('item');
+	
+	if(item == null){
+		alert("확인"+item);
+	} select 구문에 사용*/
+	
+	location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view="+view+"&page="+page+"&s="+search;
+});
+/* search */
 	//문의하기
   (function() {
     var w = window;

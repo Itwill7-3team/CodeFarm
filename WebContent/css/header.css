@@ -658,20 +658,30 @@ header .tab_item.isActive{
 	}
 	
 header .mobile_right {
-	display: inline-flex;
-	margin-top: 15px;
+	display: inline-block;
     line-height: 1.5;
-    max-width: 100%;
+    max-width: 100%;   
+}
+header .login {
+    float: right;
+}
+header .mobile_right img{
+	margin-top: 15px;
+}
+
+header .basket, header .status {
+	float: left;
 }
 header .basket img{
 	cursor: pointer;
 	max-width: 44px;
+	
 }	
 header .status img{
 	margin-left: 13px;
 	max-width: 44px;
+	cursor: pointer;
 }
-	
 /* user_modal 끝 */
 
 .adminstyle a{
