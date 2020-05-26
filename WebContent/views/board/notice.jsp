@@ -109,6 +109,11 @@ int endPage=(int)request.getAttribute("endPage");
         <img class="thumbnail_image" 
 				src="./img/carrotIcon.png" style="width: 200px; height: 200px; opacity: 0.5;"> <!-- 당근이미지 -->
         </span>
+    	<%if(email.equals("admin@naver.com")){%>
+		<button onclick="location.href='noticeWrite.bo';">글쓰기</button>
+		<%}		
+		%>
+    
         <div class="notice_list">
 		<%	
 		}else{
