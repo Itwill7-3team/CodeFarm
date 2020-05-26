@@ -1,3 +1,5 @@
+<%@page import="com.lecture.db.LectureDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -69,20 +71,28 @@
           
           
           
-<!-- 최근학습강의 -->          
+<!-- 최근학습강의 -->
           <div class="is-half">
             <div class="box recent_course">
               <div class="box_title"><p>최근 학습 강의</p></div>
               <div class="box_content">
-<p class="course_title">자바 프로그래밍 입문 강좌 (renew ver.) - 초보부터 개발자 취업까지!!</p> <!-- 강의제목 -->
+<%
+ArrayList lectureList = (ArrayList)request.getAttribute("lectureList");
 
+
+for(int i=0;i<lectureList.size();i++){ 
+	  LectureDTO ldto = (LectureDTO)lectureList.get(i);
+%>          
+<p class="course_title"><%=ldto.getL_title() %></p> <!-- 강의제목 -->
+
+<%} %>
   <div class="inf_progress">
 <!--     <label>진도율 : 9강/29강 (31.03%)</label> 진도율
     <progress class="progress is-link" value="31.03" max="100">31.03%</progress>  --><!-- 프로그래스바 -->
   </div>
 <div class="buttons bottom_right">
   <a href="MyLecture.bo" class="button is-link">내 모든 강의</a>
-  <a class="button is-primary" href="LectureVideo.le">이어서 학습하기</a>
+  <a class="button is-primary" href="LectureVideo.le?l_number=10&f_num=3">이어서 학습하기</a>
 </div></div>
             </div>
           </div>

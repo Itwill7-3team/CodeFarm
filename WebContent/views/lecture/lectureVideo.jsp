@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=yes,initial-scale=1.0, maximum-scale=3.0"/>
 
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<link href="./css/lecture.css" rel="stylesheet">
+<link href="./css/lecture.css?ver=1" rel="stylesheet">
 </head>
 <body>
 <%
@@ -205,6 +205,7 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 					<div class="content unit_body">
 						<div class="player_cover">
 							<div class="video_container">
+<<<<<<< HEAD
 								
 								
 								 <!-- <iframe src="https://www.youtube.com/embed/60ctvQsY7ws?rel=0&amp;modestbranding=1&amp;vq=hd720&amp;autoplay=1&amp;enablejsapi=1"
@@ -225,8 +226,25 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 										frameborder="0" allow="autoplay; encrypted-media" x-webkit-airplay="allow" preload="none" allowfullscreen="allowfullscreen" id="iframe_1">
 										</iframe> -->
 										</div>
+=======
+								<div class="playjs">
+									<div class="playjs2">
+									<%
+									for(int i=0; i<fileSet.size(); i++){
+										List<FileDTO> fdto = fileSet.get(i);
+										for(int j=0; j<fileSet.get(i).size(); j++){
+											if(fdto.get(j).getF_num() == f_num){
+									%>
+												<%= fdto.get(j).getF_name() %>
+									<%
+												break;
+											}
+										}
+									}
+									%>
+>>>>>>> branch 'Team2' of https://github.com/Itwill7-3team/CodeFarm.git
 									</div>
-								
+								</div>
 							</div>
 						</div>
 					</div>
@@ -265,6 +283,9 @@ for(int j=0; j<fileSet.get(i).size(); j++){
 								</div>
 								<!-- askForm -->
 								<div class="editor" style="display: none;">
+								
+								<input type="hidden" name="lNum" value="<%=l_number %>">
+								
 								<iframe src="AskWrite.bo" name="askF"></iframe>
 								</div>
 								<!-- askForm -->

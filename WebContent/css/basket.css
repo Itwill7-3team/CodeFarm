@@ -1,16 +1,29 @@
 @CHARSET "UTF-8";
 
-@media screen and (max-width: 1775px) {
 
-	/* 화면사이즈 줄면   */
-	.boxx2 {
-	    min-width: 600px;
+/* @media screen and (min-width: 1086px){
+.column>content{
+    min-width: 620px;
 	}
+} */
 
-}
+/*  @media sceen and (max-width: 767px){
+.boxx {
+    width: 100% !important;
+	}
+.boxx2 {
+ 	width: 100% !important;
+	}
+} */
 
-
-
+@media screen and (min-width: 1660px){
+.boxx {
+    width: 62% !important;
+	}
+.boxx2 {
+ 	width: 33% !important;
+	}
+} 
 
 body {margin: 0; width: 100%;}
 
@@ -29,18 +42,22 @@ h3 {padding-bottom: 10px;
     margin: 3% auto 30% 0;
 height: auto;
     min-height: 800px;
-font-family: 'NotoSansCJKkr-Light';}
+font-family: 'NotoSansCJKkr-Light';
+max-width:1000px;
+width: 100%}
 
 .boxx{float:left; 
-border-bottom:1px solid #ccc; 
-width: 650px; height: auto;  
-padding: 10px 10px 20px 0;
-
+	border-bottom:1px solid #ccc; 
+	width: 100%; height: auto;  
+	padding: 10px 10px 20px 0;
+	display: inline-block;
+	min-width: 450px;
 }
 
 .boxx2{display: inline-block;
-width:320px; height:auto; 
+width:100%; height:auto; 
 margin-left: 30px;
+min-width: 320px;
 
 }
 
@@ -52,7 +69,8 @@ a {text-decoration: none;}
  .menu {margin-left: 10px; padding-top: 5px;}
  
 .column {float: left;  }
-.content {width:400px; padding: 5px 20px 5px 30px; 
+.content {width:100%; padding: 5px 20px 5px 30px; 
+    max-width: 200px;
 word-wrap: break-word;}
 
 .boxh3 {float: left; padding-left: 10px; width: 70%;}
@@ -66,7 +84,22 @@ word-wrap: break-word;}
     flex-basis: auto;
     flex-grow: 0;
     flex-shrink: 0;}
+    
+    .Blevel-left2 {
+    align-items: center;
+    justify-content: flex-start;}
+    
+.Blevel-left2, .Blevel-right2 {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;}
 .Blevel-item {
+    align-items: center;
+    display: flex;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;}
+    .Blevel-item2 {
     align-items: center;
     display: flex;
     flex-basis: auto;
@@ -508,7 +541,10 @@ padding-bottom: 1rem;
 .Wamount {text-align: center; width: 100px; margin-left: auto;
  padding-top: 10px; }  
  
- 
+ .tq {
+ display: block;
+ }
+
  
  
  
@@ -532,8 +568,8 @@ padding-bottom: 1rem;
     flex-grow: 1;
     flex-shrink: 1;
     padding: .75rem;
-    width: 60%;
-    min-width: 640px;
+    width: 100%;
+    max-width: 1000px;
 }
 .bcolumn .bbox.coupon_item_list {
     height: 10rem;
@@ -647,9 +683,6 @@ padding-bottom: 1rem;
 .is-hidden {
     display: none!important;
 }
-
-
-
 
 
 

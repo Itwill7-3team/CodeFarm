@@ -61,7 +61,7 @@ aside.profile_aside .menu-list .is-active>a {
 	display: flex;
 }
 
-@media screen and (max-width: 1085px) {
+@media screen and (max-width: 1370px) {
 	/* 모바일   */
 	.profile_aside {
 		display: none !important;
@@ -125,8 +125,8 @@ aside.profile_aside .menu-list .is-active>a {
 							위시리스트 <i class='far fa-heart'></i> >
 						</a>
 					</h3>
-					<div class="Blevel-left is-hidden-mobile">
-						<div class="Blevel-item">
+					<div class="Blevel-left2 is-hidden-mobile">
+						<div class="Blevel-item2">
 							<nav class="Bbreadcrumb has-arrow-separator">
 							<ul style="display: flex; font-weight: bold;">
 								<li class="Bis-active"><a href="/cart" class="BH1"
@@ -292,6 +292,7 @@ aside.profile_aside .menu-list .is-active>a {
 				BasketDTO bdto = (BasketDTO) basketList.get(i);
 				LectureDTO ldto = (LectureDTO) lectureList.get(i);
 		%>
+		<div class="tq">
 		<div class="boxx">
 			<div class="clearfix">
 				<div class="column menu">
@@ -373,7 +374,7 @@ aside.profile_aside .menu-list .is-active>a {
 							</form>
 						</div> <br> <!-- 체크 해제 시 보이기 -->
 						<p id="textee"
-							style="color: red; font-size: 12px; line-height: 0;">구매조건 및
+							style="color: red; font-size: 12px; line-height: 1;">구매조건 및
 							결제대행 서비스 약관 동의하여야 합니다.</p>
 					</li>
 				</ul>

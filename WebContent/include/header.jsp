@@ -26,8 +26,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	 }
 	}
 %>
-<jsp:include page="nav-footer.jsp" />
 <header class="sticky">
+<jsp:include page="nav-footer.jsp" />
 
 	<nav class="navbar">
 		<!-- 데스크탑 -->
@@ -181,7 +181,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<div class="navbar-right">
 					<!--검색 메뉴  -->
 					<div class="search_bar">
-						<input type="text" class=""><i class="fas fa-search"></i>
+						<input type="text" class="input5"><i class="fas fa-search"></i>
 					</div>
 					<!--지식공유 참여  -->
 					<%if(rank<2) {%>
@@ -205,8 +205,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 						<div class="cart_modal_cover">
 						<div class="cart_modal">
 							<div class="top_content">
-								<span class="tab_menu active" data-type="basket">수강바구니</span>
-								<span class="tab_menu " data-type="wish">위시 리스트</span>
+								<span class="tab_menu cart active" data-type="basket">수강바구니</span>
+								<span class="tab_menu cart" data-type="wish">위시 리스트</span>
 							</div>
 							<div class="bottom_content">
 								<div class="list_content" id="list_content"></div>
@@ -300,6 +300,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
 		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
+		<jsp:include page="./nav-rightsideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">
@@ -335,7 +336,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	</nav>
 	
 <script>
-
+	$(".status").on("click",function(){
+		r_menu_on();
+	});
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
 		$(this).addClass("active");
@@ -400,7 +403,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 
 	
 	function getCarts(){
-		var type = $(".tab_menu.active").attr("data-type");
+		var type = $(".tab_menu.cart.active").attr("data-type");
 		$.ajax({
 			type : "post",
 			url : "./carts.ba?type=" + type,
@@ -447,6 +450,14 @@ initial-scale=1.0, maximum-scale=3.0"/>
 </script>
 
 <script>
+/* search */
+$(".fa-search").on("click",function(){
+	var search = $(".input5").val();
+
+	
+	location.href = "./getSearch.le?&page=1&s="+search;
+});
+/* search */
 	//문의하기
   (function() {
     var w = window;

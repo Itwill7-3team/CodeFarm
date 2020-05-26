@@ -23,7 +23,7 @@ public class BasketToWiAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		if( id == null ){
-			forward.setPath("./MemberLogin.me");
+			forward.setPath("./Main.le");
 			forward.setRedirect(true);
 			return forward;			
 		}

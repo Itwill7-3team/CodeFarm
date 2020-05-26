@@ -28,7 +28,7 @@ public class BasketAddAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		if( id == null ){
-			forward.setPath("./MemberLogin.me");
+			forward.setPath("./Main.le");
 			forward.setRedirect(true);
 			return forward;			
 		}
@@ -63,9 +63,9 @@ public class BasketAddAction implements Action {
 		}
 		
 		// 페이지 이동 (장바구니 목록 페이지)
-		forward.setPath("./BasketList.ba");
-		forward.setRedirect(true);	
-		return forward;
+		/*forward.setPath("./BasketList.ba");
+		forward.setRedirect(true);	*/
+		return null;
 	}
 
 }
