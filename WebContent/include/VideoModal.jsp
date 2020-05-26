@@ -375,4 +375,39 @@ $('#summernote').summernote({
 	 function removeModal(){
 		$("#modal").remove();
 	} 
+	 
+// file 저장
+ $(document).ready(function() {
+ 	$(".add_btn").on("click",function(){
+ 		var f_l_num     = $("#modal").data("f_l_num");
+ 		var f_m_email   = $("#modal").data("f_m_email");
+ 		var f_sec_list  = $("#modal").data("f_sec_list");
+ 		var f_sec_name  = $("#modal").data("f_sec_name");
+ 		var f_col_list  = $("#modal").data("f_col_list");
+ 		var f_col_name  = $("#modal").data("f_col_name");
+ 		var f_name      = $(".note-editable").html();
+ 		
+ 		$.ajax({
+ 			//enctype: 'multipart/form-data',
+ 			url  : "./sectionLectureAction.in",
+ 			type : "POST",
+ 			data : {
+ 				f_l_num    : f_l_num,
+ 				f_m_email  : f_m_email,  	
+ 				f_sec_list : f_sec_list,
+ 				f_sec_name : f_sec_name,
+ 				f_col_list : f_col_list,
+ 				f_col_name : f_col_name,
+ 				f_name     : f_name
+ 			},
+ 			success:function(data){
+ 				alert(data);
+ 			},
+ 			error: function (data) {
+ 				alert("저장실패!");
+ 			}
+ 		});
+ 	});
+ });
+ 
 </script>
