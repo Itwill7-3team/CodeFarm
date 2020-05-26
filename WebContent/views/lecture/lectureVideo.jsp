@@ -327,7 +327,11 @@ function getParameterByName(name) {
 }
 function is_now(){
 	var f_num = getParameterByName("f_num");
+<<<<<<< HEAD
+	var unit = document.getElementByClass(".unit_lecture").href
+=======
 	/* var unit = document.getElementByClass(".unit_lecture").href */
+>>>>>>> branch 'bhong1' of https://github.com/Itwill7-3team/CodeFarm.git
 	var loc = window.location.href
 	console.log("F"+f_num+"U"+unit+"L"+loc);
 	if(document.getElementById(".unit_lecture").href == window.location.href){
