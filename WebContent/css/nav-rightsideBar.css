@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+#overlay2{
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: black;
+    height: 100%;
+    opacity: 0.3;
+    z-index: 80;
+}
+#right-nav_menu{
+	
+	width: 300px;
+    height: 100%;
+    position: fixed;
+    right: -300px;
+    z-index: 99;
+    background-color: white;
+     transition: right 0.5s;
+}
+#right-nav_menu .close_content{
+	margin: 5px 5px 0;
+}
+#right-nav_menu .e_close_btn{
+	font-size: 24px;
+}
+.point_box{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f3f5;
+    color: #495057;
+    font-size: 14px;
+    border-radius: 2px;
+    flex-wrap: wrap;
+    padding: 8px;
+}
+#right-nav_menu .name{
+	font-size: 20px;
+}
+#right-nav_menu .list_el{
+	padding: 3px 20px;
+}
+#right-nav_menu .tab_list{
+	display: none;
+}
+#right-nav_menu .tab_list.active{
+	display: block;
+	background-color: white;
+}
+#right-nav_menu .sub_list{
+	overflow: hidden;
+    transition: max-height .2s ease-in-out;
+    max-height: 0px;
+}
+#right-nav_menu .list_el{
+	width: 100%;
+}
+#right-nav_menu .title{
+	width: 100vw;
+}
+#right-nav_menu .caret_el{
+	float: right;
+}
+#right-nav_menu a{
+	color: black;
+}

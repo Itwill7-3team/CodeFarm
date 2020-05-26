@@ -12,11 +12,14 @@
    .nav_content{
    	display: none !important;
    }
+   #f_overlay{
+   	display: none !important;
+   }
 }
 
 
 
-@media screen and (max-width: 1138px) {
+@media screen and (max-width: 1085px) {
 
 	/* 모바일   */
 	header .descktop_content{
@@ -30,6 +33,7 @@
 	#ch-plugin{
 	display: none !important;
 	}
+	
 }
 body{
 	margin: 0;

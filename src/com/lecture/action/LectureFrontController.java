@@ -96,6 +96,16 @@ public class LectureFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/getSearch.le")){
+			System.out.println("/getSearch.le 처리 model->view");
+
+			action = new LectureSearchListAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 
