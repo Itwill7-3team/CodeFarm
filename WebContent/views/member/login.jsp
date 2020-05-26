@@ -4,7 +4,7 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js" ></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
 
 <link rel="stylesheet" href="./css/login.css">
    <!-- 
@@ -122,6 +122,7 @@ Kakao.Auth.createLoginButton({
 	</script>
 <script>
 		
+	/* 설정정보를 초기화하고 연동을 준비 */
 var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "n1A2gvk1H0li6JGsisBI",
@@ -130,9 +131,8 @@ var naverLogin = new naver.LoginWithNaverId(
 			loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
 		}
 	);
-	
-	/* 설정정보를 초기화하고 연동을 준비 */
 	naverLogin.init();
+	
 		
 		
 		

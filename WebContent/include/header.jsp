@@ -309,26 +309,33 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				</div>
 				<!-- 가운데 -->
 			</div>
-			<div class="logo"><img alt="logo" src="./img/logo.png"></div>
+			<div class="logo"><a href="Main.le" class="logo"><img alt="logo" src="./img/logo.png"></a></div>
 			<!-- 오른쪽 -->
 			<div class="mobile_right">
+			<%if(loginEmail==null || loginEmail.equals("")){%>
 				<div class="noLogin">
-					<a href="MemberLogin.me">로그인</a>
-					<a href="MemberJoin.me">회원가입</a>
-				
+					<div class="login_cover cover">
+					<a class="btn bold login_btn" >로그인</a>
+					</div>
+					<div class="memberjoin_cover cover">
+					<a class="btn bold " href="MemberJoin.me">회원가입</a>
+					</div>
 				</div>
+				<%}else{ %>
 				<div class="login">
 					<div class="basket">
 						
 					</div>
 					<div class="status"></div>
 				</div>
+				<%} %>
 			</div>
 		</div>
 		<!--모바일끝  -->
 	</nav>
 	
 <script>
+
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
 		$(this).addClass("active");
@@ -440,6 +447,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 </script>
 
 <script>
+	//문의하기
   (function() {
     var w = window;
     if (w.ChannelIO) {

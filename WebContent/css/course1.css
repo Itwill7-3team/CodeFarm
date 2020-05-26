@@ -836,11 +836,7 @@ a:hover {
     bottom: .3rem;
     color: #4a4a4a;
 }
-.fa-star {
-    color: #fdcc11;
-    width: .9rem;
-    height: .9rem;
-}
+
 .course_price del {
     color: #595959;
     font-weight: 500;
