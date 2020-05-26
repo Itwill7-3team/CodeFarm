@@ -125,8 +125,8 @@ aside.profile_aside .menu-list .is-active>a {
 							위시리스트 <i class='far fa-heart'></i> >
 						</a>
 					</h3>
-					<div class="Blevel-left is-hidden-mobile">
-						<div class="Blevel-item">
+					<div class="Blevel-left2 is-hidden-mobile">
+						<div class="Blevel-item2">
 							<nav class="Bbreadcrumb has-arrow-separator">
 							<ul style="display: flex; font-weight: bold;">
 								<li class="Bis-active"><a href="/cart" class="BH1"
