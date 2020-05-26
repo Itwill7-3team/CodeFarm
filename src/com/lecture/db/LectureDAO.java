@@ -156,7 +156,7 @@ public class LectureDAO {
 		List<Integer> starCount= new ArrayList<Integer>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
-		int endNum = paging.getEndNnum();
+		int endNum = paging.getEndNum();
 		System.out.println("s :"+s);
 		System.out.println("t1 : "+t1+"t2 : "+t2);
 		try {

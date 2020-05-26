@@ -31,11 +31,12 @@ ArrayList<Integer> starCount=(ArrayList<Integer>)request.getAttribute("starCount
 /* ArrayList<String> memberList=(ArrayList<String>)request.getAttribute("memberList"); */
 
 String m_email = (String)session.getAttribute("m_email");
-String item = "seq";
 String s = "";
 String t1 = "";
 String t2 = "";
+String item = "seq";
 String view = "card";
+int paging = 1;
 
 if(request.getParameter("item") != null){
 	item = request.getParameter("item");
@@ -52,6 +53,10 @@ if(request.getParameter("t2") != null){
 if(request.getParameter("view") != null){
 	view = request.getParameter("view");
 }
+/* if(request.getParameter("page") != null){
+	page = request.getParameter("page");
+} */
+
 
 /* String pageNum = (String)request.getAttribute("pageNum");
 int count = (int)request.getAttribute("count");
@@ -392,13 +397,19 @@ $(function(){
 /* selectBox */
 /* search */
 	$(".search_button").on("click",function(){
-		alert($(".input").val());
+		/* alert($(".input").val()); */
 		var search = $(".input").val();
 		var orderSelect1 = $("#courses_order_select option:selected").val();
 		var t1 = getParameterByName('t1');
 		var t2 = getParameterByName('t2');
 		var view = getParameterByName('view');
+		if(view == ""){
+			view = 'card';
+		}
 		var page = getParameterByName('page');
+		if(page == 0){
+			page = 1;
+		}
 		/* var itime = getParameterByName('item');
 		
 		if(item == null){
@@ -653,8 +664,9 @@ $(function(){
 });
 
 /* tags */
-$( ".flip-card" ).load(function() {
-	 console.log($( this ).find(".l_reg_date").attr());
+$(window).load(function() {
+	console.log("기본");
+	 /* console.log($( this ).find(".l_reg_date").attr()); */
 	
   /* if ( $( this ).find(".l_reg_date").attr()) {
     $( this ).addClass( "bigImg" );

@@ -47,21 +47,22 @@ public class LectureListAction implements Action{
 		
 		/* 3번째 view-switcher 파라미터 */
 		String view = request.getParameter("view");
-		System.out.println("view : "+view);
 		if(view == null){
 			view = "card";
 		}
+		System.out.println("view : "+view);
 		/*view-switcher*/
 		
 		
 		/* 4번째 페이징 처리 와 그 파리미터 */ 
 		int page = 1;
 		
-		int count = ldao.getAllCount();
 		
 		if(request.getParameter("page")!=null) { 
 			page = Integer.parseInt(request.getParameter("page"));
 		}
+		int count = ldao.getAllCount();
+		
 		PagingDTO paging = new PagingDTO();
 		paging.setTotalCount(count);
 		paging.setPage(page);
