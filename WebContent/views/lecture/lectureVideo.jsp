@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=yes,initial-scale=1.0, maximum-scale=3.0"/>
 
 <link href="./img/logo.ico" rel="shortcut icon" type="image/x-icon">
-<link href="./css/lecture.css" rel="stylesheet">
+<link href="./css/lecture.css?ver=1" rel="stylesheet">
 </head>
 <body>
 <%
