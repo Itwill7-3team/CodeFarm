@@ -223,7 +223,7 @@
 								%>
 										<li>
 <%-- #003 강사 페이지 & 주소 변경 --%>
-											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>">
+											<a href="./Detail.le?num=<%= lectureList.get(ja).getL_number() %>">
 												<div class="el_thumbnail">
 													<img src="./upload/<%= lectureList.get(ja).getL_img() %>" alt="<%= lectureList.get(ja).getL_title() %>">
 												</div>
@@ -364,7 +364,7 @@
 										</div>
 										<h4 class="name">
 <%-- #003 강사 페이지 & 주소 변경 --%>
-											<a href="/Instructors.le?m_nick=<%= lmdto.getM_nick() %>"><%= lmdto.getM_nick() %></a>
+											<a href="./getMemberLecture.le?s=<%= lmdto.getM_email() %>"><%= lmdto.getM_nick() %></a>
 										</h4>
 									</div>
 									<p class="introduce"></p>
