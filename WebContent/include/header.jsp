@@ -300,6 +300,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 		<!--데스크탑 끝  -->
 		<!-- 모바일 -->
 		<jsp:include page="./nav-sideBar.jsp"/><!-- 사이드바 -->
+		<jsp:include page="./nav-rightsideBar.jsp"/><!-- 사이드바 -->
 		<div class="mobile_content">
 			<!--왼쪽  -->
 			<div class="mobile_left">
@@ -335,7 +336,9 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	</nav>
 	
 <script>
-
+	$(".status").on("click",function(){
+		r_menu_on();
+	});
 	$(".tab_menu").click(function() {
 		$(".tab_menu").removeClass("active");
 		$(this).addClass("active");
