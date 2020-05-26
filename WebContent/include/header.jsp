@@ -26,8 +26,8 @@ initial-scale=1.0, maximum-scale=3.0"/>
 	 }
 	}
 %>
-<jsp:include page="nav-footer.jsp" />
 <header class="sticky">
+<jsp:include page="nav-footer.jsp" />
 
 	<nav class="navbar">
 		<!-- 데스크탑 -->

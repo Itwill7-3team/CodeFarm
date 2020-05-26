@@ -16,7 +16,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    z-index: 74;
+    z-index: 50;
     cursor: pointer;
 }
 
