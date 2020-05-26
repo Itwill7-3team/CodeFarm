@@ -659,6 +659,10 @@
 	</div>
 	<div style="height:66px;"></div>
 	
+<%-- include footer --%>	
+	<jsp:include page="/include/footer.jsp"/>
+<%-- include footer --%>
+	
 	<script type="text/javascript">
 		
 	$(document).ready(function(){
