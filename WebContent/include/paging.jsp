@@ -37,6 +37,7 @@ if(request.getParameter("item") != null){
 if(request.getParameter("view") != null){
 	view = request.getParameter("view");
 }
+
 %>
 
 <%-- <%

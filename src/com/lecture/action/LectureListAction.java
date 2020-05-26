@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lecture.db.LectureDAO;
 import com.lecture.db.LectureDTO;
 import com.lecture.db.PagingDTO;
+import com.member.db.MemberDTO;
 import com.review.db.ReviewDAO;
 import com.review.db.ReviewDTO;
 
@@ -61,10 +62,12 @@ public class LectureListAction implements Action{
 		if(request.getParameter("page")!=null) { 
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		int count = ldao.getAllCount();
 		
 		PagingDTO paging = new PagingDTO();
+		
+		int count = ldao.getAllCount();
 		paging.setTotalCount(count);
+		
 		paging.setPage(page);
 		/* 페이징 처리 */
 		
@@ -86,7 +89,7 @@ public class LectureListAction implements Action{
 		ArrayList<LectureDTO> lectureList=(ArrayList<LectureDTO>)map.get("lectureList");
 		ArrayList<Double> starList=(ArrayList<Double>)map.get("starList");
 		ArrayList<Integer> starCount=(ArrayList<Integer>)map.get("starCount");
-		ArrayList<String> memberList=(ArrayList<String>)map.get("memberList");
+		ArrayList<MemberDTO> memberList=(ArrayList<MemberDTO>)map.get("memberList");
 		
 		System.out.println("beginPage : "+page);
 		request.setAttribute("lectureList", lectureList);
