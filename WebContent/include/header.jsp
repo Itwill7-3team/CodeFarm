@@ -181,7 +181,7 @@ initial-scale=1.0, maximum-scale=3.0"/>
 				<div class="navbar-right">
 					<!--검색 메뉴  -->
 					<div class="search_bar">
-						<input type="text" class=".input"><i class="fas fa-search"></i>
+						<input type="text" class="input5"><i class="fas fa-search"></i>
 					</div>
 					<!--지식공유 참여  -->
 					<%if(rank<2) {%>
@@ -452,20 +452,10 @@ initial-scale=1.0, maximum-scale=3.0"/>
 <script>
 /* search */
 $(".fa-search").on("click",function(){
-	alert($(".input").val());
-	var search = $(".input").val();
-	var orderSelect1 = $("#courses_order_select option:selected").val();
-	var t1 = getParameterByName('t1');
-	var t2 = getParameterByName('t2');
-	var view = getParameterByName('view');
-	var page = getParameterByName('page');
-	/* var itime = getParameterByName('item');
+	var search = $(".input5").val();
+
 	
-	if(item == null){
-		alert("확인"+item);
-	} select 구문에 사용*/
-	
-	location.href = "./Search.le?t1="+t1+"&t2="+t2+"&item="+orderSelect1+"&view="+view+"&page="+page+"&s="+search;
+	location.href = "./getSearch.le?&page=1&s="+search;
 });
 /* search */
 	//문의하기
