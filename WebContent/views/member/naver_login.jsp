@@ -15,7 +15,7 @@
 	callback 처리중입니다. 이 페이지에서는 callback을 처리하고 바로 main으로 redirect하기때문에 이 메시지가 보이면 안됩니다.
 
 	<!-- (1) LoginWithNaverId Javscript SDK -->
-	<!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script> 
 
 
 	<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
@@ -23,7 +23,7 @@
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "n1A2gvk1H0li6JGsisBI",
-				callbackUrl: "http://localhost:8088/CodeFarm/Main.le",
+				callbackUrl: "http://192.168.7.21:8088/CodeFarm/Main.le",
 				isPopup: false,
 				callbackHandle: false
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -47,7 +47,7 @@
 					}
 						console.log(status);
 					
-					window.location.replace("./naverLoginAction.me");
+					window.location.replace("http://192.168.7.21:8088/CodeFarm/naverLoginAction.me");
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
