@@ -44,7 +44,7 @@ height: auto;
     min-height: 800px;
 font-family: 'NotoSansCJKkr-Light';
 max-width:1000px;
-width: 100%}
+width: 70%;}
 
 .boxx{float:left; 
 	border-bottom:1px solid #ccc; 
@@ -57,7 +57,7 @@ width: 100%}
 .boxx2{display: inline-block;
 width:100%; height:auto; 
 margin-left: 30px;
-min-width: 320px;
+min-width: 300px;
 
 }
 
@@ -73,7 +73,7 @@ a {text-decoration: none;}
     max-width: 200px;
 word-wrap: break-word;}
 
-.boxh3 {float: left; padding-left: 10px; width: 70%;}
+.boxh3 {float: left; padding-left: 10px; width: 70%; min-width: 168px;}
 
 
 .Blevel-left {
