@@ -19,7 +19,7 @@
  var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "n1A2gvk1H0li6JGsisBI",
-			callbackUrl: "./MemberLogin.me",
+			callbackUrl: "./Main.le",
 			isPopup: false,
 			callbackHandle: false
 		}

@@ -66,7 +66,7 @@
 						LectureDTO ldto=lecturelist.get(i);						
 					%>
 					<tr>
-						<td class="main_img"><img src="<%=ldto.getL_img()%>"></img></td>
+						<td class="main_img"><img src="./upload/<%=ldto.getL_img()%>"></img></td>
 						<td class="course_title"><a href="Detail.le?num=<%=ldto.getL_number()%>"><%=ldto.getL_title() %></a></td>
 						<td class="course_star">0</td>
 						<td class="course_students"><%=ldto.getPay_count() %></td>

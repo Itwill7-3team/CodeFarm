@@ -14,6 +14,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.member.db.MemberDTO;
+
 
 
 
@@ -127,10 +129,10 @@ public class LectureDAO {
 		
 	//getAllCount()
 	public int getAllCount() {
+		sql = "select count(*) as count from lecture";
 		int count = 0;
 		try {
 			con = getConnection();
-			sql = "select count(*) as count from lecture";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -154,9 +156,10 @@ public class LectureDAO {
 		Map<String, Object> map=new HashMap<String,Object>();
 		List<Double> starList=new ArrayList<Double>();
 		List<Integer> starCount= new ArrayList<Integer>();
+		List<MemberDTO> memberList = new ArrayList<MemberDTO>();
 		StringBuffer SQL = new StringBuffer();
 		int startNum = paging.getStartNum();
-		int endNum = paging.getEndNnum();
+		int endNum = paging.getEndNum();
 		System.out.println("s :"+s);
 		System.out.println("t1 : "+t1+"t2 : "+t2);
 		try {
@@ -181,10 +184,17 @@ public class LectureDAO {
 			 *  left join member on (lecture.l_m_email = member.m_email) 
 			 * 
 			 */
+			/*
+			 * SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM (" +
+			 * "SELECT * FROM lecture left join member on (lecture.l_m_email = member.m_email) "
+			 * + "ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c " +
+			 * "where C.ROW >=? and record=1 and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
+			 * + "and l_type like ? and l_type2 like ?");
+			 */
 		SQL.append("SELECT * FROM (SELECT @ROWNUM :=@ROWNUM +1 AS ROW, A.* FROM ("
 				+ "SELECT * FROM lecture left join member on (lecture.l_m_email = member.m_email) "
 				+ "ORDER BY @Rownum DESC) A, (SELECT @ROWNUM := 0) b) c "
-				+ "where C.ROW >=? and record=1 and C.ROW <=? and concat(m_name, l_content, l_title) like ? "
+				+ "where C.ROW >=? and C.ROW <=? and record = 1 and concat(m_name, l_content, l_title) like ? "
 				+ "and l_type like ? and l_type2 like ?");
 		
 /*		if(item.equals("all")){
@@ -231,6 +241,9 @@ public class LectureDAO {
 			ldto.setL_abilities(rs.getString("l_abilities"));
 			ldto.setL_based(rs.getString("l_based"));
 			ldto.setL_description(rs.getString("l_description"));
+			
+			lectureList.add(ldto);
+			
 			sql="select avg(r_rating) from r_board group by r_l_num having r_l_num=?";
 			pstmt=con.prepareStatement(sql);
 			
@@ -249,21 +262,42 @@ public class LectureDAO {
 			
 			pstmt.setInt(1, rs.getInt("l_number"));
 			
-			rs2=pstmt.executeQuery();
+			rs2 = pstmt.executeQuery();
 			if(rs2.next()){
 				starCount.add(rs2.getInt(1));
 			}else{
 				starCount.add(0);
 			}
 			
-			lectureList.add(ldto);
+				
+			sql = "select * from member where m_email=?"; 
+			pstmt =con.prepareStatement(sql);
+				  
+			pstmt.setString(1, ldto.getL_m_email()); 
+			rs2 = pstmt.executeQuery();
 			
+			if(rs2.next()) { 
+				MemberDTO mdto = new MemberDTO();
+				
+				mdto.setM_email(ldto.getL_m_email());
+				mdto.setM_name(rs2.getString("m_name"));
+				mdto.setM_nick(rs2.getString("m_nick"));
+				System.out.println("-----Mdto------");
+					  
+				memberList.add(mdto);
+				}
+				 	
+				 // lectureList.add(ldto);
+				 			
 		}	
 		System.out.println("사용자 강의 목록 저장완료");
 		System.out.println("내용"+lectureList);
 			map.put("lectureList", lectureList);
 			map.put("starList", starList);
 			map.put("starCount", starCount);
+			map.put("memberList", memberList);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{

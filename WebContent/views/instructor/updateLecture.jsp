@@ -151,10 +151,10 @@
 						<div class="label_box">
 							<label class="menu_label">카테고리 </label>
 							<div class="button_box categoryBox1">
-								<button class="button category1" value="IT프로그래밍">IT프로그래밍</button>
-								<button class="button category1" value="크리에이티브">크리에이티브</button>
-								<button class="button category1" value="업무스킬">업무스킬</button>
-								<button class="button category1" value="그외">그외</button>
+								<button class="button category1" value="it-programming">IT프로그래밍</button>
+								<button class="button category1" value="creative">크리에이티브</button>
+								<button class="button category1" value="business">업무스킬</button>
+								<button class="button category1" value="etc">그외</button>
 							</div>
 							<label class="menu_label"> 2차 분류 </label>
 							<div class="button_box categoryBox2">
