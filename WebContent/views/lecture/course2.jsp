@@ -1,3 +1,4 @@
+<%@page import="com.member.action.MemberListAction"%>
 <%@page import="com.member.db.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.review.db.ReviewDTO"%>
@@ -28,14 +29,15 @@ List<LectureDTO> lectureList = (List<LectureDTO>) request.getAttribute("lectureL
 List<BasketDTO> basketList = (List<BasketDTO>) request.getAttribute("basketList");
 ArrayList<Double> starList= (ArrayList<Double>)request.getAttribute("starList");
 ArrayList<Integer> starCount=(ArrayList<Integer>)request.getAttribute("starCount");
-/* ArrayList<String> memberList=(ArrayList<String>)request.getAttribute("memberList"); */
+ArrayList<MemberDTO> memberList=(ArrayList<MemberDTO>)request.getAttribute("memberList");
 
 String m_email = (String)session.getAttribute("m_email");
-String item = "seq";
 String s = "";
 String t1 = "";
 String t2 = "";
+String item = "seq";
 String view = "card";
+int paging = 1;
 
 if(request.getParameter("item") != null){
 	item = request.getParameter("item");
@@ -52,6 +54,9 @@ if(request.getParameter("t2") != null){
 if(request.getParameter("view") != null){
 	view = request.getParameter("view");
 }
+/* if(request.getParameter("page") != null){
+	page = request.getParameter("page");
+} */
 
 /* String pageNum = (String)request.getAttribute("pageNum");
 int count = (int)request.getAttribute("count");
@@ -173,6 +178,7 @@ int endPage = (Integer)(request.getAttribute("endPage")); */
 <%
 for(int i=0;i<lectureList.size();i++){ 
 	LectureDTO ldto = lectureList.get(i);
+	MemberDTO mdto = memberList.get(i);
 	
 	if(view.equals("card")){
 	
@@ -192,7 +198,7 @@ for(int i=0;i<lectureList.size();i++){
 												<div class= "l_number" style="display: none;"<%--  data-type="<%=ldto.getL_number() %>" --%>><%=ldto.getL_number() %></div>
 												<div class= "l_reg_date" style="display:none;"><%=ldto.getL_reg_date()%></div>
 												<div class="course_title"><%=ldto.getL_title() %></div>
-												<div class="course_instructor">Instructor</div>
+												<div class="course_instructor"><%=mdto.getM_nick() %></div>
 												<!-- <div class="course_data columns is-multiline"> -->
 													<div class="rating">
 														<div class="star_solid" style="width: <%=starList.get(i)*20 %>%">
@@ -208,9 +214,9 @@ for(int i=0;i<lectureList.size();i++){
 													 <c:set var="price" value="<%=ldto.getL_price() %>"/>
 													<div class="course_price"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${price}" /></div>
 													<div class="tags">
-														<span class="tag" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
-														<span class="tag" style="background-color: hsl(321,63%,90%);">할인중</span>
-														<span class="tag" style="background-color: hsl(182,75%,94%);">신규강의</span>
+														<span class="tag tag-pay-count" data-type="<%=ldto.getPay_count() %>" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
+														<span class="tag tag-pct" data-type="<%=ldto.getL_pct() %>" style="background-color: hsl(321,63%,90%);">할인중</span>
+														<span class="tag tag-newlecture" data-type="<%=ldto.getL_reg_date() %>" style="background-color: hsl(182,75%,94%);">신규강의</span>
 													</div>
 												<!-- </div> --><!-- course_data -->
 											</div>
@@ -267,9 +273,9 @@ for(int i=0;i<lectureList.size();i++){
 											<a href=""class="course-info">
 												<h2 href="#" class="course-title"><%=ldto.getL_title() %></h2>
 												<div class="tags">
-													<span class="tag" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
-													<span class="tag" style="background-color: hsl(321,63%,90%);">할인중</span>
-													<span class="tag" style="background-color: hsl(182,75%,94%);">신규강의</span>
+													<span class="tag tag-pay-count" data-type="<%=ldto.getPay_count() %>" style="background-color:hsl(155,40%,87%)">베스트셀러</span>
+													<span class="tag tag-pct" data-type="<%=ldto.getL_pct() %>" style="background-color: hsl(321,63%,90%);">할인중</span>
+													<span class="tag tag-newlecture" data-type="<%=ldto.getL_reg_date() %>" style="background-color: hsl(182,75%,94%);">신규강의</span>
 												</div>
 												<div class="rating">
 													<div class="rating">
@@ -392,13 +398,19 @@ $(function(){
 /* selectBox */
 /* search */
 	$(".search_button").on("click",function(){
-		alert($(".input").val());
+		/* alert($(".input").val()); */
 		var search = $(".input").val();
 		var orderSelect1 = $("#courses_order_select option:selected").val();
 		var t1 = getParameterByName('t1');
 		var t2 = getParameterByName('t2');
 		var view = getParameterByName('view');
+		if(view == ""){
+			view = 'card';
+		}
 		var page = getParameterByName('page');
+		if(page == 0){
+			page = 1;
+		}
 		/* var itime = getParameterByName('item');
 		
 		if(item == null){
@@ -652,13 +664,36 @@ $(function(){
 /* view switcher */
 });
 
-/* tags */
-$( ".flip-card" ).load(function() {
-	 console.log($( this ).find(".l_reg_date").attr());
+/* tags */ 
+
+/* 베스트셀러 페이 카운트가 5이하면 삭제 */
+$(function(){
+	$(".tag.tag-pay-count").each(function(){
+		if($(this).attr("data-type") < 4){
+			$(this).css('display','none');
+		}
+	});
+/* 할인중 L_pct가 1이하이면 삭제 */
+	$(".tag.tag-pct").each(function(){
+		if($(this).attr("data-type") < 1){
+			$(this).css('display','none');
+		}
+	});
 	
-  /* if ( $( this ).find(".l_reg_date").attr()) {
-    $( this ).addClass( "bigImg" );
-  } */
+/* 10일전이면 삭제 */
+	$(".tag.tag-newlecture").each(function(){
+		var todt = new Date();
+		console.log(todt);
+		var regdate = new Date($(this).attr("data-type"));
+		var redt = regdate
+		console.log(regdate);
+		var dateDiff = Math.ceil((todt.getTime() - redt.getTime())/(1000*3600*24));
+		console.log(dateDiff);
+		
+		if(dateDiff > 10){
+			$(this).css('display','none');
+		}
+	});
 });
 /* tags */
 

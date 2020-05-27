@@ -8,18 +8,21 @@ public class PagingDTO {
 	private int endPage;
 	private int displayRow = 24;
 	private int displayPage = 10;
+	/*private int displayRow = 24;
+	private int displayPage = 10;*/
 	boolean prev;
 	boolean next;
 	private int startNum;
 	private int endNum;
 	
-	private String[] item = {"seq","popular","recent","rating","famous"};
 	
-	public String[] getItem() {
-		return item;
+	
+	
+	public int getStartNum() {
+		return startNum;
 	}
-	public void setItem(String[] item) {
-		this.item = item;
+	public void setStartNum(int startNum) {
+		this.startNum = startNum;
 	}
 	public int getEndNum() {
 		return endNum;
@@ -27,8 +30,14 @@ public class PagingDTO {
 	public void setEndNum(int endNum) {
 		this.endNum = endNum;
 	}
-	public void setStartNum(int startNum) {
-		this.startNum = startNum;
+
+	private String[] item = {"seq","popular","recent","rating","famous"};
+	
+	public String[] getItem() {
+		return item;
+	}
+	public void setItem(String[] item) {
+		this.item = item;     
 	}
 	public int getPage() {
 		return page;
@@ -70,14 +79,8 @@ public class PagingDTO {
 	public boolean isPrev() {
 		return prev;
 	}
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
 	public boolean isNext() {
 		return next;
-	}
-	public void setNext(boolean next) {
-		this.next = next;
 	}
 	
 	private void paging() {
@@ -86,7 +89,11 @@ public class PagingDTO {
 		beginPage = endPage - (displayPage-1);
 		System.out.println("beginPage : "+beginPage);
 		
+		startNum = (page-1)*displayRow+1;
+		endNum = page*displayRow;
+		
 		int totalPage = (int)Math.ceil(totalCount/(double)displayRow);
+		
 		if(totalPage<endPage) {
 			endPage = totalPage;
 			next = false;
@@ -97,13 +104,16 @@ public class PagingDTO {
 		System.out.println("endPage : "+endPage);
 		System.out.println("totalPage : "+totalPage);
 	}
-	public int getStartNum() {
-		startNum = (page-1)*displayRow+1;
+	
+	
+
+	
+	/*public int getStartNum() {
 		return startNum;
 	}
 	public int getEndNnum() {
-		endNum = page*displayRow;
+	endNum = page*displayRow;
 		return endNum;
-	}
+	}*/
 	
 }

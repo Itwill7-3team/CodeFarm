@@ -166,9 +166,11 @@ int endPage=(int)request.getAttribute("endPage");
 						}
 						%>
 						
-						
+						<%if(email.equals("admin@naver.com")){%>
 						<button onclick="location.href='blogWrite.bl';">글쓰기</button>
-
+						<%}
+						
+						%>
 					
 		</div>	
 		<!--  -->
