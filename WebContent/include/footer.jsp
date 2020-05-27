@@ -79,6 +79,7 @@
   
   </div>
 </div>
+
 <script type="text/javascript">
 //강사 신청 폼
 	$("#fot_tech").click(function(){

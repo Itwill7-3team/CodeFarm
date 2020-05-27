@@ -19,12 +19,14 @@ public class PagingDTO {
 	
 	
 	public int getStartNum() {
+		startNum = (page-1)*displayRow+1;
 		return startNum;
 	}
 	public void setStartNum(int startNum) {
 		this.startNum = startNum;
 	}
 	public int getEndNum() {
+		endNum = page*displayRow;
 		return endNum;
 	}
 	public void setEndNum(int endNum) {
@@ -40,6 +42,7 @@ public class PagingDTO {
 		this.item = item;     
 	}
 	public int getPage() {
+		
 		return page;
 	}
 	public void setPage(int page) {
@@ -89,8 +92,8 @@ public class PagingDTO {
 		beginPage = endPage - (displayPage-1);
 		System.out.println("beginPage : "+beginPage);
 		
-		startNum = (page-1)*displayRow+1;
-		endNum = page*displayRow;
+		
+		
 		
 		int totalPage = (int)Math.ceil(totalCount/(double)displayRow);
 		

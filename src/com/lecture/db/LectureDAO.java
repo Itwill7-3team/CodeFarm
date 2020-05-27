@@ -129,7 +129,7 @@ public class LectureDAO {
 		
 	//getAllCount()
 	public int getAllCount() {
-		sql = "select count(*) as count from lecture";
+		sql = "select count(*) as count from lecture where record=1";
 		int count = 0;
 		try {
 			con = getConnection();

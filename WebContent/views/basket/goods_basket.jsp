@@ -58,7 +58,6 @@ aside.profile_aside .menu-list .is-active>a {
 .Bwrap {
 	width: 70%;
 	margin: 0 auto;
-	display: flex;
 }
 
 @media screen and (max-width: 1370px) {
@@ -570,7 +569,7 @@ aside.profile_aside .menu-list .is-active>a {
 
 	<!-- 약관 -->
 
-		// Get the modal
+		//  Get the modal
 		var Vmodal = document.getElementById('id01');
 
 		// When the user clicks anywhere outside of the modal, close it
@@ -645,7 +644,7 @@ window.onclick = function(event) {
 
 
 
-
+	</div>
 	<!-- footer -->
 	<jsp:include page="/include/footer.jsp"></jsp:include>
 </body>
